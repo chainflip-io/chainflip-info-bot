@@ -1,7 +1,7 @@
 export default {
   '**/*.ts': (filenames) => [
     'tsc -p tsconfig.json --noEmit',
-    `prettier --write ${filenames.join(' ')} --check`,
+    `prettier --check ${filenames.join(' ')}`,
     `eslint --max-warnings 0 --no-warn-ignored ${filenames.join(' ')}`,
   ],
 };
