@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import { sleep } from '@chainflip/utils/async';
 
 export const start = async () => {
-  let exit = false;
+  let exit = false as boolean;
 
   console.log('running');
 
@@ -16,7 +17,7 @@ export const start = async () => {
   });
 
   while (!exit) {
-    sleep(1000);
+    await sleep(1000);
   }
 };
 
