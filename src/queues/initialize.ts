@@ -60,4 +60,6 @@ export const initialize = async () => {
 
   queues.count = await createQueue(dispatchJob, countConfig);
   queues.echo = await createQueue(dispatchJob, echoConfig);
+
+  return Object.values(queues);
 };
