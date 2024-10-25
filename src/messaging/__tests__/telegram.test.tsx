@@ -3,9 +3,6 @@ import axios from 'axios';
 import { vi, describe, it, expect } from 'vitest';
 import { sendMessage } from '../telegram.js';
 
-vi.mock('../../env.js');
-vi.mock('axios');
-
 describe('sendMessage', () => {
   it('sends a message to the channel', async () => {
     const postMock = vi.mocked(axios.post);
