@@ -1,23 +1,12 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import axios from 'axios';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect } from 'vitest';
 import { sendMessage } from '../telegram.js';
 
-vi.mock('axios', () => ({
-  __esModule: true,
-  default: {
-    post: vi.fn(),
-  },
-}));
+vi.mock('../../env.js');
+vi.mock('axios');
 
 describe('sendMessage', () => {
-  const env = process.env;
-
-  beforeEach(() => {
-    process.env = { ...env };
-    process.env.TELEGRAM_BOT_TOKEN = '1234';
-  });
-
   it('sends a message to the channel', async () => {
     const postMock = vi.mocked(axios.post);
 
@@ -54,6 +43,8 @@ describe('sendMessage', () => {
           hello <strong>bold</strong>
         </>,
       ),
-    ).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: failed to send message: {"ok":false,"description":"some other stuff here"}]`);
+    ).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[Error: failed to send message: {"ok":false,"description":"some other stuff here"}]`,
+    );
   });
 });

@@ -1,12 +1,10 @@
 import { renderToStaticMarkup } from 'react-dom/server';
-import assert from 'assert';
 import axios from 'axios';
 import React from 'react';
+import env from '../env.js';
 
 export const sendMessage = async (channel: string | number, text: React.JSX.Element) => {
-  assert(process.env.TELEGRAM_BOT_TOKEN, 'missing TELEGRAM_BOT_TOKEN');
-
-  const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+  const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
   const response = await axios.post(url, {
     chat_id: channel,

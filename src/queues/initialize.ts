@@ -3,8 +3,9 @@ import { config as countConfig } from './count.js';
 import { config as echoConfig } from './echo.js';
 import { Redis } from 'ioredis';
 import { handleExit } from '../utils.js';
+import env from '../env.js';
 
-const redis = new Redis(process.env.REDIS_URL as string, { maxRetriesPerRequest: null });
+const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
 handleExit(async () => {
   await redis.quit();
