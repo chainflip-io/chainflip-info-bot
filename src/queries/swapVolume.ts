@@ -2,7 +2,6 @@ import request from 'graphql-request';
 import { BigNumber } from 'bignumber.js';
 import { gql } from '../graphql/generated/gql.js';
 import env from '../env.js';
-import { formatUsdValue } from '../utils.js';
 
 const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
   query GetSwapVolumeStats($after: Datetime!) {
@@ -79,7 +78,7 @@ export default async function getSwapVolumeStats(after: string) {
 
   const networkFees = swapFees.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), new BigNumber(0));
 
-  const flipBurned = new BigNumber(swapInfo.burns?.nodes[0].amount ?? 0);
+  const flipBurned = new BigNumber(swapInfo.burns?.nodes[0].amount ?? 0).shiftedBy(-18);
 
   const lpFees = BigNumber.sum(
     lpInfo.limitOrderFills?.aggregates?.sum?.feesEarnedValueUsd ?? 0,
@@ -88,9 +87,9 @@ export default async function getSwapVolumeStats(after: string) {
   );
 
   return {
-    swapVolume: formatUsdValue(swapVolume),
-    networkFees: formatUsdValue(networkFees),
-    flipBurned: flipBurned.gt(0) ? flipBurned.shiftedBy(-18).toFormat(2) : null,
-    lpFees: formatUsdValue(lpFees),
+    swapVolume: swapVolume,
+    networkFees: networkFees,
+    flipBurned: flipBurned.gt(0) ? flipBurned : null,
+    lpFees: lpFees,
   };
 }

@@ -12,10 +12,10 @@ describe('swapVolume', () => {
     const after = '2024-10-25T00:00:00Z';
     expect(await getSwapVolumeStats(after)).toMatchInlineSnapshot(`
       {
-        "flipBurned": "2,343.00",
-        "lpFees": "$1,516.62",
-        "networkFees": "$1,891.39",
-        "swapVolume": "$3,029,020.71",
+        "flipBurned": "2343.000793804332426773",
+        "lpFees": "1516.6177040047",
+        "networkFees": "1891.3926153737",
+        "swapVolume": "3029020.7126806316",
       }
     `);
 
