@@ -3,4 +3,5 @@ export default {
   HTTP_SERVER_PORT: '8080',
   DISCORD_WEBHOOK_URL: 'https://discord.com/api/webhooks/1234567890/abcdefg',
   TELEGRAM_BOT_TOKEN: '1234',
+  EXPLORER_GATEWAY_URL: 'https://chainflap.org/graphql',
 };
