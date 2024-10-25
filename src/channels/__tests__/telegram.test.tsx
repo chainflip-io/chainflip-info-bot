@@ -11,6 +11,7 @@ describe('sendMessage', () => {
 
     await sendMessage(
       '1234',
+      '5678',
       <>
         hello <strong>bold</strong>
       </>,
@@ -20,7 +21,7 @@ describe('sendMessage', () => {
       [
         "https://api.telegram.org/bot1234/sendMessage",
         {
-          "chat_id": "1234",
+          "chat_id": "5678",
           "parse_mode": "HTML",
           "text": "hello <strong>bold</strong>",
         },
@@ -36,6 +37,7 @@ describe('sendMessage', () => {
     await expect(
       sendMessage(
         '1234',
+        '5678',
         <>
           hello <strong>bold</strong>
         </>,
