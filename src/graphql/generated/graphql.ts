@@ -53007,6 +53007,18 @@ export type _PrismaMigrationsOrderBy =
   | 'STARTED_AT_ASC'
   | 'STARTED_AT_DESC';
 
+export type GetNewSwapRequestsQueryQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetNewSwapRequestsQueryQuery = {
+  __typename?: 'Query';
+  allSwapRequests?: {
+    __typename?: 'SwapRequestsConnection';
+    nodes: Array<{ __typename?: 'SwapRequest'; id: number }>;
+  } | null;
+};
+
 export type GetSwapInfoByNativeIdQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
@@ -53047,6 +53059,73 @@ export type GetSwapInfoByNativeIdQuery = {
   } | null;
 };
 
+export const GetNewSwapRequestsQueryDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetNewSwapRequestsQuery' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'allSwapRequests' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'greaterThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'id' } }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetNewSwapRequestsQueryQuery, GetNewSwapRequestsQueryQueryVariables>;
 export const GetSwapInfoByNativeIdDocument = {
   kind: 'Document',
   definitions: [
