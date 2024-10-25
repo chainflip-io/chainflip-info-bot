@@ -1,14 +1,15 @@
 import 'dotenv/config';
+import env from './env.js';
 import { initialize } from './queues/initialize.js';
 import { createServer } from './server.js';
 import { handleExit } from './utils.js';
+
+const port = env.HTTP_SERVER_PORT;
 
 export const start = async () => {
   const queues = await initialize();
 
   const app = createServer(queues);
-
-  const port = Number(process.env.HTTP_SERVER_PORT) || 8080;
 
   app.listen({ host: '0.0.0.0', port }, () => {
     // eslint-disable-next-line no-console

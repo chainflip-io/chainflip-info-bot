@@ -4,9 +4,13 @@ import { FastifyAdapter } from '@bull-board/fastify';
 import { type Queue } from 'bullmq';
 import fastify from 'fastify';
 
-export const createServer = (queues: Queue[]) => {
-  const app = fastify();
+const app = fastify({
+  logger: true,
+});
 
+export const logger = app.log;
+
+export const createServer = (queues: Queue[]) => {
   const serverAdapter = new FastifyAdapter();
 
   createBullBoard({
