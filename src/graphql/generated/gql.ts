@@ -14,6 +14,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
+  '\n  query GetNewSwapRequestsQuery($nativeId: BigInt!) {\n    swapRequests: allSwapRequests(\n      filter: {\n        and: [\n          { nativeId: { greaterThan: $nativeId } }\n          { or: [{ type: { equalTo: REGULAR } }, { type: { equalTo: CCM } }] }\n        ]\n      }\n    ) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n':
+    types.GetNewSwapRequestsQueryDocument,
   'query GetSwapInfoByNativeId($nativeId: BigInt!){\nswap: swapRequestByNativeId(nativeId: $nativeId){\n #if swap completed event\n completedEventId\n      ##swap request id\n      nativeId\n      #deposit amount + USD value\n      depositAmount\n      depositValueUsd\n\n      egressByEgressId {\n        #egress amount + USD value\n        amount\n        valueUsd\n\n        #duration - egressTimestamp\n        eventByScheduledEventId {\n          blockByBlockId {\n            timestamp\n          }\n        }\n      }\n\n      swapChannelByDepositChannelId {\n        #broker\n        brokerByBrokerId {\n          accountId\n        }\n        fokMinPriceX128\n        #duaration - depositChannelCreationTimestamp\n        issuedBlockTimestamp\n      }\n      #duration - preDepositBlockTimestamp\n      foreignChainTrackingByForeignChainPreDepositBlockId {\n        stateChainTimestamp\n      }\n      #duration - depositTimestamp\n      foreignChainTrackingByForeignChainDepositBlockId {\n        stateChainTimestamp\n      }\n      #duration - sourceChain\n      sourceChain\n      #DCA information (if applicable)\n      numberOfChunks\n    }\n}\n':
     types.GetSwapInfoByNativeIdDocument,
 };
@@ -32,6 +34,12 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+  source: '\n  query GetNewSwapRequestsQuery($nativeId: BigInt!) {\n    swapRequests: allSwapRequests(\n      filter: {\n        and: [\n          { nativeId: { greaterThan: $nativeId } }\n          { or: [{ type: { equalTo: REGULAR } }, { type: { equalTo: CCM } }] }\n        ]\n      }\n    ) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n',
+): (typeof documents)['\n  query GetNewSwapRequestsQuery($nativeId: BigInt!) {\n    swapRequests: allSwapRequests(\n      filter: {\n        and: [\n          { nativeId: { greaterThan: $nativeId } }\n          { or: [{ type: { equalTo: REGULAR } }, { type: { equalTo: CCM } }] }\n        ]\n      }\n    ) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n'];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

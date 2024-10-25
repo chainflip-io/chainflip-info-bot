@@ -3,12 +3,16 @@ import { BullMQAdapter } from '@bull-board/api/bullMQAdapter.js';
 import { FastifyAdapter } from '@bull-board/fastify';
 import { type Queue } from 'bullmq';
 import fastify from 'fastify';
+import { GraphQLClient } from 'graphql-request';
+import env from './env.js';
 
 const app = fastify({
   logger: true,
 });
 
 export const logger = app.log;
+
+export const client = new GraphQLClient(env.EXPLORER_GATEWAY_URL);
 
 export const createServer = (queues: Queue[]) => {
   const serverAdapter = new FastifyAdapter();

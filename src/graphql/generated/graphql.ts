@@ -14961,6 +14961,8 @@ export type BurnCondition = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `timestamp` field. */
   timestamp?: InputMaybe<Scalars['Datetime']['input']>;
+  /** Checks for equality with the object’s `valueUsd` field. */
+  valueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
 };
 
 /** A filter to be used against `Burn` object types. All fields are combined with a logical ‘and.’ */
@@ -14979,6 +14981,8 @@ export type BurnFilter = {
   or?: InputMaybe<Array<BurnFilter>>;
   /** Filter by the object’s `timestamp` field. */
   timestamp?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `valueUsd` field. */
+  valueUsd?: InputMaybe<BigFloatFilter>;
 };
 
 /** Grouping methods for `Burn` for usage during aggregation. */
@@ -14987,13 +14991,15 @@ export type BurnGroupBy =
   | 'EVENT_ID'
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
-  | 'TIMESTAMP_TRUNCATED_TO_HOUR';
+  | 'TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'VALUE_USD';
 
 export type BurnHavingAverageInput = {
   amount?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingDistinctCountInput = {
@@ -15001,6 +15007,7 @@ export type BurnHavingDistinctCountInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 /** Conditions for `Burn` aggregates. */
@@ -15023,6 +15030,7 @@ export type BurnHavingMaxInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingMinInput = {
@@ -15030,6 +15038,7 @@ export type BurnHavingMinInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingStddevPopulationInput = {
@@ -15037,6 +15046,7 @@ export type BurnHavingStddevPopulationInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingStddevSampleInput = {
@@ -15044,6 +15054,7 @@ export type BurnHavingStddevSampleInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingSumInput = {
@@ -15051,6 +15062,7 @@ export type BurnHavingSumInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingVariancePopulationInput = {
@@ -15058,6 +15070,7 @@ export type BurnHavingVariancePopulationInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BurnHavingVarianceSampleInput = {
@@ -15065,6 +15078,7 @@ export type BurnHavingVarianceSampleInput = {
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
+  valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 /** Methods to use when ordering `Burn`. */
@@ -15079,7 +15093,9 @@ export type BurnsOrderBy =
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC'
   | 'TIMESTAMP_ASC'
-  | 'TIMESTAMP_DESC';
+  | 'TIMESTAMP_DESC'
+  | 'VALUE_USD_ASC'
+  | 'VALUE_USD_DESC';
 
 export type CcmFailedReason =
   | 'INSUFFICIENT_DEPOSIT_AMOUNT'
@@ -20176,6 +20192,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_AVERAGE_ID_DESC'
   | 'BURNS_BY_EVENT_ID_AVERAGE_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_AVERAGE_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_AVERAGE_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_AVERAGE_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_COUNT_ASC'
   | 'BURNS_BY_EVENT_ID_COUNT_DESC'
   | 'BURNS_BY_EVENT_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -20186,6 +20204,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_DISTINCT_COUNT_ID_DESC'
   | 'BURNS_BY_EVENT_ID_DISTINCT_COUNT_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_DISTINCT_COUNT_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_DISTINCT_COUNT_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_DISTINCT_COUNT_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_MAX_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_MAX_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_MAX_EVENT_ID_ASC'
@@ -20194,6 +20214,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_MAX_ID_DESC'
   | 'BURNS_BY_EVENT_ID_MAX_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_MAX_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_MAX_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_MAX_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_MIN_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_MIN_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_MIN_EVENT_ID_ASC'
@@ -20202,6 +20224,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_MIN_ID_DESC'
   | 'BURNS_BY_EVENT_ID_MIN_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_MIN_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_MIN_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_MIN_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_EVENT_ID_ASC'
@@ -20210,6 +20234,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_ID_DESC'
   | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_STDDEV_POPULATION_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_EVENT_ID_ASC'
@@ -20218,6 +20244,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_ID_DESC'
   | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_STDDEV_SAMPLE_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_SUM_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_SUM_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_SUM_EVENT_ID_ASC'
@@ -20226,6 +20254,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_SUM_ID_DESC'
   | 'BURNS_BY_EVENT_ID_SUM_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_SUM_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_SUM_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_SUM_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_EVENT_ID_ASC'
@@ -20234,6 +20264,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_ID_DESC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_VARIANCE_POPULATION_VALUE_USD_DESC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_EVENT_ID_ASC'
@@ -20242,6 +20274,8 @@ export type EventsOrderBy =
   | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_TIMESTAMP_ASC'
   | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_TIMESTAMP_DESC'
+  | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_VALUE_USD_ASC'
+  | 'BURNS_BY_EVENT_ID_VARIANCE_SAMPLE_VALUE_USD_DESC'
   | 'COLLECTED_FEES_BY_EVENT_ID_AVERAGE_AMOUNT_ASC'
   | 'COLLECTED_FEES_BY_EVENT_ID_AVERAGE_AMOUNT_DESC'
   | 'COLLECTED_FEES_BY_EVENT_ID_AVERAGE_ASSET_ASC'
@@ -53007,6 +53041,18 @@ export type _PrismaMigrationsOrderBy =
   | 'STARTED_AT_ASC'
   | 'STARTED_AT_DESC';
 
+export type GetNewSwapRequestsQueryQueryVariables = Exact<{
+  nativeId: Scalars['BigInt']['input'];
+}>;
+
+export type GetNewSwapRequestsQueryQuery = {
+  __typename?: 'Query';
+  swapRequests?: {
+    __typename?: 'SwapRequestsConnection';
+    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
+  } | null;
+};
+
 export type GetSwapInfoByNativeIdQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
@@ -53047,6 +53093,143 @@ export type GetSwapInfoByNativeIdQuery = {
   } | null;
 };
 
+export const GetNewSwapRequestsQueryDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetNewSwapRequestsQuery' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'BigInt' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'swapRequests' },
+            name: { kind: 'Name', value: 'allSwapRequests' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'and' },
+                      value: {
+                        kind: 'ListValue',
+                        values: [
+                          {
+                            kind: 'ObjectValue',
+                            fields: [
+                              {
+                                kind: 'ObjectField',
+                                name: { kind: 'Name', value: 'nativeId' },
+                                value: {
+                                  kind: 'ObjectValue',
+                                  fields: [
+                                    {
+                                      kind: 'ObjectField',
+                                      name: { kind: 'Name', value: 'greaterThan' },
+                                      value: {
+                                        kind: 'Variable',
+                                        name: { kind: 'Name', value: 'nativeId' },
+                                      },
+                                    },
+                                  ],
+                                },
+                              },
+                            ],
+                          },
+                          {
+                            kind: 'ObjectValue',
+                            fields: [
+                              {
+                                kind: 'ObjectField',
+                                name: { kind: 'Name', value: 'or' },
+                                value: {
+                                  kind: 'ListValue',
+                                  values: [
+                                    {
+                                      kind: 'ObjectValue',
+                                      fields: [
+                                        {
+                                          kind: 'ObjectField',
+                                          name: { kind: 'Name', value: 'type' },
+                                          value: {
+                                            kind: 'ObjectValue',
+                                            fields: [
+                                              {
+                                                kind: 'ObjectField',
+                                                name: { kind: 'Name', value: 'equalTo' },
+                                                value: { kind: 'EnumValue', value: 'REGULAR' },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      kind: 'ObjectValue',
+                                      fields: [
+                                        {
+                                          kind: 'ObjectField',
+                                          name: { kind: 'Name', value: 'type' },
+                                          value: {
+                                            kind: 'ObjectValue',
+                                            fields: [
+                                              {
+                                                kind: 'ObjectField',
+                                                name: { kind: 'Name', value: 'equalTo' },
+                                                value: { kind: 'EnumValue', value: 'CCM' },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'nativeId' } }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetNewSwapRequestsQueryQuery, GetNewSwapRequestsQueryQueryVariables>;
 export const GetSwapInfoByNativeIdDocument = {
   kind: 'Document',
   definitions: [
