@@ -53133,6 +53133,32 @@ export type GetSwapVolumeStatsQuery = {
   } | null;
 };
 
+export type GetLpFeeInfoQueryVariables = Exact<{
+  after: Scalars['Datetime']['input'];
+}>;
+
+export type GetLpFeeInfoQuery = {
+  __typename?: 'Query';
+  limitOrderFills?: {
+    __typename?: 'LimitOrderFillsConnection';
+    aggregates?: {
+      __typename?: 'LimitOrderFillAggregates';
+      sum?: { __typename?: 'LimitOrderFillSumAggregates'; feesEarnedValueUsd: string } | null;
+    } | null;
+  } | null;
+  rangeOrderFills?: {
+    __typename?: 'RangeOrderFillsConnection';
+    aggregates?: {
+      __typename?: 'RangeOrderFillAggregates';
+      sum?: {
+        __typename?: 'RangeOrderFillSumAggregates';
+        baseFeesEarnedValueUsd: string;
+        quoteFeesEarnedValueUsd: string;
+      } | null;
+    } | null;
+  } | null;
+};
+
 export const GetNewSwapRequestsQueryDocument = {
   kind: 'Document',
   definitions: [
@@ -53655,3 +53681,143 @@ export const GetSwapVolumeStatsDocument = {
     },
   ],
 } as unknown as DocumentNode<GetSwapVolumeStatsQuery, GetSwapVolumeStatsQueryVariables>;
+export const GetLpFeeInfoDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetLpFeeInfo' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Datetime' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'limitOrderFills' },
+            name: { kind: 'Name', value: 'allLimitOrderFills' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'blockTimestamp' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'aggregates' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'sum' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'feesEarnedValueUsd' } },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'rangeOrderFills' },
+            name: { kind: 'Name', value: 'allRangeOrderFills' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'blockTimestamp' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'aggregates' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'sum' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'baseFeesEarnedValueUsd' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'quoteFeesEarnedValueUsd' },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetLpFeeInfoQuery, GetLpFeeInfoQueryVariables>;
