@@ -53049,7 +53049,7 @@ export type GetNewSwapRequestsQueryQuery = {
   __typename?: 'Query';
   swapRequests?: {
     __typename?: 'SwapRequestsConnection';
-    nodes: Array<{ __typename?: 'SwapRequest'; id: number }>;
+    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
   } | null;
 };
 
@@ -53219,7 +53219,7 @@ export const GetNewSwapRequestsQueryDocument = {
                   name: { kind: 'Name', value: 'nodes' },
                   selectionSet: {
                     kind: 'SelectionSet',
-                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'id' } }],
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'nativeId' } }],
                   },
                 },
               ],

@@ -11,7 +11,7 @@ export const getNewSwapRequestsQuery = gql(/* GraphQL */ `
       }
     ) {
       nodes {
-        id
+        nativeId
       }
     }
   }
