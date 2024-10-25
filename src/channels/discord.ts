@@ -2,15 +2,7 @@ import axios from 'axios';
 import env from '../env.js';
 
 export const sendMessage = async (content: string) => {
-  const response = await axios.post(
-    env.DISCORD_WEBHOOK_URL,
-    { content },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    },
-  );
+  const response = await axios.post(env.DISCORD_WEBHOOK_URL, { content });
 
   if (!(response.data as { ok: boolean }).ok) {
     throw new Error(`Failed to send message to discord: ${JSON.stringify(response.data)}`);
