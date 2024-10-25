@@ -8,7 +8,7 @@
     "dev": "tsx watch src/main.ts",
     "test": "vitest",
     "prepare": "husky",
-    "graphql:codegen": "graphql-codegen-esm --config .graphqlrc.ts"
+    "graphql:codegen": "graphql-codegen-esm --config graphql.config.js"
   },
   "keywords": [],
   "author": "",
