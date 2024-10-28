@@ -1,6 +1,6 @@
-import { renderToStaticMarkup } from 'react-dom/server';
-import axios from 'axios';
 import React from 'react';
+import axios from 'axios';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 export const sendMessage = async (
   token: string,

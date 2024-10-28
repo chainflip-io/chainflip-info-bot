@@ -1,9 +1,9 @@
 import { JobsOptions, Processor, Queue, Worker } from 'bullmq';
+import { Redis } from 'ioredis';
 import { config as countConfig } from './count.js';
 import { config as echoConfig } from './echo.js';
-import { Redis } from 'ioredis';
-import { handleExit } from '../utils.js';
 import env from '../env.js';
+import { handleExit } from '../utils.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
