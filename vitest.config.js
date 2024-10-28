@@ -4,9 +4,10 @@ export default defineConfig({
   test: {
     setupFiles: ['./src/__mocks__/setup.ts'],
     restoreMocks: true,
-    include: ['**/*.test.ts', '**/*.test.tsx'],
+    include: ['./src/**/*.test.ts', './src/**/*.test.ts'],
     coverage: {
       enabled: true,
+      exclude: ['**/__tests__/**', './**/*.js', '**/__mocks__/**'],
     },
   },
 });
