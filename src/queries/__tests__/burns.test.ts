@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
-import request from 'graphql-request';
+import { client } from '../../server.js';
 import getBurns from '../burns.js';
 
 describe('getBurns', () => {
   it('get the burns for specific ids', async () => {
-    vi.mocked(request).mockResolvedValue({
+    vi.mocked(client.request).mockResolvedValue({
       allBurns: {
         aggregates: {
           sum: {
@@ -23,6 +23,6 @@ describe('getBurns', () => {
       }
     `);
 
-    expect(request).toHaveBeenCalledTimes(1);
+    expect(client.request).toHaveBeenCalledTimes(1);
   });
 });
