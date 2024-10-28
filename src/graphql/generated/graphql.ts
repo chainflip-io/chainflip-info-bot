@@ -5,36 +5,32 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
-  [_ in K]?: never;
-};
-export type Incremental<T> =
-  | T
-  | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
   /** A floating point number that requires more precision than IEEE 754 binary 64 */
-  BigFloat: { input: string; output: string };
+  BigFloat: { input: string; output: string; }
   /**
    * A signed eight-byte integer. The upper big integer values are greater than the
    * max value for a JavaScript number. Therefore all big integers will be output as
    * strings and not numbers.
    */
-  BigInt: { input: string; output: string };
+  BigInt: { input: string; output: string; }
   /** A location in a connection that can be used for resuming pagination. */
-  Cursor: { input: any; output: any };
+  Cursor: { input: any; output: any; }
   /**
    * A point in time as described by the [ISO
    * 8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
    */
-  Datetime: { input: string; output: string };
+  Datetime: { input: string; output: string; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: { input: any; output: any };
+  JSON: { input: any; output: any; }
 };
 
 /** A condition to be used against `Account` object types. All fields are tested for equality and combined with a logical ‘and.’ */
@@ -407,7 +403,10 @@ export type AccountFundingEventsOrderBy =
   | 'TYPE_DESC';
 
 /** Grouping methods for `Account` for usage during aggregation. */
-export type AccountGroupBy = 'ALIAS' | 'BOUND_REDEEM_ADDRESS' | 'ROLE';
+export type AccountGroupBy =
+  | 'ALIAS'
+  | 'BOUND_REDEEM_ADDRESS'
+  | 'ROLE';
 
 export type AccountHavingAverageInput = {
   id?: InputMaybe<HavingIntFilter>;
@@ -460,7 +459,11 @@ export type AccountHavingVarianceSampleInput = {
   id?: InputMaybe<HavingIntFilter>;
 };
 
-export type AccountRole = 'BROKER' | 'LIQUIDITY_PROVIDER' | 'UNREGISTERED' | 'VALIDATOR';
+export type AccountRole =
+  | 'BROKER'
+  | 'LIQUIDITY_PROVIDER'
+  | 'UNREGISTERED'
+  | 'VALIDATOR';
 
 /** A filter to be used against AccountRole fields. All fields are combined with a logical ‘and.’ */
 export type AccountRoleFilter = {
@@ -2418,7 +2421,11 @@ export type AccountsOrderBy =
   | 'SWAP_CHANNEL_BENEFICIARIES_BY_ACCOUNT_ID_VARIANCE_SAMPLE_TYPE_ASC'
   | 'SWAP_CHANNEL_BENEFICIARIES_BY_ACCOUNT_ID_VARIANCE_SAMPLE_TYPE_DESC';
 
-export type App = 'ALL' | 'EXPLORER' | 'STAKE' | 'SWAP';
+export type App =
+  | 'ALL'
+  | 'EXPLORER'
+  | 'STAKE'
+  | 'SWAP';
 
 /** A filter to be used against App fields. All fields are combined with a logical ‘and.’ */
 export type AppFilter = {
@@ -2895,7 +2902,11 @@ export type AuthorityMembershipFilter = {
 };
 
 /** Grouping methods for `AuthorityMembership` for usage during aggregation. */
-export type AuthorityMembershipGroupBy = 'BID' | 'EPOCH_ID' | 'REWARD' | 'VALIDATOR_ID';
+export type AuthorityMembershipGroupBy =
+  | 'BID'
+  | 'EPOCH_ID'
+  | 'REWARD'
+  | 'VALIDATOR_ID';
 
 export type AuthorityMembershipHavingAverageInput = {
   bid?: InputMaybe<HavingBigfloatFilter>;
@@ -3155,7 +3166,9 @@ export type BannerFilter = {
 };
 
 /** Grouping methods for `Banner` for usage during aggregation. */
-export type BannerGroupBy = 'MESSAGE' | 'TYPE';
+export type BannerGroupBy =
+  | 'MESSAGE'
+  | 'TYPE';
 
 /** Conditions for `Banner` aggregates. */
 export type BannerHavingInput = {
@@ -3163,7 +3176,10 @@ export type BannerHavingInput = {
   OR?: InputMaybe<Array<BannerHavingInput>>;
 };
 
-export type BannerType = 'INFO' | 'SUCCESS' | 'WARNING';
+export type BannerType =
+  | 'INFO'
+  | 'SUCCESS'
+  | 'WARNING';
 
 /** A filter to be used against BannerType fields. All fields are combined with a logical ‘and.’ */
 export type BannerTypeFilter = {
@@ -9287,7 +9303,10 @@ export type BroadcastHavingVarianceSampleInput = {
   transactionBroadcastRequestEventId?: InputMaybe<HavingBigintFilter>;
 };
 
-export type BroadcastType = 'BATCH' | 'CCM' | 'FALLBACK';
+export type BroadcastType =
+  | 'BATCH'
+  | 'CCM'
+  | 'FALLBACK';
 
 /** A filter to be used against BroadcastType fields. All fields are combined with a logical ‘and.’ */
 export type BroadcastTypeFilter = {
@@ -12997,7 +13016,8 @@ export type BrokerAccountFilter = {
 };
 
 /** Grouping methods for `BrokerAccount` for usage during aggregation. */
-export type BrokerAccountGroupBy = 'FLIP_BALANCE';
+export type BrokerAccountGroupBy =
+  | 'FLIP_BALANCE';
 
 export type BrokerAccountHavingAverageInput = {
   flipBalance?: InputMaybe<HavingBigfloatFilter>;
@@ -13681,7 +13701,9 @@ export type BrokerOverviewsOrderBy =
   | 'TOTAL_VOLUME_VALUE_USD_ASC'
   | 'TOTAL_VOLUME_VALUE_USD_DESC';
 
-export type BrokerType = 'AFFILIATE' | 'SUBMITTER';
+export type BrokerType =
+  | 'AFFILIATE'
+  | 'SUBMITTER';
 
 /** A filter to be used against BrokerType fields. All fields are combined with a logical ‘and.’ */
 export type BrokerTypeFilter = {
@@ -15393,7 +15415,12 @@ export type ChainflipAssetFilter = {
   notIn?: InputMaybe<Array<ChainflipAsset>>;
 };
 
-export type ChainflipChain = 'Arbitrum' | 'Bitcoin' | 'Ethereum' | 'Polkadot' | 'Solana';
+export type ChainflipChain =
+  | 'Arbitrum'
+  | 'Bitcoin'
+  | 'Ethereum'
+  | 'Polkadot'
+  | 'Solana';
 
 /** A filter to be used against ChainflipChain fields. All fields are combined with a logical ‘and.’ */
 export type ChainflipChainFilter = {
@@ -15798,7 +15825,11 @@ export type DepositBalanceFilter = {
 };
 
 /** Grouping methods for `DepositBalance` for usage during aggregation. */
-export type DepositBalanceGroupBy = 'AMOUNT' | 'ASSET' | 'CHAIN' | 'LP_ID_SS58';
+export type DepositBalanceGroupBy =
+  | 'AMOUNT'
+  | 'ASSET'
+  | 'CHAIN'
+  | 'LP_ID_SS58';
 
 export type DepositBalanceHavingAverageInput = {
   amount?: InputMaybe<HavingBigfloatFilter>;
@@ -16023,7 +16054,9 @@ export type DepositChannelHavingVarianceSampleInput = {
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
 };
 
-export type DepositChannelType = 'LIQUIDITY' | 'SWAP';
+export type DepositChannelType =
+  | 'LIQUIDITY'
+  | 'SWAP';
 
 /** A filter to be used against DepositChannelType fields. All fields are combined with a logical ‘and.’ */
 export type DepositChannelTypeFilter = {
@@ -16075,7 +16108,9 @@ export type DepositChannelsOrderBy =
   | 'TYPE_ASC'
   | 'TYPE_DESC';
 
-export type DepositIgnoredReason = 'BELOW_MINIMUM_DEPOSIT' | 'NOT_ENOUGH_TO_PAY_FEES';
+export type DepositIgnoredReason =
+  | 'BELOW_MINIMUM_DEPOSIT'
+  | 'NOT_ENOUGH_TO_PAY_FEES';
 
 /** A filter to be used against DepositIgnoredReason fields. All fields are combined with a logical ‘and.’ */
 export type DepositIgnoredReasonFilter = {
@@ -17576,7 +17611,9 @@ export type EpochFilter = {
 };
 
 /** Grouping methods for `Epoch` for usage during aggregation. */
-export type EpochGroupBy = 'BOND' | 'TOTAL_BONDED';
+export type EpochGroupBy =
+  | 'BOND'
+  | 'TOTAL_BONDED';
 
 export type EpochHavingAverageInput = {
   bond?: InputMaybe<HavingBigfloatFilter>;
@@ -36668,7 +36705,10 @@ export type ForeignChainTrackingsOrderBy =
   | 'SWAP_REQUESTS_BY_FOREIGN_CHAIN_PRE_DEPOSIT_BLOCK_ID_VARIANCE_SAMPLE_TYPE_ASC'
   | 'SWAP_REQUESTS_BY_FOREIGN_CHAIN_PRE_DEPOSIT_BLOCK_ID_VARIANCE_SAMPLE_TYPE_DESC';
 
-export type FundingEventType = 'FUNDED' | 'REDEEMED' | 'SLASHED';
+export type FundingEventType =
+  | 'FUNDED'
+  | 'REDEEMED'
+  | 'SLASHED';
 
 /** A filter to be used against FundingEventType fields. All fields are combined with a logical ‘and.’ */
 export type FundingEventTypeFilter = {
@@ -36937,7 +36977,11 @@ export type IgnoredEgressFilter = {
 };
 
 /** Grouping methods for `IgnoredEgress` for usage during aggregation. */
-export type IgnoredEgressGroupBy = 'AMOUNT' | 'ASSET' | 'STATE_CHAIN_ERROR_ID' | 'VALUE_USD';
+export type IgnoredEgressGroupBy =
+  | 'AMOUNT'
+  | 'ASSET'
+  | 'STATE_CHAIN_ERROR_ID'
+  | 'VALUE_USD';
 
 export type IgnoredEgressHavingAverageInput = {
   amount?: InputMaybe<HavingBigfloatFilter>;
@@ -37247,7 +37291,9 @@ export type InternalSwapHavingVarianceSampleInput = {
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
-export type InternalSwapType = 'BURN_BUY' | 'INGRESS_EGRESS_FEE';
+export type InternalSwapType =
+  | 'BURN_BUY'
+  | 'INGRESS_EGRESS_FEE';
 
 /** A filter to be used against InternalSwapType fields. All fields are combined with a logical ‘and.’ */
 export type InternalSwapTypeFilter = {
@@ -38354,7 +38400,9 @@ export type LimitOrderFillsOrderBy =
   | 'TYPE_ASC'
   | 'TYPE_DESC';
 
-export type LimitOrderType = 'Ask' | 'Bid';
+export type LimitOrderType =
+  | 'Ask'
+  | 'Bid';
 
 /** A filter to be used against LimitOrderType fields. All fields are combined with a logical ‘and.’ */
 export type LimitOrderTypeFilter = {
@@ -42284,7 +42332,11 @@ export type LpAccountFilter = {
 };
 
 /** Grouping methods for `LpAccount` for usage during aggregation. */
-export type LpAccountGroupBy = 'ALIAS' | 'EARNED_FEES_VALUE_USD' | 'FLIP_BALANCE' | 'OPEN_ORDERS';
+export type LpAccountGroupBy =
+  | 'ALIAS'
+  | 'EARNED_FEES_VALUE_USD'
+  | 'FLIP_BALANCE'
+  | 'OPEN_ORDERS';
 
 export type LpAccountHavingAverageInput = {
   earnedFeesValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -42565,7 +42617,10 @@ export type LpAccountsOrderBy =
   | 'PRIMARY_KEY_DESC';
 
 /** Grouping methods for `Metadatum` for usage during aggregation. */
-export type MetadataGroupBy = 'CHAINSPEC' | 'LABEL' | 'NAME';
+export type MetadataGroupBy =
+  | 'CHAINSPEC'
+  | 'LABEL'
+  | 'NAME';
 
 export type MetadataHavingAverageInput = {
   id?: InputMaybe<HavingIntFilter>;
@@ -43068,7 +43123,12 @@ export type PenaltyFilter = {
 };
 
 /** Grouping methods for `Penalty` for usage during aggregation. */
-export type PenaltyGroupBy = 'AMOUNT' | 'BLOCK_ID' | 'EVENT_ID' | 'REASON' | 'VALIDATOR_ID';
+export type PenaltyGroupBy =
+  | 'AMOUNT'
+  | 'BLOCK_ID'
+  | 'EVENT_ID'
+  | 'REASON'
+  | 'VALIDATOR_ID';
 
 export type PenaltyHavingAverageInput = {
   amount?: InputMaybe<HavingIntFilter>;
@@ -43327,7 +43387,9 @@ export type PoolCondition = {
   sellPrice?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type PoolEventType = 'DECREASED' | 'INCREASED';
+export type PoolEventType =
+  | 'DECREASED'
+  | 'INCREASED';
 
 /** A filter to be used against PoolEventType fields. All fields are combined with a logical ‘and.’ */
 export type PoolEventTypeFilter = {
@@ -44116,7 +44178,9 @@ export type PoolOrderHavingVarianceSampleInput = {
   upperTick?: InputMaybe<HavingBigfloatFilter>;
 };
 
-export type PoolOrderStatus = 'CLOSED' | 'OPEN';
+export type PoolOrderStatus =
+  | 'CLOSED'
+  | 'OPEN';
 
 /** A filter to be used against PoolOrderStatus fields. All fields are combined with a logical ‘and.’ */
 export type PoolOrderStatusFilter = {
@@ -44144,7 +44208,9 @@ export type PoolOrderStatusFilter = {
   notIn?: InputMaybe<Array<PoolOrderStatus>>;
 };
 
-export type PoolOrderType = 'LIMIT' | 'RANGE';
+export type PoolOrderType =
+  | 'LIMIT'
+  | 'RANGE';
 
 /** A filter to be used against PoolOrderType fields. All fields are combined with a logical ‘and.’ */
 export type PoolOrderTypeFilter = {
@@ -45154,7 +45220,10 @@ export type RotationEventFilter = {
 };
 
 /** Grouping methods for `RotationEvent` for usage during aggregation. */
-export type RotationEventGroupBy = 'EPOCH_ID' | 'EVENT_ID' | 'TYPE';
+export type RotationEventGroupBy =
+  | 'EPOCH_ID'
+  | 'EVENT_ID'
+  | 'TYPE';
 
 export type RotationEventHavingAverageInput = {
   epochId?: InputMaybe<HavingIntFilter>;
@@ -45338,7 +45407,12 @@ export type StateChainErrorFilter = {
 };
 
 /** Grouping methods for `StateChainError` for usage during aggregation. */
-export type StateChainErrorGroupBy = 'CHAINSPEC' | 'DOCS' | 'ERROR_INDEX' | 'NAME' | 'PALLET_INDEX';
+export type StateChainErrorGroupBy =
+  | 'CHAINSPEC'
+  | 'DOCS'
+  | 'ERROR_INDEX'
+  | 'NAME'
+  | 'PALLET_INDEX';
 
 export type StateChainErrorHavingAverageInput = {
   errorIndex?: InputMaybe<HavingIntFilter>;
@@ -49241,7 +49315,13 @@ export type SwapFeeHavingVarianceSampleInput = {
   valueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
-export type SwapFeeType = 'BOOST' | 'BROKER' | 'EGRESS' | 'INGRESS' | 'LIQUIDITY' | 'NETWORK';
+export type SwapFeeType =
+  | 'BOOST'
+  | 'BROKER'
+  | 'EGRESS'
+  | 'INGRESS'
+  | 'LIQUIDITY'
+  | 'NETWORK';
 
 /** A filter to be used against SwapFeeType fields. All fields are combined with a logical ‘and.’ */
 export type SwapFeeTypeFilter = {
@@ -51582,7 +51662,12 @@ export type SwapRequestsOrderBy =
   | 'TYPE_ASC'
   | 'TYPE_DESC';
 
-export type SwapType = 'GAS' | 'INGRESS_EGRESS_FEE' | 'NETWORK_FEE' | 'PRINCIPAL' | 'SWAP';
+export type SwapType =
+  | 'GAS'
+  | 'INGRESS_EGRESS_FEE'
+  | 'NETWORK_FEE'
+  | 'PRINCIPAL'
+  | 'SWAP';
 
 /** A filter to be used against SwapType fields. All fields are combined with a logical ‘and.’ */
 export type SwapTypeFilter = {
@@ -52062,7 +52147,10 @@ export type TransactionRefFilter = {
 };
 
 /** Grouping methods for `TransactionRef` for usage during aggregation. */
-export type TransactionRefGroupBy = 'BROADCAST_ID' | 'LIQUIDITY_DEPOSIT_ID' | 'SWAP_REQUEST_ID';
+export type TransactionRefGroupBy =
+  | 'BROADCAST_ID'
+  | 'LIQUIDITY_DEPOSIT_ID'
+  | 'SWAP_REQUEST_ID';
 
 export type TransactionRefHavingAverageInput = {
   broadcastId?: InputMaybe<HavingIntFilter>;
@@ -53045,1023 +53133,59 @@ export type GetBurnsQueryVariables = Exact<{
   in?: InputMaybe<Array<Scalars['Int']['input']> | Scalars['Int']['input']>;
 }>;
 
-export type GetBurnsQuery = {
-  __typename?: 'Query';
-  allBurns?: {
-    __typename?: 'BurnsConnection';
-    aggregates?: {
-      __typename?: 'BurnAggregates';
-      sum?: { __typename?: 'BurnSumAggregates'; amount: string; valueUsd: string } | null;
-    } | null;
-  } | null;
-};
+
+export type GetBurnsQuery = { __typename?: 'Query', allBurns?: { __typename?: 'BurnsConnection', aggregates?: { __typename?: 'BurnAggregates', sum?: { __typename?: 'BurnSumAggregates', amount: string, valueUsd: string } | null } | null } | null };
 
 export type GetSwapInfoByNativeIdQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
 
-export type GetSwapInfoByNativeIdQuery = {
-  __typename?: 'Query';
-  swap?: {
-    __typename?: 'SwapRequest';
-    completedEventId?: string | null;
-    nativeId: string;
-    depositAmount?: string | null;
-    depositValueUsd?: string | null;
-    sourceChain: ChainflipChain;
-    numberOfChunks?: number | null;
-    egressByEgressId?: {
-      __typename?: 'Egress';
-      amount: string;
-      valueUsd?: string | null;
-      eventByScheduledEventId: {
-        __typename?: 'Event';
-        blockByBlockId: { __typename?: 'Block'; timestamp: string };
-      };
-    } | null;
-    swapChannelByDepositChannelId?: {
-      __typename?: 'SwapChannel';
-      fokMinPriceX128?: string | null;
-      issuedBlockTimestamp: string;
-      brokerByBrokerId: { __typename?: 'Broker'; accountId: number };
-    } | null;
-    foreignChainTrackingByForeignChainPreDepositBlockId?: {
-      __typename?: 'ForeignChainTracking';
-      stateChainTimestamp: string;
-    } | null;
-    foreignChainTrackingByForeignChainDepositBlockId?: {
-      __typename?: 'ForeignChainTracking';
-      stateChainTimestamp: string;
-    } | null;
-  } | null;
-};
+
+export type GetSwapInfoByNativeIdQuery = { __typename?: 'Query', swap?: { __typename?: 'SwapRequest', completedEventId?: string | null, nativeId: string, depositAmount?: string | null, depositValueUsd?: string | null, sourceChain: ChainflipChain, numberOfChunks?: number | null, egressByEgressId?: { __typename?: 'Egress', amount: string, valueUsd?: string | null, eventByScheduledEventId: { __typename?: 'Event', blockByBlockId: { __typename?: 'Block', timestamp: string } } } | null, swapChannelByDepositChannelId?: { __typename?: 'SwapChannel', fokMinPriceX128?: string | null, issuedBlockTimestamp: string, brokerByBrokerId: { __typename?: 'Broker', accountId: number } } | null, foreignChainTrackingByForeignChainPreDepositBlockId?: { __typename?: 'ForeignChainTracking', stateChainTimestamp: string } | null, foreignChainTrackingByForeignChainDepositBlockId?: { __typename?: 'ForeignChainTracking', stateChainTimestamp: string } | null } | null };
 
 export type GetNewLiquididityDepositsQueryVariables = Exact<{
   id: Scalars['Int']['input'];
 }>;
 
-export type GetNewLiquididityDepositsQuery = {
-  __typename?: 'Query';
-  deposits?: {
-    __typename?: 'LiquidityDepositsConnection';
-    nodes: Array<{
-      __typename?: 'LiquidityDeposit';
-      asset: ChainflipAsset;
-      depositAmount: string;
-      depositValueUsd: string;
-      liquidityProviderId: number;
-    }>;
-  } | null;
-};
+
+export type GetNewLiquididityDepositsQuery = { __typename?: 'Query', deposits?: { __typename?: 'LiquidityDepositsConnection', nodes: Array<{ __typename?: 'LiquidityDeposit', asset: ChainflipAsset, depositAmount: string, depositValueUsd: string, liquidityProviderId: number }> } | null };
 
 export type CheckHasOldDepositQueryVariables = Exact<{
   id: Scalars['Int']['input'];
   liquidityProviderId: Scalars['Int']['input'];
 }>;
 
-export type CheckHasOldDepositQuery = {
-  __typename?: 'Query';
-  deposits?: {
-    __typename?: 'LiquidityDepositsConnection';
-    nodes: Array<{ __typename?: 'LiquidityDeposit'; id: number; liquidityProviderId: number }>;
-  } | null;
-};
+
+export type CheckHasOldDepositQuery = { __typename?: 'Query', deposits?: { __typename?: 'LiquidityDepositsConnection', nodes: Array<{ __typename?: 'LiquidityDeposit', id: number, liquidityProviderId: number }> } | null };
 
 export type GetNewSwapRequestsQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
 
-export type GetNewSwapRequestsQuery = {
-  __typename?: 'Query';
-  swapRequests?: {
-    __typename?: 'SwapRequestsConnection';
-    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
-  } | null;
-};
+
+export type GetNewSwapRequestsQuery = { __typename?: 'Query', swapRequests?: { __typename?: 'SwapRequestsConnection', nodes: Array<{ __typename?: 'SwapRequest', nativeId: string }> } | null };
 
 export type GetSwapVolumeStatsQueryVariables = Exact<{
-  after: Scalars['Datetime']['input'];
+  start: Scalars['Datetime']['input'];
+  end: Scalars['Datetime']['input'];
 }>;
 
-export type GetSwapVolumeStatsQuery = {
-  __typename?: 'Query';
-  swaps?: {
-    __typename?: 'SwapsConnection';
-    aggregates?: {
-      __typename?: 'SwapAggregates';
-      sum?: {
-        __typename?: 'SwapSumAggregates';
-        intermediateValueUsd: string;
-        swapOutputValueUsd: string;
-      } | null;
-    } | null;
-    nodes: Array<{
-      __typename?: 'Swap';
-      fees: {
-        __typename?: 'SwapFeesConnection';
-        nodes: Array<{ __typename?: 'SwapFee'; valueUsd?: string | null }>;
-      };
-    }>;
-  } | null;
-  swapRequests?: {
-    __typename?: 'SwapRequestsConnection';
-    nodes: Array<{
-      __typename?: 'SwapRequest';
-      fees: {
-        __typename?: 'SwapFeesConnection';
-        nodes: Array<{ __typename?: 'SwapFee'; valueUsd?: string | null }>;
-      };
-    }>;
-  } | null;
-  burns?: {
-    __typename?: 'BurnsConnection';
-    nodes: Array<{ __typename?: 'Burn'; amount: string }>;
-  } | null;
-};
+
+export type GetSwapVolumeStatsQuery = { __typename?: 'Query', swaps?: { __typename?: 'SwapsConnection', aggregates?: { __typename?: 'SwapAggregates', sum?: { __typename?: 'SwapSumAggregates', intermediateValueUsd: string, swapOutputValueUsd: string } | null } | null, nodes: Array<{ __typename?: 'Swap', fees: { __typename?: 'SwapFeesConnection', nodes: Array<{ __typename?: 'SwapFee', valueUsd?: string | null }> } }> } | null, swapRequests?: { __typename?: 'SwapRequestsConnection', nodes: Array<{ __typename?: 'SwapRequest', fees: { __typename?: 'SwapFeesConnection', nodes: Array<{ __typename?: 'SwapFee', valueUsd?: string | null }> } }> } | null, burns?: { __typename?: 'BurnsConnection', nodes: Array<{ __typename?: 'Burn', amount: string }> } | null };
 
 export type GetLpFeeInfoQueryVariables = Exact<{
-  after: Scalars['Datetime']['input'];
+  start: Scalars['Datetime']['input'];
+  end: Scalars['Datetime']['input'];
 }>;
 
-export type GetLpFeeInfoQuery = {
-  __typename?: 'Query';
-  limitOrderFills?: {
-    __typename?: 'LimitOrderFillsConnection';
-    aggregates?: {
-      __typename?: 'LimitOrderFillAggregates';
-      sum?: { __typename?: 'LimitOrderFillSumAggregates'; feesEarnedValueUsd: string } | null;
-    } | null;
-  } | null;
-  rangeOrderFills?: {
-    __typename?: 'RangeOrderFillsConnection';
-    aggregates?: {
-      __typename?: 'RangeOrderFillAggregates';
-      sum?: {
-        __typename?: 'RangeOrderFillSumAggregates';
-        baseFeesEarnedValueUsd: string;
-        quoteFeesEarnedValueUsd: string;
-      } | null;
-    } | null;
-  } | null;
-};
 
-export const GetBurnsDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'getBurns' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'in' } },
-          type: {
-            kind: 'ListType',
-            type: {
-              kind: 'NonNullType',
-              type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
-            },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'allBurns' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'id' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'in' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'in' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'aggregates' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'sum' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'amount' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'valueUsd' } },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetBurnsQuery, GetBurnsQueryVariables>;
-export const GetSwapInfoByNativeIdDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetSwapInfoByNativeId' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'BigInt' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'swap' },
-            name: { kind: 'Name', value: 'swapRequestByNativeId' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'nativeId' },
-                value: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'completedEventId' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'nativeId' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'depositAmount' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'depositValueUsd' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'egressByEgressId' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'amount' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'valueUsd' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'eventByScheduledEventId' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'blockByBlockId' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  { kind: 'Field', name: { kind: 'Name', value: 'timestamp' } },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'swapChannelByDepositChannelId' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'brokerByBrokerId' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'accountId' } },
-                          ],
-                        },
-                      },
-                      { kind: 'Field', name: { kind: 'Name', value: 'fokMinPriceX128' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'issuedBlockTimestamp' } },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: {
-                    kind: 'Name',
-                    value: 'foreignChainTrackingByForeignChainPreDepositBlockId',
-                  },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'stateChainTimestamp' } },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'foreignChainTrackingByForeignChainDepositBlockId' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'stateChainTimestamp' } },
-                    ],
-                  },
-                },
-                { kind: 'Field', name: { kind: 'Name', value: 'sourceChain' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'numberOfChunks' } },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetSwapInfoByNativeIdQuery, GetSwapInfoByNativeIdQueryVariables>;
-export const GetNewLiquididityDepositsDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetNewLiquididityDeposits' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'deposits' },
-            name: { kind: 'Name', value: 'allLiquidityDeposits' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'id' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThan' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'orderBy' },
-                value: { kind: 'EnumValue', value: 'ID_ASC' },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'asset' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'depositAmount' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'depositValueUsd' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'liquidityProviderId' } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<
-  GetNewLiquididityDepositsQuery,
-  GetNewLiquididityDepositsQueryVariables
->;
-export const CheckHasOldDepositDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'CheckHasOldDeposit' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
-          },
-        },
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'liquidityProviderId' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'deposits' },
-            name: { kind: 'Name', value: 'allLiquidityDeposits' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'id' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'lessThan' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-                          },
-                        ],
-                      },
-                    },
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'liquidityProviderId' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'equalTo' },
-                            value: {
-                              kind: 'Variable',
-                              name: { kind: 'Name', value: 'liquidityProviderId' },
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'liquidityProviderId' } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<CheckHasOldDepositQuery, CheckHasOldDepositQueryVariables>;
-export const GetNewSwapRequestsDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetNewSwapRequests' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'BigInt' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'swapRequests' },
-            name: { kind: 'Name', value: 'allSwapRequests' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'nativeId' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThan' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
-                          },
-                        ],
-                      },
-                    },
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'type' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'in' },
-                            value: {
-                              kind: 'ListValue',
-                              values: [
-                                { kind: 'EnumValue', value: 'REGULAR' },
-                                { kind: 'EnumValue', value: 'CCM' },
-                              ],
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'nativeId' } }],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetNewSwapRequestsQuery, GetNewSwapRequestsQueryVariables>;
-export const GetSwapVolumeStatsDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetSwapVolumeStats' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Datetime' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'swaps' },
-            name: { kind: 'Name', value: 'allSwaps' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'swapExecutedBlockTimestamp' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'aggregates' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'sum' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'intermediateValueUsd' },
-                            },
-                            { kind: 'Field', name: { kind: 'Name', value: 'swapOutputValueUsd' } },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        alias: { kind: 'Name', value: 'fees' },
-                        name: { kind: 'Name', value: 'swapFeesBySwapId' },
-                        arguments: [
-                          {
-                            kind: 'Argument',
-                            name: { kind: 'Name', value: 'condition' },
-                            value: {
-                              kind: 'ObjectValue',
-                              fields: [
-                                {
-                                  kind: 'ObjectField',
-                                  name: { kind: 'Name', value: 'type' },
-                                  value: { kind: 'EnumValue', value: 'NETWORK' },
-                                },
-                              ],
-                            },
-                          },
-                        ],
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'nodes' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  { kind: 'Field', name: { kind: 'Name', value: 'valueUsd' } },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'swapRequests' },
-            name: { kind: 'Name', value: 'allSwapRequests' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'completedBlockTimestamp' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        alias: { kind: 'Name', value: 'fees' },
-                        name: { kind: 'Name', value: 'swapFeesBySwapRequestId' },
-                        arguments: [
-                          {
-                            kind: 'Argument',
-                            name: { kind: 'Name', value: 'condition' },
-                            value: {
-                              kind: 'ObjectValue',
-                              fields: [
-                                {
-                                  kind: 'ObjectField',
-                                  name: { kind: 'Name', value: 'type' },
-                                  value: { kind: 'EnumValue', value: 'BOOST' },
-                                },
-                              ],
-                            },
-                          },
-                        ],
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'nodes' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  { kind: 'Field', name: { kind: 'Name', value: 'valueUsd' } },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'burns' },
-            name: { kind: 'Name', value: 'allBurns' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'timestamp' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'amount' } }],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetSwapVolumeStatsQuery, GetSwapVolumeStatsQueryVariables>;
-export const GetLpFeeInfoDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetLpFeeInfo' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Datetime' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'limitOrderFills' },
-            name: { kind: 'Name', value: 'allLimitOrderFills' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'blockTimestamp' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'aggregates' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'sum' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'feesEarnedValueUsd' } },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'rangeOrderFills' },
-            name: { kind: 'Name', value: 'allRangeOrderFills' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'blockTimestamp' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
-                            value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'aggregates' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'sum' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'baseFeesEarnedValueUsd' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'quoteFeesEarnedValueUsd' },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetLpFeeInfoQuery, GetLpFeeInfoQueryVariables>;
+export type GetLpFeeInfoQuery = { __typename?: 'Query', limitOrderFills?: { __typename?: 'LimitOrderFillsConnection', aggregates?: { __typename?: 'LimitOrderFillAggregates', sum?: { __typename?: 'LimitOrderFillSumAggregates', feesEarnedValueUsd: string } | null } | null } | null, rangeOrderFills?: { __typename?: 'RangeOrderFillsConnection', aggregates?: { __typename?: 'RangeOrderFillAggregates', sum?: { __typename?: 'RangeOrderFillSumAggregates', baseFeesEarnedValueUsd: string, quoteFeesEarnedValueUsd: string } | null } | null } | null };
+
+
+export const GetBurnsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getBurns"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"in"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allBurns"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"Variable","name":{"kind":"Name","value":"in"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetBurnsQuery, GetBurnsQueryVariables>;
+export const GetSwapInfoByNativeIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSwapInfoByNativeId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swap"},"name":{"kind":"Name","value":"swapRequestByNativeId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"nativeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"completedEventId"}},{"kind":"Field","name":{"kind":"Name","value":"nativeId"}},{"kind":"Field","name":{"kind":"Name","value":"depositAmount"}},{"kind":"Field","name":{"kind":"Name","value":"depositValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"egressByEgressId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"eventByScheduledEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"swapChannelByDepositChannelId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"brokerByBrokerId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"accountId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"fokMinPriceX128"}},{"kind":"Field","name":{"kind":"Name","value":"issuedBlockTimestamp"}}]}},{"kind":"Field","name":{"kind":"Name","value":"foreignChainTrackingByForeignChainPreDepositBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stateChainTimestamp"}}]}},{"kind":"Field","name":{"kind":"Name","value":"foreignChainTrackingByForeignChainDepositBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stateChainTimestamp"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sourceChain"}},{"kind":"Field","name":{"kind":"Name","value":"numberOfChunks"}}]}}]}}]} as unknown as DocumentNode<GetSwapInfoByNativeIdQuery, GetSwapInfoByNativeIdQueryVariables>;
+export const GetNewLiquididityDepositsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewLiquididityDeposits"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposits"},"name":{"kind":"Name","value":"allLiquidityDeposits"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_ASC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"depositAmount"}},{"kind":"Field","name":{"kind":"Name","value":"depositValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"liquidityProviderId"}}]}}]}}]}}]} as unknown as DocumentNode<GetNewLiquididityDepositsQuery, GetNewLiquididityDepositsQueryVariables>;
+export const CheckHasOldDepositDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CheckHasOldDeposit"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"liquidityProviderId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposits"},"name":{"kind":"Name","value":"allLiquidityDeposits"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lessThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"liquidityProviderId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"equalTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"liquidityProviderId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"liquidityProviderId"}}]}}]}}]}}]} as unknown as DocumentNode<CheckHasOldDepositQuery, CheckHasOldDepositQueryVariables>;
+export const GetNewSwapRequestsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewSwapRequests"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swapRequests"},"name":{"kind":"Name","value":"allSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"nativeId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"REGULAR"},{"kind":"EnumValue","value":"CCM"}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nativeId"}}]}}]}}]}}]} as unknown as DocumentNode<GetNewSwapRequestsQuery, GetNewSwapRequestsQueryVariables>;
+export const GetSwapVolumeStatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSwapVolumeStats"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"start"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"end"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swaps"},"name":{"kind":"Name","value":"allSwaps"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"swapExecutedBlockTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intermediateValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"swapOutputValueUsd"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"fees"},"name":{"kind":"Name","value":"swapFeesBySwapId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"condition"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"NETWORK"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"swapRequests"},"name":{"kind":"Name","value":"allSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"completedBlockTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"fees"},"name":{"kind":"Name","value":"swapFeesBySwapRequestId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"condition"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"BOOST"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"burns"},"name":{"kind":"Name","value":"allBurns"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"timestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}}]}}]}}]}}]} as unknown as DocumentNode<GetSwapVolumeStatsQuery, GetSwapVolumeStatsQueryVariables>;
+export const GetLpFeeInfoDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLpFeeInfo"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"start"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"end"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"limitOrderFills"},"name":{"kind":"Name","value":"allLimitOrderFills"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"blockTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"feesEarnedValueUsd"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"rangeOrderFills"},"name":{"kind":"Name","value":"allRangeOrderFills"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"blockTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"baseFeesEarnedValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"quoteFeesEarnedValueUsd"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetLpFeeInfoQuery, GetLpFeeInfoQueryVariables>;

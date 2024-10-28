@@ -1,3 +1,4 @@
+import { addDays } from 'date-fns';
 import request from 'graphql-request';
 import { describe, expect, it, vi } from 'vitest';
 import getSwapVolumeStats from '../swapVolume.js';
@@ -6,11 +7,12 @@ import swapVolumeStats from './swapVolumeStats.json' with { type: 'json' };
 import env from '../../env.js';
 
 describe('swapVolume', () => {
-  it('gets the swap volume after a timestamp', async () => {
+  it('gets the swap volume for a time range', async () => {
     vi.mocked(request).mockResolvedValueOnce(swapVolumeStats).mockResolvedValueOnce(lpFeeStats);
 
-    const after = '2024-10-25T00:00:00Z';
-    expect(await getSwapVolumeStats(after)).toMatchInlineSnapshot(`
+    const start = new Date('2024-10-25T00:00:00Z');
+    const end = addDays(start, 1);
+    expect(await getSwapVolumeStats(start, end)).toMatchInlineSnapshot(`
       {
         "flipBurned": "2343.000793804332426773",
         "lpFees": "1516.6177040047",
@@ -19,9 +21,11 @@ describe('swapVolume', () => {
       }
     `);
 
-    expect(request).toHaveBeenCalledWith(env.EXPLORER_GATEWAY_URL, expect.anything(), {
-      after,
-    });
-    expect(request).toHaveBeenCalledWith(env.LP_GATEWAY_URL, expect.anything(), { after });
+    const args = {
+      start: start.toISOString(),
+      end: end.toISOString(),
+    };
+    expect(request).toHaveBeenCalledWith(env.EXPLORER_GATEWAY_URL, expect.anything(), args);
+    expect(request).toHaveBeenCalledWith(env.LP_GATEWAY_URL, expect.anything(), args);
   });
 });

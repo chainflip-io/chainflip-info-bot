@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { vi, describe, it, expect } from 'vitest';
 import { sendMessage } from '../telegram.js';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 describe('sendMessage', () => {
   it('sends a message to the channel', async () => {
@@ -12,9 +13,11 @@ describe('sendMessage', () => {
     await sendMessage(
       '1234',
       '5678',
-      <>
-        hello <strong>bold</strong>
-      </>,
+      renderToStaticMarkup(
+        <>
+          hello <strong>bold</strong>
+        </>,
+      ),
     );
 
     expect(postMock.mock.lastCall).toMatchInlineSnapshot(`
@@ -38,9 +41,11 @@ describe('sendMessage', () => {
       sendMessage(
         '1234',
         '5678',
-        <>
-          hello <strong>bold</strong>
-        </>,
+        renderToStaticMarkup(
+          <>
+            hello <strong>bold</strong>
+          </>,
+        ),
       ),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
       `[Error: failed to send message: {"ok":false,"description":"some other stuff here"}]`,
