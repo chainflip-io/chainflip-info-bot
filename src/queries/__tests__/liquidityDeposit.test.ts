@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
 import liquidityDepositStats from './liquidityDeposit.json' with { type: 'json' };
 import { client } from '../../server.js';
-import checkForNewDeposits from '../liquidityDeposits.js';
+import checkForFirstNewLpDeposits from '../liquidityDeposits.js';
 
-describe('checkForNewDeposits', () => {
+describe('checkForFirstNewLpDeposits', () => {
   it('returns the first new deposit per lp', async () => {
     vi.mocked(client.request).mockResolvedValueOnce(liquidityDepositStats);
     const lastCheckedId = 1;
-    expect(await checkForNewDeposits(lastCheckedId)).toMatchInlineSnapshot(`
+    expect(await checkForFirstNewLpDeposits(lastCheckedId)).toMatchInlineSnapshot(`
       [
         {
           "asset": "Eth",
