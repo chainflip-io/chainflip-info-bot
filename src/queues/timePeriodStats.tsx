@@ -5,6 +5,7 @@ import { Initializer, JobConfig, JobProcessor } from './initialize.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
 import { formatUsdValue } from '../utils.js';
 import { Bold } from '../channels/formatting.js';
+import { JobsOptions } from 'bullmq';
 
 const name = 'timePeriodStats';
 
@@ -19,8 +20,10 @@ declare global {
   }
 }
 
-const getNextJobData = () => {
+const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => {
   const endOfPeriod = endOfToday({ in: utc }).valueOf();
+  // prevents multiple jobs with the same key from being scheduled
+  const customJobId = 'timePeriodStatsSingleton';
 
   return {
     data: {
@@ -28,7 +31,7 @@ const getNextJobData = () => {
       sendWeeklySummary:
         endOfPeriod === endOfWeek(endOfPeriod, { weekStartsOn: 1, in: utc }).valueOf(),
     },
-    opts: { delay: endOfPeriod - Date.now() },
+    opts: { delay: endOfPeriod - Date.now(), jobId: customJobId },
   };
 };
 
@@ -49,7 +52,7 @@ const buildMessageData = ({
       📊 {isDaily ? 'On' : 'For the week ending'}{' '}
       <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
       <Bold channel={channel}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
-      <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> and{' '}
+      <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> of network fees and{' '}
       <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
       {stats.flipBurned && (
         <>
@@ -96,12 +99,8 @@ const processJob: JobProcessor<typeof name, Data> = (dispatchJobs) => async (job
 };
 
 const initialize: Initializer<typeof name, Data> = async (queue) => {
-  const jobCount = await queue.count();
-
-  if (jobCount === 0) {
-    const { data, opts } = getNextJobData();
-    await queue.add(name, data, opts);
-  }
+  const { data, opts } = getNextJobData();
+  await queue.add(name, data, opts);
 };
 
 export const config: JobConfig<typeof name, Data> = {

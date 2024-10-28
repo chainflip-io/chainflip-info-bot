@@ -20,16 +20,12 @@ describe('time period stats', () => {
   });
 
   describe('initialize', () => {
-    it('primes the queue with a job if there is no job', async () => {
+    it('primes the queue', async () => {
       vi.setSystemTime(new Date('2024-10-25T12:34:56Z'));
 
-      const queue = {
-        add: vi.fn(),
-        count: vi.fn().mockResolvedValue(0),
-      };
+      const queue = { add: vi.fn() };
 
       await config.initialize?.(queue as any);
-      expect(queue.count).toHaveBeenCalled();
       expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`
         [
           "timePeriodStats",
@@ -39,21 +35,18 @@ describe('time period stats', () => {
           },
           {
             "delay": 41103999,
+            "jobId": "timePeriodStatsSingleton",
           },
         ]
       `);
     });
 
-    it('primes the queue with the weekly job if there is no job', async () => {
+    it('primes the queue with the weekly job', async () => {
       vi.setSystemTime(new Date('2024-10-27T12:34:56Z'));
 
-      const queue = {
-        add: vi.fn(),
-        count: vi.fn().mockResolvedValue(0),
-      };
+      const queue = { add: vi.fn() };
 
       await config.initialize?.(queue as any);
-      expect(queue.count).toHaveBeenCalled();
       expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`
         [
           "timePeriodStats",
@@ -63,6 +56,7 @@ describe('time period stats', () => {
           },
           {
             "delay": 41103999,
+            "jobId": "timePeriodStatsSingleton",
           },
         ]
       `);
@@ -90,6 +84,14 @@ describe('time period stats', () => {
       } as Job<JobData['timePeriodStats'], any, any>);
 
       expect(dispatchJobs.mock.calls).toMatchSnapshot();
+      expect(vi.mocked(getSwapVolumeStats).mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            2024-10-25T00:00:00.000Z,
+            2024-10-25T23:59:59.999Z,
+          ],
+        ]
+      `);
     });
 
     it('processes a daily job without a flip burn', async () => {
@@ -115,7 +117,7 @@ describe('time period stats', () => {
     });
 
     it('processes a daily and weekly job', async () => {
-      vi.setSystemTime(new Date('2024-10-25T12:34:56Z'));
+      vi.setSystemTime(new Date('2024-10-27T12:34:56Z'));
       vi.mocked(getSwapVolumeStats)
         .mockResolvedValueOnce({
           flipBurned: new BigNumber('1000.00'),
@@ -133,13 +135,25 @@ describe('time period stats', () => {
 
       const dispatchJobs = vi.fn();
 
-      const endOfPeriod = endOfDay(new Date('2024-10-25T12:34:56Z'), { in: utc });
+      const endOfPeriod = endOfDay(new Date('2024-10-27T12:34:56Z'), { in: utc });
 
       await config.processJob(dispatchJobs)({
         data: { endOfPeriod: endOfPeriod.valueOf(), sendWeeklySummary: true },
       } as Job<JobData['timePeriodStats'], any, any>);
 
       expect(dispatchJobs.mock.calls).toMatchSnapshot();
+      expect(vi.mocked(getSwapVolumeStats).mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            2024-10-27T00:00:00.000Z,
+            2024-10-27T23:59:59.999Z,
+          ],
+          [
+            2024-10-21T00:00:00.000Z,
+            2024-10-27T23:59:59.999Z,
+          ],
+        ]
+      `);
     });
   });
 });
