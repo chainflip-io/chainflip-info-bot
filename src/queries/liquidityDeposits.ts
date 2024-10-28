@@ -22,7 +22,7 @@ export default async function checkForFirstNewLpDeposits(id: number) {
   // https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
   // keep the first deposit of each liquidity provider and filter the rest
   return deposits.nodes.filter(
-    (deposit, i, deposits) =>
-      deposits.findIndex((d) => d.liquidityProviderId === deposit.liquidityProviderId) === i,
+    (deposit, i) =>
+      deposits.nodes.findIndex((d) => d.liquidityProviderId === deposit.liquidityProviderId) === i,
   );
 }
