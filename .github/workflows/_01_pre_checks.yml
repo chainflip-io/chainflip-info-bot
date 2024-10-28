@@ -1,0 +1,43 @@
+on:
+  workflow_call:
+    inputs:
+      package:
+        description: 'Package to lint'
+        type: string
+        default: 'all'
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  actionlint:
+    uses: ./.github/workflows/_ci_actionlint.yml
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Install pnpm 💿
+        run: npm i -g pnpm@9
+
+      - name: Setup Node.js 22 🎮
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies 📦
+        run: |
+          for i in {1..5}
+          do
+            pnpm install && break
+            sleep 10
+          done
+
+      - name: Run prettier check 💅
+        run: pnpm prettier:check
+
+      - name: Run eslint check 🔍
+        run: pnpm eslint:check
