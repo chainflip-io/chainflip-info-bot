@@ -53041,18 +53041,6 @@ export type _PrismaMigrationsOrderBy =
   | 'STARTED_AT_ASC'
   | 'STARTED_AT_DESC';
 
-export type GetNewSwapRequestsQueryQueryVariables = Exact<{
-  nativeId: Scalars['BigInt']['input'];
-}>;
-
-export type GetNewSwapRequestsQueryQuery = {
-  __typename?: 'Query';
-  swapRequests?: {
-    __typename?: 'SwapRequestsConnection';
-    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
-  } | null;
-};
-
 export type GetSwapInfoByNativeIdQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
@@ -53093,6 +53081,7 @@ export type GetSwapInfoByNativeIdQuery = {
   } | null;
 };
 
+<<<<<<< Updated upstream
 export type GetSwapVolumeStatsQueryVariables = Exact<{
   after: Scalars['Datetime']['input'];
 }>;
@@ -53296,6 +53285,38 @@ export const GetNewSwapRequestsQueryDocument = {
     },
   ],
 } as unknown as DocumentNode<GetNewSwapRequestsQueryQuery, GetNewSwapRequestsQueryQueryVariables>;
+=======
+export type GetNewLiquididityDepositsQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetNewLiquididityDepositsQuery = {
+  __typename?: 'Query';
+  deposits?: {
+    __typename?: 'LiquidityDepositsConnection';
+    nodes: Array<{
+      __typename?: 'LiquidityDeposit';
+      asset: ChainflipAsset;
+      depositAmount: string;
+      depositValueUsd: string;
+      liquidityProviderId: number;
+    }>;
+  } | null;
+};
+
+export type GetNewSwapRequestsQueryVariables = Exact<{
+  nativeId: Scalars['BigInt']['input'];
+}>;
+
+export type GetNewSwapRequestsQuery = {
+  __typename?: 'Query';
+  swapRequests?: {
+    __typename?: 'SwapRequestsConnection';
+    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
+  } | null;
+};
+
+>>>>>>> Stashed changes
 export const GetSwapInfoByNativeIdDocument = {
   kind: 'Document',
   definitions: [
@@ -53418,12 +53439,17 @@ export const GetSwapInfoByNativeIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GetSwapInfoByNativeIdQuery, GetSwapInfoByNativeIdQueryVariables>;
+<<<<<<< Updated upstream
 export const GetSwapVolumeStatsDocument = {
+=======
+export const GetNewLiquididityDepositsDocument = {
+>>>>>>> Stashed changes
   kind: 'Document',
   definitions: [
     {
       kind: 'OperationDefinition',
       operation: 'query',
+<<<<<<< Updated upstream
       name: { kind: 'Name', value: 'GetSwapVolumeStats' },
       variableDefinitions: [
         {
@@ -53432,6 +53458,16 @@ export const GetSwapVolumeStatsDocument = {
           type: {
             kind: 'NonNullType',
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'Datetime' } },
+=======
+      name: { kind: 'Name', value: 'GetNewLiquididityDeposits' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+>>>>>>> Stashed changes
           },
         },
       ],
@@ -53440,8 +53476,13 @@ export const GetSwapVolumeStatsDocument = {
         selections: [
           {
             kind: 'Field',
+<<<<<<< Updated upstream
             alias: { kind: 'Name', value: 'swaps' },
             name: { kind: 'Name', value: 'allSwaps' },
+=======
+            alias: { kind: 'Name', value: 'deposits' },
+            name: { kind: 'Name', value: 'allLiquidityDeposits' },
+>>>>>>> Stashed changes
             arguments: [
               {
                 kind: 'Argument',
@@ -53451,14 +53492,23 @@ export const GetSwapVolumeStatsDocument = {
                   fields: [
                     {
                       kind: 'ObjectField',
+<<<<<<< Updated upstream
                       name: { kind: 'Name', value: 'swapExecutedBlockTimestamp' },
+=======
+                      name: { kind: 'Name', value: 'id' },
+>>>>>>> Stashed changes
                       value: {
                         kind: 'ObjectValue',
                         fields: [
                           {
                             kind: 'ObjectField',
+<<<<<<< Updated upstream
                             name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
                             value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+=======
+                            name: { kind: 'Name', value: 'greaterThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+>>>>>>> Stashed changes
                           },
                         ],
                       },
@@ -53466,12 +53516,21 @@ export const GetSwapVolumeStatsDocument = {
                   ],
                 },
               },
+<<<<<<< Updated upstream
+=======
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'orderBy' },
+                value: { kind: 'EnumValue', value: 'ID_ASC' },
+              },
+>>>>>>> Stashed changes
             ],
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
                 {
                   kind: 'Field',
+<<<<<<< Updated upstream
                   name: { kind: 'Name', value: 'aggregates' },
                   selectionSet: {
                     kind: 'SelectionSet',
@@ -53495,10 +53554,13 @@ export const GetSwapVolumeStatsDocument = {
                 },
                 {
                   kind: 'Field',
+=======
+>>>>>>> Stashed changes
                   name: { kind: 'Name', value: 'nodes' },
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
+<<<<<<< Updated upstream
                       {
                         kind: 'Field',
                         alias: { kind: 'Name', value: 'fees' },
@@ -53535,12 +53597,49 @@ export const GetSwapVolumeStatsDocument = {
                           ],
                         },
                       },
+=======
+                      { kind: 'Field', name: { kind: 'Name', value: 'asset' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'depositAmount' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'depositValueUsd' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'liquidityProviderId' } },
+>>>>>>> Stashed changes
                     ],
                   },
                 },
               ],
             },
           },
+<<<<<<< Updated upstream
+=======
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetNewLiquididityDepositsQuery,
+  GetNewLiquididityDepositsQueryVariables
+>;
+export const GetNewSwapRequestsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetNewSwapRequests' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'BigInt' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+>>>>>>> Stashed changes
           {
             kind: 'Field',
             alias: { kind: 'Name', value: 'swapRequests' },
@@ -53554,18 +53653,28 @@ export const GetSwapVolumeStatsDocument = {
                   fields: [
                     {
                       kind: 'ObjectField',
+<<<<<<< Updated upstream
                       name: { kind: 'Name', value: 'completedBlockTimestamp' },
+=======
+                      name: { kind: 'Name', value: 'nativeId' },
+>>>>>>> Stashed changes
                       value: {
                         kind: 'ObjectValue',
                         fields: [
                           {
                             kind: 'ObjectField',
+<<<<<<< Updated upstream
                             name: { kind: 'Name', value: 'greaterThanOrEqualTo' },
                             value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+=======
+                            name: { kind: 'Name', value: 'greaterThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
+>>>>>>> Stashed changes
                           },
                         ],
                       },
                     },
+<<<<<<< Updated upstream
                   ],
                 },
               },
@@ -53595,10 +53704,27 @@ export const GetSwapVolumeStatsDocument = {
                                   name: { kind: 'Name', value: 'type' },
                                   value: { kind: 'EnumValue', value: 'BOOST' },
                                 },
+=======
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'type' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'in' },
+                            value: {
+                              kind: 'ListValue',
+                              values: [
+                                { kind: 'EnumValue', value: 'REGULAR' },
+                                { kind: 'EnumValue', value: 'CCM' },
+>>>>>>> Stashed changes
                               ],
                             },
                           },
                         ],
+<<<<<<< Updated upstream
                         selectionSet: {
                           kind: 'SelectionSet',
                           selections: [
@@ -53644,6 +53770,8 @@ export const GetSwapVolumeStatsDocument = {
                             value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
                           },
                         ],
+=======
+>>>>>>> Stashed changes
                       },
                     },
                   ],
@@ -53658,7 +53786,11 @@ export const GetSwapVolumeStatsDocument = {
                   name: { kind: 'Name', value: 'nodes' },
                   selectionSet: {
                     kind: 'SelectionSet',
+<<<<<<< Updated upstream
                     selections: [{ kind: 'Field', name: { kind: 'Name', value: 'amount' } }],
+=======
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'nativeId' } }],
+>>>>>>> Stashed changes
                   },
                 },
               ],
@@ -53668,6 +53800,7 @@ export const GetSwapVolumeStatsDocument = {
       },
     },
   ],
+<<<<<<< Updated upstream
 } as unknown as DocumentNode<GetSwapVolumeStatsQuery, GetSwapVolumeStatsQueryVariables>;
 export const GetLpFeeInfoDocument = {
   kind: 'Document',
@@ -53809,3 +53942,6 @@ export const GetLpFeeInfoDocument = {
     },
   ],
 } as unknown as DocumentNode<GetLpFeeInfoQuery, GetLpFeeInfoQueryVariables>;
+=======
+} as unknown as DocumentNode<GetNewSwapRequestsQuery, GetNewSwapRequestsQueryVariables>;
+>>>>>>> Stashed changes
