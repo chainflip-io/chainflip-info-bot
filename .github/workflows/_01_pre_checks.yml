@@ -29,12 +29,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies 📦
-        run: |
-          for i in {1..5}
-          do
-            pnpm install && break
-            sleep 10
-          done
+        run: pnpm install
 
       - name: Run prettier check 💅
         run: pnpm prettier:check
