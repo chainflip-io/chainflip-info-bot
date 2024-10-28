@@ -13,7 +13,7 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
         }
       }
       nodes {
-        fees: swapFeesBySwapId(filter: { type: { in: [NETWORK] } }) {
+        fees: swapFeesBySwapId(condition: { type: NETWORK }) {
           nodes {
             valueUsd
           }

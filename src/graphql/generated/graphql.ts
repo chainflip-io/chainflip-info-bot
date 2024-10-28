@@ -53506,26 +53506,14 @@ export const GetSwapVolumeStatsDocument = {
                         arguments: [
                           {
                             kind: 'Argument',
-                            name: { kind: 'Name', value: 'filter' },
+                            name: { kind: 'Name', value: 'condition' },
                             value: {
                               kind: 'ObjectValue',
                               fields: [
                                 {
                                   kind: 'ObjectField',
                                   name: { kind: 'Name', value: 'type' },
-                                  value: {
-                                    kind: 'ObjectValue',
-                                    fields: [
-                                      {
-                                        kind: 'ObjectField',
-                                        name: { kind: 'Name', value: 'in' },
-                                        value: {
-                                          kind: 'ListValue',
-                                          values: [{ kind: 'EnumValue', value: 'NETWORK' }],
-                                        },
-                                      },
-                                    ],
-                                  },
+                                  value: { kind: 'EnumValue', value: 'NETWORK' },
                                 },
                               ],
                             },
