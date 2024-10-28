@@ -31,10 +31,10 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         fokMinPriceX128
         issuedBlockTimestamp
       }
-      foreignChainTrackingByForeignChainPreDepositBlockId {
+      preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {
         stateChainTimestamp
       }
-      foreignChainTrackingByForeignChainDepositBlockId {
+      depositBlock: foreignChainTrackingByForeignChainDepositBlockId {
         stateChainTimestamp
       }
       sourceChain
@@ -52,8 +52,8 @@ const brokerIdSS58ToAliasMap: Record<string, string> = {
   cFJjZKzA5rUTb9qkZMGfec7piCpiAQKr15B4nALzriMGQL8BE: 'THORSwap',
 };
 
-const getBrokerAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
-  broker?.alias || brokerIdSS58ToAliasMap[broker?.idSs58 as string];
+const getBrokerAlias = (broker: { alias?: string | null; idSs58?: string | null }) =>
+  broker.alias || brokerIdSS58ToAliasMap[broker.idSs58 as string];
 
 const getBrokerIdOrAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
   broker && broker.idSs58 ? getBrokerAlias(broker) || abbreviate(broker.idSs58, 4) : 'Others';
@@ -68,10 +68,8 @@ export default async function getSwapInfo(nativeId: string) {
 
   const { sourceChain } = swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
-  const depositTimestamp =
-    swap.foreignChainTrackingByForeignChainDepositBlockId?.stateChainTimestamp;
-  const preDepositBlockTimestamp =
-    swap.foreignChainTrackingByForeignChainPreDepositBlockId?.stateChainTimestamp;
+  const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
+  const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
   const egressTimestamp = swap.egress?.eventByScheduledEventId.blockByBlockId.timestamp;
 
   const depositValueUsd = swap.depositValueUsd;
@@ -95,13 +93,12 @@ export default async function getSwapInfo(nativeId: string) {
     });
   }
 
-  const priceDelta =
-    egressValueUsd && depositTimestamp
-      ? new BigNumber(Number(egressValueUsd).toFixed())
-          .minus(Number(depositValueUsd))
-          .dividedBy(Number(depositValueUsd))
-          .multipliedBy(100)
-      : null;
+  const priceDelta = egressValueUsd
+    ? new BigNumber(Number(egressValueUsd).toFixed())
+        .minus(Number(depositValueUsd))
+        .dividedBy(Number(depositValueUsd))
+        .multipliedBy(100)
+    : null;
 
   return {
     compeletedEventId: swap.completedEventId,
@@ -113,7 +110,7 @@ export default async function getSwapInfo(nativeId: string) {
     duration,
     priceDelta,
     alias,
-    dca: swap.numberOfChunks,
-    fok: swap.swapChannel?.fokMinPriceX128,
+    numberOfExpectedChunks: swap.numberOfChunks,
+    fokMinPriceX128: swap.swapChannel?.fokMinPriceX128,
   };
 }

@@ -12,10 +12,10 @@
       },
       "valueUsd": "5611.379957337800000000000000000000"
     },
-    "foreignChainTrackingByForeignChainDepositBlockId": {
+    "depositBlock": {
       "stateChainTimestamp": "2024-10-25T12:39:42+00:00"
     },
-    "foreignChainTrackingByForeignChainPreDepositBlockId": {
+    "preDepositBlock": {
       "stateChainTimestamp": "2024-10-25T12:39:30+00:00"
     },
     "nativeId": "77697",
