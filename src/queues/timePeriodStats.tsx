@@ -50,9 +50,10 @@ const buildMessageData = ({
       <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
       <Bold channel={channel}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
       <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> and{' '}
-      <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.{' '}
+      <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
       {stats.flipBurned && (
         <>
+          {' '}
           Also, we burned <Bold channel={channel}>{stats.flipBurned.toFixed(2)}</Bold> FLIP tokens.
         </>
       )}

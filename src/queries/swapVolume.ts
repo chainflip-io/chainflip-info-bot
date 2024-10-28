@@ -93,7 +93,10 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
 
   const networkFees = swapFees.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), new BigNumber(0));
 
-  const flipBurned = new BigNumber(swapInfo.burns?.nodes[0].amount ?? 0).shiftedBy(-18);
+  const flipBurned = BigNumber.sum(
+    0,
+    ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.amount),
+  ).shiftedBy(-18);
 
   const lpFees = BigNumber.sum(
     lpInfo.limitOrderFills?.aggregates?.sum?.feesEarnedValueUsd ?? 0,
