@@ -61,7 +61,7 @@ export const initialize = async () => {
   };
 
   queues.messages = await createQueue(dispatchJobs, messageConfig);
-  queues['time-period-stats'] = await createQueue(dispatchJobs, timePeriodStatsConfig);
+  queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
 
   return Object.values(queues);
 };

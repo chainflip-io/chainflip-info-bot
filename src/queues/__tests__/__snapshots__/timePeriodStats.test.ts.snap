@@ -3,7 +3,7 @@
 exports[`time period stats > processJob > processes a daily and weekly job 1`] = `
 [
   [
-    "time-period-stats",
+    "timePeriodStats",
     [
       {
         "data": {
@@ -51,7 +51,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 exports[`time period stats > processJob > processes a daily job 1`] = `
 [
   [
-    "time-period-stats",
+    "timePeriodStats",
     [
       {
         "data": {
@@ -87,7 +87,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 exports[`time period stats > processJob > processes a daily job without a flip burn 1`] = `
 [
   [
-    "time-period-stats",
+    "timePeriodStats",
     [
       {
         "data": {

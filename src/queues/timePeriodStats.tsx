@@ -6,7 +6,7 @@ import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
 import { formatUsdValue } from '../utils.js';
 import { Bold } from '../channels/formatting.js';
 
-const name = 'time-period-stats';
+const name = 'timePeriodStats';
 
 type Data = {
   endOfPeriod: number;

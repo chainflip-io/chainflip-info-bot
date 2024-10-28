@@ -32,7 +32,7 @@ describe('time period stats', () => {
       expect(queue.count).toHaveBeenCalled();
       expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`
         [
-          "time-period-stats",
+          "timePeriodStats",
           {
             "endOfPeriod": 1729900799999,
             "sendWeeklySummary": false,
@@ -56,7 +56,7 @@ describe('time period stats', () => {
       expect(queue.count).toHaveBeenCalled();
       expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`
         [
-          "time-period-stats",
+          "timePeriodStats",
           {
             "endOfPeriod": 1730073599999,
             "sendWeeklySummary": true,
@@ -87,7 +87,7 @@ describe('time period stats', () => {
 
       await config.processJob(dispatchJobs)({
         data: { endOfPeriod: endOfPeriod.valueOf(), sendWeeklySummary: false },
-      } as Job<JobData['time-period-stats'], any, any>);
+      } as Job<JobData['timePeriodStats'], any, any>);
 
       expect(dispatchJobs.mock.calls).toMatchSnapshot();
     });
@@ -109,7 +109,7 @@ describe('time period stats', () => {
 
       await config.processJob(dispatchJobs)({
         data: { endOfPeriod: endOfPeriod.valueOf(), sendWeeklySummary: false },
-      } as Job<JobData['time-period-stats'], any, any>);
+      } as Job<JobData['timePeriodStats'], any, any>);
 
       expect(dispatchJobs.mock.calls).toMatchSnapshot();
     });
@@ -137,7 +137,7 @@ describe('time period stats', () => {
 
       await config.processJob(dispatchJobs)({
         data: { endOfPeriod: endOfPeriod.valueOf(), sendWeeklySummary: true },
-      } as Job<JobData['time-period-stats'], any, any>);
+      } as Job<JobData['timePeriodStats'], any, any>);
 
       expect(dispatchJobs.mock.calls).toMatchSnapshot();
     });
