@@ -84,9 +84,6 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     request(env.LP_GATEWAY_URL, getLpFeeInfo, args),
   ]);
 
-  // eslint-disable-next-line no-console
-  console.log('swapInfo: ', swapInfo);
-
   const swapVolume = BigNumber.sum(
     swapInfo.swaps?.aggregates?.sum?.intermediateValueUsd ?? 0,
     swapInfo.swaps?.aggregates?.sum?.swapOutputValueUsd ?? 0,

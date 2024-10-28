@@ -63,11 +63,6 @@ export default async function getSwapInfo(nativeId: string) {
     nativeId,
   });
 
-  // eslint-disable-next-line no-console
-  console.log('request response from getSwapInfo(): ', data);
-  // eslint-disable-next-line no-console
-  console.log(request);
-
   const { swap } = data;
   if (!swap) return null;
 
@@ -122,6 +117,3 @@ export default async function getSwapInfo(nativeId: string) {
     fok: swap.swapChannel?.fokMinPriceX128,
   };
 }
-
-// eslint-disable-next-line no-console
-console.log(await getSwapInfo('77697'));
