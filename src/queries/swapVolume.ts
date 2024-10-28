@@ -87,9 +87,9 @@ export default async function getSwapVolumeStats(after: string) {
   );
 
   return {
-    swapVolume: swapVolume,
-    networkFees: networkFees,
+    swapVolume,
+    networkFees,
     flipBurned: flipBurned.gt(0) ? flipBurned : null,
-    lpFees: lpFees,
+    lpFees,
   };
 }
