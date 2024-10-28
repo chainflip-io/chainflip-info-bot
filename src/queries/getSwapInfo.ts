@@ -1,9 +1,9 @@
-import { request } from 'graphql-request';
-import { getSwapCompletionTime } from '../utils/swaps.js';
+import { BigNumber } from 'bignumber.js';
+import request from 'graphql-request';
+import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
 import { abbreviate } from '../utils/strings.js';
-import env from '../env.js';
-import { BigNumber } from 'bignumber.js';
+import { getSwapCompletionTime } from '../utils/swaps.js';
 
 const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
   query GetSwapInfoByNativeId($nativeId: BigInt!) {
@@ -58,8 +58,15 @@ const getBrokerAlias = (broker?: { alias?: string | null; idSs58?: string | null
 const getBrokerIdOrAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
   broker && broker.idSs58 ? getBrokerAlias(broker) || abbreviate(broker.idSs58, 4) : 'Others';
 
-export const getSwapInfo = async (nativeId: string) => {
-  const data = await request(env.EXPLORER_GATEWAY_URL, getSwapInfoByNativeIdQuery, { nativeId });
+export default async function getSwapInfo(nativeId: string) {
+  const data = await request(env.EXPLORER_GATEWAY_URL, getSwapInfoByNativeIdQuery, {
+    nativeId,
+  });
+
+  // eslint-disable-next-line no-console
+  console.log('request response from getSwapInfo(): ', data);
+  // eslint-disable-next-line no-console
+  console.log(request);
 
   const { swap } = data;
   if (!swap) return null;
@@ -114,4 +121,7 @@ export const getSwapInfo = async (nativeId: string) => {
     dca: swap.numberOfChunks,
     fok: swap.swapChannel?.fokMinPriceX128,
   };
-};
+}
+
+// eslint-disable-next-line no-console
+console.log(await getSwapInfo('77697'));
