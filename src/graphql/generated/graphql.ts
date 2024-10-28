@@ -53099,6 +53099,19 @@ export type GetNewLiquididityDepositsQuery = {
   } | null;
 };
 
+export type CheckHasOldDepositQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+  liquidityProviderId: Scalars['Int']['input'];
+}>;
+
+export type CheckHasOldDepositQuery = {
+  __typename?: 'Query';
+  deposits?: {
+    __typename?: 'LiquidityDepositsConnection';
+    nodes: Array<{ __typename?: 'LiquidityDeposit'; id: number; liquidityProviderId: number }>;
+  } | null;
+};
+
 export type GetNewSwapRequestsQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
@@ -53380,6 +53393,102 @@ export const GetNewLiquididityDepositsDocument = {
   GetNewLiquididityDepositsQuery,
   GetNewLiquididityDepositsQueryVariables
 >;
+export const CheckHasOldDepositDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'CheckHasOldDeposit' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'liquidityProviderId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'deposits' },
+            name: { kind: 'Name', value: 'allLiquidityDeposits' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'lessThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'liquidityProviderId' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'equalTo' },
+                            value: {
+                              kind: 'Variable',
+                              name: { kind: 'Name', value: 'liquidityProviderId' },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'liquidityProviderId' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<CheckHasOldDepositQuery, CheckHasOldDepositQueryVariables>;
 export const GetNewSwapRequestsDocument = {
   kind: 'Document',
   definitions: [

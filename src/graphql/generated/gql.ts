@@ -18,6 +18,8 @@ const documents = {
     types.GetSwapInfoByNativeIdDocument,
   '\n  query GetNewLiquididityDeposits($id: Int!) {\n    deposits: allLiquidityDeposits(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {\n      nodes {\n        asset\n        depositAmount\n        depositValueUsd\n        liquidityProviderId\n      }\n    }\n  }\n':
     types.GetNewLiquididityDepositsDocument,
+  '\n  query CheckHasOldDeposit($id: Int!, $liquidityProviderId: Int!) {\n    deposits: allLiquidityDeposits(\n      filter: { id: { lessThan: $id }, liquidityProviderId: { equalTo: $liquidityProviderId } }\n    ) {\n      nodes {\n        id\n        liquidityProviderId\n      }\n    }\n  }\n':
+    types.CheckHasOldDepositDocument,
   '\n  query GetNewSwapRequests($nativeId: BigInt!) {\n    swapRequests: allSwapRequests(\n      filter: { nativeId: { greaterThan: $nativeId }, type: { in: [REGULAR, CCM] } }\n    ) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n':
     types.GetNewSwapRequestsDocument,
   '\n  query GetSwapVolumeStats($after: Datetime!) {\n    swaps: allSwaps(filter: { swapExecutedBlockTimestamp: { greaterThanOrEqualTo: $after } }) {\n      aggregates {\n        sum {\n          intermediateValueUsd\n          swapOutputValueUsd\n        }\n      }\n      nodes {\n        fees: swapFeesBySwapId(condition: { type: NETWORK }) {\n          nodes {\n            valueUsd\n          }\n        }\n      }\n    }\n    swapRequests: allSwapRequests(\n      filter: { completedBlockTimestamp: { greaterThanOrEqualTo: $after } }\n    ) {\n      nodes {\n        fees: swapFeesBySwapRequestId(condition: { type: BOOST }) {\n          nodes {\n            valueUsd\n          }\n        }\n      }\n    }\n    burns: allBurns(filter: { timestamp: { greaterThanOrEqualTo: $after } }) {\n      nodes {\n        amount\n      }\n    }\n  }\n':
@@ -52,6 +54,12 @@ export function gql(
 export function gql(
   source: '\n  query GetNewLiquididityDeposits($id: Int!) {\n    deposits: allLiquidityDeposits(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {\n      nodes {\n        asset\n        depositAmount\n        depositValueUsd\n        liquidityProviderId\n      }\n    }\n  }\n',
 ): (typeof documents)['\n  query GetNewLiquididityDeposits($id: Int!) {\n    deposits: allLiquidityDeposits(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {\n      nodes {\n        asset\n        depositAmount\n        depositValueUsd\n        liquidityProviderId\n      }\n    }\n  }\n'];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+  source: '\n  query CheckHasOldDeposit($id: Int!, $liquidityProviderId: Int!) {\n    deposits: allLiquidityDeposits(\n      filter: { id: { lessThan: $id }, liquidityProviderId: { equalTo: $liquidityProviderId } }\n    ) {\n      nodes {\n        id\n        liquidityProviderId\n      }\n    }\n  }\n',
+): (typeof documents)['\n  query CheckHasOldDeposit($id: Int!, $liquidityProviderId: Int!) {\n    deposits: allLiquidityDeposits(\n      filter: { id: { lessThan: $id }, liquidityProviderId: { equalTo: $liquidityProviderId } }\n    ) {\n      nodes {\n        id\n        liquidityProviderId\n      }\n    }\n  }\n'];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
