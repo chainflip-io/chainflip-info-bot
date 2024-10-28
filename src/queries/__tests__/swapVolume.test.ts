@@ -1,8 +1,8 @@
-import { describe, expect, it, vi } from 'vitest';
 import request from 'graphql-request';
+import { describe, expect, it, vi } from 'vitest';
 import getSwapVolumeStats from '../swapVolume.js';
-import swapVolumeStats from './swapVolumeStats.json' with { type: 'json' };
 import lpFeeStats from './lpFeeStats.json' with { type: 'json' };
+import swapVolumeStats from './swapVolumeStats.json' with { type: 'json' };
 import env from '../../env.js';
 
 describe('swapVolume', () => {
@@ -20,8 +20,8 @@ describe('swapVolume', () => {
     `);
 
     expect(request).toHaveBeenCalledWith(env.EXPLORER_GATEWAY_URL, expect.anything(), {
-      after: after,
+      after,
     });
-    expect(request).toHaveBeenCalledWith(env.LP_GATEWAY_URL, expect.anything(), { after: after });
+    expect(request).toHaveBeenCalledWith(env.LP_GATEWAY_URL, expect.anything(), { after });
   });
 });

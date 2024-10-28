@@ -1,7 +1,7 @@
-import request from 'graphql-request';
 import { BigNumber } from 'bignumber.js';
-import { gql } from '../graphql/generated/gql.js';
+import request from 'graphql-request';
 import env from '../env.js';
+import { gql } from '../graphql/generated/gql.js';
 
 const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
   query GetSwapVolumeStats($after: Datetime!) {
