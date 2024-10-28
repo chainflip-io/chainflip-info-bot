@@ -7,5 +7,6 @@ export default z
     DISCORD_WEBHOOK_URL: z.string().optional(),
     TELEGRAM_BOT_TOKEN: z.string().optional(),
     EXPLORER_GATEWAY_URL: z.string(),
+    LP_GATEWAY_URL: z.string(),
   })
   .parse(process.env);
