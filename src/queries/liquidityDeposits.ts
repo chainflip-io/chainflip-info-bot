@@ -45,14 +45,10 @@ export default async function checkForFirstNewLpDeposits(id: number) {
         id,
         liquidityProviderId: uniqueDeposit.liquidityProviderId,
       });
-      return {
-        ...uniqueDeposit,
-        hasOldDeposit: deposits?.nodes && deposits.nodes.length > 0,
-      };
+
+      return deposits?.nodes && deposits.nodes.length > 0 ? undefined : uniqueDeposit;
     }),
   );
 
-  return checkedDeposits
-    .filter(({ hasOldDeposit }) => !hasOldDeposit)
-    .map(({ hasOldDeposit, ...rest }) => rest);
+  return checkedDeposits.filter(Boolean);
 }
