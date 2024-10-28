@@ -15,7 +15,7 @@ const getNewDepositsQuery = gql(/* GraphQL */ `
 `);
 
 export default async function checkForNewDeposits(id: number) {
-  const { deposits } = await client.request(getNewDepositsQuery, { id: id });
+  const { deposits } = await client.request(getNewDepositsQuery, { id });
 
   if (!deposits?.nodes.length) return [];
 

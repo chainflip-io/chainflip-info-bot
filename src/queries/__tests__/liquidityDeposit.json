@@ -1,0 +1,41 @@
+{
+  "deposits": {
+    "nodes": [
+      {
+        "id": 9,
+        "depositAmount": "1000000000000000000000",
+        "liquidityProviderId": 1,
+        "asset": "Eth",
+        "chain": "Ethereum"
+      },
+      {
+        "id": 11,
+        "depositAmount": "10000000000",
+        "liquidityProviderId": 1,
+        "asset": "Btc",
+        "chain": "Bitcoin"
+      },
+      {
+        "id": 12,
+        "depositAmount": "10000000000",
+        "liquidityProviderId": 2,
+        "asset": "Btc",
+        "chain": "Bitcoin"
+      },
+      {
+        "id": 13,
+        "depositAmount": "10000000000",
+        "liquidityProviderId": 2,
+        "asset": "Btc",
+        "chain": "Bitcoin"
+      },
+      {
+        "id": 14,
+        "depositAmount": "10000000000",
+        "liquidityProviderId": 3,
+        "asset": "Btc",
+        "chain": "Bitcoin"
+      }
+    ]
+  }
+}
