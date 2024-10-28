@@ -4,6 +4,7 @@ import { utc } from '@date-fns/utc';
 import { Initializer, JobConfig, JobProcessor } from './initialize.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
 import { formatUsdValue } from '../utils.js';
+import { Bold } from '../channels/formatting.js';
 
 const name = 'time-period-stats';
 
@@ -31,16 +32,33 @@ const getNextJobData = () => {
   };
 };
 
-const buildMessage = (stats: SwapStats, date: Date, isDaily = true) =>
-  renderToStaticMarkup(
+const buildMessageData = ({
+  stats,
+  date,
+  isDaily = true,
+  channel,
+}: {
+  stats: SwapStats;
+  date: Date;
+  isDaily?: boolean;
+  channel: 'discord' | 'telegram';
+}) => ({
+  channel,
+  message: renderToStaticMarkup(
     <>
-      📊 {isDaily ? 'On' : 'For the week ending'} <strong>{date.toISOString().slice(0, 10)}</strong>
-      , we had a volume of <strong>{formatUsdValue(stats.swapVolume)}</strong> with{' '}
-      <strong>{formatUsdValue(stats.networkFees)}</strong> and{' '}
-      <strong>{formatUsdValue(stats.lpFees)}</strong> in LP fees.{' '}
-      {stats.flipBurned && <>Also, we burned {stats.flipBurned.toFixed(2)} FLIP tokens.</>}
+      📊 {isDaily ? 'On' : 'For the week ending'}{' '}
+      <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
+      <Bold channel={channel}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
+      <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> and{' '}
+      <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.{' '}
+      {stats.flipBurned && (
+        <>
+          Also, we burned <Bold channel={channel}>{stats.flipBurned.toFixed(2)}</Bold> FLIP tokens.
+        </>
+      )}
     </>,
-  );
+  ),
+});
 
 const processJob: JobProcessor<typeof name, Data> = (dispatchJobs) => async (job) => {
   const { endOfPeriod, sendWeeklySummary } = job.data;
@@ -60,19 +78,16 @@ const processJob: JobProcessor<typeof name, Data> = (dispatchJobs) => async (job
     beginningOfWeek && getSwapVolumeStats(beginningOfWeek, new Date(endOfPeriod)),
   ]);
 
-  const dailyMessage = buildMessage(dailyVolume, beginningOfDay);
-  const weeklyMessage =
-    beginningOfWeek && maybeWeeklyVolume && buildMessage(maybeWeeklyVolume, beginningOfWeek, false);
-
   const jobs: { data: JobData['messages'] }[] = [
-    { data: { channel: 'telegram', message: dailyMessage } },
-    { data: { channel: 'discord', message: dailyMessage } },
+    { data: buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }) },
+    { data: buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }) },
   ];
 
-  if (weeklyMessage) {
+  if (maybeWeeklyVolume) {
+    const opts = { stats: maybeWeeklyVolume, date: beginningOfDay, isDaily: false };
     jobs.push(
-      { data: { channel: 'telegram', message: weeklyMessage } },
-      { data: { channel: 'discord', message: weeklyMessage } },
+      { data: buildMessageData({ ...opts, channel: 'telegram' }) },
+      { data: buildMessageData({ ...opts, channel: 'discord' }) },
     );
   }
 

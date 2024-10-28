@@ -22,8 +22,8 @@ const processJob: JobProcessor<typeof name, Data> = () => async (job) => {
 
   if (channel === 'telegram') {
     assert(env.TELEGRAM_BOT_TOKEN, 'TELEGRAM_BOT_TOKEN is required');
-    assert(env.TELEGRAM_CHANNEL, 'TELEGRAM_CHANNEL is required');
-    await sendTelegramMessage(env.TELEGRAM_BOT_TOKEN, env.TELEGRAM_CHANNEL, message);
+    assert(env.TELEGRAM_CHANNEL_ID, 'TELEGRAM_CHANNEL_ID is required');
+    await sendTelegramMessage(env.TELEGRAM_BOT_TOKEN, env.TELEGRAM_CHANNEL_ID, message);
   } else {
     assert(env.DISCORD_WEBHOOK_URL, 'DISCORD_WEBHOOK_URL is required');
     await sendDiscordMessage(env.DISCORD_WEBHOOK_URL, message);
