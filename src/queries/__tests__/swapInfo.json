@@ -5,8 +5,8 @@
     "depositValueUsd": "5568.071581114500000000000000000000",
     "egress": {
       "amount": "5616094932",
-      "eventByScheduledEventId": {
-        "blockByBlockId": {
+      "scheduledEvent": {
+        "block": {
           "timestamp": "2024-10-25T12:41:30+00:00"
         }
       },
@@ -23,7 +23,7 @@
     "sourceChain": "Ethereum",
     "swapChannel": {
       "broker": {
-        "accountByAccountId": {
+        "account": {
           "alias": "Chainflip Swapping",
           "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
         }

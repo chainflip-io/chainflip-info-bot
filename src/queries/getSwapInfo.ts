@@ -1,7 +1,6 @@
 import { BigNumber } from 'bignumber.js';
-import request from 'graphql-request';
-import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
+import { explorerClient } from '../server.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
 
@@ -15,15 +14,15 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       egress: egressByEgressId {
         amount
         valueUsd
-        eventByScheduledEventId {
-          blockByBlockId {
+        scheduledEvent: eventByScheduledEventId {
+          block: blockByBlockId {
             timestamp
           }
         }
       }
       swapChannel: swapChannelByDepositChannelId {
         broker: brokerByBrokerId {
-          accountByAccountId {
+          account: accountByAccountId {
             alias
             idSs58
           }
@@ -59,7 +58,7 @@ const getBrokerIdOrAlias = (broker?: { alias?: string | null; idSs58?: string | 
   broker && broker.idSs58 ? getBrokerAlias(broker) || abbreviate(broker.idSs58, 4) : 'Others';
 
 export default async function getSwapInfo(nativeId: string) {
-  const data = await request(env.EXPLORER_GATEWAY_URL, getSwapInfoByNativeIdQuery, {
+  const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {
     nativeId,
   });
 
@@ -70,11 +69,11 @@ export default async function getSwapInfo(nativeId: string) {
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
-  const egressTimestamp = swap.egress?.eventByScheduledEventId.blockByBlockId.timestamp;
+  const egressTimestamp = swap.egress?.scheduledEvent.block.timestamp;
 
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
-  const broker = swap.swapChannel?.broker.accountByAccountId;
+  const broker = swap.swapChannel?.broker.account;
   const alias = getBrokerIdOrAlias(broker);
 
   let duration;
@@ -110,7 +109,7 @@ export default async function getSwapInfo(nativeId: string) {
     duration,
     priceDelta,
     alias,
-    numberOfExpectedChunks: swap.numberOfChunks,
+    dcaChunks: swap.numberOfChunks,
     fokMinPriceX128: swap.swapChannel?.fokMinPriceX128,
   };
 }
