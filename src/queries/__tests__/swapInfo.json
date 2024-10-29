@@ -1,0 +1,35 @@
+{
+  "swap": {
+    "completedEventId": "5116679443",
+    "depositAmount": "5000000000000000000000",
+    "depositValueUsd": "5568.071581114500000000000000000000",
+    "egress": {
+      "amount": "5616094932",
+      "scheduledEvent": {
+        "block": {
+          "timestamp": "2024-10-25T12:41:30+00:00"
+        }
+      },
+      "valueUsd": "5611.379957337800000000000000000000"
+    },
+    "depositBlock": {
+      "stateChainTimestamp": "2024-10-25T12:39:42+00:00"
+    },
+    "preDepositBlock": {
+      "stateChainTimestamp": "2024-10-25T12:39:30+00:00"
+    },
+    "nativeId": "77697",
+    "numberOfChunks": 2,
+    "sourceChain": "Ethereum",
+    "swapChannel": {
+      "broker": {
+        "account": {
+          "alias": "Chainflip Swapping",
+          "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+        }
+      },
+      "fokMinPriceX128": "370463044445583550774471879",
+      "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00"
+    }
+  }
+}

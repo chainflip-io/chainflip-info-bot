@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns a truncated swap completion time estimate for Arbitrum 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns a truncated swap completion time estimate for Bitcoin 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns a truncated swap completion time estimate for Ethereum 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns a truncated swap completion time estimate for Polkadot 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns an exact swap completion time estimate for Arbitrum 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns an exact swap completion time estimate for Bitcoin 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns an exact swap completion time estimate for Ethereum 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals > returns an exact swap completion time estimate for Polkadot 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns a truncated swap completion time estimate for Arbitrum 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns a truncated swap completion time estimate for Bitcoin 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns a truncated swap completion time estimate for Ethereum 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns a truncated swap completion time estimate for Polkadot 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns an exact swap completion time estimate for Arbitrum 1`] = `"04min 15s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns an exact swap completion time estimate for Bitcoin 1`] = `"04min 15s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns an exact swap completion time estimate for Ethereum 1`] = `"04min 15s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using channel creation timestamp > returns an exact swap completion time estimate for Polkadot 1`] = `"04min 15s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns a truncated swap completion time estimate for Arbitrum 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns a truncated swap completion time estimate for Bitcoin 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns a truncated swap completion time estimate for Ethereum 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns a truncated swap completion time estimate for Polkadot 1`] = `"4 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns an exact swap completion time estimate for Arbitrum 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns an exact swap completion time estimate for Bitcoin 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns an exact swap completion time estimate for Ethereum 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on dynamically defined pre-block time intervals using pre deposit block timestamp > returns an exact swap completion time estimate for Polkadot 1`] = `"04min 30s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns a truncated swap completion time estimate for Arbitrum 1`] = `"5 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns a truncated swap completion time estimate for Bitcoin 1`] = `"10 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns a truncated swap completion time estimate for Ethereum 1`] = `"5 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns a truncated swap completion time estimate for Polkadot 1`] = `"5 min"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns an exact swap completion time estimate for Arbitrum 1`] = `"05min 00s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns an exact swap completion time estimate for Bitcoin 1`] = `"10min 00s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns an exact swap completion time estimate for Ethereum 1`] = `"05min 06s"`;
+
+exports[`getSwapCompletionTime > swap completion time estimate based on statically defined pre-block time intervals > returns an exact swap completion time estimate for Polkadot 1`] = `"05min 03s"`;
