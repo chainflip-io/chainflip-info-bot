@@ -9,7 +9,7 @@ RUN npm install -g pnpm@9
 
 RUN pnpm install --frozen-lockfile
 
-ARG node_env
+ARG node_env=production
 ENV NODE_ENV=$node_env
 
 RUN pnpm build
