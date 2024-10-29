@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-const processJob: JobProcessor<typeof name, Data> = () => async (job) => {
+const processJob: JobProcessor<typeof name> = () => async (job) => {
   const { channel, message } = job.data;
 
   if (channel === 'telegram') {
@@ -30,7 +30,7 @@ const processJob: JobProcessor<typeof name, Data> = () => async (job) => {
   }
 };
 
-export const config: JobConfig<typeof name, Data> = {
+export const config: JobConfig<typeof name> = {
   name,
   processJob,
 };
