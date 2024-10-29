@@ -12,7 +12,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
         },
         "opts": {
           "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton",
+          "jobId": "timePeriodStatsSingleton-1730073599999",
         },
       },
     ],
@@ -61,7 +61,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
         },
         "opts": {
           "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton",
+          "jobId": "timePeriodStatsSingleton-1729900799999",
         },
       },
     ],
@@ -98,7 +98,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
         },
         "opts": {
           "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton",
+          "jobId": "timePeriodStatsSingleton-1729900799999",
         },
       },
     ],

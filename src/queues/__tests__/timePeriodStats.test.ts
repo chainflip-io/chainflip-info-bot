@@ -35,7 +35,7 @@ describe('time period stats', () => {
           },
           {
             "delay": 41103999,
-            "jobId": "timePeriodStatsSingleton",
+            "jobId": "timePeriodStatsSingleton-1729900799999",
           },
         ]
       `);
@@ -56,7 +56,7 @@ describe('time period stats', () => {
           },
           {
             "delay": 41103999,
-            "jobId": "timePeriodStatsSingleton",
+            "jobId": "timePeriodStatsSingleton-1730073599999",
           },
         ]
       `);
