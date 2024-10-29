@@ -79,13 +79,8 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
   const args = { start: start.toISOString(), end: end.toISOString() };
 
   const [swapInfo, lpInfo] = await Promise.all([
-<<<<<<< HEAD
-    request(env.EXPLORER_GATEWAY_URL, getSwapVolumeStatsQuery, args),
-    request(env.LP_GATEWAY_URL, getLpFeeInfo, args),
-=======
-    explorerClient.request(getSwapVolumeStatsQuery, { after }),
-    lpClient.request(getLpFeeInfo, { after }),
->>>>>>> ccc198b (fix: change swapInfo query, write tests for utils, use explorer and lp client)
+    explorerClient.request(getSwapVolumeStatsQuery, args),
+    lpClient.request(getLpFeeInfo, args),
   ]);
 
   const swapVolume = BigNumber.sum(
