@@ -1,5 +1,5 @@
 import { gql } from '../graphql/generated/gql.js';
-import { client } from '../server.js';
+import { explorerClient } from '../server.js';
 
 const getNewDepositsQuery = gql(/* GraphQL */ `
   query GetNewLiquididityDeposits($id: Int!) {
@@ -28,7 +28,7 @@ const checkHasOldDepositQuery = gql(/* GraphQL */ `
 `);
 
 export default async function checkForFirstNewLpDeposits(id: number) {
-  const { deposits } = await client.request(getNewDepositsQuery, { id });
+  const { deposits } = await explorerClient.request(getNewDepositsQuery, { id });
 
   if (!deposits?.nodes.length) return [];
 
@@ -41,7 +41,7 @@ export default async function checkForFirstNewLpDeposits(id: number) {
 
   const checkedDeposits = await Promise.all(
     uniqueLpDeposits.map(async (uniqueDeposit) => {
-      const { deposits } = await client.request(checkHasOldDepositQuery, {
+      const { deposits } = await explorerClient.request(checkHasOldDepositQuery, {
         id,
         liquidityProviderId: uniqueDeposit.liquidityProviderId,
       });

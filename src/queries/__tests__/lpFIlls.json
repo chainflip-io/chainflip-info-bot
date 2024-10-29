@@ -1,0 +1,126 @@
+{
+  "limitOrders": {
+    "groupedAggregates": [
+      {
+        "keys": ["2"],
+        "sum": { "filledAmountValueUsd": "3403017.236955578000000000000000000000" }
+      },
+      { "keys": ["3"], "sum": { "filledAmountValueUsd": "573330.718160616400000000000000000000" } },
+      { "keys": ["7"], "sum": { "filledAmountValueUsd": "34494.757125654200000000000000000000" } },
+      { "keys": ["9"], "sum": { "filledAmountValueUsd": "511394.155823884800000000000000000000" } },
+      { "keys": ["27"], "sum": { "filledAmountValueUsd": "23075.303693741200000000000000000000" } },
+      { "keys": ["34"], "sum": { "filledAmountValueUsd": "2230.886010995700000000000000000000" } },
+      {
+        "keys": ["36"],
+        "sum": { "filledAmountValueUsd": "377071.461582805300000000000000000000" }
+      },
+      { "keys": ["44"], "sum": { "filledAmountValueUsd": "34223.717646461300000000000000000000" } },
+      { "keys": ["53"], "sum": { "filledAmountValueUsd": "2990.829602002400000000000000000000" } },
+      {
+        "keys": ["57"],
+        "sum": { "filledAmountValueUsd": "122931.319760407500000000000000000000" }
+      },
+      {
+        "keys": ["70"],
+        "sum": { "filledAmountValueUsd": "668227.369649792700000000000000000000" }
+      },
+      { "keys": ["79"], "sum": { "filledAmountValueUsd": "9315.487805038900000000000000000000" } },
+      { "keys": ["103"], "sum": { "filledAmountValueUsd": "169.936746251200000000000000000000" } },
+      {
+        "keys": ["109"],
+        "sum": { "filledAmountValueUsd": "1299633.344171296600000000000000000000" }
+      },
+      { "keys": ["118"], "sum": { "filledAmountValueUsd": "461.854683286100000000000000000000" } },
+      { "keys": ["131"], "sum": { "filledAmountValueUsd": "34.497514918800000000000000000000" } },
+      { "keys": ["151"], "sum": { "filledAmountValueUsd": "717.547436907400000000000000000000" } }
+    ]
+  },
+  "rangeOrders": {
+    "groupedAggregates": [
+      {
+        "keys": ["11"],
+        "sum": {
+          "baseFilledAmountValueUsd": "0.004018082600000000000000000000",
+          "quoteFilledAmountValueUsd": "0.001525951300000000000000000000"
+        }
+      },
+      {
+        "keys": ["23"],
+        "sum": {
+          "baseFilledAmountValueUsd": "1194.020070370900000000000000000000",
+          "quoteFilledAmountValueUsd": "194.263250186500000000000000000000"
+        }
+      },
+      {
+        "keys": ["26"],
+        "sum": {
+          "baseFilledAmountValueUsd": "15063.053469073800000000000000000000",
+          "quoteFilledAmountValueUsd": "5754.558363659300000000000000000000"
+        }
+      },
+      {
+        "keys": ["28"],
+        "sum": {
+          "baseFilledAmountValueUsd": "7137.549882141800000000000000000000",
+          "quoteFilledAmountValueUsd": "2726.767616504300000000000000000000"
+        }
+      },
+      {
+        "keys": ["29"],
+        "sum": {
+          "baseFilledAmountValueUsd": "3844.091741707000000000000000000000",
+          "quoteFilledAmountValueUsd": "1517.304794483000000000000000000000"
+        }
+      },
+      {
+        "keys": ["37"],
+        "sum": {
+          "baseFilledAmountValueUsd": "395.850338223300000000000000000000",
+          "quoteFilledAmountValueUsd": "239.432106041300000000000000000000"
+        }
+      },
+      {
+        "keys": ["47"],
+        "sum": {
+          "baseFilledAmountValueUsd": "0.479747597200000000000000000000",
+          "quoteFilledAmountValueUsd": "0.182837217100000000000000000000"
+        }
+      },
+      {
+        "keys": ["61"],
+        "sum": {
+          "baseFilledAmountValueUsd": "55.940357114900000000000000000000",
+          "quoteFilledAmountValueUsd": "6.031076929700000000000000000000"
+        }
+      },
+      {
+        "keys": ["103"],
+        "sum": {
+          "baseFilledAmountValueUsd": "18.449107149300000000000000000000",
+          "quoteFilledAmountValueUsd": "2.238302736500000000000000000000"
+        }
+      },
+      {
+        "keys": ["107"],
+        "sum": {
+          "baseFilledAmountValueUsd": "12825.329423571800000000000000000000",
+          "quoteFilledAmountValueUsd": "5931.270372574900000000000000000000"
+        }
+      },
+      {
+        "keys": ["112"],
+        "sum": {
+          "baseFilledAmountValueUsd": "19710.137289607500000000000000000000",
+          "quoteFilledAmountValueUsd": "1863.065043479700000000000000000000"
+        }
+      },
+      {
+        "keys": ["134"],
+        "sum": {
+          "baseFilledAmountValueUsd": "31.045422948200000000000000000000",
+          "quoteFilledAmountValueUsd": "15.256051362200000000000000000000"
+        }
+      }
+    ]
+  }
+}
