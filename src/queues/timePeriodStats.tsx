@@ -90,7 +90,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   const { data, opts } = getNextJobData();
   const jobs = [
     // Schedule the next job
-    { name, data, opts } as const,
+    { name: 'scheduler', data: [{ name, data, opts }] } as const,
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }),
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }),
   ];

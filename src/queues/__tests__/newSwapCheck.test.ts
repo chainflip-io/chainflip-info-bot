@@ -1,5 +1,5 @@
-import request from 'graphql-request';
 import { describe, it, expect, vi } from 'vitest';
+import { explorerClient } from '../../server.js';
 import { config } from '../newSwapCheck.js';
 
 const mockLatestSwapRequestResponse = (ids: string[]) => ({
@@ -11,7 +11,7 @@ const mockLatestSwapRequestResponse = (ids: string[]) => ({
 describe('newSwapCheck', () => {
   describe('initialize', () => {
     it('queues the job', async () => {
-      vi.mocked(request).mockResolvedValue(mockLatestSwapRequestResponse(['1']));
+      vi.mocked(explorerClient.request).mockResolvedValue(mockLatestSwapRequestResponse(['1']));
 
       const queue = { add: vi.fn() };
 
@@ -38,7 +38,7 @@ describe('newSwapCheck', () => {
 
   describe('processJob', () => {
     it('enqueues the next job with the same id', async () => {
-      vi.mocked(request)
+      vi.mocked(explorerClient.request)
         .mockResolvedValue(mockLatestSwapRequestResponse(['1']))
         .mockResolvedValue(mockLatestSwapRequestResponse([]));
 
@@ -74,7 +74,7 @@ describe('newSwapCheck', () => {
     });
 
     it('enqueues the next job with the latest id', async () => {
-      vi.mocked(request)
+      vi.mocked(explorerClient.request)
         .mockResolvedValue(mockLatestSwapRequestResponse(['1']))
         .mockResolvedValue(mockLatestSwapRequestResponse(['9', '3', '2', '4', '5', '7']));
 

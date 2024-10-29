@@ -1,7 +1,6 @@
 import assert from 'assert';
-import request from 'graphql-request';
-import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
+import { explorerClient } from '../server.js';
 
 const latestSwapRequestIdQuery = gql(/* GraphQL */ `
   query LatestSwapRequest {
@@ -14,7 +13,7 @@ const latestSwapRequestIdQuery = gql(/* GraphQL */ `
 `);
 
 export default async function getLatestSwapRequestId() {
-  const result = await request(env.EXPLORER_GATEWAY_URL, latestSwapRequestIdQuery);
+  const result = await explorerClient.request(latestSwapRequestIdQuery);
 
   const swapRequestId = result.swapRequests?.nodes[0].nativeId;
   assert(swapRequestId, 'No swap request found');

@@ -19,7 +19,7 @@ export type DispatchJobArgs = {
   [N in JobName]: { name: N; data: JobData[N]; opts?: JobsOptions };
 }[JobName];
 
-type DispatchJobs = (args: DispatchJobArgs[]) => Promise<void>;
+type DispatchJobs = (args: DispatchJobArgs[] | readonly DispatchJobArgs[]) => Promise<void>;
 
 export type JobProcessor<N extends JobName> = (
   dispatchJobs: DispatchJobs,

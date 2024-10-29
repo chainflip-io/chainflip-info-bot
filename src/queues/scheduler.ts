@@ -3,7 +3,7 @@ import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 const name = 'scheduler';
 type Name = typeof name;
 
-type Data = DispatchJobArgs[];
+type Data = DispatchJobArgs[] | readonly DispatchJobArgs[];
 
 declare global {
   interface JobData {

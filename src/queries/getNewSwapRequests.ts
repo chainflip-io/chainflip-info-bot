@@ -1,7 +1,6 @@
 import assert from 'assert';
-import request from 'graphql-request';
-import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
+import { explorerClient } from '../server.js';
 
 const getNewSwapRequestsQuery = gql(/* GraphQL */ `
   query GetNewSwapRequestsQuery($nativeId: BigInt!) {
@@ -16,7 +15,7 @@ const getNewSwapRequestsQuery = gql(/* GraphQL */ `
 `);
 
 export default async function getNewSwapRequests(latestSwapRequestId: string) {
-  const result = await request(env.EXPLORER_GATEWAY_URL, getNewSwapRequestsQuery, {
+  const result = await explorerClient.request(getNewSwapRequestsQuery, {
     nativeId: latestSwapRequestId,
   });
 
