@@ -1,6 +1,6 @@
 import { utc } from '@date-fns/utc';
-import { JobsOptions } from 'bullmq';
-import { endOfToday, endOfWeek, startOfDay, startOfWeek } from 'date-fns';
+import { JobsOptions, UnrecoverableError } from 'bullmq';
+import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold } from '../channels/formatting.js';
@@ -72,7 +72,11 @@ const buildMessageData = ({
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   const { endOfPeriod, sendWeeklySummary } = job.data;
 
-  // Schedule the next job
+  const timeElapsedSinceEndOfPeriod = Date.now() - endOfPeriod;
+
+  if (timeElapsedSinceEndOfPeriod > hoursToMilliseconds(12)) {
+    throw new UnrecoverableError('job is stale');
+  }
 
   const beginningOfDay = startOfDay(endOfPeriod, { in: utc });
   const beginningOfWeek = sendWeeklySummary
@@ -86,6 +90,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
 
   const { data, opts } = getNextJobData();
   const jobs = [
+    // Schedule the next job
     { name, data, opts } as const,
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }),
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }),

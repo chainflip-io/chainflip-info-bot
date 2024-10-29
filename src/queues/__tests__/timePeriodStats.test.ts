@@ -155,5 +155,23 @@ describe('time period stats', () => {
         ]
       `);
     });
+
+    it('skips stale jobs', async () => {
+      vi.setSystemTime(new Date('2024-10-29T12:34:56Z'));
+      vi.mocked(getSwapVolumeStats).mockRejectedValue(Error('unexpected call'));
+
+      const dispatchJobs = vi.fn();
+
+      const endOfPeriod = endOfDay(new Date('2024-10-25T12:34:56Z'), { in: utc });
+
+      await expect(
+        config.processJob(dispatchJobs)({
+          data: { endOfPeriod: endOfPeriod.valueOf(), sendWeeklySummary: false },
+        } as Job<JobData['timePeriodStats'], any, any>),
+      ).rejects.toThrowError('job is stale');
+
+      expect(dispatchJobs).not.toHaveBeenCalled();
+      expect(getSwapVolumeStats).not.toHaveBeenCalled();
+    });
   });
 });
