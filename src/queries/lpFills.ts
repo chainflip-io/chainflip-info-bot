@@ -52,7 +52,7 @@ export default async function getLpFills({ after }: { after: string }) {
         ),
       };
     })
-    .sort((a, b) => (b.filledAmountValueUsd.gt(a.filledAmountValueUsd) ? 1 : -1));
+    .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd));
 
   const total = agg?.reduce((acc, lp) => acc.plus(lp.filledAmountValueUsd), new BigNumber(0));
 
