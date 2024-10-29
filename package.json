@@ -7,7 +7,11 @@
     "eslint:check": "pnpm eslint --max-warnings 0 './**/*.ts'",
     "dev": "tsx watch src/main.ts",
     "test": "vitest",
+    "test:ci": "vitest",
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsc",
     "prepare": "husky",
+    "prettier:check": "prettier -c ./** --ignore-path=./.prettierignore",
     "graphql:codegen": "graphql-codegen-esm --config graphql.config.js"
   },
   "keywords": [],

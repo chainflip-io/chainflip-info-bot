@@ -1,0 +1,62 @@
+on:
+  workflow_call:
+    inputs:
+      package:
+        description: 'Package to lint'
+        type: string
+        default: 'all'
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Install pnpm 💿
+        run: npm i -g pnpm@9
+
+      - name: Setup Node.js 22 🎮
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies 📦
+        run: pnpm install
+
+      - name: Run Test 🧪
+        run: pnpm run test:ci
+
+      - name: Upload coverage to Codecov ☂️
+        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d
+        with:
+          flags: 'Info Bot'
+          fail_ci_if_error: false
+          token: ${{ secrets.CF_SDK_CODECOV_TOKEN }}
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Install pnpm 💿
+        run: npm i -g pnpm@9
+
+      - name: Setup Node.js 22 🎮
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies 📦
+        run: pnpm install
+
+      - name: Run build 🏗️
+        run: pnpm run build
