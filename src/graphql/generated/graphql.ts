@@ -53056,18 +53056,6 @@ export type GetBurnsQuery = {
   } | null;
 };
 
-export type GetNewSwapRequestsQueryQueryVariables = Exact<{
-  nativeId: Scalars['BigInt']['input'];
-}>;
-
-export type GetNewSwapRequestsQueryQuery = {
-  __typename?: 'Query';
-  swapRequests?: {
-    __typename?: 'SwapRequestsConnection';
-    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
-  } | null;
-};
-
 export type GetSwapInfoByNativeIdQueryVariables = Exact<{
   nativeId: Scalars['BigInt']['input'];
 }>;
@@ -53105,6 +53093,49 @@ export type GetSwapInfoByNativeIdQuery = {
       __typename?: 'ForeignChainTracking';
       stateChainTimestamp: string;
     } | null;
+  } | null;
+};
+
+export type GetNewLiquididityDepositsQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetNewLiquididityDepositsQuery = {
+  __typename?: 'Query';
+  deposits?: {
+    __typename?: 'LiquidityDepositsConnection';
+    nodes: Array<{
+      __typename?: 'LiquidityDeposit';
+      asset: ChainflipAsset;
+      depositAmount: string;
+      depositValueUsd: string;
+      liquidityProviderId: number;
+    }>;
+  } | null;
+};
+
+export type CheckHasOldDepositQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+  liquidityProviderId: Scalars['Int']['input'];
+}>;
+
+export type CheckHasOldDepositQuery = {
+  __typename?: 'Query';
+  deposits?: {
+    __typename?: 'LiquidityDepositsConnection';
+    nodes: Array<{ __typename?: 'LiquidityDeposit'; id: number; liquidityProviderId: number }>;
+  } | null;
+};
+
+export type GetNewSwapRequestsQueryVariables = Exact<{
+  nativeId: Scalars['BigInt']['input'];
+}>;
+
+export type GetNewSwapRequestsQuery = {
+  __typename?: 'Query';
+  swapRequests?: {
+    __typename?: 'SwapRequestsConnection';
+    nodes: Array<{ __typename?: 'SwapRequest'; nativeId: string }>;
   } | null;
 };
 
@@ -53256,143 +53287,6 @@ export const GetBurnsDocument = {
     },
   ],
 } as unknown as DocumentNode<GetBurnsQuery, GetBurnsQueryVariables>;
-export const GetNewSwapRequestsQueryDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetNewSwapRequestsQuery' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'BigInt' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            alias: { kind: 'Name', value: 'swapRequests' },
-            name: { kind: 'Name', value: 'allSwapRequests' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filter' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'and' },
-                      value: {
-                        kind: 'ListValue',
-                        values: [
-                          {
-                            kind: 'ObjectValue',
-                            fields: [
-                              {
-                                kind: 'ObjectField',
-                                name: { kind: 'Name', value: 'nativeId' },
-                                value: {
-                                  kind: 'ObjectValue',
-                                  fields: [
-                                    {
-                                      kind: 'ObjectField',
-                                      name: { kind: 'Name', value: 'greaterThan' },
-                                      value: {
-                                        kind: 'Variable',
-                                        name: { kind: 'Name', value: 'nativeId' },
-                                      },
-                                    },
-                                  ],
-                                },
-                              },
-                            ],
-                          },
-                          {
-                            kind: 'ObjectValue',
-                            fields: [
-                              {
-                                kind: 'ObjectField',
-                                name: { kind: 'Name', value: 'or' },
-                                value: {
-                                  kind: 'ListValue',
-                                  values: [
-                                    {
-                                      kind: 'ObjectValue',
-                                      fields: [
-                                        {
-                                          kind: 'ObjectField',
-                                          name: { kind: 'Name', value: 'type' },
-                                          value: {
-                                            kind: 'ObjectValue',
-                                            fields: [
-                                              {
-                                                kind: 'ObjectField',
-                                                name: { kind: 'Name', value: 'equalTo' },
-                                                value: { kind: 'EnumValue', value: 'REGULAR' },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                    {
-                                      kind: 'ObjectValue',
-                                      fields: [
-                                        {
-                                          kind: 'ObjectField',
-                                          name: { kind: 'Name', value: 'type' },
-                                          value: {
-                                            kind: 'ObjectValue',
-                                            fields: [
-                                              {
-                                                kind: 'ObjectField',
-                                                name: { kind: 'Name', value: 'equalTo' },
-                                                value: { kind: 'EnumValue', value: 'CCM' },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  ],
-                                },
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'nodes' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'nativeId' } }],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetNewSwapRequestsQueryQuery, GetNewSwapRequestsQueryQueryVariables>;
 export const GetSwapInfoByNativeIdDocument = {
   kind: 'Document',
   definitions: [
@@ -53515,6 +53409,271 @@ export const GetSwapInfoByNativeIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GetSwapInfoByNativeIdQuery, GetSwapInfoByNativeIdQueryVariables>;
+export const GetNewLiquididityDepositsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetNewLiquididityDeposits' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'deposits' },
+            name: { kind: 'Name', value: 'allLiquidityDeposits' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'greaterThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'orderBy' },
+                value: { kind: 'EnumValue', value: 'ID_ASC' },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'asset' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'depositAmount' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'depositValueUsd' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'liquidityProviderId' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetNewLiquididityDepositsQuery,
+  GetNewLiquididityDepositsQueryVariables
+>;
+export const CheckHasOldDepositDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'CheckHasOldDeposit' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'liquidityProviderId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'deposits' },
+            name: { kind: 'Name', value: 'allLiquidityDeposits' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'lessThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'liquidityProviderId' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'equalTo' },
+                            value: {
+                              kind: 'Variable',
+                              name: { kind: 'Name', value: 'liquidityProviderId' },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'liquidityProviderId' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<CheckHasOldDepositQuery, CheckHasOldDepositQueryVariables>;
+export const GetNewSwapRequestsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetNewSwapRequests' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'BigInt' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'swapRequests' },
+            name: { kind: 'Name', value: 'allSwapRequests' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'nativeId' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'greaterThan' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'nativeId' } },
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'type' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'in' },
+                            value: {
+                              kind: 'ListValue',
+                              values: [
+                                { kind: 'EnumValue', value: 'REGULAR' },
+                                { kind: 'EnumValue', value: 'CCM' },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'nativeId' } }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetNewSwapRequestsQuery, GetNewSwapRequestsQueryVariables>;
 export const GetSwapVolumeStatsDocument = {
   kind: 'Document',
   definitions: [
