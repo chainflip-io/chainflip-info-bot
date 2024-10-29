@@ -1,0 +1,124 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`time period stats > processJob > processes a daily and weekly job 1`] = `
+[
+  [
+    "timePeriodStats",
+    [
+      {
+        "data": {
+          "endOfPeriod": 1730073599999,
+          "sendWeeklySummary": true,
+        },
+        "opts": {
+          "delay": 41103999,
+          "jobId": "timePeriodStatsSingleton-1730073599999",
+        },
+      },
+    ],
+  ],
+  [
+    "messages",
+    [
+      {
+        "data": {
+          "channel": "telegram",
+          "message": "📊 On <strong>2024-10-27</strong>, we had a volume of <strong>$4,000.00</strong> with <strong>$3,000.00</strong> of network fees and <strong>$2,000.00</strong> in LP fees. Also, we burned <strong>1000.00</strong> FLIP tokens.",
+        },
+      },
+      {
+        "data": {
+          "channel": "discord",
+          "message": "📊 On **2024-10-27**, we had a volume of **$4,000.00** with **$3,000.00** of network fees and **$2,000.00** in LP fees. Also, we burned **1000.00** FLIP tokens.",
+        },
+      },
+      {
+        "data": {
+          "channel": "telegram",
+          "message": "📊 For the week ending <strong>2024-10-27</strong>, we had a volume of <strong>$28,000.00</strong> with <strong>$21,000.00</strong> of network fees and <strong>$14,000.00</strong> in LP fees. Also, we burned <strong>7000.00</strong> FLIP tokens.",
+        },
+      },
+      {
+        "data": {
+          "channel": "discord",
+          "message": "📊 For the week ending **2024-10-27**, we had a volume of **$28,000.00** with **$21,000.00** of network fees and **$14,000.00** in LP fees. Also, we burned **7000.00** FLIP tokens.",
+        },
+      },
+    ],
+  ],
+]
+`;
+
+exports[`time period stats > processJob > processes a daily job 1`] = `
+[
+  [
+    "timePeriodStats",
+    [
+      {
+        "data": {
+          "endOfPeriod": 1729900799999,
+          "sendWeeklySummary": false,
+        },
+        "opts": {
+          "delay": 41103999,
+          "jobId": "timePeriodStatsSingleton-1729900799999",
+        },
+      },
+    ],
+  ],
+  [
+    "messages",
+    [
+      {
+        "data": {
+          "channel": "telegram",
+          "message": "📊 On <strong>2024-10-25</strong>, we had a volume of <strong>$4,000.00</strong> with <strong>$3,000.00</strong> of network fees and <strong>$2,000.00</strong> in LP fees. Also, we burned <strong>1000.00</strong> FLIP tokens.",
+        },
+      },
+      {
+        "data": {
+          "channel": "discord",
+          "message": "📊 On **2024-10-25**, we had a volume of **$4,000.00** with **$3,000.00** of network fees and **$2,000.00** in LP fees. Also, we burned **1000.00** FLIP tokens.",
+        },
+      },
+    ],
+  ],
+]
+`;
+
+exports[`time period stats > processJob > processes a daily job without a flip burn 1`] = `
+[
+  [
+    "timePeriodStats",
+    [
+      {
+        "data": {
+          "endOfPeriod": 1729900799999,
+          "sendWeeklySummary": false,
+        },
+        "opts": {
+          "delay": 41103999,
+          "jobId": "timePeriodStatsSingleton-1729900799999",
+        },
+      },
+    ],
+  ],
+  [
+    "messages",
+    [
+      {
+        "data": {
+          "channel": "telegram",
+          "message": "📊 On <strong>2024-10-25</strong>, we had a volume of <strong>$4,000.00</strong> with <strong>$3,000.00</strong> of network fees and <strong>$2,000.00</strong> in LP fees.",
+        },
+      },
+      {
+        "data": {
+          "channel": "discord",
+          "message": "📊 On **2024-10-25**, we had a volume of **$4,000.00** with **$3,000.00** of network fees and **$2,000.00** in LP fees.",
+        },
+      },
+    ],
+  ],
+]
+`;

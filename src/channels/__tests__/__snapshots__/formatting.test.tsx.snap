@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Bold > formats discord messages correctly > discord 1`] = `"**hello**"`;
+
+exports[`Bold > formats telegram messages correctly > telegram 1`] = `"<strong>hello</strong>"`;

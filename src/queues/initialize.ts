@@ -1,7 +1,7 @@
 import { JobsOptions, Processor, Queue, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
-import { config as countConfig } from './count.js';
-import { config as echoConfig } from './echo.js';
+import { config as messageConfig } from './messages.js';
+import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { handleExit } from '../utils.js';
 
@@ -11,13 +11,14 @@ handleExit(async () => {
   await redis.quit();
 });
 
-type DispatchJob = <K extends keyof JobData>(
+type DispatchJobs = <K extends keyof JobData>(
   name: K,
-  data: JobData[K],
-  opts?: JobsOptions,
+  args: { data: JobData[K]; opts?: JobsOptions }[],
 ) => Promise<void>;
 
-export type JobProcessor<N extends string, T> = (dispatchJob: DispatchJob) => Processor<T, void, N>;
+export type JobProcessor<N extends string, T> = (
+  dispatchJobs: DispatchJobs,
+) => Processor<T, void, N>;
 
 export type Initializer<N extends string, T> = (queue: Queue<T, void, N>) => Promise<void>;
 
@@ -28,14 +29,14 @@ export type JobConfig<N extends string, T> = {
 };
 
 const createQueue = async <N extends string, T>(
-  dispatchJob: DispatchJob,
+  dispatchJobs: DispatchJobs,
   { name, initialize, processJob }: JobConfig<N, T>,
 ) => {
   const queue = new Queue<T, void, N>(name, { connection: redis });
 
   await initialize?.(queue);
 
-  const worker = new Worker<T, void, N>(name, processJob(dispatchJob), {
+  const worker = new Worker<T, void, N>(name, processJob(dispatchJobs), {
     connection: redis,
   });
 
@@ -49,9 +50,9 @@ const createQueue = async <N extends string, T>(
 export const initialize = async () => {
   const queues = {} as { [K in keyof JobData]: Queue<JobData[K], void, K> };
 
-  const dispatchJob: DispatchJob = async (name, data, opts) => {
+  const dispatchJobs: DispatchJobs = async (name, jobArgs) => {
     try {
-      await queues[name].add(name, data, opts);
+      await queues[name].addBulk(jobArgs.map(({ data, opts }) => ({ name, data, opts })));
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
@@ -59,8 +60,8 @@ export const initialize = async () => {
     }
   };
 
-  queues.count = await createQueue(dispatchJob, countConfig);
-  queues.echo = await createQueue(dispatchJob, echoConfig);
+  queues.messages = await createQueue(dispatchJobs, messageConfig);
+  queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
 
   return Object.values(queues);
 };

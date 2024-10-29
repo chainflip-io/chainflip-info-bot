@@ -4,8 +4,12 @@ import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
 
 const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
-  query GetSwapVolumeStats($after: Datetime!) {
-    swaps: allSwaps(filter: { swapExecutedBlockTimestamp: { greaterThanOrEqualTo: $after } }) {
+  query GetSwapVolumeStats($start: Datetime!, $end: Datetime!) {
+    swaps: allSwaps(
+      filter: {
+        swapExecutedBlockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }
+      }
+    ) {
       aggregates {
         sum {
           intermediateValueUsd
@@ -21,7 +25,7 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
       }
     }
     swapRequests: allSwapRequests(
-      filter: { completedBlockTimestamp: { greaterThanOrEqualTo: $after } }
+      filter: { completedBlockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
     ) {
       nodes {
         fees: swapFeesBySwapRequestId(condition: { type: BOOST }) {
@@ -31,7 +35,9 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
         }
       }
     }
-    burns: allBurns(filter: { timestamp: { greaterThanOrEqualTo: $after } }) {
+    burns: allBurns(
+      filter: { timestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
+    ) {
       nodes {
         amount
       }
@@ -40,9 +46,9 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
 `);
 
 const getLpFeeInfo = gql(/* GraphQL */ `
-  query GetLpFeeInfo($after: Datetime!) {
+  query GetLpFeeInfo($start: Datetime!, $end: Datetime!) {
     limitOrderFills: allLimitOrderFills(
-      filter: { blockTimestamp: { greaterThanOrEqualTo: $after } }
+      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
     ) {
       aggregates {
         sum {
@@ -51,7 +57,7 @@ const getLpFeeInfo = gql(/* GraphQL */ `
       }
     }
     rangeOrderFills: allRangeOrderFills(
-      filter: { blockTimestamp: { greaterThanOrEqualTo: $after } }
+      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
     ) {
       aggregates {
         sum {
@@ -63,10 +69,19 @@ const getLpFeeInfo = gql(/* GraphQL */ `
   }
 `);
 
-export default async function getSwapVolumeStats(after: string) {
+export type SwapStats = {
+  swapVolume: BigNumber;
+  networkFees: BigNumber;
+  flipBurned: BigNumber | null;
+  lpFees: BigNumber;
+};
+
+export default async function getSwapVolumeStats(start: Date, end: Date): Promise<SwapStats> {
+  const args = { start: start.toISOString(), end: end.toISOString() };
+
   const [swapInfo, lpInfo] = await Promise.all([
-    request(env.EXPLORER_GATEWAY_URL, getSwapVolumeStatsQuery, { after }),
-    request(env.LP_GATEWAY_URL, getLpFeeInfo, { after }),
+    request(env.EXPLORER_GATEWAY_URL, getSwapVolumeStatsQuery, args),
+    request(env.LP_GATEWAY_URL, getLpFeeInfo, args),
   ]);
 
   const swapVolume = BigNumber.sum(
@@ -78,7 +93,10 @@ export default async function getSwapVolumeStats(after: string) {
 
   const networkFees = swapFees.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), new BigNumber(0));
 
-  const flipBurned = new BigNumber(swapInfo.burns?.nodes[0].amount ?? 0).shiftedBy(-18);
+  const flipBurned = BigNumber.sum(
+    0,
+    ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.amount),
+  ).shiftedBy(-18);
 
   const lpFees = BigNumber.sum(
     lpInfo.limitOrderFills?.aggregates?.sum?.feesEarnedValueUsd ?? 0,
