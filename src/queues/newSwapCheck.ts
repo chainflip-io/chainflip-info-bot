@@ -32,13 +32,20 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const newSwapRequests = await getNewSwapRequests(job.data.lastSwapRequestId);
 
   // TODO: enqueue jobs for each new swap request
+  // const swapRequestJobs = newSwapRequests.map((id) => ({
+  //   name: 'swapRequestStatusCheck',
+  //   data: { swapRequestId: id },
+  // }));
 
   const latestSwapRequestId = newSwapRequests
     .map((id) => BigInt(id))
     .reduce((a, b) => (a > b ? a : b), BigInt(job.data.lastSwapRequestId));
 
   const data = getNextJobData(latestSwapRequestId.toString());
-  await dispatchJobs([{ name: 'scheduler', data: [data] }]);
+  await dispatchJobs([
+    { name: 'scheduler', data: [data] },
+    // ...swapRequestJobs,
+  ]);
 };
 
 const initialize: Initializer<Name> = async (queue) => {
