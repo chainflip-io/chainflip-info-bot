@@ -1,3 +1,4 @@
+import assert from 'assert';
 import request from 'graphql-request';
 import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
@@ -5,13 +6,7 @@ import { gql } from '../graphql/generated/gql.js';
 const getNewSwapRequestsQuery = gql(/* GraphQL */ `
   query GetNewSwapRequestsQuery($nativeId: BigInt!) {
     swapRequests: allSwapRequests(
-      filter: {
-        and: [
-          { nativeId: { greaterThan: $nativeId } }
-          { or: [{ type: { equalTo: REGULAR } }, { type: { equalTo: CCM } }] }
-        ]
-      }
-      orderBy: NATIVE_ID_ASC
+      filter: { nativeId: { greaterThan: $nativeId }, type: { in: [REGULAR, CCM] } }
     ) {
       nodes {
         nativeId
@@ -25,5 +20,7 @@ export default async function getNewSwapRequests(latestSwapRequestId: string) {
     nativeId: latestSwapRequestId,
   });
 
-  return (result.swapRequests?.nodes ?? []).map((node) => node.nativeId);
+  assert(result.swapRequests, 'swapRequests is required');
+
+  return result.swapRequests.nodes.map((node) => node.nativeId);
 }

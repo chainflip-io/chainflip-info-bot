@@ -9,7 +9,7 @@ const INTERVAL = 30_000;
 
 const getNextJobData = (swapRequestId: string): Extract<DispatchJobArgs, { name: Name }> => {
   // prevents multiple jobs with the same key from being scheduled
-  const customJobId = `newSwapCheck-${swapRequestId}`;
+  const customJobId = 'newSwapCheck';
 
   return {
     name,
