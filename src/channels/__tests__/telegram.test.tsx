@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import axios from 'axios';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { vi, describe, it, expect } from 'vitest';
 import { sendMessage } from '../telegram.js';
-import { renderToStaticMarkup } from 'react-dom/server';
 
 describe('sendMessage', () => {
   it('sends a message to the channel', async () => {

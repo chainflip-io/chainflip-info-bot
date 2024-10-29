@@ -1,11 +1,11 @@
-import { renderToStaticMarkup } from 'react-dom/server';
-import { endOfToday, endOfWeek, startOfDay, startOfWeek } from 'date-fns';
 import { utc } from '@date-fns/utc';
+import { JobsOptions } from 'bullmq';
+import { endOfToday, endOfWeek, startOfDay, startOfWeek } from 'date-fns';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { Initializer, JobConfig, JobProcessor } from './initialize.js';
+import { Bold } from '../channels/formatting.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
 import { formatUsdValue } from '../utils.js';
-import { Bold } from '../channels/formatting.js';
-import { JobsOptions } from 'bullmq';
 
 const name = 'timePeriodStats';
 
@@ -23,7 +23,7 @@ declare global {
 const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => {
   const endOfPeriod = endOfToday({ in: utc }).valueOf();
   // prevents multiple jobs with the same key from being scheduled
-  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+
   const customJobId = `timePeriodStatsSingleton-${endOfPeriod}`;
 
   return {

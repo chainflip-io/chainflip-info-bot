@@ -58,8 +58,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@chainflip/eslint-config':
-        specifier: ^1.0.2
-        version: 1.0.2(@eslint/js@9.13.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.11.0)(typescript-eslint@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))
+        specifier: ^1.0.3
+        version: 1.0.3(@eslint/js@9.13.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.11.0)(typescript-eslint@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))
       '@eslint/js':
         specifier: ^9.13.0
         version: 9.13.0
@@ -428,8 +428,8 @@ packages:
   '@bull-board/ui@6.2.4':
     resolution: {integrity: sha512-dMCjNDpUCUxjjp1UWq/QZoH9sAGVhn+Jy16+YmV6GIpNsw4vK5eGn3GjYu2bqftWXNtzvMppGAtmg30LA7/m5w==}
 
-  '@chainflip/eslint-config@1.0.2':
-    resolution: {integrity: sha512-tkrEIGGWZqrXV+90GLx7sa9ZTsBgfmxeCwkXwE0SGsoblr7wULs3G1WfcezpcNdFb3zq13HxSJsemz3cRL7cSA==}
+  '@chainflip/eslint-config@1.0.3':
+    resolution: {integrity: sha512-0MSsz4xc1IW5zrmMaQnLZ4/n+5pJ8df9DuyaXFTfbc+mT5je5SR6lurPOXd6Cl9uiHYq2HG5R1GyJ+zU0H8Q3w==}
     peerDependencies:
       '@eslint/js': ^9.13.0
       eslint: ^9.13.0
@@ -4050,7 +4050,7 @@ snapshots:
     dependencies:
       '@bull-board/api': 6.2.4(@bull-board/ui@6.2.4)
 
-  '@chainflip/eslint-config@1.0.2(@eslint/js@9.13.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.11.0)(typescript-eslint@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))':
+  '@chainflip/eslint-config@1.0.3(@eslint/js@9.13.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.11.0)(typescript-eslint@8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3))':
     dependencies:
       '@eslint/js': 9.13.0
       eslint: 9.13.0(jiti@2.3.3)
