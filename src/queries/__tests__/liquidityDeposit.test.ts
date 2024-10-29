@@ -1,12 +1,12 @@
 import { describe, expect, it, vi } from 'vitest';
 import liquidityDepositStats from './liquidityDeposit.json' with { type: 'json' };
-import { client } from '../../server.js';
+import { explorerClient } from '../../server.js';
 import checkForFirstNewLpDeposits from '../liquidityDeposits.js';
 
 describe('checkForFirstNewLpDeposits', () => {
   it('returns the first new deposit per lp', async () => {
     // @ts-expect-error - not typed
-    vi.mocked(client.request).mockImplementation((query, variables) => {
+    vi.mocked(explorerClient.request).mockImplementation((query, variables) => {
       if (
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         query.definitions[0].name.value === 'CheckHasOldDeposit'
@@ -41,6 +41,6 @@ describe('checkForFirstNewLpDeposits', () => {
       ]
     `);
 
-    expect(client.request).toHaveBeenCalledWith(expect.anything(), { id: lastCheckedId });
+    expect(explorerClient.request).toHaveBeenCalledWith(expect.anything(), { id: lastCheckedId });
   });
 });

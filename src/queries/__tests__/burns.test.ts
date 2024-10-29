@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
-import { client } from '../../server.js';
+import { explorerClient } from '../../server.js';
 import getBurns from '../burns.js';
 
 describe('getBurns', () => {
   it('get the burns for specific ids', async () => {
-    vi.mocked(client.request).mockResolvedValue({
+    vi.mocked(explorerClient.request).mockResolvedValue({
       allBurns: {
         aggregates: {
           sum: {
@@ -23,6 +23,6 @@ describe('getBurns', () => {
       }
     `);
 
-    expect(client.request).toHaveBeenCalledTimes(1);
+    expect(explorerClient.request).toHaveBeenCalledTimes(1);
   });
 });
