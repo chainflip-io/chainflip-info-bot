@@ -23,7 +23,8 @@ declare global {
 const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => {
   const endOfPeriod = endOfToday({ in: utc }).valueOf();
   // prevents multiple jobs with the same key from being scheduled
-  const customJobId = 'timePeriodStatsSingleton';
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+  const customJobId = `timePeriodStatsSingleton-${endOfPeriod}`;
 
   return {
     data: {
