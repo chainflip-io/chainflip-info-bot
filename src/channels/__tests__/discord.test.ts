@@ -6,7 +6,7 @@ describe('sendMessage', () => {
   it('sends a message to the channel', async () => {
     const postMock = vi.mocked(axios.post);
 
-    postMock.mockResolvedValueOnce({ data: { ok: true } });
+    postMock.mockResolvedValueOnce({ status: 204 });
 
     await sendMessage('url', 'hello discord bot');
 
@@ -23,7 +23,10 @@ describe('sendMessage', () => {
   it('throws an error if the response is not ok', async () => {
     const postMock = vi.mocked(axios.post);
 
-    postMock.mockResolvedValueOnce({ data: { ok: false, description: 'some other stuff here' } });
+    postMock.mockResolvedValueOnce({
+      status: 400,
+      data: { ok: false, description: 'some other stuff here' },
+    });
 
     await expect(
       sendMessage('url', 'hello discord bot'),

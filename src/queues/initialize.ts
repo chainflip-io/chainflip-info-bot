@@ -1,4 +1,4 @@
-import { JobsOptions, Processor, Queue, Worker } from 'bullmq';
+import { FlowProducer, JobsOptions, Processor, Queue, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
 import { config as messageConfig } from './messages.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
@@ -11,32 +11,35 @@ handleExit(async () => {
   await redis.quit();
 });
 
-type DispatchJobs = <K extends keyof JobData>(
-  name: K,
-  args: { data: JobData[K]; opts?: JobsOptions }[],
-) => Promise<void>;
+type JobName = keyof JobData;
 
-export type JobProcessor<N extends string, T> = (
+type DispatchJobArgs = {
+  [N in JobName]: { name: N; data: JobData[N]; opts?: JobsOptions };
+}[JobName];
+
+type DispatchJobs = (args: DispatchJobArgs[]) => Promise<void>;
+
+export type JobProcessor<N extends JobName> = (
   dispatchJobs: DispatchJobs,
-) => Processor<T, void, N>;
+) => Processor<JobData[N], void, N>;
 
-export type Initializer<N extends string, T> = (queue: Queue<T, void, N>) => Promise<void>;
+export type Initializer<N extends JobName> = (queue: Queue<JobData[N], void, N>) => Promise<void>;
 
-export type JobConfig<N extends string, T> = {
+export type JobConfig<N extends JobName> = {
   name: N;
-  initialize?: Initializer<N, T>;
-  processJob: JobProcessor<N, T>;
+  initialize?: Initializer<N>;
+  processJob: JobProcessor<N>;
 };
 
-const createQueue = async <N extends string, T>(
+const createQueue = async <N extends JobName>(
   dispatchJobs: DispatchJobs,
-  { name, initialize, processJob }: JobConfig<N, T>,
+  { name, initialize, processJob }: JobConfig<N>,
 ) => {
-  const queue = new Queue<T, void, N>(name, { connection: redis });
+  const queue = new Queue<JobData[N], void, N>(name, { connection: redis });
 
   await initialize?.(queue);
 
-  const worker = new Worker<T, void, N>(name, processJob(dispatchJobs), {
+  const worker = new Worker<JobData[N], void, N>(name, processJob(dispatchJobs), {
     connection: redis,
   });
 
@@ -50,9 +53,17 @@ const createQueue = async <N extends string, T>(
 export const initialize = async () => {
   const queues = {} as { [K in keyof JobData]: Queue<JobData[K], void, K> };
 
-  const dispatchJobs: DispatchJobs = async (name, jobArgs) => {
+  const flow = new FlowProducer({ connection: redis });
+
+  handleExit(async () => {
+    await flow.close();
+  });
+
+  const dispatchJobs: DispatchJobs = async (jobArgs) => {
     try {
-      await queues[name].addBulk(jobArgs.map(({ data, opts }) => ({ name, data, opts })));
+      await flow.addBulk(
+        jobArgs.map(({ name, data, opts }) => ({ queueName: name, name, data, opts })),
+      );
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);

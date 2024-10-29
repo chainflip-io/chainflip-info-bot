@@ -47,31 +47,32 @@ const buildMessageData = ({
   isDaily?: boolean;
   channel: 'discord' | 'telegram';
 }) => ({
-  channel,
-  message: renderToStaticMarkup(
-    <>
-      📊 {isDaily ? 'On' : 'For the week ending'}{' '}
-      <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
-      <Bold channel={channel}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
-      <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> of network fees and{' '}
-      <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
-      {stats.flipBurned && (
-        <>
-          {' '}
-          Also, we burned <Bold channel={channel}>{stats.flipBurned.toFixed(2)}</Bold> FLIP tokens.
-        </>
-      )}
-    </>,
-  ),
+  name: 'messages' as const,
+  data: {
+    channel,
+    message: renderToStaticMarkup(
+      <>
+        📊 {isDaily ? 'On' : 'For the week ending'}{' '}
+        <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
+        <Bold channel={channel}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
+        <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> of network fees and{' '}
+        <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
+        {stats.flipBurned && (
+          <>
+            {' '}
+            Also, we burned <Bold channel={channel}>{stats.flipBurned.toFixed(2)}</Bold> FLIP
+            tokens.
+          </>
+        )}
+      </>,
+    ),
+  },
 });
 
-const processJob: JobProcessor<typeof name, Data> = (dispatchJobs) => async (job) => {
+const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   const { endOfPeriod, sendWeeklySummary } = job.data;
 
   // Schedule the next job
-  const { data, opts } = getNextJobData();
-
-  await dispatchJobs(name, [{ data, opts }]);
 
   const beginningOfDay = startOfDay(endOfPeriod, { in: utc });
   const beginningOfWeek = sendWeeklySummary
@@ -83,28 +84,30 @@ const processJob: JobProcessor<typeof name, Data> = (dispatchJobs) => async (job
     beginningOfWeek && getSwapVolumeStats(beginningOfWeek, new Date(endOfPeriod)),
   ]);
 
-  const jobs: { data: JobData['messages'] }[] = [
-    { data: buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }) },
-    { data: buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }) },
+  const { data, opts } = getNextJobData();
+  const jobs = [
+    { name, data, opts } as const,
+    buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }),
+    buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }),
   ];
 
   if (maybeWeeklyVolume) {
     const opts = { stats: maybeWeeklyVolume, date: beginningOfDay, isDaily: false };
     jobs.push(
-      { data: buildMessageData({ ...opts, channel: 'telegram' }) },
-      { data: buildMessageData({ ...opts, channel: 'discord' }) },
+      buildMessageData({ ...opts, channel: 'telegram' }),
+      buildMessageData({ ...opts, channel: 'discord' }),
     );
   }
 
-  await dispatchJobs('messages', jobs);
+  await dispatchJobs(jobs);
 };
 
-const initialize: Initializer<typeof name, Data> = async (queue) => {
+const initialize: Initializer<typeof name> = async (queue) => {
   const { data, opts } = getNextJobData();
   await queue.add(name, data, opts);
 };
 
-export const config: JobConfig<typeof name, Data> = {
+export const config: JobConfig<typeof name> = {
   name,
   initialize,
   processJob,
