@@ -1,6 +1,8 @@
 import { FlowProducer, JobsOptions, Processor, Queue, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
-import { config as messageConfig } from './messages.js';
+import { config as messagesConfig } from './messages.js';
+import { config as newSwapCheckConfig } from './newSwapCheck.js';
+import { config as schedulerConfig } from './scheduler.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { handleExit } from '../utils.js';
@@ -13,7 +15,7 @@ handleExit(async () => {
 
 type JobName = keyof JobData;
 
-type DispatchJobArgs = {
+export type DispatchJobArgs = {
   [N in JobName]: { name: N; data: JobData[N]; opts?: JobsOptions };
 }[JobName];
 
@@ -71,8 +73,10 @@ export const initialize = async () => {
     }
   };
 
-  queues.messages = await createQueue(dispatchJobs, messageConfig);
+  queues.messages = await createQueue(dispatchJobs, messagesConfig);
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
+  queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
+  queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
 
   return Object.values(queues);
 };

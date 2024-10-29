@@ -11,8 +11,10 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
         },
         "name": "timePeriodStats",
         "opts": {
+          "deduplication": {
+            "id": "timePeriodStats-1730073599999",
+          },
           "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton-1730073599999",
         },
       },
       {
@@ -59,8 +61,10 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
         },
         "name": "timePeriodStats",
         "opts": {
+          "deduplication": {
+            "id": "timePeriodStats-1729900799999",
+          },
           "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton-1729900799999",
         },
       },
       {
@@ -93,8 +97,10 @@ exports[`time period stats > processJob > processes a daily job without a flip b
         },
         "name": "timePeriodStats",
         "opts": {
+          "deduplication": {
+            "id": "timePeriodStats-1729900799999",
+          },
           "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton-1729900799999",
         },
       },
       {
