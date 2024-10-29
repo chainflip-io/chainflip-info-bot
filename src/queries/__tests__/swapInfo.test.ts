@@ -15,12 +15,14 @@ describe('swapInfo', () => {
         "dcaChunks": 2,
         "depositAmount": "5000000000000000000000",
         "depositValueUsd": "5568.071581114500000000000000000000",
+        "destinationAsset": "Usdt",
         "duration": "1 min",
         "egressAmount": "5616094932",
         "egressValueUsd": "5611.379957337800000000000000000000",
-        "fokMinPriceX128": "370463044445583550774471879",
         "priceDelta": "0.770974623083194771",
+        "priceFromPriceX128": "1.08869304",
         "requestId": "77697",
+        "sourceAsset": "Flip",
       }
     `);
 
