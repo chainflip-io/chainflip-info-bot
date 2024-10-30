@@ -3,10 +3,12 @@ import { BigNumber } from 'bignumber.js';
 import { Job } from 'bullmq';
 import { endOfDay } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import getLpFills from '../../queries/lpFills.js';
 import getSwapVolumeStats from '../../queries/swapVolume.js';
 import { config } from '../timePeriodStats.js';
 
 vi.mock('../../queries/swapVolume.js');
+vi.mock('../../queries/lpFills.js');
 
 describe('time period stats', () => {
   beforeEach(() => {
@@ -79,6 +81,21 @@ describe('time period stats', () => {
         })
         .mockRejectedValue(Error('unexpected call'));
 
+      vi.mocked(getLpFills)
+        .mockResolvedValueOnce([
+          {
+            idSs58: 'cf1234567890',
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '50.00',
+          },
+          {
+            idSs58: 'cf0987654321',
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '50.00',
+          },
+        ])
+        .mockRejectedValue(Error('unexpected call'));
+
       const dispatchJobs = vi.fn();
 
       const endOfPeriod = endOfDay(new Date('2024-10-25T12:34:56Z'), { in: utc });
@@ -93,6 +110,16 @@ describe('time period stats', () => {
           [
             2024-10-25T00:00:00.000Z,
             2024-10-25T23:59:59.999Z,
+          ],
+        ]
+      `);
+      expect(vi.mocked(getLpFills).mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            {
+              "end": "2024-10-25T23:59:59.999Z",
+              "start": "2024-10-25T00:00:00.000Z",
+            },
           ],
         ]
       `);
@@ -137,6 +164,38 @@ describe('time period stats', () => {
         })
         .mockRejectedValue(Error('unexpected call'));
 
+      vi.mocked(getLpFills)
+        .mockResolvedValueOnce([
+          {
+            idSs58: 'cf1234567890',
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '50.00',
+          },
+          {
+            idSs58: 'cf0987654321',
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '50.00',
+          },
+        ])
+        .mockResolvedValueOnce([
+          {
+            idSs58: 'cf1234567890',
+            filledAmountValueUsd: new BigNumber('2000.00'),
+            percentage: '49.00',
+          },
+          {
+            idSs58: 'cf0987654321',
+            filledAmountValueUsd: new BigNumber('2000.00'),
+            percentage: '49.00',
+          },
+          {
+            idSs58: 'cfxxxxxxxxxxx',
+            filledAmountValueUsd: new BigNumber('10.00'),
+            percentage: '1.00',
+          },
+        ])
+        .mockRejectedValue(Error('unexpected call'));
+
       const dispatchJobs = vi.fn();
 
       const endOfPeriod = endOfDay(new Date('2024-10-27T12:34:56Z'), { in: utc });
@@ -155,6 +214,22 @@ describe('time period stats', () => {
           [
             2024-10-21T00:00:00.000Z,
             2024-10-27T23:59:59.999Z,
+          ],
+        ]
+      `);
+      expect(vi.mocked(getLpFills).mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            {
+              "end": "2024-10-27T23:59:59.999Z",
+              "start": "2024-10-27T00:00:00.000Z",
+            },
+          ],
+          [
+            {
+              "end": "2024-10-27T23:59:59.999Z",
+              "start": "2024-10-21T00:00:00.000Z",
+            },
           ],
         ]
       `);

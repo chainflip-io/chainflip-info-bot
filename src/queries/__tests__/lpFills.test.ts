@@ -82,8 +82,9 @@ describe('getLpFills', () => {
         },
       });
 
-    const after = '2022-01-01T00:00:00Z';
-    expect(await getLpFills({ after })).toMatchInlineSnapshot(`
+    const start = '2022-01-01T00:00:00Z';
+    const end = '2022-01-07T00:00:00Z';
+    expect(await getLpFills({ start, end })).toMatchInlineSnapshot(`
       [
         {
           "filledAmountValueUsd": "3403017.236955578",
@@ -173,6 +174,6 @@ describe('getLpFills', () => {
       ]
     `);
 
-    expect(lpClient.request).toHaveBeenCalledWith(expect.anything(), { after });
+    expect(lpClient.request).toHaveBeenCalledWith(expect.anything(), { start, end });
   });
 });

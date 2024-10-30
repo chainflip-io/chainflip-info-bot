@@ -3,8 +3,10 @@ import { gql } from '../graphql/generated/gql.js';
 import { lpClient } from '../server.js';
 
 const getLpFillsQuery = gql(/* GraphQL */ `
-  query GetLpFills($after: Datetime!) {
-    limitOrders: allLimitOrderFills(filter: { blockTimestamp: { greaterThan: $after } }) {
+  query GetLpFills($start: Datetime!, $end: Datetime!) {
+    limitOrders: allLimitOrderFills(
+      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
+    ) {
       groupedAggregates(groupBy: LIQUIDITY_PROVIDER_ID) {
         keys
         sum {
@@ -12,7 +14,9 @@ const getLpFillsQuery = gql(/* GraphQL */ `
         }
       }
     }
-    rangeOrders: allRangeOrderFills(filter: { blockTimestamp: { greaterThan: $after } }) {
+    rangeOrders: allRangeOrderFills(
+      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
+    ) {
       groupedAggregates(groupBy: LIQUIDITY_PROVIDER_ID) {
         keys
         sum {
@@ -35,26 +39,39 @@ const getIdSs58Query = gql(/* GraphQL */ `
   }
 `);
 
-export default async function getLpFills({ after }: { after: string }) {
-  const { limitOrders, rangeOrders } = await lpClient.request(getLpFillsQuery, { after });
+export type LPFillsData = {
+  idSs58: string | undefined;
+  filledAmountValueUsd: BigNumber;
+  percentage: string | undefined;
+};
 
-  const agg = limitOrders?.groupedAggregates
-    ?.map((group) => {
-      const lp = group.keys?.[0];
-      return {
-        id: Number(group.keys?.[0]),
-        filledAmountValueUsd: BigNumber.sum(
-          group.sum?.filledAmountValueUsd ?? 0,
-          rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
-            ?.baseFilledAmountValueUsd ?? 0,
-          rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
-            ?.quoteFilledAmountValueUsd ?? 0,
-        ),
-      };
-    })
-    .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd));
+export default async function getLpFills({
+  start,
+  end,
+}: {
+  start: string;
+  end: string;
+}): Promise<LPFillsData[]> {
+  const { limitOrders, rangeOrders } = await lpClient.request(getLpFillsQuery, { start, end });
 
-  const total = agg?.reduce((acc, lp) => acc.plus(lp.filledAmountValueUsd), new BigNumber(0));
+  const agg =
+    limitOrders?.groupedAggregates
+      ?.map((group) => {
+        const lp = group.keys?.[0];
+        return {
+          id: Number(group.keys?.[0]),
+          filledAmountValueUsd: BigNumber.sum(
+            group.sum?.filledAmountValueUsd ?? 0,
+            rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
+              ?.baseFilledAmountValueUsd ?? 0,
+            rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
+              ?.quoteFilledAmountValueUsd ?? 0,
+          ),
+        };
+      })
+      .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd)) ?? [];
+
+  const total = agg.reduce((acc, lp) => acc.plus(lp.filledAmountValueUsd), new BigNumber(0));
 
   const { accounts } = await lpClient.request(getIdSs58Query, {
     ids: agg?.map((lp) => lp.id) ?? [],
