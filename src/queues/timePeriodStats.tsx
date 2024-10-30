@@ -1,10 +1,13 @@
 import { utc } from '@date-fns/utc';
 import { JobsOptions, UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
+import { Fragment } from 'react/jsx-runtime';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold } from '../channels/formatting.js';
+import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
+import { abbreviate } from '../utils/strings.js';
 import { formatUsdValue } from '../utils.js';
 
 const name = 'timePeriodStats';
@@ -41,15 +44,15 @@ const buildMessageData = ({
   isDaily = true,
   channel,
 }: {
-  stats: SwapStats;
+  stats: SwapStats | LPFillsData[];
   date: Date;
   isDaily?: boolean;
   channel: 'discord' | 'telegram';
-}) => ({
-  name: 'messages' as const,
-  data: {
-    channel,
-    message: renderToStaticMarkup(
+}) => {
+  let message = '';
+
+  if (stats && 'swapVolume' in stats) {
+    message = renderToStaticMarkup(
       <>
         📊 {isDaily ? 'On' : 'For the week ending'}{' '}
         <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
@@ -64,9 +67,38 @@ const buildMessageData = ({
           </>
         )}
       </>,
-    ),
-  },
-});
+    );
+  }
+  if (stats instanceof Array && 'filledAmountValueUsd' in stats[0]) {
+    const medals = ['🥇', '🥈', '🥉', '💫', '💫'];
+    message = renderToStaticMarkup(
+      <>
+        {isDaily
+          ? `💼 Top LPs for ${date.toISOString().slice(0, 10)} are in `
+          : '💼 Top LPs for the week are in '}
+        {stats.map(
+          (stat, index) =>
+            stat.filledAmountValueUsd.gt(0) && (
+              <Fragment key={stat.idSs58}>
+                <Bold channel={channel}>
+                  {medals[index]} {formatUsdValue(stats.at(0)?.filledAmountValueUsd)}
+                </Bold>{' '}
+                ({stat.percentage}%) @{abbreviate(stat.idSs58)}
+              </Fragment>
+            ),
+        )}
+      </>,
+    );
+  }
+
+  return {
+    name: 'messages' as const,
+    data: {
+      channel,
+      message,
+    },
+  };
+};
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   const { endOfPeriod, sendWeeklySummary } = job.data;
@@ -82,9 +114,15 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
     ? startOfWeek(endOfPeriod, { weekStartsOn: 1, in: utc })
     : null;
 
-  const [dailyVolume, maybeWeeklyVolume] = await Promise.all([
+  const [dailyVolume, maybeWeeklyVolume, dailyLpFills, maybeWeeklyLpFills] = await Promise.all([
     getSwapVolumeStats(beginningOfDay, new Date(endOfPeriod)),
     beginningOfWeek && getSwapVolumeStats(beginningOfWeek, new Date(endOfPeriod)),
+    getLpFills({ start: beginningOfDay.toISOString(), end: new Date(endOfPeriod).toISOString() }),
+    beginningOfWeek &&
+      getLpFills({
+        start: beginningOfWeek.toISOString(),
+        end: new Date(endOfPeriod).toISOString(),
+      }),
   ]);
 
   const { data, opts } = getNextJobData();
@@ -93,13 +131,19 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
     { name: 'scheduler', data: [{ name, data, opts }] } as const,
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }),
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }),
+    buildMessageData({ stats: dailyLpFills, date: beginningOfDay, channel: 'telegram' }),
+    buildMessageData({ stats: dailyLpFills, date: beginningOfDay, channel: 'discord' }),
   ];
 
-  if (maybeWeeklyVolume) {
-    const opts = { stats: maybeWeeklyVolume, date: beginningOfDay, isDaily: false };
+  if (maybeWeeklyVolume && maybeWeeklyLpFills) {
+    const volumeOpts = { stats: maybeWeeklyVolume, date: beginningOfDay, isDaily: false };
+    const lpFillsOpts = { stats: maybeWeeklyLpFills, date: beginningOfDay, isDaily: false };
+
     jobs.push(
-      buildMessageData({ ...opts, channel: 'telegram' }),
-      buildMessageData({ ...opts, channel: 'discord' }),
+      buildMessageData({ ...volumeOpts, channel: 'telegram' }),
+      buildMessageData({ ...volumeOpts, channel: 'discord' }),
+      buildMessageData({ ...lpFillsOpts, channel: 'telegram' }),
+      buildMessageData({ ...lpFillsOpts, channel: 'discord' }),
     );
   }
 
