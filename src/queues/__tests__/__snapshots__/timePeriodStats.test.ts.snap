@@ -5,15 +5,22 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
   [
     [
       {
-        "data": {
-          "endOfPeriod": 1730073599999,
-          "sendWeeklySummary": true,
-        },
-        "name": "timePeriodStats",
-        "opts": {
-          "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton-1730073599999",
-        },
+        "data": [
+          {
+            "data": {
+              "endOfPeriod": 1730073599999,
+              "sendWeeklySummary": true,
+            },
+            "name": "timePeriodStats",
+            "opts": {
+              "deduplication": {
+                "id": "timePeriodStats-1730073599999",
+              },
+              "delay": 41103999,
+            },
+          },
+        ],
+        "name": "scheduler",
       },
       {
         "data": {
@@ -53,15 +60,22 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
   [
     [
       {
-        "data": {
-          "endOfPeriod": 1729900799999,
-          "sendWeeklySummary": false,
-        },
-        "name": "timePeriodStats",
-        "opts": {
-          "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton-1729900799999",
-        },
+        "data": [
+          {
+            "data": {
+              "endOfPeriod": 1729900799999,
+              "sendWeeklySummary": false,
+            },
+            "name": "timePeriodStats",
+            "opts": {
+              "deduplication": {
+                "id": "timePeriodStats-1729900799999",
+              },
+              "delay": 41103999,
+            },
+          },
+        ],
+        "name": "scheduler",
       },
       {
         "data": {
@@ -87,15 +101,22 @@ exports[`time period stats > processJob > processes a daily job without a flip b
   [
     [
       {
-        "data": {
-          "endOfPeriod": 1729900799999,
-          "sendWeeklySummary": false,
-        },
-        "name": "timePeriodStats",
-        "opts": {
-          "delay": 41103999,
-          "jobId": "timePeriodStatsSingleton-1729900799999",
-        },
+        "data": [
+          {
+            "data": {
+              "endOfPeriod": 1729900799999,
+              "sendWeeklySummary": false,
+            },
+            "name": "timePeriodStats",
+            "opts": {
+              "deduplication": {
+                "id": "timePeriodStats-1729900799999",
+              },
+              "delay": 41103999,
+            },
+          },
+        ],
+        "name": "scheduler",
       },
       {
         "data": {

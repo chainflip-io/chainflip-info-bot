@@ -23,8 +23,7 @@ declare global {
 const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => {
   const endOfPeriod = endOfToday({ in: utc }).valueOf();
   // prevents multiple jobs with the same key from being scheduled
-
-  const customJobId = `timePeriodStatsSingleton-${endOfPeriod}`;
+  const customJobId = `timePeriodStats-${endOfPeriod}`;
 
   return {
     data: {
@@ -32,7 +31,7 @@ const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => 
       sendWeeklySummary:
         endOfPeriod === endOfWeek(endOfPeriod, { weekStartsOn: 1, in: utc }).valueOf(),
     },
-    opts: { delay: endOfPeriod - Date.now(), jobId: customJobId },
+    opts: { delay: endOfPeriod - Date.now(), deduplication: { id: customJobId } },
   };
 };
 
@@ -91,7 +90,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   const { data, opts } = getNextJobData();
   const jobs = [
     // Schedule the next job
-    { name, data, opts } as const,
+    { name: 'scheduler', data: [{ name, data, opts }] } as const,
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'telegram' }),
     buildMessageData({ stats: dailyVolume, date: beginningOfDay, channel: 'discord' }),
   ];
