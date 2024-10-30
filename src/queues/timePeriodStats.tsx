@@ -69,12 +69,12 @@ const buildMessageData = ({
       </>,
     );
   }
-  if (stats instanceof Array && 'filledAmountValueUsd' in stats[0]) {
+  if (Array.isArray(stats) && 'filledAmountValueUsd' in stats[0]) {
     const medals = ['🥇', '🥈', '🥉', '💫', '💫'];
     message = renderToStaticMarkup(
       <>
         {isDaily
-          ? `💼 Top LPs for ${date.toISOString().slice(0, 10)} are in `
+          ? `💼 Top LPs for ${date.toISOString().slice(0, 10)} are in \n`
           : '💼 Top LPs for the week are in '}
         {stats.map(
           (stat, index) =>
@@ -83,7 +83,8 @@ const buildMessageData = ({
                 <Bold channel={channel}>
                   {medals[index]} {formatUsdValue(stats.at(0)?.filledAmountValueUsd)}
                 </Bold>{' '}
-                ({stat.percentage}%) @{abbreviate(stat.idSs58)}
+                {abbreviate(stat.idSs58)} ({stat.percentage}%)
+                {'\n'}
               </Fragment>
             ),
         )}

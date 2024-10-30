@@ -39,14 +39,20 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "channel": "telegram",
-          "message": "💼 Top LPs for 2024-10-27 are in <strong>🥇 $1,000.00</strong> (50.00%) @cf12…7890<strong>🥈 $1,000.00</strong> (50.00%) @cf09…4321",
+          "message": "💼 Top LPs for 2024-10-27 are in 
+<strong>🥇 $1,000.00</strong> cf12…7890 (50.00%)
+<strong>🥈 $1,000.00</strong> cf09…4321 (50.00%)
+",
         },
         "name": "messages",
       },
       {
         "data": {
           "channel": "discord",
-          "message": "💼 Top LPs for 2024-10-27 are in **🥇 $1,000.00** (50.00%) @cf12…7890**🥈 $1,000.00** (50.00%) @cf09…4321",
+          "message": "💼 Top LPs for 2024-10-27 are in 
+**🥇 $1,000.00** cf12…7890 (50.00%)
+**🥈 $1,000.00** cf09…4321 (50.00%)
+",
         },
         "name": "messages",
       },
@@ -67,14 +73,20 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "channel": "telegram",
-          "message": "💼 Top LPs for the week are in <strong>🥇 $2,000.00</strong> (49.00%) @cf12…7890<strong>🥈 $2,000.00</strong> (49.00%) @cf09…4321<strong>🥉 $2,000.00</strong> (1.00%) @cfxx…xxxx",
+          "message": "💼 Top LPs for the week are in <strong>🥇 $2,000.00</strong> cf12…7890 (49.00%)
+<strong>🥈 $2,000.00</strong> cf09…4321 (49.00%)
+<strong>🥉 $2,000.00</strong> cfxx…xxxx (1.00%)
+",
         },
         "name": "messages",
       },
       {
         "data": {
           "channel": "discord",
-          "message": "💼 Top LPs for the week are in **🥇 $2,000.00** (49.00%) @cf12…7890**🥈 $2,000.00** (49.00%) @cf09…4321**🥉 $2,000.00** (1.00%) @cfxx…xxxx",
+          "message": "💼 Top LPs for the week are in **🥇 $2,000.00** cf12…7890 (49.00%)
+**🥈 $2,000.00** cf09…4321 (49.00%)
+**🥉 $2,000.00** cfxx…xxxx (1.00%)
+",
         },
         "name": "messages",
       },
@@ -122,14 +134,20 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       {
         "data": {
           "channel": "telegram",
-          "message": "💼 Top LPs for 2024-10-25 are in <strong>🥇 $1,000.00</strong> (50.00%) @cf12…7890<strong>🥈 $1,000.00</strong> (50.00%) @cf09…4321",
+          "message": "💼 Top LPs for 2024-10-25 are in 
+<strong>🥇 $1,000.00</strong> cf12…7890 (50.00%)
+<strong>🥈 $1,000.00</strong> cf09…4321 (50.00%)
+",
         },
         "name": "messages",
       },
       {
         "data": {
           "channel": "discord",
-          "message": "💼 Top LPs for 2024-10-25 are in **🥇 $1,000.00** (50.00%) @cf12…7890**🥈 $1,000.00** (50.00%) @cf09…4321",
+          "message": "💼 Top LPs for 2024-10-25 are in 
+**🥇 $1,000.00** cf12…7890 (50.00%)
+**🥈 $1,000.00** cf09…4321 (50.00%)
+",
         },
         "name": "messages",
       },
