@@ -15,7 +15,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query getBurns($in: [Int!]) {\n    allBurns(filter: { id: { in: $in } }) {\n      aggregates {\n        sum {\n          amount\n          valueUsd\n        }\n      }\n    }\n  }\n": types.GetBurnsDocument,
+    "\n  query getLatestBurn {\n    burns: allBurns(first: 1, orderBy: ID_DESC) {\n      nodes {\n        id\n      }\n    }\n  }\n": types.GetLatestBurnDocument,
     "\n  query LatestSwapRequest {\n    swapRequests: allSwapRequests(first: 1, orderBy: NATIVE_ID_DESC) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n": types.LatestSwapRequestDocument,
+    "\n  query getNewBurns($id: Int!) {\n    burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC) {\n      nodes {\n        id\n        amount\n        valueUsd\n        event: eventByEventId {\n          blockId\n          indexInBlock\n          block: blockByBlockId {\n            timestamp\n          }\n        }\n      }\n    }\n  }\n": types.GetNewBurnsDocument,
     "\n  query GetNewSwapRequestsQuery($nativeId: BigInt!) {\n    swapRequests: allSwapRequests(\n      filter: { nativeId: { greaterThan: $nativeId }, type: { in: [REGULAR, CCM] } }\n    ) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n": types.GetNewSwapRequestsQueryDocument,
     "\n  query GetSwapInfoByNativeId($nativeId: BigInt!) {\n    swap: swapRequestByNativeId(nativeId: $nativeId) {\n      completedEventId\n      nativeId\n      depositAmount\n      depositValueUsd\n      egress: egressByEgressId {\n        amount\n        valueUsd\n        scheduledEvent: eventByScheduledEventId {\n          block: blockByBlockId {\n            timestamp\n          }\n        }\n      }\n      swapChannel: swapChannelByDepositChannelId {\n        broker: brokerByBrokerId {\n          account: accountByAccountId {\n            alias\n            idSs58\n          }\n        }\n        fokMinPriceX128\n        issuedBlockTimestamp\n      }\n      preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {\n        stateChainTimestamp\n      }\n      depositBlock: foreignChainTrackingByForeignChainDepositBlockId {\n        stateChainTimestamp\n      }\n      sourceChain\n      numberOfChunks\n      destinationAsset\n      sourceAsset\n    }\n  }\n": types.GetSwapInfoByNativeIdDocument,
     "\n  query GetNewLiquididityDeposits($id: Int!) {\n    deposits: allLiquidityDeposits(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {\n      nodes {\n        asset\n        depositAmount\n        depositValueUsd\n        liquidityProviderId\n      }\n    }\n  }\n": types.GetNewLiquididityDepositsDocument,
@@ -47,7 +49,15 @@ export function gql(source: "\n  query getBurns($in: [Int!]) {\n    allBurns(fil
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "\n  query getLatestBurn {\n    burns: allBurns(first: 1, orderBy: ID_DESC) {\n      nodes {\n        id\n      }\n    }\n  }\n"): (typeof documents)["\n  query getLatestBurn {\n    burns: allBurns(first: 1, orderBy: ID_DESC) {\n      nodes {\n        id\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "\n  query LatestSwapRequest {\n    swapRequests: allSwapRequests(first: 1, orderBy: NATIVE_ID_DESC) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n"): (typeof documents)["\n  query LatestSwapRequest {\n    swapRequests: allSwapRequests(first: 1, orderBy: NATIVE_ID_DESC) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query getNewBurns($id: Int!) {\n    burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC) {\n      nodes {\n        id\n        amount\n        valueUsd\n        event: eventByEventId {\n          blockId\n          indexInBlock\n          block: blockByBlockId {\n            timestamp\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getNewBurns($id: Int!) {\n    burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC) {\n      nodes {\n        id\n        amount\n        valueUsd\n        event: eventByEventId {\n          blockId\n          indexInBlock\n          block: blockByBlockId {\n            timestamp\n          }\n        }\n      }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
