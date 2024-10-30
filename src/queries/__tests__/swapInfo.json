@@ -21,6 +21,8 @@
     "nativeId": "77697",
     "numberOfChunks": 2,
     "sourceChain": "Ethereum",
+    "destinationAsset": "Usdt",
+    "sourceAsset": "Flip",
     "swapChannel": {
       "broker": {
         "account": {

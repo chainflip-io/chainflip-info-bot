@@ -1,0 +1,21 @@
+import { describe, expect, it } from 'vitest';
+import { ChainflipAsset } from '../../graphql/generated/graphql';
+import { getPriceFromPriceX128 } from '../math';
+
+describe('get price from priceX128', () => {
+  const prices: Array<[bigint | string, ChainflipAsset, ChainflipAsset, string]> = [
+    ['370463044445583550774471879', 'Flip', 'Usdt', '1.088693'],
+    [370463044445583550774471879n, 'Flip', 'Usdt', '1.088693'],
+    ['0', 'Flip', 'Usdt', '0.000000'],
+    ['4889962270189900879391211767659', 'Eth', 'Sol', '14.370307561'],
+  ];
+
+  it.each(prices)(
+    'displays min price from fok priceX128',
+    (priceX128, srcAsset, destAsset, expected) =>
+      expect(
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        getPriceFromPriceX128(priceX128, srcAsset, destAsset),
+      ).toBe(expected),
+  );
+});

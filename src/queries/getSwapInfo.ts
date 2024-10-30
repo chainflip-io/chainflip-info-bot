@@ -1,6 +1,7 @@
 import { BigNumber } from 'bignumber.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
+import { getPriceFromPriceX128 } from '../utils/math.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
 
@@ -38,6 +39,8 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       }
       sourceChain
       numberOfChunks
+      destinationAsset
+      sourceAsset
     }
   }
 `);
@@ -65,11 +68,12 @@ export default async function getSwapInfo(nativeId: string) {
   const { swap } = data;
   if (!swap) return null;
 
-  const { sourceChain } = swap;
+  const { sourceChain, sourceAsset, destinationAsset } = swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
   const egressTimestamp = swap.egress?.scheduledEvent.block.timestamp;
+  const fokMinPriceX128 = swap.swapChannel?.fokMinPriceX128;
 
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
@@ -99,6 +103,9 @@ export default async function getSwapInfo(nativeId: string) {
         .multipliedBy(100)
     : null;
 
+  const minPrice =
+    fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
+
   return {
     compeletedEventId: swap.completedEventId,
     requestId: swap.nativeId,
@@ -110,6 +117,8 @@ export default async function getSwapInfo(nativeId: string) {
     priceDelta,
     alias,
     dcaChunks: swap.numberOfChunks,
-    fokMinPriceX128: swap.swapChannel?.fokMinPriceX128,
+    minPrice,
+    sourceAsset,
+    destinationAsset,
   };
 }
