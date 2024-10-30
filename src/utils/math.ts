@@ -10,4 +10,4 @@ export const getPriceFromPriceX128 = (
   BigNumber(priceX128.toString())
     .dividedBy(new BigNumber(2).pow(128))
     .shiftedBy(assetDecimals[srcAsset] - assetDecimals[destAsset])
-    .toFixed();
+    .toFixed(assetDecimals[destAsset]);

@@ -103,7 +103,7 @@ export default async function getSwapInfo(nativeId: string) {
         .multipliedBy(100)
     : null;
 
-  const priceFromPriceX128 =
+  const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
   return {
@@ -117,7 +117,7 @@ export default async function getSwapInfo(nativeId: string) {
     priceDelta,
     alias,
     dcaChunks: swap.numberOfChunks,
-    priceFromPriceX128,
+    minPrice,
     sourceAsset,
     destinationAsset,
   };
