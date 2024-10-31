@@ -4,7 +4,7 @@ import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initial
 import { Link } from '../channels/formatting.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurns from '../queries/getNewBurns.js';
-import { formatUsdValue } from '../utils.js';
+import { formatUsdValue } from '../utils/strings.js';
 
 const name = 'newBurnCheck';
 type Name = typeof name;
@@ -48,8 +48,8 @@ const buildMessageData = ({
   blockHeight: number;
   indexInBlock: number;
   channel: 'discord' | 'telegram';
-}) => ({
-  name: 'messages' as const,
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }> => ({
+  name: 'messageRouter' as const,
   data: {
     channel,
     message: renderToStaticMarkup(
@@ -63,6 +63,7 @@ const buildMessageData = ({
         </Link>
       </>,
     ),
+    messageType: 'NEW_BURN',
   },
 });
 
