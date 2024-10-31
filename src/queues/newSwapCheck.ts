@@ -1,6 +1,7 @@
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import getLatestSwapRequestId from '../queries/getLatestSwapRequestId.js';
 import getNewSwapRequests from '../queries/getNewSwapRequests.js';
+import logger from '../utils/logger.js';
 
 const name = 'newSwapCheck';
 type Name = typeof name;
@@ -29,6 +30,7 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
+  logger.info('Checking for new swap requests', job.data);
   const newSwapRequests = await getNewSwapRequests(job.data.lastSwapRequestId);
 
   // TODO: enqueue jobs for each new swap request
@@ -46,6 +48,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     { name: 'scheduler', data: [data] },
     // ...swapRequestJobs,
   ]);
+  logger.info(`Found ${newSwapRequests.length} new swap requests`);
 };
 
 const initialize: Initializer<Name> = async (queue) => {

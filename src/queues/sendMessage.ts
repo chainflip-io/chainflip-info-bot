@@ -2,6 +2,7 @@ import { JobConfig, JobProcessor } from './initialize.js';
 import { sendMessage as sendDiscordMessage } from '../channels/discord.js';
 import { sendMessage as sendTelegramMessage } from '../channels/telegram.js';
 import Config, { ConfigKey } from '../config.js';
+import logger from '../utils/logger.js';
 
 const name = 'sendMessage';
 
@@ -27,7 +28,9 @@ const processJob: JobProcessor<typeof name> = () => async (job) => {
     await sendDiscordMessage(config, message);
   } else {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    throw new Error(`Invalid config type: ${(config as any).type}`);
+    const message = `Invalid config type: ${(config as any).type}`;
+    logger.error(message);
+    throw new Error(message);
   }
 };
 

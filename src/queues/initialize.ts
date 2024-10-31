@@ -7,6 +7,7 @@ import { config as sendMessageConfig } from './sendMessage.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { handleExit } from '../utils/functions.js';
+import logger from '../utils/logger.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
@@ -68,8 +69,7 @@ export const initialize = async () => {
         jobArgs.map(({ name, data, opts }) => ({ queueName: name, name, data, opts })),
       );
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      logger.error(error);
       throw error;
     }
   };

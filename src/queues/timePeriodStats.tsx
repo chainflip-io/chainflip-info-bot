@@ -7,6 +7,7 @@ import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initial
 import { Bold } from '../channels/formatting.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
+import logger from '../utils/logger.js';
 import { abbreviate, formatUsdValue } from '../utils/strings.js';
 
 const name = 'timePeriodStats';
@@ -102,11 +103,13 @@ const buildMessageData = ({
 };
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
+  logger.info('Processing time period stats', job.data);
   const { endOfPeriod, sendWeeklySummary } = job.data;
 
   const timeElapsedSinceEndOfPeriod = Date.now() - endOfPeriod;
 
   if (timeElapsedSinceEndOfPeriod > hoursToMilliseconds(12)) {
+    logger.warn('discarding stale job');
     throw new UnrecoverableError('job is stale');
   }
 
@@ -149,6 +152,8 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   }
 
   await dispatchJobs(jobs);
+
+  logger.info('Processed time period stats', { newJobs: jobs.length, newData: data });
 };
 
 const initialize: Initializer<typeof name> = async (queue) => {
