@@ -31,7 +31,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
       data: { key, message },
     }));
 
-  if (jobs) await dispatchJobs(jobs);
+  if (jobs?.length) await dispatchJobs(jobs);
 };
 
 export const config: JobConfig<Name> = {
