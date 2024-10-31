@@ -37,11 +37,15 @@ const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
   .transform(({ telegram, discord }) => {
     const configHashMap = new Map<Config, ConfigValue>();
+    const telegramChannels: Channel[] = [];
+    const discordChannels: Channel[] = [];
 
     telegram?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        configHashMap.set(`telegram:${sha1(telegram.botToken + channel.channelId.toString())}`, {
+        const key = `telegram:${sha1(telegram.botToken + channel.channelId.toString())}` as const;
+        telegramChannels.push({ key, allowedMessageTypes: channel.allowedMessageTypes });
+        configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
           type: 'telegram',
@@ -51,10 +55,12 @@ const config = z
     discord?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        configHashMap.set(`discord:${sha1(channel.webhookUrl)}`, {
-          webhookUrl: channel.webhookUrl,
-          type: 'discord',
+        const key = `discord:${sha1(channel.webhookUrl)}` as const;
+        discordChannels.push({
+          key,
+          allowedMessageTypes: channel.allowedMessageTypes,
         });
+        configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
       });
 
     return {
@@ -62,19 +68,8 @@ const config = z
       // these are arrays of hashed keys with the allowed message types. this allows the message
       // router to dispatch messages to the send message job queue for the appropriate channels
       // without exposing the actual webhooks and tokens to redis
-      telegram:
-        telegram?.channels
-          .filter((c) => c.enabled)
-          .map((c) => ({
-            key: `telegram:${sha1(telegram.botToken + c.channelId.toString())}` as const,
-            allowedMessageTypes: c.allowedMessageTypes,
-          })) ?? [],
-      discord: discord?.channels
-        .filter((c) => c.enabled)
-        .map((c) => ({
-          key: `discord:${sha1(c.webhookUrl)}` as const,
-          allowedMessageTypes: c.allowedMessageTypes,
-        })),
+      telegram: telegramChannels,
+      discord: discordChannels,
     };
   });
 
