@@ -78,16 +78,18 @@ describe('newLpDepositCheck', () => {
                   "channel": "telegram",
                   "message": "💸 New Liquidity Provider Detected!
         <strong>cf12…test</strong> deposited 1.523 ETH ($999.00) 🍾",
+                  "messageType": "NEW_LP",
                 },
-                "name": "messages",
+                "name": "messageRouter",
               },
               {
                 "data": {
                   "channel": "discord",
                   "message": "💸 New Liquidity Provider Detected!
         **cf12…test** deposited 1.523 ETH ($999.00) 🍾",
+                  "messageType": "NEW_LP",
                 },
-                "name": "messages",
+                "name": "messageRouter",
               },
             ],
           ],

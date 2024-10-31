@@ -5,11 +5,19 @@ import checkForFirstNewLpDeposits, {
   getLatestDepositId,
   NewDeposit,
 } from '../queries/liquidityDeposits.js';
-import { abbreviate } from '../utils/strings.js';
-import { formatUsdValue } from '../utils.js';
+import { abbreviate, formatUsdValue } from '../utils/strings.js';
 
 const name = 'newLpDepositCheck';
 type Name = typeof name;
+
+type Data = {
+  lastCheckedDepositId: number;
+};
+declare global {
+  interface JobData {
+    [name]: Data;
+  }
+}
 
 const INTERVAL = 30_000;
 
@@ -24,23 +32,13 @@ const getNextJobData = (depositId: number): Extract<DispatchJobArgs, { name: Nam
   };
 };
 
-type Data = {
-  lastCheckedDepositId: number;
-};
-
-declare global {
-  interface JobData {
-    [name]: Data;
-  }
-}
-
 const buildMessage = ({
   channel,
   deposit,
 }: {
   channel: 'discord' | 'telegram';
   deposit: NewDeposit;
-}) => {
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }> => {
   const message = renderToStaticMarkup(
     <>
       {`💸 New Liquidity Provider Detected!\n`}
@@ -51,8 +49,9 @@ const buildMessage = ({
   );
 
   return {
-    name: 'messages' as const,
+    name: 'messageRouter' as const,
     data: {
+      messageType: 'NEW_LP',
       channel,
       message,
     },
