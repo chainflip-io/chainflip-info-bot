@@ -10,7 +10,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'telegram',
         message: 'Hello, world!',
-        messageData: { name: 'DAILY_SUMMARY' },
+        validationData: { name: 'DAILY_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -42,7 +42,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'discord',
         message: 'Hello, world!',
-        messageData: { name: 'DAILY_SUMMARY' },
+        validationData: { name: 'DAILY_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -77,7 +77,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'telegram',
         message: 'Hello, world!',
-        messageData: { name: 'DAILY_SUMMARY' },
+        validationData: { name: 'DAILY_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 

@@ -112,16 +112,16 @@ export default class Config {
     return config[platform];
   }
 
-  static canSend(channel: Channel, messageData: Rule): boolean {
+  static canSend(channel: Channel, validationData: Rule): boolean {
     if (channel.rules === undefined) return true;
 
-    switch (messageData.name) {
+    switch (validationData.name) {
       case 'NEW_SWAP': {
-        const channelRule = channel.rules.find((rule) => rule.name === messageData.name);
-        return channelRule !== undefined && channelRule.usdValue <= messageData.usdValue;
+        const channelRule = channel.rules.find((rule) => rule.name === validationData.name);
+        return channelRule !== undefined && channelRule.usdValue <= validationData.usdValue;
       }
       default:
-        return channel.rules.some((rule) => rule.name === messageData.name);
+        return channel.rules.some((rule) => rule.name === validationData.name);
     }
   }
 }

@@ -97,7 +97,7 @@ const buildMessageData = ({
     data: {
       platform,
       message,
-      messageData: { name: isDaily ? 'DAILY_SUMMARY' : 'WEEKLY_SUMMARY' },
+      validationData: { name: isDaily ? 'DAILY_SUMMARY' : 'WEEKLY_SUMMARY' },
     },
   };
 };

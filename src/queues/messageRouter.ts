@@ -8,7 +8,7 @@ type Name = typeof name;
 type Data = {
   platform: Platform;
   message: string;
-  messageData: Rule;
+  validationData: Rule;
 };
 
 declare global {
@@ -18,12 +18,12 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { message, messageData, platform } = job.data;
+  const { message, validationData, platform } = job.data;
 
   const channels = await Config.getChannels(platform);
 
   const jobs = channels
-    ?.filter((channel) => Config.canSend(channel, messageData))
+    ?.filter((channel) => Config.canSend(channel, validationData))
     .map(({ key }) => ({ name: 'sendMessage' as const, data: { key, message } }));
 
   if (jobs?.length) await dispatchJobs(jobs);
