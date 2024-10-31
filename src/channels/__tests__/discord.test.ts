@@ -8,7 +8,7 @@ describe('sendMessage', () => {
 
     postMock.mockResolvedValueOnce({ status: 204 });
 
-    await sendMessage('url', 'hello discord bot');
+    await sendMessage({ webhookUrl: 'url' }, 'hello discord bot');
 
     expect(postMock.mock.lastCall).toMatchInlineSnapshot(`
       [
@@ -29,7 +29,7 @@ describe('sendMessage', () => {
     });
 
     await expect(
-      sendMessage('url', 'hello discord bot'),
+      sendMessage({ webhookUrl: 'url' }, 'hello discord bot'),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
       `[Error: Failed to send message to discord: {"ok":false,"description":"some other stuff here"}]`,
     );

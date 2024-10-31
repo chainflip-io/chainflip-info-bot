@@ -3,7 +3,7 @@ import { JobsOptions, UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { Fragment } from 'react/jsx-runtime';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Initializer, JobConfig, JobProcessor } from './initialize.js';
+import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold } from '../channels/formatting.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
@@ -47,7 +47,7 @@ const buildMessageData = ({
   date: Date;
   isDaily?: boolean;
   channel: 'discord' | 'telegram';
-}) => {
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }> => {
   let message = '';
 
   if (stats && 'swapVolume' in stats) {
@@ -75,7 +75,7 @@ const buildMessageData = ({
         {isDaily
           ? `💼 Top LPs for ${date.toISOString().slice(0, 10)} are in \n`
           : '💼 Top LPs for the week are in '}
-        {stats.map(
+        {stats.slice(0, isDaily ? 5 : -1).map(
           (stat, index) =>
             stat.filledAmountValueUsd.gt(0) && (
               <Fragment key={stat.idSs58}>
@@ -92,10 +92,11 @@ const buildMessageData = ({
   }
 
   return {
-    name: 'messages' as const,
+    name: 'messageRouter' as const,
     data: {
       channel,
       message,
+      messageType: isDaily ? 'DAILY_SUMMARY' : 'WEEKLY_SUMMARY',
     },
   };
 };

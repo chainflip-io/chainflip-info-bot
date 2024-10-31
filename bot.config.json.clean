@@ -1,0 +1,24 @@
+{
+  "discord": {
+    "channels": [
+      {
+        "webhookUrl": "https://echo.com/hello"
+      }
+    ]
+  },
+  "telegram": {
+    "botToken": "sample token",
+    "channels": [
+      {
+        "channelId": "564851137"
+      },
+      {
+        "channelId": "564851137",
+        "messageTypes": [
+          "DAILY_SUMMARY",
+          "WEEKLY_SUMMARY"
+        ]
+      }
+    ]
+  }
+}

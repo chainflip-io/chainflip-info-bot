@@ -1,8 +1,9 @@
 import { FlowProducer, JobsOptions, Processor, Queue, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
-import { config as messagesConfig } from './messages.js';
+import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newSwapCheckConfig } from './newSwapCheck.js';
 import { config as schedulerConfig } from './scheduler.js';
+import { config as sendMessageConfig } from './sendMessage.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { handleExit } from '../utils/functions.js';
@@ -73,7 +74,8 @@ export const initialize = async () => {
     }
   };
 
-  queues.messages = await createQueue(dispatchJobs, messagesConfig);
+  queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
+  queues.sendMessage = await createQueue(dispatchJobs, sendMessageConfig);
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
