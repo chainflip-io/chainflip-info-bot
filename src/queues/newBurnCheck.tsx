@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Link } from '../channels/formatting.js';
@@ -82,7 +83,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
       },
     } = latestBurn;
     // We just want to send the message if the burn happened in the last 12 hours
-    if (new Date(timestamp).getTime() > Date.now() - 12 * 3600 * 1000) {
+    if (Date.now() - new Date(timestamp).getTime() <= hoursToMilliseconds(12)) {
       jobs.push(
         buildMessageData({
           amount,

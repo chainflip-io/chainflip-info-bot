@@ -1,15 +1,16 @@
+import { subHours } from 'date-fns';
 import { describe, it, expect, vi } from 'vitest';
 import { explorerClient } from '../../server.js';
 import { config } from '../newBurnCheck.js';
 
-const mockGetNewBurnResponse = (id: number) => ({
+const mockGetNewBurnResponse = (id: number, timestamp?: string) => ({
   burns: {
     nodes: [
       {
         amount: '12345678901234567890123',
         event: {
           block: {
-            timestamp: '2024-10-31T15:15:00.000Z',
+            timestamp: timestamp ?? subHours(new Date(), 1).toISOString(),
           },
           blockId: 1,
           indexInBlock: 1,
@@ -122,6 +123,42 @@ describe('newBurnCheck', () => {
                   {
                     "data": {
                       "lastBurnId": 1,
+                    },
+                    "name": "newBurnCheck",
+                    "opts": {
+                      "deduplication": {
+                        "id": "newBurnCheck",
+                      },
+                      "delay": 30000,
+                    },
+                  },
+                ],
+                "name": "scheduler",
+              },
+            ],
+          ],
+        ]
+      `);
+    });
+
+    it('skip sending out messages if the burn is older than 12 hours', async () => {
+      vi.mocked(explorerClient.request).mockResolvedValueOnce(
+        mockGetNewBurnResponse(11, subHours(new Date(), 15).toISOString()),
+      );
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({ data: { lastBurnId: 10 } } as any);
+
+      expect(dispatchJobs.mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            [
+              {
+                "data": [
+                  {
+                    "data": {
+                      "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
                     "opts": {
