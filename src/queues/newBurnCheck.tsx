@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Link } from '../channels/formatting.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
-import getNewBurns from '../queries/getNewBurns.js';
+import getNewBurn from '../queries/getNewBurn.js';
 import { formatUsdValue } from '../utils/strings.js';
 
 const name = 'newBurnCheck';
@@ -68,9 +68,7 @@ const buildMessageData = ({
 });
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const latestBurns = await getNewBurns(job.data.lastBurnId);
-
-  const latestBurn = latestBurns[0];
+  const latestBurn = await getNewBurn(job.data.lastBurnId);
 
   const jobs = [];
   if (latestBurn) {
@@ -106,14 +104,14 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const data = getNextJobData({
     burnId: latestBurn?.id ?? job.data.lastBurnId,
   });
-  jobs.push({ name: 'scheduler' as const, data: [data] });
+  jobs.push({ name: 'scheduler', data: [data] } as const);
   await dispatchJobs(jobs);
 };
 
 const initialize: Initializer<Name> = async (queue) => {
-  const latestBurn = await getLatestBurnId();
+  const latestBurnId = await getLatestBurnId();
   const { data, opts } = getNextJobData({
-    burnId: latestBurn.id,
+    burnId: latestBurnId,
   });
   await queue.add(name, data, opts);
 };

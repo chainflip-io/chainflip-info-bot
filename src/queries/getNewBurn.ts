@@ -4,9 +4,9 @@ import { FLIP_DECIMAL_POINTS } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
 
-const getNewBurnsQuery = gql(/* GraphQL */ `
-  query getNewBurns($id: Int!) {
-    burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC) {
+const getNewBurnQuery = gql(/* GraphQL */ `
+  query getNewBurn($id: Int!) {
+    burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC, first: 1) {
       nodes {
         id
         amount
@@ -23,13 +23,17 @@ const getNewBurnsQuery = gql(/* GraphQL */ `
   }
 `);
 
-export default async function getNewBurns(latestBurnId: number) {
-  const result = await explorerClient.request(getNewBurnsQuery, { id: latestBurnId });
+export default async function getNewBurn(latestBurnId: number) {
+  const result = await explorerClient.request(getNewBurnQuery, { id: latestBurnId });
 
   assert(result.burns, 'burns is required');
+  if (result.burns.nodes.length === 0) {
+    return null;
+  }
 
-  return result.burns.nodes.map((node) => ({
+  const node = result.burns.nodes[0];
+  return {
     ...node,
     amount: new BigNumber(node.amount).shiftedBy(-FLIP_DECIMAL_POINTS),
-  }));
+  };
 }
