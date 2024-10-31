@@ -81,6 +81,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
         indexInBlock,
       },
     } = latestBurn;
+    // We just want to send the message if the burn happened in the last 12 hours
     if (new Date(timestamp).getTime() > Date.now() - 12 * 3600 * 1000) {
       jobs.push(
         buildMessageData({
