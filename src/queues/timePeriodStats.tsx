@@ -7,8 +7,7 @@ import { Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold } from '../channels/formatting.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
-import { abbreviate } from '../utils/strings.js';
-import { formatUsdValue } from '../utils.js';
+import { abbreviate, formatUsdValue } from '../utils/strings.js';
 
 const name = 'timePeriodStats';
 

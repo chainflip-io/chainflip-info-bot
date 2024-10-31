@@ -5,7 +5,7 @@ import { config as newSwapCheckConfig } from './newSwapCheck.js';
 import { config as schedulerConfig } from './scheduler.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
-import { handleExit } from '../utils.js';
+import { handleExit } from '../utils/functions.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
