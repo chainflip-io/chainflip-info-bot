@@ -6,6 +6,7 @@ import { config as schedulerConfig } from './scheduler.js';
 import { config as sendMessageConfig } from './sendMessage.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
+import { config as newLpDepositCheck } from './newLpDepositCheck.js';
 import { handleExit } from '../utils/functions.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
@@ -79,6 +80,7 @@ export const initialize = async () => {
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
+  queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
 
   return Object.values(queues);
 };

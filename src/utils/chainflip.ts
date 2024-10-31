@@ -1,3 +1,7 @@
+import { BigNumber } from 'bignumber.js';
+import { assetDecimals } from '../consts.js';
+import { ChainflipAsset } from '../graphql/generated/graphql.js';
+
 export const chainConstants = {
   Bitcoin: {
     blockTimeSeconds: 10 * 60,
@@ -17,3 +21,6 @@ export const chainConstants = {
 } as const;
 
 export type ChainflipChain = 'Bitcoin' | 'Ethereum' | 'Solana' | 'Arbitrum' | 'Polkadot';
+
+export const toTokenAmount = (amount: string, chainflipAsset: ChainflipAsset) =>
+  new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]).toString();

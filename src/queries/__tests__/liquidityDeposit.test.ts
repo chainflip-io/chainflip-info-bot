@@ -27,16 +27,28 @@ describe('checkForFirstNewLpDeposits', () => {
         {
           "asset": "Eth",
           "chain": "Ethereum",
-          "depositAmount": "1000000000000000000000",
+          "depositAmount": "1000",
           "id": 9,
-          "liquidityProviderId": 1,
+          "lp": {
+            "account": {
+              "idSs58": "cf111111test",
+            },
+            "id": 1,
+          },
+          "lpIdSs58": "cf111111test",
         },
         {
           "asset": "Btc",
           "chain": "Bitcoin",
-          "depositAmount": "10000000000",
+          "depositAmount": "100",
           "id": 12,
-          "liquidityProviderId": 2,
+          "lp": {
+            "account": {
+              "idSs58": "cf222222test",
+            },
+            "id": 2,
+          },
+          "lpIdSs58": "cf222222test",
         },
       ]
     `);
