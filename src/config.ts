@@ -8,7 +8,7 @@ import env from './env.js';
 const rules = z.union([
   z.object({ name: z.literal('DAILY_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_SUMMARY') }),
-  z.object({ name: z.literal('NEW_SWAP'), usdValue: z.number() }),
+  z.object({ name: z.literal('NEW_SWAP'), usdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),
 ]);
