@@ -107,7 +107,7 @@ export default async function getSwapInfo(nativeId: string) {
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
   return {
-    compeletedEventId: swap.completedEventId,
+    completedEventId: swap.completedEventId,
     requestId: swap.nativeId,
     depositAmount: swap.depositAmount,
     depositValueUsd,
