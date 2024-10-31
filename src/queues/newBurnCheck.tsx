@@ -103,7 +103,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   }
 
   const data = getNextJobData({
-    burnId: latestBurn.id ?? job.data.lastBurnId,
+    burnId: latestBurn?.id ?? job.data.lastBurnId,
   });
   jobs.push({ name: 'scheduler' as const, data: [data] });
   await dispatchJobs(jobs);
