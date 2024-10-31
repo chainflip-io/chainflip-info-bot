@@ -4,7 +4,7 @@ import { Bold, Link } from '../formatting.js';
 
 describe('Bold', () => {
   it.each(['telegram', 'discord'] as const)('formats %s messages correctly', (channel) => {
-    expect(renderToStaticMarkup(<Bold channel={channel}>hello</Bold>)).toMatchSnapshot(channel);
+    expect(renderToStaticMarkup(<Bold platform={channel}>hello</Bold>)).toMatchSnapshot(channel);
   });
 });
 

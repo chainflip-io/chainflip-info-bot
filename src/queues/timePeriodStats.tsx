@@ -42,7 +42,7 @@ const buildMessageData = ({
   stats,
   date,
   isDaily = true,
-  channel,
+  channel: platform,
 }: {
   stats: SwapStats | LPFillsData[];
   date: Date;
@@ -55,14 +55,14 @@ const buildMessageData = ({
     message = renderToStaticMarkup(
       <>
         📊 {isDaily ? 'On' : 'For the week ending'}{' '}
-        <Bold channel={channel}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
-        <Bold channel={channel}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
-        <Bold channel={channel}>{formatUsdValue(stats.networkFees)}</Bold> of network fees and{' '}
-        <Bold channel={channel}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
+        <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
+        <Bold platform={platform}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
+        <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees and{' '}
+        <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
         {stats.flipBurned && (
           <>
             {' '}
-            Also, we burned <Bold channel={channel}>{stats.flipBurned.toFixed(2)}</Bold> FLIP
+            Also, we burned <Bold platform={platform}>{stats.flipBurned.toFixed(2)}</Bold> FLIP
             tokens.
           </>
         )}
@@ -80,7 +80,7 @@ const buildMessageData = ({
           (stat, index) =>
             stat.filledAmountValueUsd.gt(0) && (
               <Fragment key={stat.idSs58}>
-                <Bold channel={channel}>
+                <Bold platform={platform}>
                   {medals[index]} {formatUsdValue(stats.at(0)?.filledAmountValueUsd)}
                 </Bold>{' '}
                 {abbreviate(stat.idSs58)} ({stat.percentage}%)
@@ -95,9 +95,9 @@ const buildMessageData = ({
   return {
     name: 'messageRouter' as const,
     data: {
-      channel,
+      platform,
       message,
-      messageType: isDaily ? 'DAILY_SUMMARY' : 'WEEKLY_SUMMARY',
+      messageData: { name: isDaily ? 'DAILY_SUMMARY' : 'WEEKLY_SUMMARY' },
     },
   };
 };

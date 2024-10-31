@@ -5,15 +5,21 @@ import type { DiscordConfig } from './channels/discord.js';
 import type { TelegramConfig } from './channels/telegram.js';
 import env from './env.js';
 
-const messageTypes = z.enum(['DAILY_SUMMARY', 'WEEKLY_SUMMARY', 'NEW_SWAP', 'NEW_BURN', 'NEW_LP']);
+const rules = z.union([
+  z.object({ name: z.literal('DAILY_SUMMARY') }),
+  z.object({ name: z.literal('WEEKLY_SUMMARY') }),
+  z.object({ name: z.literal('NEW_SWAP'), usdValue: z.number() }),
+  z.object({ name: z.literal('NEW_BURN') }),
+  z.object({ name: z.literal('NEW_LP') }),
+]);
 
-export type MessageType = z.infer<typeof messageTypes>;
+export type Rule = z.infer<typeof rules>;
 
-export type ChannelType = 'telegram' | 'discord';
+export type Platform = 'telegram' | 'discord';
 
 const channelBase = z.object({
   enabled: z.boolean().optional().default(true),
-  allowedMessageTypes: z.array(messageTypes).min(1).optional(),
+  rules: z.array(rules).min(1).optional(),
 });
 
 const telegramConfig = z.object({
@@ -31,7 +37,7 @@ export type ConfigKey = `${'telegram' | 'discord'}:${string}`;
 
 type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { type: 'discord' });
 
-type Channel = { key: ConfigKey; allowedMessageTypes?: MessageType[] };
+type Channel = { key: ConfigKey; rules?: Rule[] };
 
 const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
@@ -44,7 +50,7 @@ const config = z
       .filter((c) => c.enabled)
       .forEach((channel) => {
         const key = `telegram:${sha1(telegram.botToken + channel.channelId.toString())}` as const;
-        telegramChannels.push({ key, allowedMessageTypes: channel.allowedMessageTypes });
+        telegramChannels.push({ key, rules: channel.rules });
         configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
@@ -58,7 +64,7 @@ const config = z
         const key = `discord:${sha1(channel.webhookUrl)}` as const;
         discordChannels.push({
           key,
-          allowedMessageTypes: channel.allowedMessageTypes,
+          rules: channel.rules,
         });
         configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
       });
@@ -100,9 +106,22 @@ export default class Config {
     return value;
   }
 
-  static async getChannels(channelType: ChannelType): Promise<Channel[] | undefined> {
+  static async getChannels(platform: Platform): Promise<Channel[] | undefined> {
     const config = await this.#load();
 
-    return config[channelType];
+    return config[platform];
+  }
+
+  static canSend(channel: Channel, messageData: Rule): boolean {
+    if (channel.rules === undefined) return true;
+
+    switch (messageData.name) {
+      case 'NEW_SWAP': {
+        const channelRule = channel.rules.find((rule) => rule.name === messageData.name);
+        return channelRule !== undefined && channelRule.usdValue <= messageData.usdValue;
+      }
+      default:
+        return channel.rules.some((rule) => rule.name === messageData.name);
+    }
   }
 }
