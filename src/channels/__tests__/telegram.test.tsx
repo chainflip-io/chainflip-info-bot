@@ -11,8 +11,7 @@ describe('sendMessage', () => {
     postMock.mockResolvedValue({ data: { ok: true } });
 
     await sendMessage(
-      '1234',
-      '5678',
+      { token: '1234', channelId: '5678' },
       renderToStaticMarkup(
         <>
           hello <strong>bold</strong>
@@ -39,8 +38,7 @@ describe('sendMessage', () => {
 
     await expect(
       sendMessage(
-        '1234',
-        '5678',
+        { token: '1234', channelId: '5678' },
         renderToStaticMarkup(
           <>
             hello <strong>bold</strong>

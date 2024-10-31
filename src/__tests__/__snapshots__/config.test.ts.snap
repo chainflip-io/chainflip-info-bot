@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`readConfig > returns the config for a key (discord:c02f7e59411e675118304c2abb7e77980d08a44f) 1`] = `
+{
+  "type": "discord",
+  "webhookUrl": "https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL",
+}
+`;
+
+exports[`readConfig > returns the config for a key (telegram:3b73ae864df5a093acbcd9157c80c508d9b3f4b8) 1`] = `
+{
+  "channelId": "123",
+  "token": "bot token",
+  "type": "telegram",
+}
+`;

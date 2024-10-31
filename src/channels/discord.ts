@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export const sendMessage = async (webhookUrl: string, content: string) => {
+export type DiscordConfig = { webhookUrl: string };
+
+export const sendMessage = async ({ webhookUrl }: DiscordConfig, content: string) => {
   const response = await axios.post(webhookUrl, { content });
 
   if (response.status !== 204) {
