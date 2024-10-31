@@ -27,7 +27,7 @@ describe('checkForFirstNewLpDeposits', () => {
         {
           "asset": "Eth",
           "chain": "Ethereum",
-          "depositAmount": "1000",
+          "depositAmount": "1.2",
           "id": 9,
           "lp": {
             "account": {
@@ -40,7 +40,7 @@ describe('checkForFirstNewLpDeposits', () => {
         {
           "asset": "Btc",
           "chain": "Bitcoin",
-          "depositAmount": "100",
+          "depositAmount": "1",
           "id": 12,
           "lp": {
             "account": {

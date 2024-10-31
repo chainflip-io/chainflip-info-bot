@@ -3,7 +3,7 @@
     "nodes": [
       {
         "id": 9,
-        "depositAmount": "1000000000000000000000",
+        "depositAmount": "1200000000000000000",
         "asset": "Eth",
         "chain": "Ethereum",
         "lp": {
@@ -15,7 +15,7 @@
       },
       {
         "id": 11,
-        "depositAmount": "10000000000",
+        "depositAmount": "100000000",
         "asset": "Btc",
         "chain": "Bitcoin",
         "lp": {
@@ -27,7 +27,7 @@
       },
       {
         "id": 12,
-        "depositAmount": "10000000000",
+        "depositAmount": "100000000",
         "asset": "Btc",
         "chain": "Bitcoin",
         "lp": {
@@ -39,7 +39,7 @@
       },
       {
         "id": 13,
-        "depositAmount": "10000000000",
+        "depositAmount": "100000000",
         "asset": "Btc",
         "chain": "Bitcoin",
         "lp": {
@@ -51,7 +51,7 @@
       },
       {
         "id": 14,
-        "depositAmount": "10000000000",
+        "depositAmount": "100000000",
         "asset": "Btc",
         "chain": "Bitcoin",
         "lp": {
