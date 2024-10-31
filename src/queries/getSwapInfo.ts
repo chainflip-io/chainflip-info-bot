@@ -126,6 +126,6 @@ export default async function getSwapInfo(nativeId: string) {
     minPrice,
     sourceAsset,
     destinationAsset,
-    executedAt: timestamp,
+    completedAt: timestamp,
   };
 }

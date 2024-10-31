@@ -11,6 +11,7 @@ describe('swapInfo', () => {
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "alias": "Chainflip Swapping",
+        "completedAt": "2024-10-25T12:41:30+00:00",
         "completedEventId": "5116679443",
         "dcaChunks": 2,
         "depositAmount": "5000000000000000000000",
@@ -19,7 +20,6 @@ describe('swapInfo', () => {
         "duration": "1 min",
         "egressAmount": "5616094932",
         "egressValueUsd": "5611.379957337800000000000000000000",
-        "executedAt": "2024-10-25T12:41:30+00:00",
         "minPrice": "1.088693",
         "priceDelta": "0.770974623083194771",
         "requestId": "77697",
