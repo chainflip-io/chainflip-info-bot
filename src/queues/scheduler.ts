@@ -11,7 +11,8 @@ declare global {
   }
 }
 
-const processJob: JobProcessor<Name> = (dispatchJobs) => (job) => dispatchJobs(job.data);
+const processJob: JobProcessor<Name> = (dispatchJobs) => (job) =>
+  dispatchJobs(job.data.filter((data) => data.name !== 'scheduler'));
 
 export const config: JobConfig<Name> = {
   name,
