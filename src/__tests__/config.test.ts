@@ -14,8 +14,8 @@ describe('Config', () => {
           {
             "filters": [
               {
+                "minUsdValue": 1,
                 "name": "NEW_SWAP",
-                "usdValue": 1,
               },
             ],
             "key": "telegram:01302f476e11cc5762723b8d2f4fd011be6ff939",
@@ -27,8 +27,8 @@ describe('Config', () => {
           {
             "filters": [
               {
+                "minUsdValue": 1,
                 "name": "NEW_SWAP",
-                "usdValue": 1,
               },
             ],
             "key": "discord:c02f7e59411e675118304c2abb7e77980d08a44f",
@@ -77,13 +77,13 @@ describe('Config', () => {
     it('works with NEW_SWAP', () => {
       expect(
         Config.canSend(
-          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', usdValue: 100 }] },
+          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', minUsdValue: 100 }] },
           { name: 'NEW_SWAP', usdValue: 50 },
         ),
       ).toBe(false);
       expect(
         Config.canSend(
-          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', usdValue: 100 }] },
+          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', minUsdValue: 100 }] },
           { name: 'NEW_SWAP', usdValue: 150 },
         ),
       ).toBe(true);

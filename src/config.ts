@@ -8,12 +8,16 @@ import env from './env.js';
 const filters = z.union([
   z.object({ name: z.literal('DAILY_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_SUMMARY') }),
-  z.object({ name: z.literal('NEW_SWAP'), usdValue: z.number().optional().default(0) }),
+  z.object({ name: z.literal('NEW_SWAP'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),
 ]);
 
 export type Filter = z.infer<typeof filters>;
+
+export type ValidationData =
+  | Exclude<Filter, { name: 'NEW_SWAP' }>
+  | { name: 'NEW_SWAP'; usdValue: number };
 
 export type Platform = 'telegram' | 'discord';
 
@@ -112,13 +116,13 @@ export default class Config {
     return config[platform];
   }
 
-  static canSend(channel: Channel, validationData: Filter): boolean {
+  static canSend(channel: Channel, validationData: ValidationData): boolean {
     if (channel.filters === undefined) return true;
 
     switch (validationData.name) {
       case 'NEW_SWAP': {
         const filter = channel.filters.find((rule) => rule.name === validationData.name);
-        return filter !== undefined && filter.usdValue <= validationData.usdValue;
+        return filter !== undefined && validationData.usdValue >= filter.minUsdValue;
       }
       default:
         return channel.filters.some((rule) => rule.name === validationData.name);

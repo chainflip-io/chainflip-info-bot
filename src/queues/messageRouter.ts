@@ -1,5 +1,5 @@
 import { JobConfig, JobProcessor } from './initialize.js';
-import Config, { Platform, Filter } from '../config.js';
+import Config, { Platform, ValidationData } from '../config.js';
 import logger from '../utils/logger.js';
 
 const name = 'messageRouter';
@@ -8,7 +8,7 @@ type Name = typeof name;
 type Data = {
   platform: Platform;
   message: string;
-  validationData: Filter;
+  validationData: ValidationData;
 };
 
 declare global {
