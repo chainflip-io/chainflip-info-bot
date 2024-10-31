@@ -23,8 +23,11 @@ const processJob: JobProcessor<typeof name> = () => async (job) => {
 
   if (config.type === 'telegram') {
     await sendTelegramMessage(config, message);
-  } else {
+  } else if (config.type === 'discord') {
     await sendDiscordMessage(config, message);
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    throw new Error(`Invalid config type: ${(config as any).type}`);
   }
 };
 
