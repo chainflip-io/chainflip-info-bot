@@ -2,7 +2,7 @@ import 'dotenv/config';
 import env from './env.js';
 import { initialize } from './queues/initialize.js';
 import { createServer } from './server.js';
-import { handleExit } from './utils.js';
+import { handleExit } from './utils/functions.js';
 
 const port = env.HTTP_SERVER_PORT;
 
