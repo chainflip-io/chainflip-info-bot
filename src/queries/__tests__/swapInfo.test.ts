@@ -11,6 +11,7 @@ describe('swapInfo', () => {
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "alias": "Chainflip Swapping",
+        "completedAt": "2024-10-25T12:41:30+00:00",
         "completedEventId": "5116679443",
         "dcaChunks": 2,
         "depositAmount": "5000000000000000000000",

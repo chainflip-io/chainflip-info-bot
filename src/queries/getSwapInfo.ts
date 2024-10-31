@@ -37,6 +37,11 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       depositBlock: foreignChainTrackingByForeignChainDepositBlockId {
         stateChainTimestamp
       }
+      completedEvent: eventByCompletedEventId {
+        block: blockByBlockId {
+          timestamp
+        }
+      }
       sourceChain
       numberOfChunks
       destinationAsset
@@ -74,6 +79,7 @@ export default async function getSwapInfo(nativeId: string) {
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
   const egressTimestamp = swap.egress?.scheduledEvent.block.timestamp;
   const fokMinPriceX128 = swap.swapChannel?.fokMinPriceX128;
+  const timestamp = swap.completedEvent?.block.timestamp;
 
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
@@ -120,5 +126,6 @@ export default async function getSwapInfo(nativeId: string) {
     minPrice,
     sourceAsset,
     destinationAsset,
+    completedAt: timestamp,
   };
 }
