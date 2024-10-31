@@ -14,7 +14,7 @@
       },
       {
         "channelId": "564851137",
-        "messageTypes": [
+        "filters": [
           {
             "name": "DAILY_SUMMARY"
           },

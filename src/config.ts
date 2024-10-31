@@ -71,9 +71,9 @@ const config = z
 
     return {
       configHashMap,
-      // these are arrays of hashed keys with the allowed message types. this allows the message
-      // router to dispatch messages to the send message job queue for the appropriate channels
-      // without exposing the actual webhooks and tokens to redis
+      // these are arrays of hashed keys with the channel filters. this allows the message router to
+      // dispatch messages to the send message job queue for the appropriate channels without
+      // exposing the actual webhooks and tokens to redis
       telegram: telegramChannels,
       discord: discordChannels,
     };
