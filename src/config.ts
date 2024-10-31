@@ -5,7 +5,7 @@ import type { DiscordConfig } from './channels/discord.js';
 import type { TelegramConfig } from './channels/telegram.js';
 import env from './env.js';
 
-const rules = z.union([
+const filters = z.union([
   z.object({ name: z.literal('DAILY_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_SUMMARY') }),
   z.object({ name: z.literal('NEW_SWAP'), usdValue: z.number().optional().default(0) }),
@@ -13,13 +13,13 @@ const rules = z.union([
   z.object({ name: z.literal('NEW_LP') }),
 ]);
 
-export type Rule = z.infer<typeof rules>;
+export type Filter = z.infer<typeof filters>;
 
 export type Platform = 'telegram' | 'discord';
 
 const channelBase = z.object({
   enabled: z.boolean().optional().default(true),
-  rules: z.array(rules).min(1).optional(),
+  filters: z.array(filters).min(1).optional(),
 });
 
 const telegramConfig = z.object({
@@ -37,7 +37,7 @@ export type ConfigKey = `${'telegram' | 'discord'}:${string}`;
 
 type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { type: 'discord' });
 
-type Channel = { key: ConfigKey; rules?: Rule[] };
+type Channel = { key: ConfigKey; filters?: Filter[] };
 
 const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
@@ -50,7 +50,7 @@ const config = z
       .filter((c) => c.enabled)
       .forEach((channel) => {
         const key = `telegram:${sha1(telegram.botToken + channel.channelId.toString())}` as const;
-        telegramChannels.push({ key, rules: channel.rules });
+        telegramChannels.push({ key, filters: channel.filters });
         configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
@@ -64,7 +64,7 @@ const config = z
         const key = `discord:${sha1(channel.webhookUrl)}` as const;
         discordChannels.push({
           key,
-          rules: channel.rules,
+          filters: channel.filters,
         });
         configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
       });
@@ -112,16 +112,16 @@ export default class Config {
     return config[platform];
   }
 
-  static canSend(channel: Channel, validationData: Rule): boolean {
-    if (channel.rules === undefined) return true;
+  static canSend(channel: Channel, validationData: Filter): boolean {
+    if (channel.filters === undefined) return true;
 
     switch (validationData.name) {
       case 'NEW_SWAP': {
-        const channelRule = channel.rules.find((rule) => rule.name === validationData.name);
-        return channelRule !== undefined && channelRule.usdValue <= validationData.usdValue;
+        const filter = channel.filters.find((rule) => rule.name === validationData.name);
+        return filter !== undefined && filter.usdValue <= validationData.usdValue;
       }
       default:
-        return channel.rules.some((rule) => rule.name === validationData.name);
+        return channel.filters.some((rule) => rule.name === validationData.name);
     }
   }
 }

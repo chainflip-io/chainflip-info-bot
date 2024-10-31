@@ -11,7 +11,7 @@ export default {
       channels: [
         {
           webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
-          allowedMessageTypes: [{ name: 'NEW_SWAP', usdValue: 1 }],
+          filters: [{ name: 'NEW_SWAP', usdValue: 1 }],
         },
         {
           enabled: false,
@@ -36,7 +36,7 @@ export default {
         {
           enabled: true,
           channelId: '567',
-          allowedMessageTypes: [{ name: 'NEW_SWAP', usdValue: 1 }],
+          filters: [{ name: 'NEW_SWAP', usdValue: 1 }],
         },
       ],
     },

@@ -24,13 +24,6 @@ describe('messageRouter', () => {
             },
             "name": "sendMessage",
           },
-          {
-            "data": {
-              "key": "telegram:01302f476e11cc5762723b8d2f4fd011be6ff939",
-              "message": "Hello, world!",
-            },
-            "name": "sendMessage",
-          },
         ],
       ]
     `);
@@ -49,13 +42,6 @@ describe('messageRouter', () => {
     expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
       [
         [
-          {
-            "data": {
-              "key": "discord:c02f7e59411e675118304c2abb7e77980d08a44f",
-              "message": "Hello, world!",
-            },
-            "name": "sendMessage",
-          },
           {
             "data": {
               "key": "discord:0a0169ea140fc2f7c7b19ad10dd44917f6059b9d",

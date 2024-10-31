@@ -6,29 +6,39 @@ describe('Config', () => {
   describe('Config.getChannels', () => {
     it('returns the channels', async () => {
       expect(await Config.getChannels('telegram')).toMatchInlineSnapshot(`
-      [
-        {
-          "key": "telegram:3b73ae864df5a093acbcd9157c80c508d9b3f4b8",
-          "rules": undefined,
-        },
-        {
-          "key": "telegram:01302f476e11cc5762723b8d2f4fd011be6ff939",
-          "rules": undefined,
-        },
-      ]
-    `);
+        [
+          {
+            "filters": undefined,
+            "key": "telegram:3b73ae864df5a093acbcd9157c80c508d9b3f4b8",
+          },
+          {
+            "filters": [
+              {
+                "name": "NEW_SWAP",
+                "usdValue": 1,
+              },
+            ],
+            "key": "telegram:01302f476e11cc5762723b8d2f4fd011be6ff939",
+          },
+        ]
+      `);
       expect(await Config.getChannels('discord')).toMatchInlineSnapshot(`
-      [
-        {
-          "key": "discord:c02f7e59411e675118304c2abb7e77980d08a44f",
-          "rules": undefined,
-        },
-        {
-          "key": "discord:0a0169ea140fc2f7c7b19ad10dd44917f6059b9d",
-          "rules": undefined,
-        },
-      ]
-    `);
+        [
+          {
+            "filters": [
+              {
+                "name": "NEW_SWAP",
+                "usdValue": 1,
+              },
+            ],
+            "key": "discord:c02f7e59411e675118304c2abb7e77980d08a44f",
+          },
+          {
+            "filters": undefined,
+            "key": "discord:0a0169ea140fc2f7c7b19ad10dd44917f6059b9d",
+          },
+        ]
+      `);
     });
   });
 
@@ -48,17 +58,17 @@ describe('Config', () => {
   });
 
   describe('Config.canSend', () => {
-    it('works with simple rules', () => {
+    it('works with simple filters', () => {
       expect(Config.canSend({ key: 'discord:1234' }, { name: 'DAILY_SUMMARY' })).toBe(true);
       expect(
         Config.canSend(
-          { rules: [{ name: 'DAILY_SUMMARY' }], key: 'discord:1234' },
+          { filters: [{ name: 'DAILY_SUMMARY' }], key: 'discord:1234' },
           { name: 'DAILY_SUMMARY' },
         ),
       ).toBe(true);
       expect(
         Config.canSend(
-          { rules: [{ name: 'DAILY_SUMMARY' }], key: 'discord:1234' },
+          { filters: [{ name: 'DAILY_SUMMARY' }], key: 'discord:1234' },
           { name: 'WEEKLY_SUMMARY' },
         ),
       ).toBe(false);
@@ -67,13 +77,13 @@ describe('Config', () => {
     it('works with NEW_SWAP', () => {
       expect(
         Config.canSend(
-          { key: 'discord:1234', rules: [{ name: 'NEW_SWAP', usdValue: 100 }] },
+          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', usdValue: 100 }] },
           { name: 'NEW_SWAP', usdValue: 50 },
         ),
       ).toBe(false);
       expect(
         Config.canSend(
-          { key: 'discord:1234', rules: [{ name: 'NEW_SWAP', usdValue: 100 }] },
+          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', usdValue: 100 }] },
           { name: 'NEW_SWAP', usdValue: 150 },
         ),
       ).toBe(true);
