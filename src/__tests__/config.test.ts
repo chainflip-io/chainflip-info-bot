@@ -1,45 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import Config from '../config.js';
 vi.mock('fs/promises');
-vi.mock('../env.js', () => ({
-  default: {
-    CONFIG: JSON.stringify({
-      discord: {
-        channels: [
-          {
-            webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
-            allowedMessageTypes: ['NEW_SWAP'],
-          },
-          {
-            enabled: false,
-            webhookUrl: 'https://discord.com/api/webhooks/1234567890/MNOPQRSTUVWXYZ',
-          },
-          {
-            enabled: true,
-            webhookUrl: 'https://discord.com/api/webhooks/1234567890/∂',
-          },
-        ],
-      },
-      telegram: {
-        botToken: 'bot token',
-        channels: [
-          {
-            channelId: '123',
-          },
-          {
-            enabled: false,
-            channelId: 345,
-          },
-          {
-            enabled: true,
-            channelId: '567',
-            allowedMessageTypes: ['NEW_SWAP'],
-          },
-        ],
-      },
-    }),
-  },
-}));
 
 describe('readConfig', () => {
   it('returns the channels', async () => {

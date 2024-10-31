@@ -2,24 +2,8 @@ import { describe, expect, it, vi } from 'vitest';
 import Config from '../../config.js';
 import { config } from '../messageRouter.js';
 
-vi.mock('../../config.js');
-
 describe('messageRouter', () => {
-  it('sends messages to the correct channels', async () => {
-    vi.mocked(Config.getChannels).mockResolvedValue([
-      {
-        key: 'telegram:123',
-      },
-      {
-        key: 'telegram:456',
-        allowedMessageTypes: ['NEW_SWAP'],
-      },
-      {
-        key: 'discord:123',
-        allowedMessageTypes: ['DAILY_SUMMARY'],
-      },
-    ]);
-
+  it('sends messages to the correct telegram channels', async () => {
     const dispatchJobs = vi.fn();
 
     await config.processJob(dispatchJobs)({
@@ -35,14 +19,32 @@ describe('messageRouter', () => {
         [
           {
             "data": {
-              "key": "telegram:123",
+              "key": "telegram:3b73ae864df5a093acbcd9157c80c508d9b3f4b8",
               "message": "Hello, world!",
             },
             "name": "sendMessage",
           },
+        ],
+      ]
+    `);
+  });
+  it('sends messages to the correct discord channels', async () => {
+    const dispatchJobs = vi.fn();
+
+    await config.processJob(dispatchJobs)({
+      data: {
+        channel: 'discord',
+        message: 'Hello, world!',
+        messageType: 'DAILY_SUMMARY',
+      } as JobData['messageRouter'],
+    } as any);
+
+    expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
+      [
+        [
           {
             "data": {
-              "key": "discord:123",
+              "key": "discord:0a0169ea140fc2f7c7b19ad10dd44917f6059b9d",
               "message": "Hello, world!",
             },
             "name": "sendMessage",
@@ -53,7 +55,7 @@ describe('messageRouter', () => {
   });
 
   it('does nothing if no channels are configured', async () => {
-    vi.mocked(Config.getChannels).mockResolvedValue([]);
+    vi.spyOn(Config, 'getChannels').mockResolvedValue([]);
 
     const dispatchJobs = vi.fn();
 

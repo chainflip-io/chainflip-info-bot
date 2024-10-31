@@ -9,15 +9,33 @@ export default {
     discord: {
       channels: [
         {
-          webhookUrl: 'https://discord.com/api/webhooks/1234567890/abcdefg',
+          webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
+          allowedMessageTypes: ['NEW_SWAP'],
+        },
+        {
+          enabled: false,
+          webhookUrl: 'https://discord.com/api/webhooks/1234567890/MNOPQRSTUVWXYZ',
+        },
+        {
+          enabled: true,
+          webhookUrl: 'https://discord.com/api/webhooks/1234567890/∂',
         },
       ],
     },
     telegram: {
-      botToken: '8675309:asdfasdfasidfbskdjfb',
+      botToken: 'bot token',
       channels: [
         {
-          channelId: '1234',
+          channelId: '123',
+        },
+        {
+          enabled: false,
+          channelId: 345,
+        },
+        {
+          enabled: true,
+          channelId: '567',
+          allowedMessageTypes: ['NEW_SWAP'],
         },
       ],
     },
