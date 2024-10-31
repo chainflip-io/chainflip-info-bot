@@ -33,9 +33,9 @@
       "fokMinPriceX128": "370463044445583550774471879",
       "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00"
     },
-    "requestedEvent": {
+    "completedEvent": {
       "block": {
-        "timestamp": "2024-10-25T12:41:06+00:00"
+        "timestamp": "2024-10-25T12:41:30+00:00"
       }
     }
   }
