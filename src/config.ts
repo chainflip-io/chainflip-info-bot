@@ -36,35 +36,32 @@ type Channel = { key: ConfigKey; allowedMessageTypes?: MessageType[] };
 const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
   .transform(({ telegram, discord }) => {
-    const configs = [] as [ConfigKey, ConfigValue][];
+    const configHashMap = new Map<Config, ConfigValue>();
 
     telegram?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        configs.push([
-          `telegram:${sha1(telegram.botToken + channel.channelId.toString())}`,
-          {
-            channelId: channel.channelId,
-            token: telegram.botToken,
-            type: 'telegram',
-          },
-        ]);
+        configHashMap.set(`telegram:${sha1(telegram.botToken + channel.channelId.toString())}`, {
+          channelId: channel.channelId,
+          token: telegram.botToken,
+          type: 'telegram',
+        });
       });
 
     discord?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        configs.push([
-          `discord:${sha1(channel.webhookUrl)}`,
-          {
-            webhookUrl: channel.webhookUrl,
-            type: 'discord',
-          },
-        ]);
+        configHashMap.set(`discord:${sha1(channel.webhookUrl)}`, {
+          webhookUrl: channel.webhookUrl,
+          type: 'discord',
+        });
       });
 
     return {
-      hashedConfigs: new Map(configs),
+      configHashMap,
+      // these are arrays of hashed keys with the allowed message types. this allows the message
+      // router to dispatch messages to the send message job queue for the appropriate channels
+      // without exposing the actual webhooks and tokens to redis
       telegram:
         telegram?.channels
           .filter((c) => c.enabled)
@@ -101,7 +98,7 @@ export default class Config {
   static async get(key: ConfigKey): Promise<ConfigValue> {
     const config = await this.#load();
 
-    const value = config.hashedConfigs.get(key);
+    const value = config.configHashMap.get(key);
 
     if (!value) throw new Error(`Config not found: ${key}`);
 
