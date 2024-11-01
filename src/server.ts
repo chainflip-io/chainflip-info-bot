@@ -24,9 +24,9 @@ export const createServer = (queues: Queue[]) => {
   serverAdapter.setBasePath(basePath);
   app.register(serverAdapter.registerPlugin(), { prefix: basePath, basePath: '/' });
 
-  app.get('/health', () => {
-    return { status: 'ok' };
-  });
+  app.get('/health', () => ({ status: 'ok' }));
+
+  app.get('/', (req, res) => res.redirect('/admin/queues', 302));
 
   return app;
 };
