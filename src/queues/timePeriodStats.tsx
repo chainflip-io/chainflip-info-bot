@@ -81,10 +81,9 @@ const buildMessages = ({
             (stat, index) =>
               stat.filledAmountValueUsd.gt(0) && (
                 <Fragment key={stat.idSs58}>
-                  <Bold platform={platform}>
-                    {medals[index]} {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}
-                  </Bold>{' '}
-                  {abbreviate(stat.idSs58)} ({stat.percentage}%)
+                  {medals[index]} {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
+                  <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>(
+                  {stat.percentage}%)
                   {'\n'}
                 </Fragment>
               ),

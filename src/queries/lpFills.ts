@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import { knownLps } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { lpClient } from '../server.js';
 
@@ -43,6 +44,7 @@ export type LPFillsData = {
   idSs58: string | undefined;
   filledAmountValueUsd: BigNumber;
   percentage: string | undefined;
+  alias: string | undefined;
 };
 
 export default async function getLpFills({
@@ -77,9 +79,14 @@ export default async function getLpFills({
     ids: agg?.map((lp) => lp.id) ?? [],
   });
 
-  return agg?.map(({ id, ...lp }) => ({
-    ...lp,
-    idSs58: accounts?.nodes.find((account) => account.id === id)?.idSs58,
-    percentage: total && lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2),
-  }));
+  return agg?.map(({ id, ...lp }) => {
+    const idSs58 = accounts?.nodes.find((account) => account.id === id)?.idSs58;
+
+    return {
+      ...lp,
+      idSs58: accounts?.nodes.find((account) => account.id === id)?.idSs58,
+      alias: idSs58 && knownLps[idSs58]?.name,
+      percentage: total && lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2),
+    };
+  });
 }
