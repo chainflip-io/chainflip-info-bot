@@ -1,3 +1,4 @@
+import { subHours } from 'date-fns/subHours';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import checkForFirstNewLpDeposits, { getLatestDepositId } from '../../queries/liquidityDeposits.js';
 import { config } from '../newLpDepositCheck.js';
@@ -45,6 +46,7 @@ describe('newLpDepositCheck', () => {
           depositAmount: '1.523',
           depositValueUsd: '999',
           lpIdSs58: 'cf123test',
+          timestamp: new Date().toISOString(),
         },
       ]);
 
@@ -94,6 +96,49 @@ describe('newLpDepositCheck', () => {
                   },
                 },
                 "name": "messageRouter",
+              },
+            ],
+          ],
+        ]
+      `);
+    });
+
+    it('skips scheduling the message if the deposit is older than 12 hours', async () => {
+      vi.mocked(getLatestDepositId).mockResolvedValueOnce(10);
+      vi.mocked(checkForFirstNewLpDeposits).mockResolvedValueOnce([
+        {
+          asset: 'ETH',
+          depositAmount: '1.523',
+          depositValueUsd: '999',
+          lpIdSs58: 'cf123test',
+          timestamp: subHours(new Date(), 15).toISOString(),
+        },
+      ]);
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({ data: { lastSwapRequestId: 10 } } as any);
+
+      expect(dispatchJobs.mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            [
+              {
+                "data": [
+                  {
+                    "data": {
+                      "lastCheckedDepositId": 10,
+                    },
+                    "name": "newLpDepositCheck",
+                    "opts": {
+                      "deduplication": {
+                        "id": "newLpDepositCheck",
+                      },
+                      "delay": 30000,
+                    },
+                  },
+                ],
+                "name": "scheduler",
               },
             ],
           ],
