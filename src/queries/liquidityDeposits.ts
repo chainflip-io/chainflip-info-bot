@@ -16,6 +16,11 @@ const getNewDepositsQuery = gql(/* GraphQL */ `
             idSs58
           }
         }
+        event: eventByEventId {
+          block: blockByBlockId {
+            timestamp
+          }
+        }
       }
     }
   }
@@ -58,6 +63,7 @@ export type NewDeposit = {
   depositAmount: string;
   depositValueUsd: string;
   lpIdSs58: string;
+  timestamp: string;
 };
 
 export default async function checkForFirstNewLpDeposits(id: number): Promise<NewDeposit[]> {
@@ -84,6 +90,7 @@ export default async function checkForFirstNewLpDeposits(id: number): Promise<Ne
             ...uniqueDeposit,
             depositAmount: toTokenAmount(uniqueDeposit.depositAmount, uniqueDeposit.asset),
             lpIdSs58: uniqueDeposit.lp.account.idSs58,
+            timestamp: uniqueDeposit.event.block.timestamp,
           };
     }),
   );

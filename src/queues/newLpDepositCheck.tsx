@@ -1,3 +1,4 @@
+import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold } from '../channels/formatting.js';
@@ -68,7 +69,14 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const scheduler = { name: 'scheduler', data: [{ name, data, opts }] } as const;
   const jobs = [
     scheduler,
-    ...firstLpDeposits.flatMap((deposit) => buildMessages({ deposit })),
+    ...firstLpDeposits
+      .flatMap((deposit) => {
+        // ignore messages that are longer than 12 hours old
+        return Date.now() - new Date(deposit.timestamp).getTime() <= hoursToMilliseconds(12)
+          ? buildMessages({ deposit })
+          : undefined;
+      })
+      .filter(Boolean),
   ] as DispatchJobArgs[];
 
   await dispatchJobs(jobs);

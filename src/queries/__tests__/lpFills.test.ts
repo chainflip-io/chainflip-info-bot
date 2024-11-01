@@ -4,7 +4,7 @@ import { lpClient } from '../../server.js';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
-  it('returns the first new deposit per lp', async () => {
+  it('returns all the lp fills for given range', async () => {
     vi.mocked(lpClient.request)
       .mockResolvedValueOnce(lpFills)
       .mockResolvedValueOnce({
