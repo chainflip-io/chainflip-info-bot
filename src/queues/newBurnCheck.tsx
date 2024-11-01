@@ -3,6 +3,7 @@ import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Link } from '../channels/formatting.js';
+import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurn from '../queries/getNewBurn.js';
 import { formatUsdValue } from '../utils/strings.js';
@@ -37,36 +38,35 @@ const getNextJobData = ({
   };
 };
 
-const buildMessageData = ({
+const buildMessages = ({
   amount,
   valueUsd,
   blockHeight,
   indexInBlock,
-  platform,
 }: {
   amount: BigNumber;
   valueUsd?: string | null;
   blockHeight: number;
   indexInBlock: number;
-  platform: 'discord' | 'telegram';
-}): Extract<DispatchJobArgs, { name: 'messageRouter' }> => ({
-  name: 'messageRouter' as const,
-  data: {
-    platform,
-    message: renderToStaticMarkup(
-      <>
-        🔥 Burned {amount.toFixed(2)} FLIP ({valueUsd ? formatUsdValue(valueUsd) : ''})! //{' '}
-        <Link
-          href={`https://scan.chainflip.io/events/${blockHeight}-${indexInBlock}`}
-          platform={platform}
-        >
-          view block on explorer
-        </Link>
-      </>,
-    ),
-    validationData: { name: 'NEW_BURN' },
-  },
-});
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
+  platforms.map((platform) => ({
+    name: 'messageRouter' as const,
+    data: {
+      platform,
+      message: renderToStaticMarkup(
+        <>
+          🔥 Burned {amount.toFixed(2)} FLIP ({valueUsd ? formatUsdValue(valueUsd) : ''})! //{' '}
+          <Link
+            href={`https://scan.chainflip.io/events/${blockHeight}-${indexInBlock}`}
+            platform={platform}
+          >
+            view block on explorer
+          </Link>
+        </>,
+      ),
+      validationData: { name: 'NEW_BURN' },
+    },
+  }));
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const latestBurn = await getNewBurn(job.data.lastBurnId);
@@ -87,22 +87,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     } = latestBurn;
     // We just want to send the message if the burn happened in the last 12 hours
     if (Date.now() - new Date(timestamp).getTime() <= hoursToMilliseconds(12)) {
-      jobs.push(
-        buildMessageData({
-          amount,
-          valueUsd,
-          blockHeight: blockId,
-          indexInBlock,
-          platform: 'telegram',
-        }),
-        buildMessageData({
-          amount,
-          valueUsd,
-          blockHeight: blockId,
-          indexInBlock,
-          platform: 'discord',
-        }),
-      );
+      jobs.push(...buildMessages({ amount, valueUsd, blockHeight: blockId, indexInBlock }));
     }
   }
 

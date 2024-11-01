@@ -19,7 +19,9 @@ export type ValidationData =
   | Exclude<Filter, { name: 'NEW_SWAP' }>
   | { name: 'NEW_SWAP'; usdValue: number };
 
-export type Platform = 'telegram' | 'discord';
+export const platforms = ['telegram', 'discord'] as const;
+
+export type Platform = (typeof platforms)[number];
 
 const channelBase = z.object({
   enabled: z.boolean().optional().default(true),

@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold } from '../channels/formatting.js';
+import { platforms } from '../config.js';
 import checkForFirstNewLpDeposits, {
   getLatestDepositId,
   NewDeposit,
@@ -32,31 +33,30 @@ const getNextJobData = (depositId: number): Extract<DispatchJobArgs, { name: Nam
   };
 };
 
-const buildMessage = ({
-  platform,
+const buildMessages = ({
   deposit,
 }: {
-  platform: 'discord' | 'telegram';
   deposit: NewDeposit;
-}): Extract<DispatchJobArgs, { name: 'messageRouter' }> => {
-  const message = renderToStaticMarkup(
-    <>
-      {`💸 New Liquidity Provider Detected!\n`}
-      <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
-      {deposit.depositAmount} {deposit.asset.toUpperCase()} (
-      {formatUsdValue(deposit.depositValueUsd)}) 🍾
-    </>,
-  );
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
+  platforms.map((platform) => {
+    const message = renderToStaticMarkup(
+      <>
+        {`💸 New Liquidity Provider Detected!\n`}
+        <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
+        {deposit.depositAmount} {deposit.asset.toUpperCase()} (
+        {formatUsdValue(deposit.depositValueUsd)}) 🍾
+      </>,
+    );
 
-  return {
-    name: 'messageRouter' as const,
-    data: {
-      validationData: { name: 'NEW_LP' },
-      platform,
-      message,
-    },
-  };
-};
+    return {
+      name: 'messageRouter' as const,
+      data: {
+        validationData: { name: 'NEW_LP' },
+        platform,
+        message,
+      },
+    };
+  });
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const latestDepositId = await getLatestDepositId();
@@ -66,14 +66,10 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const firstLpDeposits = await checkForFirstNewLpDeposits(lastCheckedDepositId);
 
   const scheduler = { name: 'scheduler', data: [{ name, data, opts }] } as const;
-  const jobs = [scheduler] as DispatchJobArgs[];
-
-  if (firstLpDeposits.length) {
-    firstLpDeposits.forEach((deposit) => {
-      jobs.push(buildMessage({ platform: 'telegram', deposit }));
-      jobs.push(buildMessage({ platform: 'discord', deposit }));
-    });
-  }
+  const jobs = [
+    scheduler,
+    ...firstLpDeposits.flatMap((deposit) => buildMessages({ deposit })),
+  ] as DispatchJobArgs[];
 
   await dispatchJobs(jobs);
 };
