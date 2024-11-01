@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { explorerClient } from '../../server.js';
-import getBurns from '../burns.js';
+import getBurns from '../getBurns.js';
 
 describe('getBurns', () => {
   it('get the burns for specific ids', async () => {
