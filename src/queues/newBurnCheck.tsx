@@ -42,29 +42,29 @@ const buildMessageData = ({
   valueUsd,
   blockHeight,
   indexInBlock,
-  channel,
+  platform,
 }: {
   amount: BigNumber;
   valueUsd?: string | null;
   blockHeight: number;
   indexInBlock: number;
-  channel: 'discord' | 'telegram';
+  platform: 'discord' | 'telegram';
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }> => ({
   name: 'messageRouter' as const,
   data: {
-    channel,
+    platform,
     message: renderToStaticMarkup(
       <>
         🔥 Burned {amount.toFixed(2)} FLIP ({valueUsd ? formatUsdValue(valueUsd) : ''})! //{' '}
         <Link
           href={`https://scan.chainflip.io/events/${blockHeight}-${indexInBlock}`}
-          channel={channel}
+          platform={platform}
         >
           view block on explorer
         </Link>
       </>,
     ),
-    messageType: 'NEW_BURN',
+    validationData: { name: 'NEW_BURN' },
   },
 });
 
@@ -93,14 +93,14 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
           valueUsd,
           blockHeight: blockId,
           indexInBlock,
-          channel: 'telegram',
+          platform: 'telegram',
         }),
         buildMessageData({
           amount,
           valueUsd,
           blockHeight: blockId,
           indexInBlock,
-          channel: 'discord',
+          platform: 'discord',
         }),
       );
     }
