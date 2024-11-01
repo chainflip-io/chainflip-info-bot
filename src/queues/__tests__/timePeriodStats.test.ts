@@ -84,12 +84,14 @@ describe('time period stats', () => {
       vi.mocked(getLpFills)
         .mockResolvedValueOnce([
           {
-            idSs58: 'cf1234567890',
+            idSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
+            alias: 'ChainflipGod',
             filledAmountValueUsd: new BigNumber('1000.00'),
             percentage: '50.00',
           },
           {
-            idSs58: 'cf0987654321',
+            idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
+            alias: undefined,
             filledAmountValueUsd: new BigNumber('1000.00'),
             percentage: '50.00',
           },
@@ -180,16 +182,19 @@ describe('time period stats', () => {
         .mockResolvedValueOnce([
           {
             idSs58: 'cf1234567890',
+            alias: 'ChainflipGod',
             filledAmountValueUsd: new BigNumber('2000.00'),
             percentage: '49.00',
           },
           {
             idSs58: 'cf0987654321',
+            alias: undefined,
             filledAmountValueUsd: new BigNumber('2000.00'),
             percentage: '49.00',
           },
           {
             idSs58: 'cfxxxxxxxxxxx',
+            alias: undefined,
             filledAmountValueUsd: new BigNumber('10.00'),
             percentage: '1.00',
           },

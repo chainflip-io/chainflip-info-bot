@@ -45,8 +45,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "message": "💼 Top LPs for 2024-10-27 are in 
-<strong>🥇 $1,000.00</strong> cf12…7890 (50.00%)
-<strong>🥈 $1,000.00</strong> cf09…4321 (50.00%)
+🥇 $1,000.00 <strong>cf12…7890</strong>(50.00%)
+🥈 $1,000.00 <strong>cf09…4321</strong>(50.00%)
 ",
           "platform": "telegram",
           "validationData": {
@@ -58,8 +58,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "message": "💼 Top LPs for 2024-10-27 are in 
-**🥇 $1,000.00** cf12…7890 (50.00%)
-**🥈 $1,000.00** cf09…4321 (50.00%)
+🥇 $1,000.00 **cf12…7890**(50.00%)
+🥈 $1,000.00 **cf09…4321**(50.00%)
 ",
           "platform": "discord",
           "validationData": {
@@ -90,8 +90,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in <strong>🥇 $2,000.00</strong> cf12…7890 (49.00%)
-<strong>🥈 $2,000.00</strong> cf09…4321 (49.00%)
+          "message": "💼 Top LPs for the week are in 🥇 $2,000.00 <strong>ChainflipGod</strong>(49.00%)
+🥈 $2,000.00 <strong>cf09…4321</strong>(49.00%)
 ",
           "platform": "telegram",
           "validationData": {
@@ -102,8 +102,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in **🥇 $2,000.00** cf12…7890 (49.00%)
-**🥈 $2,000.00** cf09…4321 (49.00%)
+          "message": "💼 Top LPs for the week are in 🥇 $2,000.00 **ChainflipGod**(49.00%)
+🥈 $2,000.00 **cf09…4321**(49.00%)
 ",
           "platform": "discord",
           "validationData": {
@@ -162,8 +162,8 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       {
         "data": {
           "message": "💼 Top LPs for 2024-10-25 are in 
-<strong>🥇 $1,000.00</strong> cf12…7890 (50.00%)
-<strong>🥈 $1,000.00</strong> cf09…4321 (50.00%)
+🥇 $1,000.00 <strong>ChainflipGod</strong>(50.00%)
+🥈 $1,000.00 <strong>cFNz…MMVh</strong>(50.00%)
 ",
           "platform": "telegram",
           "validationData": {
@@ -175,8 +175,8 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       {
         "data": {
           "message": "💼 Top LPs for 2024-10-25 are in 
-**🥇 $1,000.00** cf12…7890 (50.00%)
-**🥈 $1,000.00** cf09…4321 (50.00%)
+🥇 $1,000.00 **ChainflipGod**(50.00%)
+🥈 $1,000.00 **cFNz…MMVh**(50.00%)
 ",
           "platform": "discord",
           "validationData": {
