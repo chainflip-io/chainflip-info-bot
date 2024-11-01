@@ -23,7 +23,20 @@ describe('getNewBurns', () => {
       },
     });
 
-    expect(await getNewBurns(10)).toMatchSnapshot();
+    expect(await getNewBurns(10)).toMatchInlineSnapshot(`
+      {
+        "amount": "0.000123456789012345",
+        "event": {
+          "block": {
+            "timestamp": "2024-10-31T15:15:00.000Z",
+          },
+          "blockId": 1,
+          "indexInBlock": 1,
+        },
+        "id": 11,
+        "valueUsd": "4.21",
+      }
+    `);
 
     expect(explorerClient.request).toHaveBeenCalledTimes(1);
   });

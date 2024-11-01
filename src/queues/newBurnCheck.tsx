@@ -71,7 +71,10 @@ const buildMessageData = ({
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const latestBurn = await getNewBurn(job.data.lastBurnId);
 
-  const jobs = [];
+  const data = getNextJobData({
+    burnId: latestBurn?.id ?? job.data.lastBurnId,
+  });
+  const jobs = [{ name: 'scheduler', data: [data] }] as DispatchJobArgs[];
   if (latestBurn) {
     const {
       amount,
@@ -103,10 +106,6 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     }
   }
 
-  const data = getNextJobData({
-    burnId: latestBurn?.id ?? job.data.lastBurnId,
-  });
-  jobs.push({ name: 'scheduler', data: [data] } as const);
   await dispatchJobs(jobs);
 };
 
