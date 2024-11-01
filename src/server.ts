@@ -5,12 +5,9 @@ import { type Queue } from 'bullmq';
 import fastify from 'fastify';
 import { GraphQLClient } from 'graphql-request';
 import env from './env.js';
+import logger from './utils/logger.js';
 
-const app = fastify({
-  logger: true,
-});
-
-export const logger = app.log;
+const app = fastify({ loggerInstance: logger, disableRequestLogging: true });
 
 export const explorerClient = new GraphQLClient(env.EXPLORER_GATEWAY_URL);
 export const lpClient = new GraphQLClient(env.LP_GATEWAY_URL);

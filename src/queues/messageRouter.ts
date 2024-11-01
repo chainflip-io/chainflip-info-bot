@@ -1,5 +1,6 @@
 import { JobConfig, JobProcessor } from './initialize.js';
 import Config, { ChannelType, MessageType } from '../config.js';
+import logger from '../utils/logger.js';
 
 const name = 'messageRouter';
 type Name = typeof name;
@@ -32,6 +33,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     }));
 
   if (jobs?.length) await dispatchJobs(jobs);
+
+  logger.info(`Dispatched ${jobs?.length ?? 0} jobs for message type ${messageType}`);
 };
 
 export const config: JobConfig<Name> = {
