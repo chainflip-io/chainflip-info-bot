@@ -12,6 +12,10 @@ on:
 env:
   FORCE_COLOR: 1
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   pre-checks:
     uses: ./.github/workflows/_01_pre_checks.yml
@@ -20,3 +24,11 @@ jobs:
     needs: [pre-checks]
     uses: ./.github/workflows/_02_checks.yml
     secrets: inherit
+  docker:
+    needs: [pre-checks, checks]
+    uses: chainflip-io/chainflip-reusable-workflows/.github/workflows/_docker_build.yml@main
+    with:
+      image_name: ${{ github.repository }}/info-bot
+      tags: |
+        type=raw,value=latest
+        type=raw,value=main-${{ github.sha }}
