@@ -33,16 +33,16 @@ const getNextJobData = (depositId: number): Extract<DispatchJobArgs, { name: Nam
 };
 
 const buildMessage = ({
-  channel,
+  platform,
   deposit,
 }: {
-  channel: 'discord' | 'telegram';
+  platform: 'discord' | 'telegram';
   deposit: NewDeposit;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }> => {
   const message = renderToStaticMarkup(
     <>
       {`💸 New Liquidity Provider Detected!\n`}
-      <Bold channel={channel}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
+      <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
       {deposit.depositAmount} {deposit.asset.toUpperCase()} (
       {formatUsdValue(deposit.depositValueUsd)}) 🍾
     </>,
@@ -51,8 +51,8 @@ const buildMessage = ({
   return {
     name: 'messageRouter' as const,
     data: {
-      messageType: 'NEW_LP',
-      channel,
+      validationData: { name: 'NEW_LP' },
+      platform,
       message,
     },
   };
@@ -70,8 +70,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   if (firstLpDeposits.length) {
     firstLpDeposits.forEach((deposit) => {
-      jobs.push(buildMessage({ channel: 'telegram', deposit }));
-      jobs.push(buildMessage({ channel: 'discord', deposit }));
+      jobs.push(buildMessage({ platform: 'telegram', deposit }));
+      jobs.push(buildMessage({ platform: 'discord', deposit }));
     });
   }
 

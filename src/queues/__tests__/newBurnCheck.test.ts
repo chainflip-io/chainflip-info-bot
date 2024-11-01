@@ -87,17 +87,21 @@ describe('newBurnCheck', () => {
               },
               {
                 "data": {
-                  "channel": "telegram",
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)! // <a href="https://scan.chainflip.io/events/1-1">view block on explorer</a>",
-                  "messageType": "NEW_BURN",
+                  "platform": "telegram",
+                  "validationData": {
+                    "name": "NEW_BURN",
+                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
-                  "channel": "discord",
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)! // [view block on explorer](https://scan.chainflip.io/events/1-1)",
-                  "messageType": "NEW_BURN",
+                  "platform": "discord",
+                  "validationData": {
+                    "name": "NEW_BURN",
+                  },
                 },
                 "name": "messageRouter",
               },

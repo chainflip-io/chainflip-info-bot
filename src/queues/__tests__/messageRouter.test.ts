@@ -8,9 +8,9 @@ describe('messageRouter', () => {
 
     await config.processJob(dispatchJobs)({
       data: {
-        channel: 'telegram',
+        platform: 'telegram',
         message: 'Hello, world!',
-        messageType: 'DAILY_SUMMARY',
+        validationData: { name: 'DAILY_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -33,9 +33,9 @@ describe('messageRouter', () => {
 
     await config.processJob(dispatchJobs)({
       data: {
-        channel: 'discord',
+        platform: 'discord',
         message: 'Hello, world!',
-        messageType: 'DAILY_SUMMARY',
+        validationData: { name: 'DAILY_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -61,9 +61,9 @@ describe('messageRouter', () => {
 
     await config.processJob(dispatchJobs)({
       data: {
-        channel: 'telegram',
+        platform: 'telegram',
         message: 'Hello, world!',
-        messageType: 'DAILY_SUMMARY',
+        validationData: { name: 'DAILY_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 

@@ -5,15 +5,25 @@ import type { DiscordConfig } from './channels/discord.js';
 import type { TelegramConfig } from './channels/telegram.js';
 import env from './env.js';
 
-const messageTypes = z.enum(['DAILY_SUMMARY', 'WEEKLY_SUMMARY', 'NEW_SWAP', 'NEW_BURN', 'NEW_LP']);
+const filters = z.union([
+  z.object({ name: z.literal('DAILY_SUMMARY') }),
+  z.object({ name: z.literal('WEEKLY_SUMMARY') }),
+  z.object({ name: z.literal('NEW_SWAP'), minUsdValue: z.number().optional().default(0) }),
+  z.object({ name: z.literal('NEW_BURN') }),
+  z.object({ name: z.literal('NEW_LP') }),
+]);
 
-export type MessageType = z.infer<typeof messageTypes>;
+export type Filter = z.infer<typeof filters>;
 
-export type ChannelType = 'telegram' | 'discord';
+export type ValidationData =
+  | Exclude<Filter, { name: 'NEW_SWAP' }>
+  | { name: 'NEW_SWAP'; usdValue: number };
+
+export type Platform = 'telegram' | 'discord';
 
 const channelBase = z.object({
   enabled: z.boolean().optional().default(true),
-  allowedMessageTypes: z.array(messageTypes).min(1).optional(),
+  filters: z.array(filters).min(1).optional(),
 });
 
 const telegramConfig = z.object({
@@ -31,7 +41,7 @@ export type ConfigKey = `${'telegram' | 'discord'}:${string}`;
 
 type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { type: 'discord' });
 
-type Channel = { key: ConfigKey; allowedMessageTypes?: MessageType[] };
+type Channel = { key: ConfigKey; filters?: Filter[] };
 
 const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
@@ -44,7 +54,7 @@ const config = z
       .filter((c) => c.enabled)
       .forEach((channel) => {
         const key = `telegram:${sha1(telegram.botToken + channel.channelId.toString())}` as const;
-        telegramChannels.push({ key, allowedMessageTypes: channel.allowedMessageTypes });
+        telegramChannels.push({ key, filters: channel.filters });
         configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
@@ -58,16 +68,16 @@ const config = z
         const key = `discord:${sha1(channel.webhookUrl)}` as const;
         discordChannels.push({
           key,
-          allowedMessageTypes: channel.allowedMessageTypes,
+          filters: channel.filters,
         });
         configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
       });
 
     return {
       configHashMap,
-      // these are arrays of hashed keys with the allowed message types. this allows the message
-      // router to dispatch messages to the send message job queue for the appropriate channels
-      // without exposing the actual webhooks and tokens to redis
+      // these are arrays of hashed keys with the channel filters. this allows the message router to
+      // dispatch messages to the send message job queue for the appropriate channels without
+      // exposing the actual webhooks and tokens to redis
       telegram: telegramChannels,
       discord: discordChannels,
     };
@@ -100,9 +110,22 @@ export default class Config {
     return value;
   }
 
-  static async getChannels(channelType: ChannelType): Promise<Channel[] | undefined> {
+  static async getChannels(platform: Platform): Promise<Channel[] | undefined> {
     const config = await this.#load();
 
-    return config[channelType];
+    return config[platform];
+  }
+
+  static canSend(channel: Channel, validationData: ValidationData): boolean {
+    if (channel.filters === undefined) return true;
+
+    switch (validationData.name) {
+      case 'NEW_SWAP': {
+        const filter = channel.filters.find((rule) => rule.name === validationData.name);
+        return filter !== undefined && validationData.usdValue >= filter.minUsdValue;
+      }
+      default:
+        return channel.filters.some((rule) => rule.name === validationData.name);
+    }
   }
 }

@@ -1,21 +1,21 @@
 export const Bold = ({
   children,
-  channel,
+  platform,
 }: {
   children: React.ReactNode;
-  channel: 'discord' | 'telegram';
-}) => (channel === 'discord' ? <>**{children}**</> : <strong>{children}</strong>);
+  platform: 'discord' | 'telegram';
+}) => (platform === 'discord' ? <>**{children}**</> : <strong>{children}</strong>);
 
 export const Link = ({
   children,
   href,
-  channel,
+  platform,
 }: {
   children: React.ReactNode;
   href: string;
-  channel: 'discord' | 'telegram';
+  platform: 'discord' | 'telegram';
 }) =>
-  channel === 'discord' ? (
+  platform === 'discord' ? (
     <>
       [{children}]({href})
     </>
