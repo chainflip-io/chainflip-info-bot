@@ -23,4 +23,4 @@ export const chainConstants = {
 export type ChainflipChain = 'Bitcoin' | 'Ethereum' | 'Solana' | 'Arbitrum' | 'Polkadot';
 
 export const toTokenAmount = (amount: string, chainflipAsset: ChainflipAsset) =>
-  new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]).toString();
+  new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]).toFixed();

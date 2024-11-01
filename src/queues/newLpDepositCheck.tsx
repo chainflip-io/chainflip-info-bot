@@ -66,7 +66,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const firstLpDeposits = await checkForFirstNewLpDeposits(lastCheckedDepositId);
 
   const scheduler = { name: 'scheduler', data: [{ name, data, opts }] } as const;
-  const jobs = [scheduler] as [typeof scheduler | ReturnType<typeof buildMessage>];
+  const jobs = [scheduler] as DispatchJobArgs[];
 
   if (firstLpDeposits.length) {
     firstLpDeposits.forEach((deposit) => {
