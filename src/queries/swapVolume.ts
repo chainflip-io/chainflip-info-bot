@@ -24,7 +24,7 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
         }
       }
     }
-    swapRequests: allSwapRequests(
+    boostedSwapRequests: allSwapRequests(
       filter: {
         completedBlockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }
         effectiveBoostFeeBps: { isNull: false }
@@ -98,7 +98,7 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     new BigNumber(0),
   );
 
-  const boostFees = (swapInfo.swapRequests?.nodes ?? []).reduce(
+  const boostFees = (swapInfo.boostedSwapRequests?.nodes ?? []).reduce(
     (total, req) => req.fees.nodes.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), total),
     new BigNumber(0),
   );
