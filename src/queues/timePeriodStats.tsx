@@ -78,17 +78,17 @@ const buildMessages = ({
       );
     }
     if (Array.isArray(stats) && 'filledAmountValueUsd' in stats[0]) {
-      const medals = ['🥇', '🥈', '🥉', '🏅', '🏅'];
+      const youTried = '🏅';
+      const medals = ['🥇', '🥈', '🥉'];
       message = renderToStaticMarkup(
         <>
-          {isDaily
-            ? `💼 Top LPs for ${date.toISOString().slice(0, 10)} are in \n`
-            : '💼 Top LPs for the week are in '}
+          💼 Top LPs for {isDaily ? date.toISOString().slice(0, 10) : 'the week'} are in:{'\n'}
           {stats.slice(0, isDaily ? 5 : -1).map(
             (stat, index) =>
               stat.filledAmountValueUsd.gt(0) && (
                 <Fragment key={stat.idSs58}>
-                  {medals[index]} {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
+                  {medals[index] ?? youTried}{' '}
+                  {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
                   <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`}>
                     <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>
                   </ExplorerLink>{' '}

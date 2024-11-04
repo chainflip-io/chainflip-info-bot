@@ -54,7 +54,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-27 are in 
+          "message": "💼 Top LPs for 2024-10-27 are in:
 🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cf1234567890"><strong>cf12…7890</strong></a> (50.00%)
 🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cf0987654321"><strong>cf09…4321</strong></a> (50.00%)
 ",
@@ -67,7 +67,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-27 are in 
+          "message": "💼 Top LPs for 2024-10-27 are in:
 🥇 $1,000.00 [**cf12…7890**](https://scan.chainflip.io/lps/cf1234567890) (50.00%)
 🥈 $1,000.00 [**cf09…4321**](https://scan.chainflip.io/lps/cf0987654321) (50.00%)
 ",
@@ -110,7 +110,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in 🥇 $2,000.00 <a href="https://scan.chainflip.io/lps/cf1234567890"><strong>ChainflipGod</strong></a> (49.00%)
+          "message": "💼 Top LPs for the week are in:
+🥇 $2,000.00 <a href="https://scan.chainflip.io/lps/cf1234567890"><strong>ChainflipGod</strong></a> (49.00%)
 🥈 $2,000.00 <a href="https://scan.chainflip.io/lps/cf0987654321"><strong>cf09…4321</strong></a> (49.00%)
 ",
           "platform": "telegram",
@@ -122,7 +123,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in 🥇 $2,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cf1234567890) (49.00%)
+          "message": "💼 Top LPs for the week are in:
+🥇 $2,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cf1234567890) (49.00%)
 🥈 $2,000.00 [**cf09…4321**](https://scan.chainflip.io/lps/cf0987654321) (49.00%)
 ",
           "platform": "discord",
@@ -191,7 +193,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-25 are in 
+          "message": "💼 Top LPs for 2024-10-25 are in:
 🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (50.00%)
 🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (50.00%)
 ",
@@ -204,7 +206,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-25 are in 
+          "message": "💼 Top LPs for 2024-10-25 are in:
 🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (50.00%)
 🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (50.00%)
 ",
