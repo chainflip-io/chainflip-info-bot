@@ -15,9 +15,16 @@ export const lpClient = new GraphQLClient(env.LP_GATEWAY_URL);
 export const createServer = (queues: Queue[]) => {
   const serverAdapter = new FastifyAdapter();
 
+  const board = env.NODE_ENV === 'production' ? 'PROD' : 'DEV';
+
   createBullBoard({
     queues: queues.map((q) => new BullMQAdapter(q)),
     serverAdapter,
+    options: {
+      uiConfig: {
+        boardTitle: `Info Bot [${board}]`,
+      },
+    },
   });
 
   const basePath = '/admin/queues';
