@@ -24,8 +24,8 @@ describe('sendMessage', () => {
       {
         consumerKey: 'consumer_key',
         consumerKeySecret: 'consumer_key_secret',
-        oathKey: 'oath_key',
-        oathKeySecret: 'oath_key_secret',
+        oauthKey: 'oauth_key',
+        oauthKeySecret: 'oauth_key_secret',
       },
       renderToStaticMarkup(
         <>
@@ -34,7 +34,7 @@ describe('sendMessage', () => {
       ),
     );
 
-    expect(postMock.mock.lastCall).toMatchObject([
+    expect(postMock.mock.lastCall).toMatchInlineSnapshot([
       'https://api.twitter.com/2/tweets',
       {
         text: 'hello twitter<strong>bold</strong>',
@@ -43,7 +43,7 @@ describe('sendMessage', () => {
         headers: {
           Accept: 'application/json',
           Authorization: expect.stringMatching(
-            /OAuth oauth_consumer_key="consumer_key", oauth_nonce=".+?", oauth_signature=".+?", oauth_signature_method="PLAINTEXT", oauth_timestamp="\d+", oauth_token="oath_key", oauth_version="1\.0"/,
+            /OAuth oauth_consumer_key="consumer_key", oauth_nonce=".+?", oauth_signature=".+?", oauth_signature_method="PLAINTEXT", oauth_timestamp="\d+", oauth_token="oauth_key", oauth_version="1\.0"/,
           ) as string,
           'Content-Type': 'application/json',
           'User-Agent': 'v2CreateTweetJS',
@@ -62,8 +62,8 @@ describe('sendMessage', () => {
         {
           consumerKey: 'consumer_key',
           consumerKeySecret: 'consumer_key_secret',
-          oathKey: 'oath_key',
-          oathKeySecret: 'oath_key_secret',
+          oauthKey: 'oauth_key',
+          oauthKeySecret: 'oauth_key_secret',
         },
         renderToStaticMarkup(
           <>

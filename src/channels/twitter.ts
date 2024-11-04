@@ -5,14 +5,14 @@ import OAuth from 'oauth-1.0a';
 export type TwitterConfig = {
   consumerKey: string;
   consumerKeySecret: string;
-  oathKey: string;
-  oathKeySecret: string;
+  oauthKey: string;
+  oauthKeySecret: string;
 };
 
 export const sendMessage = async (token: TwitterConfig, text: string) => {
   const url = `https://api.twitter.com/2/tweets`;
 
-  const { consumerKey, consumerKeySecret, oathKey, oathKeySecret } = token;
+  const { consumerKey, consumerKeySecret, oauthKey, oauthKeySecret } = token;
 
   const oauth = new OAuth({
     consumer: {
@@ -29,7 +29,7 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
         url,
         method: 'POST',
       },
-      { key: oathKey, secret: oathKeySecret },
+      { key: oauthKey, secret: oauthKeySecret },
     ),
   );
 
@@ -46,8 +46,8 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
     },
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  if (!response.data.id) {
+  const formattedResponse = response.data as { id: string; text: string };
+  if (!formattedResponse.id || !formattedResponse.text) {
     throw new Error(`failed to send message: ${JSON.stringify(response.data)}`);
   }
 };
