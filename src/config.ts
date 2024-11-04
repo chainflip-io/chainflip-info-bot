@@ -51,10 +51,7 @@ type Channel = { key: ConfigKey; filters?: Filter[] };
 const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
 
 const config = z
-  .object({
-    telegram: telegramConfig.optional(),
-    discord: discordConfig.optional(),
-  })
+  .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
   .transform(({ telegram, discord }) => {
     const configHashMap = new Map<Config, ConfigValue>();
     const telegramChannels: Channel[] = [];
