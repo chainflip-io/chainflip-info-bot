@@ -13,8 +13,17 @@ import logger from '../utils/logger.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
+// we want to ensure that the bullmq queues, workers, and flows are closed in
+// the reverse order that they are created to ensure that any in progress jobs
+// can complete and perform any necessary scheduling before exiting
+const cleanup: (() => Promise<any>)[] = [() => redis.quit()];
+
 handleExit(async () => {
-  await redis.quit();
+  const handlers = cleanup.splice(0, cleanup.length).reverse();
+
+  for (const handler of handlers) {
+    await handler().catch((error) => logger.error(error));
+  }
 });
 
 type JobName = keyof JobData;
@@ -43,7 +52,10 @@ const createQueue = async <N extends JobName>(
 ) => {
   const queue = new Queue<JobData[N], void, N>(name, {
     connection: redis,
-    defaultJobOptions: { removeOnComplete: 1000, removeOnFail: 5000 },
+    defaultJobOptions: {
+      attempts: 5,
+      backoff: { delay: 1000, type: 'exponential' },
+    },
   });
 
   await initialize?.(queue);
@@ -51,12 +63,15 @@ const createQueue = async <N extends JobName>(
   const worker = new Worker<JobData[N], void, N>(
     name,
     logRejections(name, processJob(dispatchJobs)),
-    { connection: redis },
+    {
+      connection: redis,
+      removeOnComplete: { count: 1000 },
+      removeOnFail: { count: 5000 },
+    },
   );
 
-  handleExit(async () => {
-    await Promise.allSettled([worker.close(), queue.close()]);
-  });
+  cleanup.push(() => queue.close());
+  cleanup.push(() => worker.close());
 
   return queue;
 };
@@ -66,9 +81,7 @@ export const initialize = async () => {
 
   const flow = new FlowProducer({ connection: redis });
 
-  handleExit(async () => {
-    await flow.close();
-  });
+  cleanup.push(() => flow.close().catch(() => null));
 
   const dispatchJobs: DispatchJobs = async (jobArgs) => {
     try {
@@ -81,13 +94,14 @@ export const initialize = async () => {
     }
   };
 
-  queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
   queues.sendMessage = await createQueue(dispatchJobs, sendMessageConfig);
+  queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
   queues.newBurnCheck = await createQueue(dispatchJobs, newBurnCheckConfig);
-  queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
+  // this queue should be shut down first
+  queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
 
   return Object.values(queues);
 };
