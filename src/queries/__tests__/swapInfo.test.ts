@@ -10,7 +10,10 @@ describe('swapInfo', () => {
     const nativeId = '77697';
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
-        "brokerIdOrAlias": "Chainflip Swapping",
+        "brokerIdAndAlias": {
+          "alias": "Chainflip Swapping",
+          "brokerId": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
+        },
         "completedAt": "2024-10-25T12:41:30+00:00",
         "completedEventId": "5116679443",
         "dcaChunks": 2,

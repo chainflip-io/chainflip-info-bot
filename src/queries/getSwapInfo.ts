@@ -55,8 +55,10 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
 const getBrokerAlias = (broker: { alias?: string | null; idSs58?: string | null }) =>
   broker.alias || knownBrokers[broker.idSs58 as string].name;
 
-const getBrokerIdOrAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
-  broker && broker.idSs58 ? getBrokerAlias(broker) || abbreviate(broker.idSs58, 4) : 'Others';
+const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
+  broker && broker.idSs58
+    ? { alias: getBrokerAlias(broker) || abbreviate(broker.idSs58, 4), brokerId: broker.idSs58 }
+    : { alias: 'Others' };
 
 export default async function getSwapInfo(nativeId: string) {
   const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {
@@ -78,7 +80,7 @@ export default async function getSwapInfo(nativeId: string) {
   const egressValueUsd = swap.egress?.valueUsd;
   const broker = swap.swapChannel?.broker.account;
 
-  const brokerIdOrAlias = getBrokerIdOrAlias(broker);
+  const brokerIdAndAlias = getBrokerIdAndAlias(broker);
 
   let duration;
   if (depositTimestamp && egressTimestamp) {
@@ -126,7 +128,7 @@ export default async function getSwapInfo(nativeId: string) {
     duration,
     priceDelta,
     priceDeltaPercentage,
-    brokerIdOrAlias,
+    brokerIdAndAlias,
     dcaChunks: swap.numberOfChunks,
     minPrice,
     sourceAsset,

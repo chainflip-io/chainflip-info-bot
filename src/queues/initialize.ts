@@ -101,9 +101,9 @@ export const initialize = async () => {
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
   queues.newBurnCheck = await createQueue(dispatchJobs, newBurnCheckConfig);
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
+  queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
-  queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
 
   return Object.values(queues);
 };
