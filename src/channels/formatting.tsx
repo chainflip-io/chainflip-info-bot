@@ -1,3 +1,5 @@
+import { EXPLORER_URL } from '../consts.js';
+
 export const Bold = ({
   children,
   platform,
@@ -12,13 +14,27 @@ export const Link = ({
   platform,
 }: {
   children: React.ReactNode;
-  href: string;
+  href: string | URL;
   platform: 'discord' | 'telegram';
 }) =>
   platform === 'discord' ? (
     <>
-      [{children}]({href})
+      [{children}]({href.toString()})
     </>
   ) : (
-    <a href={href}>{children}</a>
+    <a href={href.toString()}>{children}</a>
   );
+
+export const ExplorerLink = ({
+  children,
+  path,
+  platform,
+}: {
+  children: React.ReactNode;
+  path: string;
+  platform: 'discord' | 'telegram';
+}) => (
+  <Link platform={platform} href={new URL(path, EXPLORER_URL)}>
+    {children}
+  </Link>
+);
