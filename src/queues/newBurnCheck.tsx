@@ -2,7 +2,7 @@ import { BigNumber } from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { Link } from '../channels/formatting.js';
+import { ExplorerLink } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurn from '../queries/getNewBurn.js';
@@ -55,13 +55,10 @@ const buildMessages = ({
       platform,
       message: renderToStaticMarkup(
         <>
-          🔥 Burned {amount.toFixed(2)} FLIP ({valueUsd ? formatUsdValue(valueUsd) : ''})!{'\n'}
-          <Link
-            href={`https://scan.chainflip.io/events/${blockHeight}-${indexInBlock}`}
-            platform={platform}
-          >
+          🔥 Burned {amount.toFixed(2)} FLIP{valueUsd && ` (${formatUsdValue(valueUsd)})`}!{'\n'}
+          <ExplorerLink path={`/events/${blockHeight}-${indexInBlock}`} platform={platform}>
             View on explorer
-          </Link>
+          </ExplorerLink>
         </>,
       ),
       validationData: { name: 'NEW_BURN' },

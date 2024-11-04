@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { explorerClient } from '../../server.js';
 import { config } from '../newBurnCheck.js';
 
-const mockGetNewBurnResponse = (id: number, timestamp?: string) => ({
+const mockGetNewBurnResponse = (id: number, timestamp?: string, usdValue?: string | null) => ({
   burns: {
     nodes: [
       {
@@ -16,7 +16,7 @@ const mockGetNewBurnResponse = (id: number, timestamp?: string) => ({
           indexInBlock: 1,
         },
         id,
-        valueUsd: '4.21',
+        valueUsd: usdValue === undefined ? '4.21' : usdValue,
       },
     ],
   },
@@ -99,6 +99,64 @@ describe('newBurnCheck', () => {
               {
                 "data": {
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)!
+        [View on explorer](https://scan.chainflip.io/events/1-1)",
+                  "platform": "discord",
+                  "validationData": {
+                    "name": "NEW_BURN",
+                  },
+                },
+                "name": "messageRouter",
+              },
+            ],
+          ],
+        ]
+      `);
+    });
+
+    it('handles missing USD values', async () => {
+      vi.mocked(explorerClient.request).mockResolvedValueOnce(
+        mockGetNewBurnResponse(11, undefined, null),
+      );
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({ data: { lastBurnId: 10 } } as any);
+
+      expect(dispatchJobs.mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            [
+              {
+                "data": [
+                  {
+                    "data": {
+                      "lastBurnId": 11,
+                    },
+                    "name": "newBurnCheck",
+                    "opts": {
+                      "deduplication": {
+                        "id": "newBurnCheck",
+                      },
+                      "delay": 30000,
+                    },
+                  },
+                ],
+                "name": "scheduler",
+              },
+              {
+                "data": {
+                  "message": "🔥 Burned 12345.68 FLIP!
+        <a href="https://scan.chainflip.io/events/1-1">View on explorer</a>",
+                  "platform": "telegram",
+                  "validationData": {
+                    "name": "NEW_BURN",
+                  },
+                },
+                "name": "messageRouter",
+              },
+              {
+                "data": {
+                  "message": "🔥 Burned 12345.68 FLIP!
         [View on explorer](https://scan.chainflip.io/events/1-1)",
                   "platform": "discord",
                   "validationData": {

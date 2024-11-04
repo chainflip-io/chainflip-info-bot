@@ -4,7 +4,7 @@ import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } f
 import { Fragment } from 'react/jsx-runtime';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { Bold } from '../channels/formatting.js';
+import { Bold, ExplorerLink } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
@@ -55,23 +55,24 @@ const buildMessages = ({
     if (stats && 'swapVolume' in stats) {
       message = renderToStaticMarkup(
         <>
-          📊 {isDaily ? 'On' : 'For the week ending'}{' '}
-          <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had a volume of{' '}
-          <Bold platform={platform}>{formatUsdValue(stats.swapVolume)}</Bold> with{' '}
-          <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees and{' '}
-          <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> in LP fees.
+          🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
+          <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had:{'\n'}
+          📊 <Bold platform={platform}>{formatUsdValue(stats.swapVolume)}</Bold> in total volume
+          {'\n'}
+          🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
+          {'\n'}
+          🤑 <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> of LP fees
           {stats.flipBurned && (
             <>
-              {' '}
-              Also, we burned <Bold platform={platform}>{stats.flipBurned.toFixed(2)}</Bold> FLIP
-              tokens.
+              {'\n'}
+              🔥 <Bold platform={platform}>{stats.flipBurned.toFixed(2)}</Bold> FLIP burned
             </>
           )}
         </>,
       );
     }
     if (Array.isArray(stats) && 'filledAmountValueUsd' in stats[0]) {
-      const medals = ['🥇', '🥈', '🥉', '💫', '💫'];
+      const medals = ['🥇', '🥈', '🥉', '🏅', '🏅'];
       message = renderToStaticMarkup(
         <>
           {isDaily
@@ -82,8 +83,10 @@ const buildMessages = ({
               stat.filledAmountValueUsd.gt(0) && (
                 <Fragment key={stat.idSs58}>
                   {medals[index]} {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
-                  <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>(
-                  {stat.percentage}%)
+                  <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`}>
+                    <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>
+                  </ExplorerLink>{' '}
+                  ({stat.percentage}%)
                   {'\n'}
                 </Fragment>
               ),

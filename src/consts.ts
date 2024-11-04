@@ -92,3 +92,5 @@ export const knownLps: AccountInfo = {
   cFJsDTPT4Pcwco6raEz5PJC65nrdvhcu3ZoEBhtQxapsWmB8A: { name: 'Tokka Labs', twitter: '@TokkaLabs' },
   cFPJNbXH9KNP1CRejnf19ARopcS8w8c4teTz5GF3G36MZRWJG: { name: 'curiouspleb', twitter: null },
 };
+
+export const EXPLORER_URL = 'https://scan.chainflip.io';
