@@ -1,7 +1,7 @@
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { Bold } from '../channels/formatting.js';
+import { Bold, Link } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import checkForFirstNewLpDeposits, {
   getLatestDepositId,
@@ -45,7 +45,10 @@ const buildMessages = ({
         {`💸 New Liquidity Provider Detected!\n`}
         <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
         {deposit.depositAmount} {deposit.asset.toUpperCase()} (
-        {formatUsdValue(deposit.depositValueUsd)}) 🍾
+        {formatUsdValue(deposit.depositValueUsd)}) 🍾{'\n'}
+        <Link href={`https://scan.chainflip.io/lps/${deposit.lpIdSs58}`} platform={platform}>
+          View on explorer
+        </Link>
       </>,
     );
 

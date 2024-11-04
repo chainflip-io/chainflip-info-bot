@@ -55,12 +55,12 @@ const buildMessages = ({
       platform,
       message: renderToStaticMarkup(
         <>
-          🔥 Burned {amount.toFixed(2)} FLIP ({valueUsd ? formatUsdValue(valueUsd) : ''})! //{' '}
+          🔥 Burned {amount.toFixed(2)} FLIP ({valueUsd ? formatUsdValue(valueUsd) : ''})!{'\n'}
           <Link
             href={`https://scan.chainflip.io/events/${blockHeight}-${indexInBlock}`}
             platform={platform}
           >
-            view block on explorer
+            View on explorer
           </Link>
         </>,
       ),

@@ -87,7 +87,8 @@ describe('newBurnCheck', () => {
               },
               {
                 "data": {
-                  "message": "🔥 Burned 12345.68 FLIP ($4.21)! // <a href="https://scan.chainflip.io/events/1-1">view block on explorer</a>",
+                  "message": "🔥 Burned 12345.68 FLIP ($4.21)!
+        <a href="https://scan.chainflip.io/events/1-1">View on explorer</a>",
                   "platform": "telegram",
                   "validationData": {
                     "name": "NEW_BURN",
@@ -97,7 +98,8 @@ describe('newBurnCheck', () => {
               },
               {
                 "data": {
-                  "message": "🔥 Burned 12345.68 FLIP ($4.21)! // [view block on explorer](https://scan.chainflip.io/events/1-1)",
+                  "message": "🔥 Burned 12345.68 FLIP ($4.21)!
+        [View on explorer](https://scan.chainflip.io/events/1-1)",
                   "platform": "discord",
                   "validationData": {
                     "name": "NEW_BURN",
