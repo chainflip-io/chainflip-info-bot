@@ -8,7 +8,7 @@ import { config as sendMessageConfig } from './sendMessage.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { config as newLpDepositCheck } from './newLpDepositCheck.js';
-import { handleExit } from '../utils/functions.js';
+import { handleExit, logRejections } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
@@ -41,13 +41,18 @@ const createQueue = async <N extends JobName>(
   dispatchJobs: DispatchJobs,
   { name, initialize, processJob }: JobConfig<N>,
 ) => {
-  const queue = new Queue<JobData[N], void, N>(name, { connection: redis });
+  const queue = new Queue<JobData[N], void, N>(name, {
+    connection: redis,
+    defaultJobOptions: { removeOnComplete: 1000, removeOnFail: 5000 },
+  });
 
   await initialize?.(queue);
 
-  const worker = new Worker<JobData[N], void, N>(name, processJob(dispatchJobs), {
-    connection: redis,
-  });
+  const worker = new Worker<JobData[N], void, N>(
+    name,
+    logRejections(name, processJob(dispatchJobs)),
+    { connection: redis },
+  );
 
   handleExit(async () => {
     await Promise.allSettled([worker.close(), queue.close()]);

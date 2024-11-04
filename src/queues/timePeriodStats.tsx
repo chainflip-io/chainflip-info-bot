@@ -62,6 +62,12 @@ const buildMessages = ({
           🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
           {'\n'}
           🤑 <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> of LP fees
+          {stats.boostFees.gt(0) && (
+            <>
+              {'\n'}
+              ⚡️ <Bold platform={platform}>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
+            </>
+          )}
           {stats.flipBurned && (
             <>
               {'\n'}
@@ -106,7 +112,7 @@ const buildMessages = ({
   });
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
-  logger.info('Processing time period stats', job.data);
+  logger.info(job.data, 'Processing time period stats');
   const { endOfPeriod, sendWeeklySummary } = job.data;
 
   const timeElapsedSinceEndOfPeriod = Date.now() - endOfPeriod;
@@ -153,7 +159,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
 
   await dispatchJobs(jobs);
 
-  logger.info('Processed time period stats', { newJobs: jobs.length, newData: data });
+  logger.info({ newJobs: jobs.length, newData: data }, 'Processed time period stats');
 };
 
 const initialize: Initializer<typeof name> = async (queue) => {

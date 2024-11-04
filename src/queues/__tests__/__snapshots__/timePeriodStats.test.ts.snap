@@ -28,6 +28,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 📊 <strong>$4,000.00</strong> in total volume
 🌐 <strong>$3,000.00</strong> of network fees
 🤑 <strong>$2,000.00</strong> of LP fees
+⚡️ <strong>$5,000.00</strong> of boost fees
 🔥 <strong>1000.00</strong> FLIP burned",
           "platform": "telegram",
           "validationData": {
@@ -42,6 +43,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 📊 **$4,000.00** in total volume
 🌐 **$3,000.00** of network fees
 🤑 **$2,000.00** of LP fees
+⚡️ **$5,000.00** of boost fees
 🔥 **1000.00** FLIP burned",
           "platform": "discord",
           "validationData": {
@@ -82,6 +84,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 📊 <strong>$28,000.00</strong> in total volume
 🌐 <strong>$21,000.00</strong> of network fees
 🤑 <strong>$14,000.00</strong> of LP fees
+⚡️ <strong>$5,000.00</strong> of boost fees
 🔥 <strong>7000.00</strong> FLIP burned",
           "platform": "telegram",
           "validationData": {
@@ -96,6 +99,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 📊 **$28,000.00** in total volume
 🌐 **$21,000.00** of network fees
 🤑 **$14,000.00** of LP fees
+⚡️ **$5,000.00** of boost fees
 🔥 **7000.00** FLIP burned",
           "platform": "discord",
           "validationData": {
@@ -161,6 +165,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 📊 <strong>$4,000.00</strong> in total volume
 🌐 <strong>$3,000.00</strong> of network fees
 🤑 <strong>$2,000.00</strong> of LP fees
+⚡️ <strong>$5,000.00</strong> of boost fees
 🔥 <strong>1000.00</strong> FLIP burned",
           "platform": "telegram",
           "validationData": {
@@ -175,6 +180,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 📊 **$4,000.00** in total volume
 🌐 **$3,000.00** of network fees
 🤑 **$2,000.00** of LP fees
+⚡️ **$5,000.00** of boost fees
 🔥 **1000.00** FLIP burned",
           "platform": "discord",
           "validationData": {
@@ -214,7 +220,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 ]
 `;
 
-exports[`time period stats > processJob > processes a daily job without a flip burn 1`] = `
+exports[`time period stats > processJob > processes a daily job without a flip burn or boost fees 1`] = `
 [
   [
     [
