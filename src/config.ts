@@ -1,4 +1,4 @@
-import * as crypto from 'crypto';
+import assert from 'assert';
 import * as fs from 'fs/promises';
 import { z } from 'zod';
 import type { DiscordConfig } from './channels/discord.js';
@@ -26,6 +26,7 @@ export type Platform = (typeof platforms)[number];
 const channelBase = z.object({
   enabled: z.boolean().optional().default(true),
   filters: z.array(filters).min(1).optional(),
+  name: z.string(),
 });
 
 const telegramConfig = z.object({
@@ -45,6 +46,8 @@ type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { 
 
 type Channel = { key: ConfigKey; filters?: Filter[] };
 
+const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
+
 const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
   .transform(({ telegram, discord }) => {
@@ -52,28 +55,39 @@ const config = z
     const telegramChannels: Channel[] = [];
     const discordChannels: Channel[] = [];
 
+    const channelNames = new Set<string>();
+    let enabledChannelCount = 0;
+
     telegram?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        const key = `telegram:${sha1(telegram.botToken + channel.channelId.toString())}` as const;
+        const name = replaceSpaces(channel.name);
+        const key = `telegram:${name}` as const;
         telegramChannels.push({ key, filters: channel.filters });
         configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
           type: 'telegram',
         });
+        channelNames.add(name);
+        enabledChannelCount += 1;
       });
 
     discord?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        const key = `discord:${sha1(channel.webhookUrl)}` as const;
+        const name = replaceSpaces(channel.name);
+        const key = `discord:${name}` as const;
         discordChannels.push({
           key,
           filters: channel.filters,
         });
         configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
+        channelNames.add(name);
+        enabledChannelCount += 1;
       });
+
+    assert(channelNames.size === enabledChannelCount, 'channel names must be unique');
 
     return {
       configHashMap,
@@ -87,8 +101,6 @@ const config = z
 
 export type ParsedConfig = z.output<typeof config>;
 export type ConfigFile = z.input<typeof config>;
-
-const sha1 = (data: string) => crypto.createHash('sha1').update(data).digest('hex');
 
 export default class Config {
   static #config?: ParsedConfig;

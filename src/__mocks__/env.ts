@@ -12,14 +12,17 @@ export default {
         {
           webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
           filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+          name: 'discord 1',
         },
         {
           enabled: false,
           webhookUrl: 'https://discord.com/api/webhooks/1234567890/MNOPQRSTUVWXYZ',
+          name: 'discord 2',
         },
         {
           enabled: true,
           webhookUrl: 'https://discord.com/api/webhooks/1234567890/∂',
+          name: 'discord 3',
         },
       ],
     },
@@ -28,15 +31,18 @@ export default {
       channels: [
         {
           channelId: '123',
+          name: 'telegram 1',
         },
         {
           enabled: false,
           channelId: 345,
+          name: 'telegram 2',
         },
         {
           enabled: true,
           channelId: '567',
           filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+          name: 'telegram 3',
         },
       ],
     },
