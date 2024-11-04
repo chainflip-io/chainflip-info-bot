@@ -19,10 +19,10 @@
         "channelId": "564851137",
         "filters": [
           {
-            "name": "DAILY_SUMMARY"
+            "name": "DAILY_SWAP_SUMMARY"
           },
           {
-            "name": "WEEKLY_SUMMARY"
+            "name": "WEEKLY_SWAP_SUMMARY"
           }
         ]
       }

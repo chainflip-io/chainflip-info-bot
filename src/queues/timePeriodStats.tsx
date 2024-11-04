@@ -46,13 +46,13 @@ const buildMessages = ({
 }: {
   stats: SwapStats | LPFillsData[];
   date: Date;
-  name: 'DAILY_SUMMARY' | 'WEEKLY_SUMMARY';
+  name: 'DAILY_SWAP_SUMMARY' | 'WEEKLY_SWAP_SUMMARY' | 'DAILY_LP_SUMMARY' | 'WEEKLY_LP_SUMMARY';
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
   platforms.map((platform) => {
     let message = '';
-    const isDaily = name === 'DAILY_SUMMARY';
+    const isDaily = name === 'DAILY_SWAP_SUMMARY';
 
-    if (stats && 'swapVolume' in stats) {
+    if ('swapVolume' in stats) {
       message = renderToStaticMarkup(
         <>
           🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
@@ -77,7 +77,7 @@ const buildMessages = ({
         </>,
       );
     }
-    if (Array.isArray(stats) && 'filledAmountValueUsd' in stats[0]) {
+    if (Array.isArray(stats)) {
       const youTried = '🏅';
       const medals = ['🥇', '🥈', '🥉'];
       message = renderToStaticMarkup(
@@ -139,20 +139,22 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   ]);
 
   const { data, opts } = getNextJobData();
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const daily = 'DAILY_SUMMARY' as const;
+  const dailySwap = 'DAILY_SWAP_SUMMARY';
+  const dailyLp = 'DAILY_LP_SUMMARY';
   const jobs = [
     // Schedule the next job
     { name: 'scheduler', data: [{ name, data, opts }] } as const,
-    ...buildMessages({ stats: dailyVolume, date: beginningOfDay, name: daily }),
-    ...buildMessages({ stats: dailyLpFills, date: beginningOfDay, name: daily }),
+    ...buildMessages({ stats: dailyVolume, date: beginningOfDay, name: dailySwap }),
+    ...buildMessages({ stats: dailyLpFills, date: beginningOfDay, name: dailyLp }),
   ];
 
   if (maybeWeeklyVolume && maybeWeeklyLpFills) {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-    const weekly = 'WEEKLY_SUMMARY' as const;
-    const volumeOpts = { stats: maybeWeeklyVolume, date: beginningOfDay, name: weekly };
-    const lpFillsOpts = { stats: maybeWeeklyLpFills, date: beginningOfDay, name: weekly };
+    const weeklySwap = 'WEEKLY_SWAP_SUMMARY' as const;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+    const weeklyLp = 'WEEKLY_LP_SUMMARY' as const;
+    const volumeOpts = { stats: maybeWeeklyVolume, date: beginningOfDay, name: weeklySwap };
+    const lpFillsOpts = { stats: maybeWeeklyLpFills, date: beginningOfDay, name: weeklyLp };
 
     jobs.push(...buildMessages(volumeOpts), ...buildMessages(lpFillsOpts));
   }

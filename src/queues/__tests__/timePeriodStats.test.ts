@@ -139,6 +139,7 @@ describe('time period stats', () => {
           boostFees: new BigNumber(0),
         })
         .mockRejectedValue(Error('unexpected call'));
+      vi.mocked(getLpFills).mockResolvedValue([]);
 
       const dispatchJobs = vi.fn();
 

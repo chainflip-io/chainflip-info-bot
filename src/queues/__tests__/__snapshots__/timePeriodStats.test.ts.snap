@@ -32,7 +32,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🔥 <strong>1000.00</strong> FLIP burned",
           "platform": "telegram",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -47,33 +47,31 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🔥 **1000.00** FLIP burned",
           "platform": "discord",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-27 are in:
+          "message": "💼 Top LPs for the week are in:
 🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cf1234567890"><strong>cf12…7890</strong></a> (50.00%)
-🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cf0987654321"><strong>cf09…4321</strong></a> (50.00%)
 ",
           "platform": "telegram",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-27 are in:
+          "message": "💼 Top LPs for the week are in:
 🥇 $1,000.00 [**cf12…7890**](https://scan.chainflip.io/lps/cf1234567890) (50.00%)
-🥈 $1,000.00 [**cf09…4321**](https://scan.chainflip.io/lps/cf0987654321) (50.00%)
 ",
           "platform": "discord",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -88,7 +86,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🔥 <strong>7000.00</strong> FLIP burned",
           "platform": "telegram",
           "validationData": {
-            "name": "WEEKLY_SUMMARY",
+            "name": "WEEKLY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -103,7 +101,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🔥 **7000.00** FLIP burned",
           "platform": "discord",
           "validationData": {
-            "name": "WEEKLY_SUMMARY",
+            "name": "WEEKLY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -116,7 +114,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 ",
           "platform": "telegram",
           "validationData": {
-            "name": "WEEKLY_SUMMARY",
+            "name": "WEEKLY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -129,7 +127,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 ",
           "platform": "discord",
           "validationData": {
-            "name": "WEEKLY_SUMMARY",
+            "name": "WEEKLY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -171,7 +169,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 🔥 <strong>1000.00</strong> FLIP burned",
           "platform": "telegram",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -186,33 +184,31 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 🔥 **1000.00** FLIP burned",
           "platform": "discord",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-25 are in:
+          "message": "💼 Top LPs for the week are in:
 🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (50.00%)
-🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (50.00%)
 ",
           "platform": "telegram",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
       },
       {
         "data": {
-          "message": "💼 Top LPs for 2024-10-25 are in:
+          "message": "💼 Top LPs for the week are in:
 🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (50.00%)
-🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (50.00%)
 ",
           "platform": "discord",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -252,7 +248,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
 🤑 <strong>$2,000.00</strong> of LP fees",
           "platform": "telegram",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
@@ -265,27 +261,29 @@ exports[`time period stats > processJob > processes a daily job without a flip b
 🤑 **$2,000.00** of LP fees",
           "platform": "discord",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_SWAP_SUMMARY",
           },
         },
         "name": "messageRouter",
       },
       {
         "data": {
-          "message": "",
+          "message": "💼 Top LPs for the week are in:
+",
           "platform": "telegram",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",
       },
       {
         "data": {
-          "message": "",
+          "message": "💼 Top LPs for the week are in:
+",
           "platform": "discord",
           "validationData": {
-            "name": "DAILY_SUMMARY",
+            "name": "DAILY_LP_SUMMARY",
           },
         },
         "name": "messageRouter",

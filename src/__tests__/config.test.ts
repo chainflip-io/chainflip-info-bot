@@ -59,17 +59,17 @@ describe('Config', () => {
 
   describe('Config.canSend', () => {
     it('works with simple filters', () => {
-      expect(Config.canSend({ key: 'discord:1234' }, { name: 'DAILY_SUMMARY' })).toBe(true);
+      expect(Config.canSend({ key: 'discord:1234' }, { name: 'DAILY_SWAP_SUMMARY' })).toBe(true);
       expect(
         Config.canSend(
-          { filters: [{ name: 'DAILY_SUMMARY' }], key: 'discord:1234' },
-          { name: 'DAILY_SUMMARY' },
+          { filters: [{ name: 'DAILY_SWAP_SUMMARY' }], key: 'discord:1234' },
+          { name: 'DAILY_SWAP_SUMMARY' },
         ),
       ).toBe(true);
       expect(
         Config.canSend(
-          { filters: [{ name: 'DAILY_SUMMARY' }], key: 'discord:1234' },
-          { name: 'WEEKLY_SUMMARY' },
+          { filters: [{ name: 'DAILY_SWAP_SUMMARY' }], key: 'discord:1234' },
+          { name: 'WEEKLY_SWAP_SUMMARY' },
         ),
       ).toBe(false);
     });
