@@ -1,6 +1,8 @@
 import { BigNumber } from 'bignumber.js';
+import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
+import { toTokenAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
@@ -50,17 +52,8 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
   }
 `);
 
-const brokerIdSS58ToAliasMap: Record<string, string> = {
-  cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7: 'Chainflip Swapping',
-  cFJWWedhJmnsk3P9jEmCfbmgmg62ZpA7LT5WCpwLXEzXuRuc3: 'Houdini Swap',
-  cFKYhAZR1ycHnXLC1PVttiAMVRK489rKhfRXPA4v9yG4WdzqP: 'El Dorado',
-  cFN1AfNQBEBCkuNAV37WWw34bCAdiW5e5sHTY4LaaRWiBSh7B: 'Thunderhead',
-  cFLuWQcabsKpegned1ka3Qad6cTATzpgwLYZK8U5spmkG9MEf: 'THORWallet',
-  cFJjZKzA5rUTb9qkZMGfec7piCpiAQKr15B4nALzriMGQL8BE: 'THORSwap',
-};
-
 const getBrokerAlias = (broker: { alias?: string | null; idSs58?: string | null }) =>
-  broker.alias || brokerIdSS58ToAliasMap[broker.idSs58 as string];
+  broker.alias || knownBrokers[broker.idSs58 as string].name;
 
 const getBrokerIdOrAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
   broker && broker.idSs58 ? getBrokerAlias(broker) || abbreviate(broker.idSs58, 4) : 'Others';
@@ -84,7 +77,8 @@ export default async function getSwapInfo(nativeId: string) {
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
   const broker = swap.swapChannel?.broker.account;
-  const alias = getBrokerIdOrAlias(broker);
+
+  const brokerIdOrAlias = getBrokerIdOrAlias(broker);
 
   let duration;
   if (depositTimestamp && egressTimestamp) {
@@ -102,26 +96,37 @@ export default async function getSwapInfo(nativeId: string) {
     });
   }
 
-  const priceDelta = egressValueUsd
+  const priceDelta =
+    egressValueUsd && depositValueUsd && Number(egressValueUsd) - Number(depositValueUsd);
+
+  const priceDeltaPercentage = egressValueUsd
     ? new BigNumber(Number(egressValueUsd).toFixed())
         .minus(Number(depositValueUsd))
         .dividedBy(Number(depositValueUsd))
         .multipliedBy(100)
+        .toFixed(2)
     : null;
 
   const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
+  const depositAmountFormatted =
+    swap.depositAmount && toTokenAmount(swap.depositAmount, sourceAsset);
+
+  const egressAmountFormatted =
+    swap.egress?.amount && toTokenAmount(swap.egress?.amount, destinationAsset);
+
   return {
     completedEventId: swap.completedEventId,
     requestId: swap.nativeId,
-    depositAmount: swap.depositAmount,
+    depositAmountFormatted,
     depositValueUsd,
-    egressAmount: swap.egress?.amount,
+    egressAmountFormatted,
     egressValueUsd,
     duration,
     priceDelta,
-    alias,
+    priceDeltaPercentage,
+    brokerIdOrAlias,
     dcaChunks: swap.numberOfChunks,
     minPrice,
     sourceAsset,

@@ -5,6 +5,7 @@ import { config as newBurnCheckConfig } from './newBurnCheck.js';
 import { config as newSwapCheckConfig } from './newSwapCheck.js';
 import { config as schedulerConfig } from './scheduler.js';
 import { config as sendMessageConfig } from './sendMessage.js';
+import { config as swapStatusCheckConfig } from './swapStatusCheck.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { config as newLpDepositCheck } from './newLpDepositCheck.js';
@@ -102,6 +103,7 @@ export const initialize = async () => {
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
+  queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
 
   return Object.values(queues);
 };

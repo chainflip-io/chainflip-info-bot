@@ -6,6 +6,7 @@ const schema = z.object({
   HTTP_SERVER_PORT: z.coerce.number().optional().default(8080),
   EXPLORER_GATEWAY_URL: z.string(),
   LP_GATEWAY_URL: z.string(),
+  SWAP_MAX_AGE_IN_MINUTES: z.coerce.number().default(10),
   CONFIG: z.string().optional(),
 });
 
