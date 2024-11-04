@@ -13,6 +13,9 @@ import logger from '../utils/logger.js';
 
 const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
+// we want to ensure that the bullmq queues, workers, and flows are closed in
+// the reverse order that they are created to ensure that any in progress jobs
+// can complete and perform any necessary scheduling before exiting
 const cleanup: (() => Promise<any>)[] = [() => redis.quit()];
 
 handleExit(async () => {
@@ -91,13 +94,14 @@ export const initialize = async () => {
     }
   };
 
-  queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
   queues.sendMessage = await createQueue(dispatchJobs, sendMessageConfig);
+  queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
   queues.newBurnCheck = await createQueue(dispatchJobs, newBurnCheckConfig);
-  queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
+  // this queue should be shut down first
+  queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
 
   return Object.values(queues);
 };
