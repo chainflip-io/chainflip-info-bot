@@ -34,7 +34,7 @@ describe('sendMessage', () => {
       ),
     );
 
-    expect(postMock.mock.lastCall).toMatchInlineSnapshot([
+    expect(postMock.mock.lastCall).toMatchObject([
       'https://api.twitter.com/2/tweets',
       {
         text: 'hello twitter<strong>bold</strong>',
