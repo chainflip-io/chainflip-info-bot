@@ -46,6 +46,8 @@ type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { 
 
 type Channel = { key: ConfigKey; filters?: Filter[] };
 
+const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
+
 const config = z
   .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
   .transform(({ telegram, discord }) => {
@@ -59,27 +61,29 @@ const config = z
     telegram?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        const key = `telegram:${channel.name}` as const;
+        const name = replaceSpaces(channel.name);
+        const key = `telegram:${name}` as const;
         telegramChannels.push({ key, filters: channel.filters });
         configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
           type: 'telegram',
         });
-        channelNames.add(channel.name);
+        channelNames.add(name);
         enabledChannelCount += 1;
       });
 
     discord?.channels
       .filter((c) => c.enabled)
       .forEach((channel) => {
-        const key = `discord:${channel.name}` as const;
+        const name = replaceSpaces(channel.name);
+        const key = `discord:${name}` as const;
         discordChannels.push({
           key,
           filters: channel.filters,
         });
         configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
-        channelNames.add(channel.name);
+        channelNames.add(name);
         enabledChannelCount += 1;
       });
 

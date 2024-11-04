@@ -9,7 +9,7 @@ describe('Config', () => {
         [
           {
             "filters": undefined,
-            "key": "telegram:telegram 1",
+            "key": "telegram:telegram_1",
           },
           {
             "filters": [
@@ -18,7 +18,7 @@ describe('Config', () => {
                 "name": "NEW_SWAP",
               },
             ],
-            "key": "telegram:telegram 3",
+            "key": "telegram:telegram_3",
           },
         ]
       `);
@@ -31,11 +31,11 @@ describe('Config', () => {
                 "name": "NEW_SWAP",
               },
             ],
-            "key": "discord:discord 1",
+            "key": "discord:discord_1",
           },
           {
             "filters": undefined,
-            "key": "discord:discord 3",
+            "key": "discord:discord_3",
           },
         ]
       `);
@@ -43,7 +43,7 @@ describe('Config', () => {
   });
 
   describe('Config.get', () => {
-    it.each(['telegram:telegram 1', 'discord:discord 1'] as const)(
+    it.each(['telegram:telegram_1', 'discord:discord_1'] as const)(
       'returns the config for a key (%s)',
       async (key) => {
         expect(await Config.get(key)).toMatchSnapshot();

@@ -8,7 +8,7 @@ describe('sendMessage', () => {
 
     await config.processJob(vi.fn())({
       data: {
-        key: 'telegram:telegram 1',
+        key: 'telegram:telegram_1',
         message: 'Hello, world!',
       } as JobData['sendMessage'],
     } as any);
@@ -30,7 +30,7 @@ describe('sendMessage', () => {
 
     await config.processJob(vi.fn())({
       data: {
-        key: 'discord:discord 1',
+        key: 'discord:discord_1',
         message: 'Hello, world!',
       } as JobData['sendMessage'],
     } as any);

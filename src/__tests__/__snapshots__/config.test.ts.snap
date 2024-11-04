@@ -1,13 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Config > Config.get > returns the config for a key (discord:discord 1) 1`] = `
+exports[`Config > Config.get > returns the config for a key (discord:discord_1) 1`] = `
 {
   "type": "discord",
   "webhookUrl": "https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL",
 }
 `;
 
-exports[`Config > Config.get > returns the config for a key (telegram:telegram 1) 1`] = `
+exports[`Config > Config.get > returns the config for a key (telegram:telegram_1) 1`] = `
 {
   "channelId": "123",
   "token": "bot token",

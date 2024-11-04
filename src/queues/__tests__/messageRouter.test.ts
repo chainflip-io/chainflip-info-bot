@@ -19,7 +19,7 @@ describe('messageRouter', () => {
         [
           {
             "data": {
-              "key": "telegram:telegram 1",
+              "key": "telegram:telegram_1",
               "message": "Hello, world!",
             },
             "name": "sendMessage",
@@ -44,7 +44,7 @@ describe('messageRouter', () => {
         [
           {
             "data": {
-              "key": "discord:discord 3",
+              "key": "discord:discord_3",
               "message": "Hello, world!",
             },
             "name": "sendMessage",
