@@ -62,6 +62,12 @@ const buildMessages = ({
           🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
           {'\n'}
           🤑 <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> of LP fees
+          {stats.boostFees.gt(0) && (
+            <>
+              {'\n'}
+              ⚡️ <Bold platform={platform}>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
+            </>
+          )}
           {stats.flipBurned && (
             <>
               {'\n'}
@@ -72,17 +78,17 @@ const buildMessages = ({
       );
     }
     if (Array.isArray(stats) && 'filledAmountValueUsd' in stats[0]) {
-      const medals = ['🥇', '🥈', '🥉', '🏅', '🏅'];
+      const youTried = '🏅';
+      const medals = ['🥇', '🥈', '🥉'];
       message = renderToStaticMarkup(
         <>
-          {isDaily
-            ? `💼 Top LPs for ${date.toISOString().slice(0, 10)} are in \n`
-            : '💼 Top LPs for the week are in '}
+          💼 Top LPs for {isDaily ? date.toISOString().slice(0, 10) : 'the week'} are in:{'\n'}
           {stats.slice(0, isDaily ? 5 : -1).map(
             (stat, index) =>
               stat.filledAmountValueUsd.gt(0) && (
                 <Fragment key={stat.idSs58}>
-                  {medals[index]} {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
+                  {medals[index] ?? youTried}{' '}
+                  {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
                   <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`}>
                     <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>
                   </ExplorerLink>{' '}
@@ -106,7 +112,7 @@ const buildMessages = ({
   });
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
-  logger.info('Processing time period stats', job.data);
+  logger.info(job.data, 'Processing time period stats');
   const { endOfPeriod, sendWeeklySummary } = job.data;
 
   const timeElapsedSinceEndOfPeriod = Date.now() - endOfPeriod;
@@ -153,7 +159,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
 
   await dispatchJobs(jobs);
 
-  logger.info('Processed time period stats', { newJobs: jobs.length, newData: data });
+  logger.info({ newJobs: jobs.length, newData: data }, 'Processed time period stats');
 };
 
 const initialize: Initializer<typeof name> = async (queue) => {

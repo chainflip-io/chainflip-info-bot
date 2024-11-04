@@ -24,8 +24,11 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
         }
       }
     }
-    swapRequests: allSwapRequests(
-      filter: { completedBlockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
+    boostedSwapRequests: allSwapRequests(
+      filter: {
+        completedBlockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }
+        effectiveBoostFeeBps: { isNull: false }
+      }
     ) {
       nodes {
         fees: swapFeesBySwapRequestId(condition: { type: BOOST }) {
@@ -74,6 +77,7 @@ export type SwapStats = {
   networkFees: BigNumber;
   flipBurned: BigNumber | null;
   lpFees: BigNumber;
+  boostFees: BigNumber;
 };
 
 export default async function getSwapVolumeStats(start: Date, end: Date): Promise<SwapStats> {
@@ -89,9 +93,15 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     swapInfo.swaps?.aggregates?.sum?.swapOutputValueUsd ?? 0,
   );
 
-  const swapFees = swapInfo.swaps?.nodes.flatMap((swap) => swap.fees.nodes) ?? [];
+  const networkFees = (swapInfo.swaps?.nodes ?? []).reduce(
+    (total, swap) => swap.fees.nodes.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), total),
+    new BigNumber(0),
+  );
 
-  const networkFees = swapFees.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), new BigNumber(0));
+  const boostFees = (swapInfo.boostedSwapRequests?.nodes ?? []).reduce(
+    (total, req) => req.fees.nodes.reduce((acc, fee) => acc.plus(fee.valueUsd ?? 0), total),
+    new BigNumber(0),
+  );
 
   const flipBurned = BigNumber.sum(
     0,
@@ -109,5 +119,6 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     networkFees,
     flipBurned: flipBurned.gt(0) ? flipBurned : null,
     lpFees,
+    boostFees,
   };
 }

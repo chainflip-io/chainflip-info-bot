@@ -78,6 +78,7 @@ describe('time period stats', () => {
           lpFees: new BigNumber('2000.00'),
           networkFees: new BigNumber('3000.00'),
           swapVolume: new BigNumber('4000.00'),
+          boostFees: new BigNumber('5000.00'),
         })
         .mockRejectedValue(Error('unexpected call'));
 
@@ -127,7 +128,7 @@ describe('time period stats', () => {
       `);
     });
 
-    it('processes a daily job without a flip burn', async () => {
+    it('processes a daily job without a flip burn or boost fees', async () => {
       vi.setSystemTime(new Date('2024-10-25T12:34:56Z'));
       vi.mocked(getSwapVolumeStats)
         .mockResolvedValueOnce({
@@ -135,6 +136,7 @@ describe('time period stats', () => {
           lpFees: new BigNumber('2000.00'),
           networkFees: new BigNumber('3000.00'),
           swapVolume: new BigNumber('4000.00'),
+          boostFees: new BigNumber(0),
         })
         .mockRejectedValue(Error('unexpected call'));
 
@@ -157,12 +159,14 @@ describe('time period stats', () => {
           lpFees: new BigNumber('2000.00'),
           networkFees: new BigNumber('3000.00'),
           swapVolume: new BigNumber('4000.00'),
+          boostFees: new BigNumber('5000.00'),
         })
         .mockResolvedValueOnce({
           flipBurned: new BigNumber('1000.00').times(7),
           lpFees: new BigNumber('2000.00').times(7),
           networkFees: new BigNumber('3000.00').times(7),
           swapVolume: new BigNumber('4000.00').times(7),
+          boostFees: new BigNumber('5000.00'),
         })
         .mockRejectedValue(Error('unexpected call'));
 
@@ -172,11 +176,13 @@ describe('time period stats', () => {
             idSs58: 'cf1234567890',
             filledAmountValueUsd: new BigNumber('1000.00'),
             percentage: '50.00',
+            alias: undefined,
           },
           {
             idSs58: 'cf0987654321',
             filledAmountValueUsd: new BigNumber('1000.00'),
             percentage: '50.00',
+            alias: undefined,
           },
         ])
         .mockResolvedValueOnce([
