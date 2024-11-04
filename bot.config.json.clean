@@ -2,6 +2,7 @@
   "discord": {
     "channels": [
       {
+        "name": "some descriptive name",
         "webhookUrl": "https://echo.com/hello"
       }
     ]
@@ -10,9 +11,11 @@
     "botToken": "sample token",
     "channels": [
       {
+        "name": "channel 1",
         "channelId": "564851137"
       },
       {
+        "name": "channel 2",
         "channelId": "564851137",
         "filters": [
           {
