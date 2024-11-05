@@ -25,22 +25,23 @@ declare global {
 const isFresh = (swapInfo: SwapInfo) => {
   const completedAtTimestamp = swapInfo?.completedAt;
 
-  if (!completedAtTimestamp) return completedAtTimestamp;
+  if (!completedAtTimestamp) return false;
 
-  const end = new Date();
-  const timeNumber = Date.parse(completedAtTimestamp);
+  const now = new Date();
+  const end = Date.parse(completedAtTimestamp);
 
-  const completedInMinAgo = differenceInMinutes(end, timeNumber);
+  const completed = differenceInMinutes(now, end);
 
-  return completedInMinAgo <= env.SWAP_MAX_AGE_IN_MINUTES;
+  return completed <= env.SWAP_MAX_AGE_IN_MINUTES;
 };
 
 const getSwapStatus = (swapInfo: SwapInfo) => {
   if (!swapInfo) return;
 
-  if (swapInfo.completedEventId && isFresh(swapInfo)) return 'fresh';
-  else if (swapInfo.completedEventId && !isFresh(swapInfo)) return 'stale';
-  else return 'pending';
+  if (swapInfo.completedEventId) {
+    return isFresh(swapInfo) ? 'fresh' : 'stale';
+  }
+  return 'pending';
 };
 
 const emoji = (depositValueUsd: number) => {
@@ -71,12 +72,12 @@ const buildMessageData = ({
       {'\n'}
       📥{' '}
       <Bold platform={platform}>
-        {swapInfo.depositAmountFormatted} {swapInfo.sourceAsset.toUpperCase()}
+        {swapInfo.depositAmount} {swapInfo.sourceAsset.toUpperCase()}
       </Bold>{' '}
       ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
       📥{' '}
       <Bold platform={platform}>
-        {swapInfo.egressAmountFormatted} {swapInfo.destinationAsset.toUpperCase()}
+        {swapInfo.egressAmount} {swapInfo.destinationAsset.toUpperCase()}
       </Bold>{' '}
       ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
       ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
@@ -132,7 +133,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const jobs = [];
 
-  if (!getSwapStatus(swapInfo) || Number(swapInfo?.egressAmountFormatted) <= 0) return;
+  if (!getSwapStatus(swapInfo) || Number(swapInfo?.egressAmount) <= 0) return;
 
   if (getSwapStatus(swapInfo) === 'fresh') {
     jobs.push(buildMessageData({ swapInfo, platform: 'discord' }));

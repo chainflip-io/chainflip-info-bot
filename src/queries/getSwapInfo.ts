@@ -160,18 +160,16 @@ export default async function getSwapInfo(nativeId: string) {
   const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
-  const depositAmountFormatted =
-    swap.depositAmount && toTokenAmount(swap.depositAmount, sourceAsset);
+  const depositAmount = swap.depositAmount && toTokenAmount(swap.depositAmount, sourceAsset);
 
-  const egressAmountFormatted =
-    swap.egress?.amount && toTokenAmount(swap.egress?.amount, destinationAsset);
+  const egressAmount = swap.egress?.amount && toTokenAmount(swap.egress?.amount, destinationAsset);
 
   return {
     completedEventId,
     requestId: swap.nativeId,
-    depositAmountFormatted,
+    depositAmount,
     depositValueUsd,
-    egressAmountFormatted,
+    egressAmount,
     egressValueUsd,
     duration,
     priceDelta,
