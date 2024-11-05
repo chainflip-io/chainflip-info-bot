@@ -27,16 +27,5 @@
         ]
       }
     ]
-  },
-  "twitter": {
-    "channels": [
-      {
-        "name": "channel 1",
-        "consumerKey": "qh6xfkFju2IT3urElMrr4xVCx",
-        "consumerKeySecret": "p1OW7MoIeCeBArGkyYWWAkPmkQ44ZDNri9v5CrOVjTghtU21W4",
-        "oauthKey": "Vmk3VlZJRU5fa25WSE9FZTFrM246MTpjaQ",
-        "oauthKeySecret": "8BdFLvE1IE8AKi0aqiQQnbJCSYdhpWlt-9Dl3Q5Apc-YGumBck"
-      }
-    ]
   }
 }
