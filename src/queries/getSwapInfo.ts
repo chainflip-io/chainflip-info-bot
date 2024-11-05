@@ -32,6 +32,8 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         }
         fokMinPriceX128
         issuedBlockTimestamp
+        numberOfChunks
+        chunkIntervalBlocks
       }
       preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {
         stateChainTimestamp
@@ -44,8 +46,12 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           timestamp
         }
       }
+      executedSwaps: swapsBySwapRequestId(filter: { swapExecutedEventId: { isNull: false } }) {
+        totalCount
+      }
       sourceChain
       numberOfChunks
+      chunkIntervalBlocks
       destinationAsset
       sourceAsset
     }
@@ -79,8 +85,14 @@ export default async function getSwapInfo(nativeId: string) {
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
   const broker = swap.swapChannel?.broker.account;
+  const numberOfChunks = swap.numberOfChunks ?? swap.swapChannel?.numberOfChunks ?? 1;
+  const numberOfExecutedChunks = swap.executedSwaps.totalCount;
+  const chunkIntervalBlocks = swap.chunkIntervalBlocks ?? swap.swapChannel?.chunkIntervalBlocks;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
+
+  const dcaChunks =
+    chunkIntervalBlocks && numberOfExecutedChunks && `${numberOfExecutedChunks}/${numberOfChunks}`;
 
   let duration;
   if (depositTimestamp && egressTimestamp) {
@@ -129,7 +141,7 @@ export default async function getSwapInfo(nativeId: string) {
     priceDelta,
     priceDeltaPercentage,
     brokerIdAndAlias,
-    dcaChunks: swap.numberOfChunks,
+    dcaChunks,
     minPrice,
     sourceAsset,
     destinationAsset,

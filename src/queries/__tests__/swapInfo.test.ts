@@ -16,7 +16,7 @@ describe('swapInfo', () => {
         },
         "completedAt": "2024-10-25T12:41:30+00:00",
         "completedEventId": "5116679443",
-        "dcaChunks": 2,
+        "dcaChunks": "2/2",
         "depositAmountFormatted": "5000",
         "depositValueUsd": "5568.071581114500000000000000000000",
         "destinationAsset": "Usdt",
