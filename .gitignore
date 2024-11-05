@@ -131,3 +131,4 @@ dist
 .pnp.*
 
 bot.config.json
+.DS_Store
