@@ -2,6 +2,7 @@ import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, Link } from '../channels/formatting.js';
+import { EXPLORER_URL } from '../consts.js';
 import env from '../env.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
 import { formatUsdValue } from '../utils/strings.js';
@@ -59,62 +60,63 @@ const buildMessageData = ({
   swapInfo: SwapInfo;
   platform: 'discord' | 'telegram';
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }> => {
-  const message = swapInfo
-    ? renderToStaticMarkup(
-        <>
-          {emoji(Number(swapInfo.depositValueUsd)) && ' '}Swap
-          <Bold platform={platform}>
+  const message = renderToStaticMarkup(
+    <>
+      {emoji(Number(swapInfo.depositValueUsd)) && ' '}Swap
+      <Bold platform={platform}>
+        <Link platform={platform} href={`${EXPLORER_URL}/swaps/${swapInfo.requestId}`}>
+          #{swapInfo.requestId}
+        </Link>
+      </Bold>
+      {'\n'}
+      📥{' '}
+      <Bold platform={platform}>
+        {swapInfo.depositAmountFormatted} {swapInfo.sourceAsset.toUpperCase()}
+      </Bold>{' '}
+      ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
+      📥{' '}
+      <Bold platform={platform}>
+        {swapInfo.egressAmountFormatted} {swapInfo.destinationAsset.toUpperCase()}
+      </Bold>{' '}
+      ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
+      ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
+      {'\n'}
+      {swapInfo.priceDeltaPercentage && Number(swapInfo.priceDeltaPercentage) < 0
+        ? '🔴'
+        : '🟢'}{' '}
+      Delta: <Bold platform={platform}>{formatUsdValue(swapInfo.priceDelta)}</Bold> (
+      {swapInfo.priceDeltaPercentage}%){'\n'}
+      🏦 via{' '}
+      <Bold platform={platform}>
+        {swapInfo.brokerIdAndAlias.brokerId ? (
+          <>
             <Link
               platform={platform}
-              href={`https://scan.chainflip.io/swaps/${swapInfo.requestId}`}
+              href={`${EXPLORER_URL}/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
             >
-              #{swapInfo.requestId}
+              {swapInfo.brokerIdAndAlias.alias}
             </Link>
-          </Bold>
+          </>
+        ) : (
+          <>{swapInfo.brokerIdAndAlias.alias}</>
+        )}
+      </Bold>
+      {'\n'}
+      {swapInfo.dcaChunks && (
+        <>
+          📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
           {'\n'}
-          📥{' '}
-          <Bold platform={platform}>
-            {swapInfo.depositAmountFormatted} {swapInfo.sourceAsset.toUpperCase()}
-          </Bold>{' '}
-          ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
-          📥{' '}
-          <Bold platform={platform}>
-            {swapInfo.egressAmountFormatted} {swapInfo.destinationAsset.toUpperCase()}
-          </Bold>{' '}
-          ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
-          ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
+        </>
+      )}
+      {swapInfo.effectiveBoostFeeBps && swapInfo.boostFee && (
+        <>
+          ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
+          <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
           {'\n'}
-          {swapInfo.priceDeltaPercentage && Number(swapInfo.priceDeltaPercentage) < 0
-            ? '🔴'
-            : '🟢'}{' '}
-          Delta: <Bold platform={platform}>{formatUsdValue(swapInfo.priceDelta)}</Bold> (
-          {swapInfo.priceDeltaPercentage}%){'\n'}
-          🏦 via{' '}
-          <Bold platform={platform}>
-            {swapInfo.brokerIdAndAlias.brokerId ? (
-              <>
-                <Link
-                  platform={platform}
-                  href={`https://scan.chainflip.io/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
-                >
-                  {swapInfo.brokerIdAndAlias.alias}
-                </Link>
-              </>
-            ) : (
-              <>{swapInfo.brokerIdAndAlias.alias}</>
-            )}
-          </Bold>
-          {'\n'}
-          {swapInfo.dcaChunks && (
-            <>
-              📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
-              {'\n'}
-            </>
-          )}
-        </>,
-      )
-    : '';
-
+        </>
+      )}
+    </>,
+  );
   return {
     name: 'messageRouter' as const,
     data: {

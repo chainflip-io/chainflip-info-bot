@@ -18,17 +18,32 @@
       },
       "fokMinPriceX128": "370463044445583550774471879",
       "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00",
-      "numberOfChunks": 2,
-      "chunkIntervalBlocks": 2
+      "numberOfChunks": 2
     },
     "preDepositBlock": { "stateChainTimestamp": "2024-10-25T12:39:30+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-10-25T12:39:42+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-10-25T12:41:30+00:00" } },
     "executedSwaps": { "totalCount": 2 },
+    "fees": {
+      "nodes": [
+        {
+          "valueUsd": "1.380174263800000000000000000000",
+          "amount": "1239364691827602306",
+          "asset": "Flip",
+          "type": "INGRESS"
+        },
+        {
+          "valueUsd": "1.827632327800000000000000000000",
+          "amount": "1829168",
+          "asset": "Usdt",
+          "type": "EGRESS"
+        }
+      ]
+    },
     "sourceChain": "Ethereum",
     "numberOfChunks": 2,
-    "chunkIntervalBlocks": 2,
     "destinationAsset": "Usdt",
-    "sourceAsset": "Flip"
+    "sourceAsset": "Flip",
+    "effectiveBoostFeeBps": null
   }
 }
