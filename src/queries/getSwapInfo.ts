@@ -71,9 +71,9 @@ export default async function getSwapInfo(nativeId: string) {
     nativeId,
   });
 
-  const { swap } = data;
-  if (!swap) return null;
+  if (!data || !data.swap) throw new Error('Can not find swap request');
 
+  const { swap } = data;
   const { sourceChain, sourceAsset, destinationAsset } = swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;

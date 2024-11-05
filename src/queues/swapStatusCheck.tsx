@@ -45,18 +45,11 @@ const getSwapStatus = (swapInfo: SwapInfo) => {
 const emoji = (depositValueUsd: number) => {
   if (depositValueUsd == null) return;
 
-  switch (true) {
-    case depositValueUsd > 100_000:
-      return '🐳';
-    case depositValueUsd > 50_000:
-      return '🦈';
-    case depositValueUsd > 25_000:
-      return '🦀';
-    case depositValueUsd > 10_000:
-      return '🐟';
-    default:
-      return '🦐';
-  }
+  if (depositValueUsd > 100_000) return '🐳';
+  if (depositValueUsd > 50_000) return '🦈';
+  if (depositValueUsd > 25_000) return '🦀';
+  if (depositValueUsd > 10_000) return '🐟';
+  return '🦐';
 };
 
 const buildMessageData = ({
