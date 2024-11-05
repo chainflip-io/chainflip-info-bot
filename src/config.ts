@@ -3,6 +3,7 @@ import * as fs from 'fs/promises';
 import { z } from 'zod';
 import type { DiscordConfig } from './channels/discord.js';
 import type { TelegramConfig } from './channels/telegram.js';
+import type { TwitterConfig } from './channels/twitter.js';
 import env from './env.js';
 
 const filters = z.union([
@@ -21,7 +22,7 @@ export type ValidationData =
   | Exclude<Filter, { name: 'NEW_SWAP' }>
   | { name: 'NEW_SWAP'; usdValue: number };
 
-export const platforms = ['telegram', 'discord'] as const;
+export const platforms = ['telegram', 'discord', 'twitter'] as const;
 
 export type Platform = (typeof platforms)[number];
 
@@ -42,20 +43,44 @@ const discordConfig = z.object({
   channels: z.array(z.object({ webhookUrl: z.string().url() }).and(channelBase)).min(1),
 });
 
-export type ConfigKey = `${'telegram' | 'discord'}:${string}`;
+const twitterConfig = z.object({
+  channels: z
+    .array(
+      z
+        .object({
+          name: z.string(),
+          consumerKey: z.string(),
+          consumerKeySecret: z.string(),
+          oauthKey: z.string(),
+          oauthKeySecret: z.string(),
+        })
+        .and(channelBase),
+    )
+    .min(1),
+});
 
-type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { type: 'discord' });
+export type ConfigKey = `${'telegram' | 'discord' | 'twitter'}:${string}`;
+
+type ConfigValue =
+  | (TelegramConfig & { type: 'telegram' })
+  | (DiscordConfig & { type: 'discord' })
+  | (TwitterConfig & { type: 'twitter' });
 
 type Channel = { key: ConfigKey; filters?: Filter[] };
 
 const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
 
 const config = z
-  .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
-  .transform(({ telegram, discord }) => {
+  .object({
+    telegram: telegramConfig.optional(),
+    discord: discordConfig.optional(),
+    twitter: twitterConfig.optional(),
+  })
+  .transform(({ telegram, discord, twitter }) => {
     const configHashMap = new Map<Config, ConfigValue>();
     const telegramChannels: Channel[] = [];
     const discordChannels: Channel[] = [];
+    const twitterChannels: Channel[] = [];
 
     const channelNames = new Set<string>();
     let enabledChannelCount = 0;
@@ -89,6 +114,26 @@ const config = z
         enabledChannelCount += 1;
       });
 
+    twitter?.channels
+      .filter((c) => c.enabled)
+      .forEach((channel) => {
+        const name = replaceSpaces(channel.name);
+        const key = `twitter:${name}` as const;
+        twitterChannels.push({
+          key,
+          filters: channel.filters,
+        });
+        configHashMap.set(key, {
+          consumerKey: channel.consumerKey,
+          consumerKeySecret: channel.consumerKeySecret,
+          oauthKey: channel.oauthKey,
+          oauthKeySecret: channel.oauthKeySecret,
+          type: 'twitter',
+        });
+        channelNames.add(name);
+        enabledChannelCount += 1;
+      });
+
     assert(channelNames.size === enabledChannelCount, 'channel names must be unique');
 
     return {
@@ -98,6 +143,7 @@ const config = z
       // exposing the actual webhooks and tokens to redis
       telegram: telegramChannels,
       discord: discordChannels,
+      twitter: twitterChannels,
     };
   });
 
@@ -128,7 +174,6 @@ export default class Config {
 
   static async getChannels(platform: Platform): Promise<Channel[] | undefined> {
     const config = await this.#load();
-
     return config[platform];
   }
 

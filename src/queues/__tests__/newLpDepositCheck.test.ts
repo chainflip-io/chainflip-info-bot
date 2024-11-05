@@ -99,6 +99,18 @@ describe('newLpDepositCheck', () => {
                 },
                 "name": "messageRouter",
               },
+              {
+                "data": {
+                  "message": "💸 New Liquidity Provider Detected!
+        cf12…test deposited 1.523 ETH ($999.00) 🍾
+        View on explorer",
+                  "platform": "twitter",
+                  "validationData": {
+                    "name": "NEW_LP",
+                  },
+                },
+                "name": "messageRouter",
+              },
             ],
           ],
         ]
