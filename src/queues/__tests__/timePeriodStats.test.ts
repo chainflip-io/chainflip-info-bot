@@ -88,13 +88,67 @@ describe('time period stats', () => {
             idSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
             alias: 'ChainflipGod',
             filledAmountValueUsd: new BigNumber('1000.00'),
-            percentage: '50.00',
+            percentage: '10.00',
           },
           {
             idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
             alias: undefined,
             filledAmountValueUsd: new BigNumber('1000.00'),
-            percentage: '50.00',
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
+          },
+          {
+            idSs58: 'cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t',
+            alias: undefined,
+            filledAmountValueUsd: new BigNumber('1000.00'),
+            percentage: '10.00',
           },
         ])
         .mockRejectedValue(Error('unexpected call'));
@@ -171,42 +225,74 @@ describe('time period stats', () => {
         })
         .mockRejectedValue(Error('unexpected call'));
 
-      vi.mocked(getLpFills)
-        .mockResolvedValueOnce([
-          {
-            idSs58: 'cf1234567890',
-            filledAmountValueUsd: new BigNumber('1000.00'),
-            percentage: '50.00',
-            alias: undefined,
-          },
-          {
-            idSs58: 'cf0987654321',
-            filledAmountValueUsd: new BigNumber('1000.00'),
-            percentage: '50.00',
-            alias: undefined,
-          },
-        ])
-        .mockResolvedValueOnce([
-          {
-            idSs58: 'cf1234567890',
-            alias: 'ChainflipGod',
-            filledAmountValueUsd: new BigNumber('2000.00'),
-            percentage: '49.00',
-          },
-          {
-            idSs58: 'cf0987654321',
-            alias: undefined,
-            filledAmountValueUsd: new BigNumber('2000.00'),
-            percentage: '49.00',
-          },
-          {
-            idSs58: 'cfxxxxxxxxxxx',
-            alias: undefined,
-            filledAmountValueUsd: new BigNumber('10.00'),
-            percentage: '1.00',
-          },
-        ])
-        .mockRejectedValue(Error('unexpected call'));
+      vi.mocked(getLpFills).mockResolvedValue([
+        {
+          idSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
+          alias: 'ChainflipGod',
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+        {
+          idSs58: 'cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t',
+          alias: undefined,
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+        },
+      ]);
 
       const dispatchJobs = vi.fn();
 

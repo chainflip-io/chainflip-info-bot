@@ -54,8 +54,12 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in:
-🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cf1234567890"><strong>cf12…7890</strong></a> (50.00%)
+          "message": "💼 Top LPs for 2024-10-27 are in:
+🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
+🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
+🥉 $1,000.00 <a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN"><strong>cFKj…UgyN</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg"><strong>cFJX…rzLg</strong></a> (10.00%)
 ",
           "platform": "telegram",
           "validationData": {
@@ -66,8 +70,12 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in:
-🥇 $1,000.00 [**cf12…7890**](https://scan.chainflip.io/lps/cf1234567890) (50.00%)
+          "message": "💼 Top LPs for 2024-10-27 are in:
+🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (10.00%)
+🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
+🥉 $1,000.00 [**cFKj…UgyN**](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN) (10.00%)
+🏅 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
+🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)
 ",
           "platform": "discord",
           "validationData": {
@@ -109,8 +117,16 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "message": "💼 Top LPs for the week are in:
-🥇 $2,000.00 <a href="https://scan.chainflip.io/lps/cf1234567890"><strong>ChainflipGod</strong></a> (49.00%)
-🥈 $2,000.00 <a href="https://scan.chainflip.io/lps/cf0987654321"><strong>cf09…4321</strong></a> (49.00%)
+🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
+🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
+🥉 $1,000.00 <a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN"><strong>cFKj…UgyN</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg"><strong>cFJX…rzLg</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB"><strong>cFMx…YwvB</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz"><strong>cFMB…R4Kz</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP"><strong>cFLE…kcPP</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j"><strong>cFLG…gq7j</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t"><strong>cFLT…nn5t</strong></a> (10.00%)
 ",
           "platform": "telegram",
           "validationData": {
@@ -122,8 +138,16 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "message": "💼 Top LPs for the week are in:
-🥇 $2,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cf1234567890) (49.00%)
-🥈 $2,000.00 [**cf09…4321**](https://scan.chainflip.io/lps/cf0987654321) (49.00%)
+🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (10.00%)
+🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
+🥉 $1,000.00 [**cFKj…UgyN**](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN) (10.00%)
+🏅 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
+🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)
+🏅 $1,000.00 [**cFMx…YwvB**](https://scan.chainflip.io/lps/cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB) (10.00%)
+🏅 $1,000.00 [**cFMB…R4Kz**](https://scan.chainflip.io/lps/cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz) (10.00%)
+🏅 $1,000.00 [**cFLE…kcPP**](https://scan.chainflip.io/lps/cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP) (10.00%)
+🏅 $1,000.00 [**cFLG…gq7j**](https://scan.chainflip.io/lps/cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j) (10.00%)
+🏅 $1,000.00 [**cFLT…nn5t**](https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t) (10.00%)
 ",
           "platform": "discord",
           "validationData": {
@@ -191,8 +215,12 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in:
-🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (50.00%)
+          "message": "💼 Top LPs for 2024-10-25 are in:
+🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
+🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
+🥉 $1,000.00 <a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN"><strong>cFKj…UgyN</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
+🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg"><strong>cFJX…rzLg</strong></a> (10.00%)
 ",
           "platform": "telegram",
           "validationData": {
@@ -203,8 +231,12 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in:
-🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (50.00%)
+          "message": "💼 Top LPs for 2024-10-25 are in:
+🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (10.00%)
+🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
+🥉 $1,000.00 [**cFKj…UgyN**](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN) (10.00%)
+🏅 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
+🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)
 ",
           "platform": "discord",
           "validationData": {
@@ -268,7 +300,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in:
+          "message": "💼 Top LPs for 2024-10-25 are in:
 ",
           "platform": "telegram",
           "validationData": {
@@ -279,7 +311,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
       },
       {
         "data": {
-          "message": "💼 Top LPs for the week are in:
+          "message": "💼 Top LPs for 2024-10-25 are in:
 ",
           "platform": "discord",
           "validationData": {
