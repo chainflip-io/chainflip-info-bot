@@ -3,6 +3,7 @@ import * as fs from 'fs/promises';
 import { z } from 'zod';
 import type { DiscordConfig } from './channels/discord.js';
 import type { TelegramConfig } from './channels/telegram.js';
+import type { TwitterConfig } from './channels/twitter.js';
 import env from './env.js';
 
 const filters = z.union([
@@ -42,16 +43,29 @@ const discordConfig = z.object({
   channels: z.array(z.object({ webhookUrl: z.string().url() }).and(channelBase)).min(1),
 });
 
+const twitterConfig = z.object({
+  consumerKey: z.string(),
+  consumerKeySecret: z.string(),
+  oathToken: z.string(),
+  oathTokenSecret: z.string(),
+});
+
 export type ConfigKey = `${'telegram' | 'discord'}:${string}`;
 
-type ConfigValue = (TelegramConfig & { type: 'telegram' }) | (DiscordConfig & { type: 'discord' });
+type ConfigValue =
+  | (TelegramConfig & { type: 'telegram' })
+  | ((DiscordConfig & { type: 'discord' }) | (TwitterConfig & { type: 'twitter' }));
 
 type Channel = { key: ConfigKey; filters?: Filter[] };
 
 const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
 
 const config = z
-  .object({ telegram: telegramConfig.optional(), discord: discordConfig.optional() })
+  .object({
+    telegram: telegramConfig.optional(),
+    discord: discordConfig.optional(),
+    twitter: twitterConfig.optional(),
+  })
   .transform(({ telegram, discord }) => {
     const configHashMap = new Map<Config, ConfigValue>();
     const telegramChannels: Channel[] = [];
