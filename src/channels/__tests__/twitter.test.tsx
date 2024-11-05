@@ -34,6 +34,8 @@ describe('sendMessage', () => {
       ),
     );
 
+    expect(postMock).toHaveBeenCalledTimes(1);
+
     expect(postMock.mock.lastCall).toMatchObject([
       'https://api.twitter.com/2/tweets',
       {
