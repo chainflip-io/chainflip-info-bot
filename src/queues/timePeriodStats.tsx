@@ -1,4 +1,6 @@
+import { toUpperCase } from '@chainflip/utils/string';
 import { utc } from '@date-fns/utc';
+import assert from 'assert';
 import { JobsOptions, UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { Fragment } from 'react/jsx-runtime';
@@ -42,17 +44,19 @@ const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => 
 const buildMessages = ({
   stats,
   date,
-  name,
+  period,
 }: {
   stats: SwapStats | LPFillsData[];
   date: Date;
-  name: 'DAILY_SWAP_SUMMARY' | 'WEEKLY_SWAP_SUMMARY' | 'DAILY_LP_SUMMARY' | 'WEEKLY_LP_SUMMARY';
+  period: 'daily' | 'weekly';
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
   platforms.map((platform) => {
     let message = '';
-    const isDaily = name === 'DAILY_SWAP_SUMMARY';
+    const isDaily = period === 'daily';
+    let name;
 
     if ('swapVolume' in stats) {
+      name = `${toUpperCase(period)}_SWAP_SUMMARY` as const;
       message = renderToStaticMarkup(
         <>
           🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
@@ -78,6 +82,7 @@ const buildMessages = ({
       );
     }
     if (Array.isArray(stats)) {
+      name = `${toUpperCase(period)}_LP_SUMMARY` as const;
       const youTried = '🏅';
       const medals = ['🥇', '🥈', '🥉'];
       message = renderToStaticMarkup(
@@ -100,6 +105,8 @@ const buildMessages = ({
         </>,
       );
     }
+
+    assert(name, 'name must be defined');
 
     return {
       name: 'messageRouter' as const,
@@ -139,24 +146,18 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   ]);
 
   const { data, opts } = getNextJobData();
-  const dailySwap = 'DAILY_SWAP_SUMMARY';
-  const dailyLp = 'DAILY_LP_SUMMARY';
   const jobs = [
     // Schedule the next job
     { name: 'scheduler', data: [{ name, data, opts }] } as const,
-    ...buildMessages({ stats: dailyVolume, date: beginningOfDay, name: dailySwap }),
-    ...buildMessages({ stats: dailyLpFills, date: beginningOfDay, name: dailyLp }),
+    ...buildMessages({ stats: dailyVolume, date: beginningOfDay, period: 'daily' }),
+    ...buildMessages({ stats: dailyLpFills, date: beginningOfDay, period: 'daily' }),
   ];
 
   if (maybeWeeklyVolume && maybeWeeklyLpFills) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-    const weeklySwap = 'WEEKLY_SWAP_SUMMARY' as const;
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-    const weeklyLp = 'WEEKLY_LP_SUMMARY' as const;
-    const volumeOpts = { stats: maybeWeeklyVolume, date: beginningOfDay, name: weeklySwap };
-    const lpFillsOpts = { stats: maybeWeeklyLpFills, date: beginningOfDay, name: weeklyLp };
-
-    jobs.push(...buildMessages(volumeOpts), ...buildMessages(lpFillsOpts));
+    jobs.push(
+      ...buildMessages({ stats: maybeWeeklyVolume, date: beginningOfDay, period: 'weekly' }),
+      ...buildMessages({ stats: maybeWeeklyLpFills, date: beginningOfDay, period: 'weekly' }),
+    );
   }
 
   await dispatchJobs(jobs);
