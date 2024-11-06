@@ -17,8 +17,7 @@
         }
       },
       "fokMinPriceX128": "370463044445583550774471879",
-      "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00",
-      "numberOfChunks": 2
+      "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00"
     },
     "preDepositBlock": { "stateChainTimestamp": "2024-10-25T12:39:30+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-10-25T12:39:42+00:00" },

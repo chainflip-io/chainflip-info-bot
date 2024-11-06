@@ -33,7 +33,6 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         }
         fokMinPriceX128
         issuedBlockTimestamp
-        numberOfChunks
       }
       preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {
         stateChainTimestamp
