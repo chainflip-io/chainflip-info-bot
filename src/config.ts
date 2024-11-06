@@ -174,6 +174,7 @@ export default class Config {
 
   static async getChannels(platform: Platform): Promise<Channel[] | undefined> {
     const config = await this.#load();
+
     return config[platform];
   }
 

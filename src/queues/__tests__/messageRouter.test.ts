@@ -38,6 +38,7 @@ describe('messageRouter', () => {
         validationData: { name: 'DAILY_SWAP_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
+
     expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
       [
         [
@@ -53,7 +54,7 @@ describe('messageRouter', () => {
     `);
   });
 
-  it.only('sends messages to the correct twitter channels', async () => {
+  it('sends messages to the correct twitter channels', async () => {
     const dispatchJobs = vi.fn();
 
     await config.processJob(dispatchJobs)({
