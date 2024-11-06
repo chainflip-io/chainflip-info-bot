@@ -38,13 +38,38 @@ describe('messageRouter', () => {
         validationData: { name: 'DAILY_SWAP_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
-
     expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
       [
         [
           {
             "data": {
               "key": "discord:discord_3",
+              "message": "Hello, world!",
+            },
+            "name": "sendMessage",
+          },
+        ],
+      ]
+    `);
+  });
+
+  it.only('sends messages to the correct twitter channels', async () => {
+    const dispatchJobs = vi.fn();
+
+    await config.processJob(dispatchJobs)({
+      data: {
+        platform: 'twitter',
+        message: 'Hello, world!',
+        validationData: { name: 'DAILY_SWAP_SUMMARY' },
+      } as JobData['messageRouter'],
+    } as any);
+
+    expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
+      [
+        [
+          {
+            "data": {
+              "key": "twitter:twitter_1",
               "message": "Hello, world!",
             },
             "name": "sendMessage",

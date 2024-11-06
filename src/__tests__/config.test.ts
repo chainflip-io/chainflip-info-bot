@@ -43,12 +43,7 @@ describe('Config', () => {
       expect(await Config.getChannels('twitter')).toMatchInlineSnapshot(`
         [
           {
-            "filters": [
-              {
-                "minUsdValue": 1,
-                "name": "NEW_SWAP",
-              },
-            ],
+            "filters": undefined,
             "key": "twitter:twitter_1",
           },
         ]
