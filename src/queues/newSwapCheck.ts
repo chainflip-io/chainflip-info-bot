@@ -30,7 +30,10 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  logger.info('Checking for new swap requests', job.data);
+  logger.info(
+    `Checking for new swap requests, lastSwapRequestId: ${job.data.lastSwapRequestId}`,
+    job.data,
+  );
   const newSwapRequests = await getNewSwapRequests(job.data.lastSwapRequestId);
 
   const swapRequestJobs = newSwapRequests.map((id) => ({
@@ -41,12 +44,13 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const latestSwapRequestId = newSwapRequests
     .map((id) => BigInt(id))
     .reduce((a, b) => (a > b ? a : b), BigInt(job.data.lastSwapRequestId));
+  logger.info(`Current latest swapRequestId: ${latestSwapRequestId}`);
 
   const data = getNextJobData(latestSwapRequestId.toString());
 
   await dispatchJobs([{ name: 'scheduler', data: [data] }, ...swapRequestJobs]);
 
-  logger.info(`Found ${newSwapRequests.length} new swap requests`);
+  logger.info(`Found ${newSwapRequests.length} [${newSwapRequests.toString()}] new swap requests`);
 };
 
 const initialize: Initializer<Name> = async (queue) => {

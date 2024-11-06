@@ -6,6 +6,7 @@ export default {
   HTTP_SERVER_PORT: 8080,
   EXPLORER_GATEWAY_URL: 'https://chainflap-explor.org/graphql',
   LP_GATEWAY_URL: 'https://chainflap-lp.org/graphql',
+  SWAP_MAX_AGE_IN_MINUTES: 10,
   CONFIG: JSON.stringify({
     discord: {
       channels: [

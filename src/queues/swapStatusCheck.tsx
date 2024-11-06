@@ -2,9 +2,11 @@ import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, Link } from '../channels/formatting.js';
+import { platforms } from '../config.js';
 import { EXPLORER_URL } from '../consts.js';
 import env from '../env.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
+import logger from '../utils/logger.js';
 import { formatUsdValue } from '../utils/strings.js';
 
 const name = 'swapStatusCheck';
@@ -27,12 +29,9 @@ const isFresh = (swapInfo: SwapInfo) => {
 
   if (!completedAtTimestamp) return false;
 
-  const now = new Date();
-  const end = Date.parse(completedAtTimestamp);
-
-  const completed = differenceInMinutes(now, end);
-
-  return completed <= env.SWAP_MAX_AGE_IN_MINUTES;
+  return (
+    differenceInMinutes(new Date(), Date.parse(completedAtTimestamp)) <= env.SWAP_MAX_AGE_IN_MINUTES
+  );
 };
 
 const getSwapStatus = (swapInfo: SwapInfo) => {
@@ -54,93 +53,123 @@ const emoji = (depositValueUsd: number) => {
   return '🦐';
 };
 
+const formatDeltaPrice = (value: string, deltaSign: boolean) => {
+  return deltaSign ? '-' + value : value;
+};
+
 const buildMessageData = ({
   swapInfo,
-  platform,
 }: {
   swapInfo: SwapInfo;
-  platform: 'discord' | 'telegram';
-}): Extract<DispatchJobArgs, { name: 'messageRouter' }> => {
-  const message = renderToStaticMarkup(
-    <>
-      {emoji(Number(swapInfo.depositValueUsd)) && ' '}Swap
-      <Bold platform={platform}>
-        <Link platform={platform} href={`${EXPLORER_URL}/swaps/${swapInfo.requestId}`}>
-          #{swapInfo.requestId}
-        </Link>
-      </Bold>
-      {'\n'}
-      📥{' '}
-      <Bold platform={platform}>
-        {swapInfo.depositAmount} {swapInfo.sourceAsset.toUpperCase()}
-      </Bold>{' '}
-      ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
-      📥{' '}
-      <Bold platform={platform}>
-        {swapInfo.egressAmount} {swapInfo.destinationAsset.toUpperCase()}
-      </Bold>{' '}
-      ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
-      ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
-      {'\n'}
-      {swapInfo.priceDeltaPercentage && Number(swapInfo.priceDeltaPercentage) < 0
-        ? '🔴'
-        : '🟢'}{' '}
-      Delta: <Bold platform={platform}>{formatUsdValue(swapInfo.priceDelta)}</Bold> (
-      {swapInfo.priceDeltaPercentage}%){'\n'}
-      🏦 via{' '}
-      <Bold platform={platform}>
-        {swapInfo.brokerIdAndAlias.brokerId ? (
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
+  platforms.map((platform) => {
+    const message = renderToStaticMarkup(
+      <>
+        {emoji(Number(swapInfo.depositValueUsd)) && ' '}Swap
+        <Bold platform={platform}>
+          <Link platform={platform} href={`${EXPLORER_URL}/swaps/${swapInfo.requestId}`}>
+            {' '}
+            #{swapInfo.requestId}
+          </Link>
+        </Bold>
+        {'\n'}
+        {swapInfo.depositAmount && swapInfo.depositValueUsd && (
           <>
-            <Link
-              platform={platform}
-              href={`${EXPLORER_URL}/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
-            >
-              {swapInfo.brokerIdAndAlias.alias}
-            </Link>
+            📥{' '}
+            <Bold platform={platform}>
+              {swapInfo.depositAmount} {swapInfo.sourceAsset.toUpperCase()}
+            </Bold>{' '}
+            ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
           </>
-        ) : (
-          <>{swapInfo.brokerIdAndAlias.alias}</>
         )}
-      </Bold>
-      {'\n'}
-      {swapInfo.dcaChunks && (
-        <>
-          📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
-          {'\n'}
-        </>
-      )}
-      {swapInfo.effectiveBoostFeeBps && swapInfo.boostFee && (
-        <>
-          ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
-          <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
-          {'\n'}
-        </>
-      )}
-    </>,
-  );
-  return {
-    name: 'messageRouter' as const,
-    data: {
-      platform,
-      message,
-      validationData: { name: 'NEW_SWAP', usdValue: Number(swapInfo?.egressValueUsd || 0) },
-    },
-  };
-};
+        {swapInfo.egressAmount && swapInfo.egressValueUsd && (
+          <>
+            📥{' '}
+            <Bold platform={platform}>
+              {swapInfo.egressAmount} {swapInfo.destinationAsset.toUpperCase()}
+            </Bold>{' '}
+            ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
+          </>
+        )}
+        {swapInfo.duration && (
+          <>
+            ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
+            {'\n'}
+          </>
+        )}
+        {swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
+          <>
+            {Number(swapInfo.priceDeltaPercentage) < 0 ? '🔴' : '🟢'} Delta:{' '}
+            <Bold platform={platform}>
+              {formatDeltaPrice(
+                formatUsdValue(Math.abs(swapInfo.priceDelta)),
+                Number(swapInfo.priceDeltaPercentage) < 0,
+              )}
+            </Bold>{' '}
+            ({swapInfo.priceDeltaPercentage}%){'\n'}
+          </>
+        )}
+        🏦 via{' '}
+        <Bold platform={platform}>
+          {swapInfo.brokerIdAndAlias.brokerId ? (
+            <>
+              <Link
+                platform={platform}
+                href={`${EXPLORER_URL}/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
+              >
+                {swapInfo.brokerIdAndAlias.alias}
+              </Link>
+            </>
+          ) : (
+            <>{swapInfo.brokerIdAndAlias.alias}</>
+          )}
+        </Bold>
+        {'\n'}
+        {swapInfo.dcaChunks && (
+          <>
+            📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
+            {'\n'}
+          </>
+        )}
+        {swapInfo.effectiveBoostFeeBps && swapInfo.boostFee && (
+          <>
+            ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
+            <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
+            {'\n'}
+          </>
+        )}
+      </>,
+    );
+
+    return {
+      name: 'messageRouter' as const,
+      data: {
+        platform,
+        message,
+        validationData: { name: 'NEW_SWAP', usdValue: Number(swapInfo?.egressValueUsd || 0) },
+      },
+    };
+  });
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const swapInfo = await getSwapInfo(job.data.swapRequestId);
+  logger.info(`Checking swap #${job.data.swapRequestId}`);
 
-  const jobs = [];
+  const jobs = [] as DispatchJobArgs[];
 
-  if (!getSwapStatus(swapInfo) || Number(swapInfo?.egressAmount) <= 0) return;
+  if (!getSwapStatus(swapInfo) || Number(swapInfo?.egressAmount) <= 0) {
+    logger.info(`Swap is not defined`);
+    return;
+  }
 
   if (getSwapStatus(swapInfo) === 'fresh') {
-    jobs.push(buildMessageData({ swapInfo, platform: 'discord' }));
-    jobs.push(buildMessageData({ swapInfo, platform: 'telegram' }));
+    jobs.push(...buildMessageData({ swapInfo }));
+    logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
   } else if (getSwapStatus(swapInfo) === 'stale') {
+    logger.warn(`Swap #${swapInfo.requestId} is stale`);
     return;
   } else {
+    logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
     jobs.push({
       name: 'scheduler',
       data: [{ name, data: { swapRequestId: job.data.swapRequestId }, opts: { delay: 10_000 } }],

@@ -75,7 +75,7 @@ type Fee = {
 };
 
 const getBrokerAlias = (broker: { alias?: string | null; idSs58?: string | null }) =>
-  broker.alias || knownBrokers[broker.idSs58 as string].name;
+  broker.alias || knownBrokers[broker.idSs58 as string]?.name || undefined;
 
 const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
   broker && broker.idSs58
