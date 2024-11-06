@@ -6,12 +6,12 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     {
       "data": {
         "message": " Swap<strong><a href="https://scan.chainflip.io/swaps/77697"> #77697</a></strong>
-📥 <strong>5000 FLIP</strong> ($5,568.07)
+📤 <strong>5000 FLIP</strong> ($5,568.07)
 📥 <strong>5616.094932 USDT</strong> ($5,611.38)
 ⏱️ Took: <strong>1 min</strong>
 🟢 Delta: <strong>$43.31</strong> (0.77%)
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>
 📓 Chunks: <strong>2/2</strong>
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>
 ",
         "platform": "telegram",
         "validationData": {
@@ -24,55 +24,12 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     {
       "data": {
         "message": " Swap**[ #77697](https://scan.chainflip.io/swaps/77697)**
-📥 **5000 FLIP** ($5,568.07)
+📤 **5000 FLIP** ($5,568.07)
 📥 **5616.094932 USDT** ($5,611.38)
 ⏱️ Took: **1 min**
 🟢 Delta: **$43.31** (0.77%)
-🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
 📓 Chunks: **2/2**
-",
-        "platform": "discord",
-        "validationData": {
-          "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
-        },
-      },
-      "name": "messageRouter",
-    },
-  ],
-]
-`;
-
-exports[`swapStatusCheck > check swap status and send swap info message 1`] = `
-[
-  [
-    {
-      "data": {
-        "message": " Swap<strong><a href="https://scan.chainflip.io/swaps/77697"> #77697</a></strong>
-📥 <strong>5000 FLIP</strong> ($5,568.07)
-📥 <strong>5616.094932 USDT</strong> ($5,611.38)
-⏱️ Took: <strong>1 min</strong>
-🟢 Delta: <strong>$43.31</strong> (0.77%)
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>
-📓 Chunks: <strong>2/2</strong>
-",
-        "platform": "telegram",
-        "validationData": {
-          "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
-        },
-      },
-      "name": "messageRouter",
-    },
-    {
-      "data": {
-        "message": " Swap**[ #77697](https://scan.chainflip.io/swaps/77697)**
-📥 **5000 FLIP** ($5,568.07)
-📥 **5616.094932 USDT** ($5,611.38)
-⏱️ Took: **1 min**
-🟢 Delta: **$43.31** (0.77%)
 🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
-📓 Chunks: **2/2**
 ",
         "platform": "discord",
         "validationData": {

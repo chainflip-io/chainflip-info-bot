@@ -35,17 +35,12 @@ const isFresh = (swapInfo: SwapInfo) => {
 };
 
 const getSwapStatus = (swapInfo: SwapInfo) => {
-  if (!swapInfo) return;
+  if (swapInfo.completedEventId) return isFresh(swapInfo) ? 'fresh' : 'stale';
 
-  if (swapInfo.completedEventId) {
-    return isFresh(swapInfo) ? 'fresh' : 'stale';
-  }
   return 'pending';
 };
 
 const emoji = (depositValueUsd: number) => {
-  if (depositValueUsd == null) return;
-
   if (depositValueUsd > 100_000) return '🐳';
   if (depositValueUsd > 50_000) return '🦈';
   if (depositValueUsd > 25_000) return '🦀';
@@ -75,7 +70,7 @@ const buildMessageData = ({
         {'\n'}
         {swapInfo.depositAmount && swapInfo.depositValueUsd && (
           <>
-            📥{' '}
+            📤{' '}
             <Bold platform={platform}>
               {swapInfo.depositAmount} {swapInfo.sourceAsset.toUpperCase()}
             </Bold>{' '}
@@ -109,22 +104,6 @@ const buildMessageData = ({
             ({swapInfo.priceDeltaPercentage}%){'\n'}
           </>
         )}
-        🏦 via{' '}
-        <Bold platform={platform}>
-          {swapInfo.brokerIdAndAlias.brokerId ? (
-            <>
-              <Link
-                platform={platform}
-                href={`${EXPLORER_URL}/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
-              >
-                {swapInfo.brokerIdAndAlias.alias}
-              </Link>
-            </>
-          ) : (
-            <>{swapInfo.brokerIdAndAlias.alias}</>
-          )}
-        </Bold>
-        {'\n'}
         {swapInfo.dcaChunks && (
           <>
             📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
@@ -135,6 +114,20 @@ const buildMessageData = ({
           <>
             ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
             <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
+            {'\n'}
+          </>
+        )}
+        {swapInfo.brokerIdAndAlias && (
+          <>
+            🏦 via{' '}
+            <Bold platform={platform}>
+              <Link
+                platform={platform}
+                href={`${EXPLORER_URL}/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
+              >
+                {swapInfo.brokerIdAndAlias.alias}
+              </Link>
+            </Bold>
             {'\n'}
           </>
         )}
@@ -157,23 +150,30 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const jobs = [] as DispatchJobArgs[];
 
-  if (!getSwapStatus(swapInfo) || Number(swapInfo?.egressAmount) <= 0) {
+  if (Number(swapInfo.egressAmount) === 0) {
     logger.info(`Swap is not defined`);
     return;
   }
 
-  if (getSwapStatus(swapInfo) === 'fresh') {
-    jobs.push(...buildMessageData({ swapInfo }));
-    logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
-  } else if (getSwapStatus(swapInfo) === 'stale') {
-    logger.warn(`Swap #${swapInfo.requestId} is stale`);
-    return;
-  } else {
-    logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
-    jobs.push({
-      name: 'scheduler',
-      data: [{ name, data: { swapRequestId: job.data.swapRequestId }, opts: { delay: 10_000 } }],
-    } as const);
+  const status = getSwapStatus(swapInfo);
+
+  switch (status) {
+    case 'fresh':
+      jobs.push(...buildMessageData({ swapInfo }));
+      logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
+      break;
+
+    case 'stale':
+      logger.warn(`Swap #${swapInfo.requestId} is stale`);
+      break;
+
+    case 'pending':
+      jobs.push({
+        name: 'scheduler',
+        data: [{ name, data: { swapRequestId: job.data.swapRequestId }, opts: { delay: 10_000 } }],
+      } as const);
+      logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
+      break;
   }
 
   await dispatchJobs(jobs);

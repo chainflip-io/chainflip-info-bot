@@ -72,6 +72,10 @@ describe('swapStatusCheck', () => {
       } as JobData['swapStatusCheck'],
     } as any);
 
-    expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot('undefined');
+    expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
+      [
+        [],
+      ]
+    `);
   });
 });

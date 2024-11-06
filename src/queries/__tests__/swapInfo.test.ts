@@ -47,8 +47,6 @@ describe('swapInfo', () => {
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "boostFee": {
-          "amount": "0.00000315",
-          "asset": "Btc",
           "valueUsd": 0.2167859022,
         },
         "brokerIdAndAlias": {

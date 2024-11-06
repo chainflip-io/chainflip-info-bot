@@ -74,25 +74,19 @@ type Fee = {
   type: SwapFeeType;
 };
 
-const getBrokerAlias = (broker: { alias?: string | null; idSs58?: string | null }) =>
-  broker.alias || knownBrokers[broker.idSs58 as string]?.name || undefined;
+const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
+  broker.alias || knownBrokers[broker.idSs58]?.name || undefined;
 
-const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
+const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
   broker && broker.idSs58
     ? { alias: getBrokerAlias(broker) || abbreviate(broker.idSs58, 4), brokerId: broker.idSs58 }
-    : { alias: 'Others' };
+    : undefined;
 
-const getFee = (fees: Fee[], feeType: SwapFeeType, asset?: ChainflipAsset) => {
-  const fee = fees.find(({ type, asset: feeAsset }) => {
-    if (type !== feeType) return false;
-    if (asset && asset !== feeAsset) return false;
-    return true;
-  });
+const getFee = (fees: Fee[], feeType: SwapFeeType) => {
+  const fee = fees.find(({ type }) => type === feeType);
 
   return (
     fee && {
-      asset: fee.asset,
-      amount: toTokenAmount(fee.amount, fee.asset),
       valueUsd: Number(fee.valueUsd ?? 0),
     }
   );
@@ -118,7 +112,7 @@ export default async function getSwapInfo(nativeId: string) {
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
   const broker = swap.swapChannel?.broker.account;
-  const numberOfChunks = swap.numberOfChunks ?? swap.swapChannel?.numberOfChunks ?? 1;
+  const numberOfChunks = swap.numberOfChunks ?? 1;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
