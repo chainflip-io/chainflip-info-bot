@@ -39,11 +39,20 @@ describe('Config', () => {
           },
         ]
       `);
+
+      expect(await Config.getChannels('twitter')).toMatchInlineSnapshot(`
+        [
+          {
+            "filters": undefined,
+            "key": "twitter:twitter_1",
+          },
+        ]
+      `);
     });
   });
 
   describe('Config.get', () => {
-    it.each(['telegram:telegram_1', 'discord:discord_1'] as const)(
+    it.each(['telegram:telegram_1', 'discord:discord_1', 'twitter:twitter_1'] as const)(
       'returns the config for a key (%s)',
       async (key) => {
         expect(await Config.get(key)).toMatchSnapshot();
@@ -53,6 +62,12 @@ describe('Config', () => {
     it('throws an error if the key is not found', async () => {
       await expect(Config.get('telegram:invalid')).rejects.toThrowErrorMatchingInlineSnapshot(
         `[Error: Config not found: telegram:invalid]`,
+      );
+    });
+
+    it('throws an error if the key is not found', async () => {
+      await expect(Config.get('twitter:invalid')).rejects.toThrowErrorMatchingInlineSnapshot(
+        `[Error: Config not found: twitter:invalid]`,
       );
     });
   });

@@ -54,6 +54,21 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
+          "message": "🗓️ On 2024-10-27, we had:
+📊 $4,000.00 in total volume
+🌐 $3,000.00 of network fees
+🤑 $2,000.00 of LP fees
+⚡️ $5,000.00 of boost fees
+🔥 1000.00 FLIP burned",
+          "platform": "twitter",
+          "validationData": {
+            "name": "DAILY_SWAP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
           "message": "💼 Top LPs for 2024-10-27 are in:
 🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
 🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
@@ -86,6 +101,22 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       },
       {
         "data": {
+          "message": "💼 Top LPs for 2024-10-27 are in:
+🥇 $1,000.00 ChainflipGod (10.00%)
+🥈 $1,000.00 cFNz…MMVh (10.00%)
+🥉 $1,000.00 cFKj…UgyN (10.00%)
+🏅 $1,000.00 cFNz…MMVh (10.00%)
+🏅 $1,000.00 cFJX…rzLg (10.00%)
+",
+          "platform": "twitter",
+          "validationData": {
+            "name": "DAILY_LP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
           "message": "🗓️ For the week ending <strong>2024-10-27</strong>, we had:
 📊 <strong>$28,000.00</strong> in total volume
 🌐 <strong>$21,000.00</strong> of network fees
@@ -108,6 +139,21 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 ⚡️ **$5,000.00** of boost fees
 🔥 **7000.00** FLIP burned",
           "platform": "discord",
+          "validationData": {
+            "name": "WEEKLY_SWAP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "message": "🗓️ For the week ending 2024-10-27, we had:
+📊 $28,000.00 in total volume
+🌐 $21,000.00 of network fees
+🤑 $14,000.00 of LP fees
+⚡️ $5,000.00 of boost fees
+🔥 7000.00 FLIP burned",
+          "platform": "twitter",
           "validationData": {
             "name": "WEEKLY_SWAP_SUMMARY",
           },
@@ -150,6 +196,27 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🏅 $1,000.00 [**cFLT…nn5t**](https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t) (10.00%)
 ",
           "platform": "discord",
+          "validationData": {
+            "name": "WEEKLY_LP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "message": "💼 Top LPs for the week are in:
+🥇 $1,000.00 ChainflipGod (10.00%)
+🥈 $1,000.00 cFNz…MMVh (10.00%)
+🥉 $1,000.00 cFKj…UgyN (10.00%)
+🏅 $1,000.00 cFNz…MMVh (10.00%)
+🏅 $1,000.00 cFJX…rzLg (10.00%)
+🏅 $1,000.00 cFMx…YwvB (10.00%)
+🏅 $1,000.00 cFMB…R4Kz (10.00%)
+🏅 $1,000.00 cFLE…kcPP (10.00%)
+🏅 $1,000.00 cFLG…gq7j (10.00%)
+🏅 $1,000.00 cFLT…nn5t (10.00%)
+",
+          "platform": "twitter",
           "validationData": {
             "name": "WEEKLY_LP_SUMMARY",
           },
@@ -215,6 +282,21 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
       },
       {
         "data": {
+          "message": "🗓️ On 2024-10-25, we had:
+📊 $4,000.00 in total volume
+🌐 $3,000.00 of network fees
+🤑 $2,000.00 of LP fees
+⚡️ $5,000.00 of boost fees
+🔥 1000.00 FLIP burned",
+          "platform": "twitter",
+          "validationData": {
+            "name": "DAILY_SWAP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
           "message": "💼 Top LPs for 2024-10-25 are in:
 🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
 🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
@@ -239,6 +321,22 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)
 ",
           "platform": "discord",
+          "validationData": {
+            "name": "DAILY_LP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "message": "💼 Top LPs for 2024-10-25 are in:
+🥇 $1,000.00 ChainflipGod (10.00%)
+🥈 $1,000.00 cFNz…MMVh (10.00%)
+🥉 $1,000.00 cFKj…UgyN (10.00%)
+🏅 $1,000.00 cFNz…MMVh (10.00%)
+🏅 $1,000.00 cFJX…rzLg (10.00%)
+",
+          "platform": "twitter",
           "validationData": {
             "name": "DAILY_LP_SUMMARY",
           },
@@ -300,6 +398,19 @@ exports[`time period stats > processJob > processes a daily job without a flip b
       },
       {
         "data": {
+          "message": "🗓️ On 2024-10-25, we had:
+📊 $4,000.00 in total volume
+🌐 $3,000.00 of network fees
+🤑 $2,000.00 of LP fees",
+          "platform": "twitter",
+          "validationData": {
+            "name": "DAILY_SWAP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
           "message": "💼 Top LPs for 2024-10-25 are in:
 ",
           "platform": "telegram",
@@ -314,6 +425,17 @@ exports[`time period stats > processJob > processes a daily job without a flip b
           "message": "💼 Top LPs for 2024-10-25 are in:
 ",
           "platform": "discord",
+          "validationData": {
+            "name": "DAILY_LP_SUMMARY",
+          },
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "message": "💼 Top LPs for 2024-10-25 are in:
+",
+          "platform": "twitter",
           "validationData": {
             "name": "DAILY_LP_SUMMARY",
           },

@@ -54,6 +54,32 @@ describe('messageRouter', () => {
     `);
   });
 
+  it('sends messages to the correct twitter channels', async () => {
+    const dispatchJobs = vi.fn();
+
+    await config.processJob(dispatchJobs)({
+      data: {
+        platform: 'twitter',
+        message: 'Hello, world!',
+        validationData: { name: 'DAILY_SWAP_SUMMARY' },
+      } as JobData['messageRouter'],
+    } as any);
+
+    expect(dispatchJobs.mock.lastCall).toMatchInlineSnapshot(`
+      [
+        [
+          {
+            "data": {
+              "key": "twitter:twitter_1",
+              "message": "Hello, world!",
+            },
+            "name": "sendMessage",
+          },
+        ],
+      ]
+    `);
+  });
+
   it('does nothing if no channels are configured', async () => {
     vi.spyOn(Config, 'getChannels').mockResolvedValue([]);
 

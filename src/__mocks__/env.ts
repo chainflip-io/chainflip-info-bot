@@ -46,5 +46,17 @@ export default {
         },
       ],
     },
+    twitter: {
+      channels: [
+        {
+          enabled: true,
+          name: 'twitter 1',
+          consumerKey: 'xxx',
+          consumerKeySecret: 'xxx',
+          oauthKey: 'xxx',
+          oauthKeySecret: 'xxx',
+        },
+      ],
+    },
   } as ConfigFile),
 } as RawEnv;

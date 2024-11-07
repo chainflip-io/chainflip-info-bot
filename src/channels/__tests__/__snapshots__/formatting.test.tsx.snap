@@ -4,6 +4,10 @@ exports[`Bold > formats discord messages correctly > discord 1`] = `"**hello**"`
 
 exports[`Bold > formats telegram messages correctly > telegram 1`] = `"<strong>hello</strong>"`;
 
+exports[`Bold > formats twitter messages correctly > twitter 1`] = `"hello"`;
+
 exports[`Link > formats discord messages correctly > discord 1`] = `"[link-preview](https://some-link)"`;
 
 exports[`Link > formats telegram messages correctly > telegram 1`] = `"<a href="https://some-link">link-preview</a>"`;
+
+exports[`Link > formats twitter messages correctly > twitter 1`] = `"link-preview"`;

@@ -107,6 +107,17 @@ describe('newBurnCheck', () => {
                 },
                 "name": "messageRouter",
               },
+              {
+                "data": {
+                  "message": "🔥 Burned 12345.68 FLIP ($4.21)!
+        View on explorer",
+                  "platform": "twitter",
+                  "validationData": {
+                    "name": "NEW_BURN",
+                  },
+                },
+                "name": "messageRouter",
+              },
             ],
           ],
         ]
@@ -159,6 +170,17 @@ describe('newBurnCheck', () => {
                   "message": "🔥 Burned 12345.68 FLIP!
         [View on explorer](https://scan.chainflip.io/events/1-1)",
                   "platform": "discord",
+                  "validationData": {
+                    "name": "NEW_BURN",
+                  },
+                },
+                "name": "messageRouter",
+              },
+              {
+                "data": {
+                  "message": "🔥 Burned 12345.68 FLIP!
+        View on explorer",
+                  "platform": "twitter",
                   "validationData": {
                     "name": "NEW_BURN",
                   },
