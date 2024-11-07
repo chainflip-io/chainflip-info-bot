@@ -1,9 +1,8 @@
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
-import { Bold, Link } from '../channels/formatting.js';
+import { Bold, ExplorerLink } from '../channels/formatting.js';
 import { platforms } from '../config.js';
-import { EXPLORER_URL } from '../consts.js';
 import env from '../env.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
 import logger from '../utils/logger.js';
@@ -60,17 +59,16 @@ const buildMessageData = ({
   platforms.map((platform) => {
     const message = renderToStaticMarkup(
       <>
-        {emoji(Number(swapInfo.depositValueUsd)) && ' '}Swap
+        {emoji(Number(swapInfo.depositValueUsd))} Swap{' '}
         <Bold platform={platform}>
-          <Link platform={platform} href={`${EXPLORER_URL}/swaps/${swapInfo.requestId}`}>
-            {' '}
+          <ExplorerLink platform={platform} path={`swaps/${swapInfo.requestId}`}>
             #{swapInfo.requestId}
-          </Link>
+          </ExplorerLink>
         </Bold>
         {'\n'}
         {swapInfo.depositAmount && swapInfo.depositValueUsd && (
           <>
-            📤{' '}
+            📥{' '}
             <Bold platform={platform}>
               {swapInfo.depositAmount} {swapInfo.sourceAsset.toUpperCase()}
             </Bold>{' '}
@@ -79,7 +77,7 @@ const buildMessageData = ({
         )}
         {swapInfo.egressAmount && swapInfo.egressValueUsd && (
           <>
-            📥{' '}
+            📤{' '}
             <Bold platform={platform}>
               {swapInfo.egressAmount} {swapInfo.destinationAsset.toUpperCase()}
             </Bold>{' '}
@@ -121,12 +119,12 @@ const buildMessageData = ({
           <>
             🏦 via{' '}
             <Bold platform={platform}>
-              <Link
+              <ExplorerLink
                 platform={platform}
-                href={`${EXPLORER_URL}/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
+                path={`/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
               >
                 {swapInfo.brokerIdAndAlias.alias}
-              </Link>
+              </ExplorerLink>
             </Bold>
             {'\n'}
           </>
