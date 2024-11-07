@@ -45,7 +45,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
           "name": "NEW_SWAP",
           "usdValue": 5611.3799573378,
         },
-        "message": "🦐 Swap #77697
+        "message": "🦐 Swap https://scan.chainflip.io/swaps/77697
 📥 5,000 FLIP on Ethereum ($5,568.07)
 📤 5,616.094932 USDT on Ethereum ($5,611.38)
 ⏱️ Took: 1 min

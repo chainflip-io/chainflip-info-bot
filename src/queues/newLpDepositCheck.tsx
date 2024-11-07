@@ -1,7 +1,7 @@
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink } from '../channels/formatting.js';
+import { Bold, ExplorerLink, Line } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import checkForFirstNewLpDeposits, {
@@ -43,11 +43,13 @@ const buildMessages = ({
   platforms.map((platform) => {
     const message = renderToStaticMarkup(
       <>
-        {`💸 New Liquidity Provider Detected!\n`}
-        <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
-        {deposit.depositAmount} {humanFriendlyAsset[deposit.asset]} (
-        {formatUsdValue(deposit.depositValueUsd)}) 🍾{'\n'}
-        <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} platform={platform}>
+        <Line>💸 New Liquidity Provider Detected!</Line>
+        <Line>
+          <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
+          {deposit.depositAmount} {humanFriendlyAsset[deposit.asset]} (
+          {formatUsdValue(deposit.depositValueUsd)}) 🍾
+        </Line>
+        <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} platform={platform} prefer="link">
           View on explorer
         </ExplorerLink>
       </>,

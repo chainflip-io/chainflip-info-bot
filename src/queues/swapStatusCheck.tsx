@@ -1,7 +1,7 @@
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink } from '../channels/formatting.js';
+import { Bold, ExplorerLink, Line } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import env from '../env.js';
@@ -66,39 +66,39 @@ const buildMessageData = ({
   platforms.map((platform) => {
     const message = renderToStaticMarkup(
       <>
-        {emoji(Number(swapInfo.depositValueUsd))} Swap{' '}
-        <Bold platform={platform}>
-          <ExplorerLink platform={platform} path={`swaps/${swapInfo.requestId}`}>
-            #{swapInfo.requestId}
-          </ExplorerLink>
-        </Bold>
-        {'\n'}
+        <Line>
+          {emoji(Number(swapInfo.depositValueUsd))} Swap{' '}
+          <Bold platform={platform}>
+            <ExplorerLink platform={platform} path={`swaps/${swapInfo.requestId}`} prefer="link">
+              #{swapInfo.requestId}
+            </ExplorerLink>
+          </Bold>
+        </Line>
         {swapInfo.depositAmount && swapInfo.depositValueUsd && (
-          <>
+          <Line>
             📥{' '}
             <Bold platform={platform}>
               {swapInfo.depositAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
             </Bold>{' '}
-            ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
-          </>
+            ({formatUsdValue(swapInfo.depositValueUsd)})
+          </Line>
         )}
         {swapInfo.egressAmount && swapInfo.egressValueUsd && (
-          <>
+          <Line>
             📤{' '}
             <Bold platform={platform}>
               {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
             </Bold>{' '}
-            ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
-          </>
+            ({formatUsdValue(swapInfo.egressValueUsd)})
+          </Line>
         )}
         {swapInfo.duration && (
-          <>
+          <Line>
             ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
-            {'\n'}
-          </>
+          </Line>
         )}
         {swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
-          <>
+          <Line>
             {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
             <Bold platform={platform}>
               {formatDeltaPrice(
@@ -106,35 +106,33 @@ const buildMessageData = ({
                 Number(swapInfo.priceDeltaPercentage) < 0,
               )}
             </Bold>{' '}
-            ({swapInfo.priceDeltaPercentage}%){'\n'}
-          </>
+            ({swapInfo.priceDeltaPercentage}%)
+          </Line>
         )}
         {swapInfo.dcaChunks && (
-          <>
+          <Line>
             📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
-            {'\n'}
-          </>
+          </Line>
         )}
         {swapInfo.effectiveBoostFeeBps && swapInfo.boostFee && (
-          <>
+          <Line>
             ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
             <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
-            {'\n'}
-          </>
+          </Line>
         )}
         {swapInfo.brokerIdAndAlias && (
-          <>
+          <Line>
             🏦 via{' '}
             <Bold platform={platform}>
               <ExplorerLink
                 platform={platform}
                 path={`/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
+                prefer="text"
               >
                 {swapInfo.brokerIdAndAlias.alias}
               </ExplorerLink>
             </Bold>
-            {'\n'}
-          </>
+          </Line>
         )}
       </>,
     );

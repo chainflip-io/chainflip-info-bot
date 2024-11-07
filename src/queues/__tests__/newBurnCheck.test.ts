@@ -113,7 +113,7 @@ describe('newBurnCheck', () => {
                     "name": "NEW_BURN",
                   },
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)!
-        View on explorer",
+        https://scan.chainflip.io/events/1-1",
                   "platform": "twitter",
                 },
                 "name": "messageRouter",
@@ -182,7 +182,7 @@ describe('newBurnCheck', () => {
                     "name": "NEW_BURN",
                   },
                   "message": "🔥 Burned 12345.68 FLIP!
-        View on explorer",
+        https://scan.chainflip.io/events/1-1",
                   "platform": "twitter",
                 },
                 "name": "messageRouter",

@@ -1,7 +1,7 @@
 import { BigNumber } from 'bignumber.js';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
-import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
+import { GetSwapInfoByNativeIdQuery, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
@@ -65,13 +65,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
   }
 `);
 
-type Fee = {
-  __typename?: 'SwapFee';
-  valueUsd?: string | null;
-  amount: string;
-  asset: ChainflipAsset;
-  type: SwapFeeType;
-};
+type Fee = NonNullable<GetSwapInfoByNativeIdQuery['swap']>['fees']['nodes'][number];
 
 const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
   broker.alias || knownBrokers[broker.idSs58]?.name || undefined;
