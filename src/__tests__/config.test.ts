@@ -1,9 +1,77 @@
-import { beforeEach } from 'node:test';
-import { describe, it, expect, vi } from 'vitest';
-import Config from '../config.js';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { ConfigFile } from '../config.js';
+import env from '../env.js';
+
+vi.mock('../env.js', () => ({
+  default: {
+    CONFIG: JSON.stringify({
+      discord: {
+        channels: [
+          {
+            webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
+            filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+            name: 'discord 1',
+          },
+          {
+            enabled: false,
+            webhookUrl: 'https://discord.com/api/webhooks/1234567890/MNOPQRSTUVWXYZ',
+            name: 'discord 2',
+          },
+          {
+            enabled: true,
+            webhookUrl: 'https://discord.com/api/webhooks/1234567890/∂',
+            name: 'discord 3',
+          },
+        ],
+      },
+      telegram: {
+        botToken: 'bot token',
+        channels: [
+          {
+            channelId: '123',
+            name: 'telegram 1',
+          },
+          {
+            enabled: false,
+            channelId: 345,
+            name: 'telegram 2',
+          },
+          {
+            enabled: true,
+            channelId: '567',
+            filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+            name: 'telegram 3',
+          },
+        ],
+      },
+      twitter: {
+        channels: [
+          {
+            enabled: true,
+            name: 'twitter 1',
+            consumerKey: 'xxx',
+            consumerKeySecret: 'xxx',
+            oauthKey: 'xxx',
+            oauthKeySecret: 'xxx',
+          },
+        ],
+      },
+    }),
+  },
+}));
 
 describe('Config', () => {
+  let Config: typeof import('../config.js').default;
+
+  beforeEach(() => {
+    vi.resetModules();
+  });
+
   describe('Config.getChannels', () => {
+    beforeEach(async () => {
+      Config = (await import('../config.js')).default;
+    });
+
     it('returns the channels', async () => {
       expect(await Config.getChannels('telegram')).toMatchInlineSnapshot(`
         [
@@ -52,6 +120,10 @@ describe('Config', () => {
   });
 
   describe('Config.get', () => {
+    beforeEach(async () => {
+      Config = (await import('../config.js')).default;
+    });
+
     it.each(['telegram:telegram_1', 'discord:discord_1', 'twitter:twitter_1'] as const)(
       'returns the config for a key (%s)',
       async (key) => {
@@ -73,6 +145,10 @@ describe('Config', () => {
   });
 
   describe('Config.canSend', () => {
+    beforeEach(async () => {
+      Config = (await import('../config.js')).default;
+    });
+
     it('works with simple filters', () => {
       expect(Config.canSend({ key: 'discord:1234' }, { name: 'DAILY_SWAP_SUMMARY' })).toBe(true);
       expect(
@@ -106,10 +182,75 @@ describe('Config', () => {
   });
 
   describe('Config.load', () => {
-    beforeEach(() => {
-      vi.resetModules();
+    it('memoizes the result', async () => {
+      const spy = vi.spyOn(env, 'CONFIG', 'get').mockReturnValue(
+        JSON.stringify({
+          telegram: {
+            botToken: 'test',
+            channels: [{ name: 'telegram_1', channelId: '123' }],
+          },
+        }),
+      );
+
+      Config = (await import('../config.js')).default;
+
+      await Config.get('telegram:telegram_1');
+      await Config.get('telegram:telegram_1');
+      expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it.todo('throws if channel names are not unique');
+    it('throws if channel names are not unique', async () => {
+      const configFile: ConfigFile = {
+        telegram: {
+          botToken: 'telegram_bot_token',
+          channels: [
+            {
+              name: 'some really unique channel name',
+              channelId: '1234',
+            },
+            {
+              name: 'some really unique channel name',
+              channelId: '5678',
+            },
+          ],
+        },
+      };
+      vi.spyOn(env, 'CONFIG', 'get').mockReturnValue(JSON.stringify(configFile));
+      Config = (await import('../config.js')).default;
+
+      await expect(
+        Config.get('telegram:some_really_unique_channel_name'),
+      ).rejects.toThrowErrorMatchingInlineSnapshot(
+        `[AssertionError: channel names must be unique]`,
+      );
+    });
+
+    it('allows duplicate channel names across different platforms', async () => {
+      const configFile: ConfigFile = {
+        telegram: {
+          botToken: 'telegram_bot_token',
+          channels: [
+            {
+              name: 'some really unique channel name',
+              channelId: '1234',
+            },
+          ],
+        },
+        discord: {
+          channels: [
+            {
+              name: 'some really unique channel name',
+              webhookUrl: 'https://chanflimp.io/5678',
+            },
+          ],
+        },
+      };
+      vi.spyOn(env, 'CONFIG', 'get').mockReturnValue(JSON.stringify(configFile));
+      Config = (await import('../config.js')).default;
+
+      await expect(
+        Config.get('telegram:some_really_unique_channel_name'),
+      ).resolves.not.toThrowError();
+    });
   });
 });

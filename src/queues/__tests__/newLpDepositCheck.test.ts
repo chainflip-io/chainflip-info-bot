@@ -77,37 +77,37 @@ describe('newLpDepositCheck', () => {
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_LP",
+                  },
                   "message": "💸 New Liquidity Provider Detected!
         <strong>cf12…test</strong> deposited 1.523 ETH on Ethereum ($999.00) 🍾
         <a href="https://scan.chainflip.io/lps/cf123test">View on explorer</a>",
                   "platform": "telegram",
-                  "validationData": {
-                    "name": "NEW_LP",
-                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_LP",
+                  },
                   "message": "💸 New Liquidity Provider Detected!
         **cf12…test** deposited 1.523 ETH on Ethereum ($999.00) 🍾
         [View on explorer](https://scan.chainflip.io/lps/cf123test)",
                   "platform": "discord",
-                  "validationData": {
-                    "name": "NEW_LP",
-                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_LP",
+                  },
                   "message": "💸 New Liquidity Provider Detected!
         cf12…test deposited 1.523 ETH on Ethereum ($999.00) 🍾
         View on explorer",
                   "platform": "twitter",
-                  "validationData": {
-                    "name": "NEW_LP",
-                  },
                 },
                 "name": "messageRouter",
               },

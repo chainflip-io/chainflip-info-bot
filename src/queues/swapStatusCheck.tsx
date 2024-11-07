@@ -144,7 +144,7 @@ const buildMessageData = ({
       data: {
         platform,
         message,
-        validationData: { name: 'NEW_SWAP', usdValue: Number(swapInfo?.egressValueUsd || 0) },
+        filterData: { name: 'NEW_SWAP', usdValue: Number(swapInfo?.egressValueUsd || 0) },
       },
     };
   });

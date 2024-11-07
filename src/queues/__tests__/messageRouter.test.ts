@@ -10,7 +10,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'telegram',
         message: 'Hello, world!',
-        validationData: { name: 'DAILY_SWAP_SUMMARY' },
+        filterData: { name: 'DAILY_SWAP_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -35,7 +35,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'discord',
         message: 'Hello, world!',
-        validationData: { name: 'DAILY_SWAP_SUMMARY' },
+        filterData: { name: 'DAILY_SWAP_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -61,7 +61,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'twitter',
         message: 'Hello, world!',
-        validationData: { name: 'DAILY_SWAP_SUMMARY' },
+        filterData: { name: 'DAILY_SWAP_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 
@@ -89,7 +89,7 @@ describe('messageRouter', () => {
       data: {
         platform: 'telegram',
         message: 'Hello, world!',
-        validationData: { name: 'DAILY_SWAP_SUMMARY' },
+        filterData: { name: 'DAILY_SWAP_SUMMARY' },
       } as JobData['messageRouter'],
     } as any);
 

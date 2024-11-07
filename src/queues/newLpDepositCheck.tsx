@@ -56,7 +56,7 @@ const buildMessages = ({
     return {
       name: 'messageRouter' as const,
       data: {
-        validationData: { name: 'NEW_LP' },
+        filterData: { name: 'NEW_LP' },
         platform,
         message,
       },
