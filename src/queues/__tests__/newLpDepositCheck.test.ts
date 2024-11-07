@@ -106,7 +106,7 @@ describe('newLpDepositCheck', () => {
                   },
                   "message": "💸 New Liquidity Provider Detected!
         cf12…test deposited 1.523 ETH on Ethereum ($999.00) 🍾
-        https://scan.chainflip.io/lps/cf123test",
+        https://scan.chainflip.io/lps/cf123test#chainflip $flip",
                   "platform": "twitter",
                 },
                 "name": "messageRouter",

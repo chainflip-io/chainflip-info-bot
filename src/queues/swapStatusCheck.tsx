@@ -2,7 +2,7 @@ import React from 'react';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink, Line } from '../channels/formatting.js';
+import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import env from '../env.js';
@@ -150,6 +150,7 @@ const buildMessageData = ({
             </Bold>
           </Line>
         )}
+        <Trailer platform={platform} />
       </>,
     ).trimEnd();
 

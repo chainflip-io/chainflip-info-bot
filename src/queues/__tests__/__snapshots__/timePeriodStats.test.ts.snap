@@ -62,7 +62,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🌐 $3,000.00 of network fees
 🤑 $2,000.00 of LP fees
 ⚡️ $5,000.00 of boost fees
-🔥 1000.00 FLIP burned",
+🔥 1000.00 FLIP burned
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -107,7 +108,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🥈 $1,000.00 cFNz…MMVh (10.00%)
 🥉 $1,000.00 cFKj…UgyN (10.00%)
 🏅 $1,000.00 cFNz…MMVh (10.00%)
-🏅 $1,000.00 cFJX…rzLg (10.00%)",
+🏅 $1,000.00 cFJX…rzLg (10.00%)
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -152,7 +154,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🌐 $21,000.00 of network fees
 🤑 $14,000.00 of LP fees
 ⚡️ $5,000.00 of boost fees
-🔥 7000.00 FLIP burned",
+🔥 7000.00 FLIP burned
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -212,7 +215,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🏅 $1,000.00 cFMB…R4Kz (10.00%)
 🏅 $1,000.00 cFLE…kcPP (10.00%)
 🏅 $1,000.00 cFLG…gq7j (10.00%)
-🏅 $1,000.00 cFLT…nn5t (10.00%)",
+🏅 $1,000.00 cFLT…nn5t (10.00%)
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -284,7 +288,8 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 🌐 $3,000.00 of network fees
 🤑 $2,000.00 of LP fees
 ⚡️ $5,000.00 of boost fees
-🔥 1000.00 FLIP burned",
+🔥 1000.00 FLIP burned
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -329,7 +334,8 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
 🥈 $1,000.00 cFNz…MMVh (10.00%)
 🥉 $1,000.00 cFKj…UgyN (10.00%)
 🏅 $1,000.00 cFNz…MMVh (10.00%)
-🏅 $1,000.00 cFJX…rzLg (10.00%)",
+🏅 $1,000.00 cFJX…rzLg (10.00%)
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -395,7 +401,8 @@ exports[`time period stats > processJob > processes a daily job without a flip b
           "message": "🗓️ On 2024-10-25, we had:
 📊 $4,000.00 in total volume
 🌐 $3,000.00 of network fees
-🤑 $2,000.00 of LP fees",
+🤑 $2,000.00 of LP fees
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",
@@ -425,7 +432,8 @@ exports[`time period stats > processJob > processes a daily job without a flip b
           "filterData": {
             "name": "DAILY_LP_SUMMARY",
           },
-          "message": "💼 Top LPs for 2024-10-25 are in:",
+          "message": "💼 Top LPs for 2024-10-25 are in:
+#chainflip $flip",
           "platform": "twitter",
         },
         "name": "messageRouter",

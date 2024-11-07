@@ -2,7 +2,7 @@ import { BigNumber } from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { ExplorerLink, Line } from '../channels/formatting.js';
+import { ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurn from '../queries/getNewBurn.js';
@@ -65,6 +65,7 @@ const buildMessages = ({
           >
             View on explorer
           </ExplorerLink>
+          <Trailer platform={platform} />
         </>,
       ),
       filterData: { name: 'NEW_BURN' },

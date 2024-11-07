@@ -5,7 +5,7 @@ import { JobsOptions, UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink, Line } from '../channels/formatting.js';
+import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
@@ -81,6 +81,7 @@ const buildMessages = ({
               🔥 <Bold platform={platform}>{stats.flipBurned.toFixed(2)}</Bold> FLIP burned
             </Line>
           )}
+          <Trailer platform={platform} />
         </>,
       ).trimEnd();
     }
@@ -106,6 +107,7 @@ const buildMessages = ({
                 </Line>
               ),
           )}
+          <Trailer platform={platform} />
         </>,
       ).trimEnd();
     }
