@@ -16,7 +16,7 @@ export const Bold = ({
     case 'twitter':
       return children;
     default:
-      return unreachable(platform, 'unknown step');
+      return unreachable(platform, 'unknown platform');
   }
 };
 
@@ -41,7 +41,7 @@ export const Link = ({
     case 'twitter':
       return children;
     default:
-      return unreachable(platform, 'unknown step');
+      return unreachable(platform, 'unknown platform');
   }
 };
 
