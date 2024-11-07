@@ -41,7 +41,10 @@ export const Link = ({
     case 'telegram':
       return <a href={href.toString()}>{children}</a>;
     case 'twitter':
+      // twitter can't have embedded urls
+      // so we either show the text
       if (prefer === 'text') return children;
+      // or we show the url
       if (prefer === 'link') return href.toString();
       throw new Error(`unknown prefer: ${prefer as any}`);
     default:
