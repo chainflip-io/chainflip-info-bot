@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink } from '../channels/formatting.js';
 import { platforms } from '../config.js';
+import { humanFriendlyAsset } from '../consts.js';
 import env from '../env.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
 import logger from '../utils/logger.js';
@@ -42,13 +43,19 @@ const getSwapStatus = (swapInfo: SwapInfo) => {
 const emoji = (depositValueUsd: number) => {
   if (depositValueUsd > 100_000) return '🐳';
   if (depositValueUsd > 50_000) return '🦈';
-  if (depositValueUsd > 25_000) return '🦀';
-  if (depositValueUsd > 10_000) return '🐟';
+  if (depositValueUsd > 25_000) return '🐟';
+  if (depositValueUsd > 10_000) return '🦀';
   return '🦐';
 };
 
 const formatDeltaPrice = (value: string, deltaSign: boolean) => {
   return deltaSign ? '-' + value : value;
+};
+
+const deltaSign = (delta: number) => {
+  if (delta <= -10) return '🔴';
+  if (delta < -1) return '⚪️';
+  return '🟢';
 };
 
 const buildMessageData = ({
@@ -70,7 +77,7 @@ const buildMessageData = ({
           <>
             📥{' '}
             <Bold platform={platform}>
-              {swapInfo.depositAmount} {swapInfo.sourceAsset.toUpperCase()}
+              {swapInfo.depositAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
             </Bold>{' '}
             ({formatUsdValue(swapInfo.depositValueUsd)}){'\n'}
           </>
@@ -79,7 +86,7 @@ const buildMessageData = ({
           <>
             📤{' '}
             <Bold platform={platform}>
-              {swapInfo.egressAmount} {swapInfo.destinationAsset.toUpperCase()}
+              {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
             </Bold>{' '}
             ({formatUsdValue(swapInfo.egressValueUsd)}){'\n'}
           </>
@@ -92,7 +99,7 @@ const buildMessageData = ({
         )}
         {swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
           <>
-            {Number(swapInfo.priceDeltaPercentage) < 0 ? '🔴' : '🟢'} Delta:{' '}
+            {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
             <Bold platform={platform}>
               {formatDeltaPrice(
                 formatUsdValue(Math.abs(swapInfo.priceDelta)),

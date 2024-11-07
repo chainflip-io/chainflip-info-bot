@@ -42,7 +42,7 @@ describe('newLpDepositCheck', () => {
       vi.mocked(getLatestDepositId).mockResolvedValueOnce(10);
       vi.mocked(checkForFirstNewLpDeposits).mockResolvedValueOnce([
         {
-          asset: 'ETH',
+          asset: 'Eth',
           depositAmount: '1.523',
           depositValueUsd: '999',
           lpIdSs58: 'cf123test',
@@ -78,7 +78,7 @@ describe('newLpDepositCheck', () => {
               {
                 "data": {
                   "message": "💸 New Liquidity Provider Detected!
-        <strong>cf12…test</strong> deposited 1.523 ETH ($999.00) 🍾
+        <strong>cf12…test</strong> deposited 1.523 ETH on Ethereum ($999.00) 🍾
         <a href="https://scan.chainflip.io/lps/cf123test">View on explorer</a>",
                   "platform": "telegram",
                   "validationData": {
@@ -90,7 +90,7 @@ describe('newLpDepositCheck', () => {
               {
                 "data": {
                   "message": "💸 New Liquidity Provider Detected!
-        **cf12…test** deposited 1.523 ETH ($999.00) 🍾
+        **cf12…test** deposited 1.523 ETH on Ethereum ($999.00) 🍾
         [View on explorer](https://scan.chainflip.io/lps/cf123test)",
                   "platform": "discord",
                   "validationData": {
@@ -102,7 +102,7 @@ describe('newLpDepositCheck', () => {
               {
                 "data": {
                   "message": "💸 New Liquidity Provider Detected!
-        cf12…test deposited 1.523 ETH ($999.00) 🍾
+        cf12…test deposited 1.523 ETH on Ethereum ($999.00) 🍾
         View on explorer",
                   "platform": "twitter",
                   "validationData": {
