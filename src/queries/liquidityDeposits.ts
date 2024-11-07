@@ -1,7 +1,9 @@
+import { isNotNullish } from '@chainflip/utils/guard';
 import assert from 'assert';
 import { gql } from '../graphql/generated/gql.js';
+import { ChainflipAsset } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
-import { toTokenAmount } from '../utils/chainflip.js';
+import { toFormattedAmount } from '../utils/chainflip.js';
 
 const getNewDepositsQuery = gql(/* GraphQL */ `
   query GetNewLiquididityDeposits($id: Int!) {
@@ -59,7 +61,7 @@ export const getLatestDepositId = async () => {
 };
 
 export type NewDeposit = {
-  asset: string;
+  asset: ChainflipAsset;
   depositAmount: string;
   depositValueUsd: string;
   lpIdSs58: string;
@@ -88,12 +90,12 @@ export default async function checkForFirstNewLpDeposits(id: number): Promise<Ne
         ? undefined
         : {
             ...uniqueDeposit,
-            depositAmount: toTokenAmount(uniqueDeposit.depositAmount, uniqueDeposit.asset),
+            depositAmount: toFormattedAmount(uniqueDeposit.depositAmount, uniqueDeposit.asset),
             lpIdSs58: uniqueDeposit.lp.account.idSs58,
             timestamp: uniqueDeposit.event.block.timestamp,
           };
     }),
   );
 
-  return checkedDeposits.filter(Boolean) as NewDeposit[];
+  return checkedDeposits.filter(isNotNullish);
 }

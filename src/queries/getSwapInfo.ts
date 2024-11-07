@@ -3,7 +3,7 @@ import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
-import { toTokenAmount } from '../utils/chainflip.js';
+import { toFormattedAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
@@ -153,9 +153,10 @@ export default async function getSwapInfo(nativeId: string) {
   const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
-  const depositAmount = swap.depositAmount && toTokenAmount(swap.depositAmount, sourceAsset);
+  const depositAmount = swap.depositAmount && toFormattedAmount(swap.depositAmount, sourceAsset);
 
-  const egressAmount = swap.egress?.amount && toTokenAmount(swap.egress?.amount, destinationAsset);
+  const egressAmount =
+    swap.egress?.amount && toFormattedAmount(swap.egress?.amount, destinationAsset);
 
   return {
     completedEventId,

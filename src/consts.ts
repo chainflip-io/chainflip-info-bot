@@ -15,6 +15,19 @@ export const assetDecimals: Record<ChainflipAsset, number> = {
   Usdt: 6,
 };
 
+export const humanFriendlyAsset: Record<ChainflipAsset, string> = {
+  ArbEth: 'ETH on Arbitrum',
+  ArbUsdc: 'USDC on Arbitrum',
+  Btc: 'BTC',
+  Dot: 'DOT',
+  Eth: 'ETH on Ethereum',
+  Flip: 'FLIP on Ethereum',
+  Sol: 'SOL',
+  SolUsdc: 'USDC on Solana',
+  Usdc: 'USDC on Ethereum',
+  Usdt: 'USDT on Ethereum',
+};
+
 type AccountInfo = Record<string, { name: string; twitter: string | null }>;
 
 export const knownBrokers: AccountInfo = {

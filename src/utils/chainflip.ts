@@ -22,5 +22,9 @@ export const chainConstants = {
 
 export type ChainflipChain = 'Bitcoin' | 'Ethereum' | 'Solana' | 'Arbitrum' | 'Polkadot';
 
-export const toTokenAmount = (amount: string, chainflipAsset: ChainflipAsset) =>
-  new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]).toFixed();
+export const toFormattedAmount = (amount: string, chainflipAsset: ChainflipAsset): string =>
+  new BigNumber(amount)
+    .shiftedBy(-assetDecimals[chainflipAsset])
+    .toFormat(6)
+    // remove trailing zeros
+    .replace(/\.?0+$/, '');

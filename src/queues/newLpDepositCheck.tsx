@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink } from '../channels/formatting.js';
 import { platforms } from '../config.js';
+import { humanFriendlyAsset } from '../consts.js';
 import checkForFirstNewLpDeposits, {
   getLatestDepositId,
   NewDeposit,
@@ -44,7 +45,7 @@ const buildMessages = ({
       <>
         {`💸 New Liquidity Provider Detected!\n`}
         <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
-        {deposit.depositAmount} {deposit.asset.toUpperCase()} (
+        {deposit.depositAmount} {humanFriendlyAsset[deposit.asset]} (
         {formatUsdValue(deposit.depositValueUsd)}) 🍾{'\n'}
         <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} platform={platform}>
           View on explorer
