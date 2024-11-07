@@ -3,10 +3,9 @@ import { utc } from '@date-fns/utc';
 import assert from 'assert';
 import { JobsOptions, UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
-import { Fragment } from 'react/jsx-runtime';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink } from '../channels/formatting.js';
+import { Bold, ExplorerLink, Line } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
@@ -59,27 +58,31 @@ const buildMessages = ({
       name = `${toUpperCase(period)}_SWAP_SUMMARY` as const;
       message = renderToStaticMarkup(
         <>
-          🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
-          <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had:{'\n'}
-          📊 <Bold platform={platform}>{formatUsdValue(stats.swapVolume)}</Bold> in total volume
-          {'\n'}
-          🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
-          {'\n'}
-          🤑 <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> of LP fees
+          <Line>
+            🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
+            <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had:
+          </Line>
+          <Line>
+            📊 <Bold platform={platform}>{formatUsdValue(stats.swapVolume)}</Bold> in total volume
+          </Line>
+          <Line>
+            🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
+          </Line>
+          <Line>
+            🤑 <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> of LP fees
+          </Line>
           {stats.boostFees.gt(0) && (
-            <>
-              {'\n'}
+            <Line>
               ⚡️ <Bold platform={platform}>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
-            </>
+            </Line>
           )}
           {stats.flipBurned && (
-            <>
-              {'\n'}
+            <Line>
               🔥 <Bold platform={platform}>{stats.flipBurned.toFixed(2)}</Bold> FLIP burned
-            </>
+            </Line>
           )}
         </>,
-      );
+      ).trimEnd();
     }
     if (Array.isArray(stats)) {
       name = `${toUpperCase(period)}_LP_SUMMARY` as const;
@@ -87,23 +90,24 @@ const buildMessages = ({
       const medals = ['🥇', '🥈', '🥉'];
       message = renderToStaticMarkup(
         <>
-          💼 Top LPs for {isDaily ? date.toISOString().slice(0, 10) : 'the week'} are in:{'\n'}
+          <Line>
+            💼 Top LPs for {isDaily ? date.toISOString().slice(0, 10) : 'the week'} are in:
+          </Line>
           {stats.slice(0, isDaily ? 5 : -1).map(
             (stat, index) =>
               stat.filledAmountValueUsd.gt(0) && (
-                <Fragment key={stat.idSs58}>
+                <Line key={stat.idSs58}>
                   {medals[index] ?? youTried}{' '}
                   {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
-                  <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`}>
+                  <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
                     <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>
                   </ExplorerLink>{' '}
                   ({stat.percentage}%)
-                  {'\n'}
-                </Fragment>
+                </Line>
               ),
           )}
         </>,
-      );
+      ).trimEnd();
     }
 
     assert(name, 'name must be defined');

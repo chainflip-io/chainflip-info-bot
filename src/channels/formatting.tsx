@@ -24,10 +24,12 @@ export const Link = ({
   children,
   href,
   platform,
+  prefer = 'text',
 }: {
   children: React.ReactNode;
   href: string | URL;
   platform: 'discord' | 'telegram' | 'twitter';
+  prefer?: 'text' | 'link';
 }) => {
   switch (platform) {
     case 'discord':
@@ -39,7 +41,12 @@ export const Link = ({
     case 'telegram':
       return <a href={href.toString()}>{children}</a>;
     case 'twitter':
-      return children;
+      // twitter can't have embedded urls
+      // so we either show the text
+      if (prefer === 'text') return children;
+      // or we show the url
+      if (prefer === 'link') return href.toString();
+      return unreachable(prefer, 'unknown preference');
     default:
       return unreachable(platform, 'unknown platform');
   }
@@ -49,12 +56,21 @@ export const ExplorerLink = ({
   children,
   path,
   platform,
+  prefer,
 }: {
   children: React.ReactNode;
   path: string;
   platform: 'discord' | 'telegram' | 'twitter';
+  prefer: 'text' | 'link';
 }) => (
-  <Link platform={platform} href={new URL(path, EXPLORER_URL)}>
+  <Link platform={platform} href={new URL(path, EXPLORER_URL)} prefer={prefer}>
     {children}
   </Link>
+);
+
+export const Line = ({ children }: { children: React.ReactNode }) => (
+  <>
+    {children}
+    {'\n'}
+  </>
 );

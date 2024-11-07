@@ -50,7 +50,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   await dispatchJobs([{ name: 'scheduler', data: [data] }, ...swapRequestJobs]);
 
-  logger.info(`Found ${newSwapRequests.length} [${newSwapRequests.toString()}] new swap requests`);
+  logger.info({ newSwapRequests }, `Found ${newSwapRequests.length} new swap requests`);
 };
 
 const initialize: Initializer<Name> = async (queue) => {
