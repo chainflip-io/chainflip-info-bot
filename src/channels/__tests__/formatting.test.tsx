@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { Bold, Link } from '../formatting.js';
 
 describe('Bold', () => {
-  it.each(['telegram', 'discord', 'twitter'] as const)(
+  it.each(platforms)(
     'formats %s messages correctly',
     (platform) => {
       expect(renderToStaticMarkup(<Bold platform={platform}>hello</Bold>)).toMatchSnapshot(
