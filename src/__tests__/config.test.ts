@@ -44,6 +44,18 @@ vi.mock('../env.js', () => ({
           },
         ],
       },
+      twitter: {
+        channels: [
+          {
+            enabled: true,
+            name: 'twitter 1',
+            consumerKey: 'xxx',
+            consumerKeySecret: 'xxx',
+            oauthKey: 'xxx',
+            oauthKeySecret: 'xxx',
+          },
+        ],
+      },
     }),
   },
 }));
@@ -96,7 +108,14 @@ describe('Config', () => {
         ]
       `);
 
-      expect(await Config.getChannels('twitter')).toMatchInlineSnapshot(`[]`);
+      expect(await Config.getChannels('twitter')).toMatchInlineSnapshot(`
+        [
+          {
+            "filters": undefined,
+            "key": "twitter:twitter_1",
+          },
+        ]
+      `);
     });
   });
 
@@ -105,7 +124,7 @@ describe('Config', () => {
       Config = (await import('../config.js')).default;
     });
 
-    it.each(['telegram:telegram_1', 'discord:discord_1'] as const)(
+    it.each(['telegram:telegram_1', 'discord:discord_1', 'twitter:twitter_1'] as const)(
       'returns the config for a key (%s)',
       async (key) => {
         expect(await Config.get(key)).toMatchSnapshot();
