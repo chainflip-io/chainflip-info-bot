@@ -5,6 +5,10 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
   [
     {
       "data": {
+        "filterData": {
+          "name": "NEW_SWAP",
+          "usdValue": 5611.3799573378,
+        },
         "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
 📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
 📤 <strong>5,616.094932 USDT on Ethereum</strong> ($5,611.38)
@@ -14,15 +18,15 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>
 ",
         "platform": "telegram",
-        "validationData": {
-          "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
-        },
       },
       "name": "messageRouter",
     },
     {
       "data": {
+        "filterData": {
+          "name": "NEW_SWAP",
+          "usdValue": 5611.3799573378,
+        },
         "message": "🦐 Swap **[#77697](https://scan.chainflip.io/swaps/77697)**
 📥 **5,000 FLIP on Ethereum** ($5,568.07)
 📤 **5,616.094932 USDT on Ethereum** ($5,611.38)
@@ -32,15 +36,15 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
 ",
         "platform": "discord",
-        "validationData": {
-          "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
-        },
       },
       "name": "messageRouter",
     },
     {
       "data": {
+        "filterData": {
+          "name": "NEW_SWAP",
+          "usdValue": 5611.3799573378,
+        },
         "message": "🦐 Swap #77697
 📥 5,000 FLIP on Ethereum ($5,568.07)
 📤 5,616.094932 USDT on Ethereum ($5,611.38)
@@ -50,10 +54,6 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 🏦 via Chainflip Swapping
 ",
         "platform": "twitter",
-        "validationData": {
-          "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
-        },
       },
       "name": "messageRouter",
     },
