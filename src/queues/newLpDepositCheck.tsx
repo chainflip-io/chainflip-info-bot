@@ -49,12 +49,14 @@ const buildMessages = ({
           {deposit.depositAmount} {humanFriendlyAsset[deposit.asset]} (
           {formatUsdValue(deposit.depositValueUsd)}) 🍾
         </Line>
-        <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} platform={platform} prefer="link">
-          View on explorer
-        </ExplorerLink>
+        <Line>
+          <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} platform={platform} prefer="link">
+            View on explorer
+          </ExplorerLink>
+        </Line>
         <Trailer platform={platform} />
       </>,
-    );
+    ).trimEnd();
 
     return {
       name: 'messageRouter' as const,

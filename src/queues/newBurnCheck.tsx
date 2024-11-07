@@ -58,16 +58,18 @@ const buildMessages = ({
           <Line>
             🔥 Burned {amount.toFixed(2)} FLIP{valueUsd && ` (${formatUsdValue(valueUsd)})`}!
           </Line>
-          <ExplorerLink
-            path={`/events/${blockHeight}-${indexInBlock}`}
-            platform={platform}
-            prefer="link"
-          >
-            View on explorer
-          </ExplorerLink>
+          <Line>
+            <ExplorerLink
+              path={`/events/${blockHeight}-${indexInBlock}`}
+              platform={platform}
+              prefer="link"
+            >
+              View on explorer
+            </ExplorerLink>
+          </Line>
           <Trailer platform={platform} />
         </>,
-      ),
+      ).trimEnd(),
       filterData: { name: 'NEW_BURN' },
     },
   }));
