@@ -1,5 +1,5 @@
 import { JobConfig, JobProcessor } from './initialize.js';
-import Config, { Platform, ValidationData } from '../config.js';
+import Config, { Platform, FilterData } from '../config.js';
 import logger from '../utils/logger.js';
 
 const name = 'messageRouter';
@@ -8,7 +8,7 @@ type Name = typeof name;
 type Data = {
   platform: Platform;
   message: string;
-  validationData: ValidationData;
+  filterData: FilterData;
 };
 
 declare global {
@@ -18,17 +18,17 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { message, validationData, platform } = job.data;
+  const { message, filterData: filterData, platform } = job.data;
 
   const channels = await Config.getChannels(platform);
 
   const jobs = channels
-    ?.filter((channel) => Config.canSend(channel, validationData))
+    ?.filter((channel) => Config.canSend(channel, filterData))
     .map(({ key }) => ({ name: 'sendMessage' as const, data: { key, message } }));
 
   if (jobs?.length) await dispatchJobs(jobs);
 
-  logger.info(`Dispatched ${jobs?.length ?? 0} jobs for message type ${validationData.name}`);
+  logger.info(`Dispatched ${jobs?.length ?? 0} jobs for message type ${filterData.name}`);
 };
 
 export const config: JobConfig<Name> = {

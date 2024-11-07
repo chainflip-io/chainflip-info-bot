@@ -87,34 +87,34 @@ describe('newBurnCheck', () => {
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_BURN",
+                  },
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)!
         <a href="https://scan.chainflip.io/events/1-1">View on explorer</a>",
                   "platform": "telegram",
-                  "validationData": {
-                    "name": "NEW_BURN",
-                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_BURN",
+                  },
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)!
         [View on explorer](https://scan.chainflip.io/events/1-1)",
                   "platform": "discord",
-                  "validationData": {
-                    "name": "NEW_BURN",
-                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_BURN",
+                  },
                   "message": "🔥 Burned 12345.68 FLIP ($4.21)!
         View on explorer",
                   "platform": "twitter",
-                  "validationData": {
-                    "name": "NEW_BURN",
-                  },
                 },
                 "name": "messageRouter",
               },
@@ -156,34 +156,34 @@ describe('newBurnCheck', () => {
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_BURN",
+                  },
                   "message": "🔥 Burned 12345.68 FLIP!
         <a href="https://scan.chainflip.io/events/1-1">View on explorer</a>",
                   "platform": "telegram",
-                  "validationData": {
-                    "name": "NEW_BURN",
-                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_BURN",
+                  },
                   "message": "🔥 Burned 12345.68 FLIP!
         [View on explorer](https://scan.chainflip.io/events/1-1)",
                   "platform": "discord",
-                  "validationData": {
-                    "name": "NEW_BURN",
-                  },
                 },
                 "name": "messageRouter",
               },
               {
                 "data": {
+                  "filterData": {
+                    "name": "NEW_BURN",
+                  },
                   "message": "🔥 Burned 12345.68 FLIP!
         View on explorer",
                   "platform": "twitter",
-                  "validationData": {
-                    "name": "NEW_BURN",
-                  },
                 },
                 "name": "messageRouter",
               },

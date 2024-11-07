@@ -113,7 +113,7 @@ const buildMessages = ({
       data: {
         platform,
         message,
-        validationData: { name },
+        filterData: { name },
       },
     };
   });

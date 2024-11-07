@@ -61,7 +61,7 @@ const buildMessages = ({
           </ExplorerLink>
         </>,
       ),
-      validationData: { name: 'NEW_BURN' },
+      filterData: { name: 'NEW_BURN' },
     },
   }));
 

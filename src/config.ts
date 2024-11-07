@@ -18,7 +18,7 @@ const filters = z.union([
 
 export type Filter = z.infer<typeof filters>;
 
-export type ValidationData =
+export type FilterData =
   | Exclude<Filter, { name: 'NEW_SWAP' }>
   | { name: 'NEW_SWAP'; usdValue: number };
 
@@ -96,7 +96,7 @@ const config = z
           token: telegram.botToken,
           type: 'telegram',
         });
-        channelNames.add(name);
+        channelNames.add(key);
         enabledChannelCount += 1;
       });
 
@@ -110,7 +110,7 @@ const config = z
           filters: channel.filters,
         });
         configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
-        channelNames.add(name);
+        channelNames.add(key);
         enabledChannelCount += 1;
       });
 
@@ -178,16 +178,14 @@ export default class Config {
     return config[platform];
   }
 
-  static canSend(channel: Channel, validationData: ValidationData): boolean {
+  static canSend(channel: Channel, filterData: FilterData): boolean {
     if (channel.filters === undefined) return true;
 
-    switch (validationData.name) {
-      case 'NEW_SWAP': {
-        const filter = channel.filters.find((rule) => rule.name === validationData.name);
-        return filter !== undefined && validationData.usdValue >= filter.minUsdValue;
-      }
-      default:
-        return channel.filters.some((rule) => rule.name === validationData.name);
+    if (filterData.name === 'NEW_SWAP') {
+      const filter = channel.filters.find((rule) => rule.name === filterData.name);
+      return filter !== undefined && filterData.usdValue >= filter.minUsdValue;
     }
+
+    return channel.filters.some((rule) => rule.name === filterData.name);
   }
 }

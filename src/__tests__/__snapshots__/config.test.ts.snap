@@ -14,13 +14,3 @@ exports[`Config > Config.get > returns the config for a key (telegram:telegram_1
   "type": "telegram",
 }
 `;
-
-exports[`Config > Config.get > returns the config for a key (twitter:twitter_1) 1`] = `
-{
-  "consumerKey": "xxx",
-  "consumerKeySecret": "xxx",
-  "oauthKey": "xxx",
-  "oauthKeySecret": "xxx",
-  "type": "twitter",
-}
-`;
