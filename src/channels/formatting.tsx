@@ -46,7 +46,7 @@ export const Link = ({
       if (prefer === 'text') return children;
       // or we show the url
       if (prefer === 'link') return href.toString();
-      throw new Error(`unknown prefer: ${prefer as any}`);
+      return unreachable(prefer, 'unknown preference');
     default:
       return unreachable(platform, 'unknown platform');
   }
