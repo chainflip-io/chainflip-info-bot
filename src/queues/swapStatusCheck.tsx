@@ -148,8 +148,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const jobs = [] as DispatchJobArgs[];
 
-  if (Number(swapInfo.egressAmount) === 0) {
-    logger.info(`Swap is not defined`);
+  if (swapInfo.completedEventId && Number(swapInfo.egressAmount) === 0) {
+    logger.info(`Swap egress amount is zero, so it was refunded`);
     return;
   }
 
