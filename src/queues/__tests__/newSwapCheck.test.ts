@@ -103,6 +103,42 @@ describe('newSwapCheck', () => {
                 ],
                 "name": "scheduler",
               },
+              {
+                "data": {
+                  "swapRequestId": "9",
+                },
+                "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "3",
+                },
+                "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "2",
+                },
+                "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "4",
+                },
+                "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "5",
+                },
+                "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "7",
+                },
+                "name": "swapStatusCheck",
+              },
             ],
           ],
         ]

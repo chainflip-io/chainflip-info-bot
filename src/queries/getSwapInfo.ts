@@ -1,6 +1,9 @@
 import { BigNumber } from 'bignumber.js';
+import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
+import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
+import { toTokenAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
@@ -42,49 +45,83 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           timestamp
         }
       }
+      executedSwaps: swapsBySwapRequestId(filter: { swapExecutedEventId: { isNull: false } }) {
+        totalCount
+      }
+      fees: swapFeesBySwapRequestId {
+        nodes {
+          valueUsd
+          amount
+          asset
+          type
+        }
+      }
       sourceChain
       numberOfChunks
       destinationAsset
       sourceAsset
+      effectiveBoostFeeBps
     }
   }
 `);
 
-const brokerIdSS58ToAliasMap: Record<string, string> = {
-  cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7: 'Chainflip Swapping',
-  cFJWWedhJmnsk3P9jEmCfbmgmg62ZpA7LT5WCpwLXEzXuRuc3: 'Houdini Swap',
-  cFKYhAZR1ycHnXLC1PVttiAMVRK489rKhfRXPA4v9yG4WdzqP: 'El Dorado',
-  cFN1AfNQBEBCkuNAV37WWw34bCAdiW5e5sHTY4LaaRWiBSh7B: 'Thunderhead',
-  cFLuWQcabsKpegned1ka3Qad6cTATzpgwLYZK8U5spmkG9MEf: 'THORWallet',
-  cFJjZKzA5rUTb9qkZMGfec7piCpiAQKr15B4nALzriMGQL8BE: 'THORSwap',
+type Fee = {
+  __typename?: 'SwapFee';
+  valueUsd?: string | null;
+  amount: string;
+  asset: ChainflipAsset;
+  type: SwapFeeType;
 };
 
-const getBrokerAlias = (broker: { alias?: string | null; idSs58?: string | null }) =>
-  broker.alias || brokerIdSS58ToAliasMap[broker.idSs58 as string];
+const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
+  broker.alias || knownBrokers[broker.idSs58]?.name || undefined;
 
-const getBrokerIdOrAlias = (broker?: { alias?: string | null; idSs58?: string | null }) =>
-  broker && broker.idSs58 ? getBrokerAlias(broker) || abbreviate(broker.idSs58, 4) : 'Others';
+const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
+  broker && broker.idSs58
+    ? { alias: getBrokerAlias(broker) || abbreviate(broker.idSs58, 4), brokerId: broker.idSs58 }
+    : undefined;
+
+const getFee = (fees: Fee[], feeType: SwapFeeType) => {
+  const fee = fees.find(({ type }) => type === feeType);
+
+  return (
+    fee && {
+      valueUsd: Number(fee.valueUsd ?? 0),
+    }
+  );
+};
 
 export default async function getSwapInfo(nativeId: string) {
   const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {
     nativeId,
   });
 
-  const { swap } = data;
-  if (!swap) return null;
+  if (!data || !data.swap) throw new Error('Can not find swap request');
 
-  const { sourceChain, sourceAsset, destinationAsset } = swap;
+  const { swap } = data;
+  const { sourceChain, sourceAsset, destinationAsset, completedEventId, effectiveBoostFeeBps } =
+    swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
   const egressTimestamp = swap.egress?.scheduledEvent.block.timestamp;
   const fokMinPriceX128 = swap.swapChannel?.fokMinPriceX128;
-  const timestamp = swap.completedEvent?.block.timestamp;
+  const completedAt = swap.completedEvent?.block.timestamp;
 
   const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
   const broker = swap.swapChannel?.broker.account;
-  const alias = getBrokerIdOrAlias(broker);
+  const numberOfChunks = swap.numberOfChunks ?? 1;
+  const numberOfExecutedChunks = swap.executedSwaps.totalCount;
+
+  const brokerIdAndAlias = getBrokerIdAndAlias(broker);
+
+  const dcaChunks =
+    numberOfExecutedChunks && numberOfChunks > 1
+      ? `${numberOfExecutedChunks}/${numberOfChunks}`
+      : undefined;
+
+  const boostFee = getFee(swap.fees.nodes, 'BOOST');
 
   let duration;
   if (depositTimestamp && egressTimestamp) {
@@ -102,30 +139,41 @@ export default async function getSwapInfo(nativeId: string) {
     });
   }
 
-  const priceDelta = egressValueUsd
+  const priceDelta =
+    egressValueUsd && depositValueUsd && Number(egressValueUsd) - Number(depositValueUsd);
+
+  const priceDeltaPercentage = egressValueUsd
     ? new BigNumber(Number(egressValueUsd).toFixed())
         .minus(Number(depositValueUsd))
         .dividedBy(Number(depositValueUsd))
         .multipliedBy(100)
+        .toFixed(2)
     : null;
 
   const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
+  const depositAmount = swap.depositAmount && toTokenAmount(swap.depositAmount, sourceAsset);
+
+  const egressAmount = swap.egress?.amount && toTokenAmount(swap.egress?.amount, destinationAsset);
+
   return {
-    completedEventId: swap.completedEventId,
+    completedEventId,
     requestId: swap.nativeId,
-    depositAmount: swap.depositAmount,
+    depositAmount,
     depositValueUsd,
-    egressAmount: swap.egress?.amount,
+    egressAmount,
     egressValueUsd,
     duration,
     priceDelta,
-    alias,
-    dcaChunks: swap.numberOfChunks,
+    priceDeltaPercentage,
+    brokerIdAndAlias,
+    dcaChunks,
     minPrice,
     sourceAsset,
     destinationAsset,
-    completedAt: timestamp,
+    completedAt,
+    boostFee,
+    effectiveBoostFeeBps,
   };
 }
