@@ -1,5 +1,69 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`swapStatusCheck > adds boost info 1`] = `
+[
+  [
+    [
+      {
+        "data": {
+          "filterData": {
+            "name": "NEW_SWAP",
+            "usdValue": 78725.5517676093,
+          },
+          "message": "🦈 Swap <strong><a href="https://scan.chainflip.io/swaps/103899">#103899</a></strong>
+📥 <strong>1.030556 BTC</strong> ($78,624.35)
+📤 <strong>78,565.74453 USDC on Ethereum</strong> ($78,725.55)
+⏱️ Took: <strong>10 min</strong>
+🟢 Delta: <strong>$101.20</strong> (0.13%)
+📓 Chunks: <strong>26/26</strong>
+⚡ <strong>Boosted</strong> for <strong>$39.31</strong>
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
+          "platform": "telegram",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "NEW_SWAP",
+            "usdValue": 78725.5517676093,
+          },
+          "message": "🦈 Swap **[#103899](https://scan.chainflip.io/swaps/103899)**
+📥 **1.030556 BTC** ($78,624.35)
+📤 **78,565.74453 USDC on Ethereum** ($78,725.55)
+⏱️ Took: **10 min**
+🟢 Delta: **$101.20** (0.13%)
+📓 Chunks: **26/26**
+⚡ **Boosted** for **$39.31**
+🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
+          "platform": "discord",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "NEW_SWAP",
+            "usdValue": 78725.5517676093,
+          },
+          "message": "🦈 Swap https://scan.chainflip.io/swaps/103899
+📥 1.030556 BTC ($78,624.35)
+📤 78,565.74453 USDC on Ethereum ($78,725.55)
+⏱️ Took: 10 min
+🟢 Delta: $101.20 (0.13%)
+📓 Chunks: 26/26
+⚡ Boosted for $39.31
+🏦 via Chainflip Swapping
+#chainflip $flip",
+          "platform": "twitter",
+        },
+        "name": "messageRouter",
+      },
+    ],
+  ],
+]
+`;
+
 exports[`swapStatusCheck > check fresh swap status and send swap info message 1`] = `
 [
   [

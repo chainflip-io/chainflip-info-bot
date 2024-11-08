@@ -68,7 +68,11 @@ vi.mock('graphql-request', (importActual) => {
 
     await fs.mkdir(path.dirname(cachedFile), { recursive: true });
     // and then cache the response
-    await fs.writeFile(cachedFile, await prettier.format(JSON.stringify(result)), 'utf8');
+    await fs.writeFile(
+      cachedFile,
+      await prettier.format(JSON.stringify(result), { parser: 'json' }),
+      'utf8',
+    );
 
     return result;
   });
