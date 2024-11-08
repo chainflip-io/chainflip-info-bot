@@ -162,9 +162,10 @@ const buildMessageData = ({
       },
     };
   });
+
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const swapInfo = await getSwapInfo(job.data.swapRequestId);
   logger.info(`Checking swap #${job.data.swapRequestId}`);
+  const swapInfo = await getSwapInfo(job.data.swapRequestId);
 
   const jobs = [] as DispatchJobArgs[];
 
