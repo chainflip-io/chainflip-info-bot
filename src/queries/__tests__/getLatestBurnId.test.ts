@@ -2,6 +2,8 @@ import { describe, expect, it, vi } from 'vitest';
 import { explorerClient } from '../../server.js';
 import getLatestBurnId from '../getLatestBurnId.js';
 
+vi.mock('graphql-request');
+
 describe('getLatestBurnId', () => {
   it('should return the latest burn id', async () => {
     vi.mocked(explorerClient.request).mockResolvedValue({

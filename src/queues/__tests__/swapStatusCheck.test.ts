@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import pendingSwapStats from './pendingSwapStats.json' with { type: 'json' };
-import swapInfoStats from '../../queries/__tests__/swapInfo.json' with { type: 'json' };
 
 import { explorerClient } from '../../server.js';
 import { config } from '../swapStatusCheck.js';
@@ -17,7 +15,6 @@ afterEach(() => {
 describe('swapStatusCheck', () => {
   it('check fresh swap status and send swap info message', async () => {
     vi.setSystemTime(new Date('2024-10-25T12:42:30+00:00'));
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['77697']);
 
     const dispatchJobs = vi.fn();
 
@@ -32,7 +29,7 @@ describe('swapStatusCheck', () => {
 
   it('check pending swap status and move to a scheduler', async () => {
     vi.setSystemTime(new Date('2024-10-25T12:42:30+00:00'));
-    vi.mocked(explorerClient.request).mockResolvedValue(pendingSwapStats);
+    vi.spyOn(explorerClient, 'request').mockResolvedValue(pendingSwapStats);
 
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({
@@ -64,8 +61,6 @@ describe('swapStatusCheck', () => {
   });
 
   it('check stale swap status', async () => {
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['77697']);
-
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({
       data: {
@@ -81,8 +76,7 @@ describe('swapStatusCheck', () => {
   });
 
   it('subtracts out the refund egress amount from the ingress amount', async () => {
-    vi.setSystemTime(new Date(swapInfoStats['103045'].swap.completedEvent.block.timestamp));
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['103045']);
+    vi.setSystemTime(new Date('2024-11-07T21:53:48+00:00'));
 
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({
@@ -96,8 +90,7 @@ describe('swapStatusCheck', () => {
 
   it('ignores fully refunded swaps', async () => {
     const swapRequestId = '103706';
-    vi.setSystemTime(new Date(swapInfoStats[swapRequestId].swap.completedEvent.block.timestamp));
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats[swapRequestId]);
+    vi.setSystemTime(new Date('2024-11-08T13:08:42+00:00'));
 
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({

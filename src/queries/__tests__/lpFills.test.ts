@@ -1,196 +1,128 @@
-import { describe, expect, it, vi } from 'vitest';
-import lpFills from './lpFIlls.json' with { type: 'json' };
-import { lpClient } from '../../server.js';
+import { addWeeks } from 'date-fns';
+import { describe, expect, it } from 'vitest';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
   it('returns all the lp fills for given range', async () => {
-    vi.mocked(lpClient.request)
-      .mockResolvedValueOnce(lpFills)
-      .mockResolvedValueOnce({
-        accounts: {
-          nodes: [
-            {
-              id: 2,
-              idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
-            },
-            {
-              id: 3,
-              idSs58: 'cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg',
-            },
-            {
-              id: 7,
-              idSs58: 'cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j',
-            },
-            {
-              id: 9,
-              idSs58: 'cFKZarxpf9MVwzzmYUtQfV61PRkYgTj9wUgUCeuKpKgMLrTow',
-            },
-            {
-              id: 27,
-              idSs58: 'cFLBKavxvThwqLWNr7cTwtqhYD6jDqXM31d6QoTLvuK4X78ve',
-            },
-            {
-              id: 34,
-              idSs58: 'cFK6qCSmgYJACMNVk6JnCb5nkccr7yM6aZiKtXUnFAzsX7hvs',
-            },
-            {
-              id: 36,
-              idSs58: 'cFKy4xbhLxvAVxYuPEWbbTJTed5WtyqNVikH2fS2WYLNHRrFh',
-            },
-            {
-              id: 44,
-              idSs58: 'cFN5mkvi3yA9kgzVz4qfri23bwKjd9YTrykqLv6rZsik4HBHz',
-            },
-            {
-              id: 53,
-              idSs58: 'cFPV6R6vXWAXVityn3XAZNMQDkuZ96LcmS2euYYrGjchWWAri',
-            },
-            {
-              id: 57,
-              idSs58: 'cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW',
-            },
-            {
-              id: 70,
-              idSs58: 'cFMVQrUbuTuXmeRinPQovRkCgoyrrRd3N4Q5ZdHfqv4VJi5Hh',
-            },
-            {
-              id: 79,
-              idSs58: 'cFNyp1zp93cBrHnsPjSpgc2JGwGmiQbtrrTNRNeZteRkb3Ud4',
-            },
-            {
-              id: 103,
-              idSs58: 'cFHw1UHP69RiSSj5FSYRx5e4Fuh4qg4625zBxW2XbE4wK6JTL',
-            },
-            {
-              id: 109,
-              idSs58: 'cFJYzUFU97Y849kbKvyj7br1CUumnbqWHJKDcfPFoKRqq6Zxz',
-            },
-            {
-              id: 118,
-              idSs58: 'cFMTFP2F61oRQGf7rUZpD2gaNtEjH65Sm6xhay4xmgBcwD26a',
-            },
-            {
-              id: 131,
-              idSs58: 'cFNAnhKPq7hnCKBM2rgo7v7WyroRsZiKm9gKSoPcggdyfYwaA',
-            },
-            {
-              id: 151,
-              idSs58: 'cFLq5LwQENkHjHuucTZEFYU6DeESbuAkcKVPpM69mx8YKY6yc',
-            },
-          ],
-        },
-      });
-
-    const start = '2022-01-01T00:00:00Z';
-    const end = '2022-01-07T00:00:00Z';
+    const start = '2024-10-31T00:00:00Z';
+    const end = addWeeks(start, 1).toISOString();
     expect(await getLpFills({ start, end })).toMatchInlineSnapshot(`
       [
         {
           "alias": "JIT Strategies",
-          "filledAmountValueUsd": "3403017.236955578",
+          "filledAmountValueUsd": "25334355.6646832458",
           "idSs58": "cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh",
-          "percentage": "48.18",
-        },
-        {
-          "alias": undefined,
-          "filledAmountValueUsd": "1299633.3441712966",
-          "idSs58": "cFJYzUFU97Y849kbKvyj7br1CUumnbqWHJKDcfPFoKRqq6Zxz",
-          "percentage": "18.40",
+          "percentage": "42.15",
         },
         {
           "alias": "ChainflipGod",
-          "filledAmountValueUsd": "668227.3696497927",
+          "filledAmountValueUsd": "9833398.3587926122",
           "idSs58": "cFMVQrUbuTuXmeRinPQovRkCgoyrrRd3N4Q5ZdHfqv4VJi5Hh",
-          "percentage": "9.46",
+          "percentage": "16.36",
+        },
+        {
+          "alias": "Selini",
+          "filledAmountValueUsd": "7515924.9233363619",
+          "idSs58": "cFKZarxpf9MVwzzmYUtQfV61PRkYgTj9wUgUCeuKpKgMLrTow",
+          "percentage": "12.51",
         },
         {
           "alias": "Auros",
-          "filledAmountValueUsd": "573330.7181606164",
+          "filledAmountValueUsd": "6822847.1335449754",
           "idSs58": "cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg",
-          "percentage": "8.12",
+          "percentage": "11.35",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "5187912.6660176357",
+          "idSs58": "cFJYzUFU97Y849kbKvyj7br1CUumnbqWHJKDcfPFoKRqq6Zxz",
+          "percentage": "8.63",
         },
         {
           "alias": "Selini",
-          "filledAmountValueUsd": "511394.1558238848",
-          "idSs58": "cFKZarxpf9MVwzzmYUtQfV61PRkYgTj9wUgUCeuKpKgMLrTow",
-          "percentage": "7.24",
+          "filledAmountValueUsd": "1918420.1344585812",
+          "idSs58": "cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j",
+          "percentage": "3.19",
         },
         {
           "alias": "TreStylez",
-          "filledAmountValueUsd": "377071.4615828053",
+          "filledAmountValueUsd": "1838852.595176714",
           "idSs58": "cFKy4xbhLxvAVxYuPEWbbTJTed5WtyqNVikH2fS2WYLNHRrFh",
-          "percentage": "5.34",
-        },
-        {
-          "alias": undefined,
-          "filledAmountValueUsd": "122931.3197604075",
-          "idSs58": "cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW",
-          "percentage": "1.74",
-        },
-        {
-          "alias": "Selini",
-          "filledAmountValueUsd": "34494.7571256542",
-          "idSs58": "cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j",
-          "percentage": "0.49",
-        },
-        {
-          "alias": undefined,
-          "filledAmountValueUsd": "34223.7176464613",
-          "idSs58": "cFN5mkvi3yA9kgzVz4qfri23bwKjd9YTrykqLv6rZsik4HBHz",
-          "percentage": "0.48",
+          "percentage": "3.06",
         },
         {
           "alias": "CumpsD",
-          "filledAmountValueUsd": "23075.3036937412",
+          "filledAmountValueUsd": "639320.1970485001",
           "idSs58": "cFLBKavxvThwqLWNr7cTwtqhYD6jDqXM31d6QoTLvuK4X78ve",
-          "percentage": "0.33",
+          "percentage": "1.06",
         },
         {
           "alias": undefined,
-          "filledAmountValueUsd": "9315.4878050389",
+          "filledAmountValueUsd": "619448.7841944152",
+          "idSs58": "cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW",
+          "percentage": "1.03",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "113189.5295014113",
           "idSs58": "cFNyp1zp93cBrHnsPjSpgc2JGwGmiQbtrrTNRNeZteRkb3Ud4",
+          "percentage": "0.19",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "78889.5914538513",
+          "idSs58": "cFLZS9GDX4CeXWdjqm2sXmVUNqW1H71BK5nfUXHo6qtKDqNHu",
           "percentage": "0.13",
         },
         {
           "alias": undefined,
-          "filledAmountValueUsd": "2990.8296020024",
+          "filledAmountValueUsd": "63762.9081250957",
           "idSs58": "cFPV6R6vXWAXVityn3XAZNMQDkuZ96LcmS2euYYrGjchWWAri",
-          "percentage": "0.04",
+          "percentage": "0.11",
+        },
+        {
+          "alias": "curiouspleb",
+          "filledAmountValueUsd": "54382.7132410049",
+          "idSs58": "cFPJNbXH9KNP1CRejnf19ARopcS8w8c4teTz5GF3G36MZRWJG",
+          "percentage": "0.09",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "53282.2657452464",
+          "idSs58": "cFJtLQCKAGqSpamy1R9W4efQHaq5PhKSK93ucVRZMJq6ute8F",
+          "percentage": "0.09",
         },
         {
           "alias": "Marky",
-          "filledAmountValueUsd": "2230.8860109957",
+          "filledAmountValueUsd": "15717.8377395582",
           "idSs58": "cFK6qCSmgYJACMNVk6JnCb5nkccr7yM6aZiKtXUnFAzsX7hvs",
           "percentage": "0.03",
         },
         {
           "alias": undefined,
-          "filledAmountValueUsd": "717.5474369074",
-          "idSs58": "cFLq5LwQENkHjHuucTZEFYU6DeESbuAkcKVPpM69mx8YKY6yc",
-          "percentage": "0.01",
-        },
-        {
-          "alias": undefined,
-          "filledAmountValueUsd": "461.8546832861",
-          "idSs58": "cFMTFP2F61oRQGf7rUZpD2gaNtEjH65Sm6xhay4xmgBcwD26a",
-          "percentage": "0.01",
-        },
-        {
-          "alias": undefined,
-          "filledAmountValueUsd": "190.624156137",
+          "filledAmountValueUsd": "9938.1818879375",
           "idSs58": "cFHw1UHP69RiSSj5FSYRx5e4Fuh4qg4625zBxW2XbE4wK6JTL",
+          "percentage": "0.02",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "595.3901395963",
+          "idSs58": "cFPQQaEEGnzuZTBg8S3JuhiTu1CTrHXDzKAZfvNrSrjUUQQ1z",
           "percentage": "0.00",
         },
         {
           "alias": undefined,
-          "filledAmountValueUsd": "34.4975149188",
+          "filledAmountValueUsd": "346.0927553195",
           "idSs58": "cFNAnhKPq7hnCKBM2rgo7v7WyroRsZiKm9gKSoPcggdyfYwaA",
+          "percentage": "0.00",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "117.2654259377",
+          "idSs58": "cFMTFP2F61oRQGf7rUZpD2gaNtEjH65Sm6xhay4xmgBcwD26a",
           "percentage": "0.00",
         },
       ]
     `);
-
-    expect(lpClient.request).toHaveBeenCalledWith(expect.anything(), { start, end });
   });
 });

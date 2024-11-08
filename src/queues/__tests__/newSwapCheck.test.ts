@@ -2,6 +2,8 @@ import { describe, it, expect, vi } from 'vitest';
 import { explorerClient } from '../../server.js';
 import { config } from '../newSwapCheck.js';
 
+vi.mock('graphql-request');
+
 const mockLatestSwapRequestResponse = (ids: string[]) => ({
   swapRequests: {
     nodes: ids.map((nativeId) => ({ nativeId })),
