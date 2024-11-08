@@ -1,3 +1,4 @@
+import assert from 'assert';
 import { BigNumber } from 'bignumber.js';
 import { assetDecimals } from '../consts.js';
 import { ChainflipAsset } from '../graphql/generated/graphql.js';
@@ -22,9 +23,25 @@ export const chainConstants = {
 
 export type ChainflipChain = 'Bitcoin' | 'Ethereum' | 'Solana' | 'Arbitrum' | 'Polkadot';
 
-export const toFormattedAmount = (amount: string, chainflipAsset: ChainflipAsset): string =>
-  new BigNumber(amount)
-    .shiftedBy(-assetDecimals[chainflipAsset])
-    .toFormat(6)
-    // remove trailing zeros
-    .replace(/\.?0+$/, '');
+export const toAssetAmount = (amount: string, chainflipAsset: ChainflipAsset): BigNumber =>
+  new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]);
+
+export function toFormattedAmount(amount: BigNumber): string;
+export function toFormattedAmount(amount: string, chainflipAsset: ChainflipAsset): string;
+export function toFormattedAmount(
+  amount: BigNumber | string,
+  chainflipAsset?: ChainflipAsset,
+): string {
+  let bigNumber;
+
+  if (typeof amount === 'string') {
+    assert(chainflipAsset, 'chainflipAsset is required when amount is a string');
+
+    bigNumber = toAssetAmount(amount, chainflipAsset);
+  } else {
+    bigNumber = amount;
+  }
+
+  // remove trailing zeros
+  return bigNumber.toFormat(6).replace(/\.?0+$/, '');
+}

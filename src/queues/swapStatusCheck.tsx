@@ -1,3 +1,4 @@
+import React from 'react';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
@@ -40,11 +41,13 @@ const getSwapStatus = (swapInfo: SwapInfo) => {
   return 'pending';
 };
 
-const emoji = (depositValueUsd: number) => {
-  if (depositValueUsd > 100_000) return '🐳';
-  if (depositValueUsd > 50_000) return '🦈';
-  if (depositValueUsd > 25_000) return '🐟';
-  if (depositValueUsd > 10_000) return '🦀';
+const emoji = (depositValueUsd: string | null | undefined) => {
+  if (!depositValueUsd) return null;
+  const value = Number.parseFloat(depositValueUsd);
+  if (value > 100_000) return '🐳';
+  if (value > 50_000) return '🦈';
+  if (value > 25_000) return '🐟';
+  if (value > 10_000) return '🦀';
   return '🦐';
 };
 
@@ -58,6 +61,12 @@ const deltaSign = (delta: number) => {
   return '🟢';
 };
 
+const UsdValue = ({ amount }: { amount: string | null | undefined }): React.JSX.Element | null => {
+  if (!amount) return null;
+
+  return <> ({formatUsdValue(amount)})</>;
+};
+
 const buildMessageData = ({
   swapInfo,
 }: {
@@ -67,41 +76,44 @@ const buildMessageData = ({
     const message = renderToStaticMarkup(
       <>
         <Line>
-          {emoji(Number(swapInfo.depositValueUsd))} Swap{' '}
+          {emoji(swapInfo.originalDepositValueUsd)} Swap{' '}
           <Bold platform={platform}>
             <ExplorerLink platform={platform} path={`swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}
             </ExplorerLink>
           </Bold>
         </Line>
-        {swapInfo.depositAmount && swapInfo.depositValueUsd && (
+        <Line>
+          📥{' '}
+          <Bold platform={platform}>
+            {swapInfo.depositAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
+          </Bold>
+          <UsdValue amount={swapInfo.depositValueUsd} />
+        </Line>
+        {swapInfo.egressAmount && (
           <Line>
-            📥{' '}
+            📤{' '}
             <Bold platform={platform}>
-              {swapInfo.depositAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
-            </Bold>{' '}
-            ({formatUsdValue(swapInfo.depositValueUsd)})
+              {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
+            </Bold>
+            <UsdValue amount={swapInfo.egressValueUsd} />
           </Line>
         )}
-        {!swapInfo.partiallyRefunded && (
-          <>
-            {swapInfo.egressAmount && swapInfo.egressValueUsd && (
-              <Line>
-                📤{' '}
-                <Bold platform={platform}>
-                  {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
-                </Bold>{' '}
-                ({formatUsdValue(swapInfo.egressValueUsd)})
-              </Line>
-            )}
-          </>
+        {swapInfo.refundAmount && (
+          <Line>
+            ↩️{' '}
+            <Bold platform={platform}>
+              {swapInfo.refundAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
+            </Bold>
+            <UsdValue amount={swapInfo.refundValueUsd} />
+          </Line>
         )}
         {swapInfo.duration && (
           <Line>
             ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
           </Line>
         )}
-        {!swapInfo.partiallyRefunded && swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
+        {swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
           <Line>
             {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
             <Bold platform={platform}>
@@ -139,7 +151,7 @@ const buildMessageData = ({
           </Line>
         )}
       </>,
-    );
+    ).trimEnd();
 
     return {
       name: 'messageRouter' as const,

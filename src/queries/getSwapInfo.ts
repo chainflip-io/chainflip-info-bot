@@ -1,9 +1,10 @@
 import { BigNumber } from 'bignumber.js';
+import { UnrecoverableError } from 'bullmq';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
-import { toFormattedAmount } from '../utils/chainflip.js';
+import { toAssetAmount, toFormattedAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
@@ -15,6 +16,11 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       nativeId
       depositAmount
       depositValueUsd
+      sourceChain
+      numberOfChunks
+      destinationAsset
+      sourceAsset
+      effectiveBoostFeeBps
       egress: egressByEgressId {
         amount
         valueUsd
@@ -23,6 +29,10 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
             timestamp
           }
         }
+      }
+      refundEgress: egressByEgressId {
+        amount
+        valueUsd
       }
       swapChannel: swapChannelByDepositChannelId {
         broker: brokerByBrokerId {
@@ -56,11 +66,6 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           type
         }
       }
-      sourceChain
-      numberOfChunks
-      destinationAsset
-      sourceAsset
-      effectiveBoostFeeBps
     }
   }
 `);
@@ -96,9 +101,14 @@ export default async function getSwapInfo(nativeId: string) {
     nativeId,
   });
 
-  if (!data || !data.swap) throw new Error('Can not find swap request');
+  if (!data.swap) throw new Error('Can not find swap request');
 
   const { swap } = data;
+
+  if (!swap.depositAmount) {
+    throw new UnrecoverableError('Deposit amount is missing');
+  }
+
   const { sourceChain, sourceAsset, destinationAsset, completedEventId, effectiveBoostFeeBps } =
     swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
@@ -108,7 +118,6 @@ export default async function getSwapInfo(nativeId: string) {
   const fokMinPriceX128 = swap.swapChannel?.fokMinPriceX128;
   const completedAt = swap.completedEvent?.block.timestamp;
 
-  const depositValueUsd = swap.depositValueUsd;
   const egressValueUsd = swap.egress?.valueUsd;
   const broker = swap.swapChannel?.broker.account;
   const numberOfChunks = swap.numberOfChunks ?? 1;
@@ -141,6 +150,29 @@ export default async function getSwapInfo(nativeId: string) {
     });
   }
 
+  const minPrice =
+    fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
+
+  let depositAmount = toAssetAmount(swap.depositAmount, sourceAsset);
+
+  const egressAmount =
+    swap.egress?.amount && toFormattedAmount(swap.egress?.amount, destinationAsset);
+
+  const refundAmount =
+    swap.refundEgress?.amount && toAssetAmount(swap.refundEgress?.amount, sourceAsset);
+
+  let depositValueUsd = swap.depositValueUsd;
+  if (refundAmount) {
+    const newDepositAmount = depositAmount.minus(refundAmount);
+
+    if (depositValueUsd) {
+      const swapRatio = newDepositAmount.div(depositAmount);
+      depositValueUsd = new BigNumber(depositValueUsd).times(swapRatio).toFixed(2);
+    }
+
+    depositAmount = newDepositAmount;
+  }
+
   const priceDelta =
     egressValueUsd && depositValueUsd && Number(egressValueUsd) - Number(depositValueUsd);
 
@@ -152,21 +184,17 @@ export default async function getSwapInfo(nativeId: string) {
         .toFixed(2)
     : null;
 
-  const minPrice =
-    fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
-
-  const depositAmount = swap.depositAmount && toFormattedAmount(swap.depositAmount, sourceAsset);
-
-  const egressAmount =
-    swap.egress?.amount && toFormattedAmount(swap.egress?.amount, destinationAsset);
-
   return {
     completedEventId,
     requestId: swap.nativeId,
-    depositAmount,
+    originalDepositAmount: toFormattedAmount(swap.depositAmount, sourceAsset),
+    originalDepositValueUsd: swap.depositValueUsd,
+    depositAmount: toFormattedAmount(depositAmount),
     depositValueUsd,
     egressAmount,
     egressValueUsd,
+    refundAmount: refundAmount && toFormattedAmount(refundAmount),
+    refundValueUsd: swap.refundEgress?.valueUsd,
     duration,
     priceDelta,
     priceDeltaPercentage,
