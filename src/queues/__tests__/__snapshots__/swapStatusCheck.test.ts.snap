@@ -13,7 +13,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
 📤 <strong>5,616.094932 USDT on Ethereum</strong> ($5,611.38)
 ⏱️ Took: <strong>1 min</strong>
-🟢 Delta: <strong>$43.31</strong> (0.77%)
+🟢 Delta: <strong>$43.31</strong> (0.78%)
 📓 Chunks: <strong>2/2</strong>
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
         "platform": "telegram",
@@ -30,7 +30,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 📥 **5,000 FLIP on Ethereum** ($5,568.07)
 📤 **5,616.094932 USDT on Ethereum** ($5,611.38)
 ⏱️ Took: **1 min**
-🟢 Delta: **$43.31** (0.77%)
+🟢 Delta: **$43.31** (0.78%)
 📓 Chunks: **2/2**
 🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
@@ -47,7 +47,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 📥 5,000 FLIP on Ethereum ($5,568.07)
 📤 5,616.094932 USDT on Ethereum ($5,611.38)
 ⏱️ Took: 1 min
-🟢 Delta: $43.31 (0.77%)
+🟢 Delta: $43.31 (0.78%)
 📓 Chunks: 2/2
 🏦 via Chainflip Swapping",
         "platform": "twitter",
@@ -72,7 +72,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 📤 <strong>5.939236 ETH on Ethereum</strong> ($17,206.14)
 ↩️ <strong>24,455.099318 FLIP on Ethereum</strong> ($31,269.46)
 ⏱️ Took: <strong>18 min</strong>
-🟢 Delta: <strong>$167.20</strong> (0.98%)
+🟢 Delta: <strong>$167.19</strong> (0.98%)
 📓 Chunks: <strong>6/17</strong>
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
         "platform": "telegram",
@@ -90,7 +90,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 📤 **5.939236 ETH on Ethereum** ($17,206.14)
 ↩️ **24,455.099318 FLIP on Ethereum** ($31,269.46)
 ⏱️ Took: **18 min**
-🟢 Delta: **$167.20** (0.98%)
+🟢 Delta: **$167.19** (0.98%)
 📓 Chunks: **6/17**
 🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
@@ -108,7 +108,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 📤 5.939236 ETH on Ethereum ($17,206.14)
 ↩️ 24,455.099318 FLIP on Ethereum ($31,269.46)
 ⏱️ Took: 18 min
-🟢 Delta: $167.20 (0.98%)
+🟢 Delta: $167.19 (0.98%)
 📓 Chunks: 6/17
 🏦 via Chainflip Swapping",
         "platform": "twitter",

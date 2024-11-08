@@ -23,8 +23,25 @@ export const chainConstants = {
 
 export type ChainflipChain = 'Bitcoin' | 'Ethereum' | 'Solana' | 'Arbitrum' | 'Polkadot';
 
-export const toAssetAmount = (amount: string, chainflipAsset: ChainflipAsset): BigNumber =>
-  new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]);
+export function toUsdAmount(amount: BigNumber.Value): BigNumber;
+export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumber | null;
+export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumber | null {
+  if (amount == null) return null;
+  return new BigNumber(amount);
+}
+
+export function toAssetAmount(amount: BigNumber.Value, chainflipAsset: ChainflipAsset): BigNumber;
+export function toAssetAmount(
+  amount: BigNumber.Value | null | undefined,
+  chainflipAsset: ChainflipAsset,
+): BigNumber | null;
+export function toAssetAmount(
+  amount: BigNumber.Value | null | undefined,
+  chainflipAsset: ChainflipAsset,
+): BigNumber | null {
+  if (amount == null) return null;
+  return new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]);
+}
 
 export function toFormattedAmount(amount: BigNumber): string;
 export function toFormattedAmount(amount: string, chainflipAsset: ChainflipAsset): string;
