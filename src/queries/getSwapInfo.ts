@@ -30,7 +30,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           }
         }
       }
-      refundEgress: egressByEgressId {
+      refundEgress: egressByRefundEgressId {
         amount
         valueUsd
       }
