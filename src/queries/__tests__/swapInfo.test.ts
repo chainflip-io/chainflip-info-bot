@@ -46,9 +46,7 @@ describe('swapInfo', () => {
 
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
-        "boostFee": {
-          "valueUsd": 0.2167859022,
-        },
+        "boostFee": 0.2167859022,
         "brokerIdAndAlias": {
           "alias": "Chainflip Swapping",
           "brokerId": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",

@@ -1,7 +1,7 @@
 import { BigNumber } from 'bignumber.js';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
-import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
+import { GetSwapInfoByNativeIdQuery, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
 import { toTokenAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
@@ -65,31 +65,21 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
   }
 `);
 
-type Fee = {
-  __typename?: 'SwapFee';
-  valueUsd?: string | null;
-  amount: string;
-  asset: ChainflipAsset;
-  type: SwapFeeType;
-};
+type SwapFee = NonNullable<GetSwapInfoByNativeIdQuery['swap']>['fees']['nodes'][number];
 
-const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
-  broker.alias || knownBrokers[broker.idSs58]?.name || undefined;
+const getFee = (fees: SwapFee[], feeType: SwapFeeType) => {
+  const fee = fees.find(({ type }) => type === feeType);
+
+  return fee && Number(fee.valueUsd ?? 0);
+};
 
 const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
   broker && broker.idSs58
-    ? { alias: getBrokerAlias(broker) || abbreviate(broker.idSs58, 4), brokerId: broker.idSs58 }
+    ? {
+        alias: broker.alias || knownBrokers[broker.idSs58]?.name || abbreviate(broker.idSs58, 4),
+        brokerId: broker.idSs58,
+      }
     : undefined;
-
-const getFee = (fees: Fee[], feeType: SwapFeeType) => {
-  const fee = fees.find(({ type }) => type === feeType);
-
-  return (
-    fee && {
-      valueUsd: Number(fee.valueUsd ?? 0),
-    }
-  );
-};
 
 export default async function getSwapInfo(nativeId: string) {
   const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {

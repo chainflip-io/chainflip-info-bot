@@ -1,3 +1,4 @@
+import { UnrecoverableError } from 'bullmq';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
@@ -111,7 +112,7 @@ const buildMessageData = ({
         {swapInfo.effectiveBoostFeeBps && swapInfo.boostFee && (
           <>
             ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
-            <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
+            <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee)}</Bold>
             {'\n'}
           </>
         )}
@@ -146,8 +147,6 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const swapInfo = await getSwapInfo(job.data.swapRequestId);
   logger.info(`Checking swap #${job.data.swapRequestId}`);
 
-  const jobs = [] as DispatchJobArgs[];
-
   if (swapInfo.completedEventId && Number(swapInfo.egressAmount) === 0) {
     logger.info(`Swap egress amount is zero, so it was refunded`);
     return;
@@ -155,23 +154,21 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const status = getSwapStatus(swapInfo);
 
-  switch (status) {
-    case 'fresh':
-      jobs.push(...buildMessageData({ swapInfo }));
-      logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
-      break;
+  const jobs: DispatchJobArgs[] = [];
 
-    case 'stale':
-      logger.warn(`Swap #${swapInfo.requestId} is stale`);
-      break;
-
-    case 'pending':
-      jobs.push({
-        name: 'scheduler',
-        data: [{ name, data: { swapRequestId: job.data.swapRequestId }, opts: { delay: 10_000 } }],
-      } as const);
-      logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
-      break;
+  if (status === 'fresh') {
+    jobs.push(...buildMessageData({ swapInfo }));
+    logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
+  } else if (status === 'stale') {
+    logger.warn(`Swap #${swapInfo.requestId} is stale`);
+  } else if (status === 'pending') {
+    jobs.push({
+      name: 'scheduler',
+      data: [{ name, data: { swapRequestId: job.data.swapRequestId }, opts: { delay: 10_000 } }],
+    } as const);
+    logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
+  } else {
+    throw new UnrecoverableError('Swap status in unpredictable');
   }
 
   await dispatchJobs(jobs);
