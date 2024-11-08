@@ -121,6 +121,8 @@ export default async function getSwapInfo(nativeId: string) {
       ? `${numberOfExecutedChunks}/${numberOfChunks}`
       : undefined;
 
+  const partiallyRefunded = numberOfExecutedChunks !== numberOfChunks;
+
   const boostFee = getFee(swap.fees.nodes, 'BOOST');
 
   let duration;
@@ -170,6 +172,7 @@ export default async function getSwapInfo(nativeId: string) {
     priceDeltaPercentage,
     brokerIdAndAlias,
     dcaChunks,
+    partiallyRefunded,
     minPrice,
     sourceAsset,
     destinationAsset,
