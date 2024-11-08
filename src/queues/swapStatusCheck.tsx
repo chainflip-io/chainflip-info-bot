@@ -83,21 +83,25 @@ const buildMessageData = ({
             ({formatUsdValue(swapInfo.depositValueUsd)})
           </Line>
         )}
-        {swapInfo.egressAmount && swapInfo.egressValueUsd && (
-          <Line>
-            📤{' '}
-            <Bold platform={platform}>
-              {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
-            </Bold>{' '}
-            ({formatUsdValue(swapInfo.egressValueUsd)})
-          </Line>
+        {!swapInfo.partiallyRefunded && (
+          <>
+            {swapInfo.egressAmount && swapInfo.egressValueUsd && (
+              <Line>
+                📤{' '}
+                <Bold platform={platform}>
+                  {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
+                </Bold>{' '}
+                ({formatUsdValue(swapInfo.egressValueUsd)})
+              </Line>
+            )}
+          </>
         )}
         {swapInfo.duration && (
           <Line>
             ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
           </Line>
         )}
-        {swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
+        {!swapInfo.partiallyRefunded && swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
           <Line>
             {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
             <Bold platform={platform}>
@@ -146,7 +150,6 @@ const buildMessageData = ({
       },
     };
   });
-
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const swapInfo = await getSwapInfo(job.data.swapRequestId);
   logger.info(`Checking swap #${job.data.swapRequestId}`);
