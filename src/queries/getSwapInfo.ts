@@ -1,10 +1,9 @@
-import { BigNumber } from 'bignumber.js';
 import { UnrecoverableError } from 'bullmq';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
-import { toAssetAmount, toFormattedAmount } from '../utils/chainflip.js';
+import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
@@ -91,7 +90,7 @@ const getFee = (fees: Fee[], feeType: SwapFeeType) => {
 
   return (
     fee && {
-      valueUsd: Number(fee.valueUsd ?? 0),
+      valueUsd: toUsdAmount(fee.valueUsd),
     }
   );
 };
@@ -109,8 +108,7 @@ export default async function getSwapInfo(nativeId: string) {
     throw new UnrecoverableError('Deposit amount is missing');
   }
 
-  const { sourceChain, sourceAsset, destinationAsset, completedEventId, effectiveBoostFeeBps } =
-    swap;
+  const { sourceChain, sourceAsset, destinationAsset, completedEventId } = swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
@@ -118,7 +116,7 @@ export default async function getSwapInfo(nativeId: string) {
   const fokMinPriceX128 = swap.swapChannel?.fokMinPriceX128;
   const completedAt = swap.completedEvent?.block.timestamp;
 
-  const egressValueUsd = swap.egress?.valueUsd;
+  const egressValueUsd = toUsdAmount(swap.egress?.valueUsd);
   const broker = swap.swapChannel?.broker.account;
   const numberOfChunks = swap.numberOfChunks ?? 1;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
@@ -129,8 +127,6 @@ export default async function getSwapInfo(nativeId: string) {
     numberOfExecutedChunks && numberOfChunks > 1
       ? `${numberOfExecutedChunks}/${numberOfChunks}`
       : undefined;
-
-  const partiallyRefunded = numberOfExecutedChunks !== numberOfChunks;
 
   const boostFee = getFee(swap.fees.nodes, 'BOOST');
 
@@ -155,19 +151,17 @@ export default async function getSwapInfo(nativeId: string) {
 
   let depositAmount = toAssetAmount(swap.depositAmount, sourceAsset);
 
-  const egressAmount =
-    swap.egress?.amount && toFormattedAmount(swap.egress?.amount, destinationAsset);
+  const egressAmount = toAssetAmount(swap.egress?.amount, destinationAsset);
 
-  const refundAmount =
-    swap.refundEgress?.amount && toAssetAmount(swap.refundEgress?.amount, sourceAsset);
+  const refundAmount = toAssetAmount(swap.refundEgress?.amount, sourceAsset);
 
-  let depositValueUsd = swap.depositValueUsd;
+  let depositValueUsd = toUsdAmount(swap.depositValueUsd);
   if (refundAmount) {
     const newDepositAmount = depositAmount.minus(refundAmount);
 
     if (depositValueUsd) {
       const swapRatio = newDepositAmount.div(depositAmount);
-      depositValueUsd = new BigNumber(depositValueUsd).times(swapRatio).toFixed(2);
+      depositValueUsd = depositValueUsd.times(swapRatio);
     }
 
     depositAmount = newDepositAmount;
@@ -176,36 +170,35 @@ export default async function getSwapInfo(nativeId: string) {
   const priceDelta =
     egressValueUsd && depositValueUsd && Number(egressValueUsd) - Number(depositValueUsd);
 
-  const priceDeltaPercentage = egressValueUsd
-    ? new BigNumber(Number(egressValueUsd).toFixed())
-        .minus(Number(depositValueUsd))
-        .dividedBy(Number(depositValueUsd))
-        .multipliedBy(100)
-        .toFixed(2)
-    : null;
+  const priceDeltaPercentage =
+    egressValueUsd && depositValueUsd
+      ? egressValueUsd
+          .minus(depositValueUsd)
+          .dividedBy(depositValueUsd)
+          .multipliedBy(100)
+          .toFixed(2)
+      : null;
 
   return {
     completedEventId,
     requestId: swap.nativeId,
-    originalDepositAmount: toFormattedAmount(swap.depositAmount, sourceAsset),
+    originalDepositAmount: toAssetAmount(swap.depositAmount, sourceAsset),
     originalDepositValueUsd: swap.depositValueUsd,
-    depositAmount: toFormattedAmount(depositAmount),
+    depositAmount,
     depositValueUsd,
     egressAmount,
     egressValueUsd,
-    refundAmount: refundAmount && toFormattedAmount(refundAmount),
-    refundValueUsd: swap.refundEgress?.valueUsd,
+    refundAmount,
+    refundValueUsd: toUsdAmount(swap.refundEgress?.valueUsd),
     duration,
     priceDelta,
     priceDeltaPercentage,
     brokerIdAndAlias,
     dcaChunks,
-    partiallyRefunded,
     minPrice,
     sourceAsset,
     destinationAsset,
     completedAt,
     boostFee,
-    effectiveBoostFeeBps,
   };
 }

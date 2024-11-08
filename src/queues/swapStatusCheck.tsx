@@ -1,4 +1,5 @@
 import React from 'react';
+import { BigNumber } from 'bignumber.js';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
@@ -6,7 +7,9 @@ import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import env from '../env.js';
+import { ChainflipAsset } from '../graphql/generated/graphql.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
+import { toFormattedAmount } from '../utils/chainflip.js';
 import logger from '../utils/logger.js';
 import { formatUsdValue } from '../utils/strings.js';
 
@@ -61,11 +64,17 @@ const deltaSign = (delta: number) => {
   return '🟢';
 };
 
-const UsdValue = ({ amount }: { amount: string | null | undefined }): React.JSX.Element | null => {
+const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.Element | null => {
   if (!amount) return null;
 
   return <> ({formatUsdValue(amount)})</>;
 };
+
+const TokenAmount = ({ amount, asset }: { amount: BigNumber; asset: ChainflipAsset }) => (
+  <>
+    {toFormattedAmount(amount)} {humanFriendlyAsset[asset]}
+  </>
+);
 
 const buildMessageData = ({
   swapInfo,
@@ -86,7 +95,7 @@ const buildMessageData = ({
         <Line>
           📥{' '}
           <Bold platform={platform}>
-            {swapInfo.depositAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
+            <TokenAmount amount={swapInfo.depositAmount} asset={swapInfo.sourceAsset} />
           </Bold>
           <UsdValue amount={swapInfo.depositValueUsd} />
         </Line>
@@ -94,7 +103,7 @@ const buildMessageData = ({
           <Line>
             📤{' '}
             <Bold platform={platform}>
-              {swapInfo.egressAmount} {humanFriendlyAsset[swapInfo.destinationAsset]}
+              <TokenAmount amount={swapInfo.egressAmount} asset={swapInfo.destinationAsset} />
             </Bold>
             <UsdValue amount={swapInfo.egressValueUsd} />
           </Line>
@@ -103,7 +112,7 @@ const buildMessageData = ({
           <Line>
             ↩️{' '}
             <Bold platform={platform}>
-              {swapInfo.refundAmount} {humanFriendlyAsset[swapInfo.sourceAsset]}
+              <TokenAmount amount={swapInfo.refundAmount} asset={swapInfo.sourceAsset} />
             </Bold>
             <UsdValue amount={swapInfo.refundValueUsd} />
           </Line>
@@ -113,7 +122,7 @@ const buildMessageData = ({
             ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
           </Line>
         )}
-        {swapInfo.priceDelta && swapInfo.priceDeltaPercentage && (
+        {swapInfo.priceDelta !== null && swapInfo.priceDeltaPercentage && (
           <Line>
             {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
             <Bold platform={platform}>
@@ -130,9 +139,9 @@ const buildMessageData = ({
             📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
           </Line>
         )}
-        {swapInfo.effectiveBoostFeeBps && swapInfo.boostFee && (
+        {swapInfo.boostFee?.valueUsd && (
           <Line>
-            ⚡ <Bold platform={platform}>Boosted </Bold> for{' '}
+            ⚡ <Bold platform={platform}>Boosted</Bold> for{' '}
             <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
           </Line>
         )}
@@ -170,7 +179,10 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const jobs = [] as DispatchJobArgs[];
 
-  if (swapInfo.completedEventId && Number(swapInfo.egressAmount) === 0) {
+  if (
+    swapInfo.completedEventId &&
+    (swapInfo.egressAmount === null || swapInfo.egressAmount.isZero())
+  ) {
     logger.info(`Swap egress amount is zero, so it was refunded`);
     return;
   }

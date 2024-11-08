@@ -93,4 +93,19 @@ describe('swapStatusCheck', () => {
 
     expect(dispatchJobs.mock.lastCall).toMatchSnapshot();
   });
+
+  it('ignores fully refunded swaps', async () => {
+    const swapRequestId = '103706';
+    vi.setSystemTime(new Date(swapInfoStats[swapRequestId].swap.completedEvent.block.timestamp));
+    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats[swapRequestId]);
+
+    const dispatchJobs = vi.fn();
+    await config.processJob(dispatchJobs)({
+      data: {
+        swapRequestId,
+      } as JobData['swapStatusCheck'],
+    } as any);
+
+    expect(dispatchJobs).not.toHaveBeenCalled();
+  });
 });
