@@ -2,7 +2,7 @@ import { BigNumber } from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
-import { ExplorerLink, Line } from '../channels/formatting.js';
+import { ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurn from '../queries/getNewBurn.js';
@@ -58,15 +58,18 @@ const buildMessages = ({
           <Line>
             🔥 Burned {amount.toFixed(2)} FLIP{valueUsd && ` (${formatUsdValue(valueUsd)})`}!
           </Line>
-          <ExplorerLink
-            path={`/events/${blockHeight}-${indexInBlock}`}
-            platform={platform}
-            prefer="link"
-          >
-            View on explorer
-          </ExplorerLink>
+          <Line>
+            <ExplorerLink
+              path={`/events/${blockHeight}-${indexInBlock}`}
+              platform={platform}
+              prefer="link"
+            >
+              View on explorer
+            </ExplorerLink>
+          </Line>
+          <Trailer platform={platform} />
         </>,
-      ),
+      ).trimEnd(),
       filterData: { name: 'NEW_BURN' },
     },
   }));

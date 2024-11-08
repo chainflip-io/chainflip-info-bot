@@ -49,7 +49,8 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: 1 min
 🟢 Delta: $43.31 (0.77%)
 📓 Chunks: 2/2
-🏦 via Chainflip Swapping",
+🏦 via Chainflip Swapping
+#chainflip $flip",
         "platform": "twitter",
       },
       "name": "messageRouter",
@@ -110,7 +111,8 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 ⏱️ Took: 18 min
 🟢 Delta: $167.20 (0.98%)
 📓 Chunks: 6/17
-🏦 via Chainflip Swapping",
+🏦 via Chainflip Swapping
+#chainflip $flip",
         "platform": "twitter",
       },
       "name": "messageRouter",

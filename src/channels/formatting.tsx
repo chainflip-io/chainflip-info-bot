@@ -74,3 +74,6 @@ export const Line = ({ children }: { children: React.ReactNode }) => (
     {'\n'}
   </>
 );
+
+export const Trailer = ({ platform }: { platform: 'discord' | 'telegram' | 'twitter' }) =>
+  platform === 'twitter' ? '#chainflip $flip' : null;
