@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import pendingSwapStats from './pendingSwapStats.json' with { type: 'json' };
 import swapInfoStats from '../../queries/__tests__/swapInfo.json' with { type: 'json' };
@@ -16,7 +17,7 @@ afterEach(() => {
 describe('swapStatusCheck', () => {
   it('check fresh swap status and send swap info message', async () => {
     vi.setSystemTime(new Date('2024-10-25T12:42:30+00:00'));
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats);
+    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['77697']);
 
     const dispatchJobs = vi.fn();
 
@@ -63,7 +64,7 @@ describe('swapStatusCheck', () => {
   });
 
   it('check stale swap status', async () => {
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats);
+    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['77697']);
 
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({
@@ -77,5 +78,19 @@ describe('swapStatusCheck', () => {
         [],
       ]
     `);
+  });
+
+  it('subtracts out the refund egress amount from the ingress amount', async () => {
+    vi.setSystemTime(new Date(swapInfoStats['103045'].swap.completedEvent.block.timestamp));
+    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['103045']);
+
+    const dispatchJobs = vi.fn();
+    await config.processJob(dispatchJobs)({
+      data: {
+        swapRequestId: '103045',
+      } as JobData['swapStatusCheck'],
+    } as any);
+
+    expect(dispatchJobs.mock.lastCall).toMatchSnapshot();
   });
 });

@@ -6,7 +6,8 @@ import { explorerClient } from '../../server.js';
 
 describe('swapInfo', () => {
   it('gets the swap info by nativeId', async () => {
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats['77697']);
 
     const nativeId = '77697';
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
@@ -27,9 +28,13 @@ describe('swapInfo', () => {
         "egressAmount": "5,616.094932",
         "egressValueUsd": "5611.379957337800000000000000000000",
         "minPrice": "1.088693",
+        "originalDepositAmount": "5,000",
+        "originalDepositValueUsd": "5568.071581114500000000000000000000",
         "partiallyRefunded": false,
         "priceDelta": 43.3083762233,
         "priceDeltaPercentage": "0.77",
+        "refundAmount": undefined,
+        "refundValueUsd": undefined,
         "requestId": "77697",
         "sourceAsset": "Flip",
       }
@@ -65,9 +70,13 @@ describe('swapInfo', () => {
         "egressAmount": "0.177273",
         "egressValueUsd": "432.311738749600000000000000000000",
         "minPrice": "28.027233685216537779",
+        "originalDepositAmount": "0.0063",
+        "originalDepositValueUsd": "433.571804422900000000000000000000",
         "partiallyRefunded": false,
         "priceDelta": -1.260065673300005,
         "priceDeltaPercentage": "-0.36",
+        "refundAmount": undefined,
+        "refundValueUsd": undefined,
         "requestId": "98822",
         "sourceAsset": "Btc",
       }

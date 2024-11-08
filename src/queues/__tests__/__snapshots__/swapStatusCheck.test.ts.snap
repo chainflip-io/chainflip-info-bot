@@ -15,8 +15,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: <strong>1 min</strong>
 🟢 Delta: <strong>$43.31</strong> (0.77%)
 📓 Chunks: <strong>2/2</strong>
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>
-",
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -33,8 +32,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: **1 min**
 🟢 Delta: **$43.31** (0.77%)
 📓 Chunks: **2/2**
-🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
-",
+🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -51,8 +49,68 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: 1 min
 🟢 Delta: $43.31 (0.77%)
 📓 Chunks: 2/2
-🏦 via Chainflip Swapping
-",
+🏦 via Chainflip Swapping",
+        "platform": "twitter",
+      },
+      "name": "messageRouter",
+    },
+  ],
+]
+`;
+
+exports[`swapStatusCheck > subtracts out the refund egress amount from the ingress amount 1`] = `
+[
+  [
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_SWAP",
+          "usdValue": 17206.1360813008,
+        },
+        "message": "🐟 Swap <strong><a href="https://scan.chainflip.io/swaps/103045">#103045</a></strong>
+📥 <strong>13,348.70221 FLIP on Ethereum</strong> ($17,038.94)
+📤 <strong>5.939236 ETH on Ethereum</strong> ($17,206.14)
+↩️ <strong>24,455.099318 FLIP on Ethereum</strong> ($31,269.46)
+⏱️ Took: <strong>18 min</strong>
+🟢 Delta: <strong>$167.20</strong> (0.98%)
+📓 Chunks: <strong>6/17</strong>
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
+        "platform": "telegram",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_SWAP",
+          "usdValue": 17206.1360813008,
+        },
+        "message": "🐟 Swap **[#103045](https://scan.chainflip.io/swaps/103045)**
+📥 **13,348.70221 FLIP on Ethereum** ($17,038.94)
+📤 **5.939236 ETH on Ethereum** ($17,206.14)
+↩️ **24,455.099318 FLIP on Ethereum** ($31,269.46)
+⏱️ Took: **18 min**
+🟢 Delta: **$167.20** (0.98%)
+📓 Chunks: **6/17**
+🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
+        "platform": "discord",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_SWAP",
+          "usdValue": 17206.1360813008,
+        },
+        "message": "🐟 Swap https://scan.chainflip.io/swaps/103045
+📥 13,348.70221 FLIP on Ethereum ($17,038.94)
+📤 5.939236 ETH on Ethereum ($17,206.14)
+↩️ 24,455.099318 FLIP on Ethereum ($31,269.46)
+⏱️ Took: 18 min
+🟢 Delta: $167.20 (0.98%)
+📓 Chunks: 6/17
+🏦 via Chainflip Swapping",
         "platform": "twitter",
       },
       "name": "messageRouter",
