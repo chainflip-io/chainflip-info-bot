@@ -38,7 +38,6 @@ vi.mock('graphql-request', (importActual) => {
     const variablesHash = sha1(JSON.stringify(variables));
 
     const fixturesDir = path.join(import.meta.dirname, '__fixtures__');
-    // const name = query.definitions[0].
     assert(query.kind === Kind.DOCUMENT, 'Expected query to be a Document');
     const [def] = query.definitions;
     assert(def.kind === Kind.OPERATION_DEFINITION, 'Expected query to be an OperationDefinition');
