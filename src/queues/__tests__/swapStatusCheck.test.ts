@@ -29,7 +29,7 @@ describe('swapStatusCheck', () => {
 
   it('check pending swap status and move to a scheduler', async () => {
     vi.setSystemTime(new Date('2024-10-25T12:42:30+00:00'));
-    vi.spyOn(explorerClient, 'request').mockResolvedValue(pendingSwapStats);
+    vi.mocked(explorerClient.request).mockResolvedValue(pendingSwapStats);
 
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({

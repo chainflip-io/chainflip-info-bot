@@ -3,8 +3,6 @@ import { describe, it, expect, vi } from 'vitest';
 import { explorerClient } from '../../server.js';
 import { config } from '../newBurnCheck.js';
 
-vi.mock('graphql-request');
-
 const mockGetNewBurnResponse = (id: number, timestamp?: string, usdValue?: string | null) => ({
   burns: {
     nodes: [

@@ -3,7 +3,6 @@ import liquidityDepositStats from './liquidityDeposit.json' with { type: 'json' 
 import { explorerClient } from '../../server.js';
 import checkForFirstNewLpDeposits from '../liquidityDeposits.js';
 
-vi.mock('graphql-request');
 describe('checkForFirstNewLpDeposits', () => {
   it('returns the first new deposit per lp', async () => {
     // @ts-expect-error - not typed
