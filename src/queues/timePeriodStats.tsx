@@ -1,4 +1,5 @@
-import { toUpperCase } from '@chainflip/utils/string';
+import { formatUsdValue } from '@chainflip/utils/number';
+import { abbreviate, toUpperCase } from '@chainflip/utils/string';
 import { utc } from '@date-fns/utc';
 import assert from 'assert';
 import { JobsOptions, UnrecoverableError } from 'bullmq';
@@ -10,7 +11,6 @@ import { platforms } from '../config.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
 import logger from '../utils/logger.js';
-import { abbreviate, formatUsdValue } from '../utils/strings.js';
 
 const name = 'timePeriodStats';
 

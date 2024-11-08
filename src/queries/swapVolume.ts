@@ -1,5 +1,5 @@
+import { assetConstants } from '@chainflip/utils/chainflip';
 import { BigNumber } from 'bignumber.js';
-import { FLIP_DECIMAL_POINTS } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient, lpClient } from '../server.js';
 
@@ -106,7 +106,7 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
   const flipBurned = BigNumber.sum(
     0,
     ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.amount),
-  ).shiftedBy(-FLIP_DECIMAL_POINTS);
+  ).shiftedBy(-assetConstants.Flip.decimals);
 
   const lpFees = BigNumber.sum(
     lpInfo.limitOrderFills?.aggregates?.sum?.feesEarnedValueUsd ?? 0,

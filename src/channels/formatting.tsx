@@ -1,5 +1,5 @@
+import { unreachable } from '@chainflip/utils/assertion';
 import { EXPLORER_URL } from '../consts.js';
-import { unreachable } from '../utils/guards.js';
 
 export const Bold = ({
   children,

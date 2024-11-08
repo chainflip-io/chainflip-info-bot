@@ -1,11 +1,11 @@
+import { brokerAliasMap } from '@chainflip/utils/consts';
 import { isNotNullish } from '@chainflip/utils/guard';
+import { abbreviate } from '@chainflip/utils/string';
 import { UnrecoverableError } from 'bullmq';
-import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
-import { abbreviate } from '../utils/strings.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
 
 const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
@@ -77,7 +77,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
 `);
 
 const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
-  broker.alias || knownBrokers[broker.idSs58]?.name || undefined;
+  broker.alias || brokerAliasMap[broker.idSs58]?.name || undefined;
 
 const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
   broker && broker.idSs58

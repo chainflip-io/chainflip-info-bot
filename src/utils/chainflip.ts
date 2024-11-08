@@ -1,27 +1,6 @@
+import { assetConstants, type ChainflipAsset } from '@chainflip/utils/chainflip';
 import assert from 'assert';
 import { BigNumber } from 'bignumber.js';
-import { assetDecimals } from '../consts.js';
-import { ChainflipAsset } from '../graphql/generated/graphql.js';
-
-export const chainConstants = {
-  Bitcoin: {
-    blockTimeSeconds: 10 * 60,
-  },
-  Ethereum: {
-    blockTimeSeconds: 12,
-  },
-  Solana: {
-    blockTimeSeconds: 0.8,
-  },
-  Arbitrum: {
-    blockTimeSeconds: 0.26,
-  },
-  Polkadot: {
-    blockTimeSeconds: 6,
-  },
-} as const;
-
-export type ChainflipChain = 'Bitcoin' | 'Ethereum' | 'Solana' | 'Arbitrum' | 'Polkadot';
 
 export function toUsdAmount(amount: BigNumber.Value): BigNumber;
 export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumber | null;
@@ -40,7 +19,7 @@ export function toAssetAmount(
   chainflipAsset: ChainflipAsset,
 ): BigNumber | null {
   if (amount == null) return null;
-  return new BigNumber(amount).shiftedBy(-assetDecimals[chainflipAsset]);
+  return new BigNumber(amount).shiftedBy(-assetConstants[chainflipAsset].decimals);
 }
 
 export function toFormattedAmount(amount: BigNumber): string;

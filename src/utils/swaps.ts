@@ -1,6 +1,6 @@
+import { chainConstants, type ChainflipChain } from '@chainflip/utils/chainflip';
+import { differenceInTimeAgo, intervalToDurationWords } from '@chainflip/utils/date';
 import { subMilliseconds } from 'date-fns';
-import { chainConstants, type ChainflipChain } from './chainflip.js';
-import { differenceInTimeAgo, intervalToDurationWords } from './date.js';
 
 export const getSwapCompletionTime = ({
   depositChannelCreationTimestamp,

@@ -1,3 +1,5 @@
+import { formatUsdValue } from '@chainflip/utils/number';
+import { abbreviate } from '@chainflip/utils/string';
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
@@ -8,7 +10,6 @@ import checkForFirstNewLpDeposits, {
   getLatestDepositId,
   NewDeposit,
 } from '../queries/liquidityDeposits.js';
-import { abbreviate, formatUsdValue } from '../utils/strings.js';
 
 const name = 'newLpDepositCheck';
 type Name = typeof name;

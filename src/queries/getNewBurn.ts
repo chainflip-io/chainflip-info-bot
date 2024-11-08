@@ -1,6 +1,6 @@
+import { assetConstants } from '@chainflip/utils/chainflip';
 import assert from 'assert';
 import { BigNumber } from 'bignumber.js';
-import { FLIP_DECIMAL_POINTS } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
 
@@ -34,6 +34,6 @@ export default async function getNewBurn(latestBurnId: number) {
   const node = result.burns.nodes[0];
   return {
     ...node,
-    amount: new BigNumber(node.amount).shiftedBy(-FLIP_DECIMAL_POINTS),
+    amount: new BigNumber(node.amount).shiftedBy(-assetConstants.Flip.decimals),
   };
 }

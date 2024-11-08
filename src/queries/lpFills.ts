@@ -1,5 +1,5 @@
+import { lpAliasMap } from '@chainflip/utils/consts';
 import { BigNumber } from 'bignumber.js';
-import { knownLps } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { lpClient } from '../server.js';
 
@@ -85,7 +85,7 @@ export default async function getLpFills({
     return {
       ...lp,
       idSs58: accounts?.nodes.find((account) => account.id === id)?.idSs58,
-      alias: idSs58 && knownLps[idSs58]?.name,
+      alias: idSs58 && lpAliasMap[idSs58]?.name,
       percentage: total && lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2),
     };
   });

@@ -1,5 +1,5 @@
+import { assetConstants } from '@chainflip/utils/chainflip';
 import { BigNumber } from 'bignumber.js';
-import { FLIP_DECIMAL_POINTS } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
 
@@ -21,7 +21,7 @@ export default async function getBurns(ids: number[]) {
 
   return {
     amount: new BigNumber(result.allBurns?.aggregates?.sum?.amount ?? 0).shiftedBy(
-      -FLIP_DECIMAL_POINTS,
+      -assetConstants.Flip.decimals,
     ),
     valueUsd: new BigNumber(result.allBurns?.aggregates?.sum?.valueUsd ?? 0),
   };
