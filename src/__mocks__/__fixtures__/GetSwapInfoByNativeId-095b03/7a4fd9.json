@@ -4,12 +4,31 @@
     "nativeId": "98822",
     "depositAmount": "630000",
     "depositValueUsd": "433.571804422900000000000000000000",
+    "sourceChain": "Bitcoin",
+    "numberOfChunks": null,
+    "destinationAsset": "Eth",
+    "sourceAsset": "Btc",
+    "effectiveBoostFeeBps": 5,
     "egress": {
       "amount": "177273354596517176",
       "valueUsd": "432.311738749600000000000000000000",
-      "scheduledEvent": { "block": { "timestamp": "2024-11-05T11:35:54+00:00" } }
+      "scheduledEvent": {
+        "block": { "timestamp": "2024-11-05T11:35:54+00:00" }
+      }
     },
+    "refundEgress": null,
     "swapChannel": {
+      "beneficiaries": {
+        "nodes": [
+          {
+            "type": "SUBMITTER",
+            "account": {
+              "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
+              "alias": "Chainflip Swapping"
+            }
+          }
+        ]
+      },
       "broker": {
         "account": {
           "alias": "Chainflip Swapping",
@@ -44,11 +63,6 @@
           "type": "EGRESS"
         }
       ]
-    },
-    "sourceChain": "Bitcoin",
-    "numberOfChunks": null,
-    "destinationAsset": "Eth",
-    "sourceAsset": "Btc",
-    "effectiveBoostFeeBps": 5
+    }
   }
 }

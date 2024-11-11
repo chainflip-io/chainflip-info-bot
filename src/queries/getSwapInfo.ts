@@ -34,6 +34,15 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         valueUsd
       }
       swapChannel: swapChannelByDepositChannelId {
+        beneficiaries: swapChannelBeneficiariesByDepositChannelId {
+          nodes {
+            type
+            account: accountByAccountId {
+              idSs58
+              alias
+            }
+          }
+        }
         broker: brokerByBrokerId {
           account: accountByAccountId {
             alias
@@ -118,10 +127,16 @@ export default async function getSwapInfo(nativeId: string) {
 
   const egressValueUsd = toUsdAmount(swap.egress?.valueUsd);
   const broker = swap.swapChannel?.broker.account;
+  const affiliates = swap.swapChannel?.beneficiaries.nodes.filter(
+    (beneficiary) => beneficiary.type === 'AFFILIATE',
+  );
   const numberOfChunks = swap.numberOfChunks ?? 1;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
+  const affiliatesIdsAndAliases = affiliates
+    ?.map(({ account }) => getBrokerIdAndAlias(account))
+    ?.filter((affiliate) => typeof affiliate !== 'undefined');
 
   const dcaChunks =
     numberOfExecutedChunks && numberOfChunks > 1
@@ -194,6 +209,7 @@ export default async function getSwapInfo(nativeId: string) {
     priceDelta,
     priceDeltaPercentage,
     brokerIdAndAlias,
+    affiliatesIdsAndAliases,
     dcaChunks,
     minPrice,
     sourceAsset,
