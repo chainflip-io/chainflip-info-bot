@@ -1,0 +1,49 @@
+{
+  "swap": {
+    "completedEventId": "5459228833",
+    "nativeId": "103706",
+    "depositAmount": "10000000000000000",
+    "depositValueUsd": "29.347510448600000000000000000000",
+    "sourceChain": "Ethereum",
+    "numberOfChunks": null,
+    "destinationAsset": "Btc",
+    "sourceAsset": "Eth",
+    "effectiveBoostFeeBps": null,
+    "egress": null,
+    "refundEgress": {
+      "amount": "7514850381540000",
+      "valueUsd": "22.097080603800000000000000000000"
+    },
+    "swapChannel": {
+      "beneficiaries": { "nodes": [] },
+      "broker": {
+        "account": {
+          "alias": "Chainflip Swapping",
+          "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+        }
+      },
+      "fokMinPriceX128": "1324305130782670656152882420",
+      "issuedBlockTimestamp": "2024-11-08T12:38:12+00:00"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2024-11-08T12:52:06+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2024-11-08T12:52:18+00:00" },
+    "completedEvent": { "block": { "timestamp": "2024-11-08T13:08:42+00:00" } },
+    "executedSwaps": { "totalCount": 0 },
+    "fees": {
+      "nodes": [
+        {
+          "valueUsd": "3.182866212800000000000000000000",
+          "amount": "1084543855400000",
+          "asset": "Eth",
+          "type": "INGRESS"
+        },
+        {
+          "valueUsd": "4.118418447400000000000000000000",
+          "amount": "1400605763060000",
+          "asset": "Eth",
+          "type": "EGRESS"
+        }
+      ]
+    }
+  }
+}

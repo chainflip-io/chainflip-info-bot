@@ -1,3 +1,4 @@
+import { isNotNullish } from '@chainflip/utils/guard';
 import { UnrecoverableError } from 'bullmq';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
@@ -34,9 +35,8 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         valueUsd
       }
       swapChannel: swapChannelByDepositChannelId {
-        beneficiaries: swapChannelBeneficiariesByDepositChannelId {
+        beneficiaries: swapChannelBeneficiariesByDepositChannelId(condition: { type: AFFILIATE }) {
           nodes {
-            type
             account: accountByAccountId {
               idSs58
               alias
@@ -127,16 +127,13 @@ export default async function getSwapInfo(nativeId: string) {
 
   const egressValueUsd = toUsdAmount(swap.egress?.valueUsd);
   const broker = swap.swapChannel?.broker.account;
-  const affiliates = swap.swapChannel?.beneficiaries.nodes.filter(
-    (beneficiary) => beneficiary.type === 'AFFILIATE',
-  );
   const numberOfChunks = swap.numberOfChunks ?? 1;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
-  const affiliatesIdsAndAliases = affiliates
+  const affiliatesIdsAndAliases = swap.swapChannel?.beneficiaries.nodes
     ?.map(({ account }) => getBrokerIdAndAlias(account))
-    ?.filter((affiliate) => typeof affiliate !== 'undefined');
+    .filter(isNotNullish);
 
   const dcaChunks =
     numberOfExecutedChunks && numberOfChunks > 1
