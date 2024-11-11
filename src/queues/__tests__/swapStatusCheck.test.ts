@@ -101,4 +101,18 @@ describe('swapStatusCheck', () => {
 
     expect(dispatchJobs).not.toHaveBeenCalled();
   });
+
+  it('adds boost info', async () => {
+    const swapRequestId = '103899';
+    vi.setSystemTime(new Date('2024-11-08T15:28:36+00:00'));
+
+    const dispatchJobs = vi.fn();
+    await config.processJob(dispatchJobs)({
+      data: {
+        swapRequestId,
+      } as JobData['swapStatusCheck'],
+    } as any);
+
+    expect(dispatchJobs.mock.calls).toMatchSnapshot();
+  });
 });
