@@ -9,6 +9,13 @@ export type TwitterConfig = {
   oauthKeySecret: string;
 };
 
+interface TwitterResponse {
+  data: {
+    id: string;
+    text: string;
+  };
+}
+
 export const sendMessage = async (token: TwitterConfig, text: string) => {
   const url = `https://api.twitter.com/2/tweets`;
 
@@ -33,7 +40,7 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
     ),
   );
 
-  const response = await axios.post(
+  const response = await axios.post<TwitterResponse>(
     url,
     { text },
     {
@@ -46,7 +53,8 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
     },
   );
 
-  const formattedResponse = response.data as { id: string; text: string };
+  const formattedResponse = response.data.data as { id: string; text: string };
+
   if (!formattedResponse.id || !formattedResponse.text) {
     throw new Error(`failed to send message: ${JSON.stringify(response.data)}`);
   }

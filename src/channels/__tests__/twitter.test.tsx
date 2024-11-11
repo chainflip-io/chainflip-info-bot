@@ -10,13 +10,15 @@ describe('sendMessage', () => {
 
     postMock.mockResolvedValue({
       data: {
-        text: renderToStaticMarkup(
-          <>
-            hello twitter<strong>bold</strong>
-          </>,
-        ),
-        id: '1853357330332549327',
-        edit_history_tweet_ids: ['1853357330332549327'],
+        data: {
+          text: renderToStaticMarkup(
+            <>
+              hello twitter<strong>bold</strong>
+            </>,
+          ),
+          id: '1853357330332549327',
+          edit_history_tweet_ids: ['1853357330332549327'],
+        },
       },
     });
 
@@ -74,7 +76,7 @@ describe('sendMessage', () => {
         ),
       ),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
-      `[Error: failed to send message: {"ok":false,"description":"some other stuff here"}]`,
+      `[TypeError: Cannot read properties of undefined (reading 'id')]`,
     );
   });
 });

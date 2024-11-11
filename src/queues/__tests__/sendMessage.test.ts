@@ -48,7 +48,7 @@ describe('sendMessage', () => {
   it('sends messages to twitter channels', async () => {
     const postSpy = vi
       .mocked(axios.post)
-      .mockResolvedValue({ data: { id: '123', text: 'Hello, world!' } });
+      .mockResolvedValue({ data: { data: { id: '123', text: 'Hello, world!' } } });
 
     await config.processJob(vi.fn())({
       data: {
