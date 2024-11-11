@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatUsdValue } from '@chainflip/utils/number';
 import { BigNumber } from 'bignumber.js';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -11,7 +12,6 @@ import { ChainflipAsset } from '../graphql/generated/graphql.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 import logger from '../utils/logger.js';
-import { formatUsdValue } from '../utils/strings.js';
 
 const name = 'swapStatusCheck';
 type Name = typeof name;

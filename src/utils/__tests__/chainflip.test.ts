@@ -1,5 +1,5 @@
+import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { describe, expect, it } from 'vitest';
-import { ChainflipAsset } from '../../graphql/generated/graphql.js';
 import { toFormattedAmount } from '../chainflip.js';
 
 describe('gets the correct token amount from base units', () => {

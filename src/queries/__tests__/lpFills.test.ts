@@ -57,7 +57,7 @@ describe('getLpFills', () => {
           "percentage": "1.06",
         },
         {
-          "alias": undefined,
+          "alias": "curiouspleb",
           "filledAmountValueUsd": "619448.7841944152",
           "idSs58": "cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW",
           "percentage": "1.03",
