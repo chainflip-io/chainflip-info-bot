@@ -3,4 +3,3 @@ dist
 coverage
 node_modules
 src/graphql/generated/*
-**/__fixtures__/**/*.json

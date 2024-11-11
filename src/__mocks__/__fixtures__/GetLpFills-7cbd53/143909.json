@@ -2,153 +2,115 @@
   "limitOrders": {
     "groupedAggregates": [
       {
-        "keys": [
-          "2"
-        ],
+        "keys": ["2"],
         "sum": {
           "filledAmountValueUsd": "25334355.664683245800000000000000000000"
         }
       },
       {
-        "keys": [
-          "3"
-        ],
+        "keys": ["3"],
         "sum": {
           "filledAmountValueUsd": "6822847.133544975400000000000000000000"
         }
       },
       {
-        "keys": [
-          "7"
-        ],
+        "keys": ["7"],
         "sum": {
           "filledAmountValueUsd": "1918420.134458581200000000000000000000"
         }
       },
       {
-        "keys": [
-          "9"
-        ],
+        "keys": ["9"],
         "sum": {
           "filledAmountValueUsd": "7515924.923336361900000000000000000000"
         }
       },
       {
-        "keys": [
-          "27"
-        ],
+        "keys": ["27"],
         "sum": {
           "filledAmountValueUsd": "639320.197048500100000000000000000000"
         }
       },
       {
-        "keys": [
-          "34"
-        ],
+        "keys": ["34"],
         "sum": {
           "filledAmountValueUsd": "15717.837739558200000000000000000000"
         }
       },
       {
-        "keys": [
-          "36"
-        ],
+        "keys": ["36"],
         "sum": {
           "filledAmountValueUsd": "1838852.595176714000000000000000000000"
         }
       },
       {
-        "keys": [
-          "50"
-        ],
+        "keys": ["50"],
         "sum": {
           "filledAmountValueUsd": "53282.265745246400000000000000000000"
         }
       },
       {
-        "keys": [
-          "53"
-        ],
+        "keys": ["53"],
         "sum": {
           "filledAmountValueUsd": "63762.908125095700000000000000000000"
         }
       },
       {
-        "keys": [
-          "56"
-        ],
+        "keys": ["56"],
         "sum": {
           "filledAmountValueUsd": "54382.713241004900000000000000000000"
         }
       },
       {
-        "keys": [
-          "57"
-        ],
+        "keys": ["57"],
         "sum": {
           "filledAmountValueUsd": "619448.784194415200000000000000000000"
         }
       },
       {
-        "keys": [
-          "70"
-        ],
+        "keys": ["70"],
         "sum": {
           "filledAmountValueUsd": "9833398.358792612200000000000000000000"
         }
       },
       {
-        "keys": [
-          "79"
-        ],
+        "keys": ["79"],
         "sum": {
           "filledAmountValueUsd": "113189.529501411300000000000000000000"
         }
       },
       {
-        "keys": [
-          "103"
-        ],
+        "keys": ["103"],
         "sum": {
           "filledAmountValueUsd": "535.409904458500000000000000000000"
         }
       },
       {
-        "keys": [
-          "109"
-        ],
+        "keys": ["109"],
         "sum": {
           "filledAmountValueUsd": "5180610.320764250600000000000000000000"
         }
       },
       {
-        "keys": [
-          "118"
-        ],
+        "keys": ["118"],
         "sum": {
           "filledAmountValueUsd": "117.265425937700000000000000000000"
         }
       },
       {
-        "keys": [
-          "131"
-        ],
+        "keys": ["131"],
         "sum": {
           "filledAmountValueUsd": "346.092755319500000000000000000000"
         }
       },
       {
-        "keys": [
-          "153"
-        ],
+        "keys": ["153"],
         "sum": {
           "filledAmountValueUsd": "595.390139596300000000000000000000"
         }
       },
       {
-        "keys": [
-          "155"
-        ],
+        "keys": ["155"],
         "sum": {
           "filledAmountValueUsd": "78889.591453851300000000000000000000"
         }
@@ -158,126 +120,98 @@
   "rangeOrders": {
     "groupedAggregates": [
       {
-        "keys": [
-          "11"
-        ],
+        "keys": ["11"],
         "sum": {
           "baseFilledAmountValueUsd": "0.026035853400000000000000000000",
           "quoteFilledAmountValueUsd": "0.026175017500000000000000000000"
         }
       },
       {
-        "keys": [
-          "22"
-        ],
+        "keys": ["22"],
         "sum": {
           "baseFilledAmountValueUsd": "576.944444547400000000000000000000",
           "quoteFilledAmountValueUsd": "545.064808738100000000000000000000"
         }
       },
       {
-        "keys": [
-          "23"
-        ],
+        "keys": ["23"],
         "sum": {
           "baseFilledAmountValueUsd": "10515.765273773500000000000000000000",
           "quoteFilledAmountValueUsd": "11341.941144269400000000000000000000"
         }
       },
       {
-        "keys": [
-          "26"
-        ],
+        "keys": ["26"],
         "sum": {
           "baseFilledAmountValueUsd": "100398.922880225900000000000000000000",
           "quoteFilledAmountValueUsd": "98684.872667010200000000000000000000"
         }
       },
       {
-        "keys": [
-          "28"
-        ],
+        "keys": ["28"],
         "sum": {
           "baseFilledAmountValueUsd": "34961.092714380000000000000000000000",
           "quoteFilledAmountValueUsd": "34198.207549411600000000000000000000"
         }
       },
       {
-        "keys": [
-          "29"
-        ],
+        "keys": ["29"],
         "sum": {
           "baseFilledAmountValueUsd": "402084.152775296900000000000000000000",
           "quoteFilledAmountValueUsd": "350577.318923182500000000000000000000"
         }
       },
       {
-        "keys": [
-          "37"
-        ],
+        "keys": ["37"],
         "sum": {
           "baseFilledAmountValueUsd": "4922.543885888500000000000000000000",
           "quoteFilledAmountValueUsd": "5146.538181115100000000000000000000"
         }
       },
       {
-        "keys": [
-          "47"
-        ],
+        "keys": ["47"],
         "sum": {
           "baseFilledAmountValueUsd": "3.189540598000000000000000000000",
           "quoteFilledAmountValueUsd": "3.135468395300000000000000000000"
         }
       },
       {
-        "keys": [
-          "61"
-        ],
+        "keys": ["61"],
         "sum": {
           "baseFilledAmountValueUsd": "609.739648495100000000000000000000",
           "quoteFilledAmountValueUsd": "625.610656620200000000000000000000"
         }
       },
       {
-        "keys": [
-          "103"
-        ],
+        "keys": ["103"],
         "sum": {
           "baseFilledAmountValueUsd": "4690.951312260000000000000000000000",
           "quoteFilledAmountValueUsd": "4711.820671219000000000000000000000"
         }
       },
       {
-        "keys": [
-          "107"
-        ],
+        "keys": ["107"],
         "sum": {
           "baseFilledAmountValueUsd": "22550.037698331300000000000000000000",
           "quoteFilledAmountValueUsd": "104607.726308105800000000000000000000"
         }
       },
       {
-        "keys": [
-          "109"
-        ],
+        "keys": ["109"],
         "sum": {
           "baseFilledAmountValueUsd": "0.000000000000000000000000000000",
           "quoteFilledAmountValueUsd": "7302.345253385100000000000000000000"
         }
       },
       {
-        "keys": [
-          "112"
-        ],
+        "keys": ["112"],
         "sum": {
           "baseFilledAmountValueUsd": "197507.704451937300000000000000000000",
           "quoteFilledAmountValueUsd": "204560.354334407800000000000000000000"
         }
       },
       {
-        "keys": [
-          "134"
-        ],
+        "keys": ["134"],
         "sum": {
           "baseFilledAmountValueUsd": "235.711572661000000000000000000000",
           "quoteFilledAmountValueUsd": "286.083701361900000000000000000000"

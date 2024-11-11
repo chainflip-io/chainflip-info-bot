@@ -4,6 +4,7 @@ import { createHash } from 'crypto';
 import * as fs from 'fs/promises';
 import { Kind } from 'graphql';
 import * as path from 'path';
+import * as prettier from 'prettier';
 import { vi } from 'vitest';
 
 vi.mock('graphql-request', (importActual) => {
@@ -51,7 +52,7 @@ vi.mock('graphql-request', (importActual) => {
     const result = (await request(this.url, query, variables)) as unknown;
 
     await fs.mkdir(path.dirname(cachedFile), { recursive: true });
-    await fs.writeFile(cachedFile, JSON.stringify(result, null, 2), 'utf8');
+    await fs.writeFile(cachedFile, await prettier.format(JSON.stringify(result)), 'utf8');
 
     return result;
   });
