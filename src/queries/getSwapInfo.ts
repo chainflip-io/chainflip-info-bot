@@ -63,7 +63,9 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           timestamp
         }
       }
-      executedSwaps: swapsBySwapRequestId(filter: { swapExecutedEventId: { isNull: false } }) {
+      executedSwaps: swapsBySwapRequestId(
+        filter: { swapExecutedEventId: { isNull: false }, type: { in: [PRINCIPAL, SWAP] } }
+      ) {
         totalCount
       }
       fees: swapFeesBySwapRequestId {

@@ -1,0 +1,51 @@
+{
+  "swap": {
+    "completedEventId": "5116679443",
+    "nativeId": "77697",
+    "depositAmount": "5000000000000000000000",
+    "depositValueUsd": "5568.071581114500000000000000000000",
+    "sourceChain": "Ethereum",
+    "numberOfChunks": 2,
+    "destinationAsset": "Usdt",
+    "sourceAsset": "Flip",
+    "effectiveBoostFeeBps": null,
+    "egress": {
+      "amount": "5616094932",
+      "valueUsd": "5611.379957337800000000000000000000",
+      "scheduledEvent": {
+        "block": { "timestamp": "2024-10-25T12:41:30+00:00" }
+      }
+    },
+    "refundEgress": null,
+    "swapChannel": {
+      "broker": {
+        "account": {
+          "alias": "Chainflip Swapping",
+          "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+        }
+      },
+      "fokMinPriceX128": "370463044445583550774471879",
+      "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2024-10-25T12:39:30+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2024-10-25T12:39:42+00:00" },
+    "completedEvent": { "block": { "timestamp": "2024-10-25T12:41:30+00:00" } },
+    "executedSwaps": { "totalCount": 2 },
+    "fees": {
+      "nodes": [
+        {
+          "valueUsd": "1.380174263800000000000000000000",
+          "amount": "1239364691827602306",
+          "asset": "Flip",
+          "type": "INGRESS"
+        },
+        {
+          "valueUsd": "1.827632327800000000000000000000",
+          "amount": "1829168",
+          "asset": "Usdt",
+          "type": "EGRESS"
+        }
+      ]
+    }
+  }
+}
