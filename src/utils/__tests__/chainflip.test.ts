@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ChainflipAsset } from '../../graphql/generated/graphql';
-import { toFormattedAmount } from '../chainflip';
+import { ChainflipAsset } from '../../graphql/generated/graphql.js';
+import { toFormattedAmount } from '../chainflip.js';
 
 describe('gets the correct token amount from base units', () => {
   it.each([
@@ -17,9 +17,6 @@ describe('gets the correct token amount from base units', () => {
     ['Btc' as ChainflipAsset, '100000000', '1'],
     ['Dot' as ChainflipAsset, '10000000000', '1'],
   ])('converts base units to token amount ([%s] %s => %s)', (asset, amount, expected) =>
-    expect(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      toFormattedAmount(amount, asset),
-    ).toBe(expected),
+    expect(toFormattedAmount(amount, asset)).toBe(expected),
   );
 });

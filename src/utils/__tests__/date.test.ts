@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { differenceInTimeAgo, intervalToDurationWords } from '../date';
+import { differenceInTimeAgo, intervalToDurationWords } from '../date.js';
 
 type Interval = {
   start: Date | number;
@@ -22,7 +22,7 @@ describe('differenceInTimeAgo', () => {
     // ['2 days', 172800000], // TODO: ignored because of Daylight saving issue
   ])('displays the proper time as %s ago', (expected, time) => {
     vi.spyOn(Date, 'now').mockImplementation(() => now);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
     expect(differenceInTimeAgo(new Date(Date.now() - time).toISOString(), false)).toBe(expected);
   });
 
@@ -32,7 +32,7 @@ describe('differenceInTimeAgo', () => {
     ['47 hours ago', 170400000],
   ])('displays the proper time as %s ago', (expected, time) => {
     vi.spyOn(Date, 'now').mockImplementation(() => now);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
     expect(differenceInTimeAgo(new Date(Date.now() - time).toISOString())).toBe(expected);
   });
 });
@@ -53,7 +53,6 @@ describe('intervalToDurationWords', () => {
     // reverse start and end stays the same
     [{ start: new Date('02-01-2023'), end: new Date('01-01-2023') }, '>1 month'],
   ])('displays the proper time as %s ago', (actual, expected) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(intervalToDurationWords(actual as Interval)).toBe(expected);
   });
 });

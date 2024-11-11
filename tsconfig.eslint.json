@@ -1,5 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "*.config.js", "scripts/*.mts"],
-  "exclude": []
+  "include": ["src/**/*.ts", "src/**/*.tsx", "*.config.js", "scripts/*.ts"],
+  "exclude": [],
+  "compilerOptions": {
+    "rootDir": "./",
+    "resolveJsonModule": true
+  }
 }

@@ -122,7 +122,7 @@ describe('newLpDepositCheck', () => {
       vi.mocked(getLatestDepositId).mockResolvedValueOnce(10);
       vi.mocked(checkForFirstNewLpDeposits).mockResolvedValueOnce([
         {
-          asset: 'ETH',
+          asset: 'Eth',
           depositAmount: '1.523',
           depositValueUsd: '999',
           lpIdSs58: 'cf123test',
