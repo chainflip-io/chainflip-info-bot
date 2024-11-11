@@ -59,7 +59,9 @@ describe('sendMessage', () => {
   it('throws an error if the response is not ok', async () => {
     const postMock = vi.mocked(axios.post);
 
-    postMock.mockResolvedValue({ data: { ok: false, description: 'some other stuff here' } });
+    postMock.mockResolvedValue({
+      data: { data: { ok: false, description: 'some other stuff here' } },
+    });
 
     await expect(
       sendMessage(
@@ -76,7 +78,7 @@ describe('sendMessage', () => {
         ),
       ),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
-      `[TypeError: Cannot read properties of undefined (reading 'id')]`,
+      `[Error: failed to send message: {"data":{"ok":false,"description":"some other stuff here"}}]`,
     );
   });
 });
