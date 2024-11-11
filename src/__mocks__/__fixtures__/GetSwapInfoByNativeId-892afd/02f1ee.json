@@ -1,0 +1,48 @@
+{
+  "swap": {
+    "completedEventId": "5518637712",
+    "nativeId": "106495",
+    "depositAmount": "200000000000",
+    "depositValueUsd": "108.486715918100000000000000000000",
+    "sourceChain": "Polkadot",
+    "numberOfChunks": null,
+    "destinationAsset": "ArbUsdc",
+    "sourceAsset": "Dot",
+    "effectiveBoostFeeBps": null,
+    "egress": {
+      "amount": "107196933",
+      "valueUsd": "107.160738272100000000000000000000",
+      "scheduledEvent": {
+        "block": { "timestamp": "2024-11-10T18:45:00.001+00:00" }
+      }
+    },
+    "refundEgress": null,
+    "swapChannel": {
+      "beneficiaries": {
+        "nodes": [
+          {
+            "account": {
+              "idSs58": "cFMYQgx3LhxLNDEiFC5nLXp5r1ZUrXocrQDqJB1Z3mqEegT6g",
+              "alias": null
+            }
+          }
+        ]
+      },
+      "broker": {
+        "account": {
+          "alias": "Broker as a Service",
+          "idSs58": "cFJZVRaybb2PBwxTiAiRLiQfHY4KPB3RpJK22Q7Fhqk979aCH"
+        }
+      },
+      "fokMinPriceX128": null,
+      "issuedBlockTimestamp": "2024-11-10T18:44:12+00:00"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2024-11-10T18:44:42+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2024-11-10T18:44:48+00:00" },
+    "completedEvent": {
+      "block": { "timestamp": "2024-11-10T18:45:00.001+00:00" }
+    },
+    "executedSwaps": { "totalCount": 1 },
+    "boostFee": { "nodes": [] }
+  }
+}

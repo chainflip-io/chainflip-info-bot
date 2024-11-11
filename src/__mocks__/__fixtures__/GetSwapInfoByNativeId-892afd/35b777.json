@@ -1,0 +1,39 @@
+{
+  "swap": {
+    "completedEventId": "5461937610",
+    "nativeId": "103899",
+    "depositAmount": "103055600",
+    "depositValueUsd": "78624.353581498400000000000000000000",
+    "sourceChain": "Bitcoin",
+    "numberOfChunks": 26,
+    "destinationAsset": "Usdc",
+    "sourceAsset": "Btc",
+    "effectiveBoostFeeBps": 4,
+    "egress": {
+      "amount": "78565744530",
+      "valueUsd": "78725.551767609300000000000000000000",
+      "scheduledEvent": {
+        "block": { "timestamp": "2024-11-08T15:28:36+00:00" }
+      }
+    },
+    "refundEgress": null,
+    "swapChannel": {
+      "beneficiaries": { "nodes": [] },
+      "broker": {
+        "account": {
+          "alias": "Chainflip Swapping",
+          "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+        }
+      },
+      "fokMinPriceX128": "256409436044637495548307742935444508280413",
+      "issuedBlockTimestamp": "2024-11-08T15:04:30+00:00"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2024-11-08T15:13:48+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2024-11-08T15:23:18+00:00" },
+    "completedEvent": { "block": { "timestamp": "2024-11-08T15:28:36+00:00" } },
+    "executedSwaps": { "totalCount": 26 },
+    "boostFee": {
+      "nodes": [{ "valueUsd": "39.311566445600000000000000000000" }]
+    }
+  }
+}
