@@ -4,7 +4,7 @@ export default (inputFilenames) => {
     fullPath: filename,
   }));
 
-  const commands = [`prettier --check ${inputFilenames.join(' ')}`];
+  const commands = [`prettier --ignore-unknown --check ${inputFilenames.join(' ')}`];
 
   if (inputFilenames.some((filename) => /\.tsx?$/.test(filename))) {
     commands.push('tsc -p tsconfig.json --noEmit');

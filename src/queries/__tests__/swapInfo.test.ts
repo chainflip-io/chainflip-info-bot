@@ -1,14 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { describe, it, vi, expect } from 'vitest';
-import getSwapInfo from '../getSwapInfo.js';
-import swapInfoStats from './swapInfo.json' with { type: 'json' };
-import swapInfoWithBoostStats from './swapInfoWithBoost.json' with { type: 'json' };
+import { describe, it, expect } from 'vitest';
 import { explorerClient } from '../../server.js';
+import getSwapInfo from '../getSwapInfo.js';
 
 describe('swapInfo', () => {
   it('gets the swap info by nativeId', async () => {
     const nativeId = '77697';
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats[nativeId]);
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "boostFee": undefined,
@@ -43,8 +39,6 @@ describe('swapInfo', () => {
   });
 
   it('gets boosted swap info by nativeId', async () => {
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoWithBoostStats);
-
     const nativeId = '98822';
 
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
@@ -84,7 +78,6 @@ describe('swapInfo', () => {
 
   it('gets info about a fully refunded swap', async () => {
     const nativeId = '103706';
-    vi.mocked(explorerClient.request).mockResolvedValue(swapInfoStats[nativeId]);
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "boostFee": undefined,

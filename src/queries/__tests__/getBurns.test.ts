@@ -1,25 +1,14 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { explorerClient } from '../../server.js';
 import getBurns from '../getBurns.js';
 
 describe('getBurns', () => {
   it('get the burns for specific ids', async () => {
-    vi.mocked(explorerClient.request).mockResolvedValue({
-      allBurns: {
-        aggregates: {
-          sum: {
-            amount: '1467127719344700526679',
-            valueUsd: '4428.14',
-          },
-        },
-      },
-    });
-
     const x = await getBurns([1, 2, 3, 4]);
     expect(x).toMatchInlineSnapshot(`
       {
-        "amount": "1467.127719344700526679",
-        "valueUsd": "4428.14",
+        "amount": "2510.019857565856816196",
+        "valueUsd": "18585.307241412",
       }
     `);
 
