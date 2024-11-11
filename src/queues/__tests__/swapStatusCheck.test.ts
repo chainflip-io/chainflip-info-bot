@@ -75,6 +75,20 @@ describe('swapStatusCheck', () => {
     `);
   });
 
+  it('contains affiliate broker info in swap message', async () => {
+    vi.setSystemTime(new Date('2024-11-10T18:46:00.001+00:00'));
+    const nativeId = '106495';
+
+    const dispatchJobs = vi.fn();
+    await config.processJob(dispatchJobs)({
+      data: {
+        swapRequestId: nativeId,
+      } as JobData['swapStatusCheck'],
+    } as any);
+
+    expect(dispatchJobs.mock.lastCall).toMatchSnapshot();
+  });
+
   it('subtracts out the refund egress amount from the ingress amount', async () => {
     vi.setSystemTime(new Date('2024-11-07T21:53:48+00:00'));
 

@@ -159,6 +159,22 @@ const buildMessageData = ({
             </Bold>
           </Line>
         )}
+        {swapInfo.affiliatesIdsAndAliases?.length ? (
+          <Line>
+            🏰 Affiliate:{' '}
+            {swapInfo.affiliatesIdsAndAliases?.map((affiliate) => (
+              <Bold platform={platform}>
+                <ExplorerLink
+                  platform={platform}
+                  path={`/brokers/${affiliate.brokerId}`}
+                  prefer="text"
+                >
+                  {affiliate.alias}
+                </ExplorerLink>{' '}
+              </Bold>
+            ))}
+          </Line>
+        ) : null}
         <Trailer platform={platform} />
       </>,
     ).trimEnd();

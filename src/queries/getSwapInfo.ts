@@ -1,3 +1,4 @@
+import { isNotNullish } from '@chainflip/utils/guard';
 import { UnrecoverableError } from 'bullmq';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
@@ -34,6 +35,14 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         valueUsd
       }
       swapChannel: swapChannelByDepositChannelId {
+        beneficiaries: swapChannelBeneficiariesByDepositChannelId(condition: { type: AFFILIATE }) {
+          nodes {
+            account: accountByAccountId {
+              idSs58
+              alias
+            }
+          }
+        }
         broker: brokerByBrokerId {
           account: accountByAccountId {
             alias
@@ -122,6 +131,9 @@ export default async function getSwapInfo(nativeId: string) {
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
+  const affiliatesIdsAndAliases = swap.swapChannel?.beneficiaries.nodes
+    ?.map(({ account }) => getBrokerIdAndAlias(account))
+    .filter(isNotNullish);
 
   const dcaChunks =
     numberOfExecutedChunks && numberOfChunks > 1
@@ -194,6 +206,7 @@ export default async function getSwapInfo(nativeId: string) {
     priceDelta,
     priceDeltaPercentage,
     brokerIdAndAlias,
+    affiliatesIdsAndAliases,
     dcaChunks,
     minPrice,
     sourceAsset,

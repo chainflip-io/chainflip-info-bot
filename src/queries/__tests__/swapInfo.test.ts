@@ -7,6 +7,7 @@ describe('swapInfo', () => {
     const nativeId = '77697';
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
+        "affiliatesIdsAndAliases": [],
         "boostFee": undefined,
         "brokerIdAndAlias": {
           "alias": "Chainflip Swapping",
@@ -43,6 +44,7 @@ describe('swapInfo', () => {
 
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
+        "affiliatesIdsAndAliases": [],
         "boostFee": {
           "valueUsd": "0.2167859022",
         },
@@ -80,6 +82,7 @@ describe('swapInfo', () => {
     const nativeId = '103706';
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
+        "affiliatesIdsAndAliases": [],
         "boostFee": undefined,
         "brokerIdAndAlias": {
           "alias": "Chainflip Swapping",
