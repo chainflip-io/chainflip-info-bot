@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { explorerClient } from '../../server.js';
 import getSwapInfo from '../getSwapInfo.js';
 
 describe('swapInfo', () => {
@@ -31,6 +32,10 @@ describe('swapInfo', () => {
         "sourceAsset": "Flip",
       }
     `);
+
+    expect(explorerClient.request).toHaveBeenCalledWith(expect.anything(), {
+      nativeId,
+    });
   });
 
   it('gets boosted swap info by nativeId', async () => {
@@ -65,6 +70,10 @@ describe('swapInfo', () => {
         "sourceAsset": "Btc",
       }
     `);
+
+    expect(explorerClient.request).toHaveBeenCalledWith(expect.anything(), {
+      nativeId,
+    });
   });
 
   it('gets info about a fully refunded swap', async () => {
@@ -96,5 +105,9 @@ describe('swapInfo', () => {
         "sourceAsset": "Eth",
       }
     `);
+
+    expect(explorerClient.request).toHaveBeenCalledWith(expect.anything(), {
+      nativeId,
+    });
   });
 });
