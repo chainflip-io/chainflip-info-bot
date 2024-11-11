@@ -8,7 +8,7 @@ describe('swapInfo', () => {
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "affiliatesIdsAndAliases": [],
-        "boostFee": undefined,
+        "boostFee": "0",
         "brokerIdAndAlias": {
           "alias": "Chainflip Swapping",
           "brokerId": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
@@ -45,9 +45,7 @@ describe('swapInfo', () => {
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "affiliatesIdsAndAliases": [],
-        "boostFee": {
-          "valueUsd": "0.2167859022",
-        },
+        "boostFee": "0.2167859022",
         "brokerIdAndAlias": {
           "alias": "Chainflip Swapping",
           "brokerId": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
@@ -83,7 +81,7 @@ describe('swapInfo', () => {
     expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
       {
         "affiliatesIdsAndAliases": [],
-        "boostFee": undefined,
+        "boostFee": "0",
         "brokerIdAndAlias": {
           "alias": "Chainflip Swapping",
           "brokerId": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
