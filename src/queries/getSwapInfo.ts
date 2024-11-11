@@ -2,7 +2,6 @@ import { isNotNullish } from '@chainflip/utils/guard';
 import { UnrecoverableError } from 'bullmq';
 import { knownBrokers } from '../consts.js';
 import { gql } from '../graphql/generated/gql.js';
-import { ChainflipAsset, SwapFeeType } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
@@ -68,25 +67,14 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       ) {
         totalCount
       }
-      fees: swapFeesBySwapRequestId {
+      boostFee: swapFeesBySwapRequestId(filter: { type: { equalTo: BOOST } }) {
         nodes {
           valueUsd
-          amount
-          asset
-          type
         }
       }
     }
   }
 `);
-
-type Fee = {
-  __typename?: 'SwapFee';
-  valueUsd?: string | null;
-  amount: string;
-  asset: ChainflipAsset;
-  type: SwapFeeType;
-};
 
 const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
   broker.alias || knownBrokers[broker.idSs58]?.name || undefined;
@@ -95,16 +83,6 @@ const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string })
   broker && broker.idSs58
     ? { alias: getBrokerAlias(broker) || abbreviate(broker.idSs58, 4), brokerId: broker.idSs58 }
     : undefined;
-
-const getFee = (fees: Fee[], feeType: SwapFeeType) => {
-  const fee = fees.find(({ type }) => type === feeType);
-
-  return (
-    fee && {
-      valueUsd: toUsdAmount(fee.valueUsd),
-    }
-  );
-};
 
 export default async function getSwapInfo(nativeId: string) {
   const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {
@@ -142,7 +120,9 @@ export default async function getSwapInfo(nativeId: string) {
       ? `${numberOfExecutedChunks}/${numberOfChunks}`
       : undefined;
 
-  const boostFee = getFee(swap.fees.nodes, 'BOOST');
+  const boostFee = toUsdAmount(
+    swap.boostFee.nodes.reduce((sum, next) => sum + Number(next.valueUsd), 0),
+  );
 
   let duration;
   if (depositTimestamp && egressTimestamp) {

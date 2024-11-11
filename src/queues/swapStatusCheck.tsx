@@ -139,10 +139,10 @@ const buildMessageData = ({
             📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
           </Line>
         )}
-        {swapInfo.boostFee?.valueUsd && (
+        {swapInfo.boostFee.gt(0) && (
           <Line>
             ⚡ <Bold platform={platform}>Boosted</Bold> for{' '}
-            <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee.valueUsd)}</Bold>
+            <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee)}</Bold>
           </Line>
         )}
         {swapInfo.brokerIdAndAlias && (
