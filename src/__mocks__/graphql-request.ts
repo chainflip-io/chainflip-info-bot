@@ -14,6 +14,14 @@ vi.mock('graphql-request', (importActual) => {
     request(query: TypedDocumentNode<any, any>, variables: Record<string, any>): Promise<unknown>;
   }
 
+  /**
+   * using some "old skool" inheritance to:
+   * 1. allow for a default mock to be used
+   * 2. allow for seamless mocking of the request method without having to spy on it
+   *
+   * i tried with `class` but then it required spying on the request method or
+   * mocking the entire class, which is fine, but this is easier
+   */
   function GraphQLClient(this: GraphQLClient, url: string) {
     const mapped = {
       'https://chainflap-explor.org/graphql':
