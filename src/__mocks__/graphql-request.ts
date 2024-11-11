@@ -34,8 +34,12 @@ vi.mock('graphql-request', (importActual) => {
   ) {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const { default: request } = (await importActual()) as typeof import('graphql-request');
+    // hash function that keeps only the first 6 characters, should be unique enough
+    // for our use case to avoid collisions
     const sha1 = (str: string) => createHash('sha1').update(str).digest('hex').slice(0, 6);
+    // hash the query to make a unique directory
     const queryHash = sha1(JSON.stringify(query));
+    // hash the variables to make a unique filename
     const variablesHash = sha1(JSON.stringify(variables));
 
     const fixturesDir = path.join(import.meta.dirname, '__fixtures__');
@@ -45,13 +49,17 @@ vi.mock('graphql-request', (importActual) => {
     assert(def.name, 'Expected query to have a name');
     const name = def.name.value;
     const cachedFile = path.join(fixturesDir, `${name}-${queryHash}`, `${variablesHash}.json`);
+    // check for cached file
     const file = await fs.readFile(cachedFile, 'utf8').catch(() => null);
 
+    // return the cached response if it exists
     if (file) return JSON.parse(file) as unknown;
 
+    // otherwise, make the request
     const result = (await request(this.url, query, variables)) as unknown;
 
     await fs.mkdir(path.dirname(cachedFile), { recursive: true });
+    // and then cache the response
     await fs.writeFile(cachedFile, await prettier.format(JSON.stringify(result)), 'utf8');
 
     return result;
