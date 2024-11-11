@@ -67,7 +67,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       ) {
         totalCount
       }
-      boostFee: swapFeesBySwapRequestId(filter: { type: { equalTo: BOOST } }) {
+      boostFee: swapFeesBySwapRequestId(condition: { type: BOOST }) {
         nodes {
           valueUsd
         }
