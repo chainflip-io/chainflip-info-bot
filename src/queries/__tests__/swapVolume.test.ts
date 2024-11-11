@@ -1,5 +1,6 @@
 import { addDays } from 'date-fns';
 import { describe, expect, it } from 'vitest';
+import { explorerClient, lpClient } from '../../server.js';
 import getSwapVolumeStats from '../swapVolume.js';
 
 describe('swapVolume', () => {
@@ -15,5 +16,12 @@ describe('swapVolume', () => {
         "swapVolume": "5910283.6825610709",
       }
     `);
+
+    const args = {
+      start: start.toISOString(),
+      end: end.toISOString(),
+    };
+    expect(explorerClient.request).toHaveBeenCalledWith(expect.anything(), args);
+    expect(lpClient.request).toHaveBeenCalledWith(expect.anything(), args);
   });
 });
