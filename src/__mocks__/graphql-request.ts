@@ -63,6 +63,8 @@ vi.mock('graphql-request', (importActual) => {
     // return the cached response if it exists
     if (file) return JSON.parse(file) as unknown;
 
+    assert(!process.env.CI, 'No cache found for query, please run the tests locally first');
+
     // otherwise, make the request
     const result = (await request(this.url, query, variables)) as unknown;
 

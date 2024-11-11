@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ChainflipAsset } from '../../graphql/generated/graphql';
-import { getPriceFromPriceX128 } from '../math';
+import { ChainflipAsset } from '../../graphql/generated/graphql.js';
+import { getPriceFromPriceX128 } from '../math.js';
 
 describe('get price from priceX128', () => {
   const prices: Array<[bigint | string, ChainflipAsset, ChainflipAsset, string]> = [
@@ -13,9 +13,6 @@ describe('get price from priceX128', () => {
   it.each(prices)(
     'displays min price from fok priceX128',
     (priceX128, srcAsset, destAsset, expected) =>
-      expect(
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        getPriceFromPriceX128(priceX128, srcAsset, destAsset),
-      ).toBe(expected),
+      expect(getPriceFromPriceX128(priceX128, srcAsset, destAsset)).toBe(expected),
   );
 });

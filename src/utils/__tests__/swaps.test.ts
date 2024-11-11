@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { describe, expect, it } from 'vitest';
-import { getSwapCompletionTime } from '../swaps';
+import { getSwapCompletionTime } from '../swaps.js';
 
 describe('getSwapCompletionTime', () => {
   describe('swap completion time estimate based on statically defined pre-block time intervals', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { abbreviate, formatUsdValue } from '../strings';
+import { abbreviate, formatUsdValue } from '../strings.js';
 
 describe('abbreviate', () => {
   it.each([
@@ -8,7 +8,6 @@ describe('abbreviate', () => {
     [undefined, ''],
     ['0x4c9b02c3575767a9290ff01d94851fea36def106', '0x4c…f106'],
   ])('displays edited string', (text, expected) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(abbreviate(text)).toBe(expected);
   });
 
@@ -18,7 +17,6 @@ describe('abbreviate', () => {
     [undefined, ''],
     ['0x4c9b02c3575767a9290ff01d94851fea36def106', '0x4…106'],
   ])('displays edited string with show length param', (text, expected) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(abbreviate(text, 3)).toBe(expected);
   });
 
@@ -28,7 +26,6 @@ describe('abbreviate', () => {
     [undefined, ''],
     ['0x4c9b02c3575767a9290ff01d94851fea36def106', '0x. . .06'],
   ])('displays edited string with show length and space params', (text, expected) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(abbreviate(text, 2, true)).toBe(expected);
   });
 });
@@ -53,7 +50,6 @@ describe('formatUsdValue', () => {
       ['1000000000.1239', '$1,000,000,000.12'],
       ['1000000000000.1239', '$1,000,000,000,000.12'],
     ])('precisely formats USD values', (input, expected) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       expect(formatUsdValue(input)).toBe(expected);
     });
 
@@ -80,7 +76,6 @@ describe('formatUsdValue', () => {
       ['1020000000000.1239', '$1.02T'],
       ['1200000000000.1239', '$1.2T'],
     ])('less precisely formats USD values', (input, expected) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       expect(formatUsdValue(input, false)).toBe(expected);
     });
   });

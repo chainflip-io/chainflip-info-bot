@@ -17,7 +17,7 @@ describe('checkForFirstNewLpDeposits', () => {
         }
         return { deposits: { nodes: [] } };
       }
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+
       return liquidityDepositStats;
     });
 

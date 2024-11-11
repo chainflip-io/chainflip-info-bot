@@ -18,6 +18,7 @@
     },
     "refundEgress": null,
     "swapChannel": {
+      "beneficiaries": { "nodes": [] },
       "broker": {
         "account": {
           "alias": "Chainflip Swapping",

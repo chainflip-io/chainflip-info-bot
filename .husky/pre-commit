@@ -1,1 +1,2 @@
+pnpm clean:mocks
 pnpm lint-staged

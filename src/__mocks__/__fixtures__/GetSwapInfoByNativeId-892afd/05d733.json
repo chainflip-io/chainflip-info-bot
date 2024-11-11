@@ -15,17 +15,7 @@
       "valueUsd": "22.097080603800000000000000000000"
     },
     "swapChannel": {
-      "beneficiaries": {
-        "nodes": [
-          {
-            "type": "SUBMITTER",
-            "account": {
-              "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
-              "alias": "Chainflip Swapping"
-            }
-          }
-        ]
-      },
+      "beneficiaries": { "nodes": [] },
       "broker": {
         "account": {
           "alias": "Chainflip Swapping",
@@ -39,21 +29,6 @@
     "depositBlock": { "stateChainTimestamp": "2024-11-08T12:52:18+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-11-08T13:08:42+00:00" } },
     "executedSwaps": { "totalCount": 0 },
-    "fees": {
-      "nodes": [
-        {
-          "valueUsd": "3.182866212800000000000000000000",
-          "amount": "1084543855400000",
-          "asset": "Eth",
-          "type": "INGRESS"
-        },
-        {
-          "valueUsd": "4.118418447400000000000000000000",
-          "amount": "1400605763060000",
-          "asset": "Eth",
-          "type": "EGRESS"
-        }
-      ]
-    }
+    "boostFee": { "nodes": [] }
   }
 }

@@ -43,21 +43,6 @@
       "block": { "timestamp": "2024-11-10T18:45:00.001+00:00" }
     },
     "executedSwaps": { "totalCount": 1 },
-    "fees": {
-      "nodes": [
-        {
-          "valueUsd": "0.107022145300000000000000000000",
-          "amount": "197300000",
-          "asset": "Dot",
-          "type": "INGRESS"
-        },
-        {
-          "valueUsd": "0.031410390800000000000000000000",
-          "amount": "31421",
-          "asset": "ArbUsdc",
-          "type": "EGRESS"
-        }
-      ]
-    }
+    "boostFee": { "nodes": [] }
   }
 }

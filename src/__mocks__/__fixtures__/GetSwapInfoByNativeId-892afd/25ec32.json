@@ -21,6 +21,7 @@
       "valueUsd": "31269.457769869500000000000000000000"
     },
     "swapChannel": {
+      "beneficiaries": { "nodes": [] },
       "broker": {
         "account": {
           "alias": "Chainflip Swapping",
