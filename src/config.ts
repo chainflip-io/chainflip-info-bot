@@ -70,7 +70,7 @@ type Channel = { key: ConfigKey; filters?: Filter[] };
 
 const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
 
-const config = z
+const configSchema = z
   .object({
     telegram: telegramConfig.optional(),
     discord: discordConfig.optional(),
@@ -147,8 +147,8 @@ const config = z
     };
   });
 
-export type ParsedConfig = z.output<typeof config>;
-export type ConfigFile = z.input<typeof config>;
+export type ParsedConfig = z.output<typeof configSchema>;
+export type ConfigFile = z.input<typeof configSchema>;
 
 export default class Config {
   static #config?: ParsedConfig;
@@ -156,7 +156,7 @@ export default class Config {
   static async #load(): Promise<ParsedConfig> {
     if (!this.#config) {
       const configFile = env.CONFIG ?? (await fs.readFile('bot.config.json', 'utf-8'));
-      this.#config = config.parse(JSON.parse(configFile));
+      this.#config = configSchema.parse(JSON.parse(configFile));
     }
 
     return this.#config;

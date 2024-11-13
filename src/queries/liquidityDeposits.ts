@@ -32,6 +32,7 @@ const checkHasOldDepositQuery = gql(/* GraphQL */ `
   query CheckHasOldDeposit($id: Int!, $liquidityProviderId: Int!) {
     deposits: allLiquidityDeposits(
       filter: { id: { lessThan: $id }, liquidityProviderId: { equalTo: $liquidityProviderId } }
+      first: 1
     ) {
       nodes {
         id
@@ -69,14 +70,14 @@ export type NewDeposit = {
 };
 
 export default async function checkForFirstNewLpDeposits(id: number): Promise<NewDeposit[]> {
-  const { deposits } = await explorerClient.request(getNewDepositsQuery, { id });
+  const { deposits: newDeposits } = await explorerClient.request(getNewDepositsQuery, { id });
 
-  if (!deposits?.nodes.length) return [];
+  if (!newDeposits?.nodes.length) return [];
 
   // https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
   // keep the first deposit of each liquidity provider and filter the rest
-  const uniqueLpDeposits = deposits.nodes.filter(
-    (deposit, i) => deposits.nodes.findIndex((d) => d.lp.id === deposit.lp.id) === i,
+  const uniqueLpDeposits = newDeposits.nodes.filter(
+    (deposit, i) => newDeposits.nodes.findIndex((d) => d.lp.id === deposit.lp.id) === i,
   );
 
   const checkedDeposits = await Promise.all(

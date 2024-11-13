@@ -52,10 +52,10 @@ const buildMessages = ({
   platforms.map((platform) => {
     let message = '';
     const isDaily = period === 'daily';
-    let name;
+    let messageName;
 
     if ('swapVolume' in stats) {
-      name = `${toUpperCase(period)}_SWAP_SUMMARY` as const;
+      messageName = `${toUpperCase(period)}_SWAP_SUMMARY` as const;
       message = renderToStaticMarkup(
         <>
           <Line>
@@ -84,9 +84,8 @@ const buildMessages = ({
           <Trailer platform={platform} />
         </>,
       ).trimEnd();
-    }
-    if (Array.isArray(stats)) {
-      name = `${toUpperCase(period)}_LP_SUMMARY` as const;
+    } else if (Array.isArray(stats)) {
+      messageName = `${toUpperCase(period)}_LP_SUMMARY` as const;
       const youTried = '🏅';
       const medals = ['🥇', '🥈', '🥉'];
       message = renderToStaticMarkup(
@@ -112,14 +111,14 @@ const buildMessages = ({
       ).trimEnd();
     }
 
-    assert(name, 'name must be defined');
+    assert(messageName, 'name must be defined');
 
     return {
       name: 'messageRouter' as const,
       data: {
         platform,
         message,
-        filterData: { name },
+        filterData: { name: messageName },
       },
     };
   });

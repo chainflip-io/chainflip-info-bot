@@ -45,7 +45,7 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
     { text },
     {
       headers: {
-        Authorization: authHeader['Authorization'],
+        Authorization: authHeader.Authorization,
         'User-Agent': 'v2CreateTweetJS',
         'Content-Type': 'application/json',
         Accept: 'application/json',
