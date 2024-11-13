@@ -18,7 +18,7 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { message, filterData: filterData, platform } = job.data;
+  const { message, filterData, platform } = job.data;
 
   const channels = await Config.getChannels(platform);
 

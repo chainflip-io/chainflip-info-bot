@@ -54,9 +54,7 @@ const emoji = (depositValueUsd: string | null | undefined) => {
   return '🦐';
 };
 
-const formatDeltaPrice = (value: string, deltaSign: boolean) => {
-  return deltaSign ? '-' + value : value;
-};
+const formatDeltaPrice = (value: string, deltaSign: boolean) => (deltaSign ? `-${value}` : value);
 
 const deltaSign = (delta: number) => {
   if (delta <= -10) return '🔴';
@@ -163,7 +161,7 @@ const buildMessageData = ({
           <Line>
             🏰 Affiliate:{' '}
             {swapInfo.affiliatesIdsAndAliases?.map((affiliate) => (
-              <Bold platform={platform}>
+              <Bold key={affiliate.brokerId} platform={platform}>
                 <ExplorerLink
                   platform={platform}
                   path={`/brokers/${affiliate.brokerId}`}

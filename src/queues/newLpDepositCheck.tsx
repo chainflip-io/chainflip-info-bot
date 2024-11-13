@@ -71,22 +71,18 @@ const buildMessages = ({
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const latestDepositId = await getLatestDepositId();
-  const { name, data, opts } = getNextJobData(latestDepositId);
-
   const { lastCheckedDepositId } = job.data;
   const firstLpDeposits = await checkForFirstNewLpDeposits(lastCheckedDepositId);
 
-  const scheduler = { name: 'scheduler', data: [{ name, data, opts }] } as const;
+  const scheduler = { name: 'scheduler', data: [getNextJobData(latestDepositId)] } as const;
   const jobs = [
     scheduler,
-    ...firstLpDeposits
-      .flatMap((deposit) => {
-        // ignore messages that are longer than 12 hours old
-        return Date.now() - new Date(deposit.timestamp).getTime() <= hoursToMilliseconds(12)
-          ? buildMessages({ deposit })
-          : undefined;
-      })
-      .filter(Boolean),
+    ...firstLpDeposits.flatMap((deposit) =>
+      // ignore messages that are longer than 12 hours old
+      Date.now() - new Date(deposit.timestamp).getTime() <= hoursToMilliseconds(12)
+        ? buildMessages({ deposit })
+        : [],
+    ),
   ] as DispatchJobArgs[];
 
   await dispatchJobs(jobs);
