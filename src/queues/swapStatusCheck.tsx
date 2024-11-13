@@ -216,7 +216,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     case 'pending':
       jobs.push({
         name: 'scheduler',
-        data: [{ name, data: { swapRequestId: job.data.swapRequestId }, opts: { delay: 10_000 } }],
+        data: [{ name, data: { swapRequestId: job.data.swapRequestId } }],
+        opts: { delay: 10_000 },
       } as const);
       logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
       break;

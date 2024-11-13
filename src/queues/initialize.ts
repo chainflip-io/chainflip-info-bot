@@ -1,4 +1,4 @@
-import { FlowProducer, JobsOptions, Processor, Queue, Worker } from 'bullmq';
+import { FlowProducer, JobsOptions, Processor, Queue, QueueEvents, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
@@ -61,6 +61,16 @@ const createQueue = async <N extends JobName>(
 
   await initialize?.(queue);
 
+  const events = new QueueEvents(name, { connection: redis });
+
+  events.on('deduplicated', (info) => {
+    logger.error(info, 'deduplicated');
+  });
+
+  events.on('error', (error) => {
+    logger.error({ error, queue: name }, 'error in queue');
+  });
+
   const worker = new Worker<JobData[N], void, N>(
     name,
     logRejections(name, processJob(dispatchJobs)),
@@ -71,8 +81,11 @@ const createQueue = async <N extends JobName>(
     },
   );
 
-  cleanup.push(() => queue.close());
-  cleanup.push(() => worker.close());
+  cleanup.push(async () => {
+    await queue.close();
+    await events.close();
+    await worker.close();
+  });
 
   return queue;
 };

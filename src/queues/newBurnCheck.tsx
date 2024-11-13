@@ -2,7 +2,7 @@ import { formatUsdValue } from '@chainflip/utils/number';
 import { BigNumber } from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
+import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
@@ -23,17 +23,15 @@ declare global {
 
 const INTERVAL = 30_000;
 
-const getNextJobData = ({
-  burnId,
-}: {
-  burnId: number;
-}): Extract<DispatchJobArgs, { name: Name }> => {
+export const getNextJobData = async (
+  burnId: number | null,
+): Promise<Extract<DispatchJobArgs, { name: 'scheduler' }>> => {
   // prevents multiple jobs with the same key from being scheduled
   const customJobId = 'newBurnCheck';
 
   return {
-    name,
-    data: { lastBurnId: burnId },
+    name: 'scheduler',
+    data: [{ name, data: { lastBurnId: burnId ?? (await getLatestBurnId()) } }],
     opts: { delay: INTERVAL, deduplication: { id: customJobId } },
   };
 };
@@ -77,10 +75,7 @@ const buildMessages = ({
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const latestBurn = await getNewBurn(job.data.lastBurnId);
 
-  const data = getNextJobData({
-    burnId: latestBurn?.id ?? job.data.lastBurnId,
-  });
-  const jobs = [{ name: 'scheduler', data: [data] }] as DispatchJobArgs[];
+  const jobs: DispatchJobArgs[] = [await getNextJobData(latestBurn?.id ?? job.data.lastBurnId)];
   if (latestBurn) {
     const {
       amount,
@@ -100,16 +95,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   await dispatchJobs(jobs);
 };
 
-const initialize: Initializer<Name> = async (queue) => {
-  const latestBurnId = await getLatestBurnId();
-  const { data, opts } = getNextJobData({
-    burnId: latestBurnId,
-  });
-  await queue.add(name, data, opts);
-};
-
 export const config: JobConfig<Name> = {
   name,
-  initialize,
   processJob,
 };

@@ -28,21 +28,7 @@ describe('time period stats', () => {
       const queue = { add: vi.fn() };
 
       await config.initialize?.(queue as any);
-      expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`
-        [
-          "timePeriodStats",
-          {
-            "endOfPeriod": 1729900799999,
-            "sendWeeklySummary": false,
-          },
-          {
-            "deduplication": {
-              "id": "timePeriodStats-1729900799999",
-            },
-            "delay": 41103999,
-          },
-        ]
-      `);
+      expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`undefined`);
     });
 
     it('primes the queue with the weekly job', async () => {
@@ -51,21 +37,7 @@ describe('time period stats', () => {
       const queue = { add: vi.fn() };
 
       await config.initialize?.(queue as any);
-      expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`
-        [
-          "timePeriodStats",
-          {
-            "endOfPeriod": 1730073599999,
-            "sendWeeklySummary": true,
-          },
-          {
-            "deduplication": {
-              "id": "timePeriodStats-1730073599999",
-            },
-            "delay": 41103999,
-          },
-        ]
-      `);
+      expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`undefined`);
     });
   });
 

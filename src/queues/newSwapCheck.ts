@@ -1,4 +1,4 @@
-import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
+import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import getLatestSwapRequestId from '../queries/getLatestSwapRequestId.js';
 import getNewSwapRequests from '../queries/getNewSwapRequests.js';
 import logger from '../utils/logger.js';
@@ -8,13 +8,17 @@ type Name = typeof name;
 
 const INTERVAL = 30_000;
 
-const getNextJobData = (swapRequestId: string): Extract<DispatchJobArgs, { name: Name }> => {
+export const getNextJobData = async (
+  swapRequestId: string | null,
+): Promise<Extract<DispatchJobArgs, { name: 'scheduler' }>> => {
   // prevents multiple jobs with the same key from being scheduled
   const customJobId = 'newSwapCheck';
 
   return {
-    name,
-    data: { lastSwapRequestId: swapRequestId },
+    name: 'scheduler',
+    data: [
+      { name, data: { lastSwapRequestId: swapRequestId ?? (await getLatestSwapRequestId()) } },
+    ],
     opts: { delay: INTERVAL, deduplication: { id: customJobId } },
   };
 };
@@ -46,21 +50,14 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     .reduce((a, b) => (a > b ? a : b), BigInt(job.data.lastSwapRequestId));
   logger.info(`Current latest swapRequestId: ${latestSwapRequestId}`);
 
-  const data = getNextJobData(latestSwapRequestId.toString());
+  const data = await getNextJobData(latestSwapRequestId.toString());
 
-  await dispatchJobs([{ name: 'scheduler', data: [data] }, ...swapRequestJobs]);
+  await dispatchJobs([data, ...swapRequestJobs]);
 
   logger.info({ newSwapRequests }, `Found ${newSwapRequests.length} new swap requests`);
 };
 
-const initialize: Initializer<Name> = async (queue) => {
-  const latestSwapRequestId = await getLatestSwapRequestId();
-  const { data, opts } = getNextJobData(latestSwapRequestId);
-  await queue.add(name, data, opts);
-};
-
 export const config: JobConfig<Name> = {
   name,
-  initialize,
   processJob,
 };

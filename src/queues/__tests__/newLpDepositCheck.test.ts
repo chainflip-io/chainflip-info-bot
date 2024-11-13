@@ -18,22 +18,7 @@ describe('newLpDepositCheck', () => {
 
       await config.initialize?.(queue as any);
 
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`
-        [
-          [
-            "newLpDepositCheck",
-            {
-              "lastCheckedDepositId": 1,
-            },
-            {
-              "deduplication": {
-                "id": "newLpDepositCheck",
-              },
-              "delay": 30000,
-            },
-          ],
-        ]
-      `);
+      expect(queue.add.mock.calls).toMatchInlineSnapshot(`[]`);
     });
   });
 
@@ -65,15 +50,15 @@ describe('newLpDepositCheck', () => {
                       "lastCheckedDepositId": 10,
                     },
                     "name": "newLpDepositCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newLpDepositCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newLpDepositCheck",
+                  },
+                  "delay": 30000,
+                },
               },
               {
                 "data": {
@@ -145,15 +130,15 @@ describe('newLpDepositCheck', () => {
                       "lastCheckedDepositId": 10,
                     },
                     "name": "newLpDepositCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newLpDepositCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newLpDepositCheck",
+                  },
+                  "delay": 30000,
+                },
               },
             ],
           ],

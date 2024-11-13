@@ -2,10 +2,10 @@ import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate, toUpperCase } from '@chainflip/utils/string';
 import { utc } from '@date-fns/utc';
 import assert from 'assert';
-import { JobsOptions, UnrecoverableError } from 'bullmq';
+import { UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
+import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLpFills, { LPFillsData } from '../queries/lpFills.js';
@@ -25,17 +25,23 @@ declare global {
   }
 }
 
-const getNextJobData = (): { data: JobData[typeof name]; opts: JobsOptions } => {
+export const getNextJobData = (): Extract<DispatchJobArgs, { name: 'scheduler' }> => {
   const endOfPeriod = endOfToday({ in: utc }).valueOf();
   // prevents multiple jobs with the same key from being scheduled
   const customJobId = `timePeriodStats-${endOfPeriod}`;
 
   return {
-    data: {
-      endOfPeriod,
-      sendWeeklySummary:
-        endOfPeriod === endOfWeek(endOfPeriod, { weekStartsOn: 1, in: utc }).valueOf(),
-    },
+    name: 'scheduler',
+    data: [
+      {
+        name,
+        data: {
+          endOfPeriod,
+          sendWeeklySummary:
+            endOfPeriod === endOfWeek(endOfPeriod, { weekStartsOn: 1, in: utc }).valueOf(),
+        },
+      },
+    ],
     opts: { delay: endOfPeriod - Date.now(), deduplication: { id: customJobId } },
   };
 };
@@ -150,10 +156,9 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
       }),
   ]);
 
-  const { data, opts } = getNextJobData();
   const jobs = [
     // Schedule the next job
-    { name: 'scheduler', data: [{ name, data, opts }] } as const,
+    getNextJobData(),
     ...buildMessages({ stats: dailyVolume, date: beginningOfDay, period: 'daily' }),
     ...buildMessages({ stats: dailyLpFills, date: beginningOfDay, period: 'daily' }),
   ];
@@ -167,16 +172,10 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
 
   await dispatchJobs(jobs);
 
-  logger.info({ newJobs: jobs.length, newData: data }, 'Processed time period stats');
-};
-
-const initialize: Initializer<typeof name> = async (queue) => {
-  const { data, opts } = getNextJobData();
-  await queue.add(name, data, opts);
+  logger.info({ newJobs: jobs.length }, 'Processed time period stats');
 };
 
 export const config: JobConfig<typeof name> = {
   name,
-  initialize,
   processJob,
 };

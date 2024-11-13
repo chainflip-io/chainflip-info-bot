@@ -12,15 +12,15 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
               "sendWeeklySummary": true,
             },
             "name": "timePeriodStats",
-            "opts": {
-              "deduplication": {
-                "id": "timePeriodStats-1730073599999",
-              },
-              "delay": 41103999,
-            },
           },
         ],
         "name": "scheduler",
+        "opts": {
+          "deduplication": {
+            "id": "timePeriodStats-1730073599999",
+          },
+          "delay": 41103999,
+        },
       },
       {
         "data": {
@@ -238,15 +238,15 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
               "sendWeeklySummary": false,
             },
             "name": "timePeriodStats",
-            "opts": {
-              "deduplication": {
-                "id": "timePeriodStats-1729900799999",
-              },
-              "delay": 41103999,
-            },
           },
         ],
         "name": "scheduler",
+        "opts": {
+          "deduplication": {
+            "id": "timePeriodStats-1729900799999",
+          },
+          "delay": 41103999,
+        },
       },
       {
         "data": {
@@ -357,15 +357,15 @@ exports[`time period stats > processJob > processes a daily job without a flip b
               "sendWeeklySummary": false,
             },
             "name": "timePeriodStats",
-            "opts": {
-              "deduplication": {
-                "id": "timePeriodStats-1729900799999",
-              },
-              "delay": 41103999,
-            },
           },
         ],
         "name": "scheduler",
+        "opts": {
+          "deduplication": {
+            "id": "timePeriodStats-1729900799999",
+          },
+          "delay": 41103999,
+        },
       },
       {
         "data": {

@@ -37,22 +37,7 @@ describe('newBurnCheck', () => {
 
       await config.initialize?.(queue as any);
 
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`
-        [
-          [
-            "newBurnCheck",
-            {
-              "lastBurnId": 11,
-            },
-            {
-              "deduplication": {
-                "id": "newBurnCheck",
-              },
-              "delay": 30000,
-            },
-          ],
-        ]
-      `);
+      expect(queue.add.mock.calls).toMatchInlineSnapshot(`[]`);
     });
   });
 
@@ -75,15 +60,15 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newBurnCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newBurnCheck",
+                  },
+                  "delay": 30000,
+                },
               },
               {
                 "data": {
@@ -145,15 +130,15 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newBurnCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newBurnCheck",
+                  },
+                  "delay": 30000,
+                },
               },
               {
                 "data": {
@@ -213,15 +198,15 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 1,
                     },
                     "name": "newBurnCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newBurnCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newBurnCheck",
+                  },
+                  "delay": 30000,
+                },
               },
             ],
           ],
@@ -249,15 +234,15 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newBurnCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newBurnCheck",
+                  },
+                  "delay": 30000,
+                },
               },
             ],
           ],

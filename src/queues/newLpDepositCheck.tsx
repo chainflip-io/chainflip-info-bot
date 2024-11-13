@@ -2,7 +2,7 @@ import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate } from '@chainflip/utils/string';
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
+import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
@@ -25,13 +25,15 @@ declare global {
 
 const INTERVAL = 30_000;
 
-const getNextJobData = (depositId: number): Extract<DispatchJobArgs, { name: Name }> => {
+export const getNextJobData = async (
+  depositId: number | null,
+): Promise<Extract<DispatchJobArgs, { name: 'scheduler' }>> => {
   // prevents multiple jobs with the same key from being scheduled
   const customJobId = 'newLpDepositCheck';
 
   return {
-    name,
-    data: { lastCheckedDepositId: depositId },
+    name: 'scheduler',
+    data: [{ name, data: { lastCheckedDepositId: depositId ?? (await getLatestDepositId()) } }],
     opts: { delay: INTERVAL, deduplication: { id: customJobId } },
   };
 };
@@ -70,13 +72,14 @@ const buildMessages = ({
   });
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const latestDepositId = await getLatestDepositId();
   const { lastCheckedDepositId } = job.data;
-  const firstLpDeposits = await checkForFirstNewLpDeposits(lastCheckedDepositId);
+  const [latestDepositId, firstLpDeposits] = await Promise.all([
+    getLatestDepositId(),
+    checkForFirstNewLpDeposits(lastCheckedDepositId),
+  ]);
 
-  const scheduler = { name: 'scheduler', data: [getNextJobData(latestDepositId)] } as const;
   const jobs = [
-    scheduler,
+    await getNextJobData(latestDepositId),
     ...firstLpDeposits.flatMap((deposit) =>
       // ignore messages that are longer than 12 hours old
       Date.now() - new Date(deposit.timestamp).getTime() <= hoursToMilliseconds(12)
@@ -88,15 +91,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   await dispatchJobs(jobs);
 };
 
-const initialize: Initializer<Name> = async (queue) => {
-  const latestDepositId = await getLatestDepositId();
-
-  const { data, opts } = getNextJobData(latestDepositId);
-  await queue.add(name, data, opts);
-};
-
 export const config: JobConfig<Name> = {
   name,
-  initialize,
   processJob,
 };

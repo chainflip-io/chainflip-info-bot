@@ -17,22 +17,7 @@ describe('newSwapCheck', () => {
 
       await config.initialize?.(queue as any);
 
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`
-        [
-          [
-            "newSwapCheck",
-            {
-              "lastSwapRequestId": "1",
-            },
-            {
-              "deduplication": {
-                "id": "newSwapCheck",
-              },
-              "delay": 30000,
-            },
-          ],
-        ]
-      `);
+      expect(queue.add.mock.calls).toMatchInlineSnapshot(`[]`);
     });
   });
 
@@ -57,15 +42,15 @@ describe('newSwapCheck', () => {
                       "lastSwapRequestId": "1",
                     },
                     "name": "newSwapCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newSwapCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newSwapCheck",
+                  },
+                  "delay": 30000,
+                },
               },
             ],
           ],
@@ -93,15 +78,15 @@ describe('newSwapCheck', () => {
                       "lastSwapRequestId": "9",
                     },
                     "name": "newSwapCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newSwapCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newSwapCheck",
+                  },
+                  "delay": 30000,
+                },
               },
               {
                 "data": {
