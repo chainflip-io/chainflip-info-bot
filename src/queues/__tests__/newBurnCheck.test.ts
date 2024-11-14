@@ -29,18 +29,6 @@ const mockGetNewBurnEmptyResponse = () => ({
 });
 
 describe('newBurnCheck', () => {
-  describe('initialize', () => {
-    it('queues the job', async () => {
-      vi.mocked(explorerClient.request).mockResolvedValue(mockGetNewBurnResponse(11));
-
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`[]`);
-    });
-  });
-
   describe('processJob', () => {
     it('enqueues the next job with the latest id', async () => {
       vi.mocked(explorerClient.request).mockResolvedValueOnce(mockGetNewBurnResponse(11));

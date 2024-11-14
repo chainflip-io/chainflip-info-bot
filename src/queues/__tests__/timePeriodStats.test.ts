@@ -5,7 +5,7 @@ import { endOfDay } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import getLpFills from '../../queries/lpFills.js';
 import getSwapVolumeStats from '../../queries/swapVolume.js';
-import { config } from '../timePeriodStats.js';
+import { config, getNextJobData } from '../timePeriodStats.js';
 
 vi.mock('../../queries/swapVolume.js');
 vi.mock('../../queries/lpFills.js');
@@ -21,23 +21,55 @@ describe('time period stats', () => {
     vi.useRealTimers();
   });
 
-  describe('initialize', () => {
-    it('primes the queue', async () => {
+  describe(getNextJobData, () => {
+    it('primes the queue', () => {
       vi.setSystemTime(new Date('2024-10-25T12:34:56Z'));
 
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-      expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`undefined`);
+      expect(getNextJobData()).toMatchInlineSnapshot(`
+        {
+          "data": [
+            {
+              "data": {
+                "endOfPeriod": 1729900799999,
+                "sendWeeklySummary": false,
+              },
+              "name": "timePeriodStats",
+            },
+          ],
+          "name": "scheduler",
+          "opts": {
+            "deduplication": {
+              "id": "timePeriodStats-1729900799999",
+            },
+            "delay": 41103999,
+          },
+        }
+      `);
     });
 
-    it('primes the queue with the weekly job', async () => {
+    it('primes the queue with the weekly job', () => {
       vi.setSystemTime(new Date('2024-10-27T12:34:56Z'));
 
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-      expect(queue.add.mock.lastCall).toMatchInlineSnapshot(`undefined`);
+      expect(getNextJobData()).toMatchInlineSnapshot(`
+        {
+          "data": [
+            {
+              "data": {
+                "endOfPeriod": 1730073599999,
+                "sendWeeklySummary": true,
+              },
+              "name": "timePeriodStats",
+            },
+          ],
+          "name": "scheduler",
+          "opts": {
+            "deduplication": {
+              "id": "timePeriodStats-1730073599999",
+            },
+            "delay": 41103999,
+          },
+        }
+      `);
     });
   });
 

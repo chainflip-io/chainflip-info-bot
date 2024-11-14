@@ -9,18 +9,6 @@ const mockLatestSwapRequestResponse = (ids: string[]) => ({
 });
 
 describe('newSwapCheck', () => {
-  describe('initialize', () => {
-    it('queues the job', async () => {
-      vi.mocked(explorerClient.request).mockResolvedValue(mockLatestSwapRequestResponse(['1']));
-
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`[]`);
-    });
-  });
-
   describe('processJob', () => {
     it('enqueues the next job with the same id', async () => {
       vi.mocked(explorerClient.request)

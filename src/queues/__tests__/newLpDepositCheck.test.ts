@@ -11,17 +11,6 @@ describe('newLpDepositCheck', () => {
     vi.resetAllMocks();
   });
 
-  describe('initialize', () => {
-    it('queues the job', async () => {
-      vi.mocked(getLatestDepositId).mockResolvedValueOnce(1);
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`[]`);
-    });
-  });
-
   describe('processJob', () => {
     it('processes a job', async () => {
       vi.mocked(getLatestDepositId).mockResolvedValueOnce(10);
