@@ -22,7 +22,7 @@ describe('time period stats', () => {
   });
 
   describe(getNextJobData, () => {
-    it('primes the queue', () => {
+    it('returns data for daily jobs', () => {
       vi.setSystemTime(new Date('2024-10-25T12:34:56Z'));
 
       expect(getNextJobData()).toMatchInlineSnapshot(`
@@ -47,7 +47,7 @@ describe('time period stats', () => {
       `);
     });
 
-    it('primes the queue with the weekly job', () => {
+    it('returns data for weekly jobs', () => {
       vi.setSystemTime(new Date('2024-10-27T12:34:56Z'));
 
       expect(getNextJobData()).toMatchInlineSnapshot(`
