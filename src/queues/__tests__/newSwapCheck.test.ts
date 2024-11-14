@@ -9,33 +9,6 @@ const mockLatestSwapRequestResponse = (ids: string[]) => ({
 });
 
 describe('newSwapCheck', () => {
-  describe('initialize', () => {
-    it('queues the job', async () => {
-      vi.mocked(explorerClient.request).mockResolvedValue(mockLatestSwapRequestResponse(['1']));
-
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`
-        [
-          [
-            "newSwapCheck",
-            {
-              "lastSwapRequestId": "1",
-            },
-            {
-              "deduplication": {
-                "id": "newSwapCheck",
-              },
-              "delay": 30000,
-            },
-          ],
-        ]
-      `);
-    });
-  });
-
   describe('processJob', () => {
     it('enqueues the next job with the same id', async () => {
       vi.mocked(explorerClient.request)
@@ -57,15 +30,15 @@ describe('newSwapCheck', () => {
                       "lastSwapRequestId": "1",
                     },
                     "name": "newSwapCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newSwapCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newSwapCheck",
+                  },
+                  "delay": 30000,
+                },
               },
             ],
           ],
@@ -93,15 +66,15 @@ describe('newSwapCheck', () => {
                       "lastSwapRequestId": "9",
                     },
                     "name": "newSwapCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newSwapCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newSwapCheck",
+                  },
+                  "delay": 30000,
+                },
               },
               {
                 "data": {

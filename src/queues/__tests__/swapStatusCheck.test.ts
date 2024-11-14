@@ -48,12 +48,12 @@ describe('swapStatusCheck', () => {
                   "swapRequestId": "77697",
                 },
                 "name": "swapStatusCheck",
-                "opts": {
-                  "delay": 10000,
-                },
               },
             ],
             "name": "scheduler",
+            "opts": {
+              "delay": 10000,
+            },
           },
         ],
       ]

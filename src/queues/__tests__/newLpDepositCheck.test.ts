@@ -11,32 +11,6 @@ describe('newLpDepositCheck', () => {
     vi.resetAllMocks();
   });
 
-  describe('initialize', () => {
-    it('queues the job', async () => {
-      vi.mocked(getLatestDepositId).mockResolvedValueOnce(1);
-      const queue = { add: vi.fn() };
-
-      await config.initialize?.(queue as any);
-
-      expect(queue.add.mock.calls).toMatchInlineSnapshot(`
-        [
-          [
-            "newLpDepositCheck",
-            {
-              "lastCheckedDepositId": 1,
-            },
-            {
-              "deduplication": {
-                "id": "newLpDepositCheck",
-              },
-              "delay": 30000,
-            },
-          ],
-        ]
-      `);
-    });
-  });
-
   describe('processJob', () => {
     it('processes a job', async () => {
       vi.mocked(getLatestDepositId).mockResolvedValueOnce(10);
@@ -65,15 +39,15 @@ describe('newLpDepositCheck', () => {
                       "lastCheckedDepositId": 10,
                     },
                     "name": "newLpDepositCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newLpDepositCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newLpDepositCheck",
+                  },
+                  "delay": 30000,
+                },
               },
               {
                 "data": {
@@ -145,15 +119,15 @@ describe('newLpDepositCheck', () => {
                       "lastCheckedDepositId": 10,
                     },
                     "name": "newLpDepositCheck",
-                    "opts": {
-                      "deduplication": {
-                        "id": "newLpDepositCheck",
-                      },
-                      "delay": 30000,
-                    },
                   },
                 ],
                 "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newLpDepositCheck",
+                  },
+                  "delay": 30000,
+                },
               },
             ],
           ],
