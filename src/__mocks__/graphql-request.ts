@@ -38,7 +38,7 @@ vi.mock('graphql-request', (importActual) => {
   GraphQLClient.prototype.request = vi.fn(async function (
     this: GraphQLClient,
     query: TypedDocumentNode<any, any>,
-    variables: Record<string, any>,
+    variables: Record<string, any> | undefined,
   ) {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const { default: request } = (await importActual()) as typeof import('graphql-request');
@@ -48,7 +48,7 @@ vi.mock('graphql-request', (importActual) => {
     // hash the query to make a unique directory
     const queryHash = sha1(JSON.stringify(query));
     // hash the variables to make a unique filename
-    const variablesHash = sha1(JSON.stringify(variables));
+    const variablesHash = sha1(JSON.stringify(variables ?? {}));
 
     const fixturesDir = path.join(import.meta.dirname, '__fixtures__');
     assert(query.kind === Kind.DOCUMENT, 'Expected query to be a Document');
