@@ -27,7 +27,7 @@ jobs:
     secrets: inherit
   docker:
     needs: [pre-checks, checks]
-    uses: chainflip-io/chainflip-reusable-workflows/.github/workflows/_docker_build.yml@main
+    uses: ./.github/workflows/_docker_build.yml
     with:
       image_name: ${{ github.repository }}/info-bot
       tags: |

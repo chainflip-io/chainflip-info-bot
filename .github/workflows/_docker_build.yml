@@ -1,0 +1,141 @@
+name: Build Docker Image Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      runs_on:
+        description: 'Runner to run the workflow on'
+        type: string
+        default: ubuntu-latest
+      repository:
+        description: 'Repository to build'
+        type: string
+        default: ${{ github.repository }}
+      ref:
+        description: 'Ref to checkout'
+        type: string
+        default: ${{ github.ref }}
+      image_name:
+        description: 'Image name to build'
+        type: string
+        default: ${{ github.repository }}
+      registry:
+        description: 'Registry to push to'
+        type: string
+        default: ghcr.io
+      username:
+        description: 'Username to login to registry'
+        type: string
+        default: ${{ github.actor }}
+      tags:
+        description: 'Tags to apply to the image'
+        type: string
+        default: latest
+      dockerfile:
+        description: 'Dockerfile to build'
+        type: string
+        default: Dockerfile
+      build_args:
+        description: 'Build args to pass to the build'
+        type: string
+        default: ''
+      push:
+        description: 'Push the image to the registry'
+        type: boolean
+        default: true
+      pull:
+        description: 'Pull the image from the registry'
+        type: boolean
+        default: true
+      pre_cmds:
+        description: 'Extra commands to run pre-build'
+        type: string
+        default: ''
+      post_cmds:
+        description: 'Extra commands to run post-build'
+        type: string
+        default: ''
+      tailscale:
+        description: 'Tailscale to use'
+        type: boolean
+        default: false
+    secrets:
+      password:
+        description: 'Password to login to registry'
+        required: false
+      tailscale_oauth_client_id:
+        description: 'Tailscale OAuth Client ID'
+        required: false
+      tailscale_oauth_secret:
+        description: 'Tailscale OAuth Secret'
+        required: false
+
+jobs:
+  docker-build:
+    runs-on: ${{ inputs.runs_on }}
+    outputs:
+      tag: ${{ steps.meta.outputs.version }}
+    steps:
+      - name: Setup Tailscale 🪡 ⚙️
+        if: ${{ inputs.tailscale == true }}
+        id: tailscale
+        uses: tailscale/github-action@4e4c49acaa9818630ce0bd7a564372c17e33fb4d
+        with:
+          oauth-client-id: ${{ secrets.tailscale_oauth_client_id }}
+          oauth-secret: ${{ secrets.tailscale_oauth_secret }}
+          tags: tag:gha
+
+      - name: Checkout 🛎
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          repository: ${{ inputs.repository }}
+          ref: ${{ inputs.ref }}
+          token: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: Install and configure Namespace CLI 📟
+        uses: namespacelabs/nscloud-setup@v0
+
+      - name: Set up Namespace Buildx 👷
+        uses: namespacelabs/nscloud-setup-buildx-action@v0
+
+      - name: Run Pre Commands 🦄
+        if: ${{ inputs.pre_cmds != '' }}
+        run: ${{ inputs.pre_cmds }}
+
+      - name: Docker meta 🔖
+        id: meta
+        uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4
+        with:
+          images: ${{ inputs.registry }}/${{ inputs.image_name }}
+          tags: ${{ inputs.tags }}
+
+      - name: Login to GitHub Container Registry ➡️🦑
+        if: ${{ inputs.registry == 'ghcr.io' }}
+        uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc
+        with:
+          registry: ${{ inputs.registry }}
+          username: ${{ inputs.username }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to DockerHub ➡️🐳
+        if: ${{ inputs.registry == 'docker.io' }}
+        uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc
+        with:
+          registry: ${{ inputs.registry }}
+          username: ${{ inputs.username }}
+          password: ${{ secrets.password }}
+
+      - name: Build and push 🏗 🐳 ⬆️
+        uses: docker/build-push-action@4a13e500e55cf31b7a5d59a38ab2040ab0f42f56
+        with:
+          context: .
+          file: ${{ inputs.dockerfile }}
+          push: ${{ inputs.push }}
+          pull: ${{ inputs.pull }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: ${{ inputs.build_args }}
+
+      - name: Run Post Commands 🦄
+        if: ${{ inputs.post_cmds != '' }}
+        run: ${{ inputs.post_cmds }}
