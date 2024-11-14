@@ -97,10 +97,23 @@ export const initialize = async () => {
 
   cleanup.push(() => flow.close().catch(() => null));
 
+  const retryOpts: JobsOptions = {
+    attempts: 5,
+    backoff: {
+      delay: 1000,
+      type: 'exponential',
+    },
+  };
+
   const dispatchJobs: DispatchJobs = async (jobArgs) => {
     try {
       await flow.addBulk(
-        jobArgs.map(({ name, data, opts }) => ({ queueName: name, name, data, opts })),
+        jobArgs.map(({ name, data, opts }) => ({
+          queueName: name,
+          name,
+          data,
+          opts: { ...retryOpts, ...opts },
+        })),
       );
     } catch (error) {
       logger.error(error);
