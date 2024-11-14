@@ -1,4 +1,4 @@
-import { ChainflipAsset } from './graphql/generated/graphql.js';
+import { type ChainflipAsset } from './graphql/generated/graphql.js';
 
 export const humanFriendlyAsset: Record<ChainflipAsset, string> = {
   ArbEth: 'ETH on Arbitrum',

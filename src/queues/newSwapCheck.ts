@@ -1,4 +1,4 @@
-import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
+import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import getLatestSwapRequestId from '../queries/getLatestSwapRequestId.js';
 import getNewSwapRequests from '../queries/getNewSwapRequests.js';
 import logger from '../utils/logger.js';

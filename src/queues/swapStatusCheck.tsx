@@ -1,14 +1,14 @@
 import React from 'react';
 import { formatUsdValue } from '@chainflip/utils/number';
-import { BigNumber } from 'bignumber.js';
+import { type BigNumber } from 'bignumber.js';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
+import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import env from '../env.js';
-import { ChainflipAsset } from '../graphql/generated/graphql.js';
+import { type ChainflipAsset } from '../graphql/generated/graphql.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 import logger from '../utils/logger.js';

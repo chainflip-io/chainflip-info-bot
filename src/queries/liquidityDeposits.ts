@@ -1,7 +1,7 @@
 import { isNotNullish } from '@chainflip/utils/guard';
 import assert from 'assert';
 import { gql } from '../graphql/generated/gql.js';
-import { ChainflipAsset } from '../graphql/generated/graphql.js';
+import { type ChainflipAsset } from '../graphql/generated/graphql.js';
 import { explorerClient } from '../server.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 

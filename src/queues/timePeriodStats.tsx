@@ -5,11 +5,11 @@ import assert from 'assert';
 import { UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
+import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
-import getLpFills, { LPFillsData } from '../queries/lpFills.js';
-import getSwapVolumeStats, { SwapStats } from '../queries/swapVolume.js';
+import getLpFills, { type LPFillsData } from '../queries/lpFills.js';
+import getSwapVolumeStats, { type SwapStats } from '../queries/swapVolume.js';
 import logger from '../utils/logger.js';
 
 const name = 'timePeriodStats';

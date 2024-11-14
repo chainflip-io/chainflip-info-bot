@@ -1,5 +1,5 @@
-import { JobConfig, JobProcessor } from './initialize.js';
-import Config, { Platform, FilterData } from '../config.js';
+import { type JobConfig, type JobProcessor } from './initialize.js';
+import Config, { type Platform, type FilterData } from '../config.js';
 import logger from '../utils/logger.js';
 
 const name = 'messageRouter';

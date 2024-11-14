@@ -1,4 +1,4 @@
-import { FlowProducer, JobsOptions, Processor, Queue, QueueEvents, Worker } from 'bullmq';
+import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
