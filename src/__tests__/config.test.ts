@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { ConfigFile } from '../config.js';
+import { type ConfigFile } from '../config.js';
 import env from '../env.js';
 
 vi.mock('../env.js', () => ({
@@ -61,6 +61,7 @@ vi.mock('../env.js', () => ({
 }));
 
 describe('Config', () => {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
   let Config: typeof import('../config.js').default;
 
   beforeEach(() => {

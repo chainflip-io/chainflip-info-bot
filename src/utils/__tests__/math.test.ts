@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { ChainflipAsset } from '../../graphql/generated/graphql.js';
+import { type ChainflipAsset } from '../../graphql/generated/graphql.js';
 import { getPriceFromPriceX128 } from '../math.js';
 
 describe('get price from priceX128', () => {
-  const prices: Array<[bigint | string, ChainflipAsset, ChainflipAsset, string]> = [
+  const prices: [bigint | string, ChainflipAsset, ChainflipAsset, string][] = [
     ['370463044445583550774471879', 'Flip', 'Usdt', '1.088693'],
     [370463044445583550774471879n, 'Flip', 'Usdt', '1.088693'],
     ['0', 'Flip', 'Usdt', '0.000000'],
