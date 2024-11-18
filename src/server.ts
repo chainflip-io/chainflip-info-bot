@@ -37,6 +37,7 @@ export const createServer = (queues: Queue[], pulse: Pulse) => {
     const status = pulse.check();
     switch (status) {
       case 'healthy':
+        logger.info('worker is happy and healthy');
         return { status };
       case 'dying':
         logger.warn('worker has not been active');
