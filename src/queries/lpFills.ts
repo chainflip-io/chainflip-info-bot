@@ -79,37 +79,50 @@ export default async function getLpFills({
     ids: agg?.map((lp) => lp.id) ?? [],
   });
 
-  const groupedByAccount: Record<
+  const groupedByAccountName: Record<
     string,
-    { filledAmountValueUsd: BigNumber; percentage: string; alias: string }
+    { idSs58: string; filledAmountValueUsd: BigNumber; percentage: string; alias?: string }
   > = {};
 
   agg?.forEach(({ id, ...lp }) => {
-    const idSs58 = accounts?.nodes.find((account) => account.id === id)?.idSs58;
+    const accountAddress = accounts?.nodes.find((account) => account.id === id)?.idSs58;
 
-    if (idSs58) {
-      if (groupedByAccount[idSs58]) {
-        groupedByAccount[idSs58].filledAmountValueUsd = groupedByAccount[
-          idSs58
-        ].filledAmountValueUsd.plus(lp.filledAmountValueUsd);
+    if (!accountAddress) {
+      return;
+    }
+
+    const name = lpAliasMap[accountAddress]?.name;
+
+    if (name) {
+      const grouped = groupedByAccountName[name];
+
+      if (grouped) {
+        grouped.filledAmountValueUsd = grouped.filledAmountValueUsd.plus(lp.filledAmountValueUsd);
       } else {
-        groupedByAccount[idSs58] = {
+        groupedByAccountName[name] = {
+          idSs58: accountAddress,
           filledAmountValueUsd: lp.filledAmountValueUsd,
           percentage: '0',
-          alias: lpAliasMap[idSs58]?.name,
+          alias: name,
         };
       }
+    } else {
+      groupedByAccountName[accountAddress] = {
+        idSs58: accountAddress,
+        filledAmountValueUsd: lp.filledAmountValueUsd,
+        percentage: '0',
+      };
     }
   });
 
-  return Object.keys(groupedByAccount).map((idSs58) => {
-    const lp = groupedByAccount[idSs58];
+  return Object.keys(groupedByAccountName).map((accountName) => {
+    const lp = groupedByAccountName[accountName];
     const percentage = lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2);
 
     return {
       ...lp,
-      idSs58,
       percentage,
+      alias: lp.alias || undefined,
     };
   });
 }

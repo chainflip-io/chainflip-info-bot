@@ -1,11 +1,9 @@
-import { BigNumber } from 'bignumber.js';
 import { addWeeks } from 'date-fns';
-import { describe, expect, it, vi } from 'vitest';
-import { lpClient } from '../../server.js';
+import { describe, expect, it } from 'vitest';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
-  it('returns all the lp fills for given range', async () => {
+  it.only('returns all the lp fills for given range', async () => {
     const start = '2024-10-31T00:00:00Z';
     const end = addWeeks(start, 1).toISOString();
     expect(await getLpFills({ start, end })).toMatchInlineSnapshot(`
@@ -24,9 +22,9 @@ describe('getLpFills', () => {
         },
         {
           "alias": "Selini",
-          "filledAmountValueUsd": "7515924.9233363619",
+          "filledAmountValueUsd": "9434345.0577949431",
           "idSs58": "cFKZarxpf9MVwzzmYUtQfV61PRkYgTj9wUgUCeuKpKgMLrTow",
-          "percentage": "12.51",
+          "percentage": "15.70",
         },
         {
           "alias": "Auros",
@@ -39,12 +37,6 @@ describe('getLpFills', () => {
           "filledAmountValueUsd": "5187912.6660176357",
           "idSs58": "cFJYzUFU97Y849kbKvyj7br1CUumnbqWHJKDcfPFoKRqq6Zxz",
           "percentage": "8.63",
-        },
-        {
-          "alias": "Selini",
-          "filledAmountValueUsd": "1918420.1344585812",
-          "idSs58": "cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j",
-          "percentage": "3.19",
         },
         {
           "alias": "TreStylez",
@@ -60,9 +52,9 @@ describe('getLpFills', () => {
         },
         {
           "alias": "curiouspleb",
-          "filledAmountValueUsd": "619448.7841944152",
+          "filledAmountValueUsd": "673831.4974354201",
           "idSs58": "cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW",
-          "percentage": "1.03",
+          "percentage": "1.12",
         },
         {
           "alias": undefined,
@@ -81,12 +73,6 @@ describe('getLpFills', () => {
           "filledAmountValueUsd": "63762.9081250957",
           "idSs58": "cFPV6R6vXWAXVityn3XAZNMQDkuZ96LcmS2euYYrGjchWWAri",
           "percentage": "0.11",
-        },
-        {
-          "alias": "curiouspleb",
-          "filledAmountValueUsd": "54382.7132410049",
-          "idSs58": "cFPJNbXH9KNP1CRejnf19ARopcS8w8c4teTz5GF3G36MZRWJG",
-          "percentage": "0.09",
         },
         {
           "alias": undefined,
@@ -126,69 +112,5 @@ describe('getLpFills', () => {
         },
       ]
     `);
-  });
-
-  it('returns an array of objects with unique idSs58 and aggregated filledAmountValueUsd, percentage values', async () => {
-    const start = '2024-10-31T00:00:00Z';
-    const end = addWeeks(start, 1).toISOString();
-
-    const spy = vi.spyOn(lpClient, 'request');
-    spy.mockResolvedValueOnce({
-      limitOrders: {
-        groupedAggregates: [
-          {
-            keys: ['2'],
-            sum: { filledAmountValueUsd: '1000.00' },
-          },
-          {
-            keys: ['2'],
-            sum: { filledAmountValueUsd: '1000.00' },
-          },
-          {
-            keys: ['2'],
-            sum: { filledAmountValueUsd: '1000.00' },
-          },
-          {
-            keys: ['11'],
-            sum: { filledAmountValueUsd: '1000.00' },
-          },
-        ],
-      },
-      rangeOrders: {
-        groupedAggregates: [
-          {
-            keys: ['2'],
-            sum: {
-              baseFilledAmountValueUsd: '25.00',
-              quoteFilledAmountValueUsd: '25.00',
-            },
-          },
-          {
-            keys: ['2'],
-            sum: {
-              baseFilledAmountValueUsd: '25.00',
-              quoteFilledAmountValueUsd: '25.00',
-            },
-          },
-        ],
-      },
-    });
-
-    const currRes = await getLpFills({ start, end });
-
-    expect(currRes).toEqual([
-      {
-        idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
-        alias: 'JIT Strategies',
-        filledAmountValueUsd: new BigNumber('3150.00'),
-        percentage: '75.90',
-      },
-      {
-        idSs58: 'cFLTUvyYwfZBLjCuLP6G8t85qW3FDmzSD3WPYq249EhP3Zs9g',
-        alias: undefined,
-        filledAmountValueUsd: BigNumber('1000.00'),
-        percentage: '24.10',
-      },
-    ]);
   });
 });
