@@ -1,6 +1,6 @@
 import { utc } from '@date-fns/utc';
 import { BigNumber } from 'bignumber.js';
-import { Job } from 'bullmq';
+import { type Job } from 'bullmq';
 import { endOfDay } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import getLpFills from '../../queries/lpFills.js';

@@ -1,8 +1,8 @@
-import { JobConfig, JobProcessor } from './initialize.js';
+import { type JobConfig, type JobProcessor } from './initialize.js';
 import { sendMessage as sendDiscordMessage } from '../channels/discord.js';
 import { sendMessage as sendTelegramMessage } from '../channels/telegram.js';
 import { sendMessage as sendTwitterMessage } from '../channels/twitter.js';
-import Config, { ConfigKey } from '../config.js';
+import Config, { type ConfigKey } from '../config.js';
 
 const name = 'sendMessage';
 

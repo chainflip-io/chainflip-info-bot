@@ -69,7 +69,7 @@ describe('getLpFills', () => {
           "percentage": "0.19",
         },
         {
-          "alias": undefined,
+          "alias": "Gonzo",
           "filledAmountValueUsd": "78889.5914538513",
           "idSs58": "cFLZS9GDX4CeXWdjqm2sXmVUNqW1H71BK5nfUXHo6qtKDqNHu",
           "percentage": "0.13",

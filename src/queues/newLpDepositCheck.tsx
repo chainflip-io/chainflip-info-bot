@@ -2,13 +2,13 @@ import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate } from '@chainflip/utils/string';
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
+import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import checkForFirstNewLpDeposits, {
   getLatestDepositId,
-  NewDeposit,
+  type NewDeposit,
 } from '../queries/liquidityDeposits.js';
 
 const name = 'newLpDepositCheck';
