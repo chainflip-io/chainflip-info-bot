@@ -1,5 +1,7 @@
+import { BigNumber } from 'bignumber.js';
 import { addWeeks } from 'date-fns';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import { lpClient } from '../../server.js';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
@@ -124,5 +126,69 @@ describe('getLpFills', () => {
         },
       ]
     `);
+  });
+
+  it('returns an array of objects with unique addresses', async () => {
+    const start = '2024-10-31T00:00:00Z';
+    const end = addWeeks(start, 1).toISOString();
+
+    const spy = vi.spyOn(lpClient, 'request');
+    spy.mockResolvedValueOnce({
+      limitOrders: {
+        groupedAggregates: [
+          {
+            keys: ['2'],
+            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+          },
+          {
+            keys: ['2'],
+            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+          },
+          {
+            keys: ['2'],
+            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+          },
+          {
+            keys: ['11'],
+            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+          },
+        ],
+      },
+      rangeOrders: {
+        groupedAggregates: [
+          {
+            keys: ['2'],
+            sum: {
+              baseFilledAmountValueUsd: '25.000000000000000000000000000000',
+              quoteFilledAmountValueUsd: '25.000000000000000000000000000000',
+            },
+          },
+          {
+            keys: ['2'],
+            sum: {
+              baseFilledAmountValueUsd: '25.000000000000000000000000000000',
+              quoteFilledAmountValueUsd: '25.000000000000000000000000000000',
+            },
+          },
+        ],
+      },
+    });
+
+    const currRes = await getLpFills({ start, end });
+
+    expect(currRes).toEqual([
+      {
+        idSs58: 'cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh',
+        alias: 'JIT Strategies',
+        filledAmountValueUsd: new BigNumber('3150.00'),
+        percentage: '75.90',
+      },
+      {
+        filledAmountValueUsd: BigNumber('1000.00'),
+        percentage: '24.10',
+        alias: undefined,
+        idSs58: 'cFLTUvyYwfZBLjCuLP6G8t85qW3FDmzSD3WPYq249EhP3Zs9g',
+      },
+    ]);
   });
 });
