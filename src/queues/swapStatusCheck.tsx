@@ -7,7 +7,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
-import { humanFriendlyAsset } from '../consts.js';
+import { BLOCK_TIME_IN_SECONDS, humanFriendlyAsset } from '../consts.js';
 import env from '../env.js';
 import { type ChainflipAsset } from '../graphql/generated/graphql.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
@@ -213,7 +213,11 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     jobs.push({
       name: 'scheduler',
       data: [{ name, data: { swapRequestId: job.data.swapRequestId } }],
-      opts: { delay: 10_000 },
+      opts: {
+        delay: swapInfo.chunkIntervalBlocks
+          ? swapInfo.chunkIntervalBlocks * BLOCK_TIME_IN_SECONDS
+          : 10_000,
+      },
     } as const);
     logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
   } else {

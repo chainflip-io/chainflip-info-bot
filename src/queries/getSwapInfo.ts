@@ -48,6 +48,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
             idSs58
           }
         }
+        chunkIntervalBlocks
         fokMinPriceX128
         issuedBlockTimestamp
       }
@@ -114,6 +115,8 @@ export default async function getSwapInfo(nativeId: string) {
   const affiliatesIdsAndAliases = swap.swapChannel?.beneficiaries.nodes
     ?.map(({ account }) => getBrokerIdAndAlias(account))
     .filter(isNotNullish);
+
+  const chunkIntervalBlocks = swap.swapChannel?.chunkIntervalBlocks;
 
   const dcaChunks =
     numberOfExecutedChunks && numberOfChunks > 1
@@ -189,6 +192,7 @@ export default async function getSwapInfo(nativeId: string) {
     priceDeltaPercentage,
     brokerIdAndAlias,
     affiliatesIdsAndAliases,
+    chunkIntervalBlocks,
     dcaChunks,
     minPrice,
     sourceAsset,

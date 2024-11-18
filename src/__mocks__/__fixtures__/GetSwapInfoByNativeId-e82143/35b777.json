@@ -25,6 +25,7 @@
           "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
         }
       },
+      "chunkIntervalBlocks": 2,
       "fokMinPriceX128": "256409436044637495548307742935444508280413",
       "issuedBlockTimestamp": "2024-11-08T15:04:30+00:00"
     },
