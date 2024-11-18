@@ -19,10 +19,7 @@ describe(Pulse, () => {
   });
 
   describe(Pulse.prototype.check, () => {
-    it('returns returns healthy three times and then dead if no pulse has been set', () => {
-      expect(pulse.check()).toBe('healthy');
-      expect(pulse.check()).toBe('healthy');
-      expect(pulse.check()).toBe('healthy');
+    it('returns dead if no pulse has been set', () => {
       expect(pulse.check()).toBe('dead');
     });
 
