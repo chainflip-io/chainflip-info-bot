@@ -3,6 +3,7 @@ import { getNextJobData as getNextBurnJobData } from './newBurnCheck.js';
 import { getNextJobData as getNextLpCheckJobData } from './newLpDepositCheck.js';
 import { getNextJobData as getNextSwapCheckJobData } from './newSwapCheck.js';
 import { getNextJobData as getNextTimePeriodJobData } from './timePeriodStats.js';
+import pulse from '../utils/pulse.js';
 
 const name = 'scheduler';
 type Name = typeof name;
@@ -15,8 +16,10 @@ declare global {
   }
 }
 
-const processJob: JobProcessor<Name> = (dispatchJobs) => (job) =>
-  dispatchJobs(job.data.filter((data) => data.name !== 'scheduler'));
+const processJob: JobProcessor<Name> = (dispatchJobs) => (job) => {
+  pulse.beat();
+  return dispatchJobs(job.data.filter((data) => data.name !== 'scheduler'));
+};
 
 const initialize: Initializer<Name> = async (queue) => {
   const timePeriodJob = getNextTimePeriodJobData();
