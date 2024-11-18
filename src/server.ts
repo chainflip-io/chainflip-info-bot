@@ -42,7 +42,7 @@ export const createServer = (queues: Queue[], pulse: Pulse) => {
         logger.warn('worker has not been active');
         return { status };
       case 'dead':
-        logger.error('worker has stopped processing delayed jobs');
+        logger.fatal('worker has stopped processing delayed jobs');
         return res.code(500).send({ status });
       default:
         return unreachable(status);
