@@ -214,9 +214,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
       name: 'scheduler',
       data: [{ name, data: { swapRequestId: job.data.swapRequestId } }],
       opts: {
-        delay: swapInfo.chunkIntervalBlocks
-          ? swapInfo.chunkIntervalBlocks * BLOCK_TIME_IN_SECONDS
-          : 10_000,
+        delay: swapInfo.chunkIntervalBlocks * BLOCK_TIME_IN_SECONDS,
       },
     } as const);
     logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);

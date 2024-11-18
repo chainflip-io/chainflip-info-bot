@@ -116,7 +116,7 @@ export default async function getSwapInfo(nativeId: string) {
     ?.map(({ account }) => getBrokerIdAndAlias(account))
     .filter(isNotNullish);
 
-  const chunkIntervalBlocks = swap.swapChannel?.chunkIntervalBlocks;
+  const chunkIntervalBlocks = swap.swapChannel?.chunkIntervalBlocks ?? 2;
 
   const dcaChunks =
     numberOfExecutedChunks && numberOfChunks > 1
