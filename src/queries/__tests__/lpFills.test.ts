@@ -128,7 +128,7 @@ describe('getLpFills', () => {
     `);
   });
 
-  it('returns an array of objects with unique addresses', async () => {
+  it('returns an array of objects with unique idSs58 and aggregated filledAmountValueUsd, percentage values', async () => {
     const start = '2024-10-31T00:00:00Z';
     const end = addWeeks(start, 1).toISOString();
 
@@ -138,19 +138,19 @@ describe('getLpFills', () => {
         groupedAggregates: [
           {
             keys: ['2'],
-            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+            sum: { filledAmountValueUsd: '1000.00' },
           },
           {
             keys: ['2'],
-            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+            sum: { filledAmountValueUsd: '1000.00' },
           },
           {
             keys: ['2'],
-            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+            sum: { filledAmountValueUsd: '1000.00' },
           },
           {
             keys: ['11'],
-            sum: { filledAmountValueUsd: '1000.000000000000000000000000000000' },
+            sum: { filledAmountValueUsd: '1000.00' },
           },
         ],
       },
@@ -159,15 +159,15 @@ describe('getLpFills', () => {
           {
             keys: ['2'],
             sum: {
-              baseFilledAmountValueUsd: '25.000000000000000000000000000000',
-              quoteFilledAmountValueUsd: '25.000000000000000000000000000000',
+              baseFilledAmountValueUsd: '25.00',
+              quoteFilledAmountValueUsd: '25.00',
             },
           },
           {
             keys: ['2'],
             sum: {
-              baseFilledAmountValueUsd: '25.000000000000000000000000000000',
-              quoteFilledAmountValueUsd: '25.000000000000000000000000000000',
+              baseFilledAmountValueUsd: '25.00',
+              quoteFilledAmountValueUsd: '25.00',
             },
           },
         ],
@@ -184,10 +184,10 @@ describe('getLpFills', () => {
         percentage: '75.90',
       },
       {
+        idSs58: 'cFLTUvyYwfZBLjCuLP6G8t85qW3FDmzSD3WPYq249EhP3Zs9g',
+        alias: undefined,
         filledAmountValueUsd: BigNumber('1000.00'),
         percentage: '24.10',
-        alias: undefined,
-        idSs58: 'cFLTUvyYwfZBLjCuLP6G8t85qW3FDmzSD3WPYq249EhP3Zs9g',
       },
     ]);
   });
