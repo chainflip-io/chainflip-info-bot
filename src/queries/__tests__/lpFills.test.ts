@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
-  it.only('returns all the lp fills for given range', async () => {
+  it('returns all the lp fills for given range', async () => {
     const start = '2024-10-31T00:00:00Z';
     const end = addWeeks(start, 1).toISOString();
     expect(await getLpFills({ start, end })).toMatchInlineSnapshot(`
