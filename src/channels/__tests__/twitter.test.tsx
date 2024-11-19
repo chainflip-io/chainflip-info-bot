@@ -5,6 +5,13 @@ import { vi, describe, it, expect } from 'vitest';
 import { sendMessage } from '../twitter.js';
 
 describe('sendMessage', () => {
+  const config = {
+    consumerKey: 'consumer_key',
+    consumerKeySecret: 'consumer_key_secret',
+    oauthKey: 'oauth_key',
+    oauthKeySecret: 'oauth_key_secret',
+  };
+
   it('sends a message to the channel', async () => {
     const postMock = vi.mocked(axios.post);
 
@@ -23,12 +30,7 @@ describe('sendMessage', () => {
     });
 
     await sendMessage(
-      {
-        consumerKey: 'consumer_key',
-        consumerKeySecret: 'consumer_key_secret',
-        oauthKey: 'oauth_key',
-        oauthKeySecret: 'oauth_key_secret',
-      },
+      config,
       renderToStaticMarkup(
         <>
           hello twitter<strong>bold</strong>
@@ -65,12 +67,7 @@ describe('sendMessage', () => {
 
     await expect(
       sendMessage(
-        {
-          consumerKey: 'consumer_key',
-          consumerKeySecret: 'consumer_key_secret',
-          oauthKey: 'oauth_key',
-          oauthKeySecret: 'oauth_key_secret',
-        },
+        config,
         renderToStaticMarkup(
           <>
             hello twitter<strong>bold</strong>
@@ -79,6 +76,16 @@ describe('sendMessage', () => {
       ),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
       `[Error: failed to send message: {"data":{"ok":false,"description":"some other stuff here"}}]`,
+    );
+  });
+
+  it('throws an unrecoverable error for 429 errors', async () => {
+    const postMock = vi.mocked(axios.post);
+
+    postMock.mockResolvedValue({ status: 429 });
+
+    await expect(sendMessage(config, 'hello world')).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[UnrecoverableError: twitter rate limit hit]`,
     );
   });
 });
