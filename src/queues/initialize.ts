@@ -90,8 +90,12 @@ const createQueue = async <N extends JobName>(
   return queue;
 };
 
+export type QueueMap = {
+  [K in keyof JobData]: Queue<JobData[K], void, K>;
+};
+
 export const initialize = async () => {
-  const queues = {} as { [K in keyof JobData]: Queue<JobData[K], void, K> };
+  const queues = {} as QueueMap;
 
   const flow = new FlowProducer({ connection: redis });
 
@@ -131,5 +135,5 @@ export const initialize = async () => {
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
 
-  return Object.values(queues);
+  return queues;
 };

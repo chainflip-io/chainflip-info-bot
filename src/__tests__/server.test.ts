@@ -1,34 +1,36 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { createServer } from '../server.js';
-import { Pulse } from '../utils/pulse.js';
 
 describe(createServer, () => {
-  let pulse: Pulse;
+  let getDelayed: Mock;
   let server: ReturnType<typeof createServer>;
 
   beforeEach(() => {
-    pulse = new Pulse();
-    server = createServer([], pulse);
+    getDelayed = vi.fn();
+    server = createServer({ scheduler: { getDelayed } } as any);
   });
 
-  it('returns 200 when the pulse returns healthy', async () => {
-    vi.spyOn(pulse, 'check').mockReturnValueOnce('healthy');
+  it('returns 200 when no jobs are scheduled', async () => {
+    vi.mocked(getDelayed).mockReturnValueOnce([]);
     const res = await server.inject({ path: '/health' });
-    expect(JSON.parse(res.body)).toEqual({ status: 'healthy' });
+    expect(JSON.parse(res.body)).toEqual({ status: 'ok' });
     expect(res.statusCode).toBe(200);
   });
 
-  it('returns 200 when the pulse returns dying', async () => {
-    vi.spyOn(pulse, 'check').mockReturnValueOnce('dying');
+  it('returns 200 when no jobs are past due', async () => {
+    vi.mocked(getDelayed).mockReturnValueOnce([{ delay: 15000, timestamp: Date.now() }]);
     const res = await server.inject({ path: '/health' });
-    expect(JSON.parse(res.body)).toEqual({ status: 'dying' });
+    expect(JSON.parse(res.body)).toEqual({ status: 'ok' });
     expect(res.statusCode).toBe(200);
   });
 
-  it('returns 500 when the pulse returns dead', async () => {
-    vi.spyOn(pulse, 'check').mockReturnValueOnce('dead');
+  it('returns 500 when at least one job is past due', async () => {
+    vi.mocked(getDelayed).mockReturnValueOnce([
+      { delay: 15000, timestamp: Date.now() },
+      { delay: 15000, timestamp: Date.now() - 30_000 },
+    ]);
     const res = await server.inject({ path: '/health' });
-    expect(JSON.parse(res.body)).toEqual({ status: 'dead' });
+    expect(JSON.parse(res.body)).toEqual({ status: 'stalled' });
     expect(res.statusCode).toBe(500);
   });
 
