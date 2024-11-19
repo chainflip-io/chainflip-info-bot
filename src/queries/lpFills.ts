@@ -93,26 +93,18 @@ export default async function getLpFills({
 
     const name = lpAliasMap[accountAddress]?.name;
 
-    if (name) {
-      const grouped = groupedByAccountName[name];
+    const key = name || accountAddress;
 
-      if (grouped) {
-        grouped.filledAmountValueUsd = grouped.filledAmountValueUsd.plus(lp.filledAmountValueUsd);
-      } else {
-        groupedByAccountName[name] = {
-          idSs58: accountAddress,
-          filledAmountValueUsd: lp.filledAmountValueUsd,
-          percentage: '0',
-          alias: name,
-        };
-      }
-    } else {
-      groupedByAccountName[accountAddress] = {
-        idSs58: accountAddress,
-        filledAmountValueUsd: lp.filledAmountValueUsd,
-        percentage: '0',
-      };
-    }
+    groupedByAccountName[key] ??= {
+      idSs58: accountAddress,
+      filledAmountValueUsd: new BigNumber(0),
+      percentage: '0',
+      alias: name,
+    };
+
+    groupedByAccountName[key].filledAmountValueUsd = groupedByAccountName[
+      key
+    ].filledAmountValueUsd.plus(lp.filledAmountValueUsd);
   });
 
   return Object.keys(groupedByAccountName).map((accountName) => {
