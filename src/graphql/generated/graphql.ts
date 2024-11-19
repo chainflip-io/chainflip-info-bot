@@ -915,6 +915,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_COUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_COUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -935,6 +937,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_AMOUNT_USD_ASC'
@@ -953,6 +957,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MAX_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_AMOUNT_USD_ASC'
@@ -971,6 +977,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_MIN_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -989,6 +997,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -1007,6 +1017,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_AMOUNT_USD_ASC'
@@ -1025,6 +1037,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_SUM_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -1043,6 +1057,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LOST_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -1061,6 +1077,8 @@ export type AccountsOrderBy =
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LOST_ASC'
+  | 'BOOST_SHARES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LOST_DESC'
   | 'BOUND_REDEEM_ADDRESS_ASC'
   | 'BOUND_REDEEM_ADDRESS_DESC'
   | 'DEPOSIT_CHANNELS_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_ADDRESS_ASC'
@@ -6735,6 +6753,8 @@ export type BoostPoolBoostShareCondition = {
   feeUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `id` field. */
   id?: InputMaybe<Scalars['BigInt']['input']>;
+  /** Checks for equality with the object’s `lost` field. */
+  lost?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** A filter to be used against `BoostPoolBoostShare` object types. All fields are combined with a logical ‘and.’ */
@@ -6757,6 +6777,8 @@ export type BoostPoolBoostShareFilter = {
   feeUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<BigIntFilter>;
+  /** Filter by the object’s `lost` field. */
+  lost?: InputMaybe<BooleanFilter>;
   /** Negates the expression. */
   not?: InputMaybe<BoostPoolBoostShareFilter>;
   /** Checks for any expressions in this list. */
@@ -6773,7 +6795,8 @@ export type BoostPoolBoostShareGroupBy =
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
   | 'FEE'
-  | 'FEE_USD';
+  | 'FEE_USD'
+  | 'LOST';
 
 export type BoostPoolBoostShareHavingAverageInput = {
   amount?: InputMaybe<HavingBigfloatFilter>;
@@ -6907,6 +6930,8 @@ export type BoostPoolBoostSharesOrderBy =
   | 'FEE_USD_DESC'
   | 'ID_ASC'
   | 'ID_DESC'
+  | 'LOST_ASC'
+  | 'LOST_DESC'
   | 'NATURAL'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC';
@@ -7775,6 +7800,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_COUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_COUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -7793,6 +7820,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_USD_ASC'
@@ -7809,6 +7838,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_USD_ASC'
@@ -7825,6 +7856,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -7841,6 +7874,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -7857,6 +7892,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_USD_ASC'
@@ -7873,6 +7910,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -7889,6 +7928,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -7905,6 +7946,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOST_DESC'
   | 'BOOST_POOL_LIQUIDITIES_BY_BOOST_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_ASC'
   | 'BOOST_POOL_LIQUIDITIES_BY_BOOST_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_DESC'
   | 'BOOST_POOL_LIQUIDITIES_BY_BOOST_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_VALUE_USD_ASC'
@@ -8105,6 +8148,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_COUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_COUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -8125,6 +8170,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_USD_ASC'
@@ -8143,6 +8190,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_USD_ASC'
@@ -8161,6 +8210,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -8179,6 +8230,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -8197,6 +8250,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_USD_ASC'
@@ -8215,6 +8270,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -8233,6 +8290,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -8251,6 +8310,8 @@ export type BoostPoolsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOST_DESC'
   | 'CHAIN_ASC'
   | 'CHAIN_DESC'
   | 'FEE_TIER_PIPS_ASC'
@@ -8405,6 +8466,8 @@ export type BoostShareCondition = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `liquidityProviderId` field. */
   liquidityProviderId?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `lost` field. */
+  lost?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** A filter to be used against `BoostShare` object types. All fields are combined with a logical ‘and.’ */
@@ -8429,6 +8492,8 @@ export type BoostShareFilter = {
   id?: InputMaybe<IntFilter>;
   /** Filter by the object’s `liquidityProviderId` field. */
   liquidityProviderId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `lost` field. */
+  lost?: InputMaybe<BooleanFilter>;
   /** Negates the expression. */
   not?: InputMaybe<BoostShareFilter>;
   /** Checks for any expressions in this list. */
@@ -8446,7 +8511,8 @@ export type BoostShareGroupBy =
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
   | 'FEE'
   | 'FEE_USD'
-  | 'LIQUIDITY_PROVIDER_ID';
+  | 'LIQUIDITY_PROVIDER_ID'
+  | 'LOST';
 
 export type BoostShareHavingAverageInput = {
   amount?: InputMaybe<HavingBigfloatFilter>;
@@ -8591,6 +8657,8 @@ export type BoostSharesOrderBy =
   | 'ID_DESC'
   | 'LIQUIDITY_PROVIDER_ID_ASC'
   | 'LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LOST_ASC'
+  | 'LOST_DESC'
   | 'NATURAL'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC';
@@ -8761,6 +8829,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_COUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_COUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -8779,6 +8849,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_USD_ASC'
@@ -8795,6 +8867,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_USD_ASC'
@@ -8811,6 +8885,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -8827,6 +8903,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -8843,6 +8921,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_USD_ASC'
@@ -8859,6 +8939,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -8875,6 +8957,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LOST_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -8891,6 +8975,8 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_AMOUNT_USD_ASC'
@@ -8909,6 +8995,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_COUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_COUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -8929,6 +9017,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_USD_ASC'
@@ -8947,6 +9037,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_MAX_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_MAX_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_MAX_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_USD_ASC'
@@ -8965,6 +9057,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_MIN_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_MIN_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_MIN_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -8983,6 +9077,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -9001,6 +9097,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_USD_ASC'
@@ -9019,6 +9117,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_SUM_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_SUM_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_SUM_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -9037,6 +9137,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LOST_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -9055,6 +9157,8 @@ export type BoostsOrderBy =
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_ASC'
+  | 'BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_DESC'
   | 'CHAIN_ASC'
   | 'CHAIN_DESC'
   | 'DEPOSIT_AMOUNT_ASC'
@@ -37196,6 +37300,7 @@ export type ForeignChainTrackingsOrderBy =
 export type FundingEventType =
   | 'FUNDED'
   | 'REDEEMED'
+  | 'REDEMPTION_REQUESTED'
   | 'SLASHED';
 
 /** A filter to be used against FundingEventType fields. All fields are combined with a logical ‘and.’ */
@@ -53822,7 +53927,7 @@ export type GetSwapInfoByNativeIdQueryVariables = Exact<{
 }>;
 
 
-export type GetSwapInfoByNativeIdQuery = { __typename?: 'Query', swap?: { __typename?: 'SwapRequest', completedEventId?: string | null, nativeId: string, depositAmount?: string | null, depositValueUsd?: string | null, sourceChain: ChainflipChain, numberOfChunks?: number | null, destinationAsset: ChainflipAsset, sourceAsset: ChainflipAsset, effectiveBoostFeeBps?: number | null, egress?: { __typename?: 'Egress', amount: string, valueUsd?: string | null, scheduledEvent: { __typename?: 'Event', block: { __typename?: 'Block', timestamp: string } } } | null, refundEgress?: { __typename?: 'Egress', amount: string, valueUsd?: string | null } | null, swapChannel?: { __typename?: 'SwapChannel', fokMinPriceX128?: string | null, issuedBlockTimestamp: string, beneficiaries: { __typename?: 'SwapChannelBeneficiariesConnection', nodes: Array<{ __typename?: 'SwapChannelBeneficiary', account: { __typename?: 'Account', idSs58: string, alias?: string | null } }> }, broker: { __typename?: 'Broker', account: { __typename?: 'Account', alias?: string | null, idSs58: string } } } | null, preDepositBlock?: { __typename?: 'ForeignChainTracking', stateChainTimestamp: string } | null, depositBlock?: { __typename?: 'ForeignChainTracking', stateChainTimestamp: string } | null, completedEvent?: { __typename?: 'Event', block: { __typename?: 'Block', timestamp: string } } | null, executedSwaps: { __typename?: 'SwapsConnection', totalCount: number }, boostFee: { __typename?: 'SwapFeesConnection', nodes: Array<{ __typename?: 'SwapFee', valueUsd?: string | null }> } } | null };
+export type GetSwapInfoByNativeIdQuery = { __typename?: 'Query', swap?: { __typename?: 'SwapRequest', completedEventId?: string | null, nativeId: string, depositAmount?: string | null, depositValueUsd?: string | null, sourceChain: ChainflipChain, numberOfChunks?: number | null, destinationAsset: ChainflipAsset, sourceAsset: ChainflipAsset, effectiveBoostFeeBps?: number | null, egress?: { __typename?: 'Egress', amount: string, valueUsd?: string | null, scheduledEvent: { __typename?: 'Event', block: { __typename?: 'Block', timestamp: string } } } | null, refundEgress?: { __typename?: 'Egress', amount: string, valueUsd?: string | null } | null, swapChannel?: { __typename?: 'SwapChannel', chunkIntervalBlocks?: number | null, fokMinPriceX128?: string | null, issuedBlockTimestamp: string, beneficiaries: { __typename?: 'SwapChannelBeneficiariesConnection', nodes: Array<{ __typename?: 'SwapChannelBeneficiary', account: { __typename?: 'Account', idSs58: string, alias?: string | null } }> }, broker: { __typename?: 'Broker', account: { __typename?: 'Account', alias?: string | null, idSs58: string } } } | null, preDepositBlock?: { __typename?: 'ForeignChainTracking', stateChainTimestamp: string } | null, depositBlock?: { __typename?: 'ForeignChainTracking', stateChainTimestamp: string } | null, completedEvent?: { __typename?: 'Event', block: { __typename?: 'Block', timestamp: string } } | null, executedSwaps: { __typename?: 'SwapsConnection', totalCount: number }, boostFee: { __typename?: 'SwapFeesConnection', nodes: Array<{ __typename?: 'SwapFee', valueUsd?: string | null }> } } | null };
 
 export type GetNewLiquididityDepositsQueryVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -53881,7 +53986,7 @@ export const GetLatestBurnDocument = {"kind":"Document","definitions":[{"kind":"
 export const LatestSwapRequestDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LatestSwapRequest"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swapRequests"},"name":{"kind":"Name","value":"allSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"NATIVE_ID_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nativeId"}}]}}]}}]}}]} as unknown as DocumentNode<LatestSwapRequestQuery, LatestSwapRequestQueryVariables>;
 export const GetNewBurnDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getNewBurn"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"burns"},"name":{"kind":"Name","value":"allBurns"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_DESC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"eventByEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"blockId"}},{"kind":"Field","name":{"kind":"Name","value":"indexInBlock"}},{"kind":"Field","alias":{"kind":"Name","value":"block"},"name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewBurnQuery, GetNewBurnQueryVariables>;
 export const GetNewSwapRequestsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewSwapRequestsQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swapRequests"},"name":{"kind":"Name","value":"allSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"nativeId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"REGULAR"},{"kind":"EnumValue","value":"CCM"}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nativeId"}}]}}]}}]}}]} as unknown as DocumentNode<GetNewSwapRequestsQueryQuery, GetNewSwapRequestsQueryQueryVariables>;
-export const GetSwapInfoByNativeIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSwapInfoByNativeId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swap"},"name":{"kind":"Name","value":"swapRequestByNativeId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"nativeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"completedEventId"}},{"kind":"Field","name":{"kind":"Name","value":"nativeId"}},{"kind":"Field","name":{"kind":"Name","value":"depositAmount"}},{"kind":"Field","name":{"kind":"Name","value":"depositValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"sourceChain"}},{"kind":"Field","name":{"kind":"Name","value":"numberOfChunks"}},{"kind":"Field","name":{"kind":"Name","value":"destinationAsset"}},{"kind":"Field","name":{"kind":"Name","value":"sourceAsset"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveBoostFeeBps"}},{"kind":"Field","alias":{"kind":"Name","value":"egress"},"name":{"kind":"Name","value":"egressByEgressId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}},{"kind":"Field","alias":{"kind":"Name","value":"scheduledEvent"},"name":{"kind":"Name","value":"eventByScheduledEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"block"},"name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"refundEgress"},"name":{"kind":"Name","value":"egressByRefundEgressId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"swapChannel"},"name":{"kind":"Name","value":"swapChannelByDepositChannelId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"beneficiaries"},"name":{"kind":"Name","value":"swapChannelBeneficiariesByDepositChannelId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"condition"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"AFFILIATE"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"account"},"name":{"kind":"Name","value":"accountByAccountId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}},{"kind":"Field","name":{"kind":"Name","value":"alias"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"broker"},"name":{"kind":"Name","value":"brokerByBrokerId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"account"},"name":{"kind":"Name","value":"accountByAccountId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alias"}},{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"fokMinPriceX128"}},{"kind":"Field","name":{"kind":"Name","value":"issuedBlockTimestamp"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"preDepositBlock"},"name":{"kind":"Name","value":"foreignChainTrackingByForeignChainPreDepositBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stateChainTimestamp"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"depositBlock"},"name":{"kind":"Name","value":"foreignChainTrackingByForeignChainDepositBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stateChainTimestamp"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"completedEvent"},"name":{"kind":"Name","value":"eventByCompletedEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"block"},"name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"executedSwaps"},"name":{"kind":"Name","value":"swapsBySwapRequestId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"swapExecutedEventId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"isNull"},"value":{"kind":"BooleanValue","value":false}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"PRINCIPAL"},{"kind":"EnumValue","value":"SWAP"}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalCount"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"boostFee"},"name":{"kind":"Name","value":"swapFeesBySwapRequestId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"condition"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"BOOST"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetSwapInfoByNativeIdQuery, GetSwapInfoByNativeIdQueryVariables>;
+export const GetSwapInfoByNativeIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSwapInfoByNativeId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"swap"},"name":{"kind":"Name","value":"swapRequestByNativeId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"nativeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"nativeId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"completedEventId"}},{"kind":"Field","name":{"kind":"Name","value":"nativeId"}},{"kind":"Field","name":{"kind":"Name","value":"depositAmount"}},{"kind":"Field","name":{"kind":"Name","value":"depositValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"sourceChain"}},{"kind":"Field","name":{"kind":"Name","value":"numberOfChunks"}},{"kind":"Field","name":{"kind":"Name","value":"destinationAsset"}},{"kind":"Field","name":{"kind":"Name","value":"sourceAsset"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveBoostFeeBps"}},{"kind":"Field","alias":{"kind":"Name","value":"egress"},"name":{"kind":"Name","value":"egressByEgressId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}},{"kind":"Field","alias":{"kind":"Name","value":"scheduledEvent"},"name":{"kind":"Name","value":"eventByScheduledEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"block"},"name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"refundEgress"},"name":{"kind":"Name","value":"egressByRefundEgressId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"swapChannel"},"name":{"kind":"Name","value":"swapChannelByDepositChannelId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"beneficiaries"},"name":{"kind":"Name","value":"swapChannelBeneficiariesByDepositChannelId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"condition"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"AFFILIATE"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"account"},"name":{"kind":"Name","value":"accountByAccountId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}},{"kind":"Field","name":{"kind":"Name","value":"alias"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"broker"},"name":{"kind":"Name","value":"brokerByBrokerId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"account"},"name":{"kind":"Name","value":"accountByAccountId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alias"}},{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"chunkIntervalBlocks"}},{"kind":"Field","name":{"kind":"Name","value":"fokMinPriceX128"}},{"kind":"Field","name":{"kind":"Name","value":"issuedBlockTimestamp"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"preDepositBlock"},"name":{"kind":"Name","value":"foreignChainTrackingByForeignChainPreDepositBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stateChainTimestamp"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"depositBlock"},"name":{"kind":"Name","value":"foreignChainTrackingByForeignChainDepositBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stateChainTimestamp"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"completedEvent"},"name":{"kind":"Name","value":"eventByCompletedEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"block"},"name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"executedSwaps"},"name":{"kind":"Name","value":"swapsBySwapRequestId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"swapExecutedEventId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"isNull"},"value":{"kind":"BooleanValue","value":false}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"PRINCIPAL"},{"kind":"EnumValue","value":"SWAP"}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalCount"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"boostFee"},"name":{"kind":"Name","value":"swapFeesBySwapRequestId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"condition"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"EnumValue","value":"BOOST"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"valueUsd"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetSwapInfoByNativeIdQuery, GetSwapInfoByNativeIdQueryVariables>;
 export const GetNewLiquididityDepositsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewLiquididityDeposits"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposits"},"name":{"kind":"Name","value":"allLiquidityDeposits"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_ASC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"depositAmount"}},{"kind":"Field","name":{"kind":"Name","value":"depositValueUsd"}},{"kind":"Field","alias":{"kind":"Name","value":"lp"},"name":{"kind":"Name","value":"liquidityProviderByLiquidityProviderId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","alias":{"kind":"Name","value":"account"},"name":{"kind":"Name","value":"accountByAccountId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"eventByEventId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"block"},"name":{"kind":"Name","value":"blockByBlockId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewLiquididityDepositsQuery, GetNewLiquididityDepositsQueryVariables>;
 export const CheckHasOldDepositDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CheckHasOldDeposit"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"liquidityProviderId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposits"},"name":{"kind":"Name","value":"allLiquidityDeposits"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lessThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"liquidityProviderId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"equalTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"liquidityProviderId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"liquidityProviderId"}}]}}]}}]}}]} as unknown as DocumentNode<CheckHasOldDepositQuery, CheckHasOldDepositQueryVariables>;
 export const GetLatestDepositIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLatestDepositId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposits"},"name":{"kind":"Name","value":"allLiquidityDeposits"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetLatestDepositIdQuery, GetLatestDepositIdQueryVariables>;

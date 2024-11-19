@@ -52,7 +52,7 @@ describe('swapStatusCheck', () => {
             ],
             "name": "scheduler",
             "opts": {
-              "delay": 10000,
+              "delay": 12000,
             },
           },
         ],
