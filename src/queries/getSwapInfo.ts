@@ -76,12 +76,12 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
   }
 `);
 
-const getBrokerAlias = (broker: { alias?: string | null; idSs58: string }) =>
-  broker.alias || brokerAliasMap[broker.idSs58]?.name || undefined;
-
 const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
   broker && broker.idSs58
-    ? { alias: getBrokerAlias(broker) || abbreviate(broker.idSs58, 4), brokerId: broker.idSs58 }
+    ? {
+        alias: broker.alias || brokerAliasMap[broker.idSs58]?.name || abbreviate(broker.idSs58, 4),
+        brokerId: broker.idSs58,
+      }
     : undefined;
 
 export default async function getSwapInfo(nativeId: string) {

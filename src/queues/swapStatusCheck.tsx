@@ -1,4 +1,5 @@
 import React from 'react';
+import { unreachable } from '@chainflip/utils/assertion';
 import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
 import { differenceInMinutes } from 'date-fns';
@@ -203,24 +204,20 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const status = getSwapStatus(swapInfo);
 
-  switch (status) {
-    case 'fresh':
-      jobs.push(...buildMessageData({ swapInfo }));
-      logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
-      break;
-
-    case 'stale':
-      logger.warn(`Swap #${swapInfo.requestId} is stale`);
-      break;
-
-    case 'pending':
-      jobs.push({
-        name: 'scheduler',
-        data: [{ name, data: { swapRequestId: job.data.swapRequestId } }],
-        opts: { delay: 10_000 },
-      } as const);
-      logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
-      break;
+  if (status === 'fresh') {
+    jobs.push(...buildMessageData({ swapInfo }));
+    logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
+  } else if (status === 'stale') {
+    logger.warn(`Swap #${swapInfo.requestId} is stale`);
+  } else if (status === 'pending') {
+    jobs.push({
+      name: 'scheduler',
+      data: [{ name, data: { swapRequestId: job.data.swapRequestId } }],
+      opts: { delay: 10_000 },
+    } as const);
+    logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
+  } else {
+    unreachable(status);
   }
 
   await dispatchJobs(jobs);
