@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { UnrecoverableError } from 'bullmq';
 import crypto from 'crypto';
 import OAuth from 'oauth-1.0a';
 
@@ -52,6 +53,8 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
       },
     },
   );
+
+  if (response.status === 429) throw new UnrecoverableError('twitter rate limit hit');
 
   const formattedResponse = response.data.data as { id: string; text: string };
 
