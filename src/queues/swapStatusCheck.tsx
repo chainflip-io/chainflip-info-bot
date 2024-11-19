@@ -1,7 +1,7 @@
 import React from 'react';
+import { unreachable } from '@chainflip/utils/assertion';
 import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
-import { UnrecoverableError } from 'bullmq';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
@@ -217,7 +217,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     } as const);
     logger.info(`Swap #${swapInfo.requestId} is not completed, pushed to a scheduler`);
   } else {
-    throw new UnrecoverableError('Swap status in unpredictable');
+    unreachable(status);
   }
 
   await dispatchJobs(jobs);
