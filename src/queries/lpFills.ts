@@ -3,7 +3,7 @@ import { BigNumber } from 'bignumber.js';
 import { gql } from '../graphql/generated/gql.js';
 import { lpClient } from '../server.js';
 
-const getLpFillsQuery = gql(/* GraphQL */ `
+export const getLpFillsQuery = gql(/* GraphQL */ `
   query GetLpFills($start: Datetime!, $end: Datetime!) {
     limitOrders: allLimitOrderFills(
       filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
@@ -79,14 +79,42 @@ export default async function getLpFills({
     ids: agg?.map((lp) => lp.id) ?? [],
   });
 
-  return agg?.map(({ id, ...lp }) => {
-    const idSs58 = accounts?.nodes.find((account) => account.id === id)?.idSs58;
+  const groupedByAccountName: Record<
+    string,
+    { idSs58: string; filledAmountValueUsd: BigNumber; percentage: string; alias?: string }
+  > = {};
+
+  agg?.forEach(({ id, ...lp }) => {
+    const accountAddress = accounts?.nodes.find((account) => account.id === id)?.idSs58;
+
+    if (!accountAddress) {
+      return;
+    }
+
+    const name = lpAliasMap[accountAddress]?.name;
+
+    const key = name || accountAddress;
+
+    groupedByAccountName[key] ??= {
+      idSs58: accountAddress,
+      filledAmountValueUsd: new BigNumber(0),
+      percentage: '0',
+      alias: name,
+    };
+
+    groupedByAccountName[key].filledAmountValueUsd = groupedByAccountName[
+      key
+    ].filledAmountValueUsd.plus(lp.filledAmountValueUsd);
+  });
+
+  return Object.keys(groupedByAccountName).map((accountName) => {
+    const lp = groupedByAccountName[accountName];
+    const percentage = lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2);
 
     return {
       ...lp,
-      idSs58: accounts?.nodes.find((account) => account.id === id)?.idSs58,
-      alias: idSs58 && lpAliasMap[idSs58]?.name,
-      percentage: total && lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2),
+      percentage,
+      alias: lp.alias || undefined,
     };
   });
 }

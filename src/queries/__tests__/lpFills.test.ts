@@ -22,9 +22,9 @@ describe('getLpFills', () => {
         },
         {
           "alias": "Selini",
-          "filledAmountValueUsd": "7515924.9233363619",
+          "filledAmountValueUsd": "9434345.0577949431",
           "idSs58": "cFKZarxpf9MVwzzmYUtQfV61PRkYgTj9wUgUCeuKpKgMLrTow",
-          "percentage": "12.51",
+          "percentage": "15.70",
         },
         {
           "alias": "Auros",
@@ -37,12 +37,6 @@ describe('getLpFills', () => {
           "filledAmountValueUsd": "5187912.6660176357",
           "idSs58": "cFJYzUFU97Y849kbKvyj7br1CUumnbqWHJKDcfPFoKRqq6Zxz",
           "percentage": "8.63",
-        },
-        {
-          "alias": "Selini",
-          "filledAmountValueUsd": "1918420.1344585812",
-          "idSs58": "cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j",
-          "percentage": "3.19",
         },
         {
           "alias": "TreStylez",
@@ -58,9 +52,9 @@ describe('getLpFills', () => {
         },
         {
           "alias": "curiouspleb",
-          "filledAmountValueUsd": "619448.7841944152",
+          "filledAmountValueUsd": "673831.4974354201",
           "idSs58": "cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW",
-          "percentage": "1.03",
+          "percentage": "1.12",
         },
         {
           "alias": undefined,
@@ -79,12 +73,6 @@ describe('getLpFills', () => {
           "filledAmountValueUsd": "63762.9081250957",
           "idSs58": "cFPV6R6vXWAXVityn3XAZNMQDkuZ96LcmS2euYYrGjchWWAri",
           "percentage": "0.11",
-        },
-        {
-          "alias": "curiouspleb",
-          "filledAmountValueUsd": "54382.7132410049",
-          "idSs58": "cFPJNbXH9KNP1CRejnf19ARopcS8w8c4teTz5GF3G36MZRWJG",
-          "percentage": "0.09",
         },
         {
           "alias": undefined,
