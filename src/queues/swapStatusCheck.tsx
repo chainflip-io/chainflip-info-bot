@@ -45,12 +45,12 @@ const getSwapStatus = (swapInfo: SwapInfo) => {
   return 'pending';
 };
 
-const emoji = (value: BigNumber | null) => {
-  if (!value) return null;
-  if (value.gt(100_000)) return '🐳';
-  if (value.gt(50_000)) return '🦈';
-  if (value.gt(25_000)) return '🐟';
-  if (value.gt(10_000)) return '🦀';
+const emoji = (depositValueUsd: BigNumber | null) => {
+  if (!depositValueUsd) return null;
+  if (depositValueUsd.gt(100_000)) return '🐳';
+  if (depositValueUsd.gt(50_000)) return '🦈';
+  if (depositValueUsd.gt(25_000)) return '🐟';
+  if (depositValueUsd.gt(10_000)) return '🦀';
   return '🦐';
 };
 
