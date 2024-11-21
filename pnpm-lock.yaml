@@ -65,10 +65,10 @@ importers:
     devDependencies:
       '@chainflip/eslint-config':
         specifier: ^1.0.6
-        version: 1.0.6(@eslint/js@9.13.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.12.0)(typescript-eslint@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))
+        version: 1.0.6(@eslint/js@9.15.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.12.0)(typescript-eslint@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))
       '@eslint/js':
-        specifier: ^9.13.0
-        version: 9.13.0
+        specifier: ^9.15.0
+        version: 9.15.0
       '@graphql-codegen/cli':
         specifier: ^5.0.3
         version: 5.0.3(@types/node@22.9.1)(graphql@16.9.0)(typescript@5.7.1-rc)
@@ -758,6 +758,10 @@ packages:
 
   '@eslint/js@9.13.0':
     resolution: {integrity: sha512-IFLyoY4d72Z5y/6o/BazFBezupzI/taV8sGumxTAVw3lXG9A6md1Dc34T9s1FoD/an9pJH8RHbAxsaEbBed9lA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@9.15.0':
+    resolution: {integrity: sha512-tMTqrY+EzbXmKJR5ToI8lxu7jaN5EdmrBFJpQk5JmSlyLsx6o4t27r883K5xsLuCYCpfKBCGswMSWXsM+jB7lg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.4':
@@ -4051,9 +4055,9 @@ snapshots:
     dependencies:
       '@bull-board/api': 6.2.4(@bull-board/ui@6.2.4)
 
-  '@chainflip/eslint-config@1.0.6(@eslint/js@9.13.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.12.0)(typescript-eslint@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))':
+  '@chainflip/eslint-config@1.0.6(@eslint/js@9.15.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))(eslint@9.13.0(jiti@2.3.3)))(eslint@9.13.0(jiti@2.3.3))(globals@15.12.0)(typescript-eslint@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))':
     dependencies:
-      '@eslint/js': 9.13.0
+      '@eslint/js': 9.15.0
       eslint: 9.13.0(jiti@2.3.3)
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.7.1-rc))(eslint@9.13.0(jiti@2.3.3))
       globals: 15.12.0
@@ -4240,6 +4244,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@9.13.0': {}
+
+  '@eslint/js@9.15.0': {}
 
   '@eslint/object-schema@2.1.4': {}
 
