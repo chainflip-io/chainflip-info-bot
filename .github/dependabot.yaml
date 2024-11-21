@@ -13,14 +13,3 @@ updates:
       types:
         patterns:
           - '@types/*'
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'daily'
-    assignees:
-      - 'acdibble'
-    commit-message:
-      prefix: 'chore'
-      include: 'scope'
-    allow:
-      - dependency-name: '@chainflip/*'

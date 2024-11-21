@@ -192,7 +192,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
           "usdValue": 17206.1360813008,
         },
         "message": "🐟 Swap <strong><a href="https://scan.chainflip.io/swaps/103045">#103045</a></strong>
-📥 <strong>13,348.70221 FLIP on Ethereum</strong> ($17,038.94)
+📥 <strong>37,803.801528 FLIP on Ethereum</strong> ($48,254.63)
 📤 <strong>5.939236 ETH on Ethereum</strong> ($17,206.14)
 ↩️ <strong>24,455.099318 FLIP on Ethereum</strong> ($31,269.46)
 ⏱️ Took: <strong>18 min</strong>
@@ -210,7 +210,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
           "usdValue": 17206.1360813008,
         },
         "message": "🐟 Swap **[#103045](https://scan.chainflip.io/swaps/103045)**
-📥 **13,348.70221 FLIP on Ethereum** ($17,038.94)
+📥 **37,803.801528 FLIP on Ethereum** ($48,254.63)
 📤 **5.939236 ETH on Ethereum** ($17,206.14)
 ↩️ **24,455.099318 FLIP on Ethereum** ($31,269.46)
 ⏱️ Took: **18 min**
@@ -228,7 +228,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
           "usdValue": 17206.1360813008,
         },
         "message": "🐟 Swap https://scan.chainflip.io/swaps/103045
-📥 13,348.70221 FLIP on Ethereum ($17,038.94)
+📥 37,803.801528 FLIP on Ethereum ($48,254.63)
 📤 5.939236 ETH on Ethereum ($17,206.14)
 ↩️ 24,455.099318 FLIP on Ethereum ($31,269.46)
 ⏱️ Took: 18 min

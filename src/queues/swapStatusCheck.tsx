@@ -45,13 +45,12 @@ const getSwapStatus = (swapInfo: SwapInfo) => {
   return 'pending';
 };
 
-const emoji = (depositValueUsd: string | null | undefined) => {
+const emoji = (depositValueUsd: BigNumber | null) => {
   if (!depositValueUsd) return null;
-  const value = Number.parseFloat(depositValueUsd);
-  if (value > 100_000) return '🐳';
-  if (value > 50_000) return '🦈';
-  if (value > 25_000) return '🐟';
-  if (value > 10_000) return '🦀';
+  if (depositValueUsd.gt(100_000)) return '🐳';
+  if (depositValueUsd.gt(50_000)) return '🦈';
+  if (depositValueUsd.gt(25_000)) return '🐟';
+  if (depositValueUsd.gt(10_000)) return '🦀';
   return '🦐';
 };
 
@@ -84,9 +83,9 @@ const buildMessageData = ({
     const message = renderToStaticMarkup(
       <>
         <Line>
-          {emoji(swapInfo.originalDepositValueUsd)} Swap{' '}
+          {emoji(swapInfo.depositValueUsd)} Swap{' '}
           <Bold platform={platform}>
-            <ExplorerLink platform={platform} path={`swaps/${swapInfo.requestId}`} prefer="link">
+            <ExplorerLink platform={platform} path={`/swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}
             </ExplorerLink>
           </Bold>
@@ -126,8 +125,8 @@ const buildMessageData = ({
             {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
             <Bold platform={platform}>
               {formatDeltaPrice(
-                formatUsdValue(Math.abs(swapInfo.priceDelta)),
-                Number(swapInfo.priceDeltaPercentage) < 0,
+                formatUsdValue(swapInfo.priceDelta.abs()),
+                swapInfo.priceDelta.isNegative(),
               )}
             </Bold>{' '}
             ({swapInfo.priceDeltaPercentage}%)
@@ -183,7 +182,7 @@ const buildMessageData = ({
       data: {
         platform,
         message,
-        filterData: { name: 'NEW_SWAP', usdValue: Number(swapInfo?.egressValueUsd || 0) },
+        filterData: { name: 'NEW_SWAP', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
       },
     };
   });
