@@ -146,32 +146,31 @@ export default async function getSwapInfo(nativeId: string) {
   const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
-  let depositAmount = toAssetAmount(swap.depositAmount, sourceAsset);
+  let swapInputAmount = toAssetAmount(swap.depositAmount, sourceAsset);
 
   const egressAmount = toAssetAmount(swap.egress?.amount, destinationAsset);
 
   const refundAmount = toAssetAmount(swap.refundEgress?.amount, sourceAsset);
 
-  let depositValueUsd = toUsdAmount(swap.depositValueUsd);
+  let swapInputValueUsd = toUsdAmount(swap.depositValueUsd);
   if (refundAmount) {
-    const newDepositAmount = depositAmount.minus(refundAmount);
+    const newDepositAmount = swapInputAmount.minus(refundAmount);
 
-    if (depositValueUsd) {
-      const swapRatio = newDepositAmount.div(depositAmount);
-      depositValueUsd = depositValueUsd.times(swapRatio);
+    if (swapInputValueUsd) {
+      const swapRatio = newDepositAmount.div(swapInputAmount);
+      swapInputValueUsd = swapInputValueUsd.times(swapRatio);
     }
 
-    depositAmount = newDepositAmount;
+    swapInputAmount = newDepositAmount;
   }
 
-  const priceDelta =
-    egressValueUsd && depositValueUsd && Number(egressValueUsd) - Number(depositValueUsd);
+  const priceDelta = egressValueUsd && swapInputValueUsd && egressValueUsd.minus(swapInputValueUsd);
 
   const priceDeltaPercentage =
-    egressValueUsd && depositValueUsd
+    egressValueUsd && swapInputValueUsd
       ? egressValueUsd
-          .minus(depositValueUsd)
-          .dividedBy(depositValueUsd)
+          .minus(swapInputValueUsd)
+          .dividedBy(swapInputValueUsd)
           .multipliedBy(100)
           .toFixed(2)
       : null;
@@ -179,10 +178,8 @@ export default async function getSwapInfo(nativeId: string) {
   return {
     completedEventId,
     requestId: swap.nativeId,
-    originalDepositAmount: toAssetAmount(swap.depositAmount, sourceAsset),
-    originalDepositValueUsd: swap.depositValueUsd,
-    depositAmount,
-    depositValueUsd,
+    depositAmount: toAssetAmount(swap.depositAmount, sourceAsset),
+    depositValueUsd: toUsdAmount(swap.depositValueUsd),
     egressAmount,
     egressValueUsd,
     refundAmount,
