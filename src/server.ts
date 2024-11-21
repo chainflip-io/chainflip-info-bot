@@ -37,7 +37,7 @@ export const createServer = (queues: QueueMap) => {
     const someJobPastDue = jobs.some((j) => Date.now() > j.timestamp + j.delay);
 
     if (someJobPastDue) {
-      logger.fatal('found jobs past due');
+      logger.crit('found jobs past due');
       res.code(500);
       return { status: 'stalled' };
     }
