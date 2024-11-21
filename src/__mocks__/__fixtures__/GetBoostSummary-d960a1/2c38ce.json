@@ -1,0 +1,57 @@
+{
+  "boostPools": {
+    "nodes": [
+      {
+        "asset": "Btc",
+        "feeTierPips": 5,
+        "boostShares": {
+          "aggregates": {
+            "sum": {
+              "fee": "1458435",
+              "feeUsd": "978.725312519400000000000000000000",
+              "amount": "2918721963",
+              "amountUsd": "1958695.647936658900000000000000000000"
+            }
+          }
+        },
+        "apies": {
+          "nodes": [{ "projectedApy": "19.640400000000000000000000000000" }]
+        }
+      },
+      {
+        "asset": "Btc",
+        "feeTierPips": 10,
+        "boostShares": {
+          "aggregates": {
+            "sum": {
+              "fee": "0",
+              "feeUsd": "0",
+              "amount": "0",
+              "amountUsd": "0"
+            }
+          }
+        },
+        "apies": {
+          "nodes": [{ "projectedApy": "0.000000000000000000000000000000" }]
+        }
+      },
+      {
+        "asset": "Btc",
+        "feeTierPips": 30,
+        "boostShares": {
+          "aggregates": {
+            "sum": {
+              "fee": "0",
+              "feeUsd": "0",
+              "amount": "0",
+              "amountUsd": "0"
+            }
+          }
+        },
+        "apies": {
+          "nodes": [{ "projectedApy": "0.000000000000000000000000000000" }]
+        }
+      }
+    ]
+  }
+}

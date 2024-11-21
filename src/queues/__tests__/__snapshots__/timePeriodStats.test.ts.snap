@@ -117,6 +117,46 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
       {
         "data": {
           "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On <strong>2024-10-27</strong>, we had:
+💸 <strong>29.18722 BTC ($1,958,695.65)</strong> of volume
+⚡️ <strong>0.014584 BTC ($978.73)</strong> of earned boost fees
+📊 <strong>19.64% APY</strong> for <strong>0.05% fee tier</strong>",
+          "platform": "telegram",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On **2024-10-27**, we had:
+💸 **29.18722 BTC ($1,958,695.65)** of volume
+⚡️ **0.014584 BTC ($978.73)** of earned boost fees
+📊 **19.64% APY** for **0.05% fee tier**",
+          "platform": "discord",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On 2024-10-27, we had:
+💸 29.18722 BTC ($1,958,695.65) of volume
+⚡️ 0.014584 BTC ($978.73) of earned boost fees
+📊 19.64% APY for 0.05% fee tier
+#chainflip $flip",
+          "platform": "twitter",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
             "name": "WEEKLY_SWAP_SUMMARY",
           },
           "message": "🗓️ For the week ending <strong>2024-10-27</strong>, we had:
@@ -216,6 +256,46 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
 🏅 $1,000.00 cFLE…kcPP (10.00%)
 🏅 $1,000.00 cFLG…gq7j (10.00%)
 🏅 $1,000.00 cFLT…nn5t (10.00%)
+#chainflip $flip",
+          "platform": "twitter",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "WEEKLY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ For the week ending <strong>2024-10-27</strong>, we had:
+💸 <strong>428.920799 BTC ($28,937,923.19)</strong> of volume
+⚡️ <strong>0.214306 BTC ($14,458.53)</strong> of earned boost fees
+📊 <strong>19.64% APY</strong> for <strong>0.05% fee tier</strong>",
+          "platform": "telegram",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "WEEKLY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ For the week ending **2024-10-27**, we had:
+💸 **428.920799 BTC ($28,937,923.19)** of volume
+⚡️ **0.214306 BTC ($14,458.53)** of earned boost fees
+📊 **19.64% APY** for **0.05% fee tier**",
+          "platform": "discord",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "WEEKLY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ For the week ending 2024-10-27, we had:
+💸 428.920799 BTC ($28,937,923.19) of volume
+⚡️ 0.214306 BTC ($14,458.53) of earned boost fees
+📊 19.64% APY for 0.05% fee tier
 #chainflip $flip",
           "platform": "twitter",
         },
@@ -340,6 +420,46 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
         },
         "name": "messageRouter",
       },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On <strong>2024-10-25</strong>, we had:
+💸 <strong>17.628901 BTC ($1,189,844.11)</strong> of volume
+⚡️ <strong>0.008803 BTC ($594.16)</strong> of earned boost fees
+📊 <strong>19.64% APY</strong> for <strong>0.05% fee tier</strong>",
+          "platform": "telegram",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On **2024-10-25**, we had:
+💸 **17.628901 BTC ($1,189,844.11)** of volume
+⚡️ **0.008803 BTC ($594.16)** of earned boost fees
+📊 **19.64% APY** for **0.05% fee tier**",
+          "platform": "discord",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On 2024-10-25, we had:
+💸 17.628901 BTC ($1,189,844.11) of volume
+⚡️ 0.008803 BTC ($594.16) of earned boost fees
+📊 19.64% APY for 0.05% fee tier
+#chainflip $flip",
+          "platform": "twitter",
+        },
+        "name": "messageRouter",
+      },
     ],
   ],
 ]
@@ -433,6 +553,46 @@ exports[`time period stats > processJob > processes a daily job without a flip b
             "name": "DAILY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for 2024-10-25 are in:
+#chainflip $flip",
+          "platform": "twitter",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On <strong>2024-10-25</strong>, we had:
+💸 <strong>17.628901 BTC ($1,189,844.11)</strong> of volume
+⚡️ <strong>0.008803 BTC ($594.16)</strong> of earned boost fees
+📊 <strong>19.64% APY</strong> for <strong>0.05% fee tier</strong>",
+          "platform": "telegram",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On **2024-10-25**, we had:
+💸 **17.628901 BTC ($1,189,844.11)** of volume
+⚡️ **0.008803 BTC ($594.16)** of earned boost fees
+📊 **19.64% APY** for **0.05% fee tier**",
+          "platform": "discord",
+        },
+        "name": "messageRouter",
+      },
+      {
+        "data": {
+          "filterData": {
+            "name": "DAILY_BOOST_SUMMARY",
+          },
+          "message": "🗓️ On 2024-10-25, we had:
+💸 17.628901 BTC ($1,189,844.11) of volume
+⚡️ 0.008803 BTC ($594.16) of earned boost fees
+📊 19.64% APY for 0.05% fee tier
 #chainflip $flip",
           "platform": "twitter",
         },

@@ -62,13 +62,13 @@ const deltaSign = (delta: number) => {
   return '🟢';
 };
 
-const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.Element | null => {
+export const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.Element | null => {
   if (!amount) return null;
 
   return <> ({formatUsdValue(amount)})</>;
 };
 
-const TokenAmount = ({ amount, asset }: { amount: BigNumber; asset: ChainflipAsset }) => (
+export const TokenAmount = ({ amount, asset }: { amount: BigNumber; asset: ChainflipAsset }) => (
   <>
     {toFormattedAmount(amount)} {humanFriendlyAsset[asset]}
   </>
