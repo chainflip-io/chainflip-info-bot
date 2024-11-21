@@ -1,9 +1,10 @@
 {
   "discord": {
+    "botToken": "discord token",
     "channels": [
       {
-        "name": "some descriptive name",
-        "webhookUrl": "https://echo.com/hello"
+        "id": "123456",
+        "name": "some descriptive name"
       }
     ]
   },

@@ -48,6 +48,7 @@
     "bignumber.js": "^9.1.2",
     "bullmq": "^5.28.1",
     "date-fns": "^4.1.0",
+    "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
     "fastify": "^5.1.0",
     "graphql": "^16.9.0",

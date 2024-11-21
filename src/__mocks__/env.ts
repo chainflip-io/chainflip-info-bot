@@ -9,9 +9,9 @@ export default {
   SWAP_MAX_AGE_IN_MINUTES: 10,
   CONFIG: JSON.stringify({
     discord: {
+      botToken: 'discord bot token',
       channels: [
         {
-          webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
           filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
           name: 'discord 1',
         },

@@ -40,7 +40,8 @@ const telegramConfig = z.object({
 });
 
 const discordConfig = z.object({
-  channels: z.array(z.object({ webhookUrl: z.string().url() }).and(channelBase)).min(1),
+  botToken: z.string(),
+  channels: z.array(z.object({ channelId: z.string() }).and(channelBase)).min(1),
 });
 
 const twitterConfig = z.object({
@@ -109,7 +110,11 @@ const configSchema = z
           key,
           filters: channel.filters,
         });
-        configHashMap.set(key, { webhookUrl: channel.webhookUrl, type: 'discord' });
+        configHashMap.set(key, {
+          token: discord.botToken,
+          channelId: channel.channelId,
+          type: 'discord',
+        });
         channelNames.add(key);
         enabledChannelCount += 1;
       });
