@@ -1,12 +1,13 @@
 import { isNotNullish } from '@chainflip/utils/guard';
 import { BigNumber } from 'bignumber.js';
 import { gql } from '../graphql/generated/gql.js';
+import { type ChainflipAsset } from '../graphql/generated/graphql.js';
 import { lpClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
 
 const getBoostSummaryQuery = gql(/* GraphQL */ `
-  query GetBoostSummary($start: Datetime!, $end: Datetime!) {
-    boostPools: allBoostPools {
+  query GetBoostSummary($start: Datetime!, $end: Datetime!, $asset: ChainflipAsset!) {
+    boostPools: allBoostPools(filter: { asset: { equalTo: $asset } }) {
       nodes {
         asset
         feeTierPips
@@ -45,8 +46,8 @@ const apyToText = (apy?: number) => {
 
 export type BoostData = Awaited<ReturnType<typeof getBoostSummary>>;
 
-export default async function getBoostSummary(start: Date, end: Date) {
-  const args = { start: start.toISOString(), end: end.toISOString() };
+export default async function getBoostSummary(start: Date, end: Date, asset: ChainflipAsset) {
+  const args = { start: start.toISOString(), end: end.toISOString(), asset };
 
   const boostSummary = await lpClient.request(getBoostSummaryQuery, args);
 
@@ -81,9 +82,9 @@ export default async function getBoostSummary(start: Date, end: Date) {
     )
     .flat();
   return {
-    boostedAmount: toAssetAmount(boostedAmount, 'Btc'),
+    boostedAmount: toAssetAmount(boostedAmount, asset),
     boostedAmountUsd: toUsdAmount(boostedAmountUsd),
-    earnedBoostFee: toAssetAmount(earnedBoostFee, 'Btc'),
+    earnedBoostFee: toAssetAmount(earnedBoostFee, asset),
     earnedBoostFeeUsd: toUsdAmount(earnedBoostFeeUsd),
     apies,
   };

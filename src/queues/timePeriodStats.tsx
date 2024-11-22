@@ -9,6 +9,7 @@ import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initi
 import { TokenAmount, UsdValue } from './swapStatusCheck.js';
 import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
+import { ASSET_FOR_BOOST_POOLS } from '../consts.js';
 import getBoostSummary, { type BoostData } from '../queries/boostSummary.js';
 import getLpFills, { type LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { type SwapStats } from '../queries/swapVolume.js';
@@ -131,7 +132,7 @@ const buildMessages = ({
             <Line>
               💸{' '}
               <Bold platform={platform}>
-                <TokenAmount amount={stats.boostedAmount} asset="Btc" />
+                <TokenAmount amount={stats.boostedAmount} asset={ASSET_FOR_BOOST_POOLS} />
                 <UsdValue amount={stats.boostedAmountUsd} />
               </Bold>{' '}
               of volume
@@ -141,7 +142,7 @@ const buildMessages = ({
             <Line>
               ⚡️{' '}
               <Bold platform={platform}>
-                <TokenAmount amount={stats.earnedBoostFee} asset="Btc" />
+                <TokenAmount amount={stats.earnedBoostFee} asset={ASSET_FOR_BOOST_POOLS} />
                 <UsdValue amount={stats.earnedBoostFeeUsd} />
               </Bold>{' '}
               of earned boost fees
@@ -207,8 +208,9 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
         start: beginningOfWeek.toISOString(),
         end: new Date(endOfPeriod).toISOString(),
       }),
-    getBoostSummary(beginningOfDay, new Date(endOfPeriod)),
-    beginningOfWeek && getBoostSummary(beginningOfWeek, new Date(endOfPeriod)),
+    getBoostSummary(beginningOfDay, new Date(endOfPeriod), ASSET_FOR_BOOST_POOLS),
+    beginningOfWeek &&
+      getBoostSummary(beginningOfWeek, new Date(endOfPeriod), ASSET_FOR_BOOST_POOLS),
   ]);
 
   const jobs = [
