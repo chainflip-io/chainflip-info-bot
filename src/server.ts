@@ -34,10 +34,12 @@ export const createServer = (queues: QueueMap) => {
   app.get('/health', async (req, res) => {
     const jobs = await queues.scheduler.getDelayed();
 
-    const someJobPastDue = jobs.some((j) => Date.now() > j.timestamp + j.delay);
+    const someJobPastDue = jobs.some(
+      (j) => Date.now() - env.HEALTH_CHECK_GRACE_PERIOD_MS > j.timestamp + j.delay,
+    );
 
     if (someJobPastDue) {
-      logger.fatal('found jobs past due');
+      logger.crit('found jobs past due');
       res.code(500);
       return { status: 'stalled' };
     }

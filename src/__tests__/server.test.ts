@@ -24,6 +24,16 @@ describe(createServer, () => {
     expect(res.statusCode).toBe(200);
   });
 
+  it('returns 200 when at least one job is past due within the grace period', async () => {
+    vi.mocked(getDelayed).mockReturnValueOnce([
+      { delay: 15000, timestamp: Date.now() },
+      { delay: 15000, timestamp: Date.now() - 20_000 },
+    ]);
+    const res = await server.inject({ path: '/health' });
+    expect(JSON.parse(res.body)).toEqual({ status: 'ok' });
+    expect(res.statusCode).toBe(200);
+  });
+
   it('returns 500 when at least one job is past due', async () => {
     vi.mocked(getDelayed).mockReturnValueOnce([
       { delay: 15000, timestamp: Date.now() },

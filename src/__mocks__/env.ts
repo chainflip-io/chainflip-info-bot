@@ -60,4 +60,5 @@ export default {
       ],
     },
   } as ConfigFile),
+  HEALTH_CHECK_GRACE_PERIOD_MS: 10_000,
 } as RawEnv;
