@@ -39,7 +39,7 @@ export const createServer = (queues: QueueMap) => {
     );
 
     if (someJobPastDue) {
-      logger.alert('found jobs past due');
+      logger.crit('found jobs past due');
       res.code(500);
       return { status: 'stalled' };
     }
