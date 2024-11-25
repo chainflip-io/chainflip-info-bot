@@ -10,9 +10,9 @@ describe('boost summary', () => {
 
     expect(await getBoostSummary(start, end, asset)).toMatchInlineSnapshot(`
       {
-        "apies": [
+        "apys": [
           {
-            "currentApy": "21.35%",
+            "currentApy": "8.40%",
             "feeTiers": 5,
           },
         ],

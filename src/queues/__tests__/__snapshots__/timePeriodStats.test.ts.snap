@@ -122,7 +122,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
           "message": "🗓️ On <strong>2024-10-27</strong>, we had:
 💸 <strong>17.628901 BTC ($1,189,844.11)</strong> of volume
 ⚡️ <strong>0.008803 BTC ($594.16)</strong> of earned boost fees
-📊 <strong>21.35% APY</strong> for <strong>0.05% fee tier</strong>",
+📊 Current APY is <strong>21.35%</strong>",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -135,7 +135,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
           "message": "🗓️ On **2024-10-27**, we had:
 💸 **17.628901 BTC ($1,189,844.11)** of volume
 ⚡️ **0.008803 BTC ($594.16)** of earned boost fees
-📊 **21.35% APY** for **0.05% fee tier**",
+📊 Current APY is **21.35%**",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -148,7 +148,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
           "message": "🗓️ On 2024-10-27, we had:
 💸 17.628901 BTC ($1,189,844.11) of volume
 ⚡️ 0.008803 BTC ($594.16) of earned boost fees
-📊 21.35% APY for 0.05% fee tier
+📊 Current APY is 21.35%
 #chainflip $flip",
           "platform": "twitter",
         },
@@ -269,7 +269,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
           "message": "🗓️ For the week ending <strong>2024-10-27</strong>, we had:
 💸 <strong>123.402307 BTC ($8,328,908.74)</strong> of volume
 ⚡️ <strong>0.061623 BTC ($4,159.15)</strong> of earned boost fees
-📊 <strong>21.35% APY</strong> for <strong>0.05% fee tier</strong>",
+📊 Current APY is <strong>21.35%</strong>",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -282,7 +282,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
           "message": "🗓️ For the week ending **2024-10-27**, we had:
 💸 **123.402307 BTC ($8,328,908.74)** of volume
 ⚡️ **0.061623 BTC ($4,159.15)** of earned boost fees
-📊 **21.35% APY** for **0.05% fee tier**",
+📊 Current APY is **21.35%**",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -295,7 +295,7 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
           "message": "🗓️ For the week ending 2024-10-27, we had:
 💸 123.402307 BTC ($8,328,908.74) of volume
 ⚡️ 0.061623 BTC ($4,159.15) of earned boost fees
-📊 21.35% APY for 0.05% fee tier
+📊 Current APY is 21.35%
 #chainflip $flip",
           "platform": "twitter",
         },
@@ -428,7 +428,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
           "message": "🗓️ On <strong>2024-10-25</strong>, we had:
 💸 <strong>17.628901 BTC ($1,189,844.11)</strong> of volume
 ⚡️ <strong>0.008803 BTC ($594.16)</strong> of earned boost fees
-📊 <strong>21.35% APY</strong> for <strong>0.05% fee tier</strong>",
+📊 Current APY is <strong>21.35%</strong>",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -441,7 +441,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
           "message": "🗓️ On **2024-10-25**, we had:
 💸 **17.628901 BTC ($1,189,844.11)** of volume
 ⚡️ **0.008803 BTC ($594.16)** of earned boost fees
-📊 **21.35% APY** for **0.05% fee tier**",
+📊 Current APY is **21.35%**",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -454,7 +454,7 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
           "message": "🗓️ On 2024-10-25, we had:
 💸 17.628901 BTC ($1,189,844.11) of volume
 ⚡️ 0.008803 BTC ($594.16) of earned boost fees
-📊 21.35% APY for 0.05% fee tier
+📊 Current APY is 21.35%
 #chainflip $flip",
           "platform": "twitter",
         },
@@ -566,7 +566,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
           "message": "🗓️ On <strong>2024-10-25</strong>, we had:
 💸 <strong>17.628901 BTC ($1,189,844.11)</strong> of volume
 ⚡️ <strong>0.008803 BTC ($594.16)</strong> of earned boost fees
-📊 <strong>21.35% APY</strong> for <strong>0.05% fee tier</strong>",
+📊 Current APY is <strong>21.35%</strong>",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -579,7 +579,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
           "message": "🗓️ On **2024-10-25**, we had:
 💸 **17.628901 BTC ($1,189,844.11)** of volume
 ⚡️ **0.008803 BTC ($594.16)** of earned boost fees
-📊 **21.35% APY** for **0.05% fee tier**",
+📊 Current APY is **21.35%**",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -592,7 +592,7 @@ exports[`time period stats > processJob > processes a daily job without a flip b
           "message": "🗓️ On 2024-10-25, we had:
 💸 17.628901 BTC ($1,189,844.11) of volume
 ⚡️ 0.008803 BTC ($594.16) of earned boost fees
-📊 21.35% APY for 0.05% fee tier
+📊 Current APY is 21.35%
 #chainflip $flip",
           "platform": "twitter",
         },

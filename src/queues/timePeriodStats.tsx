@@ -6,8 +6,14 @@ import { UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
-import { TokenAmount, UsdValue } from './swapStatusCheck.js';
-import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
+import {
+  Bold,
+  ExplorerLink,
+  Line,
+  TokenAmount,
+  Trailer,
+  UsdValue,
+} from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { ASSET_FOR_BOOST_POOLS } from '../consts.js';
 import getBoostSummary, { type BoostData } from '../queries/boostSummary.js';
@@ -149,14 +155,20 @@ const buildMessages = ({
             </Line>
           )}
 
-          {stats.apies && stats.apies.length && (
+          {stats.apys && stats.apys.length > 0 && (
             <>
-              {stats.apies.map((apy) => (
+              {stats.apys.length > 1 ? (
+                stats.apys.map((apy) => (
+                  <Line>
+                    📊 Current APY is <Bold platform={platform}>{apy.currentApy}</Bold> for{' '}
+                    <Bold platform={platform}>{pipsToPercentString(apy.feeTiers)} pool</Bold>
+                  </Line>
+                ))
+              ) : (
                 <Line>
-                  📊 <Bold platform={platform}>{apy.currentApy} APY</Bold> for{' '}
-                  <Bold platform={platform}>{pipsToPercentString(apy.feeTiers)} fee tier</Bold>
+                  📊 Current APY is <Bold platform={platform}>{stats.apys[0].currentApy}</Bold>
                 </Line>
-              ))}
+              )}
             </>
           )}
           <Trailer platform={platform} />

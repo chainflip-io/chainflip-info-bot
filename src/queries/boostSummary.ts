@@ -26,7 +26,7 @@ const getBoostSummaryQuery = gql(/* GraphQL */ `
             }
           }
         }
-        apies: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {
+        apys: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {
           nodes {
             projectedApy
           }
@@ -71,22 +71,19 @@ export default async function getBoostSummary(start: Date, end: Date, asset: Cha
     new BigNumber(0),
   );
 
-  const apies = boostSummary.boostPools?.nodes
-    .map((pool) =>
-      pool.apies.nodes
-        .filter((apy) => Number(apy.projectedApy) > 0)
-        .map((apy) => ({
-          feeTiers: pool.feeTierPips,
-          currentApy: apyToText(Number(apy.projectedApy)),
-        })),
-    )
-    .flat();
-
+  const apys = boostSummary.boostPools?.nodes.flatMap((pool) =>
+    pool.apys.nodes
+      .filter((apy) => Number(apy.projectedApy) > 0)
+      .map((apy) => ({
+        feeTiers: pool.feeTierPips,
+        currentApy: apyToText(Number(apy.projectedApy)),
+      })),
+  );
   return {
     boostedAmount: toAssetAmount(boostedAmount, asset),
     boostedAmountUsd: toUsdAmount(boostedAmountUsd),
     earnedBoostFee: toAssetAmount(earnedBoostFee, asset),
     earnedBoostFeeUsd: toUsdAmount(earnedBoostFeeUsd),
-    apies,
+    apys,
   };
 }

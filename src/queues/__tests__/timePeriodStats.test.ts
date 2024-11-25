@@ -165,7 +165,7 @@ describe('time period stats', () => {
           boostedAmountUsd: new BigNumber('1189844.1064157963'),
           earnedBoostFee: new BigNumber('0.00880322'),
           earnedBoostFeeUsd: new BigNumber('594.1637309781'),
-          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+          apys: [{ feeTiers: 5, currentApy: '21.35%' }],
         })
         .mockRejectedValue(Error('unexpected call'));
 
@@ -225,7 +225,7 @@ describe('time period stats', () => {
           boostedAmountUsd: new BigNumber('1189844.1064157963'),
           earnedBoostFee: new BigNumber('0.00880322'),
           earnedBoostFeeUsd: new BigNumber('594.1637309781'),
-          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+          apys: [{ feeTiers: 5, currentApy: '21.35%' }],
         })
         .mockRejectedValue(Error('unexpected call'));
 
@@ -334,14 +334,14 @@ describe('time period stats', () => {
           boostedAmountUsd: new BigNumber('1189844.1064157963'),
           earnedBoostFee: new BigNumber('0.00880322'),
           earnedBoostFeeUsd: new BigNumber('594.1637309781'),
-          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+          apys: [{ feeTiers: 5, currentApy: '21.35%' }],
         })
         .mockResolvedValueOnce({
           boostedAmount: new BigNumber('17.62890095').times(7),
           boostedAmountUsd: new BigNumber('1189844.1064157963').times(7),
           earnedBoostFee: new BigNumber('0.00880322').times(7),
           earnedBoostFeeUsd: new BigNumber('594.1637309781').times(7),
-          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+          apys: [{ feeTiers: 5, currentApy: '21.35%' }],
         })
         .mockRejectedValue(Error('unexpected call'));
 
