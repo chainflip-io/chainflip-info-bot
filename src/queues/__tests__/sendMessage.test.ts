@@ -1,8 +1,14 @@
 import axios from 'axios';
-import { describe, expect, it, vi } from 'vitest';
+import { Client, type TextChannel } from 'discord.js';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { client } from '../../channels/discord.js';
 import { config } from '../sendMessage.js';
 
 describe('sendMessage', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('sends messages to telegram channels', async () => {
     const postSpy = vi.mocked(axios.post).mockResolvedValue({ data: { ok: true } });
 
@@ -26,7 +32,16 @@ describe('sendMessage', () => {
   });
 
   it('sends messages to discord channels', async () => {
-    const postSpy = vi.mocked(axios.post).mockResolvedValue({ status: 204 });
+    const loginSpy = vi.spyOn(Client.prototype, 'login');
+    loginSpy.mockImplementation(() => {
+      client.emit('ready' as never);
+      return Promise.resolve('');
+    });
+    const sendMock = vi.fn().mockResolvedValueOnce(true);
+    vi.spyOn(client.channels.cache, 'get').mockReturnValue({
+      isTextBased: () => true,
+      send: sendMock,
+    } as unknown as TextChannel);
 
     await config.processJob(vi.fn())({
       data: {
@@ -35,14 +50,38 @@ describe('sendMessage', () => {
       } as JobData['sendMessage'],
     } as any);
 
-    expect(postSpy.mock.lastCall).toMatchInlineSnapshot(`
-      [
-        "https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL",
-        {
-          "content": "Hello, world!",
-        },
-      ]
-    `);
+    expect(loginSpy).toHaveBeenCalledTimes(1);
+    expect(loginSpy).toHaveBeenCalledWith('discord bot token');
+    expect(sendMock).toHaveBeenCalledTimes(1);
+    expect(sendMock).toHaveBeenCalledWith('Hello, world!');
+  });
+
+  it('fails to send message to incorrect discord channel', async () => {
+    const loginSpy = vi.spyOn(Client.prototype, 'login');
+    loginSpy.mockImplementation(() => {
+      client.emit('ready' as never);
+      return Promise.resolve('');
+    });
+    const sendMock = vi.fn();
+    vi.spyOn(client.channels.cache, 'get').mockReturnValue({
+      isTextBased: () => false,
+      send: sendMock,
+    } as unknown as TextChannel);
+
+    await expect(
+      config.processJob(vi.fn())({
+        data: {
+          key: 'discord:discord_1',
+          message: 'Hello, world!',
+        } as JobData['sendMessage'],
+      } as any),
+    ).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[Error: Channel not found: discord channel id 1]`,
+    );
+
+    expect(sendMock).toHaveBeenCalledTimes(0);
+    expect(loginSpy).toHaveBeenCalledTimes(1);
+    expect(loginSpy).toHaveBeenCalledWith('discord bot token');
   });
 
   it('sends messages to twitter channels', async () => {

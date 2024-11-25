@@ -6,20 +6,21 @@ vi.mock('../env.js', () => ({
   default: {
     CONFIG: JSON.stringify({
       discord: {
+        botToken: 'discord bot token',
         channels: [
           {
-            webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
+            channelId: 'channel1',
             filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
             name: 'discord 1',
           },
           {
             enabled: false,
-            webhookUrl: 'https://discord.com/api/webhooks/1234567890/MNOPQRSTUVWXYZ',
+            channelId: 'channel2',
             name: 'discord 2',
           },
           {
             enabled: true,
-            webhookUrl: 'https://discord.com/api/webhooks/1234567890/∂',
+            channelId: 'channel3',
             name: 'discord 3',
           },
         ],
@@ -238,10 +239,11 @@ describe('Config', () => {
           ],
         },
         discord: {
+          botToken: 'discord_bot_token',
           channels: [
             {
               name: 'some really unique channel name',
-              webhookUrl: 'https://chanflimp.io/5678',
+              channelId: 'channel1',
             },
           ],
         },

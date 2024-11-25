@@ -2,11 +2,11 @@ import { Client, GatewayIntentBits, type TextChannel } from 'discord.js';
 import logger from '../utils/logger.js';
 import { deferredPromise } from '../utils/promise.js';
 
-const client = new Client({
+export const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
 
-const login = async (token: string) => {
+export const login = async (token: string) => {
   const { promise, resolve } = deferredPromise<undefined>();
   client.once('ready', () => {
     logger.info('Discord client ready');
@@ -36,5 +36,8 @@ export const sendMessage = async ({ token, channelId }: DiscordConfig, content: 
   if (!channel || !channel.isTextBased()) {
     throw new Error(`Channel not found: ${channelId}`);
   }
-  await (channel as TextChannel).send(content);
+  const result = await (channel as TextChannel).send(content);
+  if (!result) {
+    throw new Error(`Failed to send message to discord: ${JSON.stringify(result)}`);
+  }
 };

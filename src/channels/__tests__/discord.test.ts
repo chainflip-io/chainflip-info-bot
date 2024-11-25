@@ -1,37 +1,65 @@
-import axios from 'axios';
-import { vi, describe, it, expect } from 'vitest';
-import { sendMessage } from '../discord.js';
+import { Client, type TextChannel } from 'discord.js';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { client, sendMessage } from '../discord.js';
 
 describe('sendMessage', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('sends a message to the channel', async () => {
-    const postMock = vi.mocked(axios.post);
+    const loginSpy = vi.spyOn(Client.prototype, 'login');
+    loginSpy.mockImplementation(() => {
+      client.emit('ready' as never);
+      return Promise.resolve('');
+    });
+    const sendMock = vi.fn().mockResolvedValueOnce(true);
+    vi.spyOn(client.channels.cache, 'get').mockReturnValue({
+      isTextBased: () => true,
+      send: sendMock,
+    } as unknown as TextChannel);
 
-    postMock.mockResolvedValueOnce({ status: 204 });
+    await sendMessage(
+      {
+        token: 'discord:discord_1',
+        channelId: 'channel1',
+      },
+      'Hello, world!',
+    );
 
-    await sendMessage({ webhookUrl: 'url' }, 'hello discord bot');
-
-    expect(postMock.mock.lastCall).toMatchInlineSnapshot(`
-      [
-        "url",
-        {
-          "content": "hello discord bot",
-        },
-      ]
-    `);
+    expect(loginSpy).toHaveBeenCalledTimes(1);
+    expect(loginSpy).toHaveBeenCalledWith('discord:discord_1');
+    expect(sendMock).toHaveBeenCalledTimes(1);
+    expect(sendMock).toHaveBeenCalledWith('Hello, world!');
   });
 
   it('throws an error if the response is not ok', async () => {
-    const postMock = vi.mocked(axios.post);
-
-    postMock.mockResolvedValueOnce({
-      status: 400,
-      data: { ok: false, description: 'some other stuff here' },
+    const loginSpy = vi.spyOn(Client.prototype, 'login');
+    loginSpy.mockImplementation(() => {
+      client.emit('ready' as never);
+      return Promise.resolve('');
     });
+    const sendMock = vi.fn().mockResolvedValueOnce(false);
+    vi.spyOn(client.channels.cache, 'get').mockReturnValue({
+      isTextBased: () => true,
+      send: sendMock,
+    } as unknown as TextChannel);
 
     await expect(
-      sendMessage({ webhookUrl: 'url' }, 'hello discord bot'),
+      sendMessage(
+        {
+          token: 'discord:discord_1',
+          channelId: 'channel1',
+        },
+        'Hello, world!',
+      ),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
-      `[Error: Failed to send message to discord: {"ok":false,"description":"some other stuff here"}]`,
+      `[Error: Failed to send message to discord: false]`,
     );
+
+    expect(loginSpy).toHaveBeenCalledTimes(1);
+    expect(loginSpy).toHaveBeenCalledWith('discord:discord_1');
+    expect(sendMock).toHaveBeenCalledTimes(1);
+    expect(sendMock).toHaveBeenCalledWith('Hello, world!');
   });
 });
