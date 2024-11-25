@@ -1,13 +1,13 @@
+import { deferredPromise } from '@chainflip/utils/async';
 import { Client, GatewayIntentBits, type TextChannel } from 'discord.js';
 import logger from '../utils/logger.js';
-import { deferredPromise } from '../utils/promise.js';
 
 export const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
 
 export const login = async (token: string) => {
-  const { promise, resolve } = deferredPromise<undefined>();
+  const { resolve } = deferredPromise<undefined>();
   client.once('ready', () => {
     logger.info('Discord client ready');
     resolve(undefined);
@@ -19,7 +19,6 @@ export const login = async (token: string) => {
     throw new Error(`an error occurred on discord connection: ${error}`);
   });
   await client.login(token);
-  return promise;
 };
 
 export type DiscordConfig = {
