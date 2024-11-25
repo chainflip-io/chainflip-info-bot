@@ -1,5 +1,6 @@
 import { deferredPromise } from '@chainflip/utils/async';
 import { Client, GatewayIntentBits, type TextChannel } from 'discord.js';
+import { handleExit } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
 export const client = new Client({
@@ -7,7 +8,10 @@ export const client = new Client({
 });
 
 export const login = async (token: string) => {
-  const { resolve } = deferredPromise<undefined>();
+  const { promise, resolve } = deferredPromise<undefined>();
+  if (client.user) {
+    resolve(undefined);
+  }
   client.once('ready', () => {
     logger.info('Discord client ready');
     resolve(undefined);
@@ -18,7 +22,11 @@ export const login = async (token: string) => {
   client.once('error', (error) => {
     throw new Error(`an error occurred on discord connection: ${error}`);
   });
+  handleExit(async () => {
+    await client.destroy();
+  });
   await client.login(token);
+  return promise;
 };
 
 export type DiscordConfig = {
@@ -27,16 +35,15 @@ export type DiscordConfig = {
 };
 
 export const sendMessage = async ({ token, channelId }: DiscordConfig, content: string) => {
-  if (!client.user) {
-    await login(token);
-  }
+  await login(token);
 
   const channel = client.channels.cache.get(channelId);
   if (!channel || !channel.isTextBased()) {
     throw new Error(`Channel not found: ${channelId}`);
   }
-  const result = await (channel as TextChannel).send(content);
-  if (!result) {
-    throw new Error(`Failed to send message to discord: ${JSON.stringify(result)}`);
+  try {
+    await (channel as TextChannel).send(content);
+  } catch (err) {
+    throw new Error(`Failed to send message to discord: ${err as Error}`);
   }
 };

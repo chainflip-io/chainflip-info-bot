@@ -1,12 +1,8 @@
 import { Client, type TextChannel } from 'discord.js';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect } from 'vitest';
 import { client, sendMessage } from '../discord.js';
 
 describe('sendMessage', () => {
-  beforeEach(() => {
-    vi.resetAllMocks();
-  });
-
   it('sends a message to the channel', async () => {
     const loginSpy = vi.spyOn(Client.prototype, 'login');
     loginSpy.mockImplementation(() => {
@@ -39,7 +35,7 @@ describe('sendMessage', () => {
       client.emit('ready' as never);
       return Promise.resolve('');
     });
-    const sendMock = vi.fn().mockResolvedValueOnce(false);
+    const sendMock = vi.fn().mockRejectedValue('an error occurred');
     vi.spyOn(client.channels.cache, 'get').mockReturnValue({
       isTextBased: () => true,
       send: sendMock,
@@ -54,7 +50,7 @@ describe('sendMessage', () => {
         'Hello, world!',
       ),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
-      `[Error: Failed to send message to discord: false]`,
+      `[Error: Failed to send message to discord: an error occurred]`,
     );
 
     expect(loginSpy).toHaveBeenCalledTimes(1);

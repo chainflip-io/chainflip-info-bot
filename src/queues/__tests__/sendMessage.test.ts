@@ -1,14 +1,10 @@
 import axios from 'axios';
 import { Client, type TextChannel } from 'discord.js';
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { client } from '../../channels/discord.js';
 import { config } from '../sendMessage.js';
 
 describe('sendMessage', () => {
-  beforeEach(() => {
-    vi.resetAllMocks();
-  });
-
   it('sends messages to telegram channels', async () => {
     const postSpy = vi.mocked(axios.post).mockResolvedValue({ data: { ok: true } });
 
