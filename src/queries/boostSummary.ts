@@ -81,6 +81,7 @@ export default async function getBoostSummary(start: Date, end: Date, asset: Cha
         })),
     )
     .flat();
+
   return {
     boostedAmount: toAssetAmount(boostedAmount, asset),
     boostedAmountUsd: toUsdAmount(boostedAmountUsd),

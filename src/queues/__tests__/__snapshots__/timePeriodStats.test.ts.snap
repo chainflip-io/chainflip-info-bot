@@ -120,8 +120,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "DAILY_BOOST_SUMMARY",
           },
           "message": "🗓️ On <strong>2024-10-27</strong>, we had:
-💸 <strong>29.18722 BTC ($1,958,695.65)</strong> of volume
-⚡️ <strong>0.014584 BTC ($978.73)</strong> of earned boost fees
+💸 <strong>17.628901 BTC ($1,189,844.11)</strong> of volume
+⚡️ <strong>0.008803 BTC ($594.16)</strong> of earned boost fees
 📊 <strong>21.35% APY</strong> for <strong>0.05% fee tier</strong>",
           "platform": "telegram",
         },
@@ -133,8 +133,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "DAILY_BOOST_SUMMARY",
           },
           "message": "🗓️ On **2024-10-27**, we had:
-💸 **29.18722 BTC ($1,958,695.65)** of volume
-⚡️ **0.014584 BTC ($978.73)** of earned boost fees
+💸 **17.628901 BTC ($1,189,844.11)** of volume
+⚡️ **0.008803 BTC ($594.16)** of earned boost fees
 📊 **21.35% APY** for **0.05% fee tier**",
           "platform": "discord",
         },
@@ -146,8 +146,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "DAILY_BOOST_SUMMARY",
           },
           "message": "🗓️ On 2024-10-27, we had:
-💸 29.18722 BTC ($1,958,695.65) of volume
-⚡️ 0.014584 BTC ($978.73) of earned boost fees
+💸 17.628901 BTC ($1,189,844.11) of volume
+⚡️ 0.008803 BTC ($594.16) of earned boost fees
 📊 21.35% APY for 0.05% fee tier
 #chainflip $flip",
           "platform": "twitter",
@@ -267,8 +267,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "WEEKLY_BOOST_SUMMARY",
           },
           "message": "🗓️ For the week ending <strong>2024-10-27</strong>, we had:
-💸 <strong>428.920799 BTC ($28,937,923.19)</strong> of volume
-⚡️ <strong>0.214306 BTC ($14,458.53)</strong> of earned boost fees
+💸 <strong>123.402307 BTC ($8,328,908.74)</strong> of volume
+⚡️ <strong>0.061623 BTC ($4,159.15)</strong> of earned boost fees
 📊 <strong>21.35% APY</strong> for <strong>0.05% fee tier</strong>",
           "platform": "telegram",
         },
@@ -280,8 +280,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "WEEKLY_BOOST_SUMMARY",
           },
           "message": "🗓️ For the week ending **2024-10-27**, we had:
-💸 **428.920799 BTC ($28,937,923.19)** of volume
-⚡️ **0.214306 BTC ($14,458.53)** of earned boost fees
+💸 **123.402307 BTC ($8,328,908.74)** of volume
+⚡️ **0.061623 BTC ($4,159.15)** of earned boost fees
 📊 **21.35% APY** for **0.05% fee tier**",
           "platform": "discord",
         },
@@ -293,8 +293,8 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "WEEKLY_BOOST_SUMMARY",
           },
           "message": "🗓️ For the week ending 2024-10-27, we had:
-💸 428.920799 BTC ($28,937,923.19) of volume
-⚡️ 0.214306 BTC ($14,458.53) of earned boost fees
+💸 123.402307 BTC ($8,328,908.74) of volume
+⚡️ 0.061623 BTC ($4,159.15) of earned boost fees
 📊 21.35% APY for 0.05% fee tier
 #chainflip $flip",
           "platform": "twitter",

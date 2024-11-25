@@ -3,12 +3,14 @@ import { BigNumber } from 'bignumber.js';
 import { type Job } from 'bullmq';
 import { endOfDay } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import getBoostSummary from '../../queries/boostSummary.js';
 import getLpFills from '../../queries/lpFills.js';
 import getSwapVolumeStats from '../../queries/swapVolume.js';
 import { config, getNextJobData } from '../timePeriodStats.js';
 
 vi.mock('../../queries/swapVolume.js');
 vi.mock('../../queries/lpFills.js');
+vi.mock('../../queries/boostSummary.js');
 
 describe('time period stats', () => {
   beforeEach(() => {
@@ -157,6 +159,16 @@ describe('time period stats', () => {
         ])
         .mockRejectedValue(Error('unexpected call'));
 
+      vi.mocked(getBoostSummary)
+        .mockResolvedValueOnce({
+          boostedAmount: new BigNumber('17.62890095'),
+          boostedAmountUsd: new BigNumber('1189844.1064157963'),
+          earnedBoostFee: new BigNumber('0.00880322'),
+          earnedBoostFeeUsd: new BigNumber('594.1637309781'),
+          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+        })
+        .mockRejectedValue(Error('unexpected call'));
+
       const dispatchJobs = vi.fn();
 
       const endOfPeriod = endOfDay(new Date('2024-10-25T12:34:56Z'), { in: utc });
@@ -184,6 +196,15 @@ describe('time period stats', () => {
           ],
         ]
       `);
+      expect(vi.mocked(getBoostSummary).mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            2024-10-25T00:00:00.000Z,
+            2024-10-25T23:59:59.999Z,
+            "Btc",
+          ],
+        ]
+      `);
     });
 
     it('processes a daily job without a flip burn or boost fees', async () => {
@@ -198,6 +219,15 @@ describe('time period stats', () => {
         })
         .mockRejectedValue(Error('unexpected call'));
       vi.mocked(getLpFills).mockResolvedValue([]);
+      vi.mocked(getBoostSummary)
+        .mockResolvedValueOnce({
+          boostedAmount: new BigNumber('17.62890095'),
+          boostedAmountUsd: new BigNumber('1189844.1064157963'),
+          earnedBoostFee: new BigNumber('0.00880322'),
+          earnedBoostFeeUsd: new BigNumber('594.1637309781'),
+          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+        })
+        .mockRejectedValue(Error('unexpected call'));
 
       const dispatchJobs = vi.fn();
 
@@ -298,6 +328,23 @@ describe('time period stats', () => {
         },
       ]);
 
+      vi.mocked(getBoostSummary)
+        .mockResolvedValueOnce({
+          boostedAmount: new BigNumber('17.62890095'),
+          boostedAmountUsd: new BigNumber('1189844.1064157963'),
+          earnedBoostFee: new BigNumber('0.00880322'),
+          earnedBoostFeeUsd: new BigNumber('594.1637309781'),
+          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+        })
+        .mockResolvedValueOnce({
+          boostedAmount: new BigNumber('17.62890095').times(7),
+          boostedAmountUsd: new BigNumber('1189844.1064157963').times(7),
+          earnedBoostFee: new BigNumber('0.00880322').times(7),
+          earnedBoostFeeUsd: new BigNumber('594.1637309781').times(7),
+          apies: [{ feeTiers: 5, currentApy: '21.35%' }],
+        })
+        .mockRejectedValue(Error('unexpected call'));
+
       const dispatchJobs = vi.fn();
 
       const endOfPeriod = endOfDay(new Date('2024-10-27T12:34:56Z'), { in: utc });
@@ -332,6 +379,20 @@ describe('time period stats', () => {
               "end": "2024-10-27T23:59:59.999Z",
               "start": "2024-10-21T00:00:00.000Z",
             },
+          ],
+        ]
+      `);
+      expect(vi.mocked(getBoostSummary).mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            2024-10-27T00:00:00.000Z,
+            2024-10-27T23:59:59.999Z,
+            "Btc",
+          ],
+          [
+            2024-10-21T00:00:00.000Z,
+            2024-10-27T23:59:59.999Z,
+            "Btc",
           ],
         ]
       `);
