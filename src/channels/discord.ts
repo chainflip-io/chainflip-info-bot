@@ -42,10 +42,6 @@ export const sendMessage = async ({ token, channelId }: DiscordConfig, content: 
   if (!channel || !channel.isSendable()) {
     throw new Error(`Channel not found: ${channelId}`);
   }
-  try {
-    const msg = await channel.send(content);
-    return msg.id;
-  } catch (err) {
-    throw new Error(`Failed to send message to discord: ${err as Error}`);
-  }
+  const msg = await channel.send(content);
+  return msg.id;
 };

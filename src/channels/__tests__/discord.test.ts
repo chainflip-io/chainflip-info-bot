@@ -49,9 +49,7 @@ describe('sendMessage', () => {
         },
         'Hello, world!',
       ),
-    ).rejects.toThrowErrorMatchingInlineSnapshot(
-      `[Error: Failed to send message to discord: an error occurred]`,
-    );
+    ).rejects.toThrowErrorMatchingInlineSnapshot(`"an error occurred"`);
 
     expect(loginSpy).toHaveBeenCalledTimes(1);
     expect(loginSpy).toHaveBeenCalledWith('discord:discord_1');
