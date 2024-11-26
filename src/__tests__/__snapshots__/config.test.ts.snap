@@ -2,8 +2,9 @@
 
 exports[`Config > Config.get > returns the config for a key (discord:discord_1) 1`] = `
 {
+  "channelId": "channel1",
+  "token": "discord bot token",
   "type": "discord",
-  "webhookUrl": "https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL",
 }
 `;
 

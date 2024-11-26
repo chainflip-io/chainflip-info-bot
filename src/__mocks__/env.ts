@@ -9,20 +9,21 @@ export default {
   SWAP_MAX_AGE_IN_MINUTES: 10,
   CONFIG: JSON.stringify({
     discord: {
+      botToken: 'discord bot token',
       channels: [
         {
-          webhookUrl: 'https://discord.com/api/webhooks/1234567890/ABCDEFGHIJKL',
           filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+          channelId: 'discord channel id 1',
           name: 'discord 1',
         },
         {
           enabled: false,
-          webhookUrl: 'https://discord.com/api/webhooks/1234567890/MNOPQRSTUVWXYZ',
+          channelId: 'discord channel id 2',
           name: 'discord 2',
         },
         {
           enabled: true,
-          webhookUrl: 'https://discord.com/api/webhooks/1234567890/∂',
+          channelId: 'discord channel id 3',
           name: 'discord 3',
         },
       ],
