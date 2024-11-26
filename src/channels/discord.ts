@@ -1,4 +1,3 @@
-import { deferredPromise } from '@chainflip/utils/async';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { handleExit } from '../utils/functions.js';
 import logger from '../utils/logger.js';
@@ -9,7 +8,7 @@ export const client = new Client({
 
 export const login = async (token: string) => {
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-  const { promise, resolve } = deferredPromise<void>();
+  const { promise, resolve } = Promise.withResolvers<void>();
   if (client.user) {
     resolve();
   }
