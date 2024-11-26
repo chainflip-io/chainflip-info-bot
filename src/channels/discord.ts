@@ -34,12 +34,21 @@ export type DiscordConfig = {
   channelId: string;
 };
 
-export const sendMessage = async ({ token, channelId }: DiscordConfig, content: string) => {
+export const sendMessage = async (
+  { token, channelId }: DiscordConfig,
+  content: string,
+  replyToId?: string,
+) => {
   await login(token);
 
   const channel = client.channels.cache.get(channelId);
   if (!channel || !channel.isSendable()) {
     throw new Error(`Channel not found: ${channelId}`);
+  }
+  if (replyToId) {
+    const replyTo = await channel.messages.fetch(replyToId);
+    const msg = await replyTo.reply(content);
+    return msg.id;
   }
   const msg = await channel.send(content);
   return msg.id;
