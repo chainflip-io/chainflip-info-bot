@@ -11,7 +11,7 @@ describe('sendMessage', () => {
     });
     const sendMock = vi.fn().mockResolvedValueOnce(true);
     vi.spyOn(client.channels.cache, 'get').mockReturnValue({
-      isTextBased: () => true,
+      isSendable: () => true,
       send: sendMock,
     } as unknown as TextChannel);
 
@@ -37,7 +37,7 @@ describe('sendMessage', () => {
     });
     const sendMock = vi.fn().mockRejectedValue('an error occurred');
     vi.spyOn(client.channels.cache, 'get').mockReturnValue({
-      isTextBased: () => true,
+      isSendable: () => true,
       send: sendMock,
     } as unknown as TextChannel);
 

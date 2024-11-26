@@ -1,5 +1,5 @@
 import { deferredPromise } from '@chainflip/utils/async';
-import { Client, GatewayIntentBits, type TextChannel } from 'discord.js';
+import { Client, GatewayIntentBits } from 'discord.js';
 import { handleExit } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
@@ -8,13 +8,14 @@ export const client = new Client({
 });
 
 export const login = async (token: string) => {
-  const { promise, resolve } = deferredPromise<undefined>();
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+  const { promise, resolve } = deferredPromise<void>();
   if (client.user) {
-    resolve(undefined);
+    resolve();
   }
   client.once('ready', () => {
     logger.info('Discord client ready');
-    resolve(undefined);
+    resolve();
   });
   client.once('debug', (obj) => {
     logger.debug(obj, 'discord debug');
@@ -38,11 +39,12 @@ export const sendMessage = async ({ token, channelId }: DiscordConfig, content: 
   await login(token);
 
   const channel = client.channels.cache.get(channelId);
-  if (!channel || !channel.isTextBased()) {
+  if (!channel || !channel.isSendable()) {
     throw new Error(`Channel not found: ${channelId}`);
   }
   try {
-    await (channel as TextChannel).send(content);
+    const msg = await channel.send(content);
+    return msg.id;
   } catch (err) {
     throw new Error(`Failed to send message to discord: ${err as Error}`);
   }
