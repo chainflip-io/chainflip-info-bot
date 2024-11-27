@@ -39,7 +39,8 @@ describe('sendMessage', () => {
       send: sendMock,
     } as unknown as TextChannel);
 
-    await config.processJob(vi.fn())({
+    const dispatchJobsMock = vi.fn();
+    await config.processJob(dispatchJobsMock)({
       data: {
         key: 'discord:discord_1',
         message: 'Hello, world!',
@@ -50,6 +51,7 @@ describe('sendMessage', () => {
     expect(loginSpy).toHaveBeenCalledWith('discord bot token');
     expect(sendMock).toHaveBeenCalledTimes(1);
     expect(sendMock).toHaveBeenCalledWith('Hello, world!');
+    expect(dispatchJobsMock).toHaveBeenCalledTimes(0);
   });
 
   it('fails to send message to incorrect discord channel', async () => {
@@ -78,6 +80,43 @@ describe('sendMessage', () => {
     expect(sendMock).toHaveBeenCalledTimes(0);
     expect(loginSpy).toHaveBeenCalledTimes(1);
     expect(loginSpy).toHaveBeenCalledWith('discord bot token');
+  });
+
+  it('sends long message to discord channels with replies', async () => {
+    const loginSpy = vi.spyOn(Client.prototype, 'login');
+    loginSpy.mockImplementation(() => {
+      client.emit('ready' as never);
+      return Promise.resolve('');
+    });
+    const sendMock = vi.fn().mockResolvedValueOnce(true);
+    vi.spyOn(client.channels.cache, 'get').mockReturnValue({
+      isSendable: () => true,
+      send: sendMock,
+    } as unknown as TextChannel);
+
+    const dispatchJobsMock = vi.fn();
+    await config.processJob(dispatchJobsMock)({
+      data: {
+        key: 'discord:discord_1',
+        message: 'HelloWorld'.repeat(40).concat('\n').repeat(10),
+      } as JobData['sendMessage'],
+    } as any);
+
+    expect(loginSpy).toHaveBeenCalledTimes(1);
+    expect(loginSpy).toHaveBeenCalledWith('discord bot token');
+    expect(sendMock).toHaveBeenCalledTimes(1);
+    expect(sendMock).toHaveBeenCalledWith('HelloWorld'.repeat(40).concat('\n').repeat(4).trimEnd());
+    expect(dispatchJobsMock).toHaveBeenCalledTimes(1);
+    expect(dispatchJobsMock).toHaveBeenCalledWith([
+      {
+        data: {
+          key: 'discord:discord_1',
+          message: 'HelloWorld'.repeat(40).concat('\n').repeat(6),
+          replyToId: undefined,
+        },
+        name: 'sendMessage',
+      },
+    ]);
   });
 
   it('sends messages to twitter channels', async () => {
