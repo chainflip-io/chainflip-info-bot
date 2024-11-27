@@ -98,38 +98,20 @@ describe('sendMessage', () => {
     await config.processJob(dispatchJobsMock)({
       data: {
         key: 'discord:discord_1',
-        message: 'HelloWorld'
-          .repeat(40)
-          .concat('\n')
-          .concat('HelloWorld2'.repeat(40).concat('\n'))
-          .concat('HelloWorld3'.repeat(40).concat('\n'))
-          .concat('HelloWorld4'.repeat(40).concat('\n'))
-          .concat('HelloWorld5'.repeat(40).concat('\n'))
-          .concat('Hello, world3!\n'.repeat(10))
-          .concat('Hello, world4!\n'.repeat(3)),
+        message: 'HelloWorld'.repeat(40).concat('\n').repeat(10),
       } as JobData['sendMessage'],
     } as any);
 
     expect(loginSpy).toHaveBeenCalledTimes(1);
     expect(loginSpy).toHaveBeenCalledWith('discord bot token');
     expect(sendMock).toHaveBeenCalledTimes(1);
-    expect(sendMock).toHaveBeenCalledWith(
-      'HelloWorld'
-        .repeat(40)
-        .concat('\n')
-        .concat('HelloWorld2'.repeat(40).concat('\n'))
-        .concat('HelloWorld3'.repeat(40).concat('\n'))
-        .concat('HelloWorld4'.repeat(40).concat('\n'))
-        .concat('HelloWorld5'.repeat(40).concat('\n'))
-        .concat('Hello, world3!\n'.repeat(4))
-        .concat('Hello, world3!'),
-    );
+    expect(sendMock).toHaveBeenCalledWith('HelloWorld'.repeat(40).concat('\n').repeat(4).trimEnd());
     expect(dispatchJobsMock).toHaveBeenCalledTimes(1);
     expect(dispatchJobsMock).toHaveBeenCalledWith([
       {
         data: {
           key: 'discord:discord_1',
-          message: 'Hello, world3!\n'.repeat(5).concat('Hello, world4!\n'.repeat(3)),
+          message: 'HelloWorld'.repeat(40).concat('\n').repeat(6),
           replyToId: undefined,
         },
         name: 'sendMessage',
