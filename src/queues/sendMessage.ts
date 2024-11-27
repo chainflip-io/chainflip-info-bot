@@ -19,9 +19,10 @@ declare global {
 }
 
 const MESSAGE_LINES_LIMIT = 10;
+const MESSAGE_LENGTH_LIMIT = 2000;
 const breakDiscordMessage = (message: string) => {
+  if (message.length <= MESSAGE_LENGTH_LIMIT) return { current: message };
   const lines = message.split('\n');
-  if (lines.length <= MESSAGE_LINES_LIMIT) return { current: message };
   return {
     current: lines.slice(0, MESSAGE_LINES_LIMIT).join('\n'),
     rest: lines.slice(MESSAGE_LINES_LIMIT).join('\n'),
