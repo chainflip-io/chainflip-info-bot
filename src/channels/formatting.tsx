@@ -1,5 +1,10 @@
 import { unreachable } from '@chainflip/utils/assertion';
+import { formatUsdValue } from '@chainflip/utils/number';
+import { type BigNumber } from 'bignumber.js';
 import { EXPLORER_URL } from '../consts.js';
+import { humanFriendlyAsset } from '../consts.js';
+import { type ChainflipAsset } from '../graphql/generated/graphql.js';
+import { toFormattedAmount } from '../utils/chainflip.js';
 
 export const Bold = ({
   children,
@@ -77,3 +82,15 @@ export const Line = ({ children }: { children: React.ReactNode }) => (
 
 export const Trailer = ({ platform }: { platform: 'discord' | 'telegram' | 'twitter' }) =>
   platform === 'twitter' ? '#chainflip $flip' : null;
+
+export const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.Element | null => {
+  if (!amount) return null;
+
+  return <> ({formatUsdValue(amount)})</>;
+};
+
+export const TokenAmount = ({ amount, asset }: { amount: BigNumber; asset: ChainflipAsset }) => (
+  <>
+    {toFormattedAmount(amount)} {humanFriendlyAsset[asset]}
+  </>
+);

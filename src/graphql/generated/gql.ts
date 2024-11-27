@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
+    "\n  query GetBoostSummary($start: Datetime!, $end: Datetime!, $asset: ChainflipAsset!) {\n    boostPools: allBoostPools(filter: { asset: { equalTo: $asset } }) {\n      nodes {\n        asset\n        feeTierPips\n        boostShares: boostSharesByBoostPoolId(\n          filter: {\n            executedAtTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }\n            lost: { equalTo: false }\n          }\n        ) {\n          aggregates {\n            sum {\n              fee\n              feeUsd\n              amount\n              amountUsd\n            }\n          }\n        }\n        apys: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {\n          nodes {\n            projectedApy\n          }\n        }\n      }\n    }\n  }\n": types.GetBoostSummaryDocument,
     "\n  query getBurns($in: [Int!]) {\n    allBurns(filter: { id: { in: $in } }) {\n      aggregates {\n        sum {\n          amount\n          valueUsd\n        }\n      }\n    }\n  }\n": types.GetBurnsDocument,
     "\n  query getLatestBurn {\n    burns: allBurns(first: 1, orderBy: ID_DESC) {\n      nodes {\n        id\n      }\n    }\n  }\n": types.GetLatestBurnDocument,
     "\n  query LatestSwapRequest {\n    swapRequests: allSwapRequests(first: 1, orderBy: NATIVE_ID_DESC) {\n      nodes {\n        nativeId\n      }\n    }\n  }\n": types.LatestSwapRequestDocument,
@@ -43,6 +44,10 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetBoostSummary($start: Datetime!, $end: Datetime!, $asset: ChainflipAsset!) {\n    boostPools: allBoostPools(filter: { asset: { equalTo: $asset } }) {\n      nodes {\n        asset\n        feeTierPips\n        boostShares: boostSharesByBoostPoolId(\n          filter: {\n            executedAtTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }\n            lost: { equalTo: false }\n          }\n        ) {\n          aggregates {\n            sum {\n              fee\n              feeUsd\n              amount\n              amountUsd\n            }\n          }\n        }\n        apys: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {\n          nodes {\n            projectedApy\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetBoostSummary($start: Datetime!, $end: Datetime!, $asset: ChainflipAsset!) {\n    boostPools: allBoostPools(filter: { asset: { equalTo: $asset } }) {\n      nodes {\n        asset\n        feeTierPips\n        boostShares: boostSharesByBoostPoolId(\n          filter: {\n            executedAtTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }\n            lost: { equalTo: false }\n          }\n        ) {\n          aggregates {\n            sum {\n              fee\n              feeUsd\n              amount\n              amountUsd\n            }\n          }\n        }\n        apys: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {\n          nodes {\n            projectedApy\n          }\n        }\n      }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

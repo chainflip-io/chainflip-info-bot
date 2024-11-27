@@ -1,17 +1,21 @@
-import React from 'react';
 import { unreachable } from '@chainflip/utils/assertion';
 import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
 import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
+import {
+  Bold,
+  ExplorerLink,
+  Line,
+  TokenAmount,
+  Trailer,
+  UsdValue,
+} from '../channels/formatting.js';
 import { platforms } from '../config.js';
-import { BLOCK_TIME_IN_SECONDS, humanFriendlyAsset } from '../consts.js';
+import { BLOCK_TIME_IN_SECONDS } from '../consts.js';
 import env from '../env.js';
-import { type ChainflipAsset } from '../graphql/generated/graphql.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
-import { toFormattedAmount } from '../utils/chainflip.js';
 import logger from '../utils/logger.js';
 
 const name = 'swapStatusCheck';
@@ -61,18 +65,6 @@ const deltaSign = (delta: number) => {
   if (delta < -1) return '⚪️';
   return '🟢';
 };
-
-const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.Element | null => {
-  if (!amount) return null;
-
-  return <> ({formatUsdValue(amount)})</>;
-};
-
-const TokenAmount = ({ amount, asset }: { amount: BigNumber; asset: ChainflipAsset }) => (
-  <>
-    {toFormattedAmount(amount)} {humanFriendlyAsset[asset]}
-  </>
-);
 
 const buildMessageData = ({
   swapInfo,

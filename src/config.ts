@@ -11,6 +11,8 @@ const filters = z.union([
   z.object({ name: z.literal('WEEKLY_SWAP_SUMMARY') }),
   z.object({ name: z.literal('DAILY_LP_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_LP_SUMMARY') }),
+  z.object({ name: z.literal('DAILY_BOOST_SUMMARY') }),
+  z.object({ name: z.literal('WEEKLY_BOOST_SUMMARY') }),
   z.object({ name: z.literal('NEW_SWAP'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),

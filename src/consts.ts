@@ -16,3 +16,5 @@ export const humanFriendlyAsset: Record<ChainflipAsset, string> = {
 export const EXPLORER_URL = 'https://scan.chainflip.io';
 
 export const BLOCK_TIME_IN_SECONDS = 6_000;
+
+export const ASSET_FOR_BOOST_POOLS = 'Btc';
