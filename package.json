@@ -44,7 +44,7 @@
     "@bull-board/fastify": "^6.5.3",
     "@chainflip/utils": "^0.4.12",
     "@date-fns/utc": "^2.1.0",
-    "axios": "^1.7.7",
+    "axios": "^1.7.8",
     "bignumber.js": "^9.1.2",
     "bullmq": "^5.29.1",
     "date-fns": "^4.1.0",
