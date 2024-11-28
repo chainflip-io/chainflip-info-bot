@@ -13,3 +13,6 @@ updates:
       types:
         patterns:
           - '@types/*'
+      bull-board:
+        patterns:
+          - '@bull-board/*'

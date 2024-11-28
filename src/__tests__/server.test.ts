@@ -7,7 +7,13 @@ describe(createServer, () => {
 
   beforeEach(() => {
     getDelayed = vi.fn();
-    server = createServer({ scheduler: { getDelayed } } as any);
+    server = createServer({
+      scheduler: {
+        getDelayed,
+        // the bullboard library checks this to ensure that only bullmq queues are passed
+        metaValues: { version: 'bullmq' },
+      },
+    } as any);
   });
 
   it('returns 200 when no jobs are scheduled', async () => {
