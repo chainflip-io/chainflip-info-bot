@@ -51,6 +51,7 @@ export const getNextJobData = (): Extract<DispatchJobArgs, { name: 'scheduler' }
           sendWeeklySummary:
             endOfPeriod === endOfWeek(endOfPeriod, { weekStartsOn: 1, in: utc }).valueOf(),
         },
+        opts: { attempts: 720, backoff: { delay: 5_000, type: 'fixed' } },
       },
     ],
     opts: { delay: endOfPeriod - Date.now(), deduplication: { id: customJobId } },

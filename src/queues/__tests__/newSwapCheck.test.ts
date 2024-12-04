@@ -30,6 +30,13 @@ describe('newSwapCheck', () => {
                       "lastSwapRequestId": "1",
                     },
                     "name": "newSwapCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",
@@ -66,6 +73,13 @@ describe('newSwapCheck', () => {
                       "lastSwapRequestId": "9",
                     },
                     "name": "newSwapCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",

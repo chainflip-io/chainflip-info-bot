@@ -12,6 +12,13 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
               "sendWeeklySummary": true,
             },
             "name": "timePeriodStats",
+            "opts": {
+              "attempts": 720,
+              "backoff": {
+                "delay": 5000,
+                "type": "fixed",
+              },
+            },
           },
         ],
         "name": "scheduler",
@@ -318,6 +325,13 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
               "sendWeeklySummary": false,
             },
             "name": "timePeriodStats",
+            "opts": {
+              "attempts": 720,
+              "backoff": {
+                "delay": 5000,
+                "type": "fixed",
+              },
+            },
           },
         ],
         "name": "scheduler",
@@ -477,6 +491,13 @@ exports[`time period stats > processJob > processes a daily job without a flip b
               "sendWeeklySummary": false,
             },
             "name": "timePeriodStats",
+            "opts": {
+              "attempts": 720,
+              "backoff": {
+                "delay": 5000,
+                "type": "fixed",
+              },
+            },
           },
         ],
         "name": "scheduler",

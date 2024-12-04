@@ -39,6 +39,13 @@ describe('newLpDepositCheck', () => {
                       "lastCheckedDepositId": 10,
                     },
                     "name": "newLpDepositCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",
@@ -119,6 +126,13 @@ describe('newLpDepositCheck', () => {
                       "lastCheckedDepositId": 10,
                     },
                     "name": "newLpDepositCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",
