@@ -17,7 +17,11 @@ export const getNextJobData = async (
   return {
     name: 'scheduler',
     data: [
-      { name, data: { lastSwapRequestId: swapRequestId ?? (await getLatestSwapRequestId()) } },
+      {
+        name,
+        data: { lastSwapRequestId: swapRequestId ?? (await getLatestSwapRequestId()) },
+        opts: { attempts: 720, backoff: { delay: 5_000, type: 'fixed' } },
+      },
     ],
     opts: { delay: INTERVAL, deduplication: { id: customJobId } },
   };

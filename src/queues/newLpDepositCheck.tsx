@@ -33,7 +33,13 @@ export const getNextJobData = async (
 
   return {
     name: 'scheduler',
-    data: [{ name, data: { lastCheckedDepositId: depositId ?? (await getLatestDepositId()) } }],
+    data: [
+      {
+        name,
+        data: { lastCheckedDepositId: depositId ?? (await getLatestDepositId()) },
+        opts: { attempts: 720, backoff: { delay: 5_000, type: 'fixed' } },
+      },
+    ],
     opts: { delay: INTERVAL, deduplication: { id: customJobId } },
   };
 };

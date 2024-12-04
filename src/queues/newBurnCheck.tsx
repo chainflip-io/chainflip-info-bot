@@ -31,7 +31,13 @@ export const getNextJobData = async (
 
   return {
     name: 'scheduler',
-    data: [{ name, data: { lastBurnId: burnId ?? (await getLatestBurnId()) } }],
+    data: [
+      {
+        name,
+        data: { lastBurnId: burnId ?? (await getLatestBurnId()) },
+        opts: { attempts: 720, backoff: { delay: 5_000, type: 'fixed' } },
+      },
+    ],
     opts: { delay: INTERVAL, deduplication: { id: customJobId } },
   };
 };

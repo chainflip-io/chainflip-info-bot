@@ -63,6 +63,13 @@ describe('scheduler', () => {
                     "sendWeeklySummary": false,
                   },
                   "name": "timePeriodStats",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
                 },
               ],
               "name": "scheduler",
@@ -80,6 +87,13 @@ describe('scheduler', () => {
                     "lastSwapRequestId": "115482",
                   },
                   "name": "newSwapCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
                 },
               ],
               "name": "scheduler",
@@ -97,6 +111,13 @@ describe('scheduler', () => {
                     "lastCheckedDepositId": 1834,
                   },
                   "name": "newLpDepositCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
                 },
               ],
               "name": "scheduler",
@@ -114,6 +135,13 @@ describe('scheduler', () => {
                     "lastBurnId": 230,
                   },
                   "name": "newBurnCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
                 },
               ],
               "name": "scheduler",

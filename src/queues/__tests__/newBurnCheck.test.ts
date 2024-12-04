@@ -48,6 +48,13 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",
@@ -118,6 +125,13 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",
@@ -186,6 +200,13 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 1,
                     },
                     "name": "newBurnCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",
@@ -222,6 +243,13 @@ describe('newBurnCheck', () => {
                       "lastBurnId": 11,
                     },
                     "name": "newBurnCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
                   },
                 ],
                 "name": "scheduler",

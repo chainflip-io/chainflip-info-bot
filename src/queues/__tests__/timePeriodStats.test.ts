@@ -36,6 +36,13 @@ describe('time period stats', () => {
                 "sendWeeklySummary": false,
               },
               "name": "timePeriodStats",
+              "opts": {
+                "attempts": 720,
+                "backoff": {
+                  "delay": 5000,
+                  "type": "fixed",
+                },
+              },
             },
           ],
           "name": "scheduler",
@@ -61,6 +68,13 @@ describe('time period stats', () => {
                 "sendWeeklySummary": true,
               },
               "name": "timePeriodStats",
+              "opts": {
+                "attempts": 720,
+                "backoff": {
+                  "delay": 5000,
+                  "type": "fixed",
+                },
+              },
             },
           ],
           "name": "scheduler",
