@@ -117,9 +117,11 @@ const buildMessages = ({
                 <Line key={stat.idSs58}>
                   {medals[index] ?? youTried}{' '}
                   {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
-                  <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
-                    <Bold platform={platform}>{stat.alias ?? abbreviate(stat.idSs58)}</Bold>
-                  </ExplorerLink>{' '}
+                  <Bold platform={platform}>
+                    <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
+                      {stat.alias ?? abbreviate(stat.idSs58)}
+                    </ExplorerLink>
+                  </Bold>{' '}
                   ({stat.percentage}%)
                 </Line>
               ),

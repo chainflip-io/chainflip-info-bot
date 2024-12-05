@@ -81,11 +81,11 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "DAILY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for 2024-10-27 are in:
-🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
-🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
-🥉 $1,000.00 <a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN"><strong>cFKj…UgyN</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg"><strong>cFJX…rzLg</strong></a> (10.00%)",
+🥇 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e">ChainflipGod</a></strong> (10.00%)
+🥈 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh">cFNz…MMVh</a></strong> (10.00%)
+🥉 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN">cFKj…UgyN</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh">cFNz…MMVh</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg">cFJX…rzLg</a></strong> (10.00%)",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -96,11 +96,11 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "DAILY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for 2024-10-27 are in:
-🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (10.00%)
-🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
-🥉 $1,000.00 [**cFKj…UgyN**](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN) (10.00%)
-🏅 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
-🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)",
+🥇 $1,000.00 **[ChainflipGod](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e)** (10.00%)
+🥈 $1,000.00 **[cFNz…MMVh](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh)** (10.00%)
+🥉 $1,000.00 **[cFKj…UgyN](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN)** (10.00%)
+🏅 $1,000.00 **[cFNz…MMVh](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh)** (10.00%)
+🏅 $1,000.00 **[cFJX…rzLg](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg)** (10.00%)",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -213,16 +213,16 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "WEEKLY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for the week are in:
-🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
-🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
-🥉 $1,000.00 <a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN"><strong>cFKj…UgyN</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg"><strong>cFJX…rzLg</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB"><strong>cFMx…YwvB</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz"><strong>cFMB…R4Kz</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP"><strong>cFLE…kcPP</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j"><strong>cFLG…gq7j</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t"><strong>cFLT…nn5t</strong></a> (10.00%)",
+🥇 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e">ChainflipGod</a></strong> (10.00%)
+🥈 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh">cFNz…MMVh</a></strong> (10.00%)
+🥉 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN">cFKj…UgyN</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh">cFNz…MMVh</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg">cFJX…rzLg</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB">cFMx…YwvB</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz">cFMB…R4Kz</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP">cFLE…kcPP</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j">cFLG…gq7j</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t">cFLT…nn5t</a></strong> (10.00%)",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -233,16 +233,16 @@ exports[`time period stats > processJob > processes a daily and weekly job 1`] =
             "name": "WEEKLY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for the week are in:
-🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (10.00%)
-🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
-🥉 $1,000.00 [**cFKj…UgyN**](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN) (10.00%)
-🏅 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
-🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)
-🏅 $1,000.00 [**cFMx…YwvB**](https://scan.chainflip.io/lps/cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB) (10.00%)
-🏅 $1,000.00 [**cFMB…R4Kz**](https://scan.chainflip.io/lps/cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz) (10.00%)
-🏅 $1,000.00 [**cFLE…kcPP**](https://scan.chainflip.io/lps/cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP) (10.00%)
-🏅 $1,000.00 [**cFLG…gq7j**](https://scan.chainflip.io/lps/cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j) (10.00%)
-🏅 $1,000.00 [**cFLT…nn5t**](https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t) (10.00%)",
+🥇 $1,000.00 **[ChainflipGod](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e)** (10.00%)
+🥈 $1,000.00 **[cFNz…MMVh](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh)** (10.00%)
+🥉 $1,000.00 **[cFKj…UgyN](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN)** (10.00%)
+🏅 $1,000.00 **[cFNz…MMVh](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh)** (10.00%)
+🏅 $1,000.00 **[cFJX…rzLg](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg)** (10.00%)
+🏅 $1,000.00 **[cFMx…YwvB](https://scan.chainflip.io/lps/cFMxkJ79ka5Bu8PTxwMm9E2U8bKR5fwaPuNQBErXoaYvFYwvB)** (10.00%)
+🏅 $1,000.00 **[cFMB…R4Kz](https://scan.chainflip.io/lps/cFMBE4zhwZ9PQ7xBupusy2mLerkSBhU9oAxoMiCpw3kKAR4Kz)** (10.00%)
+🏅 $1,000.00 **[cFLE…kcPP](https://scan.chainflip.io/lps/cFLEFzKb4QCruqMn5xrCm2sPFt2taXWrvuSDTvuq6U3etkcPP)** (10.00%)
+🏅 $1,000.00 **[cFLG…gq7j](https://scan.chainflip.io/lps/cFLGvPhhrribWCx9id5kLVqwiFK4QiVNjQ6ViyaRFF2Nrgq7j)** (10.00%)
+🏅 $1,000.00 **[cFLT…nn5t](https://scan.chainflip.io/lps/cFLT2BLiSijog9mvFipfPapisweJ8MMMTQisCiNKAEsBQnn5t)** (10.00%)",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -394,11 +394,11 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
             "name": "DAILY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for 2024-10-25 are in:
-🥇 $1,000.00 <a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e"><strong>ChainflipGod</strong></a> (10.00%)
-🥈 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
-🥉 $1,000.00 <a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN"><strong>cFKj…UgyN</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh"><strong>cFNz…MMVh</strong></a> (10.00%)
-🏅 $1,000.00 <a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg"><strong>cFJX…rzLg</strong></a> (10.00%)",
+🥇 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e">ChainflipGod</a></strong> (10.00%)
+🥈 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh">cFNz…MMVh</a></strong> (10.00%)
+🥉 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN">cFKj…UgyN</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh">cFNz…MMVh</a></strong> (10.00%)
+🏅 $1,000.00 <strong><a href="https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg">cFJX…rzLg</a></strong> (10.00%)",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -409,11 +409,11 @@ exports[`time period stats > processJob > processes a daily job 1`] = `
             "name": "DAILY_LP_SUMMARY",
           },
           "message": "💼 Top LPs for 2024-10-25 are in:
-🥇 $1,000.00 [**ChainflipGod**](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e) (10.00%)
-🥈 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
-🥉 $1,000.00 [**cFKj…UgyN**](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN) (10.00%)
-🏅 $1,000.00 [**cFNz…MMVh**](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh) (10.00%)
-🏅 $1,000.00 [**cFJX…rzLg**](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg) (10.00%)",
+🥇 $1,000.00 **[ChainflipGod](https://scan.chainflip.io/lps/cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e)** (10.00%)
+🥈 $1,000.00 **[cFNz…MMVh](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh)** (10.00%)
+🥉 $1,000.00 **[cFKj…UgyN](https://scan.chainflip.io/lps/cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN)** (10.00%)
+🏅 $1,000.00 **[cFNz…MMVh](https://scan.chainflip.io/lps/cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh)** (10.00%)
+🏅 $1,000.00 **[cFJX…rzLg](https://scan.chainflip.io/lps/cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg)** (10.00%)",
           "platform": "discord",
         },
         "name": "messageRouter",

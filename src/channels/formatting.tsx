@@ -25,13 +25,15 @@ export const Bold = ({
   }
 };
 
+const removeEmoji = (string: string) => string.replace(/ *[\p{S}\p{C}]/gu, '');
+
 export const Link = ({
   children,
   href,
   platform,
   prefer = 'text',
 }: {
-  children: React.ReactNode;
+  children: string | string[];
   href: string | URL;
   platform: 'discord' | 'telegram' | 'twitter';
   prefer?: 'text' | 'link';
@@ -40,7 +42,8 @@ export const Link = ({
     case 'discord':
       return (
         <>
-          [{children}]({href.toString()})
+          [{removeEmoji(Array.isArray(children) ? children.join('') : children)}
+          ]({href.toString()})
         </>
       );
     case 'telegram':
@@ -63,7 +66,7 @@ export const ExplorerLink = ({
   platform,
   prefer,
 }: {
-  children: React.ReactNode;
+  children: string | string[];
   path: string;
   platform: 'discord' | 'telegram' | 'twitter';
   prefer: 'text' | 'link';

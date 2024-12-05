@@ -13,3 +13,9 @@ exports[`Link > formats telegram messages correctly > telegram 1`] = `"<a href="
 exports[`Link > links to the explorer correctly on twitter 1`] = `"https://some-link"`;
 
 exports[`Link > links to the explorer correctly on twitter 2`] = `"link-preview"`;
+
+exports[`Link > strips emoji if necessary > discord 1`] = `"[link-preview️](https://some-link)"`;
+
+exports[`Link > strips emoji if necessary > telegram 1`] = `"<a href="https://some-link">link-preview 🧙‍♂️</a>"`;
+
+exports[`Link > strips emoji if necessary > twitter 1`] = `"link-preview 🧙‍♂️"`;
