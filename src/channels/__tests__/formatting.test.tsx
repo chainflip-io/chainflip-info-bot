@@ -29,6 +29,16 @@ describe('Link', () => {
       ),
     ).toMatchSnapshot();
   });
+
+  it.each(platforms)('strips emoji if necessary', (platform) => {
+    expect(
+      renderToStaticMarkup(
+        <Link platform={platform} href="https://some-link">
+          link-preview 🧙‍♂️
+        </Link>,
+      ),
+    ).toMatchSnapshot(platform);
+  });
 });
 
 describe(Line, () => {
