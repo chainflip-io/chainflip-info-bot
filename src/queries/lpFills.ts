@@ -107,7 +107,7 @@ export default async function getLpFills({
     ].filledAmountValueUsd.plus(lp.filledAmountValueUsd);
   });
 
-  return Object.keys(groupedByAccountName).map((accountName) => {
+  const lpFills = Object.keys(groupedByAccountName).map((accountName) => {
     const lp = groupedByAccountName[accountName];
     const percentage = lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2);
 
@@ -117,4 +117,8 @@ export default async function getLpFills({
       alias: lp.alias || undefined,
     };
   });
+
+  lpFills.sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd));
+
+  return lpFills;
 }

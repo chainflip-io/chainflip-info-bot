@@ -45,16 +45,16 @@ describe('getLpFills', () => {
           "percentage": "3.06",
         },
         {
-          "alias": "CumpsD",
-          "filledAmountValueUsd": "639320.1970485001",
-          "idSs58": "cFLBKavxvThwqLWNr7cTwtqhYD6jDqXM31d6QoTLvuK4X78ve",
-          "percentage": "1.06",
-        },
-        {
           "alias": "curiouspleb",
           "filledAmountValueUsd": "673831.4974354201",
           "idSs58": "cFNgY2xnF9jvLLJ9TTtFwVTUCoo9aAX26UveiN7NftzkhEyYW",
           "percentage": "1.12",
+        },
+        {
+          "alias": "CumpsD",
+          "filledAmountValueUsd": "639320.1970485001",
+          "idSs58": "cFLBKavxvThwqLWNr7cTwtqhYD6jDqXM31d6QoTLvuK4X78ve",
+          "percentage": "1.06",
         },
         {
           "alias": undefined,
