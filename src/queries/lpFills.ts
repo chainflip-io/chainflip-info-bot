@@ -57,21 +57,19 @@ export default async function getLpFills({
   const { limitOrders, rangeOrders } = await lpClient.request(getLpFillsQuery, { start, end });
 
   const agg =
-    limitOrders?.groupedAggregates
-      ?.map((group) => {
-        const lp = group.keys?.[0];
-        return {
-          id: Number(group.keys?.[0]),
-          filledAmountValueUsd: BigNumber.sum(
-            group.sum?.filledAmountValueUsd ?? 0,
-            rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
-              ?.baseFilledAmountValueUsd ?? 0,
-            rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
-              ?.quoteFilledAmountValueUsd ?? 0,
-          ),
-        };
-      })
-      .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd)) ?? [];
+    limitOrders?.groupedAggregates?.map((group) => {
+      const lp = group.keys?.[0];
+      return {
+        id: Number(group.keys?.[0]),
+        filledAmountValueUsd: BigNumber.sum(
+          group.sum?.filledAmountValueUsd ?? 0,
+          rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
+            ?.baseFilledAmountValueUsd ?? 0,
+          rangeOrders?.groupedAggregates?.find((range) => range.keys?.[0] === lp)?.sum
+            ?.quoteFilledAmountValueUsd ?? 0,
+        ),
+      };
+    }) ?? [];
 
   const total = agg.reduce((acc, lp) => acc.plus(lp.filledAmountValueUsd), new BigNumber(0));
 
@@ -107,18 +105,16 @@ export default async function getLpFills({
     ].filledAmountValueUsd.plus(lp.filledAmountValueUsd);
   });
 
-  const lpFills = Object.keys(groupedByAccountName).map((accountName) => {
-    const lp = groupedByAccountName[accountName];
-    const percentage = lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2);
+  return Object.keys(groupedByAccountName)
+    .map((accountName) => {
+      const lp = groupedByAccountName[accountName];
+      const percentage = lp.filledAmountValueUsd.dividedBy(total).times(100).toFixed(2);
 
-    return {
-      ...lp,
-      percentage,
-      alias: lp.alias || undefined,
-    };
-  });
-
-  lpFills.sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd));
-
-  return lpFills;
+      return {
+        ...lp,
+        percentage,
+        alias: lp.alias || undefined,
+      };
+    })
+    .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd));
 }
