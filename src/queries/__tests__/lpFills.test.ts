@@ -167,6 +167,27 @@ describe('getLpFills', () => {
       b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd),
     );
 
-    expect(sorted).toEqual(result);
+    expect(sorted).toMatchInlineSnapshot(`
+      [
+        {
+          "alias": "Auros",
+          "filledAmountValueUsd": "4",
+          "idSs58": "cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg",
+          "percentage": "50.00",
+        },
+        {
+          "alias": "JIT Strategies",
+          "filledAmountValueUsd": "3",
+          "idSs58": "cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh",
+          "percentage": "37.50",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "1",
+          "idSs58": "cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN",
+          "percentage": "12.50",
+        },
+      ]
+    `);
   });
 });
