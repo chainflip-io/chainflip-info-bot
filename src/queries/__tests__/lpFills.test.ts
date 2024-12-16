@@ -115,7 +115,7 @@ describe('getLpFills', () => {
     `);
   });
 
-  it('should correcvtly sort lpFills by filledAmountValueUsd in descennding order', async () => {
+  it('should correctly sort lpFills by filledAmountValueUsd in descennding order', async () => {
     vi.spyOn(lpClient, 'request').mockResolvedValueOnce({
       limitOrders: {
         groupedAggregates: [
