@@ -1,5 +1,6 @@
 import { addWeeks } from 'date-fns';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import { lpClient } from '../../server.js';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
@@ -112,5 +113,60 @@ describe('getLpFills', () => {
         },
       ]
     `);
+  });
+
+  it('should correcvtly sort lpFills by filledAmountValueUsd in descennding order', async () => {
+    vi.spyOn(lpClient, 'request').mockResolvedValueOnce({
+      limitOrders: {
+        groupedAggregates: [
+          {
+            keys: ['1'],
+            sum: {
+              filledAmountValueUsd: '1',
+            },
+          },
+          {
+            keys: ['2'],
+            sum: {
+              filledAmountValueUsd: '1',
+            },
+          },
+          {
+            keys: ['3'],
+            sum: {
+              filledAmountValueUsd: '3',
+            },
+          },
+        ],
+      },
+      rangeOrders: {
+        groupedAggregates: [
+          {
+            keys: ['2'],
+            sum: {
+              baseFilledAmountValueUsd: '1',
+              quoteFilledAmountValueUsd: '1',
+            },
+          },
+          {
+            keys: ['3'],
+            sum: {
+              baseFilledAmountValueUsd: '0.5',
+              quoteFilledAmountValueUsd: '0.5',
+            },
+          },
+        ],
+      },
+    });
+
+    const start = '2024-10-31T00:00:00Z';
+    const end = addWeeks(start, 1).toISOString();
+    const result = await getLpFills({ start, end });
+
+    const sorted = [...result].sort((a, b) =>
+      b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd),
+    );
+
+    expect(sorted).toEqual(result);
   });
 });
