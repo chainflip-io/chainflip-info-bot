@@ -1,5 +1,6 @@
 import { addWeeks } from 'date-fns';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import { lpClient } from '../../server.js';
 import getLpFills from '../lpFills.js';
 
 describe('getLpFills', () => {
@@ -109,6 +110,78 @@ describe('getLpFills', () => {
           "filledAmountValueUsd": "117.2654259377",
           "idSs58": "cFMTFP2F61oRQGf7rUZpD2gaNtEjH65Sm6xhay4xmgBcwD26a",
           "percentage": "0.00",
+        },
+      ]
+    `);
+  });
+
+  it('should correctly sort lpFills by filledAmountValueUsd in descennding order', async () => {
+    vi.spyOn(lpClient, 'request').mockResolvedValueOnce({
+      limitOrders: {
+        groupedAggregates: [
+          {
+            keys: ['1'],
+            sum: {
+              filledAmountValueUsd: '1',
+            },
+          },
+          {
+            keys: ['2'],
+            sum: {
+              filledAmountValueUsd: '1',
+            },
+          },
+          {
+            keys: ['3'],
+            sum: {
+              filledAmountValueUsd: '3',
+            },
+          },
+        ],
+      },
+      rangeOrders: {
+        groupedAggregates: [
+          {
+            keys: ['2'],
+            sum: {
+              baseFilledAmountValueUsd: '1',
+              quoteFilledAmountValueUsd: '1',
+            },
+          },
+          {
+            keys: ['3'],
+            sum: {
+              baseFilledAmountValueUsd: '0.5',
+              quoteFilledAmountValueUsd: '0.5',
+            },
+          },
+        ],
+      },
+    });
+
+    const start = '2024-10-31T00:00:00Z';
+    const end = addWeeks(start, 1).toISOString();
+    const result = await getLpFills({ start, end });
+
+    expect(result).toMatchInlineSnapshot(`
+      [
+        {
+          "alias": "Auros",
+          "filledAmountValueUsd": "4",
+          "idSs58": "cFJXT4WEEdfiShje4z9JMwAvMiMTu7nioPgXsE9o1KqdVrzLg",
+          "percentage": "50.00",
+        },
+        {
+          "alias": "JIT Strategies",
+          "filledAmountValueUsd": "3",
+          "idSs58": "cFNzKSS48cZ1xQmdub2ykc2LUc5UZS2YjLaZBUvmxoXHjMMVh",
+          "percentage": "37.50",
+        },
+        {
+          "alias": undefined,
+          "filledAmountValueUsd": "1",
+          "idSs58": "cFKjURUE4jdxHgcKb4uBnKiY9Pkx2yuvQuRVfTDFh5j5eUgyN",
+          "percentage": "12.50",
         },
       ]
     `);
