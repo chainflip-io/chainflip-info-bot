@@ -163,11 +163,7 @@ describe('getLpFills', () => {
     const end = addWeeks(start, 1).toISOString();
     const result = await getLpFills({ start, end });
 
-    const sorted = [...result].sort((a, b) =>
-      b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd),
-    );
-
-    expect(sorted).toMatchInlineSnapshot(`
+    expect(result).toMatchInlineSnapshot(`
       [
         {
           "alias": "Auros",
