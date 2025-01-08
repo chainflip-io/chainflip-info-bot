@@ -1,6 +1,6 @@
 import { Client, type TextChannel } from 'discord.js';
 import { vi, describe, it, expect } from 'vitest';
-import { client, sendMessage } from '../discord.js';
+import { client, login, sendMessage } from '../discord.js';
 
 describe('sendMessage', () => {
   it('sends a message to the channel', async () => {
@@ -55,5 +55,25 @@ describe('sendMessage', () => {
     expect(loginSpy).toHaveBeenCalledWith('discord:discord_1');
     expect(sendMock).toHaveBeenCalledTimes(1);
     expect(sendMock).toHaveBeenCalledWith('Hello, world!');
+  });
+
+  describe('login', () => {
+    it('ensure no unnecessary logins', async () => {
+      const loginSpy = vi.spyOn(Client.prototype, 'login');
+      const isReadySpy = vi.spyOn(Client.prototype, 'isReady');
+      loginSpy.mockImplementation(() => {
+        client.emit('ready' as never);
+        return Promise.resolve('');
+      });
+
+      await login('my-token');
+
+      isReadySpy.mockResolvedValueOnce(true);
+
+      await login('my-token2');
+
+      expect(loginSpy).toHaveBeenCalledTimes(1);
+      expect(loginSpy).toHaveBeenCalledWith('my-token');
+    });
   });
 });
