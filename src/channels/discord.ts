@@ -11,6 +11,7 @@ export const login = async (token: string) => {
   const { promise, resolve } = Promise.withResolvers<void>();
   if (client.user || client.isReady()) {
     resolve();
+    return promise;
   }
   client.once('ready', () => {
     logger.info('Discord: client ready');
