@@ -13,19 +13,27 @@ export const login = async (token: string) => {
     resolve();
   }
   client.once('ready', () => {
-    logger.info('Discord client ready');
+    logger.info('Discord: client ready');
     resolve();
   });
   client.once('debug', (obj) => {
     logger.debug(obj, 'discord debug');
   });
   client.once('error', (error) => {
-    throw new Error(`an error occurred on discord connection: ${error}`);
+    throw new Error(`Discord: an error occurred on discord connection: ${error}`);
+  });
+  client.once('shardReconnecting', () => {
+    logger.warn(`Discord: shardReconnecting raised`);
+  });
+  client.once('shardDisconnect', () => {
+    logger.warn(`Discord: shardDisconnect raised`);
   });
   handleExit(async () => {
     await client.destroy();
   });
+  logger.info('Discord: Going to login');
   await client.login(token);
+  logger.info('Discord: Logged in');
   return promise;
 };
 
