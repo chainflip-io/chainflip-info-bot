@@ -9,7 +9,7 @@ export const client = new Client({
 export const login = async (token: string) => {
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   const { promise, resolve } = Promise.withResolvers<void>();
-  if (client.user) {
+  if (client.user || client.isReady()) {
     resolve();
   }
   client.once('ready', () => {
