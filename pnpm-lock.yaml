@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@bull-board/api':
-        specifier: ^6.6.1
-        version: 6.6.1(@bull-board/ui@6.6.1)
+        specifier: ^6.7.1
+        version: 6.7.1(@bull-board/ui@6.7.1)
       '@bull-board/fastify':
-        specifier: ^6.6.1
-        version: 6.6.1
+        specifier: ^6.7.1
+        version: 6.7.1
       '@chainflip/utils':
         specifier: ^0.4.14
         version: 0.4.14
@@ -429,16 +429,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@6.6.1':
-    resolution: {integrity: sha512-IlG60N/r/pGfZH39/IZz2rfzBXOuTpKA+5SOLX5ESqk/JPtHq2ipnaczdxSsXIcXtefmhwyhBBfQujW1bJdJlw==}
+  '@bull-board/api@6.7.1':
+    resolution: {integrity: sha512-Gv+0jo0QYBjNE0DatcUSavMLfGAOuhsLVPxJHR3QjN7Rp0s1VM/O2ExNTezDip1Q67G8fq8Tp9ZfleJZb1KP2Q==}
     peerDependencies:
-      '@bull-board/ui': 6.6.1
+      '@bull-board/ui': 6.7.1
 
-  '@bull-board/fastify@6.6.1':
-    resolution: {integrity: sha512-XLQsOHXVUDpHaRMDI3U8g50o8GihZyp0pivh9NPY6vjjp5N7zI7wclEWUjZr73lRyb+lUwLkq9GqOZM5FoNWVw==}
+  '@bull-board/fastify@6.7.1':
+    resolution: {integrity: sha512-26CwH8TjW97nPoLYck4mIfht1TR8uWQGx3dqz+Izba3RMmmYAcAyhNWKZXia14fsGqSMtBNVhBl1ut9FfTCzVg==}
 
-  '@bull-board/ui@6.6.1':
-    resolution: {integrity: sha512-L4xELOzDgUz4o7mQssGM0sef1QD41AyJ3iHbXIi8V72jj2FXeDwv63BoccZTC3GZHHNo21RkslcJvBYPkUsEnA==}
+  '@bull-board/ui@6.7.1':
+    resolution: {integrity: sha512-Bf2S81enM+KSz7ltOmWBE/Z69NtKPmYhUFbPEXooFGXs63yrR/17vzdSlraJb9jC6kMLzJhp0y61rXLdCqPTBw==}
 
   '@chainflip/eslint-config@1.0.7':
     resolution: {integrity: sha512-JoEeiqsnpN6lUC97c6sf88mbo9W+BzWIm/Wq0Mj9DjFkl5neLKh+xOSzT0E755+ZiWPy4v9LPOl8gpAtx6wGwQ==}
@@ -4097,22 +4097,22 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@6.6.1(@bull-board/ui@6.6.1)':
+  '@bull-board/api@6.7.1(@bull-board/ui@6.7.1)':
     dependencies:
-      '@bull-board/ui': 6.6.1
+      '@bull-board/ui': 6.7.1
       redis-info: 3.1.0
 
-  '@bull-board/fastify@6.6.1':
+  '@bull-board/fastify@6.7.1':
     dependencies:
-      '@bull-board/api': 6.6.1(@bull-board/ui@6.6.1)
-      '@bull-board/ui': 6.6.1
+      '@bull-board/api': 6.7.1(@bull-board/ui@6.7.1)
+      '@bull-board/ui': 6.7.1
       '@fastify/static': 8.0.4
       '@fastify/view': 10.0.2
       ejs: 3.1.10
 
-  '@bull-board/ui@6.6.1':
+  '@bull-board/ui@6.7.1':
     dependencies:
-      '@bull-board/api': 6.6.1(@bull-board/ui@6.6.1)
+      '@bull-board/api': 6.7.1(@bull-board/ui@6.7.1)
 
   '@chainflip/eslint-config@1.0.7(@eslint/js@9.18.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.19.1(eslint@9.18.0(jiti@2.3.3))(typescript@5.7.3))(eslint@9.18.0(jiti@2.3.3)))(eslint@9.18.0(jiti@2.3.3))(globals@15.14.0)(typescript-eslint@8.19.1(eslint@9.18.0(jiti@2.3.3))(typescript@5.7.3))':
     dependencies:
