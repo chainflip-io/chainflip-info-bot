@@ -74,22 +74,22 @@ importers:
         version: 9.18.0
       '@graphql-codegen/cli':
         specifier: ^5.0.3
-        version: 5.0.3(@types/node@22.10.5)(graphql@16.10.0)(typescript@5.7.3)
+        version: 5.0.3(@types/node@22.10.7)(graphql@16.10.0)(typescript@5.7.3)
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.10.0)
       '@types/node':
-        specifier: ^22.10.5
-        version: 22.10.5
+        specifier: ^22.10.7
+        version: 22.10.7
       '@types/react':
-        specifier: ^19.0.6
-        version: 19.0.6
+        specifier: ^19.0.7
+        version: 19.0.7
       '@types/react-dom':
         specifier: ^19.0.3
-        version: 19.0.3(@types/react@19.0.6)
+        version: 19.0.3(@types/react@19.0.7)
       '@vitest/coverage-v8':
         specifier: 2.1.3
-        version: 2.1.3(vitest@2.1.3(@types/node@22.10.5))
+        version: 2.1.3(vitest@2.1.3(@types/node@22.10.7))
       eslint:
         specifier: ^9.18.0
         version: 9.18.0(jiti@2.3.3)
@@ -122,7 +122,7 @@ importers:
         version: 8.19.1(eslint@9.18.0(jiti@2.3.3))(typescript@5.7.3)
       vitest:
         specifier: ^2.1.3
-        version: 2.1.3(@types/node@22.10.5)
+        version: 2.1.3(@types/node@22.10.7)
 
 packages:
 
@@ -1257,16 +1257,16 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/node@22.10.5':
-    resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
+  '@types/node@22.10.7':
+    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
 
   '@types/react-dom@19.0.3':
     resolution: {integrity: sha512-0Knk+HJiMP/qOZgMyNFamlIjw9OFCsyC2ZbigmEEyXXixgre6IQpm/4V+r3qH4GC1JPvRJKInw+on2rV6YZLeA==}
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.0.6':
-    resolution: {integrity: sha512-gIlMztcTeDgXCUj0vCBOqEuSEhX//63fW9SZtCJ+agxoQTOklwDfiEMlTWn4mR/C/UK5VHlpwsCsOyf7/hc4lw==}
+  '@types/react@19.0.7':
+    resolution: {integrity: sha512-MoFsEJKkAtZCrC1r6CM8U22GzhG7u2Wir8ons/aCKH6MBdD1ibV24zOSSkdZVUKqN5i396zG5VKLYZ3yaUZdLA==}
 
   '@types/ws@8.5.12':
     resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
@@ -4413,7 +4413,7 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.6.3
 
-  '@graphql-codegen/cli@5.0.3(@types/node@22.10.5)(graphql@16.10.0)(typescript@5.7.3)':
+  '@graphql-codegen/cli@5.0.3(@types/node@22.10.7)(graphql@16.10.0)(typescript@5.7.3)':
     dependencies:
       '@babel/generator': 7.25.9
       '@babel/template': 7.25.9
@@ -4424,12 +4424,12 @@ snapshots:
       '@graphql-tools/apollo-engine-loader': 8.0.2(graphql@16.10.0)
       '@graphql-tools/code-file-loader': 8.1.4(graphql@16.10.0)
       '@graphql-tools/git-loader': 8.0.8(graphql@16.10.0)
-      '@graphql-tools/github-loader': 8.0.2(@types/node@22.10.5)(graphql@16.10.0)
+      '@graphql-tools/github-loader': 8.0.2(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/graphql-file-loader': 8.0.2(graphql@16.10.0)
       '@graphql-tools/json-file-loader': 8.0.2(graphql@16.10.0)
       '@graphql-tools/load': 8.0.3(graphql@16.10.0)
-      '@graphql-tools/prisma-loader': 8.0.9(@types/node@22.10.5)(graphql@16.10.0)
-      '@graphql-tools/url-loader': 8.0.7(@types/node@22.10.5)(graphql@16.10.0)
+      '@graphql-tools/prisma-loader': 8.0.9(@types/node@22.10.7)(graphql@16.10.0)
+      '@graphql-tools/url-loader': 8.0.7(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/utils': 10.5.5(graphql@16.10.0)
       '@whatwg-node/fetch': 0.9.22
       chalk: 4.1.2
@@ -4437,7 +4437,7 @@ snapshots:
       debounce: 1.2.1
       detect-indent: 6.1.0
       graphql: 16.10.0
-      graphql-config: 5.1.3(@types/node@22.10.5)(graphql@16.10.0)(typescript@5.7.3)
+      graphql-config: 5.1.3(@types/node@22.10.7)(graphql@16.10.0)(typescript@5.7.3)
       inquirer: 8.2.6
       is-glob: 4.0.3
       jiti: 1.21.6
@@ -4630,14 +4630,14 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@graphql-tools/executor-http@1.1.7(@types/node@22.10.5)(graphql@16.10.0)':
+  '@graphql-tools/executor-http@1.1.7(@types/node@22.10.7)(graphql@16.10.0)':
     dependencies:
       '@graphql-tools/utils': 10.5.5(graphql@16.10.0)
       '@repeaterjs/repeater': 3.0.6
       '@whatwg-node/fetch': 0.9.22
       extract-files: 11.0.0
       graphql: 16.10.0
-      meros: 1.3.0(@types/node@22.10.5)
+      meros: 1.3.0(@types/node@22.10.7)
       tslib: 2.8.0
       value-or-promise: 1.0.12
     transitivePeerDependencies:
@@ -4676,10 +4676,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@graphql-tools/github-loader@8.0.2(@types/node@22.10.5)(graphql@16.10.0)':
+  '@graphql-tools/github-loader@8.0.2(@types/node@22.10.7)(graphql@16.10.0)':
     dependencies:
       '@ardatan/sync-fetch': 0.0.1
-      '@graphql-tools/executor-http': 1.1.7(@types/node@22.10.5)(graphql@16.10.0)
+      '@graphql-tools/executor-http': 1.1.7(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/graphql-tag-pluck': 8.3.3(graphql@16.10.0)
       '@graphql-tools/utils': 10.5.5(graphql@16.10.0)
       '@whatwg-node/fetch': 0.9.22
@@ -4747,9 +4747,9 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.8.0
 
-  '@graphql-tools/prisma-loader@8.0.9(@types/node@22.10.5)(graphql@16.10.0)':
+  '@graphql-tools/prisma-loader@8.0.9(@types/node@22.10.7)(graphql@16.10.0)':
     dependencies:
-      '@graphql-tools/url-loader': 8.0.7(@types/node@22.10.5)(graphql@16.10.0)
+      '@graphql-tools/url-loader': 8.0.7(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/utils': 10.5.5(graphql@16.10.0)
       '@types/js-yaml': 4.0.9
       '@whatwg-node/fetch': 0.9.22
@@ -4791,12 +4791,12 @@ snapshots:
       tslib: 2.8.0
       value-or-promise: 1.0.12
 
-  '@graphql-tools/url-loader@8.0.7(@types/node@22.10.5)(graphql@16.10.0)':
+  '@graphql-tools/url-loader@8.0.7(@types/node@22.10.7)(graphql@16.10.0)':
     dependencies:
       '@ardatan/sync-fetch': 0.0.1
       '@graphql-tools/delegate': 10.0.26(graphql@16.10.0)
       '@graphql-tools/executor-graphql-ws': 1.3.1(graphql@16.10.0)
-      '@graphql-tools/executor-http': 1.1.7(@types/node@22.10.5)(graphql@16.10.0)
+      '@graphql-tools/executor-http': 1.1.7(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/executor-legacy-ws': 1.1.1(graphql@16.10.0)
       '@graphql-tools/utils': 10.5.5(graphql@16.10.0)
       '@graphql-tools/wrap': 10.0.10(graphql@16.10.0)
@@ -4983,21 +4983,21 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/node@22.10.5':
+  '@types/node@22.10.7':
     dependencies:
       undici-types: 6.20.0
 
-  '@types/react-dom@19.0.3(@types/react@19.0.6)':
+  '@types/react-dom@19.0.3(@types/react@19.0.7)':
     dependencies:
-      '@types/react': 19.0.6
+      '@types/react': 19.0.7
 
-  '@types/react@19.0.6':
+  '@types/react@19.0.7':
     dependencies:
       csstype: 3.1.3
 
   '@types/ws@8.5.12':
     dependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.10.7
 
   '@typescript-eslint/eslint-plugin@8.19.1(@typescript-eslint/parser@8.19.1(eslint@9.18.0(jiti@2.3.3))(typescript@5.7.3))(eslint@9.18.0(jiti@2.3.3))(typescript@5.7.3)':
     dependencies:
@@ -5076,7 +5076,7 @@ snapshots:
       '@typescript-eslint/types': 8.19.1
       eslint-visitor-keys: 4.2.0
 
-  '@vitest/coverage-v8@2.1.3(vitest@2.1.3(@types/node@22.10.5))':
+  '@vitest/coverage-v8@2.1.3(vitest@2.1.3(@types/node@22.10.7))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -5090,7 +5090,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.3(@types/node@22.10.5)
+      vitest: 2.1.3(@types/node@22.10.7)
     transitivePeerDependencies:
       - supports-color
 
@@ -5101,13 +5101,13 @@ snapshots:
       chai: 5.1.1
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.3(@vitest/spy@2.1.3)(vite@5.4.9(@types/node@22.10.5))':
+  '@vitest/mocker@2.1.3(@vitest/spy@2.1.3)(vite@5.4.9(@types/node@22.10.7))':
     dependencies:
       '@vitest/spy': 2.1.3
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      vite: 5.4.9(@types/node@22.10.5)
+      vite: 5.4.9(@types/node@22.10.7)
 
   '@vitest/pretty-format@2.1.3':
     dependencies:
@@ -6227,13 +6227,13 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  graphql-config@5.1.3(@types/node@22.10.5)(graphql@16.10.0)(typescript@5.7.3):
+  graphql-config@5.1.3(@types/node@22.10.7)(graphql@16.10.0)(typescript@5.7.3):
     dependencies:
       '@graphql-tools/graphql-file-loader': 8.0.2(graphql@16.10.0)
       '@graphql-tools/json-file-loader': 8.0.2(graphql@16.10.0)
       '@graphql-tools/load': 8.0.3(graphql@16.10.0)
       '@graphql-tools/merge': 9.0.8(graphql@16.10.0)
-      '@graphql-tools/url-loader': 8.0.7(@types/node@22.10.5)(graphql@16.10.0)
+      '@graphql-tools/url-loader': 8.0.7(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/utils': 10.5.5(graphql@16.10.0)
       cosmiconfig: 8.3.6(typescript@5.7.3)
       graphql: 16.10.0
@@ -6734,9 +6734,9 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meros@1.3.0(@types/node@22.10.5):
+  meros@1.3.0(@types/node@22.10.7):
     optionalDependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.10.7
 
   micromatch@4.0.8:
     dependencies:
@@ -7556,12 +7556,12 @@ snapshots:
 
   value-or-promise@1.0.12: {}
 
-  vite-node@2.1.3(@types/node@22.10.5):
+  vite-node@2.1.3(@types/node@22.10.7):
     dependencies:
       cac: 6.7.14
       debug: 4.4.0
       pathe: 1.1.2
-      vite: 5.4.9(@types/node@22.10.5)
+      vite: 5.4.9(@types/node@22.10.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -7573,19 +7573,19 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.9(@types/node@22.10.5):
+  vite@5.4.9(@types/node@22.10.7):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.24.0
     optionalDependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.10.7
       fsevents: 2.3.3
 
-  vitest@2.1.3(@types/node@22.10.5):
+  vitest@2.1.3(@types/node@22.10.7):
     dependencies:
       '@vitest/expect': 2.1.3
-      '@vitest/mocker': 2.1.3(@vitest/spy@2.1.3)(vite@5.4.9(@types/node@22.10.5))
+      '@vitest/mocker': 2.1.3(@vitest/spy@2.1.3)(vite@5.4.9(@types/node@22.10.7))
       '@vitest/pretty-format': 2.1.3
       '@vitest/runner': 2.1.3
       '@vitest/snapshot': 2.1.3
@@ -7600,11 +7600,11 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
-      vite: 5.4.9(@types/node@22.10.5)
-      vite-node: 2.1.3(@types/node@22.10.5)
+      vite: 5.4.9(@types/node@22.10.7)
+      vite-node: 2.1.3(@types/node@22.10.7)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.10.7
     transitivePeerDependencies:
       - less
       - lightningcss
