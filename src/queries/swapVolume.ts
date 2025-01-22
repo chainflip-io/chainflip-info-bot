@@ -42,7 +42,7 @@ const getSwapVolumeStatsQuery = gql(/* GraphQL */ `
       filter: { timestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
     ) {
       nodes {
-        amount
+        totalAmount
       }
     }
   }
@@ -75,7 +75,7 @@ const getLpFeeInfo = gql(/* GraphQL */ `
 export type SwapStats = {
   swapVolume: BigNumber;
   networkFees: BigNumber;
-  flipBurned: BigNumber | null;
+  totalFlipBurned: BigNumber | null;
   lpFees: BigNumber;
   boostFees: BigNumber;
 };
@@ -103,9 +103,9 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     new BigNumber(0),
   );
 
-  const flipBurned = BigNumber.sum(
+  const totalFlipBurned = BigNumber.sum(
     0,
-    ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.amount),
+    ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.totalAmount),
   ).shiftedBy(-assetConstants.Flip.decimals);
 
   const lpFees = BigNumber.sum(
@@ -117,7 +117,7 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
   return {
     swapVolume,
     networkFees,
-    flipBurned: flipBurned.gt(0) ? flipBurned : null,
+    totalFlipBurned: totalFlipBurned.gt(0) ? totalFlipBurned : null,
     lpFees,
     boostFees,
   };

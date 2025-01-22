@@ -7,7 +7,7 @@ const mockGetNewBurnResponse = (id: number, timestamp?: string, usdValue?: strin
   burns: {
     nodes: [
       {
-        amount: '12345678901234567890123',
+        totalAmount: '12345678901234567890123',
         event: {
           block: {
             timestamp: timestamp ?? subHours(new Date(), 1).toISOString(),
