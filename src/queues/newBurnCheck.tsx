@@ -43,12 +43,12 @@ export const getNextJobData = async (
 };
 
 const buildMessages = ({
-  amount,
+  totalAmount,
   valueUsd,
   blockHeight,
   indexInBlock,
 }: {
-  amount: BigNumber;
+  totalAmount: BigNumber;
   valueUsd?: string | null;
   blockHeight: number;
   indexInBlock: number;
@@ -60,7 +60,7 @@ const buildMessages = ({
       message: renderToStaticMarkup(
         <>
           <Line>
-            🔥 Burned {amount.toFixed(2)} FLIP{valueUsd && ` (${formatUsdValue(valueUsd)})`}!
+            🔥 Burned {totalAmount.toFixed(2)} FLIP{valueUsd && ` (${formatUsdValue(valueUsd)})`}!
           </Line>
           <Line>
             <ExplorerLink
@@ -84,7 +84,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const jobs: DispatchJobArgs[] = [await getNextJobData(latestBurn?.id ?? job.data.lastBurnId)];
   if (latestBurn) {
     const {
-      amount,
+      totalAmount,
       valueUsd,
       event: {
         block: { timestamp },
@@ -94,7 +94,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     } = latestBurn;
     // We just want to send the message if the burn happened in the last 12 hours
     if (Date.now() - new Date(timestamp).getTime() <= hoursToMilliseconds(12)) {
-      jobs.push(...buildMessages({ amount, valueUsd, blockHeight: blockId, indexInBlock }));
+      jobs.push(...buildMessages({ totalAmount, valueUsd, blockHeight: blockId, indexInBlock }));
     }
   }
 

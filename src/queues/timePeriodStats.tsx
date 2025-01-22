@@ -94,9 +94,9 @@ const buildMessages = ({
               ⚡️ <Bold platform={platform}>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
             </Line>
           )}
-          {stats.flipBurned && (
+          {stats.totalFlipBurned && (
             <Line>
-              🔥 <Bold platform={platform}>{stats.flipBurned.toFixed(2)}</Bold> FLIP burned
+              🔥 <Bold platform={platform}>{stats.totalFlipBurned.toFixed(2)}</Bold> FLIP burned
             </Line>
           )}
           <Trailer platform={platform} />

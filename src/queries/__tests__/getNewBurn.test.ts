@@ -9,7 +9,7 @@ describe('getNewBurns', () => {
         nodes: [
           {
             id: 11,
-            amount: '123456789012345',
+            totalAmount: '123456789012345',
             valueUsd: '4.21',
             event: {
               blockId: 1,
@@ -25,7 +25,6 @@ describe('getNewBurns', () => {
 
     expect(await getNewBurns(10)).toMatchInlineSnapshot(`
       {
-        "amount": "0.000123456789012345",
         "event": {
           "block": {
             "timestamp": "2024-10-31T15:15:00.000Z",
@@ -34,6 +33,7 @@ describe('getNewBurns', () => {
           "indexInBlock": 1,
         },
         "id": 11,
+        "totalAmount": "0.000123456789012345",
         "valueUsd": "4.21",
       }
     `);

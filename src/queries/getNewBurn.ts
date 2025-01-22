@@ -9,7 +9,7 @@ const getNewBurnQuery = gql(/* GraphQL */ `
     burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC, first: 1) {
       nodes {
         id
-        amount
+        totalAmount
         valueUsd
         event: eventByEventId {
           blockId
@@ -34,6 +34,6 @@ export default async function getNewBurn(latestBurnId: number) {
   const node = result.burns.nodes[0];
   return {
     ...node,
-    amount: new BigNumber(node.amount).shiftedBy(-assetConstants.Flip.decimals),
+    totalAmount: new BigNumber(node.totalAmount).shiftedBy(-assetConstants.Flip.decimals),
   };
 }
