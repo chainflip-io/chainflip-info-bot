@@ -7,9 +7,9 @@ const config = {
       'https://chainflip-cache-backspin.staging/graphql': {},
     },
     {
-      'http://localhost:3001/graphql': {},
+      // 'http://localhost:3001/graphql': {},
       // 'https://processor.staging/graphql': {},
-      // 'https://processor-backspin.staging/graphql': {},
+      'https://processor-backspin.staging/graphql': {},
     },
     {
       // 'https://chainflip-lp-service.sisyphos.staging/graphql': {},
