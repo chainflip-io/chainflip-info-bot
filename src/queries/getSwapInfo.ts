@@ -16,10 +16,26 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       depositAmount
       depositValueUsd
       sourceChain
-      numberOfChunks
+      fokMinPriceX128
+      dcaNumberOfChunks
+      dcaChunkIntervalBlocks
       destinationAsset
       sourceAsset
       effectiveBoostFeeBps
+      broker: brokerByBrokerId {
+        account: accountByAccountId {
+          alias
+          idSs58
+        }
+      }
+      beneficiaries: swapRequestBeneficiariesBySwapRequestId(condition: { type: AFFILIATE }) {
+        nodes {
+          account: accountByAccountId {
+            idSs58
+            alias
+          }
+        }
+      }
       egress: egressByEgressId {
         amount
         valueUsd
@@ -34,22 +50,6 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
         valueUsd
       }
       swapChannel: swapChannelByDepositChannelId {
-        beneficiaries: swapChannelBeneficiariesByDepositChannelId(condition: { type: AFFILIATE }) {
-          nodes {
-            account: accountByAccountId {
-              idSs58
-              alias
-            }
-          }
-        }
-        broker: brokerByBrokerId {
-          account: accountByAccountId {
-            alias
-            idSs58
-          }
-        }
-        chunkIntervalBlocks
-        fokMinPriceX128
         issuedBlockTimestamp
       }
       preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {
@@ -98,25 +98,24 @@ export default async function getSwapInfo(nativeId: string) {
     throw new UnrecoverableError('Deposit amount is missing');
   }
 
-  const { sourceChain, sourceAsset, destinationAsset, completedEventId } = swap;
+  const { sourceChain, sourceAsset, destinationAsset, completedEventId, fokMinPriceX128 } = swap;
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;
   const egressTimestamp = swap.egress?.scheduledEvent.block.timestamp;
-  const fokMinPriceX128 = swap.swapChannel?.fokMinPriceX128;
   const completedAt = swap.completedEvent?.block.timestamp;
 
   const egressValueUsd = toUsdAmount(swap.egress?.valueUsd);
-  const broker = swap.swapChannel?.broker.account;
-  const numberOfChunks = swap.numberOfChunks ?? 1;
+  const broker = swap.broker?.account;
+  const numberOfChunks = swap.dcaNumberOfChunks;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
-  const affiliatesIdsAndAliases = swap.swapChannel?.beneficiaries.nodes
-    ?.map(({ account }) => getBrokerIdAndAlias(account))
+  const affiliatesIdsAndAliases = swap.beneficiaries?.nodes
+    .map(({ account }) => getBrokerIdAndAlias(account))
     .filter(isNotNullish);
 
-  const chunkIntervalBlocks = swap.swapChannel?.chunkIntervalBlocks ?? 2;
+  const chunkIntervalBlocks = swap.dcaChunkIntervalBlocks ?? 2;
 
   const dcaChunks =
     numberOfExecutedChunks && numberOfChunks > 1
