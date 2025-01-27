@@ -5,10 +5,19 @@
     "depositAmount": "37803801527682664086147",
     "depositValueUsd": "48254.634793951400000000000000000000",
     "sourceChain": "Ethereum",
-    "numberOfChunks": 17,
+    "fokMinPriceX128": "151129183703678337672106166134591495",
+    "dcaNumberOfChunks": 17,
+    "dcaChunkIntervalBlocks": 2,
     "destinationAsset": "Eth",
     "sourceAsset": "Flip",
     "effectiveBoostFeeBps": null,
+    "broker": {
+      "account": {
+        "alias": "Chainflip Swapping",
+        "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+      }
+    },
+    "beneficiaries": { "nodes": [] },
     "egress": {
       "amount": "5939236375727962094",
       "valueUsd": "17206.136081300800000000000000000000",
@@ -20,18 +29,7 @@
       "amount": "24455099318048455814250",
       "valueUsd": "31269.457769869500000000000000000000"
     },
-    "swapChannel": {
-      "beneficiaries": { "nodes": [] },
-      "broker": {
-        "account": {
-          "alias": "Chainflip Swapping",
-          "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
-        }
-      },
-      "chunkIntervalBlocks": 2,
-      "fokMinPriceX128": "151129183703678337672106166134591495",
-      "issuedBlockTimestamp": "2024-11-07T21:35:18+00:00"
-    },
+    "swapChannel": { "issuedBlockTimestamp": "2024-11-07T21:35:18+00:00" },
     "preDepositBlock": { "stateChainTimestamp": "2024-11-07T21:35:30+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-11-07T21:35:42+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-11-07T21:53:48+00:00" } },
