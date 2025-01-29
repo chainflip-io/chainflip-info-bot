@@ -42,7 +42,7 @@
   "dependencies": {
     "@bull-board/api": "^6.7.1",
     "@bull-board/fastify": "^6.7.1",
-    "@chainflip/utils": "^0.4.15",
+    "@chainflip/utils": "^0.4.16",
     "@date-fns/utc": "^2.1.0",
     "axios": "^1.7.9",
     "bignumber.js": "^9.1.2",
