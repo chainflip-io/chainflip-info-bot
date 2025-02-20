@@ -76,8 +76,8 @@ const createQueue = async <N extends JobName>(
     logRejections(name, processJob(dispatchJobs)),
     {
       connection: redis,
-      removeOnComplete: { count: 1000 },
-      removeOnFail: { count: 5000 },
+      removeOnComplete: { count: 100 },
+      removeOnFail: { count: 100 },
     },
   );
 
