@@ -5,7 +5,7 @@ import { explorerClient } from '../server.js';
 const getNewSwapRequestsQuery = gql(/* GraphQL */ `
   query GetNewSwapRequestsQuery($nativeId: BigInt!) {
     swapRequests: allSwapRequests(
-      filter: { nativeId: { greaterThan: $nativeId }, type: { in: [REGULAR, CCM] } }
+      filter: { nativeId: { greaterThan: $nativeId }, type: { in: [REGULAR, LEGACY_CCM] } }
     ) {
       nodes {
         nativeId
