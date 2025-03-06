@@ -10,10 +10,12 @@ exports[`newSwapAlert > processJob > dispatches a job to send a message 1`] = `
           "usdValue": 5611.3799573378,
         },
         "message": "New swap detected: <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
+Swapping <strong>FLIP on Ethereum</strong> for <strong>USDT on Ethereum</strong>
 📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
 Deposit address: <strong>0xf05914614bc56915ce5dac12d8eabdbd4bf1e470</strong>
-📤 <strong>USDT on Ethereum</strong> ($5,611.38)
-Destination address: <strong>0x4c632678b9a2c2f0ca1472d17c683aab6dc16523</strong>",
+Destination address: <strong>0x4c632678b9a2c2f0ca1472d17c683aab6dc16523</strong>
+Transaction refs:
+<a href="https://etherscan.io/tx/0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4">0x17…36e4</a>",
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -25,10 +27,12 @@ Destination address: <strong>0x4c632678b9a2c2f0ca1472d17c683aab6dc16523</strong>
           "usdValue": 5611.3799573378,
         },
         "message": "New swap detected: **[#77697](https://scan.chainflip.io/swaps/77697)**
+Swapping **FLIP on Ethereum** for **USDT on Ethereum**
 📥 **5,000 FLIP on Ethereum** ($5,568.07)
 Deposit address: **0xf05914614bc56915ce5dac12d8eabdbd4bf1e470**
-📤 **USDT on Ethereum** ($5,611.38)
-Destination address: **0x4c632678b9a2c2f0ca1472d17c683aab6dc16523**",
+Destination address: **0x4c632678b9a2c2f0ca1472d17c683aab6dc16523**
+Transaction refs:
+[0x17…36e4](https://etherscan.io/tx/0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4)",
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -40,10 +44,12 @@ Destination address: **0x4c632678b9a2c2f0ca1472d17c683aab6dc16523**",
           "usdValue": 5611.3799573378,
         },
         "message": "New swap detected: https://scan.chainflip.io/swaps/77697
+Swapping FLIP on Ethereum for USDT on Ethereum
 📥 5,000 FLIP on Ethereum ($5,568.07)
 Deposit address: 0xf05914614bc56915ce5dac12d8eabdbd4bf1e470
-📤 USDT on Ethereum ($5,611.38)
-Destination address: 0x4c632678b9a2c2f0ca1472d17c683aab6dc16523",
+Destination address: 0x4c632678b9a2c2f0ca1472d17c683aab6dc16523
+Transaction refs:
+https://etherscan.io/tx/0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4",
         "platform": "twitter",
       },
       "name": "messageRouter",

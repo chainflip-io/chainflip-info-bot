@@ -33,6 +33,12 @@ describe('swapInfo', () => {
         "refundValueUsd": null,
         "requestId": "77697",
         "sourceAsset": "Flip",
+        "transactionRefs": [
+          {
+            "chain": "Ethereum",
+            "ref": "0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4",
+          },
+        ],
       }
     `);
 
@@ -72,6 +78,12 @@ describe('swapInfo', () => {
         "refundValueUsd": null,
         "requestId": "98822",
         "sourceAsset": "Btc",
+        "transactionRefs": [
+          {
+            "chain": "Bitcoin",
+            "ref": "166532943ebf0f00a6419329b2d81d07d8a83eec370d727464950ef4d6191c99",
+          },
+        ],
       }
     `);
 
@@ -110,6 +122,12 @@ describe('swapInfo', () => {
         "refundValueUsd": "22.0970806038",
         "requestId": "103706",
         "sourceAsset": "Eth",
+        "transactionRefs": [
+          {
+            "chain": "Ethereum",
+            "ref": "0xb689f685c527573b19141a33a4914dc0d72c13ab525540d76536e79fb0814fb3",
+          },
+        ],
       }
     `);
 

@@ -77,6 +77,11 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           valueUsd
         }
       }
+      transactionRefs: transactionRefsBySwapRequestId {
+        nodes {
+          ref
+        }
+      }
     }
   }
 `);
@@ -211,5 +216,6 @@ export default async function getSwapInfo(nativeId: string) {
     depositAddress: swap.swapChannel?.depositAddress,
     destinationAddress: swap.destinationAddress,
     freshness,
+    transactionRefs: swap.transactionRefs.nodes.map(({ ref }) => ({ ref, chain: sourceChain })),
   };
 }

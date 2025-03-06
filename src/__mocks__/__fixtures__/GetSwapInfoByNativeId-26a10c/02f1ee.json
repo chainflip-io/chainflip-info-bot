@@ -46,6 +46,7 @@
       "block": { "timestamp": "2024-11-10T18:45:00.001+00:00" }
     },
     "executedSwaps": { "totalCount": 1 },
-    "boostFee": { "nodes": [] }
+    "boostFee": { "nodes": [] },
+    "transactionRefs": { "nodes": [{ "ref": "23354241-3" }] }
   }
 }

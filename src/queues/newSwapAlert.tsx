@@ -1,3 +1,4 @@
+import { abbreviate } from '@chainflip/utils/string';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type JobConfig, type DispatchJobArgs, type JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, TokenAmount, UsdValue } from '../channels/formatting.js';
@@ -40,6 +41,10 @@ const buildMessageData = ({
           </Bold>
         </Line>
         <Line>
+          Swapping <Bold platform={platform}>{humanFriendlyAsset[swapInfo.sourceAsset]}</Bold> for{' '}
+          <Bold platform={platform}>{humanFriendlyAsset[swapInfo.destinationAsset]}</Bold>
+        </Line>
+        <Line>
           📥{' '}
           <Bold platform={platform}>
             <TokenAmount amount={swapInfo.depositAmount} asset={swapInfo.sourceAsset} />
@@ -52,12 +57,18 @@ const buildMessageData = ({
           </Line>
         )}
         <Line>
-          📤 <Bold platform={platform}>{humanFriendlyAsset[swapInfo.destinationAsset]}</Bold>
-          <UsdValue amount={swapInfo.egressValueUsd} />
-        </Line>
-        <Line>
           Destination address: <Bold platform={platform}>{swapInfo.destinationAddress}</Bold>
         </Line>
+        {swapInfo.transactionRefs.length > 0 && (
+          <>
+            <Line>Transaction refs:</Line>
+            {swapInfo.transactionRefs.map(({ ref, chain }) => (
+              <ExplorerLink key={ref} path={ref} chain={chain} platform={platform} prefer="link">
+                {abbreviate(ref)}
+              </ExplorerLink>
+            ))}
+          </>
+        )}
       </>,
     ).trimEnd();
 

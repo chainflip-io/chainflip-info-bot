@@ -38,6 +38,13 @@
     "depositBlock": { "stateChainTimestamp": "2024-11-07T21:35:42+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-11-07T21:53:48+00:00" } },
     "executedSwaps": { "totalCount": 6 },
-    "boostFee": { "nodes": [] }
+    "boostFee": { "nodes": [] },
+    "transactionRefs": {
+      "nodes": [
+        {
+          "ref": "0xc0dd555cb334265e2913516620553f8cca634f93178f384e4f53f0aed36c95a4"
+        }
+      ]
+    }
   }
 }

@@ -37,6 +37,13 @@
     "executedSwaps": { "totalCount": 26 },
     "boostFee": {
       "nodes": [{ "valueUsd": "39.311566445600000000000000000000" }]
+    },
+    "transactionRefs": {
+      "nodes": [
+        {
+          "ref": "607b8f39e7ff1ade338b78ffb77f44259623d185055efdbd906faf410b888693"
+        }
+      ]
     }
   }
 }
