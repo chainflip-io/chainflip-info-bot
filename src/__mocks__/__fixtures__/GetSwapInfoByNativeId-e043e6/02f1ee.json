@@ -9,6 +9,7 @@
     "dcaNumberOfChunks": 1,
     "dcaChunkIntervalBlocks": null,
     "destinationAsset": "ArbUsdc",
+    "destinationAddress": "0x714bec7a63fa624ed7a250f894539bd920965b6c",
     "sourceAsset": "Dot",
     "effectiveBoostFeeBps": null,
     "broker": {
@@ -35,7 +36,10 @@
       }
     },
     "refundEgress": null,
-    "swapChannel": { "issuedBlockTimestamp": "2024-11-10T18:44:12+00:00" },
+    "swapChannel": {
+      "issuedBlockTimestamp": "2024-11-10T18:44:12+00:00",
+      "depositAddress": "16TYoHgS5aE6r4UySghCAEh2ZHouvzGLQ6wg8AHc6fXsmZN3"
+    },
     "preDepositBlock": { "stateChainTimestamp": "2024-11-10T18:44:42+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-11-10T18:44:48+00:00" },
     "completedEvent": {

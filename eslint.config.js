@@ -15,4 +15,9 @@ export default [
       reportUnusedDisableDirectives: 'error',
     },
   },
+  {
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'off',
+    },
+  },
 ];

@@ -44,10 +44,10 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   );
   const newSwapRequests = await getNewSwapRequests(job.data.lastSwapRequestId);
 
-  const swapRequestJobs = newSwapRequests.map((id) => ({
-    name: 'swapStatusCheck' as const,
-    data: { swapRequestId: id },
-  }));
+  const swapRequestJobs = newSwapRequests.flatMap((id) => [
+    { name: 'swapStatusCheck' as const, data: { swapRequestId: id } },
+    { name: 'newSwapAlert' as const, data: { swapRequestId: id } },
+  ]);
 
   const latestSwapRequestId = newSwapRequests
     .map((id) => BigInt(id))

@@ -12,7 +12,7 @@ export default {
       botToken: 'discord bot token',
       channels: [
         {
-          filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+          filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1 }],
           channelId: 'discord channel id 1',
           name: 'discord 1',
         },
@@ -43,7 +43,7 @@ export default {
         {
           enabled: true,
           channelId: '567',
-          filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+          filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1 }],
           name: 'telegram 3',
         },
       ],

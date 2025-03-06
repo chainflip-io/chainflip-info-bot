@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`newSwapAlert > processJob > dispatches a job to send a message 1`] = `
+[
+  [
+    {
+      "data": {
+        "filterData": {
+          "name": "SWAP_COMPLETED",
+          "usdValue": 5611.3799573378,
+        },
+        "message": "New swap detected: <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
+📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
+Deposit address: <strong>0xf05914614bc56915ce5dac12d8eabdbd4bf1e470</strong>
+📤 <strong>USDT on Ethereum</strong> ($5,611.38)
+Destination address: <strong>0x4c632678b9a2c2f0ca1472d17c683aab6dc16523</strong>",
+        "platform": "telegram",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "SWAP_COMPLETED",
+          "usdValue": 5611.3799573378,
+        },
+        "message": "New swap detected: **[#77697](https://scan.chainflip.io/swaps/77697)**
+📥 **5,000 FLIP on Ethereum** ($5,568.07)
+Deposit address: **0xf05914614bc56915ce5dac12d8eabdbd4bf1e470**
+📤 **USDT on Ethereum** ($5,611.38)
+Destination address: **0x4c632678b9a2c2f0ca1472d17c683aab6dc16523**",
+        "platform": "discord",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "SWAP_COMPLETED",
+          "usdValue": 5611.3799573378,
+        },
+        "message": "New swap detected: https://scan.chainflip.io/swaps/77697
+📥 5,000 FLIP on Ethereum ($5,568.07)
+Deposit address: 0xf05914614bc56915ce5dac12d8eabdbd4bf1e470
+📤 USDT on Ethereum ($5,611.38)
+Destination address: 0x4c632678b9a2c2f0ca1472d17c683aab6dc16523",
+        "platform": "twitter",
+      },
+      "name": "messageRouter",
+    },
+  ],
+]
+`;

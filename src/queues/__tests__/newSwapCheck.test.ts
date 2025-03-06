@@ -98,9 +98,21 @@ describe('newSwapCheck', () => {
               },
               {
                 "data": {
+                  "swapRequestId": "9",
+                },
+                "name": "newSwapAlert",
+              },
+              {
+                "data": {
                   "swapRequestId": "3",
                 },
                 "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "3",
+                },
+                "name": "newSwapAlert",
               },
               {
                 "data": {
@@ -110,9 +122,21 @@ describe('newSwapCheck', () => {
               },
               {
                 "data": {
+                  "swapRequestId": "2",
+                },
+                "name": "newSwapAlert",
+              },
+              {
+                "data": {
                   "swapRequestId": "4",
                 },
                 "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "4",
+                },
+                "name": "newSwapAlert",
               },
               {
                 "data": {
@@ -122,9 +146,21 @@ describe('newSwapCheck', () => {
               },
               {
                 "data": {
+                  "swapRequestId": "5",
+                },
+                "name": "newSwapAlert",
+              },
+              {
+                "data": {
                   "swapRequestId": "7",
                 },
                 "name": "swapStatusCheck",
+              },
+              {
+                "data": {
+                  "swapRequestId": "7",
+                },
+                "name": "newSwapAlert",
               },
             ],
           ],

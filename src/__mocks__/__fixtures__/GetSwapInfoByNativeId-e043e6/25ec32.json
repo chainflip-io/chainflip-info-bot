@@ -9,6 +9,7 @@
     "dcaNumberOfChunks": 17,
     "dcaChunkIntervalBlocks": 2,
     "destinationAsset": "Eth",
+    "destinationAddress": "0x86d069b5f3ebf13bbb62e895aae29e1ffaf97861",
     "sourceAsset": "Flip",
     "effectiveBoostFeeBps": null,
     "broker": {
@@ -29,7 +30,10 @@
       "amount": "24455099318048455814250",
       "valueUsd": "31269.457769869500000000000000000000"
     },
-    "swapChannel": { "issuedBlockTimestamp": "2024-11-07T21:35:18+00:00" },
+    "swapChannel": {
+      "issuedBlockTimestamp": "2024-11-07T21:35:18+00:00",
+      "depositAddress": "0xe3a1b5858c19b19f4fb7c9b5a2325e695fe1ff8d"
+    },
     "preDepositBlock": { "stateChainTimestamp": "2024-11-07T21:35:30+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-11-07T21:35:42+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-11-07T21:53:48+00:00" } },

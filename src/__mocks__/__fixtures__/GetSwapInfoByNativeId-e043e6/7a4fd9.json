@@ -9,6 +9,7 @@
     "dcaNumberOfChunks": 1,
     "dcaChunkIntervalBlocks": null,
     "destinationAsset": "Eth",
+    "destinationAddress": "0xc36fa10986e21eed094a674ec4e3b75ef4ba4f05",
     "sourceAsset": "Btc",
     "effectiveBoostFeeBps": 5,
     "broker": {
@@ -26,7 +27,10 @@
       }
     },
     "refundEgress": null,
-    "swapChannel": { "issuedBlockTimestamp": "2024-11-05T11:18:00+00:00" },
+    "swapChannel": {
+      "issuedBlockTimestamp": "2024-11-05T11:18:00+00:00",
+      "depositAddress": "bc1pmwr06j590e2at339n5tx9th2f457sdagl4q88vkeyjhrdwa9jfasyc5ftn"
+    },
     "preDepositBlock": { "stateChainTimestamp": "2024-11-05T10:46:42+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-11-05T11:35:36+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-11-05T11:35:54+00:00" } },

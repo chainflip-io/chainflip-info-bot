@@ -9,6 +9,7 @@
     "dcaNumberOfChunks": 26,
     "dcaChunkIntervalBlocks": 2,
     "destinationAsset": "Usdc",
+    "destinationAddress": "0x8103574dfd8e010d97a85ff3f082f464904bc4b9",
     "sourceAsset": "Btc",
     "effectiveBoostFeeBps": 4,
     "broker": {
@@ -26,7 +27,10 @@
       }
     },
     "refundEgress": null,
-    "swapChannel": { "issuedBlockTimestamp": "2024-11-08T15:04:30+00:00" },
+    "swapChannel": {
+      "issuedBlockTimestamp": "2024-11-08T15:04:30+00:00",
+      "depositAddress": "bc1pjpjr7l50ke3y7lzet06evj0c99utu7u53g0k9w2mksde2xnsz83qz5kms2"
+    },
     "preDepositBlock": { "stateChainTimestamp": "2024-11-08T15:13:48+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-11-08T15:23:18+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-11-08T15:28:36+00:00" } },

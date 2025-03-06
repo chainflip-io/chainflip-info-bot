@@ -1,7 +1,6 @@
 import { unreachable } from '@chainflip/utils/assertion';
 import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
-import { differenceInMinutes } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import {
@@ -14,7 +13,6 @@ import {
 } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { BLOCK_TIME_IN_SECONDS } from '../consts.js';
-import env from '../env.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
 import logger from '../utils/logger.js';
 
@@ -32,22 +30,6 @@ declare global {
     [name]: Data;
   }
 }
-
-const isFresh = (swapInfo: SwapInfo) => {
-  const completedAtTimestamp = swapInfo?.completedAt;
-
-  if (!completedAtTimestamp) return false;
-
-  return (
-    differenceInMinutes(new Date(), Date.parse(completedAtTimestamp)) <= env.SWAP_MAX_AGE_IN_MINUTES
-  );
-};
-
-const getSwapStatus = (swapInfo: SwapInfo) => {
-  if (swapInfo.completedEventId) return isFresh(swapInfo) ? 'fresh' : 'stale';
-
-  return 'pending';
-};
 
 const emoji = (depositValueUsd: BigNumber | null) => {
   if (!depositValueUsd) return null;
@@ -174,7 +156,7 @@ const buildMessageData = ({
       data: {
         platform,
         message,
-        filterData: { name: 'NEW_SWAP', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
+        filterData: { name: 'SWAP_COMPLETED', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
       },
     };
   });
@@ -193,7 +175,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     return;
   }
 
-  const status = getSwapStatus(swapInfo);
+  const status = swapInfo.freshness;
 
   if (status === 'fresh') {
     jobs.push(...buildMessageData({ swapInfo }));

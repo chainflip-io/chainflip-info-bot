@@ -10,7 +10,7 @@ vi.mock('../env.js', () => ({
         channels: [
           {
             channelId: 'channel1',
-            filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+            filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1 }],
             name: 'discord 1',
           },
           {
@@ -40,7 +40,7 @@ vi.mock('../env.js', () => ({
           {
             enabled: true,
             channelId: '567',
-            filters: [{ name: 'NEW_SWAP', minUsdValue: 1 }],
+            filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1 }],
             name: 'telegram 3',
           },
         ],
@@ -62,7 +62,6 @@ vi.mock('../env.js', () => ({
 }));
 
 describe('Config', () => {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
   let Config: typeof import('../config.js').default;
 
   beforeEach(() => {
@@ -85,7 +84,7 @@ describe('Config', () => {
             "filters": [
               {
                 "minUsdValue": 1,
-                "name": "NEW_SWAP",
+                "name": "SWAP_COMPLETED",
               },
             ],
             "key": "telegram:telegram_3",
@@ -98,7 +97,7 @@ describe('Config', () => {
             "filters": [
               {
                 "minUsdValue": 1,
-                "name": "NEW_SWAP",
+                "name": "SWAP_COMPLETED",
               },
             ],
             "key": "discord:discord_1",
@@ -167,17 +166,17 @@ describe('Config', () => {
       ).toBe(false);
     });
 
-    it('works with NEW_SWAP', () => {
+    it('works with SWAP_COMPLETED', () => {
       expect(
         Config.canSend(
-          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', minUsdValue: 100 }] },
-          { name: 'NEW_SWAP', usdValue: 50 },
+          { key: 'discord:1234', filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 100 }] },
+          { name: 'SWAP_COMPLETED', usdValue: 50 },
         ),
       ).toBe(false);
       expect(
         Config.canSend(
-          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', minUsdValue: 100 }] },
-          { name: 'NEW_SWAP', usdValue: 150 },
+          { key: 'discord:1234', filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 100 }] },
+          { name: 'SWAP_COMPLETED', usdValue: 150 },
         ),
       ).toBe(true);
     });

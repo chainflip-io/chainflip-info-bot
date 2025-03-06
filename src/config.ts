@@ -6,13 +6,14 @@ import type { TelegramConfig } from './channels/telegram.js';
 import type { TwitterConfig } from './channels/twitter.js';
 import env from './env.js';
 
-const filters = z.union([
+const filters = z.discriminatedUnion('name', [
   z.object({ name: z.literal('DAILY_SWAP_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_SWAP_SUMMARY') }),
   z.object({ name: z.literal('DAILY_LP_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_LP_SUMMARY') }),
   z.object({ name: z.literal('DAILY_BOOST_SUMMARY') }),
   z.object({ name: z.literal('WEEKLY_BOOST_SUMMARY') }),
+  z.object({ name: z.literal('SWAP_COMPLETED'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_SWAP'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),
@@ -21,8 +22,8 @@ const filters = z.union([
 export type Filter = z.infer<typeof filters>;
 
 export type FilterData =
-  | Exclude<Filter, { name: 'NEW_SWAP' }>
-  | { name: 'NEW_SWAP'; usdValue: number };
+  | Exclude<Filter, { name: 'SWAP_COMPLETED' | 'NEW_SWAP' }>
+  | { name: 'SWAP_COMPLETED' | 'NEW_SWAP'; usdValue: number };
 
 export const platforms = ['telegram', 'discord', 'twitter'] as const;
 
@@ -188,8 +189,10 @@ export default class Config {
   static canSend(channel: Channel, filterData: FilterData): boolean {
     if (channel.filters === undefined) return true;
 
-    if (filterData.name === 'NEW_SWAP') {
-      const filter = channel.filters.find((rule) => rule.name === filterData.name);
+    if (filterData.name === 'SWAP_COMPLETED' || filterData.name === 'NEW_SWAP') {
+      const filter = channel.filters.find((rule) => rule.name === filterData.name) as
+        | Extract<Filter, { name: (typeof filterData)['name'] }>
+        | undefined;
       return filter !== undefined && filterData.usdValue >= filter.minUsdValue;
     }
 

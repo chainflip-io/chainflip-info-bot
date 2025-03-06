@@ -9,6 +9,7 @@
     "dcaNumberOfChunks": 2,
     "dcaChunkIntervalBlocks": 2,
     "destinationAsset": "Usdt",
+    "destinationAddress": "0x4c632678b9a2c2f0ca1472d17c683aab6dc16523",
     "sourceAsset": "Flip",
     "effectiveBoostFeeBps": null,
     "broker": {
@@ -26,7 +27,10 @@
       }
     },
     "refundEgress": null,
-    "swapChannel": { "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00" },
+    "swapChannel": {
+      "issuedBlockTimestamp": "2024-10-25T12:39:06+00:00",
+      "depositAddress": "0xf05914614bc56915ce5dac12d8eabdbd4bf1e470"
+    },
     "preDepositBlock": { "stateChainTimestamp": "2024-10-25T12:39:30+00:00" },
     "depositBlock": { "stateChainTimestamp": "2024-10-25T12:39:42+00:00" },
     "completedEvent": { "block": { "timestamp": "2024-10-25T12:41:30+00:00" } },
