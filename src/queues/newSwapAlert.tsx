@@ -1,4 +1,3 @@
-import { abbreviate } from '@chainflip/utils/string';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type JobConfig, type DispatchJobArgs, type JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, TokenAmount, UsdValue } from '../channels/formatting.js';
@@ -63,9 +62,12 @@ const buildMessageData = ({
           <>
             <Line>Transaction refs:</Line>
             {swapInfo.transactionRefs.map(({ ref, chain }) => (
-              <ExplorerLink key={ref} path={ref} chain={chain} platform={platform} prefer="link">
-                {abbreviate(ref)}
-              </ExplorerLink>
+              <Line key={ref}>
+                {ref}{' '}
+                <ExplorerLink key={ref} path={ref} chain={chain} platform={platform} prefer="text">
+                  [view]
+                </ExplorerLink>
+              </Line>
             ))}
           </>
         )}
