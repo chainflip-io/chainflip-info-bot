@@ -7,7 +7,7 @@ exports[`newSwapAlert > processJob > dispatches a job to send a message 1`] = `
       "data": {
         "filterData": {
           "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
+          "usdValue": 5568.0715811145,
         },
         "message": "New swap detected: <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
 Swapping <strong>FLIP on Ethereum</strong> for <strong>USDT on Ethereum</strong>
@@ -27,7 +27,7 @@ Transaction refs:
       "data": {
         "filterData": {
           "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
+          "usdValue": 5568.0715811145,
         },
         "message": "New swap detected: **[#77697](https://scan.chainflip.io/swaps/77697)**
 Swapping **FLIP on Ethereum** for **USDT on Ethereum**
@@ -47,7 +47,7 @@ Transaction refs:
       "data": {
         "filterData": {
           "name": "NEW_SWAP",
-          "usdValue": 5611.3799573378,
+          "usdValue": 5568.0715811145,
         },
         "message": "New swap detected: https://scan.chainflip.io/swaps/77697
 Swapping FLIP on Ethereum for USDT on Ethereum
