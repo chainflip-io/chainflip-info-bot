@@ -25,6 +25,8 @@ export type FilterData =
   | Exclude<Filter, { name: 'SWAP_COMPLETED' | 'NEW_SWAP' }>
   | { name: 'SWAP_COMPLETED' | 'NEW_SWAP'; usdValue: number };
 
+const specializedMessages: Filter['name'][] = ['NEW_SWAP'];
+
 export const platforms = ['telegram', 'discord', 'twitter'] as const;
 
 export type Platform = (typeof platforms)[number];
@@ -187,7 +189,7 @@ export default class Config {
   }
 
   static canSend(channel: Channel, filterData: FilterData): boolean {
-    if (channel.filters === undefined) return true;
+    if (channel.filters === undefined) return !specializedMessages.includes(filterData.name);
 
     if (filterData.name === 'SWAP_COMPLETED' || filterData.name === 'NEW_SWAP') {
       const filter = channel.filters.find((rule) => rule.name === filterData.name) as

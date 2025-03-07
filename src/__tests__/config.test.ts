@@ -180,6 +180,24 @@ describe('Config', () => {
         ),
       ).toBe(true);
     });
+
+    it('works with NEW_SWAP', () => {
+      expect(Config.canSend({ key: 'discord:1234' }, { name: 'NEW_SWAP', usdValue: 50 })).toBe(
+        false,
+      );
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', minUsdValue: 100 }] },
+          { name: 'NEW_SWAP', usdValue: 50 },
+        ),
+      ).toBe(false);
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_SWAP', minUsdValue: 100 }] },
+          { name: 'NEW_SWAP', usdValue: 150 },
+        ),
+      ).toBe(true);
+    });
   });
 
   describe('Config.load', () => {
