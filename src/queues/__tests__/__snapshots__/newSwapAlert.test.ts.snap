@@ -6,7 +6,7 @@ exports[`newSwapAlert > processJob > dispatches a job to send a message 1`] = `
     {
       "data": {
         "filterData": {
-          "name": "SWAP_COMPLETED",
+          "name": "NEW_SWAP",
           "usdValue": 5611.3799573378,
         },
         "message": "New swap detected: <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
@@ -23,7 +23,7 @@ Transaction refs:
     {
       "data": {
         "filterData": {
-          "name": "SWAP_COMPLETED",
+          "name": "NEW_SWAP",
           "usdValue": 5611.3799573378,
         },
         "message": "New swap detected: **[#77697](https://scan.chainflip.io/swaps/77697)**
@@ -40,7 +40,7 @@ Transaction refs:
     {
       "data": {
         "filterData": {
-          "name": "SWAP_COMPLETED",
+          "name": "NEW_SWAP",
           "usdValue": 5611.3799573378,
         },
         "message": "New swap detected: https://scan.chainflip.io/swaps/77697

@@ -19,19 +19,19 @@ describe('newSwapAlert', () => {
       await config.processJob(dispatchJobs)({
         data: {
           swapRequestId: '77697',
-        } as JobData['swapStatusCheck'],
+        } as JobData['newSwapAlert'],
       } as any);
 
       expect(dispatchJobs.mock.lastCall).toMatchSnapshot();
     });
   });
 
-  it('check stale swap status', async () => {
+  it('skips stale swaps', async () => {
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({
       data: {
         swapRequestId: '77697',
-      } as JobData['swapStatusCheck'],
+      } as JobData['newSwapAlert'],
     } as any);
 
     expect(dispatchJobs).not.toHaveBeenCalled();

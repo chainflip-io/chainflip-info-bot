@@ -77,7 +77,7 @@ const buildMessageData = ({
       data: {
         platform,
         message,
-        filterData: { name: 'SWAP_COMPLETED', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
+        filterData: { name: 'NEW_SWAP', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
       },
     };
   });
