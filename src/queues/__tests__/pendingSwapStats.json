@@ -40,6 +40,7 @@
     "numberOfChunks": 2,
     "destinationAsset": "Usdt",
     "sourceAsset": "Flip",
-    "effectiveBoostFeeBps": null
+    "effectiveBoostFeeBps": null,
+    "transactionRefs": { "nodes": [] }
   }
 }

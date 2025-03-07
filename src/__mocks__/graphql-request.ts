@@ -40,7 +40,7 @@ vi.mock('graphql-request', (importActual) => {
     query: TypedDocumentNode<any, any>,
     variables: Record<string, any> | undefined,
   ) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/consistent-type-imports
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const { default: request } = (await importActual()) as typeof import('graphql-request');
     // hash function that keeps only the first 6 characters, should be unique enough
     // for our use case to avoid collisions

@@ -7,7 +7,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
       {
         "data": {
           "filterData": {
-            "name": "NEW_SWAP",
+            "name": "SWAP_COMPLETED",
             "usdValue": 78725.5517676093,
           },
           "message": "🦈 Swap <strong><a href="https://scan.chainflip.io/swaps/103899">#103899</a></strong>
@@ -25,7 +25,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
       {
         "data": {
           "filterData": {
-            "name": "NEW_SWAP",
+            "name": "SWAP_COMPLETED",
             "usdValue": 78725.5517676093,
           },
           "message": "🦈 Swap **[#103899](https://scan.chainflip.io/swaps/103899)**
@@ -43,7 +43,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
       {
         "data": {
           "filterData": {
-            "name": "NEW_SWAP",
+            "name": "SWAP_COMPLETED",
             "usdValue": 78725.5517676093,
           },
           "message": "🦈 Swap https://scan.chainflip.io/swaps/103899
@@ -70,7 +70,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 5611.3799573378,
         },
         "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
@@ -87,7 +87,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 5611.3799573378,
         },
         "message": "🦐 Swap **[#77697](https://scan.chainflip.io/swaps/77697)**
@@ -104,7 +104,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 5611.3799573378,
         },
         "message": "🦐 Swap https://scan.chainflip.io/swaps/77697
@@ -129,7 +129,7 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 107.1607382721,
         },
         "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/106495">#106495</a></strong>
@@ -146,7 +146,7 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 107.1607382721,
         },
         "message": "🦐 Swap **[#106495](https://scan.chainflip.io/swaps/106495)**
@@ -163,7 +163,7 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 107.1607382721,
         },
         "message": "🦐 Swap https://scan.chainflip.io/swaps/106495
@@ -188,7 +188,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 17206.1360813008,
         },
         "message": "🐟 Swap <strong><a href="https://scan.chainflip.io/swaps/103045">#103045</a></strong>
@@ -206,7 +206,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 17206.1360813008,
         },
         "message": "🐟 Swap **[#103045](https://scan.chainflip.io/swaps/103045)**
@@ -224,7 +224,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
     {
       "data": {
         "filterData": {
-          "name": "NEW_SWAP",
+          "name": "SWAP_COMPLETED",
           "usdValue": 17206.1360813008,
         },
         "message": "🐟 Swap https://scan.chainflip.io/swaps/103045

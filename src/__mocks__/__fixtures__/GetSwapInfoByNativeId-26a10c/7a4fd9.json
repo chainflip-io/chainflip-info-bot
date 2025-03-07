@@ -1,0 +1,49 @@
+{
+  "swap": {
+    "completedEventId": "5377221676",
+    "nativeId": "98822",
+    "depositAmount": "630000",
+    "depositValueUsd": "433.571804422900000000000000000000",
+    "sourceChain": "Bitcoin",
+    "fokMinPriceX128": "95371734166517402229587576446593371405700780779115",
+    "dcaNumberOfChunks": 1,
+    "dcaChunkIntervalBlocks": null,
+    "destinationAsset": "Eth",
+    "destinationAddress": "0xc36fa10986e21eed094a674ec4e3b75ef4ba4f05",
+    "sourceAsset": "Btc",
+    "effectiveBoostFeeBps": 5,
+    "broker": {
+      "account": {
+        "alias": "Chainflip Swapping",
+        "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+      }
+    },
+    "beneficiaries": { "nodes": [] },
+    "egress": {
+      "amount": "177273354596517176",
+      "valueUsd": "432.311738749600000000000000000000",
+      "scheduledEvent": {
+        "block": { "timestamp": "2024-11-05T11:35:54+00:00" }
+      }
+    },
+    "refundEgress": null,
+    "swapChannel": {
+      "issuedBlockTimestamp": "2024-11-05T11:18:00+00:00",
+      "depositAddress": "bc1pmwr06j590e2at339n5tx9th2f457sdagl4q88vkeyjhrdwa9jfasyc5ftn"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2024-11-05T10:46:42+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2024-11-05T11:35:36+00:00" },
+    "completedEvent": { "block": { "timestamp": "2024-11-05T11:35:54+00:00" } },
+    "executedSwaps": { "totalCount": 1 },
+    "boostFee": {
+      "nodes": [{ "valueUsd": "0.216785902200000000000000000000" }]
+    },
+    "transactionRefs": {
+      "nodes": [
+        {
+          "ref": "166532943ebf0f00a6419329b2d81d07d8a83eec370d727464950ef4d6191c99"
+        }
+      ]
+    }
+  }
+}

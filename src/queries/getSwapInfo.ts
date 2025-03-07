@@ -2,6 +2,8 @@ import { brokerAliasMap } from '@chainflip/utils/consts';
 import { isNotNullish } from '@chainflip/utils/guard';
 import { abbreviate } from '@chainflip/utils/string';
 import { UnrecoverableError } from 'bullmq';
+import { differenceInMinutes } from 'date-fns';
+import env from '../env.js';
 import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
@@ -20,6 +22,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       dcaNumberOfChunks
       dcaChunkIntervalBlocks
       destinationAsset
+      destinationAddress
       sourceAsset
       effectiveBoostFeeBps
       broker: brokerByBrokerId {
@@ -51,6 +54,7 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       }
       swapChannel: swapChannelByDepositChannelId {
         issuedBlockTimestamp
+        depositAddress
       }
       preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {
         stateChainTimestamp
@@ -71,6 +75,11 @@ const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       boostFee: swapFeesBySwapRequestId(condition: { type: BOOST }) {
         nodes {
           valueUsd
+        }
+      }
+      transactionRefs: transactionRefsBySwapRequestId {
+        nodes {
+          ref
         }
       }
     }
@@ -174,6 +183,15 @@ export default async function getSwapInfo(nativeId: string) {
           .toFixed(2)
       : null;
 
+  let freshness: 'fresh' | 'pending' | 'stale' = 'pending';
+
+  if (completedAt) {
+    freshness =
+      differenceInMinutes(new Date(), Date.parse(completedAt)) <= env.SWAP_MAX_AGE_IN_MINUTES
+        ? 'fresh'
+        : 'stale';
+  }
+
   return {
     completedEventId,
     requestId: swap.nativeId,
@@ -195,5 +213,9 @@ export default async function getSwapInfo(nativeId: string) {
     destinationAsset,
     completedAt,
     boostFee,
+    depositAddress: swap.swapChannel?.depositAddress,
+    destinationAddress: swap.destinationAddress,
+    freshness,
+    transactionRefs: swap.transactionRefs.nodes.map(({ ref }) => ({ ref, chain: sourceChain })),
   };
 }

@@ -3,7 +3,7 @@ import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
 import { EXPLORER_URL } from '../consts.js';
 import { humanFriendlyAsset } from '../consts.js';
-import { type ChainflipAsset } from '../graphql/generated/graphql.js';
+import { ChainflipChain, type ChainflipAsset } from '../graphql/generated/graphql.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 
 export const Bold = ({
@@ -60,21 +60,39 @@ export const Link = ({
   }
 };
 
+const explorerInfo: Record<
+  ChainflipChain | 'Chainflip',
+  { url: string; fmt: (txId: string) => string }
+> = {
+  Arbitrum: { url: 'https://arbiscan.io', fmt: (ref) => `/tx/${ref}` },
+  Ethereum: { url: 'https://etherscan.io', fmt: (ref) => `/tx/${ref}` },
+  Solana: { url: 'https://solscan.io', fmt: (ref) => `/tx/${ref}` },
+  Polkadot: { url: 'https://polkadot.subscan.io', fmt: (ref) => `/extrinsic/${ref}` },
+  Bitcoin: { url: 'https://blockstream.info', fmt: (ref) => `/tx/${ref}` },
+  Chainflip: { url: EXPLORER_URL, fmt: (p) => p },
+};
+
 export const ExplorerLink = ({
   children,
   path,
   platform,
   prefer,
+  chain,
 }: {
   children: string | string[];
   path: string;
   platform: 'discord' | 'telegram' | 'twitter';
   prefer: 'text' | 'link';
-}) => (
-  <Link platform={platform} href={new URL(path, EXPLORER_URL)} prefer={prefer}>
-    {children}
-  </Link>
-);
+  chain?: ChainflipChain;
+}) => {
+  const { url, fmt } = explorerInfo[chain ?? 'Chainflip'];
+
+  return (
+    <Link platform={platform} href={new URL(fmt(path), url).toString()} prefer={prefer}>
+      {children}
+    </Link>
+  );
+};
 
 export const Line = ({ children }: { children: React.ReactNode }) => (
   <>

@@ -4,15 +4,15 @@ import pendingSwapStats from './pendingSwapStats.json' with { type: 'json' };
 import { explorerClient } from '../../server.js';
 import { config } from '../swapStatusCheck.js';
 
-beforeEach(() => {
-  vi.useFakeTimers();
-});
-
-afterEach(() => {
-  vi.useRealTimers();
-});
-
 describe('swapStatusCheck', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('check fresh swap status and send swap info message', async () => {
     vi.setSystemTime(new Date('2024-10-25T12:42:30+00:00'));
 
@@ -42,18 +42,53 @@ describe('swapStatusCheck', () => {
       [
         [
           {
-            "data": [
-              {
-                "data": {
-                  "swapRequestId": "77697",
-                },
-                "name": "swapStatusCheck",
+            "data": {
+              "filterData": {
+                "name": "SWAP_COMPLETED",
+                "usdValue": 5611.3799573378,
               },
-            ],
-            "name": "scheduler",
-            "opts": {
-              "delay": 12000,
+              "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
+      📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
+      📤 <strong>5,616.094932 USDT on Ethereum</strong> ($5,611.38)
+      ↩️ <strong>0 FLIP on Ethereum</strong> ($5,611.38)
+      ⏱️ Took: <strong>1 min</strong>
+      🟢 Delta: <strong>$43.31</strong> (0.78%)",
+              "platform": "telegram",
             },
+            "name": "messageRouter",
+          },
+          {
+            "data": {
+              "filterData": {
+                "name": "SWAP_COMPLETED",
+                "usdValue": 5611.3799573378,
+              },
+              "message": "🦐 Swap **[#77697](https://scan.chainflip.io/swaps/77697)**
+      📥 **5,000 FLIP on Ethereum** ($5,568.07)
+      📤 **5,616.094932 USDT on Ethereum** ($5,611.38)
+      ↩️ **0 FLIP on Ethereum** ($5,611.38)
+      ⏱️ Took: **1 min**
+      🟢 Delta: **$43.31** (0.78%)",
+              "platform": "discord",
+            },
+            "name": "messageRouter",
+          },
+          {
+            "data": {
+              "filterData": {
+                "name": "SWAP_COMPLETED",
+                "usdValue": 5611.3799573378,
+              },
+              "message": "🦐 Swap https://scan.chainflip.io/swaps/77697
+      📥 5,000 FLIP on Ethereum ($5,568.07)
+      📤 5,616.094932 USDT on Ethereum ($5,611.38)
+      ↩️ 0 FLIP on Ethereum ($5,611.38)
+      ⏱️ Took: 1 min
+      🟢 Delta: $43.31 (0.78%)
+      #chainflip $flip",
+              "platform": "twitter",
+            },
+            "name": "messageRouter",
           },
         ],
       ]
