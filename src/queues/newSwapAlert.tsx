@@ -80,6 +80,7 @@ const buildMessageData = ({
         platform,
         message,
         filterData: { name: 'NEW_SWAP', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
+        opts: { disablePreview: true },
       },
     };
   });

@@ -9,6 +9,7 @@ type Data = {
   platform: Platform;
   message: string;
   filterData: FilterData;
+  opts?: { disablePreview?: boolean };
 };
 
 declare global {
@@ -18,13 +19,13 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { message, filterData, platform } = job.data;
+  const { message, filterData, platform, opts } = job.data;
 
   const channels = await Config.getChannels(platform);
 
   const jobs = channels
     ?.filter((channel) => Config.canSend(channel, filterData))
-    .map(({ key }) => ({ name: 'sendMessage' as const, data: { key, message } }));
+    .map(({ key }) => ({ name: 'sendMessage' as const, data: { key, message, opts } }));
 
   if (jobs?.length) await dispatchJobs(jobs);
 

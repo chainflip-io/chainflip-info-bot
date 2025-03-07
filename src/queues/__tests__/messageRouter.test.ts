@@ -21,6 +21,7 @@ describe('messageRouter', () => {
             "data": {
               "key": "telegram:telegram_1",
               "message": "Hello, world!",
+              "opts": undefined,
             },
             "name": "sendMessage",
           },
@@ -46,6 +47,7 @@ describe('messageRouter', () => {
             "data": {
               "key": "discord:discord_3",
               "message": "Hello, world!",
+              "opts": undefined,
             },
             "name": "sendMessage",
           },
@@ -72,6 +74,7 @@ describe('messageRouter', () => {
             "data": {
               "key": "twitter:twitter_1",
               "message": "Hello, world!",
+              "opts": undefined,
             },
             "name": "sendMessage",
           },
