@@ -10,6 +10,7 @@ type Data = {
   key: ConfigKey;
   message: string;
   replyToId?: string;
+  opts?: { disablePreview?: boolean };
 };
 
 declare global {
@@ -44,12 +45,12 @@ const sendDiscordMultipartMessage = async (
 };
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
-  const { message, key, replyToId } = job.data;
+  const { message, key, replyToId, opts } = job.data;
 
   const config = await Config.get(key);
 
   if (config.type === 'telegram') {
-    await sendTelegramMessage(config, message);
+    await sendTelegramMessage(config, message, opts?.disablePreview);
   } else if (config.type === 'discord') {
     const rest = await sendDiscordMultipartMessage(config, message, replyToId);
     if (rest) await dispatchJobs([{ name: 'sendMessage' as const, data: { key, ...rest } }]);

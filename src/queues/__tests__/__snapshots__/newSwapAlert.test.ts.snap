@@ -16,6 +16,9 @@ Deposit address: <strong>0xf05914614bc56915ce5dac12d8eabdbd4bf1e470</strong>
 Destination address: <strong>0x4c632678b9a2c2f0ca1472d17c683aab6dc16523</strong>
 Transaction refs:
 0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4 <a href="https://etherscan.io/tx/0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4">[view]</a>",
+        "opts": {
+          "disablePreview": true,
+        },
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -33,6 +36,9 @@ Deposit address: **0xf05914614bc56915ce5dac12d8eabdbd4bf1e470**
 Destination address: **0x4c632678b9a2c2f0ca1472d17c683aab6dc16523**
 Transaction refs:
 0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4 [[view]](https://etherscan.io/tx/0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4)",
+        "opts": {
+          "disablePreview": true,
+        },
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -50,6 +56,9 @@ Deposit address: 0xf05914614bc56915ce5dac12d8eabdbd4bf1e470
 Destination address: 0x4c632678b9a2c2f0ca1472d17c683aab6dc16523
 Transaction refs:
 0x17077234a0e19f7b4ab2d2491c09065d8a164199ffbbd9fd02078f8394eb36e4 [view]",
+        "opts": {
+          "disablePreview": true,
+        },
         "platform": "twitter",
       },
       "name": "messageRouter",
