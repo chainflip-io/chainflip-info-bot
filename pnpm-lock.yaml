@@ -15,8 +15,8 @@ importers:
         specifier: ^6.7.10
         version: 6.7.10
       '@chainflip/utils':
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.7.2
+        version: 0.7.2
       '@date-fns/utc':
         specifier: ^2.1.0
         version: 2.1.0
@@ -241,8 +241,8 @@ packages:
       globals: ^15.11.0
       typescript-eslint: ^8.10.0
 
-  '@chainflip/utils@0.6.0':
-    resolution: {integrity: sha512-ZwyNKv3FVVJw5aOcRf/4rTxCclP+prerxPnTGBrFcBYEYSrPlyx4eI1dc7J35xmKD2yq+vQgwNjCx1h6oJuoPA==}
+  '@chainflip/utils@0.7.2':
+    resolution: {integrity: sha512-DJ37gbbNVEy/YFcK9oQ19Ro83hUwCFyP2fA//Vatit1Z4nWPKgBmyQtYQLdjfcwrOhvQeYi7DcxfVU0YwOaP2g==}
 
   '@date-fns/utc@2.1.0':
     resolution: {integrity: sha512-176grgAgU2U303rD2/vcOmNg0kGPbhzckuH1TEP2al7n0AQipZIy9P15usd2TKQCG1g+E1jX/ZVQSzs4sUDwgA==}
@@ -3685,7 +3685,7 @@ snapshots:
       globals: 15.15.0
       typescript-eslint: 8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.7.3)
 
-  '@chainflip/utils@0.6.0':
+  '@chainflip/utils@0.7.2':
     dependencies:
       '@date-fns/utc': 2.1.0
       bignumber.js: 9.1.2
