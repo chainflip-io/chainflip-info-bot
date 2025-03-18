@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { vi, describe, it, expect } from 'vitest';
 import { sendMessage } from '../twitter.js';
@@ -82,7 +82,10 @@ describe('sendMessage', () => {
   it('throws an unrecoverable error for 429 errors', async () => {
     const postMock = vi.mocked(axios.post);
 
-    postMock.mockResolvedValue({ status: 429 });
+    const error = new AxiosError();
+    // @ts-expect-error -- mock
+    error.response = { status: 429 };
+    postMock.mockRejectedValueOnce(error);
 
     await expect(sendMessage(config, 'hello world')).rejects.toThrowErrorMatchingInlineSnapshot(
       `[UnrecoverableError: twitter rate limit hit]`,
