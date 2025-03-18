@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 import { UnrecoverableError } from 'bullmq';
 import crypto from 'crypto';
 import OAuth from 'oauth-1.0a';
@@ -41,20 +41,27 @@ export const sendMessage = async (token: TwitterConfig, text: string) => {
     ),
   );
 
-  const response = await axios.post<TwitterResponse>(
-    url,
-    { text },
-    {
-      headers: {
-        Authorization: authHeader.Authorization,
-        'User-Agent': 'v2CreateTweetJS',
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+  let response;
+  try {
+    response = await axios.post<TwitterResponse>(
+      url,
+      { text },
+      {
+        headers: {
+          Authorization: authHeader.Authorization,
+          'User-Agent': 'v2CreateTweetJS',
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
       },
-    },
-  );
+    );
+  } catch (error) {
+    if (isAxiosError(error) && error.response?.status === 429) {
+      throw new UnrecoverableError('twitter rate limit hit');
+    }
 
-  if (response.status === 429) throw new UnrecoverableError('twitter rate limit hit');
+    throw error;
+  }
 
   const formattedResponse = response.data.data as { id: string; text: string };
 
