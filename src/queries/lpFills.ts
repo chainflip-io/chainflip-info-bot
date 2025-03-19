@@ -1,44 +1,7 @@
 import { lpAliasMap } from '@chainflip/utils/consts';
 import { BigNumber } from 'bignumber.js';
-import { gql } from '../graphql/generated/gql.js';
 import { lpClient } from '../server.js';
-
-export const getLpFillsQuery = gql(/* GraphQL */ `
-  query GetLpFills($start: Datetime!, $end: Datetime!) {
-    limitOrders: allLimitOrderFills(
-      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
-    ) {
-      groupedAggregates(groupBy: LIQUIDITY_PROVIDER_ID) {
-        keys
-        sum {
-          filledAmountValueUsd
-        }
-      }
-    }
-    rangeOrders: allRangeOrderFills(
-      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
-    ) {
-      groupedAggregates(groupBy: LIQUIDITY_PROVIDER_ID) {
-        keys
-        sum {
-          baseFilledAmountValueUsd
-          quoteFilledAmountValueUsd
-        }
-      }
-    }
-  }
-`);
-
-const getIdSs58Query = gql(/* GraphQL */ `
-  query GetAccount($ids: [Int!]) {
-    accounts: allAccounts(filter: { id: { in: $ids } }) {
-      nodes {
-        id
-        idSs58
-      }
-    }
-  }
-`);
+import { getLpFillsQuery, getIdSs58Query } from './lp.js';
 
 export type LPFillsData = {
   idSs58: string | undefined;
