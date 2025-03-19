@@ -5,14 +5,14 @@ import getSwapVolumeStats from '../swapVolume.js';
 
 describe('swapVolume', () => {
   it('gets the swap volume after a timestamp', async () => {
-    const start = new Date('2025-03-18T18:00:00Z');
+    const start = new Date('2025-03-19T00:00:00Z');
     const end = addDays(start, 1);
     expect(await getSwapVolumeStats(start, end)).toMatchInlineSnapshot(`
       {
-        "boostFees": "3354.5259394817",
-        "lpFees": "10877.0406224969",
-        "networkFees": "12397.3666743582",
-        "swapVolume": "21694837.7712332279",
+        "boostFees": "3245.2198506501",
+        "lpFees": "9670.9169714125",
+        "networkFees": "11235.4882822904",
+        "swapVolume": "19285901.79858222",
         "totalFlipBurned": "12397.586388460529611576",
       }
     `);
