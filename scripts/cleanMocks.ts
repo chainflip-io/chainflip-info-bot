@@ -7,7 +7,7 @@ import { Kind } from 'graphql';
 import { exec } from 'node:child_process';
 import * as util from 'node:util';
 import * as path from 'path';
-import * as gql from '../src/graphql/generated/graphql.js';
+import * as gql from '../src/graphql/generated/explorer/graphql.js';
 
 type EndsWith<T extends string, U extends string> = T extends `${infer _}${U}` ? T : never;
 

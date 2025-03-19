@@ -3,7 +3,7 @@ import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
 import { EXPLORER_URL } from '../consts.js';
 import { humanFriendlyAsset } from '../consts.js';
-import { ChainflipChain, type ChainflipAsset } from '../graphql/generated/graphql.js';
+import { ChainflipChain, type ChainflipAsset } from '../graphql/generated/explorer/graphql.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 
 export const Bold = ({

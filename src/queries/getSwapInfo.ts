@@ -4,87 +4,11 @@ import { abbreviate } from '@chainflip/utils/string';
 import { UnrecoverableError } from 'bullmq';
 import { differenceInMinutes } from 'date-fns';
 import env from '../env.js';
-import { gql } from '../graphql/generated/gql.js';
+import { getSwapInfoByNativeIdQuery } from './explorer.js';
 import { explorerClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
-
-const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
-  query GetSwapInfoByNativeId($nativeId: BigInt!) {
-    swap: swapRequestByNativeId(nativeId: $nativeId) {
-      completedEventId
-      nativeId
-      depositAmount
-      depositValueUsd
-      sourceChain
-      fokMinPriceX128
-      dcaNumberOfChunks
-      dcaChunkIntervalBlocks
-      destinationAsset
-      destinationAddress
-      sourceAsset
-      effectiveBoostFeeBps
-      broker: brokerByBrokerId {
-        account: accountByAccountId {
-          alias
-          idSs58
-        }
-      }
-      beneficiaries: swapRequestBeneficiariesBySwapRequestId(condition: { type: AFFILIATE }) {
-        nodes {
-          account: accountByAccountId {
-            idSs58
-            alias
-          }
-        }
-      }
-      egress: egressByEgressId {
-        amount
-        valueUsd
-        scheduledEvent: eventByScheduledEventId {
-          block: blockByBlockId {
-            timestamp
-          }
-        }
-      }
-      refundEgress: egressByRefundEgressId {
-        amount
-        valueUsd
-      }
-      swapChannel: swapChannelByDepositChannelId {
-        issuedBlockTimestamp
-        depositAddress
-      }
-      preDepositBlock: foreignChainTrackingByForeignChainPreDepositBlockId {
-        stateChainTimestamp
-      }
-      depositBlock: foreignChainTrackingByForeignChainDepositBlockId {
-        stateChainTimestamp
-      }
-      completedEvent: eventByCompletedEventId {
-        block: blockByBlockId {
-          timestamp
-        }
-      }
-      executedSwaps: swapsBySwapRequestId(
-        filter: { swapExecutedEventId: { isNull: false }, type: { in: [PRINCIPAL, SWAP] } }
-      ) {
-        totalCount
-      }
-      boostFee: swapFeesBySwapRequestId(condition: { type: BOOST }) {
-        nodes {
-          valueUsd
-        }
-      }
-      transactionRefs: transactionRefsBySwapRequestId {
-        nodes {
-          ref
-        }
-      }
-    }
-  }
-`);
 
 const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
   broker && broker.idSs58

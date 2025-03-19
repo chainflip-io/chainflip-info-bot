@@ -1,56 +1,13 @@
 import { isNotNullish } from '@chainflip/utils/guard';
 import assert from 'assert';
-import { gql } from '../graphql/generated/gql.js';
-import { type ChainflipAsset } from '../graphql/generated/graphql.js';
+import { type ChainflipAsset } from '../graphql/generated/explorer/graphql.js';
 import { explorerClient } from '../server.js';
+import {
+  getLatestDepositIdQuery,
+  getNewDepositsQuery,
+  checkHasOldDepositQuery,
+} from './explorer.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
-
-const getNewDepositsQuery = gql(/* GraphQL */ `
-  query GetNewLiquididityDeposits($id: Int!) {
-    deposits: allLiquidityDeposits(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {
-      nodes {
-        asset
-        depositAmount
-        depositValueUsd
-        lp: liquidityProviderByLiquidityProviderId {
-          id
-          account: accountByAccountId {
-            idSs58
-          }
-        }
-        event: eventByEventId {
-          block: blockByBlockId {
-            timestamp
-          }
-        }
-      }
-    }
-  }
-`);
-
-const checkHasOldDepositQuery = gql(/* GraphQL */ `
-  query CheckHasOldDeposit($id: Int!, $liquidityProviderId: Int!) {
-    deposits: allLiquidityDeposits(
-      filter: { id: { lessThan: $id }, liquidityProviderId: { equalTo: $liquidityProviderId } }
-      first: 1
-    ) {
-      nodes {
-        id
-        liquidityProviderId
-      }
-    }
-  }
-`);
-
-const getLatestDepositIdQuery = gql(/* GraphQL */ `
-  query GetLatestDepositId {
-    deposits: allLiquidityDeposits(first: 1, orderBy: ID_DESC) {
-      nodes {
-        id
-      }
-    }
-  }
-`);
 
 export const getLatestDepositId = async () => {
   const result = await explorerClient.request(getLatestDepositIdQuery);

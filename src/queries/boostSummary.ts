@@ -1,40 +1,9 @@
 import { isNotNullish } from '@chainflip/utils/guard';
 import { BigNumber } from 'bignumber.js';
-import { gql } from '../graphql/generated/gql.js';
-import { type ChainflipAsset } from '../graphql/generated/graphql.js';
+import { type ChainflipAsset } from '../graphql/generated/explorer/graphql.js';
 import { lpClient } from '../server.js';
+import { getBoostSummaryQuery } from './lp.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
-
-const getBoostSummaryQuery = gql(/* GraphQL */ `
-  query GetBoostSummary($start: Datetime!, $end: Datetime!, $asset: ChainflipAsset!) {
-    boostPools: allBoostPools(filter: { asset: { equalTo: $asset } }) {
-      nodes {
-        asset
-        feeTierPips
-        boostShares: boostSharesByBoostPoolId(
-          filter: {
-            executedAtTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end }
-            lost: { equalTo: false }
-          }
-        ) {
-          aggregates {
-            sum {
-              fee
-              feeUsd
-              amount
-              amountUsd
-            }
-          }
-        }
-        apys: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {
-          nodes {
-            projectedApy
-          }
-        }
-      }
-    }
-  }
-`);
 
 const apyToText = (apy?: number) => {
   if (isNotNullish(apy)) {

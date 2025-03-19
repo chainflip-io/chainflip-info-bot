@@ -81,9 +81,7 @@
       },
       {
         "keys": ["103"],
-        "sum": {
-          "filledAmountValueUsd": "535.409904458500000000000000000000"
-        }
+        "sum": { "filledAmountValueUsd": "535.409904458500000000000000000000" }
       },
       {
         "keys": ["109"],
@@ -93,21 +91,15 @@
       },
       {
         "keys": ["118"],
-        "sum": {
-          "filledAmountValueUsd": "117.265425937700000000000000000000"
-        }
+        "sum": { "filledAmountValueUsd": "117.265425937700000000000000000000" }
       },
       {
         "keys": ["131"],
-        "sum": {
-          "filledAmountValueUsd": "346.092755319500000000000000000000"
-        }
+        "sum": { "filledAmountValueUsd": "346.092755319500000000000000000000" }
       },
       {
         "keys": ["153"],
-        "sum": {
-          "filledAmountValueUsd": "595.390139596300000000000000000000"
-        }
+        "sum": { "filledAmountValueUsd": "595.390139596300000000000000000000" }
       },
       {
         "keys": ["155"],

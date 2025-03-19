@@ -1,16 +1,6 @@
 import assert from 'assert';
-import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
-
-const latestSwapRequestIdQuery = gql(/* GraphQL */ `
-  query LatestSwapRequest {
-    swapRequests: allSwapRequests(first: 1, orderBy: NATIVE_ID_DESC) {
-      nodes {
-        nativeId
-      }
-    }
-  }
-`);
+import { latestSwapRequestIdQuery } from './explorer.js';
 
 export default async function getLatestSwapRequestId() {
   const result = await explorerClient.request(latestSwapRequestIdQuery);

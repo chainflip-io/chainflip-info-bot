@@ -1,18 +1,6 @@
 import assert from 'assert';
-import { gql } from '../graphql/generated/gql.js';
 import { explorerClient } from '../server.js';
-
-const getNewSwapRequestsQuery = gql(/* GraphQL */ `
-  query GetNewSwapRequestsQuery($nativeId: BigInt!) {
-    swapRequests: allSwapRequests(
-      filter: { nativeId: { greaterThan: $nativeId }, type: { in: [REGULAR, LEGACY_CCM] } }
-    ) {
-      nodes {
-        nativeId
-      }
-    }
-  }
-`);
+import { getNewSwapRequestsQuery } from './explorer.js';
 
 export default async function getNewSwapRequests(latestSwapRequestId: string) {
   const result = await explorerClient.request(getNewSwapRequestsQuery, {
