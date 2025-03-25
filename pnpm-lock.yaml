@@ -68,10 +68,10 @@ importers:
     devDependencies:
       '@chainflip/eslint-config':
         specifier: ^1.0.7
-        version: 1.0.7(@eslint/js@9.22.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(globals@15.15.0)(typescript-eslint@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))
+        version: 1.0.7(@eslint/js@9.23.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(globals@15.15.0)(typescript-eslint@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))
       '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.22.0
+        specifier: ^9.23.0
+        version: 9.23.0
       '@graphql-codegen/cli':
         specifier: ^5.0.5
         version: 5.0.5(@types/node@22.13.13)(graphql@16.10.0)(typescript@5.8.2)
@@ -595,10 +595,6 @@ packages:
 
   '@eslint/eslintrc@3.3.1':
     resolution: {integrity: sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@eslint/js@9.22.0':
-    resolution: {integrity: sha512-vLFajx9o8d1/oL2ZkpMYbkLv8nDB6yaIwFNt7nI4+I80U/z03SxmfOMsLbvWr3p7C+Wnoh//aOu2pQW8cS0HCQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/js@9.23.0':
@@ -3684,9 +3680,9 @@ snapshots:
     dependencies:
       '@bull-board/api': 6.7.10(@bull-board/ui@6.7.10)
 
-  '@chainflip/eslint-config@1.0.7(@eslint/js@9.22.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(globals@15.15.0)(typescript-eslint@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))':
+  '@chainflip/eslint-config@1.0.7(@eslint/js@9.23.0)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(globals@15.15.0)(typescript-eslint@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))':
     dependencies:
-      '@eslint/js': 9.22.0
+      '@eslint/js': 9.23.0
       eslint: 9.23.0(jiti@2.4.2)
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.1(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))
       globals: 15.15.0
@@ -3934,8 +3930,6 @@ snapshots:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-
-  '@eslint/js@9.22.0': {}
 
   '@eslint/js@9.23.0': {}
 
