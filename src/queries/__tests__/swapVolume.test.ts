@@ -10,7 +10,7 @@ describe('swapVolume', () => {
     expect(await getSwapVolumeStats(start, end)).toMatchInlineSnapshot(`
       {
         "boostFees": "3245.2198506501",
-        "lpFees": "9670.9274073196",
+        "lpFees": "10396.6089896439",
         "networkFees": "11235.4882822904",
         "swapVolume": "19285901.79858222",
         "totalFlipBurned": "12397.586388460529611576",

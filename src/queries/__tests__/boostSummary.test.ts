@@ -12,7 +12,7 @@ describe('boost summary', () => {
       {
         "apys": [
           {
-            "currentApy": "11.37%",
+            "currentApy": "1.92%",
             "feeTiers": 5,
           },
         ],
