@@ -12,6 +12,7 @@
     "destinationAddress": "0x86d069b5f3ebf13bbb62e895aae29e1ffaf97861",
     "sourceAsset": "Flip",
     "effectiveBoostFeeBps": null,
+    "onChainInfo": null,
     "broker": {
       "account": {
         "alias": "Chainflip Swapping",

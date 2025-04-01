@@ -12,6 +12,7 @@
     "destinationAddress": "0x714bec7a63fa624ed7a250f894539bd920965b6c",
     "sourceAsset": "Dot",
     "effectiveBoostFeeBps": null,
+    "onChainInfo": null,
     "broker": {
       "account": {
         "alias": "Broker as a Service",
