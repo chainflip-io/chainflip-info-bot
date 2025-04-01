@@ -1,0 +1,44 @@
+{
+  "swap": {
+    "completedEventId": "174206739",
+    "nativeId": "5",
+    "depositAmount": "290000000000",
+    "depositValueUsd": "194.611465696000000000000000000000",
+    "sourceChain": "Polkadot",
+    "fokMinPriceX128": null,
+    "dcaNumberOfChunks": 1,
+    "dcaChunkIntervalBlocks": null,
+    "destinationAsset": "Btc",
+    "destinationAddress": "bc1qqd86qr3kfpgsmtzzdplk8t5k334h9vjg9jw5f8",
+    "sourceAsset": "Dot",
+    "effectiveBoostFeeBps": null,
+    "broker": {
+      "account": {
+        "alias": "Chainflip Swapping",
+        "idSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7"
+      }
+    },
+    "beneficiaries": { "nodes": [] },
+    "egress": {
+      "amount": "432582",
+      "valueUsd": "182.808761619800000000000000000000",
+      "scheduledEvent": {
+        "block": { "timestamp": "2023-12-19T19:41:36.001+00:00" }
+      }
+    },
+    "refundEgress": null,
+    "swapChannel": {
+      "issuedBlockTimestamp": "2023-12-19T19:40:42+00:00",
+      "depositAddress": "5Gjb6wbSoZmunk6ZUiXZZq4Qva1WmS9Ta14GRS95SqyDuQx5"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2023-12-19T19:41:30+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2023-12-19T19:41:36.001+00:00" },
+    "completedEvent": {
+      "block": { "timestamp": "2023-12-19T19:41:36.001+00:00" }
+    },
+    "executedSwaps": { "totalCount": 1 },
+    "boostFee": { "nodes": [] },
+    "transactionRefs": { "nodes": [] },
+    "onChainInfo": null
+  }
+}

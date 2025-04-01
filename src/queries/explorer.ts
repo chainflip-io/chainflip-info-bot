@@ -114,13 +114,6 @@ export const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       destinationAddress
       sourceAsset
       effectiveBoostFeeBps
-      onChainInfo: onChainSwapInfoBySwapRequestId {
-        accountId
-        accountByAccountId {
-          idSs58
-          alias
-        }
-      }
       broker: brokerByBrokerId {
         account: accountByAccountId {
           alias
@@ -176,6 +169,12 @@ export const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       transactionRefs: transactionRefsBySwapRequestId {
         nodes {
           ref
+        }
+      }
+      onChainInfo: onChainSwapInfoBySwapRequestId {
+        lp: accountByAccountId {
+          idSs58
+          alias
         }
       }
     }

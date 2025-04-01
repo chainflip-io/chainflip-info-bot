@@ -52,8 +52,11 @@ const buildMessageData = ({
   swapInfo,
 }: {
   swapInfo: SwapInfo;
-}): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
-  platforms.map((platform) => {
+}): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
+  const broker = swapInfo.brokerIdAndAlias;
+  const lp = swapInfo.lpIdAndAlias;
+
+  return platforms.map((platform) => {
     const message = renderToStaticMarkup(
       <>
         <Line>
@@ -117,16 +120,16 @@ const buildMessageData = ({
             <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee)}</Bold>
           </Line>
         )}
-        {swapInfo.brokerIdAndAlias && (
+        {(broker || lp) && (
           <Line>
             🏦 via{' '}
             <Bold platform={platform}>
               <ExplorerLink
                 platform={platform}
-                path={`/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
+                path={broker ? `/brokers/${broker.brokerId}` : lp ? `/lps/${lp.lpId}` : '#'}
                 prefer="text"
               >
-                {swapInfo.brokerIdAndAlias.alias}
+                {broker ? broker.alias : (lp?.alias ?? 'Chainflip LP account')}
               </ExplorerLink>
             </Bold>
           </Line>
@@ -160,6 +163,7 @@ const buildMessageData = ({
       },
     };
   });
+};
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   logger.info(`Checking swap #${job.data.swapRequestId}`);
