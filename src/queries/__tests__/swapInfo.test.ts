@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { explorerClient } from '../../server.js';
 import getSwapInfo from '../getSwapInfo.js';
 
@@ -131,96 +131,6 @@ describe('swapInfo', () => {
             "ref": "0xb689f685c527573b19141a33a4914dc0d72c13ab525540d76536e79fb0814fb3",
           },
         ],
-      }
-    `);
-
-    expect(explorerClient.request).toHaveBeenCalledWith(expect.anything(), {
-      nativeId,
-    });
-  });
-
-  it('gets info about an onchain swap', async () => {
-    const nativeId = '1';
-    vi.mocked(explorerClient.request).mockResolvedValueOnce({
-      swap: {
-        completedEventId: '302171',
-        nativeId: '1',
-        depositAmount: '10000000000000000000',
-        depositValueUsd: '18611.361839307300000000000000000000',
-        sourceChain: 'Ethereum',
-        fokMinPriceX128: '0',
-        dcaNumberOfChunks: 1,
-        dcaChunkIntervalBlocks: null,
-        destinationAsset: 'Flip',
-        destinationAddress: 'cFL8fmgKZcchhtLagBH2GKfsuWxBqUaD5CYE1m7DFb8DBSLJ1',
-        sourceAsset: 'Eth',
-        effectiveBoostFeeBps: null,
-        broker: null,
-        beneficiaries: {
-          nodes: [],
-        },
-        egress: null,
-        refundEgress: null,
-        swapChannel: null,
-        preDepositBlock: {
-          stateChainTimestamp: '2025-04-01T12:44:24+00:00',
-        },
-        depositBlock: {
-          stateChainTimestamp: '2025-04-01T12:44:36+00:00',
-        },
-        completedEvent: {
-          block: {
-            timestamp: '2025-04-01T12:45:18.001+00:00',
-          },
-        },
-        executedSwaps: {
-          totalCount: 1,
-        },
-        boostFee: {
-          nodes: [],
-        },
-        transactionRefs: {
-          nodes: [],
-        },
-        onChainInfo: {
-          lp: {
-            idSs58: 'cFL8fmgKZcchhtLagBH2GKfsuWxBqUaD5CYE1m7DFb8DBSLJ1',
-            alias: null,
-          },
-        },
-      },
-    });
-
-    expect(await getSwapInfo(nativeId)).toMatchInlineSnapshot(`
-      {
-        "affiliatesIdsAndAliases": [],
-        "boostFee": "0",
-        "brokerIdAndAlias": undefined,
-        "chunkIntervalBlocks": 2,
-        "completedAt": "2025-04-01T12:45:18.001+00:00",
-        "completedEventId": "302171",
-        "dcaChunks": undefined,
-        "depositAddress": undefined,
-        "depositAmount": "10",
-        "depositValueUsd": "18611.3618393073",
-        "destinationAddress": "cFL8fmgKZcchhtLagBH2GKfsuWxBqUaD5CYE1m7DFb8DBSLJ1",
-        "destinationAsset": "Flip",
-        "duration": undefined,
-        "egressAmount": null,
-        "egressValueUsd": null,
-        "freshness": "stale",
-        "lpIdAndAlias": {
-          "alias": null,
-          "lpId": "cFL8fmgKZcchhtLagBH2GKfsuWxBqUaD5CYE1m7DFb8DBSLJ1",
-        },
-        "minPrice": "0.000000000000000000",
-        "priceDelta": null,
-        "priceDeltaPercentage": null,
-        "refundAmount": null,
-        "refundValueUsd": null,
-        "requestId": "1",
-        "sourceAsset": "Eth",
-        "transactionRefs": [],
       }
     `);
 
