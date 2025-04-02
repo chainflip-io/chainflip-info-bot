@@ -1,0 +1,15 @@
+{
+  "limitOrderFills": {
+    "aggregates": {
+      "sum": { "feesEarnedValueUsd": "10352.258494649200000000000000000000" }
+    }
+  },
+  "rangeOrderFills": {
+    "aggregates": {
+      "sum": {
+        "baseFeesEarnedValueUsd": "20.508289218400000000000000000000",
+        "quoteFeesEarnedValueUsd": "23.842205776300000000000000000000"
+      }
+    }
+  }
+}
