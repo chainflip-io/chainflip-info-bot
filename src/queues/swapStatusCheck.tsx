@@ -131,6 +131,20 @@ const buildMessageData = ({
             </Bold>
           </Line>
         )}
+        {swapInfo.lpIdAndAlias && (
+          <Line>
+            🚰 via{' '}
+            <Bold platform={platform}>
+              <ExplorerLink
+                platform={platform}
+                path={`/lps/${swapInfo.lpIdAndAlias.lpId}`}
+                prefer="text"
+              >
+                {swapInfo.lpIdAndAlias.alias ?? 'Chainflip LP account'}
+              </ExplorerLink>
+            </Bold>
+          </Line>
+        )}
         {swapInfo.affiliatesIdsAndAliases?.length ? (
           <Line>
             🏰 Affiliate:{' '}

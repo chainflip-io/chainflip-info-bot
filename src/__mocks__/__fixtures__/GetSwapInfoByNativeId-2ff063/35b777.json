@@ -11,7 +11,7 @@
     "destinationAsset": "Usdc",
     "destinationAddress": "0x8103574dfd8e010d97a85ff3f082f464904bc4b9",
     "sourceAsset": "Btc",
-    "effectiveBoostFeeBps": 4,
+    "effectiveBoostFeeBps": 5,
     "broker": {
       "account": {
         "alias": "Chainflip Swapping",
@@ -44,6 +44,7 @@
           "ref": "607b8f39e7ff1ade338b78ffb77f44259623d185055efdbd906faf410b888693"
         }
       ]
-    }
+    },
+    "onChainInfo": null
   }
 }
