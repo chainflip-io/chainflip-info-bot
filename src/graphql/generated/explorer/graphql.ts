@@ -1699,12 +1699,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_AVERAGE_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_COUNT_ASC'
@@ -1715,12 +1711,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_DISTINCT_COUNT_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_ACCOUNT_ID_ASC'
@@ -1729,12 +1721,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MAX_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_ACCOUNT_ID_ASC'
@@ -1743,12 +1731,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_MIN_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_ACCOUNT_ID_ASC'
@@ -1757,12 +1741,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_POPULATION_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_ACCOUNT_ID_ASC'
@@ -1771,12 +1751,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_STDDEV_SAMPLE_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_ACCOUNT_ID_ASC'
@@ -1785,12 +1761,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_SUM_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_ACCOUNT_ID_ASC'
@@ -1799,12 +1771,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_POPULATION_SWAP_REQUEST_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_ACCOUNT_ID_ASC'
@@ -1813,12 +1781,8 @@ export type AccountsOrderBy =
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_OUTPUT_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_OUTPUT_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_OUTPUT_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_OUTPUT_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_REFUND_AMOUNT_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_REFUND_AMOUNT_DESC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_REFUND_VALUE_USD_ASC'
-  | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_REFUND_VALUE_USD_DESC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_SWAP_REQUEST_ID_ASC'
   | 'ON_CHAIN_SWAP_INFOS_BY_ACCOUNT_ID_VARIANCE_SAMPLE_SWAP_REQUEST_ID_DESC'
   | 'PRIMARY_KEY_ASC'
@@ -17269,9 +17233,6 @@ export type ChainflipAsset =
   | 'Dot'
   | 'Eth'
   | 'Flip'
-  | 'HubDot'
-  | 'HubUsdc'
-  | 'HubUsdt'
   | 'Sol'
   | 'SolUsdc'
   | 'Usdc'
@@ -17305,7 +17266,6 @@ export type ChainflipAssetFilter = {
 
 export type ChainflipChain =
   | 'Arbitrum'
-  | 'Assethub'
   | 'Bitcoin'
   | 'Ethereum'
   | 'Polkadot'
@@ -44010,7 +43970,6 @@ export type LiquidityProvider = Node & {
   accountByAccountId: Account;
   accountId: Scalars['Int']['output'];
   arbitrumRefundAddress?: Maybe<Scalars['String']['output']>;
-  assethubRefundAddress?: Maybe<Scalars['String']['output']>;
   bitcoinRefundAddress?: Maybe<Scalars['String']['output']>;
   /** Reads and enables pagination through a set of `CollectedFee`. */
   collectedFeesByLiquidityProviderId: CollectedFeesConnection;
@@ -44172,8 +44131,6 @@ export type LiquidityProviderCondition = {
   accountId?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `arbitrumRefundAddress` field. */
   arbitrumRefundAddress?: InputMaybe<Scalars['String']['input']>;
-  /** Checks for equality with the object’s `assethubRefundAddress` field. */
-  assethubRefundAddress?: InputMaybe<Scalars['String']['input']>;
   /** Checks for equality with the object’s `bitcoinRefundAddress` field. */
   bitcoinRefundAddress?: InputMaybe<Scalars['String']['input']>;
   /** Checks for equality with the object’s `ethereumRefundAddress` field. */
@@ -44192,8 +44149,6 @@ export type LiquidityProviderDistinctCountAggregates = {
   accountId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of arbitrumRefundAddress across the matching connection */
   arbitrumRefundAddress?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of assethubRefundAddress across the matching connection */
-  assethubRefundAddress?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of bitcoinRefundAddress across the matching connection */
   bitcoinRefundAddress?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of ethereumRefundAddress across the matching connection */
@@ -44214,8 +44169,6 @@ export type LiquidityProviderFilter = {
   and?: InputMaybe<Array<LiquidityProviderFilter>>;
   /** Filter by the object’s `arbitrumRefundAddress` field. */
   arbitrumRefundAddress?: InputMaybe<StringFilter>;
-  /** Filter by the object’s `assethubRefundAddress` field. */
-  assethubRefundAddress?: InputMaybe<StringFilter>;
   /** Filter by the object’s `bitcoinRefundAddress` field. */
   bitcoinRefundAddress?: InputMaybe<StringFilter>;
   /** Filter by the object’s `ethereumRefundAddress` field. */
@@ -44235,7 +44188,6 @@ export type LiquidityProviderFilter = {
 /** Grouping methods for `LiquidityProvider` for usage during aggregation. */
 export type LiquidityProviderGroupBy =
   | 'ARBITRUM_REFUND_ADDRESS'
-  | 'ASSETHUB_REFUND_ADDRESS'
   | 'BITCOIN_REFUND_ADDRESS'
   | 'ETHEREUM_REFUND_ADDRESS'
   | 'POLKADOT_REFUND_ADDRESS'
@@ -44396,8 +44348,6 @@ export type LiquidityProvidersOrderBy =
   | 'ACCOUNT_ID_DESC'
   | 'ARBITRUM_REFUND_ADDRESS_ASC'
   | 'ARBITRUM_REFUND_ADDRESS_DESC'
-  | 'ASSETHUB_REFUND_ADDRESS_ASC'
-  | 'ASSETHUB_REFUND_ADDRESS_DESC'
   | 'BITCOIN_REFUND_ADDRESS_ASC'
   | 'BITCOIN_REFUND_ADDRESS_DESC'
   | 'COLLECTED_FEES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_AMOUNT_ASC'
@@ -47588,9 +47538,7 @@ export type OnChainSwapInfo = Node & {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Reads a single `SwapRequest` that is related to this `OnChainSwapInfo`. */
   swapRequestBySwapRequestId: SwapRequest;
   swapRequestId: Scalars['Int']['output'];
@@ -47627,12 +47575,8 @@ export type OnChainSwapInfoAverageAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
 };
@@ -47648,12 +47592,8 @@ export type OnChainSwapInfoCondition = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `outputAmount` field. */
   outputAmount?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `outputValueUsd` field. */
-  outputValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `refundAmount` field. */
   refundAmount?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `refundValueUsd` field. */
-  refundValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `swapRequestId` field. */
   swapRequestId?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -47666,12 +47606,8 @@ export type OnChainSwapInfoDistinctCountAggregates = {
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigInt']['output']>;
 };
@@ -47690,12 +47626,8 @@ export type OnChainSwapInfoFilter = {
   or?: InputMaybe<Array<OnChainSwapInfoFilter>>;
   /** Filter by the object’s `outputAmount` field. */
   outputAmount?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `outputValueUsd` field. */
-  outputValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `refundAmount` field. */
   refundAmount?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `refundValueUsd` field. */
-  refundValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `swapRequestId` field. */
   swapRequestId?: InputMaybe<IntFilter>;
 };
@@ -47704,17 +47636,13 @@ export type OnChainSwapInfoFilter = {
 export type OnChainSwapInfoGroupBy =
   | 'ACCOUNT_ID'
   | 'OUTPUT_AMOUNT'
-  | 'OUTPUT_VALUE_USD'
-  | 'REFUND_AMOUNT'
-  | 'REFUND_VALUE_USD';
+  | 'REFUND_AMOUNT';
 
 export type OnChainSwapInfoHavingAverageInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47722,9 +47650,7 @@ export type OnChainSwapInfoHavingDistinctCountInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47747,9 +47673,7 @@ export type OnChainSwapInfoHavingMaxInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47757,9 +47681,7 @@ export type OnChainSwapInfoHavingMinInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47767,9 +47689,7 @@ export type OnChainSwapInfoHavingStddevPopulationInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47777,9 +47697,7 @@ export type OnChainSwapInfoHavingStddevSampleInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47787,9 +47705,7 @@ export type OnChainSwapInfoHavingSumInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47797,9 +47713,7 @@ export type OnChainSwapInfoHavingVariancePopulationInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47807,9 +47721,7 @@ export type OnChainSwapInfoHavingVarianceSampleInput = {
   accountId?: InputMaybe<HavingIntFilter>;
   id?: InputMaybe<HavingIntFilter>;
   outputAmount?: InputMaybe<HavingBigfloatFilter>;
-  outputValueUsd?: InputMaybe<HavingBigfloatFilter>;
   refundAmount?: InputMaybe<HavingBigfloatFilter>;
-  refundValueUsd?: InputMaybe<HavingBigfloatFilter>;
   swapRequestId?: InputMaybe<HavingIntFilter>;
 };
 
@@ -47821,12 +47733,8 @@ export type OnChainSwapInfoMaxAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Maximum of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['Int']['output']>;
 };
@@ -47839,12 +47747,8 @@ export type OnChainSwapInfoMinAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Minimum of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['Int']['output']>;
 };
@@ -47857,12 +47761,8 @@ export type OnChainSwapInfoStddevPopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
 };
@@ -47875,12 +47775,8 @@ export type OnChainSwapInfoStddevSampleAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
 };
@@ -47893,12 +47789,8 @@ export type OnChainSwapInfoSumAggregates = {
   id: Scalars['BigInt']['output'];
   /** Sum of outputAmount across the matching connection */
   outputAmount: Scalars['BigFloat']['output'];
-  /** Sum of outputValueUsd across the matching connection */
-  outputValueUsd: Scalars['BigFloat']['output'];
   /** Sum of refundAmount across the matching connection */
   refundAmount: Scalars['BigFloat']['output'];
-  /** Sum of refundValueUsd across the matching connection */
-  refundValueUsd: Scalars['BigFloat']['output'];
   /** Sum of swapRequestId across the matching connection */
   swapRequestId: Scalars['BigInt']['output'];
 };
@@ -47911,12 +47803,8 @@ export type OnChainSwapInfoVariancePopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
 };
@@ -47929,12 +47817,8 @@ export type OnChainSwapInfoVarianceSampleAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of outputAmount across the matching connection */
   outputAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of outputValueUsd across the matching connection */
-  outputValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of refundAmount across the matching connection */
   refundAmount?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of refundValueUsd across the matching connection */
-  refundValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
 };
@@ -47981,14 +47865,10 @@ export type OnChainSwapInfosOrderBy =
   | 'NATURAL'
   | 'OUTPUT_AMOUNT_ASC'
   | 'OUTPUT_AMOUNT_DESC'
-  | 'OUTPUT_VALUE_USD_ASC'
-  | 'OUTPUT_VALUE_USD_DESC'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC'
   | 'REFUND_AMOUNT_ASC'
   | 'REFUND_AMOUNT_DESC'
-  | 'REFUND_VALUE_USD_ASC'
-  | 'REFUND_VALUE_USD_DESC'
   | 'SWAP_REQUEST_ID_ASC'
   | 'SWAP_REQUEST_ID_DESC';
 
@@ -53341,11 +53221,6 @@ export type RotationEventSumAggregates = {
 export type RotationEventType =
   | 'ACTIVATING_KEYS_ROTATION_PHASE'
   | 'ARBITRUM_VAULT_ACTIVATION_COMPLETED'
-  | 'ASSETHUB_KEYGEN_REQUEST'
-  | 'ASSETHUB_KEYGEN_VERIFICATION_SUCCESS'
-  | 'ASSETHUB_KEY_ROTATION_COMPLETED'
-  | 'ASSETHUB_VAULT_ACTIVATION_COMPLETED'
-  | 'ASSETHUB_VAULT_ROTATION_COMPLETED'
   | 'AUCTION_COMPLETED'
   | 'BITCOIN_KEYGEN_REQUEST'
   | 'BITCOIN_KEYGEN_VERIFICATION_SUCCESS'
@@ -60808,6 +60683,7 @@ export type SwapRequestType =
   | 'LEGACY_INTERNAL_SWAP'
   | 'LEGACY_SWAP'
   | 'NETWORK_FEE'
+  | 'ON_CHAIN'
   | 'REGULAR';
 
 /** A filter to be used against SwapRequestType fields. All fields are combined with a logical ‘and.’ */

@@ -8164,9 +8164,6 @@ export type ChainflipAsset =
   | 'Dot'
   | 'Eth'
   | 'Flip'
-  | 'HubDot'
-  | 'HubUsdc'
-  | 'HubUsdt'
   | 'Sol'
   | 'SolUsdc'
   | 'Usdc'
@@ -8200,7 +8197,6 @@ export type ChainflipAssetFilter = {
 
 export type ChainflipChain =
   | 'Arbitrum'
-  | 'Assethub'
   | 'Bitcoin'
   | 'Ethereum'
   | 'Polkadot'
