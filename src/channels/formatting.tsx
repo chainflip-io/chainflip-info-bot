@@ -1,9 +1,9 @@
 import { unreachable } from '@chainflip/utils/assertion';
+import { type ChainflipAsset, type ChainflipChain } from '@chainflip/utils/chainflip';
 import { formatUsdValue } from '@chainflip/utils/number';
 import { type BigNumber } from 'bignumber.js';
 import { EXPLORER_URL } from '../consts.js';
 import { humanFriendlyAsset } from '../consts.js';
-import { ChainflipChain, type ChainflipAsset } from '../graphql/generated/explorer/graphql.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 
 export const Bold = ({
@@ -69,6 +69,7 @@ const explorerInfo: Record<
   Solana: { url: 'https://solscan.io', fmt: (ref) => `/tx/${ref}` },
   Polkadot: { url: 'https://polkadot.subscan.io', fmt: (ref) => `/extrinsic/${ref}` },
   Bitcoin: { url: 'https://blockstream.info', fmt: (ref) => `/tx/${ref}` },
+  Assethub: { url: 'https://assethub-polkadot.subscan.io', fmt: (ref) => `/extrinsic/${ref}` },
   Chainflip: { url: EXPLORER_URL, fmt: (p) => p },
 };
 

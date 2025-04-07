@@ -1,6 +1,6 @@
+import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { isNotNullish } from '@chainflip/utils/guard';
 import assert from 'assert';
-import { type ChainflipAsset } from '../graphql/generated/explorer/graphql.js';
 import { explorerClient } from '../server.js';
 import {
   getLatestDepositIdQuery,
