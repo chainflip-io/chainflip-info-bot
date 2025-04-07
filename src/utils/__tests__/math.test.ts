@@ -1,5 +1,5 @@
+import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { describe, expect, it } from 'vitest';
-import { type ChainflipAsset } from '../../graphql/generated/explorer/graphql.js';
 import { getPriceFromPriceX128 } from '../math.js';
 
 describe('get price from priceX128', () => {

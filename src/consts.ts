@@ -1,6 +1,6 @@
-import { type ChainflipAsset } from './graphql/generated/explorer/graphql.js';
+import { InternalAssetMap } from '@chainflip/utils/chainflip';
 
-export const humanFriendlyAsset: Record<ChainflipAsset, string> = {
+export const humanFriendlyAsset: InternalAssetMap<string> = {
   ArbEth: 'ETH on Arbitrum',
   ArbUsdc: 'USDC on Arbitrum',
   Btc: 'BTC',
@@ -11,6 +11,9 @@ export const humanFriendlyAsset: Record<ChainflipAsset, string> = {
   SolUsdc: 'USDC on Solana',
   Usdc: 'USDC on Ethereum',
   Usdt: 'USDT on Ethereum',
+  HubDot: 'DOT on Assethub',
+  HubUsdt: 'USDT on Assethub',
+  HubUsdc: 'USDC on Assethub',
 };
 
 export const EXPLORER_URL = 'https://scan.chainflip.io';
