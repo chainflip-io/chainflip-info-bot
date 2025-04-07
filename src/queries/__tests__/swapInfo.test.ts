@@ -187,6 +187,8 @@ describe('swapInfo', () => {
             idSs58: 'cFL8fmgKZcchhtLagBH2GKfsuWxBqUaD5CYE1m7DFb8DBSLJ1',
             alias: null,
           },
+          refundAmount: null,
+          outputAmount: '998970019491248471',
         },
       },
     });
@@ -206,7 +208,7 @@ describe('swapInfo', () => {
         "destinationAddress": "cFL8fmgKZcchhtLagBH2GKfsuWxBqUaD5CYE1m7DFb8DBSLJ1",
         "destinationAsset": "Flip",
         "duration": undefined,
-        "egressAmount": null,
+        "egressAmount": "0.998970019491248471",
         "egressValueUsd": null,
         "freshness": "stale",
         "lpIdAndAlias": {

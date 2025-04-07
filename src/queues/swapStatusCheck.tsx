@@ -133,7 +133,7 @@ const buildMessageData = ({
         )}
         {swapInfo.lpIdAndAlias && (
           <Line>
-            🚰 via{' '}
+            🔗 via{' '}
             <Bold platform={platform}>
               <ExplorerLink
                 platform={platform}
