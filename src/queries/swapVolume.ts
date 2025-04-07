@@ -1,5 +1,5 @@
 import { assetConstants } from '@chainflip/utils/chainflip';
-import { BigNumber } from 'bignumber.js';
+import BigNumber from 'bignumber.js';
 import { explorerClient, lpClient } from '../server.js';
 import { getSwapVolumeStatsQuery } from './explorer.js';
 import { getLpFeeInfo } from './lp.js';

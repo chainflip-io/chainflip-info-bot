@@ -1,7 +1,7 @@
 import { unreachable } from '@chainflip/utils/assertion';
 import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate } from '@chainflip/utils/string';
-import { type BigNumber } from 'bignumber.js';
+import type BigNumber from 'bignumber.js';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import {

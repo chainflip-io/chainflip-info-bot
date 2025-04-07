@@ -1,5 +1,5 @@
 import { utc } from '@date-fns/utc';
-import { BigNumber } from 'bignumber.js';
+import BigNumber from 'bignumber.js';
 import { type Job } from 'bullmq';
 import { endOfDay } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';

@@ -1,5 +1,5 @@
 import { lpAliasMap } from '@chainflip/utils/consts';
-import { BigNumber } from 'bignumber.js';
+import BigNumber from 'bignumber.js';
 import { lpClient } from '../server.js';
 import { getLpFillsQuery, getIdSs58Query } from './lp.js';
 
@@ -79,5 +79,5 @@ export default async function getLpFills({
         alias: lp.alias || undefined,
       };
     })
-    .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd));
+    .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd) ?? 0);
 }

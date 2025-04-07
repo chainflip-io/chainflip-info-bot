@@ -1,5 +1,5 @@
 import { formatUsdValue } from '@chainflip/utils/number';
-import { type BigNumber } from 'bignumber.js';
+import type BigNumber from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
