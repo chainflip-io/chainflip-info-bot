@@ -95,7 +95,10 @@ export default async function getSwapInfo(nativeId: string) {
     destinationAsset,
   );
 
-  const refundAmount = toAssetAmount(swap.refundEgress?.amount, sourceAsset);
+  const refundAmount = toAssetAmount(
+    swap.onChainInfo?.refundAmount ?? swap.refundEgress?.amount,
+    sourceAsset,
+  );
 
   let swapInputValueUsd = toUsdAmount(swap.depositValueUsd);
   if (refundAmount) {
