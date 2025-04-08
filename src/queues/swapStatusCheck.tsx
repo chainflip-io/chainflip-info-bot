@@ -132,16 +132,16 @@ const buildMessageData = ({
             </Bold>
           </Line>
         )}
-        {swapInfo.lpIdAndAlias && (
+        {swapInfo.onChainInfo?.lp && (
           <Line>
             🔗 by{' '}
             <Bold platform={platform}>
               <ExplorerLink
                 platform={platform}
-                path={`/lps/${swapInfo.lpIdAndAlias.lpId}`}
+                path={`/lps/${swapInfo.onChainInfo?.lp.idSs58}`}
                 prefer="text"
               >
-                {swapInfo.lpIdAndAlias.alias ?? abbreviate(swapInfo.lpIdAndAlias.lpId, 8)}
+                {swapInfo.onChainInfo?.lp.alias ?? abbreviate(swapInfo.onChainInfo?.lp.idSs58, 8)}
               </ExplorerLink>
             </Bold>
           </Line>

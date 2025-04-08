@@ -18,14 +18,6 @@ const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string })
       }
     : undefined;
 
-const getLpIdAndAlias = (lp?: { idSs58: string; alias?: string | null }) =>
-  lp && lp.idSs58
-    ? {
-        alias: lp.alias,
-        lpId: lp.idSs58,
-      }
-    : undefined;
-
 export default async function getSwapInfo(nativeId: string) {
   const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {
     nativeId,
@@ -48,12 +40,10 @@ export default async function getSwapInfo(nativeId: string) {
 
   const egressValueUsd = toUsdAmount(swap.egress?.valueUsd);
   const broker = swap.broker?.account;
-  const lp = swap.onChainInfo?.lp;
   const numberOfChunks = swap.dcaNumberOfChunks;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
 
   const brokerIdAndAlias = getBrokerIdAndAlias(broker);
-  const lpIdAndAlias = getLpIdAndAlias(lp);
   const affiliatesIdsAndAliases = swap.beneficiaries?.nodes
     .map(({ account }) => getBrokerIdAndAlias(account))
     .filter(isNotNullish);
@@ -145,7 +135,6 @@ export default async function getSwapInfo(nativeId: string) {
     priceDelta,
     priceDeltaPercentage,
     brokerIdAndAlias,
-    lpIdAndAlias,
     affiliatesIdsAndAliases,
     chunkIntervalBlocks,
     dcaChunks,
@@ -154,6 +143,7 @@ export default async function getSwapInfo(nativeId: string) {
     destinationAsset,
     completedAt,
     boostFee,
+    onChainInfo: swap.onChainInfo,
     depositAddress: swap.swapChannel?.depositAddress,
     destinationAddress: swap.destinationAddress,
     freshness,
