@@ -1,6 +1,6 @@
 import { assetConstants, type ChainflipAsset } from '@chainflip/utils/chainflip';
 import assert from 'assert';
-import { BigNumber } from 'bignumber.js';
+import BigNumber from 'bignumber.js';
 
 export function toUsdAmount(amount: BigNumber.Value): BigNumber;
 export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumber | null;

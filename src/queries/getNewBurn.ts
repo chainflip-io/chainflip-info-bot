@@ -1,6 +1,6 @@
 import { assetConstants } from '@chainflip/utils/chainflip';
 import assert from 'assert';
-import { BigNumber } from 'bignumber.js';
+import BigNumber from 'bignumber.js';
 import { explorerClient } from '../server.js';
 import { getNewBurnQuery } from './explorer.js';
 
