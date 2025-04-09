@@ -80,9 +80,15 @@ export default async function getSwapInfo(nativeId: string) {
 
   let swapInputAmount = toAssetAmount(swap.depositAmount, sourceAsset);
 
-  const egressAmount = toAssetAmount(swap.egress?.amount, destinationAsset);
+  const egressAmount = toAssetAmount(
+    swap.onChainInfo?.outputAmount ?? swap.egress?.amount,
+    destinationAsset,
+  );
 
-  const refundAmount = toAssetAmount(swap.refundEgress?.amount, sourceAsset);
+  const refundAmount = toAssetAmount(
+    swap.onChainInfo?.refundAmount ?? swap.refundEgress?.amount,
+    sourceAsset,
+  );
 
   let swapInputValueUsd = toUsdAmount(swap.depositValueUsd);
   if (refundAmount) {
@@ -137,6 +143,7 @@ export default async function getSwapInfo(nativeId: string) {
     destinationAsset,
     completedAt,
     boostFee,
+    onChainInfo: swap.onChainInfo,
     depositAddress: swap.swapChannel?.depositAddress,
     destinationAddress: swap.destinationAddress,
     freshness,

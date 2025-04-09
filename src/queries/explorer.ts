@@ -171,6 +171,14 @@ export const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           ref
         }
       }
+      onChainInfo: onChainSwapInfoBySwapRequestId {
+        lp: accountByAccountId {
+          idSs58
+          alias
+        }
+        refundAmount
+        outputAmount
+      }
     }
   }
 `);

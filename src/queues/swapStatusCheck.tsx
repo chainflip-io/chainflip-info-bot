@@ -1,5 +1,6 @@
 import { unreachable } from '@chainflip/utils/assertion';
 import { formatUsdValue } from '@chainflip/utils/number';
+import { abbreviate } from '@chainflip/utils/string';
 import { type BigNumber } from 'bignumber.js';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
@@ -127,6 +128,20 @@ const buildMessageData = ({
                 prefer="text"
               >
                 {swapInfo.brokerIdAndAlias.alias}
+              </ExplorerLink>
+            </Bold>
+          </Line>
+        )}
+        {swapInfo.onChainInfo?.lp && (
+          <Line>
+            🔗 by{' '}
+            <Bold platform={platform}>
+              <ExplorerLink
+                platform={platform}
+                path={`/lps/${swapInfo.onChainInfo?.lp.idSs58}`}
+                prefer="text"
+              >
+                {swapInfo.onChainInfo?.lp.alias ?? abbreviate(swapInfo.onChainInfo?.lp.idSs58, 8)}
               </ExplorerLink>
             </Bold>
           </Line>
