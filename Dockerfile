@@ -1,4 +1,4 @@
-FROM node:22.3.0-bullseye-slim as builder
+FROM node:24.0.0-bullseye-slim as builder
 
 # create root application folder
 WORKDIR /app
@@ -14,7 +14,7 @@ ENV NODE_ENV=$node_env
 
 RUN pnpm build
 
-FROM node:22.3.0-bullseye-slim
+FROM node:24.0.0-bullseye-slim
 
 WORKDIR /app
 
