@@ -27,8 +27,8 @@ importers:
         specifier: ^9.3.0
         version: 9.3.0
       bullmq:
-        specifier: ^5.49.2
-        version: 5.51.1
+        specifier: ^5.52.2
+        version: 5.52.2
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -1278,8 +1278,8 @@ packages:
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
 
-  bullmq@5.51.1:
-    resolution: {integrity: sha512-JEZokH5Sb6p66HRjbfQjPNYuSilDRcB8UREmJzOBqTTaJFza8I92vsBF3J/zmtzd7KVv3dxhZyH9CYSLOJALRA==}
+  bullmq@5.52.2:
+    resolution: {integrity: sha512-fK/dKIv8ymyys4K+zeNEPA+yuYWzRPmBWUmwIMz8DvYekadl8VG19yUx94Na0n0cLAi+spdn3a/+ufkYK7CBUg==}
 
   bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
@@ -1552,8 +1552,8 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
 
-  detect-libc@2.0.3:
-    resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
+  detect-libc@2.0.4:
+    resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
 
   dir-glob@3.0.1:
@@ -3055,6 +3055,11 @@ packages:
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.7.2:
+    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4705,7 +4710,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.1
+      semver: 7.7.2
       ts-api-utils: 2.1.0(typescript@5.8.3)
       typescript: 5.8.3
     transitivePeerDependencies:
@@ -5004,13 +5009,13 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  bullmq@5.51.1:
+  bullmq@5.52.2:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.6.1
       msgpackr: 1.11.2
       node-abort-controller: 3.1.1
-      semver: 7.7.1
+      semver: 7.7.2
       tslib: 2.8.1
       uuid: 9.0.1
     transitivePeerDependencies:
@@ -5279,7 +5284,7 @@ snapshots:
 
   detect-indent@6.1.0: {}
 
-  detect-libc@2.0.3:
+  detect-libc@2.0.4:
     optional: true
 
   dir-glob@3.0.1:
@@ -6442,7 +6447,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   map-cache@0.2.2: {}
 
@@ -6550,7 +6555,7 @@ snapshots:
 
   node-gyp-build-optional-packages@5.2.2:
     dependencies:
-      detect-libc: 2.0.3
+      detect-libc: 2.0.4
     optional: true
 
   node-int64@0.4.0: {}
@@ -6997,6 +7002,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.1: {}
+
+  semver@7.7.2: {}
 
   send@1.2.0:
     dependencies:
