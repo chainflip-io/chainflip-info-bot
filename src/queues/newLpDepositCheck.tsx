@@ -1,4 +1,3 @@
-import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate } from '@chainflip/utils/string';
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -10,6 +9,7 @@ import checkForFirstNewLpDeposits, {
   getLatestDepositId,
   type NewDeposit,
 } from '../queries/liquidityDeposits.js';
+import { formatUsdValue } from '../utils/functions.js';
 
 const name = 'newLpDepositCheck';
 type Name = typeof name;

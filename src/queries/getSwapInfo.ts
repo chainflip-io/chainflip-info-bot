@@ -18,7 +18,7 @@ const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string })
       }
     : undefined;
 
-export default async function getSwapInfo(nativeId: string) {
+export default async function getSwapInfo(nativeId: `${number}`) {
   const data = await explorerClient.request(getSwapInfoByNativeIdQuery, {
     nativeId,
   });

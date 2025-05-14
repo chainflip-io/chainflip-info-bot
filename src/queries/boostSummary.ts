@@ -1,6 +1,6 @@
 import { isNotNullish } from '@chainflip/utils/guard';
 import BigNumber from 'bignumber.js';
-import { type ChainflipAsset } from '../graphql/generated/explorer/graphql.js';
+import { type ChainflipAsset } from '../graphql/generated/lp/graphql.js';
 import { lpClient } from '../server.js';
 import { getBoostSummaryQuery } from './lp.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';

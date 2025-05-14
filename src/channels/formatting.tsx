@@ -1,10 +1,10 @@
 import { unreachable } from '@chainflip/utils/assertion';
 import { type ChainflipAsset, type ChainflipChain } from '@chainflip/utils/chainflip';
-import { formatUsdValue } from '@chainflip/utils/number';
 import type BigNumber from 'bignumber.js';
 import { EXPLORER_URL } from '../consts.js';
 import { humanFriendlyAsset } from '../consts.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
+import { formatUsdValue } from '../utils/functions.js';
 
 export const Bold = ({
   children,

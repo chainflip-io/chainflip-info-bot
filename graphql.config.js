@@ -24,9 +24,9 @@ export default {
           scalars: {
             DateTime: 'string',
             Datetime: 'string',
-            Decimal: 'string',
-            BigInt: 'string',
-            BigFloat: 'string',
+            Decimal: '`${number}`',
+            BigInt: '`${number}`',
+            BigFloat: '`${number}`',
           },
         },
       },

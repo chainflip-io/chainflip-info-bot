@@ -9,7 +9,7 @@ type Name = typeof name;
 const INTERVAL = 30_000;
 
 export const getNextJobData = async (
-  swapRequestId: string | null,
+  swapRequestId: `${number}` | null,
 ): Promise<Extract<DispatchJobArgs, { name: 'scheduler' }>> => {
   // prevents multiple jobs with the same key from being scheduled
   const customJobId = 'newSwapCheck';
@@ -28,7 +28,7 @@ export const getNextJobData = async (
 };
 
 type Data = {
-  lastSwapRequestId: string;
+  lastSwapRequestId: `${number}`;
 };
 
 declare global {
@@ -54,7 +54,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     .reduce((a, b) => (a > b ? a : b), BigInt(job.data.lastSwapRequestId));
   logger.info(`Current latest swapRequestId: ${latestSwapRequestId}`);
 
-  const data = await getNextJobData(latestSwapRequestId.toString());
+  const data = await getNextJobData(latestSwapRequestId.toString() as `${number}`);
 
   await dispatchJobs([data, ...swapRequestJobs]);
 

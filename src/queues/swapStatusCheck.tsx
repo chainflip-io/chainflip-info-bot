@@ -1,5 +1,4 @@
 import { unreachable } from '@chainflip/utils/assertion';
-import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate } from '@chainflip/utils/string';
 import type BigNumber from 'bignumber.js';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -15,13 +14,14 @@ import {
 import { platforms } from '../config.js';
 import { BLOCK_TIME_IN_SECONDS } from '../consts.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
+import { formatUsdValue } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
 const name = 'swapStatusCheck';
 type Name = typeof name;
 
 type Data = {
-  swapRequestId: string;
+  swapRequestId: `${number}`;
 };
 
 type SwapInfo = Awaited<ReturnType<typeof getSwapInfo>>;
