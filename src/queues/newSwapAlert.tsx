@@ -12,7 +12,7 @@ type Name = typeof name;
 const logger = baseLogger.child({ queue: name });
 
 type Data = {
-  swapRequestId: string;
+  swapRequestId: `${number}`;
 };
 
 declare global {

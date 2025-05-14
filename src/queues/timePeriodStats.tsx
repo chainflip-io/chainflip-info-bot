@@ -1,4 +1,3 @@
-import { formatUsdValue } from '@chainflip/utils/number';
 import { abbreviate, toUpperCase } from '@chainflip/utils/string';
 import { utc } from '@date-fns/utc';
 import assert from 'assert';
@@ -19,6 +18,7 @@ import { ASSET_FOR_BOOST_POOLS } from '../consts.js';
 import getBoostSummary, { type BoostData } from '../queries/boostSummary.js';
 import getLpFills, { type LPFillsData } from '../queries/lpFills.js';
 import getSwapVolumeStats, { type SwapStats } from '../queries/swapVolume.js';
+import { formatUsdValue } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
 const name = 'timePeriodStats';

@@ -1,4 +1,3 @@
-import { formatUsdValue } from '@chainflip/utils/number';
 import type BigNumber from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -7,6 +6,7 @@ import { ExplorerLink, Line, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurn from '../queries/getNewBurn.js';
+import { formatUsdValue } from '../utils/functions.js';
 
 const name = 'newBurnCheck';
 type Name = typeof name;
@@ -49,7 +49,7 @@ const buildMessages = ({
   indexInBlock,
 }: {
   totalAmount: BigNumber;
-  valueUsd?: string | null;
+  valueUsd?: `${number}` | null;
   blockHeight: number;
   indexInBlock: number;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>

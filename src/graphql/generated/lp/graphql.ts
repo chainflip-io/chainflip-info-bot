@@ -15,13 +15,13 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   /** A floating point number that requires more precision than IEEE 754 binary 64 */
-  BigFloat: { input: string; output: string; }
+  BigFloat: { input: `${number}`; output: `${number}`; }
   /**
    * A signed eight-byte integer. The upper big integer values are greater than the
    * max value for a JavaScript number. Therefore all big integers will be output as
    * strings and not numbers.
    */
-  BigInt: { input: string; output: string; }
+  BigInt: { input: `${number}`; output: `${number}`; }
   /** A location in a connection that can be used for resuming pagination. */
   Cursor: { input: any; output: any; }
   /**
@@ -261,14 +261,62 @@ export type AccountDistinctCountAggregates = {
 export type AccountFilter = {
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<AccountFilter>>;
+  /** Filter by the object’s `boostLiquidityBalanceChangesByLiquidityProviderId` relation. */
+  boostLiquidityBalanceChangesByLiquidityProviderId?: InputMaybe<AccountToManyBoostLiquidityBalanceChangeFilter>;
+  /** Some related `boostLiquidityBalanceChangesByLiquidityProviderId` exist. */
+  boostLiquidityBalanceChangesByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostSharesByLiquidityProviderId` relation. */
+  boostSharesByLiquidityProviderId?: InputMaybe<AccountToManyBoostShareFilter>;
+  /** Some related `boostSharesByLiquidityProviderId` exist. */
+  boostSharesByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `depositChannelsByBrokerId` relation. */
+  depositChannelsByBrokerId?: InputMaybe<AccountToManyDepositChannelFilter>;
+  /** Some related `depositChannelsByBrokerId` exist. */
+  depositChannelsByBrokerIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `depositChannelsByLiquidityProviderId` relation. */
+  depositChannelsByLiquidityProviderId?: InputMaybe<AccountToManyDepositChannelFilter>;
+  /** Some related `depositChannelsByLiquidityProviderId` exist. */
+  depositChannelsByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<IntFilter>;
   /** Filter by the object’s `idSs58` field. */
   idSs58?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `limitOrderFillsByLiquidityProviderId` relation. */
+  limitOrderFillsByLiquidityProviderId?: InputMaybe<AccountToManyLimitOrderFillFilter>;
+  /** Some related `limitOrderFillsByLiquidityProviderId` exist. */
+  limitOrderFillsByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `liquidityProviderBoostPoolSummariesByLiquidityProviderId` relation. */
+  liquidityProviderBoostPoolSummariesByLiquidityProviderId?: InputMaybe<AccountToManyLiquidityProviderBoostPoolSummaryFilter>;
+  /** Some related `liquidityProviderBoostPoolSummariesByLiquidityProviderId` exist. */
+  liquidityProviderBoostPoolSummariesByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `liquiditySnapshotsByLiquidityProviderId` relation. */
+  liquiditySnapshotsByLiquidityProviderId?: InputMaybe<AccountToManyLiquiditySnapshotFilter>;
+  /** Some related `liquiditySnapshotsByLiquidityProviderId` exist. */
+  liquiditySnapshotsByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Negates the expression. */
   not?: InputMaybe<AccountFilter>;
   /** Checks for any expressions in this list. */
   or?: InputMaybe<Array<AccountFilter>>;
+  /** Filter by the object’s `pendingBoostLiquidityWithdrawalsByLiquidityProviderId` relation. */
+  pendingBoostLiquidityWithdrawalsByLiquidityProviderId?: InputMaybe<AccountToManyPendingBoostLiquidityWithdrawalFilter>;
+  /** Some related `pendingBoostLiquidityWithdrawalsByLiquidityProviderId` exist. */
+  pendingBoostLiquidityWithdrawalsByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `poolOrdersByLiquidityProviderId` relation. */
+  poolOrdersByLiquidityProviderId?: InputMaybe<AccountToManyPoolOrderFilter>;
+  /** Some related `poolOrdersByLiquidityProviderId` exist. */
+  poolOrdersByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `rangeOrderFillsByLiquidityProviderId` relation. */
+  rangeOrderFillsByLiquidityProviderId?: InputMaybe<AccountToManyRangeOrderFillFilter>;
+  /** Some related `rangeOrderFillsByLiquidityProviderId` exist. */
+  rangeOrderFillsByLiquidityProviderIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `tradingStrategiesByOwnerAccountId` relation. */
+  tradingStrategiesByOwnerAccountId?: InputMaybe<AccountToManyTradingStrategyFilter>;
+  /** Some related `tradingStrategiesByOwnerAccountId` exist. */
+  tradingStrategiesByOwnerAccountIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `tradingStrategiesByStrategyAccountId` relation. */
+  tradingStrategiesByStrategyAccountId?: InputMaybe<AccountToManyTradingStrategyFilter>;
+  /** Some related `tradingStrategiesByStrategyAccountId` exist. */
+  tradingStrategiesByStrategyAccountIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `type` field. */
   type?: InputMaybe<AccountTypeFilter>;
 };
@@ -356,6 +404,126 @@ export type AccountSumAggregates = {
   __typename?: 'AccountSumAggregates';
   /** Sum of id across the matching connection */
   id: Scalars['BigInt']['output'];
+};
+
+/** A filter to be used against many `BoostLiquidityBalanceChange` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyBoostLiquidityBalanceChangeFilter = {
+  /** Aggregates across related `BoostLiquidityBalanceChange` match the filter criteria. */
+  aggregates?: InputMaybe<BoostLiquidityBalanceChangeAggregatesFilter>;
+  /** Every related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** No related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** Some related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+};
+
+/** A filter to be used against many `BoostShare` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyBoostShareFilter = {
+  /** Aggregates across related `BoostShare` match the filter criteria. */
+  aggregates?: InputMaybe<BoostShareAggregatesFilter>;
+  /** Every related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostShareFilter>;
+  /** No related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostShareFilter>;
+  /** Some related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostShareFilter>;
+};
+
+/** A filter to be used against many `DepositChannel` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyDepositChannelFilter = {
+  /** Aggregates across related `DepositChannel` match the filter criteria. */
+  aggregates?: InputMaybe<DepositChannelAggregatesFilter>;
+  /** Every related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<DepositChannelFilter>;
+  /** No related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<DepositChannelFilter>;
+  /** Some related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<DepositChannelFilter>;
+};
+
+/** A filter to be used against many `LimitOrderFill` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyLimitOrderFillFilter = {
+  /** Aggregates across related `LimitOrderFill` match the filter criteria. */
+  aggregates?: InputMaybe<LimitOrderFillAggregatesFilter>;
+  /** Every related `LimitOrderFill` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<LimitOrderFillFilter>;
+  /** No related `LimitOrderFill` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<LimitOrderFillFilter>;
+  /** Some related `LimitOrderFill` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<LimitOrderFillFilter>;
+};
+
+/** A filter to be used against many `LiquidityProviderBoostPoolSummary` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyLiquidityProviderBoostPoolSummaryFilter = {
+  /** Aggregates across related `LiquidityProviderBoostPoolSummary` match the filter criteria. */
+  aggregates?: InputMaybe<LiquidityProviderBoostPoolSummaryAggregatesFilter>;
+  /** Every related `LiquidityProviderBoostPoolSummary` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
+  /** No related `LiquidityProviderBoostPoolSummary` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
+  /** Some related `LiquidityProviderBoostPoolSummary` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
+};
+
+/** A filter to be used against many `LiquiditySnapshot` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyLiquiditySnapshotFilter = {
+  /** Aggregates across related `LiquiditySnapshot` match the filter criteria. */
+  aggregates?: InputMaybe<LiquiditySnapshotAggregatesFilter>;
+  /** Every related `LiquiditySnapshot` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<LiquiditySnapshotFilter>;
+  /** No related `LiquiditySnapshot` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<LiquiditySnapshotFilter>;
+  /** Some related `LiquiditySnapshot` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<LiquiditySnapshotFilter>;
+};
+
+/** A filter to be used against many `PendingBoostLiquidityWithdrawal` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyPendingBoostLiquidityWithdrawalFilter = {
+  /** Aggregates across related `PendingBoostLiquidityWithdrawal` match the filter criteria. */
+  aggregates?: InputMaybe<PendingBoostLiquidityWithdrawalAggregatesFilter>;
+  /** Every related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** No related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** Some related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+};
+
+/** A filter to be used against many `PoolOrder` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyPoolOrderFilter = {
+  /** Aggregates across related `PoolOrder` match the filter criteria. */
+  aggregates?: InputMaybe<PoolOrderAggregatesFilter>;
+  /** Every related `PoolOrder` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<PoolOrderFilter>;
+  /** No related `PoolOrder` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<PoolOrderFilter>;
+  /** Some related `PoolOrder` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<PoolOrderFilter>;
+};
+
+/** A filter to be used against many `RangeOrderFill` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyRangeOrderFillFilter = {
+  /** Aggregates across related `RangeOrderFill` match the filter criteria. */
+  aggregates?: InputMaybe<RangeOrderFillAggregatesFilter>;
+  /** Every related `RangeOrderFill` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<RangeOrderFillFilter>;
+  /** No related `RangeOrderFill` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<RangeOrderFillFilter>;
+  /** Some related `RangeOrderFill` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<RangeOrderFillFilter>;
+};
+
+/** A filter to be used against many `TradingStrategy` object types. All fields are combined with a logical ‘and.’ */
+export type AccountToManyTradingStrategyFilter = {
+  /** Aggregates across related `TradingStrategy` match the filter criteria. */
+  aggregates?: InputMaybe<TradingStrategyAggregatesFilter>;
+  /** Every related `TradingStrategy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<TradingStrategyFilter>;
+  /** No related `TradingStrategy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<TradingStrategyFilter>;
+  /** Some related `TradingStrategy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<TradingStrategyFilter>;
 };
 
 export type AccountType =
@@ -3077,6 +3245,50 @@ export type BoostAggregates = {
   varianceSample?: Maybe<BoostVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `Boost` object types. */
+export type BoostAggregatesFilter = {
+  /** Mean average aggregate over matching `Boost` objects. */
+  average?: InputMaybe<BoostAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `Boost` objects. */
+  distinctCount?: InputMaybe<BoostDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `Boost` object to be included within the aggregate. */
+  filter?: InputMaybe<BoostFilter>;
+  /** Maximum aggregate over matching `Boost` objects. */
+  max?: InputMaybe<BoostMaxAggregateFilter>;
+  /** Minimum aggregate over matching `Boost` objects. */
+  min?: InputMaybe<BoostMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `Boost` objects. */
+  stddevPopulation?: InputMaybe<BoostStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `Boost` objects. */
+  stddevSample?: InputMaybe<BoostStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `Boost` objects. */
+  sum?: InputMaybe<BoostSumAggregateFilter>;
+  /** Population variance aggregate over matching `Boost` objects. */
+  variancePopulation?: InputMaybe<BoostVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `Boost` objects. */
+  varianceSample?: InputMaybe<BoostVarianceSampleAggregateFilter>;
+};
+
+export type BoostAverageAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<BigFloatFilter>;
+  executedAtEventId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
+  settledAtEventId?: InputMaybe<BigFloatFilter>;
+  swapId?: InputMaybe<BigFloatFilter>;
+  swapRequestId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostAverageAggregates = {
   __typename?: 'BoostAverageAggregates';
   /** Mean average of depositAmount across the matching connection */
@@ -3163,6 +3375,31 @@ export type BoostCondition = {
   swapRequestId?: InputMaybe<Scalars['BigInt']['input']>;
 };
 
+export type BoostDistinctCountAggregateFilter = {
+  asset?: InputMaybe<BigIntFilter>;
+  chain?: InputMaybe<BigIntFilter>;
+  depositAmount?: InputMaybe<BigIntFilter>;
+  depositAmountUsd?: InputMaybe<BigIntFilter>;
+  depositChannelId?: InputMaybe<BigIntFilter>;
+  executedAtEventId?: InputMaybe<BigIntFilter>;
+  executedAtTimestamp?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigIntFilter>;
+  feeUsd?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigIntFilter>;
+  lostAtEventId?: InputMaybe<BigIntFilter>;
+  lostAtTimestamp?: InputMaybe<BigIntFilter>;
+  networkFeePortion?: InputMaybe<BigIntFilter>;
+  networkFeePortionUsd?: InputMaybe<BigIntFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigIntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
+  settledAtEventId?: InputMaybe<BigIntFilter>;
+  settledAtTimestamp?: InputMaybe<BigIntFilter>;
+  swapId?: InputMaybe<BigIntFilter>;
+  swapRequestId?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostDistinctCountAggregates = {
   __typename?: 'BoostDistinctCountAggregates';
   /** Distinct count of asset across the matching connection */
@@ -3217,14 +3454,38 @@ export type BoostFilter = {
   and?: InputMaybe<Array<BoostFilter>>;
   /** Filter by the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAssetFilter>;
+  /** Filter by the object’s `boostLiquidityBalanceChangesByBoostId` relation. */
+  boostLiquidityBalanceChangesByBoostId?: InputMaybe<BoostToManyBoostLiquidityBalanceChangeFilter>;
+  /** Some related `boostLiquidityBalanceChangesByBoostId` exist. */
+  boostLiquidityBalanceChangesByBoostIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostPoolBoostSharesByBoostId` relation. */
+  boostPoolBoostSharesByBoostId?: InputMaybe<BoostToManyBoostPoolBoostShareFilter>;
+  /** Some related `boostPoolBoostSharesByBoostId` exist. */
+  boostPoolBoostSharesByBoostIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostSharesByBoostId` relation. */
+  boostSharesByBoostId?: InputMaybe<BoostToManyBoostShareFilter>;
+  /** Some related `boostSharesByBoostId` exist. */
+  boostSharesByBoostIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `chain` field. */
   chain?: InputMaybe<ChainflipChainFilter>;
   /** Filter by the object’s `depositAmount` field. */
   depositAmount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `depositAmountUsd` field. */
   depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `depositChannelByDepositChannelId` relation. */
+  depositChannelByDepositChannelId?: InputMaybe<DepositChannelFilter>;
   /** Filter by the object’s `depositChannelId` field. */
   depositChannelId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `eventByExecutedAtEventId` relation. */
+  eventByExecutedAtEventId?: InputMaybe<EventFilter>;
+  /** Filter by the object’s `eventByLostAtEventId` relation. */
+  eventByLostAtEventId?: InputMaybe<EventFilter>;
+  /** A related `eventByLostAtEventId` exists. */
+  eventByLostAtEventIdExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `eventBySettledAtEventId` relation. */
+  eventBySettledAtEventId?: InputMaybe<EventFilter>;
+  /** A related `eventBySettledAtEventId` exists. */
+  eventBySettledAtEventIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `executedAtEventId` field. */
   executedAtEventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `executedAtTimestamp` field. */
@@ -3253,6 +3514,10 @@ export type BoostFilter = {
   not?: InputMaybe<BoostFilter>;
   /** Checks for any expressions in this list. */
   or?: InputMaybe<Array<BoostFilter>>;
+  /** Filter by the object’s `pendingBoostLiquidityWithdrawalsByBoostId` relation. */
+  pendingBoostLiquidityWithdrawalsByBoostId?: InputMaybe<BoostToManyPendingBoostLiquidityWithdrawalFilter>;
+  /** Some related `pendingBoostLiquidityWithdrawalsByBoostId` exist. */
+  pendingBoostLiquidityWithdrawalsByBoostIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `prewitnessedDepositId` field. */
   prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `settledAtEventId` field. */
@@ -3562,6 +3827,40 @@ export type BoostLiquidityBalanceChangeAggregates = {
   varianceSample?: Maybe<BoostLiquidityBalanceChangeVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `BoostLiquidityBalanceChange` object types. */
+export type BoostLiquidityBalanceChangeAggregatesFilter = {
+  /** Mean average aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  average?: InputMaybe<BoostLiquidityBalanceChangeAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  distinctCount?: InputMaybe<BoostLiquidityBalanceChangeDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `BoostLiquidityBalanceChange` object to be included within the aggregate. */
+  filter?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** Maximum aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  max?: InputMaybe<BoostLiquidityBalanceChangeMaxAggregateFilter>;
+  /** Minimum aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  min?: InputMaybe<BoostLiquidityBalanceChangeMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  stddevPopulation?: InputMaybe<BoostLiquidityBalanceChangeStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  stddevSample?: InputMaybe<BoostLiquidityBalanceChangeStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  sum?: InputMaybe<BoostLiquidityBalanceChangeSumAggregateFilter>;
+  /** Population variance aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  variancePopulation?: InputMaybe<BoostLiquidityBalanceChangeVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `BoostLiquidityBalanceChange` objects. */
+  varianceSample?: InputMaybe<BoostLiquidityBalanceChangeVarianceSampleAggregateFilter>;
+};
+
+export type BoostLiquidityBalanceChangeAverageAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostLiquidityBalanceChangeAverageAggregates = {
   __typename?: 'BoostLiquidityBalanceChangeAverageAggregates';
   /** Mean average of amount across the matching connection */
@@ -3603,6 +3902,17 @@ export type BoostLiquidityBalanceChangeCondition = {
   type?: InputMaybe<BoostPoolBalanceChangeType>;
 };
 
+export type BoostLiquidityBalanceChangeDistinctCountAggregateFilter = {
+  amount?: InputMaybe<BigIntFilter>;
+  amountUsd?: InputMaybe<BigIntFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  type?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostLiquidityBalanceChangeDistinctCountAggregates = {
   __typename?: 'BoostLiquidityBalanceChangeDistinctCountAggregates';
   /** Distinct count of amount across the matching connection */
@@ -3625,16 +3935,26 @@ export type BoostLiquidityBalanceChangeDistinctCountAggregates = {
 
 /** A filter to be used against `BoostLiquidityBalanceChange` object types. All fields are combined with a logical ‘and.’ */
 export type BoostLiquidityBalanceChangeFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Filter by the object’s `amount` field. */
   amount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `amountUsd` field. */
   amountUsd?: InputMaybe<BigFloatFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<BoostLiquidityBalanceChangeFilter>>;
+  /** Filter by the object’s `boostByBoostId` relation. */
+  boostByBoostId?: InputMaybe<BoostFilter>;
+  /** A related `boostByBoostId` exists. */
+  boostByBoostIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `boostId` field. */
   boostId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostPoolByBoostPoolId` relation. */
+  boostPoolByBoostPoolId?: InputMaybe<BoostPoolFilter>;
   /** Filter by the object’s `boostPoolId` field. */
   boostPoolId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `eventByEventId` relation. */
+  eventByEventId?: InputMaybe<EventFilter>;
   /** Filter by the object’s `eventId` field. */
   eventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `id` field. */
@@ -3764,6 +4084,16 @@ export type BoostLiquidityBalanceChangeHavingVarianceSampleInput = {
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
 };
 
+export type BoostLiquidityBalanceChangeMaxAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+};
+
 export type BoostLiquidityBalanceChangeMaxAggregates = {
   __typename?: 'BoostLiquidityBalanceChangeMaxAggregates';
   /** Maximum of amount across the matching connection */
@@ -3780,6 +4110,16 @@ export type BoostLiquidityBalanceChangeMaxAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Maximum of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type BoostLiquidityBalanceChangeMinAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
 };
 
 export type BoostLiquidityBalanceChangeMinAggregates = {
@@ -3800,6 +4140,16 @@ export type BoostLiquidityBalanceChangeMinAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
 };
 
+export type BoostLiquidityBalanceChangeStddevPopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostLiquidityBalanceChangeStddevPopulationAggregates = {
   __typename?: 'BoostLiquidityBalanceChangeStddevPopulationAggregates';
   /** Population standard deviation of amount across the matching connection */
@@ -3816,6 +4166,16 @@ export type BoostLiquidityBalanceChangeStddevPopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostLiquidityBalanceChangeStddevSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostLiquidityBalanceChangeStddevSampleAggregates = {
@@ -3836,6 +4196,16 @@ export type BoostLiquidityBalanceChangeStddevSampleAggregates = {
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostLiquidityBalanceChangeSumAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostLiquidityBalanceChangeSumAggregates = {
   __typename?: 'BoostLiquidityBalanceChangeSumAggregates';
   /** Sum of amount across the matching connection */
@@ -3854,6 +4224,16 @@ export type BoostLiquidityBalanceChangeSumAggregates = {
   liquidityProviderId: Scalars['BigInt']['output'];
 };
 
+export type BoostLiquidityBalanceChangeVariancePopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostLiquidityBalanceChangeVariancePopulationAggregates = {
   __typename?: 'BoostLiquidityBalanceChangeVariancePopulationAggregates';
   /** Population variance of amount across the matching connection */
@@ -3870,6 +4250,16 @@ export type BoostLiquidityBalanceChangeVariancePopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostLiquidityBalanceChangeVarianceSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostLiquidityBalanceChangeVarianceSampleAggregates = {
@@ -3945,6 +4335,26 @@ export type BoostLiquidityBalanceChangesOrderBy =
   | 'TYPE_ASC'
   | 'TYPE_DESC';
 
+export type BoostMaxAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<IntFilter>;
+  executedAtEventId?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigIntFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigIntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
+  settledAtEventId?: InputMaybe<BigIntFilter>;
+  swapId?: InputMaybe<BigIntFilter>;
+  swapRequestId?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostMaxAggregates = {
   __typename?: 'BoostMaxAggregates';
   /** Maximum of depositAmount across the matching connection */
@@ -3981,6 +4391,26 @@ export type BoostMaxAggregates = {
   swapId?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigInt']['output']>;
+};
+
+export type BoostMinAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<IntFilter>;
+  executedAtEventId?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigIntFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigIntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
+  settledAtEventId?: InputMaybe<BigIntFilter>;
+  swapId?: InputMaybe<BigIntFilter>;
+  swapRequestId?: InputMaybe<BigIntFilter>;
 };
 
 export type BoostMinAggregates = {
@@ -4237,6 +4667,42 @@ export type BoostPoolApyAggregates = {
   varianceSample?: Maybe<BoostPoolApyVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `BoostPoolApy` object types. */
+export type BoostPoolApyAggregatesFilter = {
+  /** Mean average aggregate over matching `BoostPoolApy` objects. */
+  average?: InputMaybe<BoostPoolApyAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `BoostPoolApy` objects. */
+  distinctCount?: InputMaybe<BoostPoolApyDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `BoostPoolApy` object to be included within the aggregate. */
+  filter?: InputMaybe<BoostPoolApyFilter>;
+  /** Maximum aggregate over matching `BoostPoolApy` objects. */
+  max?: InputMaybe<BoostPoolApyMaxAggregateFilter>;
+  /** Minimum aggregate over matching `BoostPoolApy` objects. */
+  min?: InputMaybe<BoostPoolApyMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `BoostPoolApy` objects. */
+  stddevPopulation?: InputMaybe<BoostPoolApyStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `BoostPoolApy` objects. */
+  stddevSample?: InputMaybe<BoostPoolApyStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `BoostPoolApy` objects. */
+  sum?: InputMaybe<BoostPoolApySumAggregateFilter>;
+  /** Population variance aggregate over matching `BoostPoolApy` objects. */
+  variancePopulation?: InputMaybe<BoostPoolApyVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `BoostPoolApy` objects. */
+  varianceSample?: InputMaybe<BoostPoolApyVarianceSampleAggregateFilter>;
+};
+
+export type BoostPoolApyAverageAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  interval?: InputMaybe<BigFloatFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolApyAverageAggregates = {
   __typename?: 'BoostPoolApyAverageAggregates';
   /** Mean average of avgLiquidity across the matching connection */
@@ -4286,6 +4752,19 @@ export type BoostPoolApyCondition = {
   timestamp?: InputMaybe<Scalars['Datetime']['input']>;
 };
 
+export type BoostPoolApyDistinctCountAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigIntFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  feesEarned?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  interval?: InputMaybe<BigIntFilter>;
+  maxLiquidity?: InputMaybe<BigIntFilter>;
+  minLiquidity?: InputMaybe<BigIntFilter>;
+  projectedApy?: InputMaybe<BigIntFilter>;
+  timestamp?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostPoolApyDistinctCountAggregates = {
   __typename?: 'BoostPoolApyDistinctCountAggregates';
   /** Distinct count of avgLiquidity across the matching connection */
@@ -4318,6 +4797,8 @@ export type BoostPoolApyFilter = {
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `block` field. */
   block?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostPoolByBoostPoolId` relation. */
+  boostPoolByBoostPoolId?: InputMaybe<BoostPoolFilter>;
   /** Filter by the object’s `boostPoolId` field. */
   boostPoolId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `feesEarned` field. */
@@ -4486,6 +4967,18 @@ export type BoostPoolApyHavingVarianceSampleInput = {
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
+export type BoostPoolApyMaxAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  interval?: InputMaybe<IntFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolApyMaxAggregates = {
   __typename?: 'BoostPoolApyMaxAggregates';
   /** Maximum of avgLiquidity across the matching connection */
@@ -4506,6 +4999,18 @@ export type BoostPoolApyMaxAggregates = {
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolApyMinAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  interval?: InputMaybe<IntFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyMinAggregates = {
@@ -4530,6 +5035,18 @@ export type BoostPoolApyMinAggregates = {
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostPoolApyStddevPopulationAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  interval?: InputMaybe<BigFloatFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolApyStddevPopulationAggregates = {
   __typename?: 'BoostPoolApyStddevPopulationAggregates';
   /** Population standard deviation of avgLiquidity across the matching connection */
@@ -4550,6 +5067,18 @@ export type BoostPoolApyStddevPopulationAggregates = {
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolApyStddevSampleAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  interval?: InputMaybe<BigFloatFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyStddevSampleAggregates = {
@@ -4574,6 +5103,18 @@ export type BoostPoolApyStddevSampleAggregates = {
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostPoolApySumAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  interval?: InputMaybe<BigIntFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolApySumAggregates = {
   __typename?: 'BoostPoolApySumAggregates';
   /** Sum of avgLiquidity across the matching connection */
@@ -4596,6 +5137,18 @@ export type BoostPoolApySumAggregates = {
   projectedApy: Scalars['BigFloat']['output'];
 };
 
+export type BoostPoolApyVariancePopulationAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  interval?: InputMaybe<BigFloatFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolApyVariancePopulationAggregates = {
   __typename?: 'BoostPoolApyVariancePopulationAggregates';
   /** Population variance of avgLiquidity across the matching connection */
@@ -4616,6 +5169,18 @@ export type BoostPoolApyVariancePopulationAggregates = {
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolApyVarianceSampleAggregateFilter = {
+  avgLiquidity?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  interval?: InputMaybe<BigFloatFilter>;
+  maxLiquidity?: InputMaybe<BigFloatFilter>;
+  minLiquidity?: InputMaybe<BigFloatFilter>;
+  projectedApy?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyVarianceSampleAggregates = {
@@ -4723,6 +5288,40 @@ export type BoostPoolBoostShareAggregates = {
   varianceSample?: Maybe<BoostPoolBoostShareVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `BoostPoolBoostShare` object types. */
+export type BoostPoolBoostShareAggregatesFilter = {
+  /** Mean average aggregate over matching `BoostPoolBoostShare` objects. */
+  average?: InputMaybe<BoostPoolBoostShareAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `BoostPoolBoostShare` objects. */
+  distinctCount?: InputMaybe<BoostPoolBoostShareDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `BoostPoolBoostShare` object to be included within the aggregate. */
+  filter?: InputMaybe<BoostPoolBoostShareFilter>;
+  /** Maximum aggregate over matching `BoostPoolBoostShare` objects. */
+  max?: InputMaybe<BoostPoolBoostShareMaxAggregateFilter>;
+  /** Minimum aggregate over matching `BoostPoolBoostShare` objects. */
+  min?: InputMaybe<BoostPoolBoostShareMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `BoostPoolBoostShare` objects. */
+  stddevPopulation?: InputMaybe<BoostPoolBoostShareStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `BoostPoolBoostShare` objects. */
+  stddevSample?: InputMaybe<BoostPoolBoostShareStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `BoostPoolBoostShare` objects. */
+  sum?: InputMaybe<BoostPoolBoostShareSumAggregateFilter>;
+  /** Population variance aggregate over matching `BoostPoolBoostShare` objects. */
+  variancePopulation?: InputMaybe<BoostPoolBoostShareVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `BoostPoolBoostShare` objects. */
+  varianceSample?: InputMaybe<BoostPoolBoostShareVarianceSampleAggregateFilter>;
+};
+
+export type BoostPoolBoostShareAverageAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolBoostShareAverageAggregates = {
   __typename?: 'BoostPoolBoostShareAverageAggregates';
   /** Mean average of amount across the matching connection */
@@ -4766,6 +5365,18 @@ export type BoostPoolBoostShareCondition = {
   lost?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type BoostPoolBoostShareDistinctCountAggregateFilter = {
+  amount?: InputMaybe<BigIntFilter>;
+  amountUsd?: InputMaybe<BigIntFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  executedAtTimestamp?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigIntFilter>;
+  feeUsd?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  lost?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostPoolBoostShareDistinctCountAggregates = {
   __typename?: 'BoostPoolBoostShareDistinctCountAggregates';
   /** Distinct count of amount across the matching connection */
@@ -4796,8 +5407,12 @@ export type BoostPoolBoostShareFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<BoostPoolBoostShareFilter>>;
+  /** Filter by the object’s `boostByBoostId` relation. */
+  boostByBoostId?: InputMaybe<BoostFilter>;
   /** Filter by the object’s `boostId` field. */
   boostId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostPoolByBoostPoolId` relation. */
+  boostPoolByBoostPoolId?: InputMaybe<BoostPoolFilter>;
   /** Filter by the object’s `boostPoolId` field. */
   boostPoolId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `executedAtTimestamp` field. */
@@ -4943,6 +5558,16 @@ export type BoostPoolBoostShareHavingVarianceSampleInput = {
   id?: InputMaybe<HavingBigintFilter>;
 };
 
+export type BoostPoolBoostShareMaxAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostPoolBoostShareMaxAggregates = {
   __typename?: 'BoostPoolBoostShareMaxAggregates';
   /** Maximum of amount across the matching connection */
@@ -4959,6 +5584,16 @@ export type BoostPoolBoostShareMaxAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+};
+
+export type BoostPoolBoostShareMinAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
 };
 
 export type BoostPoolBoostShareMinAggregates = {
@@ -4979,6 +5614,16 @@ export type BoostPoolBoostShareMinAggregates = {
   id?: Maybe<Scalars['BigInt']['output']>;
 };
 
+export type BoostPoolBoostShareStddevPopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolBoostShareStddevPopulationAggregates = {
   __typename?: 'BoostPoolBoostShareStddevPopulationAggregates';
   /** Population standard deviation of amount across the matching connection */
@@ -4995,6 +5640,16 @@ export type BoostPoolBoostShareStddevPopulationAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolBoostShareStddevSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareStddevSampleAggregates = {
@@ -5015,6 +5670,16 @@ export type BoostPoolBoostShareStddevSampleAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostPoolBoostShareSumAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolBoostShareSumAggregates = {
   __typename?: 'BoostPoolBoostShareSumAggregates';
   /** Sum of amount across the matching connection */
@@ -5033,6 +5698,16 @@ export type BoostPoolBoostShareSumAggregates = {
   id: Scalars['BigFloat']['output'];
 };
 
+export type BoostPoolBoostShareVariancePopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolBoostShareVariancePopulationAggregates = {
   __typename?: 'BoostPoolBoostShareVariancePopulationAggregates';
   /** Population variance of amount across the matching connection */
@@ -5049,6 +5724,16 @@ export type BoostPoolBoostShareVariancePopulationAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolBoostShareVarianceSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareVarianceSampleAggregates = {
@@ -5155,10 +5840,34 @@ export type BoostPoolFilter = {
   and?: InputMaybe<Array<BoostPoolFilter>>;
   /** Filter by the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAssetFilter>;
+  /** Filter by the object’s `boostLiquidityBalanceChangesByBoostPoolId` relation. */
+  boostLiquidityBalanceChangesByBoostPoolId?: InputMaybe<BoostPoolToManyBoostLiquidityBalanceChangeFilter>;
+  /** Some related `boostLiquidityBalanceChangesByBoostPoolId` exist. */
+  boostLiquidityBalanceChangesByBoostPoolIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostPoolApiesByBoostPoolId` relation. */
+  boostPoolApiesByBoostPoolId?: InputMaybe<BoostPoolToManyBoostPoolApyFilter>;
+  /** Some related `boostPoolApiesByBoostPoolId` exist. */
+  boostPoolApiesByBoostPoolIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostPoolBoostSharesByBoostPoolId` relation. */
+  boostPoolBoostSharesByBoostPoolId?: InputMaybe<BoostPoolToManyBoostPoolBoostShareFilter>;
+  /** Some related `boostPoolBoostSharesByBoostPoolId` exist. */
+  boostPoolBoostSharesByBoostPoolIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostPoolLiquiditiesByBoostPoolId` relation. */
+  boostPoolLiquiditiesByBoostPoolId?: InputMaybe<BoostPoolToManyBoostPoolLiquidityFilter>;
+  /** Some related `boostPoolLiquiditiesByBoostPoolId` exist. */
+  boostPoolLiquiditiesByBoostPoolIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostSharesByBoostPoolId` relation. */
+  boostSharesByBoostPoolId?: InputMaybe<BoostPoolToManyBoostShareFilter>;
+  /** Some related `boostSharesByBoostPoolId` exist. */
+  boostSharesByBoostPoolIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `feeTierPips` field. */
   feeTierPips?: InputMaybe<IntFilter>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `liquidityProviderBoostPoolSummariesByBoostPoolId` relation. */
+  liquidityProviderBoostPoolSummariesByBoostPoolId?: InputMaybe<BoostPoolToManyLiquidityProviderBoostPoolSummaryFilter>;
+  /** Some related `liquidityProviderBoostPoolSummariesByBoostPoolId` exist. */
+  liquidityProviderBoostPoolSummariesByBoostPoolIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Negates the expression. */
   not?: InputMaybe<BoostPoolFilter>;
   /** Checks for any expressions in this list. */
@@ -5330,6 +6039,42 @@ export type BoostPoolLiquidityAggregates = {
   varianceSample?: Maybe<BoostPoolLiquidityVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `BoostPoolLiquidity` object types. */
+export type BoostPoolLiquidityAggregatesFilter = {
+  /** Mean average aggregate over matching `BoostPoolLiquidity` objects. */
+  average?: InputMaybe<BoostPoolLiquidityAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `BoostPoolLiquidity` objects. */
+  distinctCount?: InputMaybe<BoostPoolLiquidityDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `BoostPoolLiquidity` object to be included within the aggregate. */
+  filter?: InputMaybe<BoostPoolLiquidityFilter>;
+  /** Maximum aggregate over matching `BoostPoolLiquidity` objects. */
+  max?: InputMaybe<BoostPoolLiquidityMaxAggregateFilter>;
+  /** Minimum aggregate over matching `BoostPoolLiquidity` objects. */
+  min?: InputMaybe<BoostPoolLiquidityMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `BoostPoolLiquidity` objects. */
+  stddevPopulation?: InputMaybe<BoostPoolLiquidityStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `BoostPoolLiquidity` objects. */
+  stddevSample?: InputMaybe<BoostPoolLiquidityStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `BoostPoolLiquidity` objects. */
+  sum?: InputMaybe<BoostPoolLiquiditySumAggregateFilter>;
+  /** Population variance aggregate over matching `BoostPoolLiquidity` objects. */
+  variancePopulation?: InputMaybe<BoostPoolLiquidityVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `BoostPoolLiquidity` objects. */
+  varianceSample?: InputMaybe<BoostPoolLiquidityVarianceSampleAggregateFilter>;
+};
+
+export type BoostPoolLiquidityAverageAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolLiquidityAverageAggregates = {
   __typename?: 'BoostPoolLiquidityAverageAggregates';
   /** Mean average of availableAmount across the matching connection */
@@ -5379,6 +6124,19 @@ export type BoostPoolLiquidityCondition = {
   unavailableAmountValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
 };
 
+export type BoostPoolLiquidityDistinctCountAggregateFilter = {
+  availableAmount?: InputMaybe<BigIntFilter>;
+  availableAmountValueUsd?: InputMaybe<BigIntFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  timestamp?: InputMaybe<BigIntFilter>;
+  totalAmount?: InputMaybe<BigIntFilter>;
+  totalAmountValueUsd?: InputMaybe<BigIntFilter>;
+  unavailableAmount?: InputMaybe<BigIntFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostPoolLiquidityDistinctCountAggregates = {
   __typename?: 'BoostPoolLiquidityDistinctCountAggregates';
   /** Distinct count of availableAmount across the matching connection */
@@ -5413,6 +6171,8 @@ export type BoostPoolLiquidityFilter = {
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `block` field. */
   block?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostPoolByBoostPoolId` relation. */
+  boostPoolByBoostPoolId?: InputMaybe<BoostPoolFilter>;
   /** Filter by the object’s `boostPoolId` field. */
   boostPoolId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `id` field. */
@@ -5579,6 +6339,18 @@ export type BoostPoolLiquidityHavingVarianceSampleInput = {
   unavailableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
+export type BoostPoolLiquidityMaxAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolLiquidityMaxAggregates = {
   __typename?: 'BoostPoolLiquidityMaxAggregates';
   /** Maximum of availableAmount across the matching connection */
@@ -5599,6 +6371,18 @@ export type BoostPoolLiquidityMaxAggregates = {
   unavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of unavailableAmountValueUsd across the matching connection */
   unavailableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolLiquidityMinAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolLiquidityMinAggregates = {
@@ -5623,6 +6407,18 @@ export type BoostPoolLiquidityMinAggregates = {
   unavailableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostPoolLiquidityStddevPopulationAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolLiquidityStddevPopulationAggregates = {
   __typename?: 'BoostPoolLiquidityStddevPopulationAggregates';
   /** Population standard deviation of availableAmount across the matching connection */
@@ -5643,6 +6439,18 @@ export type BoostPoolLiquidityStddevPopulationAggregates = {
   unavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of unavailableAmountValueUsd across the matching connection */
   unavailableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolLiquidityStddevSampleAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolLiquidityStddevSampleAggregates = {
@@ -5667,6 +6475,18 @@ export type BoostPoolLiquidityStddevSampleAggregates = {
   unavailableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostPoolLiquiditySumAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolLiquiditySumAggregates = {
   __typename?: 'BoostPoolLiquiditySumAggregates';
   /** Sum of availableAmount across the matching connection */
@@ -5689,6 +6509,18 @@ export type BoostPoolLiquiditySumAggregates = {
   unavailableAmountValueUsd: Scalars['BigFloat']['output'];
 };
 
+export type BoostPoolLiquidityVariancePopulationAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostPoolLiquidityVariancePopulationAggregates = {
   __typename?: 'BoostPoolLiquidityVariancePopulationAggregates';
   /** Population variance of availableAmount across the matching connection */
@@ -5709,6 +6541,18 @@ export type BoostPoolLiquidityVariancePopulationAggregates = {
   unavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of unavailableAmountValueUsd across the matching connection */
   unavailableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostPoolLiquidityVarianceSampleAggregateFilter = {
+  availableAmount?: InputMaybe<BigFloatFilter>;
+  availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  totalAmount?: InputMaybe<BigFloatFilter>;
+  totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  unavailableAmount?: InputMaybe<BigFloatFilter>;
+  unavailableAmountValueUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolLiquidityVarianceSampleAggregates = {
@@ -5771,6 +6615,78 @@ export type BoostPoolSumAggregates = {
   feeTierPips: Scalars['BigInt']['output'];
   /** Sum of id across the matching connection */
   id: Scalars['BigInt']['output'];
+};
+
+/** A filter to be used against many `BoostLiquidityBalanceChange` object types. All fields are combined with a logical ‘and.’ */
+export type BoostPoolToManyBoostLiquidityBalanceChangeFilter = {
+  /** Aggregates across related `BoostLiquidityBalanceChange` match the filter criteria. */
+  aggregates?: InputMaybe<BoostLiquidityBalanceChangeAggregatesFilter>;
+  /** Every related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** No related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** Some related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+};
+
+/** A filter to be used against many `BoostPoolApy` object types. All fields are combined with a logical ‘and.’ */
+export type BoostPoolToManyBoostPoolApyFilter = {
+  /** Aggregates across related `BoostPoolApy` match the filter criteria. */
+  aggregates?: InputMaybe<BoostPoolApyAggregatesFilter>;
+  /** Every related `BoostPoolApy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostPoolApyFilter>;
+  /** No related `BoostPoolApy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostPoolApyFilter>;
+  /** Some related `BoostPoolApy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostPoolApyFilter>;
+};
+
+/** A filter to be used against many `BoostPoolBoostShare` object types. All fields are combined with a logical ‘and.’ */
+export type BoostPoolToManyBoostPoolBoostShareFilter = {
+  /** Aggregates across related `BoostPoolBoostShare` match the filter criteria. */
+  aggregates?: InputMaybe<BoostPoolBoostShareAggregatesFilter>;
+  /** Every related `BoostPoolBoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostPoolBoostShareFilter>;
+  /** No related `BoostPoolBoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostPoolBoostShareFilter>;
+  /** Some related `BoostPoolBoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostPoolBoostShareFilter>;
+};
+
+/** A filter to be used against many `BoostPoolLiquidity` object types. All fields are combined with a logical ‘and.’ */
+export type BoostPoolToManyBoostPoolLiquidityFilter = {
+  /** Aggregates across related `BoostPoolLiquidity` match the filter criteria. */
+  aggregates?: InputMaybe<BoostPoolLiquidityAggregatesFilter>;
+  /** Every related `BoostPoolLiquidity` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostPoolLiquidityFilter>;
+  /** No related `BoostPoolLiquidity` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostPoolLiquidityFilter>;
+  /** Some related `BoostPoolLiquidity` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostPoolLiquidityFilter>;
+};
+
+/** A filter to be used against many `BoostShare` object types. All fields are combined with a logical ‘and.’ */
+export type BoostPoolToManyBoostShareFilter = {
+  /** Aggregates across related `BoostShare` match the filter criteria. */
+  aggregates?: InputMaybe<BoostShareAggregatesFilter>;
+  /** Every related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostShareFilter>;
+  /** No related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostShareFilter>;
+  /** Some related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostShareFilter>;
+};
+
+/** A filter to be used against many `LiquidityProviderBoostPoolSummary` object types. All fields are combined with a logical ‘and.’ */
+export type BoostPoolToManyLiquidityProviderBoostPoolSummaryFilter = {
+  /** Aggregates across related `LiquidityProviderBoostPoolSummary` match the filter criteria. */
+  aggregates?: InputMaybe<LiquidityProviderBoostPoolSummaryAggregatesFilter>;
+  /** Every related `LiquidityProviderBoostPoolSummary` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
+  /** No related `LiquidityProviderBoostPoolSummary` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
+  /** Some related `LiquidityProviderBoostPoolSummary` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
 };
 
 export type BoostPoolVariancePopulationAggregates = {
@@ -6845,6 +7761,41 @@ export type BoostShareAggregates = {
   varianceSample?: Maybe<BoostShareVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `BoostShare` object types. */
+export type BoostShareAggregatesFilter = {
+  /** Mean average aggregate over matching `BoostShare` objects. */
+  average?: InputMaybe<BoostShareAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `BoostShare` objects. */
+  distinctCount?: InputMaybe<BoostShareDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `BoostShare` object to be included within the aggregate. */
+  filter?: InputMaybe<BoostShareFilter>;
+  /** Maximum aggregate over matching `BoostShare` objects. */
+  max?: InputMaybe<BoostShareMaxAggregateFilter>;
+  /** Minimum aggregate over matching `BoostShare` objects. */
+  min?: InputMaybe<BoostShareMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `BoostShare` objects. */
+  stddevPopulation?: InputMaybe<BoostShareStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `BoostShare` objects. */
+  stddevSample?: InputMaybe<BoostShareStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `BoostShare` objects. */
+  sum?: InputMaybe<BoostShareSumAggregateFilter>;
+  /** Population variance aggregate over matching `BoostShare` objects. */
+  variancePopulation?: InputMaybe<BoostShareVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `BoostShare` objects. */
+  varianceSample?: InputMaybe<BoostShareVarianceSampleAggregateFilter>;
+};
+
+export type BoostShareAverageAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostShareAverageAggregates = {
   __typename?: 'BoostShareAverageAggregates';
   /** Mean average of amount across the matching connection */
@@ -6892,6 +7843,19 @@ export type BoostShareCondition = {
   lost?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type BoostShareDistinctCountAggregateFilter = {
+  amount?: InputMaybe<BigIntFilter>;
+  amountUsd?: InputMaybe<BigIntFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  executedAtTimestamp?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigIntFilter>;
+  feeUsd?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  lost?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostShareDistinctCountAggregates = {
   __typename?: 'BoostShareDistinctCountAggregates';
   /** Distinct count of amount across the matching connection */
@@ -6918,14 +7882,20 @@ export type BoostShareDistinctCountAggregates = {
 
 /** A filter to be used against `BoostShare` object types. All fields are combined with a logical ‘and.’ */
 export type BoostShareFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Filter by the object’s `amount` field. */
   amount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `amountUsd` field. */
   amountUsd?: InputMaybe<BigFloatFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<BoostShareFilter>>;
+  /** Filter by the object’s `boostByBoostId` relation. */
+  boostByBoostId?: InputMaybe<BoostFilter>;
   /** Filter by the object’s `boostId` field. */
   boostId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostPoolByBoostPoolId` relation. */
+  boostPoolByBoostPoolId?: InputMaybe<BoostPoolFilter>;
   /** Filter by the object’s `boostPoolId` field. */
   boostPoolId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `executedAtTimestamp` field. */
@@ -7083,6 +8053,17 @@ export type BoostShareHavingVarianceSampleInput = {
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
 };
 
+export type BoostShareMaxAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+};
+
 export type BoostShareMaxAggregates = {
   __typename?: 'BoostShareMaxAggregates';
   /** Maximum of amount across the matching connection */
@@ -7101,6 +8082,17 @@ export type BoostShareMaxAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Maximum of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type BoostShareMinAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<IntFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
 };
 
 export type BoostShareMinAggregates = {
@@ -7123,6 +8115,17 @@ export type BoostShareMinAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
 };
 
+export type BoostShareStddevPopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostShareStddevPopulationAggregates = {
   __typename?: 'BoostShareStddevPopulationAggregates';
   /** Population standard deviation of amount across the matching connection */
@@ -7141,6 +8144,17 @@ export type BoostShareStddevPopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostShareStddevSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostShareStddevSampleAggregates = {
@@ -7163,6 +8177,17 @@ export type BoostShareStddevSampleAggregates = {
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostShareSumAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+};
+
 export type BoostShareSumAggregates = {
   __typename?: 'BoostShareSumAggregates';
   /** Sum of amount across the matching connection */
@@ -7183,6 +8208,17 @@ export type BoostShareSumAggregates = {
   liquidityProviderId: Scalars['BigInt']['output'];
 };
 
+export type BoostShareVariancePopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostShareVariancePopulationAggregates = {
   __typename?: 'BoostShareVariancePopulationAggregates';
   /** Population variance of amount across the matching connection */
@@ -7201,6 +8237,17 @@ export type BoostShareVariancePopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostShareVarianceSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostId?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostShareVarianceSampleAggregates = {
@@ -7282,6 +8329,26 @@ export type BoostSharesOrderBy =
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC';
 
+export type BoostStddevPopulationAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<BigFloatFilter>;
+  executedAtEventId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
+  settledAtEventId?: InputMaybe<BigFloatFilter>;
+  swapId?: InputMaybe<BigFloatFilter>;
+  swapRequestId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostStddevPopulationAggregates = {
   __typename?: 'BoostStddevPopulationAggregates';
   /** Population standard deviation of depositAmount across the matching connection */
@@ -7318,6 +8385,26 @@ export type BoostStddevPopulationAggregates = {
   swapId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostStddevSampleAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<BigFloatFilter>;
+  executedAtEventId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
+  settledAtEventId?: InputMaybe<BigFloatFilter>;
+  swapId?: InputMaybe<BigFloatFilter>;
+  swapRequestId?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostStddevSampleAggregates = {
@@ -7358,6 +8445,26 @@ export type BoostStddevSampleAggregates = {
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type BoostSumAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<BigIntFilter>;
+  executedAtEventId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
+  settledAtEventId?: InputMaybe<BigFloatFilter>;
+  swapId?: InputMaybe<BigFloatFilter>;
+  swapRequestId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostSumAggregates = {
   __typename?: 'BoostSumAggregates';
   /** Sum of depositAmount across the matching connection */
@@ -7396,6 +8503,74 @@ export type BoostSumAggregates = {
   swapRequestId: Scalars['BigFloat']['output'];
 };
 
+/** A filter to be used against many `BoostLiquidityBalanceChange` object types. All fields are combined with a logical ‘and.’ */
+export type BoostToManyBoostLiquidityBalanceChangeFilter = {
+  /** Aggregates across related `BoostLiquidityBalanceChange` match the filter criteria. */
+  aggregates?: InputMaybe<BoostLiquidityBalanceChangeAggregatesFilter>;
+  /** Every related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** No related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** Some related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+};
+
+/** A filter to be used against many `BoostPoolBoostShare` object types. All fields are combined with a logical ‘and.’ */
+export type BoostToManyBoostPoolBoostShareFilter = {
+  /** Aggregates across related `BoostPoolBoostShare` match the filter criteria. */
+  aggregates?: InputMaybe<BoostPoolBoostShareAggregatesFilter>;
+  /** Every related `BoostPoolBoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostPoolBoostShareFilter>;
+  /** No related `BoostPoolBoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostPoolBoostShareFilter>;
+  /** Some related `BoostPoolBoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostPoolBoostShareFilter>;
+};
+
+/** A filter to be used against many `BoostShare` object types. All fields are combined with a logical ‘and.’ */
+export type BoostToManyBoostShareFilter = {
+  /** Aggregates across related `BoostShare` match the filter criteria. */
+  aggregates?: InputMaybe<BoostShareAggregatesFilter>;
+  /** Every related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostShareFilter>;
+  /** No related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostShareFilter>;
+  /** Some related `BoostShare` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostShareFilter>;
+};
+
+/** A filter to be used against many `PendingBoostLiquidityWithdrawal` object types. All fields are combined with a logical ‘and.’ */
+export type BoostToManyPendingBoostLiquidityWithdrawalFilter = {
+  /** Aggregates across related `PendingBoostLiquidityWithdrawal` match the filter criteria. */
+  aggregates?: InputMaybe<PendingBoostLiquidityWithdrawalAggregatesFilter>;
+  /** Every related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** No related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** Some related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+};
+
+export type BoostVariancePopulationAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<BigFloatFilter>;
+  executedAtEventId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
+  settledAtEventId?: InputMaybe<BigFloatFilter>;
+  swapId?: InputMaybe<BigFloatFilter>;
+  swapRequestId?: InputMaybe<BigFloatFilter>;
+};
+
 export type BoostVariancePopulationAggregates = {
   __typename?: 'BoostVariancePopulationAggregates';
   /** Population variance of depositAmount across the matching connection */
@@ -7432,6 +8607,26 @@ export type BoostVariancePopulationAggregates = {
   swapId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of swapRequestId across the matching connection */
   swapRequestId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type BoostVarianceSampleAggregateFilter = {
+  depositAmount?: InputMaybe<BigFloatFilter>;
+  depositAmountUsd?: InputMaybe<BigFloatFilter>;
+  depositChannelId?: InputMaybe<BigFloatFilter>;
+  executedAtEventId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  lostAtEventId?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeeSwapRequestId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
+  settledAtEventId?: InputMaybe<BigFloatFilter>;
+  swapId?: InputMaybe<BigFloatFilter>;
+  swapRequestId?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostVarianceSampleAggregates = {
@@ -8316,6 +9511,41 @@ export type DepositChannelAggregates = {
   varianceSample?: Maybe<DepositChannelVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `DepositChannel` object types. */
+export type DepositChannelAggregatesFilter = {
+  /** Mean average aggregate over matching `DepositChannel` objects. */
+  average?: InputMaybe<DepositChannelAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `DepositChannel` objects. */
+  distinctCount?: InputMaybe<DepositChannelDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `DepositChannel` object to be included within the aggregate. */
+  filter?: InputMaybe<DepositChannelFilter>;
+  /** Maximum aggregate over matching `DepositChannel` objects. */
+  max?: InputMaybe<DepositChannelMaxAggregateFilter>;
+  /** Minimum aggregate over matching `DepositChannel` objects. */
+  min?: InputMaybe<DepositChannelMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `DepositChannel` objects. */
+  stddevPopulation?: InputMaybe<DepositChannelStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `DepositChannel` objects. */
+  stddevSample?: InputMaybe<DepositChannelStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `DepositChannel` objects. */
+  sum?: InputMaybe<DepositChannelSumAggregateFilter>;
+  /** Population variance aggregate over matching `DepositChannel` objects. */
+  variancePopulation?: InputMaybe<DepositChannelVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `DepositChannel` objects. */
+  varianceSample?: InputMaybe<DepositChannelVarianceSampleAggregateFilter>;
+};
+
+export type DepositChannelAverageAggregateFilter = {
+  boostFeeBps?: InputMaybe<BigFloatFilter>;
+  brokerId?: InputMaybe<BigFloatFilter>;
+  channelId?: InputMaybe<BigFloatFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  issuedBlockId?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type DepositChannelAverageAggregates = {
   __typename?: 'DepositChannelAverageAggregates';
   /** Mean average of boostFeeBps across the matching connection */
@@ -8365,6 +9595,20 @@ export type DepositChannelCondition = {
   type?: InputMaybe<DepositChannelType>;
 };
 
+export type DepositChannelDistinctCountAggregateFilter = {
+  address?: InputMaybe<BigIntFilter>;
+  boostFeeBps?: InputMaybe<BigIntFilter>;
+  brokerId?: InputMaybe<BigIntFilter>;
+  chain?: InputMaybe<BigIntFilter>;
+  channelId?: InputMaybe<BigIntFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigIntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  issuedBlockId?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  type?: InputMaybe<BigIntFilter>;
+};
+
 export type DepositChannelDistinctCountAggregates = {
   __typename?: 'DepositChannelDistinctCountAggregates';
   /** Distinct count of address across the matching connection */
@@ -8393,12 +9637,24 @@ export type DepositChannelDistinctCountAggregates = {
 
 /** A filter to be used against `DepositChannel` object types. All fields are combined with a logical ‘and.’ */
 export type DepositChannelFilter = {
+  /** Filter by the object’s `accountByBrokerId` relation. */
+  accountByBrokerId?: InputMaybe<AccountFilter>;
+  /** A related `accountByBrokerId` exists. */
+  accountByBrokerIdExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
+  /** A related `accountByLiquidityProviderId` exists. */
+  accountByLiquidityProviderIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `address` field. */
   address?: InputMaybe<StringFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<DepositChannelFilter>>;
   /** Filter by the object’s `boostFeeBps` field. */
   boostFeeBps?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostsByDepositChannelId` relation. */
+  boostsByDepositChannelId?: InputMaybe<DepositChannelToManyBoostFilter>;
+  /** Some related `boostsByDepositChannelId` exist. */
+  boostsByDepositChannelIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `brokerId` field. */
   brokerId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `chain` field. */
@@ -8407,6 +9663,12 @@ export type DepositChannelFilter = {
   channelId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `closeBrokerChannelEventId` field. */
   closeBrokerChannelEventId?: InputMaybe<BigIntFilter>;
+  /** Filter by the object’s `eventByCloseBrokerChannelEventId` relation. */
+  eventByCloseBrokerChannelEventId?: InputMaybe<EventFilter>;
+  /** A related `eventByCloseBrokerChannelEventId` exists. */
+  eventByCloseBrokerChannelEventIdExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `eventByEventId` relation. */
+  eventByEventId?: InputMaybe<EventFilter>;
   /** Filter by the object’s `eventId` field. */
   eventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `id` field. */
@@ -8550,6 +9812,17 @@ export type DepositChannelHavingVarianceSampleInput = {
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
 };
 
+export type DepositChannelMaxAggregateFilter = {
+  boostFeeBps?: InputMaybe<IntFilter>;
+  brokerId?: InputMaybe<IntFilter>;
+  channelId?: InputMaybe<BigIntFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigIntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  issuedBlockId?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+};
+
 export type DepositChannelMaxAggregates = {
   __typename?: 'DepositChannelMaxAggregates';
   /** Maximum of boostFeeBps across the matching connection */
@@ -8568,6 +9841,17 @@ export type DepositChannelMaxAggregates = {
   issuedBlockId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type DepositChannelMinAggregateFilter = {
+  boostFeeBps?: InputMaybe<IntFilter>;
+  brokerId?: InputMaybe<IntFilter>;
+  channelId?: InputMaybe<BigIntFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigIntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  issuedBlockId?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
 };
 
 export type DepositChannelMinAggregates = {
@@ -8590,6 +9874,17 @@ export type DepositChannelMinAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
 };
 
+export type DepositChannelStddevPopulationAggregateFilter = {
+  boostFeeBps?: InputMaybe<BigFloatFilter>;
+  brokerId?: InputMaybe<BigFloatFilter>;
+  channelId?: InputMaybe<BigFloatFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  issuedBlockId?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type DepositChannelStddevPopulationAggregates = {
   __typename?: 'DepositChannelStddevPopulationAggregates';
   /** Population standard deviation of boostFeeBps across the matching connection */
@@ -8608,6 +9903,17 @@ export type DepositChannelStddevPopulationAggregates = {
   issuedBlockId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type DepositChannelStddevSampleAggregateFilter = {
+  boostFeeBps?: InputMaybe<BigFloatFilter>;
+  brokerId?: InputMaybe<BigFloatFilter>;
+  channelId?: InputMaybe<BigFloatFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  issuedBlockId?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type DepositChannelStddevSampleAggregates = {
@@ -8630,6 +9936,17 @@ export type DepositChannelStddevSampleAggregates = {
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type DepositChannelSumAggregateFilter = {
+  boostFeeBps?: InputMaybe<BigIntFilter>;
+  brokerId?: InputMaybe<BigIntFilter>;
+  channelId?: InputMaybe<BigFloatFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  issuedBlockId?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+};
+
 export type DepositChannelSumAggregates = {
   __typename?: 'DepositChannelSumAggregates';
   /** Sum of boostFeeBps across the matching connection */
@@ -8648,6 +9965,18 @@ export type DepositChannelSumAggregates = {
   issuedBlockId: Scalars['BigInt']['output'];
   /** Sum of liquidityProviderId across the matching connection */
   liquidityProviderId: Scalars['BigInt']['output'];
+};
+
+/** A filter to be used against many `Boost` object types. All fields are combined with a logical ‘and.’ */
+export type DepositChannelToManyBoostFilter = {
+  /** Aggregates across related `Boost` match the filter criteria. */
+  aggregates?: InputMaybe<BoostAggregatesFilter>;
+  /** Every related `Boost` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostFilter>;
+  /** No related `Boost` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostFilter>;
+  /** Some related `Boost` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostFilter>;
 };
 
 export type DepositChannelType =
@@ -8681,6 +10010,17 @@ export type DepositChannelTypeFilter = {
   notIn?: InputMaybe<Array<DepositChannelType>>;
 };
 
+export type DepositChannelVariancePopulationAggregateFilter = {
+  boostFeeBps?: InputMaybe<BigFloatFilter>;
+  brokerId?: InputMaybe<BigFloatFilter>;
+  channelId?: InputMaybe<BigFloatFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  issuedBlockId?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type DepositChannelVariancePopulationAggregates = {
   __typename?: 'DepositChannelVariancePopulationAggregates';
   /** Population variance of boostFeeBps across the matching connection */
@@ -8699,6 +10039,17 @@ export type DepositChannelVariancePopulationAggregates = {
   issuedBlockId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type DepositChannelVarianceSampleAggregateFilter = {
+  boostFeeBps?: InputMaybe<BigFloatFilter>;
+  brokerId?: InputMaybe<BigFloatFilter>;
+  channelId?: InputMaybe<BigFloatFilter>;
+  closeBrokerChannelEventId?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  issuedBlockId?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type DepositChannelVarianceSampleAggregates = {
@@ -9421,6 +10772,30 @@ export type EventFilter = {
   and?: InputMaybe<Array<EventFilter>>;
   /** Filter by the object’s `block` field. */
   block?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `boostLiquidityBalanceChangesByEventId` relation. */
+  boostLiquidityBalanceChangesByEventId?: InputMaybe<EventToManyBoostLiquidityBalanceChangeFilter>;
+  /** Some related `boostLiquidityBalanceChangesByEventId` exist. */
+  boostLiquidityBalanceChangesByEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostsByExecutedAtEventId` relation. */
+  boostsByExecutedAtEventId?: InputMaybe<EventToManyBoostFilter>;
+  /** Some related `boostsByExecutedAtEventId` exist. */
+  boostsByExecutedAtEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostsByLostAtEventId` relation. */
+  boostsByLostAtEventId?: InputMaybe<EventToManyBoostFilter>;
+  /** Some related `boostsByLostAtEventId` exist. */
+  boostsByLostAtEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostsBySettledAtEventId` relation. */
+  boostsBySettledAtEventId?: InputMaybe<EventToManyBoostFilter>;
+  /** Some related `boostsBySettledAtEventId` exist. */
+  boostsBySettledAtEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `depositChannelsByCloseBrokerChannelEventId` relation. */
+  depositChannelsByCloseBrokerChannelEventId?: InputMaybe<EventToManyDepositChannelFilter>;
+  /** Some related `depositChannelsByCloseBrokerChannelEventId` exist. */
+  depositChannelsByCloseBrokerChannelEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `depositChannelsByEventId` relation. */
+  depositChannelsByEventId?: InputMaybe<EventToManyDepositChannelFilter>;
+  /** Some related `depositChannelsByEventId` exist. */
+  depositChannelsByEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `indexInBlock` field. */
@@ -9429,8 +10804,32 @@ export type EventFilter = {
   not?: InputMaybe<EventFilter>;
   /** Checks for any expressions in this list. */
   or?: InputMaybe<Array<EventFilter>>;
+  /** Filter by the object’s `pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId` relation. */
+  pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId?: InputMaybe<EventToManyPendingBoostLiquidityWithdrawalFilter>;
+  /** Some related `pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId` exist. */
+  pendingBoostLiquidityWithdrawalsByStoppedBoostingEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `poolOrdersByOrderCreatedEventId` relation. */
+  poolOrdersByOrderCreatedEventId?: InputMaybe<EventToManyPoolOrderFilter>;
+  /** Some related `poolOrdersByOrderCreatedEventId` exist. */
+  poolOrdersByOrderCreatedEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `poolOrdersByOrderLastUpdatedEventId` relation. */
+  poolOrdersByOrderLastUpdatedEventId?: InputMaybe<EventToManyPoolOrderFilter>;
+  /** Some related `poolOrdersByOrderLastUpdatedEventId` exist. */
+  poolOrdersByOrderLastUpdatedEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `timestamp` field. */
   timestamp?: InputMaybe<DatetimeFilter>;
+  /** Filter by the object’s `tradingStrategiesByClosedAtEventId` relation. */
+  tradingStrategiesByClosedAtEventId?: InputMaybe<EventToManyTradingStrategyFilter>;
+  /** Some related `tradingStrategiesByClosedAtEventId` exist. */
+  tradingStrategiesByClosedAtEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `tradingStrategiesByCreatedAtEventId` relation. */
+  tradingStrategiesByCreatedAtEventId?: InputMaybe<EventToManyTradingStrategyFilter>;
+  /** Some related `tradingStrategiesByCreatedAtEventId` exist. */
+  tradingStrategiesByCreatedAtEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `tradingStrategyBalanceIncreaseEventsByEventId` relation. */
+  tradingStrategyBalanceIncreaseEventsByEventId?: InputMaybe<EventToManyTradingStrategyBalanceIncreaseEventFilter>;
+  /** Some related `tradingStrategyBalanceIncreaseEventsByEventId` exist. */
+  tradingStrategyBalanceIncreaseEventsByEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Grouping methods for `Event` for usage during aggregation. */
@@ -9567,6 +10966,90 @@ export type EventSumAggregates = {
   id: Scalars['BigFloat']['output'];
   /** Sum of indexInBlock across the matching connection */
   indexInBlock: Scalars['BigInt']['output'];
+};
+
+/** A filter to be used against many `Boost` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyBoostFilter = {
+  /** Aggregates across related `Boost` match the filter criteria. */
+  aggregates?: InputMaybe<BoostAggregatesFilter>;
+  /** Every related `Boost` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostFilter>;
+  /** No related `Boost` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostFilter>;
+  /** Some related `Boost` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostFilter>;
+};
+
+/** A filter to be used against many `BoostLiquidityBalanceChange` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyBoostLiquidityBalanceChangeFilter = {
+  /** Aggregates across related `BoostLiquidityBalanceChange` match the filter criteria. */
+  aggregates?: InputMaybe<BoostLiquidityBalanceChangeAggregatesFilter>;
+  /** Every related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** No related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+  /** Some related `BoostLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<BoostLiquidityBalanceChangeFilter>;
+};
+
+/** A filter to be used against many `DepositChannel` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyDepositChannelFilter = {
+  /** Aggregates across related `DepositChannel` match the filter criteria. */
+  aggregates?: InputMaybe<DepositChannelAggregatesFilter>;
+  /** Every related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<DepositChannelFilter>;
+  /** No related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<DepositChannelFilter>;
+  /** Some related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<DepositChannelFilter>;
+};
+
+/** A filter to be used against many `PendingBoostLiquidityWithdrawal` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyPendingBoostLiquidityWithdrawalFilter = {
+  /** Aggregates across related `PendingBoostLiquidityWithdrawal` match the filter criteria. */
+  aggregates?: InputMaybe<PendingBoostLiquidityWithdrawalAggregatesFilter>;
+  /** Every related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** No related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** Some related `PendingBoostLiquidityWithdrawal` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+};
+
+/** A filter to be used against many `PoolOrder` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyPoolOrderFilter = {
+  /** Aggregates across related `PoolOrder` match the filter criteria. */
+  aggregates?: InputMaybe<PoolOrderAggregatesFilter>;
+  /** Every related `PoolOrder` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<PoolOrderFilter>;
+  /** No related `PoolOrder` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<PoolOrderFilter>;
+  /** Some related `PoolOrder` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<PoolOrderFilter>;
+};
+
+/** A filter to be used against many `TradingStrategyBalanceIncreaseEvent` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyTradingStrategyBalanceIncreaseEventFilter = {
+  /** Aggregates across related `TradingStrategyBalanceIncreaseEvent` match the filter criteria. */
+  aggregates?: InputMaybe<TradingStrategyBalanceIncreaseEventAggregatesFilter>;
+  /** Every related `TradingStrategyBalanceIncreaseEvent` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+  /** No related `TradingStrategyBalanceIncreaseEvent` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+  /** Some related `TradingStrategyBalanceIncreaseEvent` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+};
+
+/** A filter to be used against many `TradingStrategy` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyTradingStrategyFilter = {
+  /** Aggregates across related `TradingStrategy` match the filter criteria. */
+  aggregates?: InputMaybe<TradingStrategyAggregatesFilter>;
+  /** Every related `TradingStrategy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<TradingStrategyFilter>;
+  /** No related `TradingStrategy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<TradingStrategyFilter>;
+  /** Some related `TradingStrategy` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<TradingStrategyFilter>;
 };
 
 export type EventVariancePopulationAggregates = {
@@ -13121,6 +14604,45 @@ export type LimitOrderFillAggregates = {
   varianceSample?: Maybe<LimitOrderFillVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `LimitOrderFill` object types. */
+export type LimitOrderFillAggregatesFilter = {
+  /** Mean average aggregate over matching `LimitOrderFill` objects. */
+  average?: InputMaybe<LimitOrderFillAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `LimitOrderFill` objects. */
+  distinctCount?: InputMaybe<LimitOrderFillDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `LimitOrderFill` object to be included within the aggregate. */
+  filter?: InputMaybe<LimitOrderFillFilter>;
+  /** Maximum aggregate over matching `LimitOrderFill` objects. */
+  max?: InputMaybe<LimitOrderFillMaxAggregateFilter>;
+  /** Minimum aggregate over matching `LimitOrderFill` objects. */
+  min?: InputMaybe<LimitOrderFillMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `LimitOrderFill` objects. */
+  stddevPopulation?: InputMaybe<LimitOrderFillStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `LimitOrderFill` objects. */
+  stddevSample?: InputMaybe<LimitOrderFillStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `LimitOrderFill` objects. */
+  sum?: InputMaybe<LimitOrderFillSumAggregateFilter>;
+  /** Population variance aggregate over matching `LimitOrderFill` objects. */
+  variancePopulation?: InputMaybe<LimitOrderFillVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `LimitOrderFill` objects. */
+  varianceSample?: InputMaybe<LimitOrderFillVarianceSampleAggregateFilter>;
+};
+
+export type LimitOrderFillAverageAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<BigFloatFilter>;
+};
+
 export type LimitOrderFillAverageAggregates = {
   __typename?: 'LimitOrderFillAverageAggregates';
   /** Mean average of block across the matching connection */
@@ -13188,6 +14710,25 @@ export type LimitOrderFillCondition = {
   type?: InputMaybe<LimitOrderType>;
 };
 
+export type LimitOrderFillDistinctCountAggregateFilter = {
+  baseAsset?: InputMaybe<BigIntFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  blockTimestamp?: InputMaybe<BigIntFilter>;
+  feesEarned?: InputMaybe<BigIntFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigIntFilter>;
+  filledAmount?: InputMaybe<BigIntFilter>;
+  filledAmountValueUsd?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  orderId?: InputMaybe<BigIntFilter>;
+  originalSellAmount?: InputMaybe<BigIntFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigIntFilter>;
+  sellAmount?: InputMaybe<BigIntFilter>;
+  sellAmountValueUsd?: InputMaybe<BigIntFilter>;
+  tick?: InputMaybe<BigIntFilter>;
+  type?: InputMaybe<BigIntFilter>;
+};
+
 export type LimitOrderFillDistinctCountAggregates = {
   __typename?: 'LimitOrderFillDistinctCountAggregates';
   /** Distinct count of baseAsset across the matching connection */
@@ -13226,6 +14767,8 @@ export type LimitOrderFillDistinctCountAggregates = {
 
 /** A filter to be used against `LimitOrderFill` object types. All fields are combined with a logical ‘and.’ */
 export type LimitOrderFillFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<LimitOrderFillFilter>>;
   /** Filter by the object’s `baseAsset` field. */
@@ -13445,6 +14988,21 @@ export type LimitOrderFillHavingVarianceSampleInput = {
   tick?: InputMaybe<HavingIntFilter>;
 };
 
+export type LimitOrderFillMaxAggregateFilter = {
+  block?: InputMaybe<IntFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<IntFilter>;
+};
+
 export type LimitOrderFillMaxAggregates = {
   __typename?: 'LimitOrderFillMaxAggregates';
   /** Maximum of block across the matching connection */
@@ -13471,6 +15029,21 @@ export type LimitOrderFillMaxAggregates = {
   sellAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of tick across the matching connection */
   tick?: Maybe<Scalars['Int']['output']>;
+};
+
+export type LimitOrderFillMinAggregateFilter = {
+  block?: InputMaybe<IntFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<IntFilter>;
 };
 
 export type LimitOrderFillMinAggregates = {
@@ -13501,6 +15074,21 @@ export type LimitOrderFillMinAggregates = {
   tick?: Maybe<Scalars['Int']['output']>;
 };
 
+export type LimitOrderFillStddevPopulationAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<BigFloatFilter>;
+};
+
 export type LimitOrderFillStddevPopulationAggregates = {
   __typename?: 'LimitOrderFillStddevPopulationAggregates';
   /** Population standard deviation of block across the matching connection */
@@ -13527,6 +15115,21 @@ export type LimitOrderFillStddevPopulationAggregates = {
   sellAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of tick across the matching connection */
   tick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LimitOrderFillStddevSampleAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<BigFloatFilter>;
 };
 
 export type LimitOrderFillStddevSampleAggregates = {
@@ -13557,6 +15160,21 @@ export type LimitOrderFillStddevSampleAggregates = {
   tick?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type LimitOrderFillSumAggregateFilter = {
+  block?: InputMaybe<BigIntFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<BigIntFilter>;
+};
+
 export type LimitOrderFillSumAggregates = {
   __typename?: 'LimitOrderFillSumAggregates';
   /** Sum of block across the matching connection */
@@ -13585,6 +15203,21 @@ export type LimitOrderFillSumAggregates = {
   tick: Scalars['BigInt']['output'];
 };
 
+export type LimitOrderFillVariancePopulationAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<BigFloatFilter>;
+};
+
 export type LimitOrderFillVariancePopulationAggregates = {
   __typename?: 'LimitOrderFillVariancePopulationAggregates';
   /** Population variance of block across the matching connection */
@@ -13611,6 +15244,21 @@ export type LimitOrderFillVariancePopulationAggregates = {
   sellAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of tick across the matching connection */
   tick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LimitOrderFillVarianceSampleAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  feesEarned?: InputMaybe<BigFloatFilter>;
+  feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  filledAmount?: InputMaybe<BigFloatFilter>;
+  filledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  originalSellAmount?: InputMaybe<BigFloatFilter>;
+  originalSellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  sellAmount?: InputMaybe<BigFloatFilter>;
+  sellAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  tick?: InputMaybe<BigFloatFilter>;
 };
 
 export type LimitOrderFillVarianceSampleAggregates = {
@@ -13828,6 +15476,39 @@ export type LiquidityProviderBoostPoolSummaryAggregates = {
   varianceSample?: Maybe<LiquidityProviderBoostPoolSummaryVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `LiquidityProviderBoostPoolSummary` object types. */
+export type LiquidityProviderBoostPoolSummaryAggregatesFilter = {
+  /** Mean average aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  average?: InputMaybe<LiquidityProviderBoostPoolSummaryAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  distinctCount?: InputMaybe<LiquidityProviderBoostPoolSummaryDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `LiquidityProviderBoostPoolSummary` object to be included within the aggregate. */
+  filter?: InputMaybe<LiquidityProviderBoostPoolSummaryFilter>;
+  /** Maximum aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  max?: InputMaybe<LiquidityProviderBoostPoolSummaryMaxAggregateFilter>;
+  /** Minimum aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  min?: InputMaybe<LiquidityProviderBoostPoolSummaryMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  stddevPopulation?: InputMaybe<LiquidityProviderBoostPoolSummaryStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  stddevSample?: InputMaybe<LiquidityProviderBoostPoolSummaryStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  sum?: InputMaybe<LiquidityProviderBoostPoolSummarySumAggregateFilter>;
+  /** Population variance aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  variancePopulation?: InputMaybe<LiquidityProviderBoostPoolSummaryVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `LiquidityProviderBoostPoolSummary` objects. */
+  varianceSample?: InputMaybe<LiquidityProviderBoostPoolSummaryVarianceSampleAggregateFilter>;
+};
+
+export type LiquidityProviderBoostPoolSummaryAverageAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquidityProviderBoostPoolSummaryAverageAggregates = {
   __typename?: 'LiquidityProviderBoostPoolSummaryAverageAggregates';
   /** Mean average of amount across the matching connection */
@@ -13863,6 +15544,15 @@ export type LiquidityProviderBoostPoolSummaryCondition = {
   liquidityProviderId?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type LiquidityProviderBoostPoolSummaryDistinctCountAggregateFilter = {
+  amount?: InputMaybe<BigIntFilter>;
+  amountUsd?: InputMaybe<BigIntFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigIntFilter>;
+  feeUsd?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+};
+
 export type LiquidityProviderBoostPoolSummaryDistinctCountAggregates = {
   __typename?: 'LiquidityProviderBoostPoolSummaryDistinctCountAggregates';
   /** Distinct count of amount across the matching connection */
@@ -13881,12 +15571,20 @@ export type LiquidityProviderBoostPoolSummaryDistinctCountAggregates = {
 
 /** A filter to be used against `LiquidityProviderBoostPoolSummary` object types. All fields are combined with a logical ‘and.’ */
 export type LiquidityProviderBoostPoolSummaryFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
+  /** A related `accountByLiquidityProviderId` exists. */
+  accountByLiquidityProviderIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `amount` field. */
   amount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `amountUsd` field. */
   amountUsd?: InputMaybe<BigFloatFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<LiquidityProviderBoostPoolSummaryFilter>>;
+  /** Filter by the object’s `boostPoolByBoostPoolId` relation. */
+  boostPoolByBoostPoolId?: InputMaybe<BoostPoolFilter>;
+  /** A related `boostPoolByBoostPoolId` exists. */
+  boostPoolByBoostPoolIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `boostPoolId` field. */
   boostPoolId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `fee` field. */
@@ -14006,6 +15704,15 @@ export type LiquidityProviderBoostPoolSummaryHavingVarianceSampleInput = {
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
 };
 
+export type LiquidityProviderBoostPoolSummaryMaxAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+};
+
 export type LiquidityProviderBoostPoolSummaryMaxAggregates = {
   __typename?: 'LiquidityProviderBoostPoolSummaryMaxAggregates';
   /** Maximum of amount across the matching connection */
@@ -14020,6 +15727,15 @@ export type LiquidityProviderBoostPoolSummaryMaxAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type LiquidityProviderBoostPoolSummaryMinAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<IntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
 };
 
 export type LiquidityProviderBoostPoolSummaryMinAggregates = {
@@ -14038,6 +15754,15 @@ export type LiquidityProviderBoostPoolSummaryMinAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
 };
 
+export type LiquidityProviderBoostPoolSummaryStddevPopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquidityProviderBoostPoolSummaryStddevPopulationAggregates = {
   __typename?: 'LiquidityProviderBoostPoolSummaryStddevPopulationAggregates';
   /** Population standard deviation of amount across the matching connection */
@@ -14052,6 +15777,15 @@ export type LiquidityProviderBoostPoolSummaryStddevPopulationAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LiquidityProviderBoostPoolSummaryStddevSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LiquidityProviderBoostPoolSummaryStddevSampleAggregates = {
@@ -14070,6 +15804,15 @@ export type LiquidityProviderBoostPoolSummaryStddevSampleAggregates = {
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type LiquidityProviderBoostPoolSummarySumAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigIntFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+};
+
 export type LiquidityProviderBoostPoolSummarySumAggregates = {
   __typename?: 'LiquidityProviderBoostPoolSummarySumAggregates';
   /** Sum of amount across the matching connection */
@@ -14086,6 +15829,15 @@ export type LiquidityProviderBoostPoolSummarySumAggregates = {
   liquidityProviderId: Scalars['BigInt']['output'];
 };
 
+export type LiquidityProviderBoostPoolSummaryVariancePopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquidityProviderBoostPoolSummaryVariancePopulationAggregates = {
   __typename?: 'LiquidityProviderBoostPoolSummaryVariancePopulationAggregates';
   /** Population variance of amount across the matching connection */
@@ -14100,6 +15852,15 @@ export type LiquidityProviderBoostPoolSummaryVariancePopulationAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LiquidityProviderBoostPoolSummaryVarianceSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  boostPoolId?: InputMaybe<BigFloatFilter>;
+  fee?: InputMaybe<BigFloatFilter>;
+  feeUsd?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LiquidityProviderBoostPoolSummaryVarianceSampleAggregates = {
@@ -14157,6 +15918,40 @@ export type LiquiditySnapshotAggregates = {
   varianceSample?: Maybe<LiquiditySnapshotVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `LiquiditySnapshot` object types. */
+export type LiquiditySnapshotAggregatesFilter = {
+  /** Mean average aggregate over matching `LiquiditySnapshot` objects. */
+  average?: InputMaybe<LiquiditySnapshotAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `LiquiditySnapshot` objects. */
+  distinctCount?: InputMaybe<LiquiditySnapshotDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `LiquiditySnapshot` object to be included within the aggregate. */
+  filter?: InputMaybe<LiquiditySnapshotFilter>;
+  /** Maximum aggregate over matching `LiquiditySnapshot` objects. */
+  max?: InputMaybe<LiquiditySnapshotMaxAggregateFilter>;
+  /** Minimum aggregate over matching `LiquiditySnapshot` objects. */
+  min?: InputMaybe<LiquiditySnapshotMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `LiquiditySnapshot` objects. */
+  stddevPopulation?: InputMaybe<LiquiditySnapshotStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `LiquiditySnapshot` objects. */
+  stddevSample?: InputMaybe<LiquiditySnapshotStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `LiquiditySnapshot` objects. */
+  sum?: InputMaybe<LiquiditySnapshotSumAggregateFilter>;
+  /** Population variance aggregate over matching `LiquiditySnapshot` objects. */
+  variancePopulation?: InputMaybe<LiquiditySnapshotVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `LiquiditySnapshot` objects. */
+  varianceSample?: InputMaybe<LiquiditySnapshotVarianceSampleAggregateFilter>;
+};
+
+export type LiquiditySnapshotAverageAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquiditySnapshotAverageAggregates = {
   __typename?: 'LiquiditySnapshotAverageAggregates';
   /** Mean average of block across the matching connection */
@@ -14198,6 +15993,17 @@ export type LiquiditySnapshotCondition = {
   undeployedLiquidityUsd?: InputMaybe<Scalars['BigFloat']['input']>;
 };
 
+export type LiquiditySnapshotDistinctCountAggregateFilter = {
+  block?: InputMaybe<BigIntFilter>;
+  boostLiquidityUsd?: InputMaybe<BigIntFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  timestamp?: InputMaybe<BigIntFilter>;
+  totalLiquidityUsd?: InputMaybe<BigIntFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigIntFilter>;
+};
+
 export type LiquiditySnapshotDistinctCountAggregates = {
   __typename?: 'LiquiditySnapshotDistinctCountAggregates';
   /** Distinct count of block across the matching connection */
@@ -14220,6 +16026,8 @@ export type LiquiditySnapshotDistinctCountAggregates = {
 
 /** A filter to be used against `LiquiditySnapshot` object types. All fields are combined with a logical ‘and.’ */
 export type LiquiditySnapshotFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<LiquiditySnapshotFilter>>;
   /** Filter by the object’s `block` field. */
@@ -14370,6 +16178,16 @@ export type LiquiditySnapshotHavingVarianceSampleInput = {
   undeployedLiquidityUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
+export type LiquiditySnapshotMaxAggregateFilter = {
+  block?: InputMaybe<IntFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquiditySnapshotMaxAggregates = {
   __typename?: 'LiquiditySnapshotMaxAggregates';
   /** Maximum of block across the matching connection */
@@ -14386,6 +16204,16 @@ export type LiquiditySnapshotMaxAggregates = {
   totalLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of undeployedLiquidityUsd across the matching connection */
   undeployedLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LiquiditySnapshotMinAggregateFilter = {
+  block?: InputMaybe<IntFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type LiquiditySnapshotMinAggregates = {
@@ -14406,6 +16234,16 @@ export type LiquiditySnapshotMinAggregates = {
   undeployedLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type LiquiditySnapshotStddevPopulationAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquiditySnapshotStddevPopulationAggregates = {
   __typename?: 'LiquiditySnapshotStddevPopulationAggregates';
   /** Population standard deviation of block across the matching connection */
@@ -14422,6 +16260,16 @@ export type LiquiditySnapshotStddevPopulationAggregates = {
   totalLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of undeployedLiquidityUsd across the matching connection */
   undeployedLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LiquiditySnapshotStddevSampleAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type LiquiditySnapshotStddevSampleAggregates = {
@@ -14442,6 +16290,16 @@ export type LiquiditySnapshotStddevSampleAggregates = {
   undeployedLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type LiquiditySnapshotSumAggregateFilter = {
+  block?: InputMaybe<BigIntFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquiditySnapshotSumAggregates = {
   __typename?: 'LiquiditySnapshotSumAggregates';
   /** Sum of block across the matching connection */
@@ -14460,6 +16318,16 @@ export type LiquiditySnapshotSumAggregates = {
   undeployedLiquidityUsd: Scalars['BigFloat']['output'];
 };
 
+export type LiquiditySnapshotVariancePopulationAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+};
+
 export type LiquiditySnapshotVariancePopulationAggregates = {
   __typename?: 'LiquiditySnapshotVariancePopulationAggregates';
   /** Population variance of block across the matching connection */
@@ -14476,6 +16344,16 @@ export type LiquiditySnapshotVariancePopulationAggregates = {
   totalLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of undeployedLiquidityUsd across the matching connection */
   undeployedLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LiquiditySnapshotVarianceSampleAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  boostLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  deployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type LiquiditySnapshotVarianceSampleAggregates = {
@@ -14611,6 +16489,37 @@ export type PendingBoostLiquidityWithdrawalAggregates = {
   varianceSample?: Maybe<PendingBoostLiquidityWithdrawalVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `PendingBoostLiquidityWithdrawal` object types. */
+export type PendingBoostLiquidityWithdrawalAggregatesFilter = {
+  /** Mean average aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  average?: InputMaybe<PendingBoostLiquidityWithdrawalAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  distinctCount?: InputMaybe<PendingBoostLiquidityWithdrawalDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `PendingBoostLiquidityWithdrawal` object to be included within the aggregate. */
+  filter?: InputMaybe<PendingBoostLiquidityWithdrawalFilter>;
+  /** Maximum aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  max?: InputMaybe<PendingBoostLiquidityWithdrawalMaxAggregateFilter>;
+  /** Minimum aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  min?: InputMaybe<PendingBoostLiquidityWithdrawalMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  stddevPopulation?: InputMaybe<PendingBoostLiquidityWithdrawalStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  stddevSample?: InputMaybe<PendingBoostLiquidityWithdrawalStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  sum?: InputMaybe<PendingBoostLiquidityWithdrawalSumAggregateFilter>;
+  /** Population variance aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  variancePopulation?: InputMaybe<PendingBoostLiquidityWithdrawalVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `PendingBoostLiquidityWithdrawal` objects. */
+  varianceSample?: InputMaybe<PendingBoostLiquidityWithdrawalVarianceSampleAggregateFilter>;
+};
+
+export type PendingBoostLiquidityWithdrawalAverageAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigFloatFilter>;
+};
+
 export type PendingBoostLiquidityWithdrawalAverageAggregates = {
   __typename?: 'PendingBoostLiquidityWithdrawalAverageAggregates';
   /** Mean average of boostId across the matching connection */
@@ -14642,6 +16551,15 @@ export type PendingBoostLiquidityWithdrawalCondition = {
   stoppedBoostingEventId?: InputMaybe<Scalars['BigInt']['input']>;
 };
 
+export type PendingBoostLiquidityWithdrawalDistinctCountAggregateFilter = {
+  boostId?: InputMaybe<BigIntFilter>;
+  finalized?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  lost?: InputMaybe<BigIntFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigIntFilter>;
+};
+
 export type PendingBoostLiquidityWithdrawalDistinctCountAggregates = {
   __typename?: 'PendingBoostLiquidityWithdrawalDistinctCountAggregates';
   /** Distinct count of boostId across the matching connection */
@@ -14660,10 +16578,16 @@ export type PendingBoostLiquidityWithdrawalDistinctCountAggregates = {
 
 /** A filter to be used against `PendingBoostLiquidityWithdrawal` object types. All fields are combined with a logical ‘and.’ */
 export type PendingBoostLiquidityWithdrawalFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<PendingBoostLiquidityWithdrawalFilter>>;
+  /** Filter by the object’s `boostByBoostId` relation. */
+  boostByBoostId?: InputMaybe<BoostFilter>;
   /** Filter by the object’s `boostId` field. */
   boostId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `eventByStoppedBoostingEventId` relation. */
+  eventByStoppedBoostingEventId?: InputMaybe<EventFilter>;
   /** Filter by the object’s `finalized` field. */
   finalized?: InputMaybe<BooleanFilter>;
   /** Filter by the object’s `id` field. */
@@ -14766,6 +16690,13 @@ export type PendingBoostLiquidityWithdrawalHavingVarianceSampleInput = {
   stoppedBoostingEventId?: InputMaybe<HavingBigintFilter>;
 };
 
+export type PendingBoostLiquidityWithdrawalMaxAggregateFilter = {
+  boostId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigIntFilter>;
+};
+
 export type PendingBoostLiquidityWithdrawalMaxAggregates = {
   __typename?: 'PendingBoostLiquidityWithdrawalMaxAggregates';
   /** Maximum of boostId across the matching connection */
@@ -14776,6 +16707,13 @@ export type PendingBoostLiquidityWithdrawalMaxAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of stoppedBoostingEventId across the matching connection */
   stoppedBoostingEventId?: Maybe<Scalars['BigInt']['output']>;
+};
+
+export type PendingBoostLiquidityWithdrawalMinAggregateFilter = {
+  boostId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigIntFilter>;
 };
 
 export type PendingBoostLiquidityWithdrawalMinAggregates = {
@@ -14790,6 +16728,13 @@ export type PendingBoostLiquidityWithdrawalMinAggregates = {
   stoppedBoostingEventId?: Maybe<Scalars['BigInt']['output']>;
 };
 
+export type PendingBoostLiquidityWithdrawalStddevPopulationAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigFloatFilter>;
+};
+
 export type PendingBoostLiquidityWithdrawalStddevPopulationAggregates = {
   __typename?: 'PendingBoostLiquidityWithdrawalStddevPopulationAggregates';
   /** Population standard deviation of boostId across the matching connection */
@@ -14800,6 +16745,13 @@ export type PendingBoostLiquidityWithdrawalStddevPopulationAggregates = {
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of stoppedBoostingEventId across the matching connection */
   stoppedBoostingEventId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type PendingBoostLiquidityWithdrawalStddevSampleAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type PendingBoostLiquidityWithdrawalStddevSampleAggregates = {
@@ -14814,6 +16766,13 @@ export type PendingBoostLiquidityWithdrawalStddevSampleAggregates = {
   stoppedBoostingEventId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type PendingBoostLiquidityWithdrawalSumAggregateFilter = {
+  boostId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigFloatFilter>;
+};
+
 export type PendingBoostLiquidityWithdrawalSumAggregates = {
   __typename?: 'PendingBoostLiquidityWithdrawalSumAggregates';
   /** Sum of boostId across the matching connection */
@@ -14826,6 +16785,13 @@ export type PendingBoostLiquidityWithdrawalSumAggregates = {
   stoppedBoostingEventId: Scalars['BigFloat']['output'];
 };
 
+export type PendingBoostLiquidityWithdrawalVariancePopulationAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigFloatFilter>;
+};
+
 export type PendingBoostLiquidityWithdrawalVariancePopulationAggregates = {
   __typename?: 'PendingBoostLiquidityWithdrawalVariancePopulationAggregates';
   /** Population variance of boostId across the matching connection */
@@ -14836,6 +16802,13 @@ export type PendingBoostLiquidityWithdrawalVariancePopulationAggregates = {
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of stoppedBoostingEventId across the matching connection */
   stoppedBoostingEventId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type PendingBoostLiquidityWithdrawalVarianceSampleAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  stoppedBoostingEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type PendingBoostLiquidityWithdrawalVarianceSampleAggregates = {
@@ -14959,6 +16932,49 @@ export type PoolOrderAggregates = {
   varianceSample?: Maybe<PoolOrderVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `PoolOrder` object types. */
+export type PoolOrderAggregatesFilter = {
+  /** Mean average aggregate over matching `PoolOrder` objects. */
+  average?: InputMaybe<PoolOrderAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `PoolOrder` objects. */
+  distinctCount?: InputMaybe<PoolOrderDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `PoolOrder` object to be included within the aggregate. */
+  filter?: InputMaybe<PoolOrderFilter>;
+  /** Maximum aggregate over matching `PoolOrder` objects. */
+  max?: InputMaybe<PoolOrderMaxAggregateFilter>;
+  /** Minimum aggregate over matching `PoolOrder` objects. */
+  min?: InputMaybe<PoolOrderMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `PoolOrder` objects. */
+  stddevPopulation?: InputMaybe<PoolOrderStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `PoolOrder` objects. */
+  stddevSample?: InputMaybe<PoolOrderStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `PoolOrder` objects. */
+  sum?: InputMaybe<PoolOrderSumAggregateFilter>;
+  /** Population variance aggregate over matching `PoolOrder` objects. */
+  variancePopulation?: InputMaybe<PoolOrderVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `PoolOrder` objects. */
+  varianceSample?: InputMaybe<PoolOrderVarianceSampleAggregateFilter>;
+};
+
+export type PoolOrderAverageAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<BigFloatFilter>;
+  orderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigFloatFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type PoolOrderAverageAggregates = {
   __typename?: 'PoolOrderAverageAggregates';
   /** Mean average of baseAmount across the matching connection */
@@ -15048,6 +17064,32 @@ export type PoolOrderCondition = {
   upperTick?: InputMaybe<Scalars['BigFloat']['input']>;
 };
 
+export type PoolOrderDistinctCountAggregateFilter = {
+  baseAmount?: InputMaybe<BigIntFilter>;
+  baseAsset?: InputMaybe<BigIntFilter>;
+  baseCollectedFees?: InputMaybe<BigIntFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigIntFilter>;
+  filledBaseAmount?: InputMaybe<BigIntFilter>;
+  filledQuoteAmount?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  lowerTick?: InputMaybe<BigIntFilter>;
+  openPoolOrderId?: InputMaybe<BigIntFilter>;
+  orderCreatedEventId?: InputMaybe<BigIntFilter>;
+  orderCreatedTimestamp?: InputMaybe<BigIntFilter>;
+  orderId?: InputMaybe<BigIntFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigIntFilter>;
+  orderLastUpdatedTimestamp?: InputMaybe<BigIntFilter>;
+  orderType?: InputMaybe<BigIntFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigIntFilter>;
+  quoteAmount?: InputMaybe<BigIntFilter>;
+  quoteAsset?: InputMaybe<BigIntFilter>;
+  quoteCollectedFees?: InputMaybe<BigIntFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigIntFilter>;
+  status?: InputMaybe<BigIntFilter>;
+  upperTick?: InputMaybe<BigIntFilter>;
+};
+
 export type PoolOrderDistinctCountAggregates = {
   __typename?: 'PoolOrderDistinctCountAggregates';
   /** Distinct count of baseAmount across the matching connection */
@@ -15100,6 +17142,8 @@ export type PoolOrderDistinctCountAggregates = {
 
 /** A filter to be used against `PoolOrder` object types. All fields are combined with a logical ‘and.’ */
 export type PoolOrderFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<PoolOrderFilter>>;
   /** Filter by the object’s `baseAmount` field. */
@@ -15110,6 +17154,12 @@ export type PoolOrderFilter = {
   baseCollectedFees?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `baseCollectedFeesUsd` field. */
   baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `eventByOrderCreatedEventId` relation. */
+  eventByOrderCreatedEventId?: InputMaybe<EventFilter>;
+  /** Filter by the object’s `eventByOrderLastUpdatedEventId` relation. */
+  eventByOrderLastUpdatedEventId?: InputMaybe<EventFilter>;
+  /** A related `eventByOrderLastUpdatedEventId` exists. */
+  eventByOrderLastUpdatedEventIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `filledBaseAmount` field. */
   filledBaseAmount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `filledQuoteAmount` field. */
@@ -15385,6 +17435,25 @@ export type PoolOrderHavingVarianceSampleInput = {
   upperTick?: InputMaybe<HavingBigfloatFilter>;
 };
 
+export type PoolOrderMaxAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<IntFilter>;
+  orderCreatedEventId?: InputMaybe<BigIntFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigIntFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigIntFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type PoolOrderMaxAggregates = {
   __typename?: 'PoolOrderMaxAggregates';
   /** Maximum of baseAmount across the matching connection */
@@ -15419,6 +17488,25 @@ export type PoolOrderMaxAggregates = {
   quoteCollectedFeesUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of upperTick across the matching connection */
   upperTick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type PoolOrderMinAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<IntFilter>;
+  orderCreatedEventId?: InputMaybe<BigIntFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigIntFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigIntFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
 };
 
 export type PoolOrderMinAggregates = {
@@ -15487,6 +17575,25 @@ export type PoolOrderStatusFilter = {
   notIn?: InputMaybe<Array<PoolOrderStatus>>;
 };
 
+export type PoolOrderStddevPopulationAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<BigFloatFilter>;
+  orderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigFloatFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type PoolOrderStddevPopulationAggregates = {
   __typename?: 'PoolOrderStddevPopulationAggregates';
   /** Population standard deviation of baseAmount across the matching connection */
@@ -15523,6 +17630,25 @@ export type PoolOrderStddevPopulationAggregates = {
   upperTick?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type PoolOrderStddevSampleAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<BigFloatFilter>;
+  orderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigFloatFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type PoolOrderStddevSampleAggregates = {
   __typename?: 'PoolOrderStddevSampleAggregates';
   /** Sample standard deviation of baseAmount across the matching connection */
@@ -15557,6 +17683,25 @@ export type PoolOrderStddevSampleAggregates = {
   quoteCollectedFeesUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of upperTick across the matching connection */
   upperTick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type PoolOrderSumAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<BigIntFilter>;
+  orderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigFloatFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
 };
 
 export type PoolOrderSumAggregates = {
@@ -15625,6 +17770,25 @@ export type PoolOrderTypeFilter = {
   notIn?: InputMaybe<Array<PoolOrderType>>;
 };
 
+export type PoolOrderVariancePopulationAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<BigFloatFilter>;
+  orderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigFloatFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type PoolOrderVariancePopulationAggregates = {
   __typename?: 'PoolOrderVariancePopulationAggregates';
   /** Population variance of baseAmount across the matching connection */
@@ -15659,6 +17823,25 @@ export type PoolOrderVariancePopulationAggregates = {
   quoteCollectedFeesUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of upperTick across the matching connection */
   upperTick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type PoolOrderVarianceSampleAggregateFilter = {
+  baseAmount?: InputMaybe<BigFloatFilter>;
+  baseCollectedFees?: InputMaybe<BigFloatFilter>;
+  baseCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  filledBaseAmount?: InputMaybe<BigFloatFilter>;
+  filledQuoteAmount?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  lowerTick?: InputMaybe<BigFloatFilter>;
+  openPoolOrderId?: InputMaybe<BigFloatFilter>;
+  orderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  orderLastUpdatedEventId?: InputMaybe<BigFloatFilter>;
+  processorOrderCreatedEventId?: InputMaybe<BigFloatFilter>;
+  quoteAmount?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFees?: InputMaybe<BigFloatFilter>;
+  quoteCollectedFeesUsd?: InputMaybe<BigFloatFilter>;
+  upperTick?: InputMaybe<BigFloatFilter>;
 };
 
 export type PoolOrderVarianceSampleAggregates = {
@@ -16545,6 +18728,47 @@ export type RangeOrderFillAggregates = {
   varianceSample?: Maybe<RangeOrderFillVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `RangeOrderFill` object types. */
+export type RangeOrderFillAggregatesFilter = {
+  /** Mean average aggregate over matching `RangeOrderFill` objects. */
+  average?: InputMaybe<RangeOrderFillAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `RangeOrderFill` objects. */
+  distinctCount?: InputMaybe<RangeOrderFillDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `RangeOrderFill` object to be included within the aggregate. */
+  filter?: InputMaybe<RangeOrderFillFilter>;
+  /** Maximum aggregate over matching `RangeOrderFill` objects. */
+  max?: InputMaybe<RangeOrderFillMaxAggregateFilter>;
+  /** Minimum aggregate over matching `RangeOrderFill` objects. */
+  min?: InputMaybe<RangeOrderFillMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `RangeOrderFill` objects. */
+  stddevPopulation?: InputMaybe<RangeOrderFillStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `RangeOrderFill` objects. */
+  stddevSample?: InputMaybe<RangeOrderFillStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `RangeOrderFill` objects. */
+  sum?: InputMaybe<RangeOrderFillSumAggregateFilter>;
+  /** Population variance aggregate over matching `RangeOrderFill` objects. */
+  variancePopulation?: InputMaybe<RangeOrderFillVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `RangeOrderFill` objects. */
+  varianceSample?: InputMaybe<RangeOrderFillVarianceSampleAggregateFilter>;
+};
+
+export type RangeOrderFillAverageAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<BigFloatFilter>;
+  rangeStartTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type RangeOrderFillAverageAggregates = {
   __typename?: 'RangeOrderFillAverageAggregates';
   /** Mean average of baseFeesEarned across the matching connection */
@@ -16618,6 +18842,26 @@ export type RangeOrderFillCondition = {
   rangeStartTick?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type RangeOrderFillDistinctCountAggregateFilter = {
+  baseAsset?: InputMaybe<BigIntFilter>;
+  baseFeesEarned?: InputMaybe<BigIntFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigIntFilter>;
+  baseFilledAmount?: InputMaybe<BigIntFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigIntFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  blockTimestamp?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidity?: InputMaybe<BigIntFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  orderId?: InputMaybe<BigIntFilter>;
+  quoteFeesEarned?: InputMaybe<BigIntFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigIntFilter>;
+  quoteFilledAmount?: InputMaybe<BigIntFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigIntFilter>;
+  rangeEndTick?: InputMaybe<BigIntFilter>;
+  rangeStartTick?: InputMaybe<BigIntFilter>;
+};
+
 export type RangeOrderFillDistinctCountAggregates = {
   __typename?: 'RangeOrderFillDistinctCountAggregates';
   /** Distinct count of baseAsset across the matching connection */
@@ -16658,6 +18902,8 @@ export type RangeOrderFillDistinctCountAggregates = {
 
 /** A filter to be used against `RangeOrderFill` object types. All fields are combined with a logical ‘and.’ */
 export type RangeOrderFillFilter = {
+  /** Filter by the object’s `accountByLiquidityProviderId` relation. */
+  accountByLiquidityProviderId?: InputMaybe<AccountFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<RangeOrderFillFilter>>;
   /** Filter by the object’s `baseAsset` field. */
@@ -16898,6 +19144,23 @@ export type RangeOrderFillHavingVarianceSampleInput = {
   rangeStartTick?: InputMaybe<HavingIntFilter>;
 };
 
+export type RangeOrderFillMaxAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<IntFilter>;
+  rangeStartTick?: InputMaybe<IntFilter>;
+};
+
 export type RangeOrderFillMaxAggregates = {
   __typename?: 'RangeOrderFillMaxAggregates';
   /** Maximum of baseFeesEarned across the matching connection */
@@ -16928,6 +19191,23 @@ export type RangeOrderFillMaxAggregates = {
   rangeEndTick?: Maybe<Scalars['Int']['output']>;
   /** Maximum of rangeStartTick across the matching connection */
   rangeStartTick?: Maybe<Scalars['Int']['output']>;
+};
+
+export type RangeOrderFillMinAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IntFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<IntFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<IntFilter>;
+  rangeStartTick?: InputMaybe<IntFilter>;
 };
 
 export type RangeOrderFillMinAggregates = {
@@ -16962,6 +19242,23 @@ export type RangeOrderFillMinAggregates = {
   rangeStartTick?: Maybe<Scalars['Int']['output']>;
 };
 
+export type RangeOrderFillStddevPopulationAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<BigFloatFilter>;
+  rangeStartTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type RangeOrderFillStddevPopulationAggregates = {
   __typename?: 'RangeOrderFillStddevPopulationAggregates';
   /** Population standard deviation of baseFeesEarned across the matching connection */
@@ -16992,6 +19289,23 @@ export type RangeOrderFillStddevPopulationAggregates = {
   rangeEndTick?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of rangeStartTick across the matching connection */
   rangeStartTick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type RangeOrderFillStddevSampleAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<BigFloatFilter>;
+  rangeStartTick?: InputMaybe<BigFloatFilter>;
 };
 
 export type RangeOrderFillStddevSampleAggregates = {
@@ -17026,6 +19340,23 @@ export type RangeOrderFillStddevSampleAggregates = {
   rangeStartTick?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type RangeOrderFillSumAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigIntFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<BigIntFilter>;
+  rangeStartTick?: InputMaybe<BigIntFilter>;
+};
+
 export type RangeOrderFillSumAggregates = {
   __typename?: 'RangeOrderFillSumAggregates';
   /** Sum of baseFeesEarned across the matching connection */
@@ -17058,6 +19389,23 @@ export type RangeOrderFillSumAggregates = {
   rangeStartTick: Scalars['BigInt']['output'];
 };
 
+export type RangeOrderFillVariancePopulationAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<BigFloatFilter>;
+  rangeStartTick?: InputMaybe<BigFloatFilter>;
+};
+
 export type RangeOrderFillVariancePopulationAggregates = {
   __typename?: 'RangeOrderFillVariancePopulationAggregates';
   /** Population variance of baseFeesEarned across the matching connection */
@@ -17088,6 +19436,23 @@ export type RangeOrderFillVariancePopulationAggregates = {
   rangeEndTick?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of rangeStartTick across the matching connection */
   rangeStartTick?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type RangeOrderFillVarianceSampleAggregateFilter = {
+  baseFeesEarned?: InputMaybe<BigFloatFilter>;
+  baseFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  baseFilledAmount?: InputMaybe<BigFloatFilter>;
+  baseFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  block?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  liquidity?: InputMaybe<BigFloatFilter>;
+  liquidityProviderId?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarned?: InputMaybe<BigFloatFilter>;
+  quoteFeesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmount?: InputMaybe<BigFloatFilter>;
+  quoteFilledAmountValueUsd?: InputMaybe<BigFloatFilter>;
+  rangeEndTick?: InputMaybe<BigFloatFilter>;
+  rangeStartTick?: InputMaybe<BigFloatFilter>;
 };
 
 export type RangeOrderFillVarianceSampleAggregates = {
@@ -17500,6 +19865,40 @@ export type TradingStrategyAggregates = {
   varianceSample?: Maybe<TradingStrategyVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `TradingStrategy` object types. */
+export type TradingStrategyAggregatesFilter = {
+  /** Mean average aggregate over matching `TradingStrategy` objects. */
+  average?: InputMaybe<TradingStrategyAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `TradingStrategy` objects. */
+  distinctCount?: InputMaybe<TradingStrategyDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `TradingStrategy` object to be included within the aggregate. */
+  filter?: InputMaybe<TradingStrategyFilter>;
+  /** Maximum aggregate over matching `TradingStrategy` objects. */
+  max?: InputMaybe<TradingStrategyMaxAggregateFilter>;
+  /** Minimum aggregate over matching `TradingStrategy` objects. */
+  min?: InputMaybe<TradingStrategyMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `TradingStrategy` objects. */
+  stddevPopulation?: InputMaybe<TradingStrategyStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `TradingStrategy` objects. */
+  stddevSample?: InputMaybe<TradingStrategyStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `TradingStrategy` objects. */
+  sum?: InputMaybe<TradingStrategySumAggregateFilter>;
+  /** Population variance aggregate over matching `TradingStrategy` objects. */
+  variancePopulation?: InputMaybe<TradingStrategyVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `TradingStrategy` objects. */
+  varianceSample?: InputMaybe<TradingStrategyVarianceSampleAggregateFilter>;
+};
+
+export type TradingStrategyAverageAggregateFilter = {
+  buyTick?: InputMaybe<BigFloatFilter>;
+  closedAtEventId?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  ownerAccountId?: InputMaybe<BigFloatFilter>;
+  sellTick?: InputMaybe<BigFloatFilter>;
+  strategyAccountId?: InputMaybe<BigFloatFilter>;
+};
+
 export type TradingStrategyAverageAggregates = {
   __typename?: 'TradingStrategyAverageAggregates';
   /** Mean average of buyTick across the matching connection */
@@ -17557,6 +19956,38 @@ export type TradingStrategyBalanceIncreaseEventAggregates = {
   varianceSample?: Maybe<TradingStrategyBalanceIncreaseEventVarianceSampleAggregates>;
 };
 
+/** A filter to be used against aggregates of `TradingStrategyBalanceIncreaseEvent` object types. */
+export type TradingStrategyBalanceIncreaseEventAggregatesFilter = {
+  /** Mean average aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  average?: InputMaybe<TradingStrategyBalanceIncreaseEventAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  distinctCount?: InputMaybe<TradingStrategyBalanceIncreaseEventDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `TradingStrategyBalanceIncreaseEvent` object to be included within the aggregate. */
+  filter?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+  /** Maximum aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  max?: InputMaybe<TradingStrategyBalanceIncreaseEventMaxAggregateFilter>;
+  /** Minimum aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  min?: InputMaybe<TradingStrategyBalanceIncreaseEventMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  stddevPopulation?: InputMaybe<TradingStrategyBalanceIncreaseEventStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  stddevSample?: InputMaybe<TradingStrategyBalanceIncreaseEventStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  sum?: InputMaybe<TradingStrategyBalanceIncreaseEventSumAggregateFilter>;
+  /** Population variance aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  variancePopulation?: InputMaybe<TradingStrategyBalanceIncreaseEventVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `TradingStrategyBalanceIncreaseEvent` objects. */
+  varianceSample?: InputMaybe<TradingStrategyBalanceIncreaseEventVarianceSampleAggregateFilter>;
+};
+
+export type TradingStrategyBalanceIncreaseEventAverageAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  tradingStrategyId?: InputMaybe<BigFloatFilter>;
+};
+
 export type TradingStrategyBalanceIncreaseEventAverageAggregates = {
   __typename?: 'TradingStrategyBalanceIncreaseEventAverageAggregates';
   /** Mean average of amount across the matching connection */
@@ -17590,6 +20021,15 @@ export type TradingStrategyBalanceIncreaseEventCondition = {
   tradingStrategyId?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type TradingStrategyBalanceIncreaseEventDistinctCountAggregateFilter = {
+  amount?: InputMaybe<BigIntFilter>;
+  amountUsd?: InputMaybe<BigIntFilter>;
+  asset?: InputMaybe<BigIntFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  tradingStrategyId?: InputMaybe<BigIntFilter>;
+};
+
 export type TradingStrategyBalanceIncreaseEventDistinctCountAggregates = {
   __typename?: 'TradingStrategyBalanceIncreaseEventDistinctCountAggregates';
   /** Distinct count of amount across the matching connection */
@@ -17616,6 +20056,8 @@ export type TradingStrategyBalanceIncreaseEventFilter = {
   and?: InputMaybe<Array<TradingStrategyBalanceIncreaseEventFilter>>;
   /** Filter by the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAssetFilter>;
+  /** Filter by the object’s `eventByEventId` relation. */
+  eventByEventId?: InputMaybe<EventFilter>;
   /** Filter by the object’s `eventId` field. */
   eventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `id` field. */
@@ -17624,6 +20066,8 @@ export type TradingStrategyBalanceIncreaseEventFilter = {
   not?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
   /** Checks for any expressions in this list. */
   or?: InputMaybe<Array<TradingStrategyBalanceIncreaseEventFilter>>;
+  /** Filter by the object’s `tradingStrategyByTradingStrategyId` relation. */
+  tradingStrategyByTradingStrategyId?: InputMaybe<TradingStrategyFilter>;
   /** Filter by the object’s `tradingStrategyId` field. */
   tradingStrategyId?: InputMaybe<IntFilter>;
 };
@@ -17723,6 +20167,14 @@ export type TradingStrategyBalanceIncreaseEventHavingVarianceSampleInput = {
   tradingStrategyId?: InputMaybe<HavingIntFilter>;
 };
 
+export type TradingStrategyBalanceIncreaseEventMaxAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  tradingStrategyId?: InputMaybe<IntFilter>;
+};
+
 export type TradingStrategyBalanceIncreaseEventMaxAggregates = {
   __typename?: 'TradingStrategyBalanceIncreaseEventMaxAggregates';
   /** Maximum of amount across the matching connection */
@@ -17735,6 +20187,14 @@ export type TradingStrategyBalanceIncreaseEventMaxAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Maximum of tradingStrategyId across the matching connection */
   tradingStrategyId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type TradingStrategyBalanceIncreaseEventMinAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  tradingStrategyId?: InputMaybe<IntFilter>;
 };
 
 export type TradingStrategyBalanceIncreaseEventMinAggregates = {
@@ -17751,6 +20211,14 @@ export type TradingStrategyBalanceIncreaseEventMinAggregates = {
   tradingStrategyId?: Maybe<Scalars['Int']['output']>;
 };
 
+export type TradingStrategyBalanceIncreaseEventStddevPopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  tradingStrategyId?: InputMaybe<BigFloatFilter>;
+};
+
 export type TradingStrategyBalanceIncreaseEventStddevPopulationAggregates = {
   __typename?: 'TradingStrategyBalanceIncreaseEventStddevPopulationAggregates';
   /** Population standard deviation of amount across the matching connection */
@@ -17763,6 +20231,14 @@ export type TradingStrategyBalanceIncreaseEventStddevPopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of tradingStrategyId across the matching connection */
   tradingStrategyId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type TradingStrategyBalanceIncreaseEventStddevSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  tradingStrategyId?: InputMaybe<BigFloatFilter>;
 };
 
 export type TradingStrategyBalanceIncreaseEventStddevSampleAggregates = {
@@ -17779,6 +20255,14 @@ export type TradingStrategyBalanceIncreaseEventStddevSampleAggregates = {
   tradingStrategyId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type TradingStrategyBalanceIncreaseEventSumAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  tradingStrategyId?: InputMaybe<BigIntFilter>;
+};
+
 export type TradingStrategyBalanceIncreaseEventSumAggregates = {
   __typename?: 'TradingStrategyBalanceIncreaseEventSumAggregates';
   /** Sum of amount across the matching connection */
@@ -17793,6 +20277,14 @@ export type TradingStrategyBalanceIncreaseEventSumAggregates = {
   tradingStrategyId: Scalars['BigInt']['output'];
 };
 
+export type TradingStrategyBalanceIncreaseEventVariancePopulationAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  tradingStrategyId?: InputMaybe<BigFloatFilter>;
+};
+
 export type TradingStrategyBalanceIncreaseEventVariancePopulationAggregates = {
   __typename?: 'TradingStrategyBalanceIncreaseEventVariancePopulationAggregates';
   /** Population variance of amount across the matching connection */
@@ -17805,6 +20297,14 @@ export type TradingStrategyBalanceIncreaseEventVariancePopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of tradingStrategyId across the matching connection */
   tradingStrategyId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type TradingStrategyBalanceIncreaseEventVarianceSampleAggregateFilter = {
+  amount?: InputMaybe<BigFloatFilter>;
+  amountUsd?: InputMaybe<BigFloatFilter>;
+  eventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  tradingStrategyId?: InputMaybe<BigFloatFilter>;
 };
 
 export type TradingStrategyBalanceIncreaseEventVarianceSampleAggregates = {
@@ -17897,6 +20397,18 @@ export type TradingStrategyCondition = {
   strategyAccountId?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type TradingStrategyDistinctCountAggregateFilter = {
+  baseAsset?: InputMaybe<BigIntFilter>;
+  buyTick?: InputMaybe<BigIntFilter>;
+  closedAtEventId?: InputMaybe<BigIntFilter>;
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  ownerAccountId?: InputMaybe<BigIntFilter>;
+  quoteAsset?: InputMaybe<BigIntFilter>;
+  sellTick?: InputMaybe<BigIntFilter>;
+  strategyAccountId?: InputMaybe<BigIntFilter>;
+};
+
 export type TradingStrategyDistinctCountAggregates = {
   __typename?: 'TradingStrategyDistinctCountAggregates';
   /** Distinct count of baseAsset across the matching connection */
@@ -17921,6 +20433,10 @@ export type TradingStrategyDistinctCountAggregates = {
 
 /** A filter to be used against `TradingStrategy` object types. All fields are combined with a logical ‘and.’ */
 export type TradingStrategyFilter = {
+  /** Filter by the object’s `accountByOwnerAccountId` relation. */
+  accountByOwnerAccountId?: InputMaybe<AccountFilter>;
+  /** Filter by the object’s `accountByStrategyAccountId` relation. */
+  accountByStrategyAccountId?: InputMaybe<AccountFilter>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<TradingStrategyFilter>>;
   /** Filter by the object’s `baseAsset` field. */
@@ -17931,6 +20447,12 @@ export type TradingStrategyFilter = {
   closedAtEventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `createdAtEventId` field. */
   createdAtEventId?: InputMaybe<BigIntFilter>;
+  /** Filter by the object’s `eventByClosedAtEventId` relation. */
+  eventByClosedAtEventId?: InputMaybe<EventFilter>;
+  /** A related `eventByClosedAtEventId` exists. */
+  eventByClosedAtEventIdExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `eventByCreatedAtEventId` relation. */
+  eventByCreatedAtEventId?: InputMaybe<EventFilter>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<IntFilter>;
   /** Negates the expression. */
@@ -17945,6 +20467,10 @@ export type TradingStrategyFilter = {
   sellTick?: InputMaybe<IntFilter>;
   /** Filter by the object’s `strategyAccountId` field. */
   strategyAccountId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `tradingStrategyBalanceIncreaseEventsByTradingStrategyId` relation. */
+  tradingStrategyBalanceIncreaseEventsByTradingStrategyId?: InputMaybe<TradingStrategyToManyTradingStrategyBalanceIncreaseEventFilter>;
+  /** Some related `tradingStrategyBalanceIncreaseEventsByTradingStrategyId` exist. */
+  tradingStrategyBalanceIncreaseEventsByTradingStrategyIdExist?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Grouping methods for `TradingStrategy` for usage during aggregation. */
@@ -18062,6 +20588,16 @@ export type TradingStrategyHavingVarianceSampleInput = {
   strategyAccountId?: InputMaybe<HavingIntFilter>;
 };
 
+export type TradingStrategyMaxAggregateFilter = {
+  buyTick?: InputMaybe<IntFilter>;
+  closedAtEventId?: InputMaybe<BigIntFilter>;
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  ownerAccountId?: InputMaybe<IntFilter>;
+  sellTick?: InputMaybe<IntFilter>;
+  strategyAccountId?: InputMaybe<IntFilter>;
+};
+
 export type TradingStrategyMaxAggregates = {
   __typename?: 'TradingStrategyMaxAggregates';
   /** Maximum of buyTick across the matching connection */
@@ -18078,6 +20614,16 @@ export type TradingStrategyMaxAggregates = {
   sellTick?: Maybe<Scalars['Int']['output']>;
   /** Maximum of strategyAccountId across the matching connection */
   strategyAccountId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type TradingStrategyMinAggregateFilter = {
+  buyTick?: InputMaybe<IntFilter>;
+  closedAtEventId?: InputMaybe<BigIntFilter>;
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  ownerAccountId?: InputMaybe<IntFilter>;
+  sellTick?: InputMaybe<IntFilter>;
+  strategyAccountId?: InputMaybe<IntFilter>;
 };
 
 export type TradingStrategyMinAggregates = {
@@ -18098,6 +20644,16 @@ export type TradingStrategyMinAggregates = {
   strategyAccountId?: Maybe<Scalars['Int']['output']>;
 };
 
+export type TradingStrategyStddevPopulationAggregateFilter = {
+  buyTick?: InputMaybe<BigFloatFilter>;
+  closedAtEventId?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  ownerAccountId?: InputMaybe<BigFloatFilter>;
+  sellTick?: InputMaybe<BigFloatFilter>;
+  strategyAccountId?: InputMaybe<BigFloatFilter>;
+};
+
 export type TradingStrategyStddevPopulationAggregates = {
   __typename?: 'TradingStrategyStddevPopulationAggregates';
   /** Population standard deviation of buyTick across the matching connection */
@@ -18114,6 +20670,16 @@ export type TradingStrategyStddevPopulationAggregates = {
   sellTick?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of strategyAccountId across the matching connection */
   strategyAccountId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type TradingStrategyStddevSampleAggregateFilter = {
+  buyTick?: InputMaybe<BigFloatFilter>;
+  closedAtEventId?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  ownerAccountId?: InputMaybe<BigFloatFilter>;
+  sellTick?: InputMaybe<BigFloatFilter>;
+  strategyAccountId?: InputMaybe<BigFloatFilter>;
 };
 
 export type TradingStrategyStddevSampleAggregates = {
@@ -18134,6 +20700,16 @@ export type TradingStrategyStddevSampleAggregates = {
   strategyAccountId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
+export type TradingStrategySumAggregateFilter = {
+  buyTick?: InputMaybe<BigIntFilter>;
+  closedAtEventId?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  ownerAccountId?: InputMaybe<BigIntFilter>;
+  sellTick?: InputMaybe<BigIntFilter>;
+  strategyAccountId?: InputMaybe<BigIntFilter>;
+};
+
 export type TradingStrategySumAggregates = {
   __typename?: 'TradingStrategySumAggregates';
   /** Sum of buyTick across the matching connection */
@@ -18152,6 +20728,28 @@ export type TradingStrategySumAggregates = {
   strategyAccountId: Scalars['BigInt']['output'];
 };
 
+/** A filter to be used against many `TradingStrategyBalanceIncreaseEvent` object types. All fields are combined with a logical ‘and.’ */
+export type TradingStrategyToManyTradingStrategyBalanceIncreaseEventFilter = {
+  /** Aggregates across related `TradingStrategyBalanceIncreaseEvent` match the filter criteria. */
+  aggregates?: InputMaybe<TradingStrategyBalanceIncreaseEventAggregatesFilter>;
+  /** Every related `TradingStrategyBalanceIncreaseEvent` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+  /** No related `TradingStrategyBalanceIncreaseEvent` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+  /** Some related `TradingStrategyBalanceIncreaseEvent` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<TradingStrategyBalanceIncreaseEventFilter>;
+};
+
+export type TradingStrategyVariancePopulationAggregateFilter = {
+  buyTick?: InputMaybe<BigFloatFilter>;
+  closedAtEventId?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  ownerAccountId?: InputMaybe<BigFloatFilter>;
+  sellTick?: InputMaybe<BigFloatFilter>;
+  strategyAccountId?: InputMaybe<BigFloatFilter>;
+};
+
 export type TradingStrategyVariancePopulationAggregates = {
   __typename?: 'TradingStrategyVariancePopulationAggregates';
   /** Population variance of buyTick across the matching connection */
@@ -18168,6 +20766,16 @@ export type TradingStrategyVariancePopulationAggregates = {
   sellTick?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of strategyAccountId across the matching connection */
   strategyAccountId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type TradingStrategyVarianceSampleAggregateFilter = {
+  buyTick?: InputMaybe<BigFloatFilter>;
+  closedAtEventId?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  ownerAccountId?: InputMaybe<BigFloatFilter>;
+  sellTick?: InputMaybe<BigFloatFilter>;
+  strategyAccountId?: InputMaybe<BigFloatFilter>;
 };
 
 export type TradingStrategyVarianceSampleAggregates = {
@@ -18497,7 +21105,7 @@ export type GetLpFeeInfoQueryVariables = Exact<{
 }>;
 
 
-export type GetLpFeeInfoQuery = { __typename?: 'Query', limitOrderFills?: { __typename?: 'LimitOrderFillsConnection', aggregates?: { __typename?: 'LimitOrderFillAggregates', sum?: { __typename?: 'LimitOrderFillSumAggregates', feesEarnedValueUsd: string } | null } | null } | null, rangeOrderFills?: { __typename?: 'RangeOrderFillsConnection', aggregates?: { __typename?: 'RangeOrderFillAggregates', sum?: { __typename?: 'RangeOrderFillSumAggregates', baseFeesEarnedValueUsd: string, quoteFeesEarnedValueUsd: string } | null } | null } | null };
+export type GetLpFeeInfoQuery = { __typename?: 'Query', limitOrderFills?: { __typename?: 'LimitOrderFillsConnection', aggregates?: { __typename?: 'LimitOrderFillAggregates', sum?: { __typename?: 'LimitOrderFillSumAggregates', feesEarnedValueUsd: `${number}` } | null } | null } | null, rangeOrderFills?: { __typename?: 'RangeOrderFillsConnection', aggregates?: { __typename?: 'RangeOrderFillAggregates', sum?: { __typename?: 'RangeOrderFillSumAggregates', baseFeesEarnedValueUsd: `${number}`, quoteFeesEarnedValueUsd: `${number}` } | null } | null } | null };
 
 export type GetBoostSummaryQueryVariables = Exact<{
   start: Scalars['Datetime']['input'];
@@ -18506,7 +21114,7 @@ export type GetBoostSummaryQueryVariables = Exact<{
 }>;
 
 
-export type GetBoostSummaryQuery = { __typename?: 'Query', boostPools?: { __typename?: 'BoostPoolsConnection', nodes: Array<{ __typename?: 'BoostPool', asset: ChainflipAsset, feeTierPips: number, boostShares: { __typename?: 'BoostSharesConnection', aggregates?: { __typename?: 'BoostShareAggregates', sum?: { __typename?: 'BoostShareSumAggregates', fee: string, feeUsd: string, amount: string, amountUsd: string } | null } | null }, apys: { __typename?: 'BoostPoolApiesConnection', nodes: Array<{ __typename?: 'BoostPoolApy', projectedApy: string }> } }> } | null };
+export type GetBoostSummaryQuery = { __typename?: 'Query', boostPools?: { __typename?: 'BoostPoolsConnection', nodes: Array<{ __typename?: 'BoostPool', asset: ChainflipAsset, feeTierPips: number, boostShares: { __typename?: 'BoostSharesConnection', aggregates?: { __typename?: 'BoostShareAggregates', sum?: { __typename?: 'BoostShareSumAggregates', fee: `${number}`, feeUsd: `${number}`, amount: `${number}`, amountUsd: `${number}` } | null } | null }, apys: { __typename?: 'BoostPoolApiesConnection', nodes: Array<{ __typename?: 'BoostPoolApy', projectedApy: `${number}` }> } }> } | null };
 
 export type GetLpFillsQueryVariables = Exact<{
   start: Scalars['Datetime']['input'];
@@ -18514,7 +21122,7 @@ export type GetLpFillsQueryVariables = Exact<{
 }>;
 
 
-export type GetLpFillsQuery = { __typename?: 'Query', limitOrders?: { __typename?: 'LimitOrderFillsConnection', groupedAggregates?: Array<{ __typename?: 'LimitOrderFillAggregates', keys?: Array<string> | null, sum?: { __typename?: 'LimitOrderFillSumAggregates', filledAmountValueUsd: string } | null }> | null } | null, rangeOrders?: { __typename?: 'RangeOrderFillsConnection', groupedAggregates?: Array<{ __typename?: 'RangeOrderFillAggregates', keys?: Array<string> | null, sum?: { __typename?: 'RangeOrderFillSumAggregates', baseFilledAmountValueUsd: string, quoteFilledAmountValueUsd: string } | null }> | null } | null };
+export type GetLpFillsQuery = { __typename?: 'Query', limitOrders?: { __typename?: 'LimitOrderFillsConnection', groupedAggregates?: Array<{ __typename?: 'LimitOrderFillAggregates', keys?: Array<string> | null, sum?: { __typename?: 'LimitOrderFillSumAggregates', filledAmountValueUsd: `${number}` } | null }> | null } | null, rangeOrders?: { __typename?: 'RangeOrderFillsConnection', groupedAggregates?: Array<{ __typename?: 'RangeOrderFillAggregates', keys?: Array<string> | null, sum?: { __typename?: 'RangeOrderFillSumAggregates', baseFilledAmountValueUsd: `${number}`, quoteFilledAmountValueUsd: `${number}` } | null }> | null } | null };
 
 export type GetAccountQueryVariables = Exact<{
   ids?: InputMaybe<Array<Scalars['Int']['input']> | Scalars['Int']['input']>;

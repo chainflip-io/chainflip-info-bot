@@ -21,7 +21,7 @@ export const getLatestDepositId = async () => {
 export type NewDeposit = {
   asset: ChainflipAsset;
   depositAmount: string;
-  depositValueUsd: string;
+  depositValueUsd: `${number}`;
   lpIdSs58: string;
   timestamp: string;
 };
