@@ -49,7 +49,7 @@ const buildMessages = ({
   indexInBlock,
 }: {
   totalAmount: BigNumber;
-  valueUsd?: Intl.StringNumericLiteral | null;
+  valueUsd?: `${number}` | null;
   blockHeight: number;
   indexInBlock: number;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
