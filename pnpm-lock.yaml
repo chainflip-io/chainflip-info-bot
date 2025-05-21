@@ -74,22 +74,22 @@ importers:
         version: 9.27.0
       '@graphql-codegen/cli':
         specifier: ^5.0.6
-        version: 5.0.6(@types/node@22.15.17)(graphql-sock@1.0.1(graphql@16.11.0))(graphql@16.11.0)(typescript@5.8.3)
+        version: 5.0.6(@types/node@22.15.19)(graphql-sock@1.0.1(graphql@16.11.0))(graphql@16.11.0)(typescript@5.8.3)
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.11.0)
       '@types/node':
-        specifier: ^22.15.17
-        version: 22.15.17
+        specifier: ^22.15.19
+        version: 22.15.19
       '@types/react':
-        specifier: ^19.1.3
-        version: 19.1.3
-      '@types/react-dom':
         specifier: ^19.1.4
-        version: 19.1.4(@types/react@19.1.3)
+        version: 19.1.4
+      '@types/react-dom':
+        specifier: ^19.1.5
+        version: 19.1.5(@types/react@19.1.4)
       '@vitest/coverage-v8':
         specifier: 3.1.1
-        version: 3.1.1(vitest@3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))
+        version: 3.1.1(vitest@3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))
       eslint:
         specifier: ^9.26.0
         version: 9.26.0(jiti@2.4.2)
@@ -122,7 +122,7 @@ importers:
         version: 8.32.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       vitest:
         specifier: ^3.1.1
-        version: 3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
+        version: 3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
 
 packages:
 
@@ -993,16 +993,16 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/node@22.15.17':
-    resolution: {integrity: sha512-wIX2aSZL5FE+MR0JlvF87BNVrtFWf6AE6rxSE9X7OwnVvoyCQjpzSRJ+M87se/4QCkCiebQAqrJ0y6fwIyi7nw==}
+  '@types/node@22.15.19':
+    resolution: {integrity: sha512-3vMNr4TzNQyjHcRZadojpRaD9Ofr6LsonZAoQ+HMUa/9ORTPoxVIw0e0mpqWpdjj8xybyCM+oKOUH2vwFu/oEw==}
 
-  '@types/react-dom@19.1.4':
-    resolution: {integrity: sha512-WxYAszDYgsMV31OVyoG4jbAgJI1Gw0Xq9V19zwhy6+hUUJlJIdZ3r/cbdmTqFv++SktQkZ/X+46yGFxp5XJBEg==}
+  '@types/react-dom@19.1.5':
+    resolution: {integrity: sha512-CMCjrWucUBZvohgZxkjd6S9h0nZxXjzus6yDfUb+xLxYM7VvjKNH1tQrE9GWLql1XoOP4/Ds3bwFqShHUYraGg==}
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.1.3':
-    resolution: {integrity: sha512-dLWQ+Z0CkIvK1J8+wrDPwGxEYFA4RAyHoZPxHVGspYmFVnwGSNT24cGIhFJrtfRnWVuW8X7NO52gCXmhkVUWGQ==}
+  '@types/react@19.1.4':
+    resolution: {integrity: sha512-EB1yiiYdvySuIITtD5lhW4yPyJ31RkJkkDw794LaQYrxCSaQV/47y5o1FMC4zF9ZyjUjzJMZwbovEnT5yHTW6g==}
 
   '@types/ws@8.18.1':
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
@@ -4030,7 +4030,7 @@ snapshots:
       graphql: 16.11.0
       tslib: 2.6.3
 
-  '@graphql-codegen/cli@5.0.6(@types/node@22.15.17)(graphql-sock@1.0.1(graphql@16.11.0))(graphql@16.11.0)(typescript@5.8.3)':
+  '@graphql-codegen/cli@5.0.6(@types/node@22.15.19)(graphql-sock@1.0.1(graphql@16.11.0))(graphql@16.11.0)(typescript@5.8.3)':
     dependencies:
       '@babel/generator': 7.27.1
       '@babel/template': 7.27.2
@@ -4041,12 +4041,12 @@ snapshots:
       '@graphql-tools/apollo-engine-loader': 8.0.20(graphql@16.11.0)
       '@graphql-tools/code-file-loader': 8.1.20(graphql@16.11.0)
       '@graphql-tools/git-loader': 8.0.24(graphql@16.11.0)
-      '@graphql-tools/github-loader': 8.0.20(@types/node@22.15.17)(graphql@16.11.0)
+      '@graphql-tools/github-loader': 8.0.20(@types/node@22.15.19)(graphql@16.11.0)
       '@graphql-tools/graphql-file-loader': 8.0.19(graphql@16.11.0)
       '@graphql-tools/json-file-loader': 8.0.18(graphql@16.11.0)
       '@graphql-tools/load': 8.1.0(graphql@16.11.0)
-      '@graphql-tools/prisma-loader': 8.0.17(@types/node@22.15.17)(graphql@16.11.0)
-      '@graphql-tools/url-loader': 8.0.31(@types/node@22.15.17)(graphql@16.11.0)
+      '@graphql-tools/prisma-loader': 8.0.17(@types/node@22.15.19)(graphql@16.11.0)
+      '@graphql-tools/url-loader': 8.0.31(@types/node@22.15.19)(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       '@whatwg-node/fetch': 0.10.7
       chalk: 4.1.2
@@ -4054,7 +4054,7 @@ snapshots:
       debounce: 1.2.1
       detect-indent: 6.1.0
       graphql: 16.11.0
-      graphql-config: 5.1.5(@types/node@22.15.17)(graphql@16.11.0)(typescript@5.8.3)
+      graphql-config: 5.1.5(@types/node@22.15.19)(graphql@16.11.0)(typescript@5.8.3)
       inquirer: 8.2.6
       is-glob: 4.0.3
       jiti: 1.21.7
@@ -4259,7 +4259,7 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  '@graphql-tools/executor-http@1.3.3(@types/node@22.15.17)(graphql@16.11.0)':
+  '@graphql-tools/executor-http@1.3.3(@types/node@22.15.19)(graphql@16.11.0)':
     dependencies:
       '@graphql-hive/signal': 1.0.0
       '@graphql-tools/executor-common': 0.0.4(graphql@16.11.0)
@@ -4269,7 +4269,7 @@ snapshots:
       '@whatwg-node/fetch': 0.10.7
       '@whatwg-node/promise-helpers': 1.3.2
       graphql: 16.11.0
-      meros: 1.3.0(@types/node@22.15.17)
+      meros: 1.3.0(@types/node@22.15.19)
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@types/node'
@@ -4308,9 +4308,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@graphql-tools/github-loader@8.0.20(@types/node@22.15.17)(graphql@16.11.0)':
+  '@graphql-tools/github-loader@8.0.20(@types/node@22.15.19)(graphql@16.11.0)':
     dependencies:
-      '@graphql-tools/executor-http': 1.3.3(@types/node@22.15.17)(graphql@16.11.0)
+      '@graphql-tools/executor-http': 1.3.3(@types/node@22.15.19)(graphql@16.11.0)
       '@graphql-tools/graphql-tag-pluck': 8.3.19(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       '@whatwg-node/fetch': 0.10.7
@@ -4378,9 +4378,9 @@ snapshots:
       graphql: 16.11.0
       tslib: 2.8.1
 
-  '@graphql-tools/prisma-loader@8.0.17(@types/node@22.15.17)(graphql@16.11.0)':
+  '@graphql-tools/prisma-loader@8.0.17(@types/node@22.15.19)(graphql@16.11.0)':
     dependencies:
-      '@graphql-tools/url-loader': 8.0.31(@types/node@22.15.17)(graphql@16.11.0)
+      '@graphql-tools/url-loader': 8.0.31(@types/node@22.15.19)(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       '@types/js-yaml': 4.0.9
       '@whatwg-node/fetch': 0.10.7
@@ -4422,10 +4422,10 @@ snapshots:
       graphql: 16.11.0
       tslib: 2.8.1
 
-  '@graphql-tools/url-loader@8.0.31(@types/node@22.15.17)(graphql@16.11.0)':
+  '@graphql-tools/url-loader@8.0.31(@types/node@22.15.19)(graphql@16.11.0)':
     dependencies:
       '@graphql-tools/executor-graphql-ws': 2.0.5(graphql@16.11.0)
-      '@graphql-tools/executor-http': 1.3.3(@types/node@22.15.17)(graphql@16.11.0)
+      '@graphql-tools/executor-http': 1.3.3(@types/node@22.15.19)(graphql@16.11.0)
       '@graphql-tools/executor-legacy-ws': 1.1.17(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       '@graphql-tools/wrap': 10.0.35(graphql@16.11.0)
@@ -4640,21 +4640,21 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/node@22.15.17':
+  '@types/node@22.15.19':
     dependencies:
       undici-types: 6.21.0
 
-  '@types/react-dom@19.1.4(@types/react@19.1.3)':
+  '@types/react-dom@19.1.5(@types/react@19.1.4)':
     dependencies:
-      '@types/react': 19.1.3
+      '@types/react': 19.1.4
 
-  '@types/react@19.1.3':
+  '@types/react@19.1.4':
     dependencies:
       csstype: 3.1.3
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.15.17
+      '@types/node': 22.15.19
 
   '@typescript-eslint/eslint-plugin@8.32.0(@typescript-eslint/parser@8.32.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
@@ -4733,7 +4733,7 @@ snapshots:
       '@typescript-eslint/types': 8.32.0
       eslint-visitor-keys: 4.2.0
 
-  '@vitest/coverage-v8@3.1.1(vitest@3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))':
+  '@vitest/coverage-v8@3.1.1(vitest@3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -4747,7 +4747,7 @@ snapshots:
       std-env: 3.8.1
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
+      vitest: 3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -4758,13 +4758,13 @@ snapshots:
       chai: 5.2.0
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.1.1(vite@6.2.4(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))':
+  '@vitest/mocker@3.1.1(vite@6.2.4(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))':
     dependencies:
       '@vitest/spy': 3.1.1
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 6.2.4(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
+      vite: 6.2.4(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
 
   '@vitest/pretty-format@3.1.1':
     dependencies:
@@ -5908,13 +5908,13 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  graphql-config@5.1.5(@types/node@22.15.17)(graphql@16.11.0)(typescript@5.8.3):
+  graphql-config@5.1.5(@types/node@22.15.19)(graphql@16.11.0)(typescript@5.8.3):
     dependencies:
       '@graphql-tools/graphql-file-loader': 8.0.19(graphql@16.11.0)
       '@graphql-tools/json-file-loader': 8.0.18(graphql@16.11.0)
       '@graphql-tools/load': 8.1.0(graphql@16.11.0)
       '@graphql-tools/merge': 9.0.24(graphql@16.11.0)
-      '@graphql-tools/url-loader': 8.0.31(@types/node@22.15.17)(graphql@16.11.0)
+      '@graphql-tools/url-loader': 8.0.31(@types/node@22.15.19)(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
       cosmiconfig: 8.3.6(typescript@5.8.3)
       graphql: 16.11.0
@@ -6460,9 +6460,9 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meros@1.3.0(@types/node@22.15.17):
+  meros@1.3.0(@types/node@22.15.19):
     optionalDependencies:
-      '@types/node': 22.15.17
+      '@types/node': 22.15.19
 
   micromatch@4.0.8:
     dependencies:
@@ -7405,13 +7405,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-node@3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1):
+  vite-node@3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1):
     dependencies:
       cac: 6.7.14
       debug: 4.4.0
       es-module-lexer: 1.6.0
       pathe: 2.0.3
-      vite: 6.2.4(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
+      vite: 6.2.4(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -7426,22 +7426,22 @@ snapshots:
       - tsx
       - yaml
 
-  vite@6.2.4(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1):
+  vite@6.2.4(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1):
     dependencies:
       esbuild: 0.25.3
       postcss: 8.5.3
       rollup: 4.38.0
     optionalDependencies:
-      '@types/node': 22.15.17
+      '@types/node': 22.15.19
       fsevents: 2.3.3
       jiti: 2.4.2
       tsx: 4.19.4
       yaml: 2.7.1
 
-  vitest@3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1):
+  vitest@3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1):
     dependencies:
       '@vitest/expect': 3.1.1
-      '@vitest/mocker': 3.1.1(vite@6.2.4(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))
+      '@vitest/mocker': 3.1.1(vite@6.2.4(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1))
       '@vitest/pretty-format': 3.1.1
       '@vitest/runner': 3.1.1
       '@vitest/snapshot': 3.1.1
@@ -7457,11 +7457,11 @@ snapshots:
       tinyexec: 0.3.2
       tinypool: 1.0.2
       tinyrainbow: 2.0.0
-      vite: 6.2.4(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
-      vite-node: 3.1.1(@types/node@22.15.17)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
+      vite: 6.2.4(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
+      vite-node: 3.1.1(@types/node@22.15.19)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.7.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.15.17
+      '@types/node': 22.15.19
     transitivePeerDependencies:
       - jiti
       - less
