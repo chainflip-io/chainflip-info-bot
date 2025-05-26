@@ -46,7 +46,7 @@
     "@date-fns/utc": "^2.1.0",
     "axios": "^1.9.0",
     "bignumber.js": "^9.3.0",
-    "bullmq": "^5.52.3",
+    "bullmq": "^5.53.0",
     "date-fns": "^4.1.0",
     "discord.js": "^14.19.3",
     "dotenv": "^16.5.0",
