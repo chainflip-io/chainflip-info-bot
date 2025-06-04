@@ -58,7 +58,7 @@ const buildMessageData = ({
     const message = renderToStaticMarkup(
       <>
         <Line>
-          {emoji(swapInfo.depositValueUsd)} Swap{' '}
+          {emoji(swapInfo.inputValueUsd)} Swap{' '}
           <Bold platform={platform}>
             <ExplorerLink platform={platform} path={`/swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}
@@ -68,17 +68,17 @@ const buildMessageData = ({
         <Line>
           📥{' '}
           <Bold platform={platform}>
-            <TokenAmount amount={swapInfo.depositAmount} asset={swapInfo.sourceAsset} />
+            <TokenAmount amount={swapInfo.inputAmount} asset={swapInfo.sourceAsset} />
           </Bold>
-          <UsdValue amount={swapInfo.depositValueUsd} />
+          <UsdValue amount={swapInfo.inputValueUsd} />
         </Line>
-        {swapInfo.egressAmount && (
+        {swapInfo.outputAmount && (
           <Line>
             📤{' '}
             <Bold platform={platform}>
-              <TokenAmount amount={swapInfo.egressAmount} asset={swapInfo.destinationAsset} />
+              <TokenAmount amount={swapInfo.outputAmount} asset={swapInfo.destinationAsset} />
             </Bold>
-            <UsdValue amount={swapInfo.egressValueUsd} />
+            <UsdValue amount={swapInfo.outputValueUsd} />
           </Line>
         )}
         {swapInfo.refundAmount && (
@@ -171,7 +171,7 @@ const buildMessageData = ({
       data: {
         platform,
         message,
-        filterData: { name: 'SWAP_COMPLETED', usdValue: swapInfo.egressValueUsd?.toNumber() || 0 },
+        filterData: { name: 'SWAP_COMPLETED', usdValue: swapInfo.outputValueUsd?.toNumber() || 0 },
       },
     };
   });
@@ -184,7 +184,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   if (
     swapInfo.completedEventId &&
-    (swapInfo.egressAmount === null || swapInfo.egressAmount.isZero())
+    (swapInfo.outputAmount === null || swapInfo.outputAmount.isZero())
   ) {
     logger.info(`Swap egress amount is zero, so it was refunded`);
     return;

@@ -1,0 +1,37 @@
+{
+  "swap": {
+    "completedEventId": "9841192405",
+    "nativeId": "551571",
+    "depositAmount": "85629505422",
+    "depositValueUsd": "85608.665259676000000000000000000000",
+    "sourceChain": "Ethereum",
+    "fokMinPriceX128": "9456781339670",
+    "dcaNumberOfChunks": 1,
+    "dcaChunkIntervalBlocks": null,
+    "destinationAsset": "Btc",
+    "destinationAddress": "cFMVQrUbuTuXmeRinPQovRkCgoyrrRd3N4Q5ZdHfqv4VJi5Hh",
+    "sourceAsset": "Usdc",
+    "effectiveBoostFeeBps": null,
+    "broker": null,
+    "beneficiaries": { "nodes": [] },
+    "egress": null,
+    "refundEgress": null,
+    "swapChannel": null,
+    "preDepositBlock": null,
+    "depositBlock": null,
+    "completedEvent": { "block": { "timestamp": "2025-06-03T14:27:00+00:00" } },
+    "executedSwaps": { "totalCount": 1 },
+    "boostFee": { "nodes": [] },
+    "transactionRefs": { "nodes": [] },
+    "onChainInfo": {
+      "lp": {
+        "idSs58": "cFMVQrUbuTuXmeRinPQovRkCgoyrrRd3N4Q5ZdHfqv4VJi5Hh",
+        "alias": null
+      },
+      "refundAmount": null,
+      "refundValueUsd": null,
+      "outputAmount": "80955432",
+      "outputValueUsd": "85439.877450612500000000000000000000"
+    }
+  }
+}

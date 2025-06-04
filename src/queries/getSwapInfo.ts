@@ -38,7 +38,6 @@ export default async function getSwapInfo(nativeId: `${number}`) {
   const egressTimestamp = swap.egress?.scheduledEvent.block.timestamp;
   const completedAt = swap.completedEvent?.block.timestamp;
 
-  const egressValueUsd = toUsdAmount(swap.egress?.valueUsd);
   const broker = swap.broker?.account;
   const numberOfChunks = swap.dcaNumberOfChunks;
   const numberOfExecutedChunks = swap.executedSwaps.totalCount;
@@ -80,14 +79,20 @@ export default async function getSwapInfo(nativeId: `${number}`) {
 
   let swapInputAmount = toAssetAmount(swap.depositAmount, sourceAsset);
 
-  const egressAmount = toAssetAmount(
+  const outputAmount = toAssetAmount(
     swap.onChainInfo?.outputAmount ?? swap.egress?.amount,
     destinationAsset,
   );
 
+  const outputValueUsd = toUsdAmount(swap.onChainInfo?.outputValueUsd ?? swap.egress?.valueUsd);
+
   const refundAmount = toAssetAmount(
     swap.onChainInfo?.refundAmount ?? swap.refundEgress?.amount,
     sourceAsset,
+  );
+
+  const refundValueUsd = toUsdAmount(
+    swap.onChainInfo?.refundValueUsd ?? swap.refundEgress?.valueUsd,
   );
 
   let swapInputValueUsd = toUsdAmount(swap.depositValueUsd);
@@ -102,11 +107,11 @@ export default async function getSwapInfo(nativeId: `${number}`) {
     swapInputAmount = newDepositAmount;
   }
 
-  const priceDelta = egressValueUsd && swapInputValueUsd && egressValueUsd.minus(swapInputValueUsd);
+  const priceDelta = outputValueUsd && swapInputValueUsd && outputValueUsd.minus(swapInputValueUsd);
 
   const priceDeltaPercentage =
-    egressValueUsd && swapInputValueUsd
-      ? egressValueUsd
+    outputValueUsd && swapInputValueUsd
+      ? outputValueUsd
           .minus(swapInputValueUsd)
           .dividedBy(swapInputValueUsd)
           .multipliedBy(100)
@@ -125,12 +130,12 @@ export default async function getSwapInfo(nativeId: `${number}`) {
   return {
     completedEventId,
     requestId: swap.nativeId,
-    depositAmount: toAssetAmount(swap.depositAmount, sourceAsset),
-    depositValueUsd: toUsdAmount(swap.depositValueUsd),
-    egressAmount,
-    egressValueUsd,
+    inputAmount: toAssetAmount(swap.depositAmount, sourceAsset),
+    inputValueUsd: toUsdAmount(swap.depositValueUsd),
+    outputAmount,
+    outputValueUsd,
     refundAmount,
-    refundValueUsd: toUsdAmount(swap.refundEgress?.valueUsd),
+    refundValueUsd,
     duration,
     priceDelta,
     priceDeltaPercentage,

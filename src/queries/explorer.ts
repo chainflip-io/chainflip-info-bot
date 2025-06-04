@@ -177,7 +177,9 @@ export const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
           alias
         }
         refundAmount
+        refundValueUsd
         outputAmount
+        outputValueUsd
       }
     }
   }
