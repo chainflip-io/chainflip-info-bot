@@ -46,9 +46,9 @@ const buildMessageData = ({
         <Line>
           📥{' '}
           <Bold platform={platform}>
-            <TokenAmount amount={swapInfo.depositAmount} asset={swapInfo.sourceAsset} />
+            <TokenAmount amount={swapInfo.inputAmount} asset={swapInfo.sourceAsset} />
           </Bold>
-          <UsdValue amount={swapInfo.depositValueUsd} />
+          <UsdValue amount={swapInfo.inputValueUsd} />
         </Line>
         {swapInfo.depositAddress && (
           <Line>
@@ -79,7 +79,7 @@ const buildMessageData = ({
       data: {
         platform,
         message,
-        filterData: { name: 'NEW_SWAP', usdValue: swapInfo.depositValueUsd?.toNumber() || 0 },
+        filterData: { name: 'NEW_SWAP', usdValue: swapInfo.inputValueUsd?.toNumber() || 0 },
         opts: { disablePreview: true },
       },
     };

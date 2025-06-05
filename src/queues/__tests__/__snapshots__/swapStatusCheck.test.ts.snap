@@ -17,7 +17,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
 🟢 Delta: <strong>$101.20</strong> (0.13%)
 📓 Chunks: <strong>26/26</strong>
 ⚡ <strong>Boosted</strong> for <strong>$39.31</strong>
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
           "platform": "telegram",
         },
         "name": "messageRouter",
@@ -35,7 +35,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
 🟢 Delta: **$101.20** (0.13%)
 📓 Chunks: **26/26**
 ⚡ **Boosted** for **$39.31**
-🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
+🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
           "platform": "discord",
         },
         "name": "messageRouter",
@@ -53,7 +53,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
 🟢 Delta: $101.20 (0.13%)
 📓 Chunks: 26/26
 ⚡ Boosted for $39.31
-🏦 via Chainflip Swapping
+🏦 via Chainflip SDK
 #chainflip $flip",
           "platform": "twitter",
         },
@@ -79,7 +79,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: <strong>1 min</strong>
 🟢 Delta: <strong>$43.31</strong> (0.78%)
 📓 Chunks: <strong>2/2</strong>
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -96,7 +96,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: **1 min**
 🟢 Delta: **$43.31** (0.78%)
 📓 Chunks: **2/2**
-🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
+🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -113,7 +113,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
 ⏱️ Took: 1 min
 🟢 Delta: $43.31 (0.78%)
 📓 Chunks: 2/2
-🏦 via Chainflip Swapping
+🏦 via Chainflip SDK
 #chainflip $flip",
         "platform": "twitter",
       },
@@ -198,7 +198,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 ⏱️ Took: <strong>18 min</strong>
 🟢 Delta: <strong>$167.19</strong> (0.98%)
 📓 Chunks: <strong>6/17</strong>
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip Swapping</a></strong>",
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -216,7 +216,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 ⏱️ Took: **18 min**
 🟢 Delta: **$167.19** (0.98%)
 📓 Chunks: **6/17**
-🏦 via **[Chainflip Swapping](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
+🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -234,7 +234,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 ⏱️ Took: 18 min
 🟢 Delta: $167.19 (0.98%)
 📓 Chunks: 6/17
-🏦 via Chainflip Swapping
+🏦 via Chainflip SDK
 #chainflip $flip",
         "platform": "twitter",
       },
