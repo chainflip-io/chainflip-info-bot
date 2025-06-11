@@ -21,7 +21,7 @@
   "devDependencies": {
     "@chainflip/eslint-config": "^1.0.7",
     "@eslint/js": "^9.27.0",
-    "@graphql-codegen/cli": "^5.0.6",
+    "@graphql-codegen/cli": "^5.0.7",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@types/node": "^22.15.21",
     "@types/react": "^19.1.5",
