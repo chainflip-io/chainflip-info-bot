@@ -3,3 +3,5 @@ dist
 coverage
 node_modules
 src/graphql/generated/*
+Dockerfile
+*.clean
