@@ -29,7 +29,7 @@ export const createServer = (queues: QueueMap) => {
 
   const basePath = '/admin/queues';
   serverAdapter.setBasePath(basePath);
-  app.register(serverAdapter.registerPlugin(), { prefix: basePath, basePath: '/' });
+  app.register(serverAdapter.registerPlugin(), { prefix: basePath });
 
   app.get('/health', async (req, res) => {
     const jobs = await queues.scheduler.getDelayed();
