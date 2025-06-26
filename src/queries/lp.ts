@@ -1,29 +1,5 @@
 import { gql } from '../graphql/generated/lp/gql.js';
 
-export const getLpFeeInfo = gql(/* GraphQL */ `
-  query GetLpFeeInfo($start: Datetime!, $end: Datetime!) {
-    limitOrderFills: allLimitOrderFills(
-      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
-    ) {
-      aggregates {
-        sum {
-          feesEarnedValueUsd
-        }
-      }
-    }
-    rangeOrderFills: allRangeOrderFills(
-      filter: { blockTimestamp: { greaterThanOrEqualTo: $start, lessThanOrEqualTo: $end } }
-    ) {
-      aggregates {
-        sum {
-          baseFeesEarnedValueUsd
-          quoteFeesEarnedValueUsd
-        }
-      }
-    }
-  }
-`);
-
 export const getBoostSummaryQuery = gql(/* GraphQL */ `
   query GetBoostSummary($start: Datetime!, $end: Datetime!, $asset: ChainflipAsset!) {
     boostPools: allBoostPools(filter: { asset: { equalTo: $asset } }) {
