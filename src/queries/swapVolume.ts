@@ -1,24 +1,19 @@
 import { assetConstants } from '@chainflip/utils/chainflip';
 import BigNumber from 'bignumber.js';
-import { explorerClient, lpClient } from '../server.js';
+import { explorerClient } from '../server.js';
 import { getSwapVolumeStatsQuery } from './explorer.js';
-import { getLpFeeInfo } from './lp.js';
 
 export type SwapStats = {
   swapVolume: BigNumber;
   networkFees: BigNumber;
   totalFlipBurned: BigNumber | null;
-  lpFees: BigNumber;
   boostFees: BigNumber;
 };
 
 export default async function getSwapVolumeStats(start: Date, end: Date): Promise<SwapStats> {
   const args = { start: start.toISOString(), end: end.toISOString() };
 
-  const [swapInfo, lpInfo] = await Promise.all([
-    explorerClient.request(getSwapVolumeStatsQuery, args),
-    lpClient.request(getLpFeeInfo, args),
-  ]);
+  const swapInfo = await explorerClient.request(getSwapVolumeStatsQuery, args);
 
   const swapVolume = BigNumber.sum(
     swapInfo.swaps?.aggregates?.sum?.intermediateValueUsd ?? 0,
@@ -42,17 +37,10 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.totalAmount),
   ).shiftedBy(-assetConstants.Flip.decimals);
 
-  const lpFees = BigNumber.sum(
-    lpInfo.limitOrderFills?.aggregates?.sum?.feesEarnedValueUsd ?? 0,
-    lpInfo.rangeOrderFills?.aggregates?.sum?.baseFeesEarnedValueUsd ?? 0,
-    lpInfo.rangeOrderFills?.aggregates?.sum?.quoteFeesEarnedValueUsd ?? 0,
-  );
-
   return {
     swapVolume,
     networkFees,
     totalFlipBurned: totalFlipBurned.gt(0) ? totalFlipBurned : null,
-    lpFees,
     boostFees,
   };
 }

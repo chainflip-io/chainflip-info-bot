@@ -86,9 +86,6 @@ const buildMessages = ({
           <Line>
             🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
           </Line>
-          <Line>
-            🤑 <Bold platform={platform}>{formatUsdValue(stats.lpFees)}</Bold> of LP fees
-          </Line>
           {stats.boostFees.gt(0) && (
             <Line>
               ⚡️ <Bold platform={platform}>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
