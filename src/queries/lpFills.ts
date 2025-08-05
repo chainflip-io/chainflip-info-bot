@@ -2,10 +2,12 @@ import { lpAliasMap } from '@chainflip/utils/consts';
 import BigNumber from 'bignumber.js';
 import { lpClient } from '../server.js';
 import { getLpFillsQuery, getIdSs58Query } from './lp.js';
+import { AccountType } from '../graphql/generated/lp/graphql.js';
 
 export type LPFillsData = {
   idSs58: string | undefined;
   filledAmountValueUsd: BigNumber;
+  type: AccountType;
   percentage: string | undefined;
   alias: string | undefined;
 };
@@ -42,22 +44,29 @@ export default async function getLpFills({
 
   const groupedByAccountName: Record<
     string,
-    { idSs58: string; filledAmountValueUsd: BigNumber; percentage: string; alias?: string }
+    {
+      idSs58: string;
+      type: AccountType;
+      filledAmountValueUsd: BigNumber;
+      percentage: string;
+      alias?: string;
+    }
   > = {};
 
   agg?.forEach(({ id, ...lp }) => {
-    const accountAddress = accounts?.nodes.find((account) => account.id === id)?.idSs58;
+    const account = accounts?.nodes.find((acc) => acc.id === id);
 
-    if (!accountAddress) {
+    if (!account) {
       return;
     }
 
-    const name = lpAliasMap[accountAddress]?.name;
+    const name = lpAliasMap[account.idSs58]?.name;
 
-    const key = name || accountAddress;
+    const key = name || account.idSs58;
 
     groupedByAccountName[key] ??= {
-      idSs58: accountAddress,
+      idSs58: account.idSs58,
+      type: account.type,
       filledAmountValueUsd: new BigNumber(0),
       percentage: '0',
       alias: name,
@@ -79,5 +88,6 @@ export default async function getLpFills({
         alias: lp.alias || undefined,
       };
     })
+    .filter((lp) => Number(lp.percentage) > 0)
     .sort((a, b) => b.filledAmountValueUsd.comparedTo(a.filledAmountValueUsd) ?? 0);
 }

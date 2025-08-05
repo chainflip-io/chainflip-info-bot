@@ -59,7 +59,7 @@ export const getLpFillsQuery = gql(/* GraphQL */ `
 
 export const getIdSs58Query = gql(/* GraphQL */ `
   query GetAccount($ids: [Int!]) {
-    accounts: allAccounts(filter: { id: { in: $ids }, type: { equalTo: LIQUIDITY_PROVIDER } }) {
+    accounts: allAccounts(filter: { id: { in: $ids } }) {
       nodes {
         id
         type

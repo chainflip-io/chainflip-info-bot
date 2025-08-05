@@ -108,21 +108,26 @@ const buildMessages = ({
           <Line>
             💼 Top LPs for {isDaily ? date.toISOString().slice(0, 10) : 'the week'} are in:
           </Line>
-          {stats.slice(0, isDaily ? 5 : -1).map(
-            (stat, index) =>
-              stat.filledAmountValueUsd.gt(0) && (
+          {stats
+            .slice(0, isDaily ? 5 : stats.length)
+            .filter((stat) => stat.filledAmountValueUsd.gt(0))
+            .map((stat, index) => {
+              const displayName =
+                stat.type === 'TRADING_STRATEGY' ? (
+                  (stat.alias ?? `${abbreviate(stat.idSs58)}(Stablecoin Strategies)`)
+                ) : (
+                  <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
+                    {stat.alias ?? abbreviate(stat.idSs58)}
+                  </ExplorerLink>
+                );
+
+              return (
                 <Line key={stat.idSs58}>
-                  {medals[index] ?? youTried}{' '}
-                  {formatUsdValue(stats.at(index)?.filledAmountValueUsd)}{' '}
-                  <Bold platform={platform}>
-                    <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
-                      {stat.alias ?? abbreviate(stat.idSs58)}
-                    </ExplorerLink>
-                  </Bold>{' '}
-                  ({stat.percentage}%)
+                  {medals[index] ?? youTried} {formatUsdValue(stat.filledAmountValueUsd)}{' '}
+                  <Bold platform={platform}>{displayName}</Bold> ({stat.percentage}%)
                 </Line>
-              ),
-          )}
+              );
+            })}
           <Trailer platform={platform} />
         </>,
       ).trimEnd();
