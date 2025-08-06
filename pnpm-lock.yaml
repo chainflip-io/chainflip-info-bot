@@ -18,8 +18,8 @@ importers:
         specifier: ^0.8.16
         version: 0.8.16
       '@date-fns/utc':
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.1.1
+        version: 2.1.1
       axios:
         specifier: ^1.10.0
         version: 1.10.0
@@ -240,8 +240,8 @@ packages:
   '@chainflip/utils@0.8.16':
     resolution: {integrity: sha512-V6dlqEGGkfJMzRuFsQkLNATsuH1WTUYmeufBgQHoMpJ88bIY/VSzl+DLd9uQjb/BGpIXgLqYG+QD7xBca7Wh9g==}
 
-  '@date-fns/utc@2.1.0':
-    resolution: {integrity: sha512-176grgAgU2U303rD2/vcOmNg0kGPbhzckuH1TEP2al7n0AQipZIy9P15usd2TKQCG1g+E1jX/ZVQSzs4sUDwgA==}
+  '@date-fns/utc@2.1.1':
+    resolution: {integrity: sha512-SlJDfG6RPeEX8wEVv6ZB3kak4MmbtyiI2qX/5zuKdordbrhB/iaJ58GVMZgJ6P1sJaM1gMgENFYYeg1JWrCFrA==}
 
   '@discordjs/builders@1.11.2':
     resolution: {integrity: sha512-F1WTABdd8/R9D1icJzajC4IuLyyS8f3rTOz66JsSI3pKvpCAtsMBweu8cyNYsIyvcrKAVn9EPK+Psoymq+XC0A==}
@@ -3667,11 +3667,11 @@ snapshots:
 
   '@chainflip/utils@0.8.16':
     dependencies:
-      '@date-fns/utc': 2.1.0
+      '@date-fns/utc': 2.1.1
       bignumber.js: 9.3.1
       date-fns: 4.1.0
 
-  '@date-fns/utc@2.1.0': {}
+  '@date-fns/utc@2.1.1': {}
 
   '@discordjs/builders@1.11.2':
     dependencies:
