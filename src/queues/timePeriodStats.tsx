@@ -114,7 +114,7 @@ const buildMessages = ({
             .map((stat, index) => {
               const displayName =
                 stat.type === 'TRADING_STRATEGY' ? (
-                  (stat.alias ?? `${abbreviate(stat.idSs58)}(Stablecoin Strategies)`)
+                  (stat.alias ?? `${abbreviate(stat.idSs58)} (Stablecoin Strategy)`)
                 ) : (
                   <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
                     {stat.alias ?? abbreviate(stat.idSs58)}
