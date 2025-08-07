@@ -62,6 +62,7 @@ export const getIdSs58Query = gql(/* GraphQL */ `
     accounts: allAccounts(filter: { id: { in: $ids } }) {
       nodes {
         id
+        type
         idSs58
       }
     }
