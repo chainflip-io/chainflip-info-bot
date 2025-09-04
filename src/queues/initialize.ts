@@ -2,6 +2,7 @@ import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Wor
 import { Redis } from 'ioredis';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
+import { config as newDelegationActivityConfig } from './newDelegationAcitivityCheck.js';
 import { config as newSwapAlertConfig } from './newSwapAlert.js';
 import { config as newSwapCheckConfig } from './newSwapCheck.js';
 import { config as schedulerConfig } from './scheduler.js';
@@ -130,6 +131,7 @@ export const initialize = async () => {
   queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
+  queues.newDelegationActivityCheck = await createQueue(dispatchJobs, newDelegationActivityConfig);
   queues.newBurnCheck = await createQueue(dispatchJobs, newBurnCheckConfig);
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
   queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
