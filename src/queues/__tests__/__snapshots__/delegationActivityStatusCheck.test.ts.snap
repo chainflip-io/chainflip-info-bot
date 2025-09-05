@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`delegationActivityStatusCheck > check fresh deelgation activity status and send delegation info message 1`] = `
+[
+  [
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_DELEGATION",
+        },
+        "message": "New delegation detected: <strong>#2</strong>
+👷‍♂️ Operator: <a href="https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ">cFMj…HRQZ</a>
+📥 Delegated Amount: <strong>0 FLIP on Ethereum</strong> ($0.00)",
+        "platform": "telegram",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_DELEGATION",
+        },
+        "message": "New delegation detected: **#2**
+👷‍♂️ Operator: [cFMj…HRQZ](https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ)
+📥 Delegated Amount: **0 FLIP on Ethereum** ($0.00)",
+        "platform": "discord",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_DELEGATION",
+        },
+        "message": "New delegation detected: #2
+👷‍♂️ Operator: cFMj…HRQZ
+📥 Delegated Amount: 0 FLIP on Ethereum ($0.00)",
+        "platform": "twitter",
+      },
+      "name": "messageRouter",
+    },
+  ],
+]
+`;
