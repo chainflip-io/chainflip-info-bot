@@ -48,10 +48,13 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   );
 
   const delegationActivityRequestJobs = newDelegationActvityRequest.flatMap((id) => [
-    { name: 'newDelegationActivityCheck' as const, data: { delegationActivityId: id } }, // check here
+    // check
+    { name: 'delegationActivityStatusCheck' as const, data: { delegationActivityId: id } },
   ]);
 
-  const latesDelegationActivityId = newDelegationActvityRequest[-1];
+  const latesDelegationActivityId = newDelegationActvityRequest
+    .map((id) => Number(id))
+    .reduce((a, b) => (a > b ? a : b), Number(job.data.delegationActivityId));
 
   logger.info(`Current latest swapRequestId: ${latesDelegationActivityId}`);
 
