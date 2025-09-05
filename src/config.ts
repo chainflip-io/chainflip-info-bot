@@ -17,6 +17,7 @@ const filters = z.discriminatedUnion('name', [
   z.object({ name: z.literal('NEW_SWAP'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),
+  z.object({ name: z.literal('NEW_DELEGATION') }),
 ]);
 
 export type Filter = z.infer<typeof filters>;
