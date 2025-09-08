@@ -92,8 +92,6 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const delegationActivity = delegationActivitiesQuery.allDelegationActivities?.nodes[0];
 
-  console.log('delegationActivity', delegationActivity);
-
   if (!delegationActivity) {
     throw new Error(`Delegation activity not found for id ${job.data.delegationActivityId}`);
   }
