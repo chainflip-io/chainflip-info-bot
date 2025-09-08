@@ -10,7 +10,11 @@ exports[`delegationActivityStatusCheck > check fresh deelgation activity status 
         },
         "message": "↘️ New delegation detected: <strong>#2</strong>
 👷‍♂️ Operator: <a href="https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ">cFMj…HRQZ</a>
-📥 Delegated Amount: <strong>0 FLIP on Ethereum</strong> ($0.00)",
+📥 Delegated Amount: <strong>0 FLIP on Ethereum</strong> ($0.00)
+🧾 Transaction refs: <a href="https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u">0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u</a>",
+        "opts": {
+          "disablePreview": true,
+        },
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -22,7 +26,11 @@ exports[`delegationActivityStatusCheck > check fresh deelgation activity status 
         },
         "message": "↘️ New delegation detected: **#2**
 👷‍♂️ Operator: [cFMj…HRQZ](https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ)
-📥 Delegated Amount: **0 FLIP on Ethereum** ($0.00)",
+📥 Delegated Amount: **0 FLIP on Ethereum** ($0.00)
+🧾 Transaction refs: [0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u](https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u)",
+        "opts": {
+          "disablePreview": true,
+        },
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -34,7 +42,11 @@ exports[`delegationActivityStatusCheck > check fresh deelgation activity status 
         },
         "message": "↘️ New delegation detected: #2
 👷‍♂️ Operator: cFMj…HRQZ
-📥 Delegated Amount: 0 FLIP on Ethereum ($0.00)",
+📥 Delegated Amount: 0 FLIP on Ethereum ($0.00)
+🧾 Transaction refs: https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u",
+        "opts": {
+          "disablePreview": true,
+        },
         "platform": "twitter",
       },
       "name": "messageRouter",

@@ -69,7 +69,7 @@ const buildMessageData = ({
             <>
               <Line>
                 🧾 Transaction refs:{' '}
-                <ExplorerLink path={txHash} chain="Ethereum" platform={platform} prefer="text">
+                <ExplorerLink path={txHash} chain="Ethereum" platform={platform} prefer="link">
                   {txHash}
                 </ExplorerLink>
               </Line>
@@ -78,6 +78,7 @@ const buildMessageData = ({
         </>,
       ).trimEnd(),
       filterData: { name: 'NEW_DELEGATION' },
+      opts: { disablePreview: true },
     },
   }));
 };
@@ -89,9 +90,9 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     id: job.data.delegationActivityId,
   });
 
-  console.log('delegationActivitiesQuery', delegationActivitiesQuery);
-
   const delegationActivity = delegationActivitiesQuery.allDelegationActivities?.nodes[0];
+
+  console.log('delegationActivity', delegationActivity);
 
   if (!delegationActivity) {
     throw new Error(`Delegation activity not found for id ${job.data.delegationActivityId}`);

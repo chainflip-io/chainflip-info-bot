@@ -17,7 +17,7 @@ const mockGetDelegationActivityByIdQuery = (delegationActivityId: number) => ({
             idSs58: 'cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ',
           },
         },
-        txHash: null,
+        txHash: '0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u',
         event: {
           indexInBlock: 21,
           blockId: 436,

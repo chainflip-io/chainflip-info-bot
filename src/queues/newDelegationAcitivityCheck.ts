@@ -48,7 +48,6 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   );
 
   const delegationActivityRequestJobs = newDelegationActvityRequest.flatMap((id) => [
-    // check
     { name: 'delegationActivityStatusCheck' as const, data: { delegationActivityId: id } },
   ]);
 
