@@ -50,7 +50,7 @@ const buildMessageData = ({
       message: renderToStaticMarkup(
         <>
           <Line>
-            New delegation detected: <Bold platform={platform}>#{id}</Bold>
+            ↘️ New delegation detected: <Bold platform={platform}>#{id}</Bold>
           </Line>
           <Line>
             👷‍♂️ Operator:{' '}
