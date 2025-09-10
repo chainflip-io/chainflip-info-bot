@@ -1,12 +1,15 @@
 import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
+import { config as delegationActivityStatusCheck } from './delegationActivityStatusCheck.js';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
+import { config as newDelegationActivityConfig } from './newDelegationAcitivityCheck.js';
 import { config as newSwapAlertConfig } from './newSwapAlert.js';
 import { config as newSwapCheckConfig } from './newSwapCheck.js';
 import { config as schedulerConfig } from './scheduler.js';
 import { config as sendMessageConfig } from './sendMessage.js';
 import { config as swapStatusCheckConfig } from './swapStatusCheck.js';
+
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { config as newLpDepositCheck } from './newLpDepositCheck.js';
@@ -130,9 +133,14 @@ export const initialize = async () => {
   queues.messageRouter = await createQueue(dispatchJobs, messageRouterConfig);
   queues.timePeriodStats = await createQueue(dispatchJobs, timePeriodStatsConfig);
   queues.newSwapCheck = await createQueue(dispatchJobs, newSwapCheckConfig);
+  queues.newDelegationActivityCheck = await createQueue(dispatchJobs, newDelegationActivityConfig);
   queues.newBurnCheck = await createQueue(dispatchJobs, newBurnCheckConfig);
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
   queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
+  queues.delegationActivityStatusCheck = await createQueue(
+    dispatchJobs,
+    delegationActivityStatusCheck,
+  );
   queues.newSwapAlert = await createQueue(dispatchJobs, newSwapAlertConfig);
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
