@@ -8,7 +8,7 @@ exports[`delegationActivityStatusCheck > check fresh deelgation activity status 
         "filterData": {
           "name": "NEW_DELEGATION",
         },
-        "message": "↘️ New delegation detected: <strong>#2</strong>
+        "message": "↘️ Delegation <strong>#2</strong> is removed
 👷‍♂️ Operator: <a href="https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ">cFMj…HRQZ</a>
 📥 Delegated Amount: <strong>0 FLIP on Ethereum</strong> ($0.00)
 🧾 Transaction refs: <a href="https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u">0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u</a>",
@@ -24,7 +24,7 @@ exports[`delegationActivityStatusCheck > check fresh deelgation activity status 
         "filterData": {
           "name": "NEW_DELEGATION",
         },
-        "message": "↘️ New delegation detected: **#2**
+        "message": "↘️ Delegation **#2** is removed
 👷‍♂️ Operator: [cFMj…HRQZ](https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ)
 📥 Delegated Amount: **0 FLIP on Ethereum** ($0.00)
 🧾 Transaction refs: [0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u](https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u)",
@@ -40,7 +40,7 @@ exports[`delegationActivityStatusCheck > check fresh deelgation activity status 
         "filterData": {
           "name": "NEW_DELEGATION",
         },
-        "message": "↘️ New delegation detected: #2
+        "message": "↘️ Delegation #2 is removed
 👷‍♂️ Operator: cFMj…HRQZ
 📥 Delegated Amount: 0 FLIP on Ethereum ($0.00)
 🧾 Transaction refs: https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u",

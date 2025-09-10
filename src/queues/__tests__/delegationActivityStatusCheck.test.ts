@@ -7,7 +7,7 @@ const mockGetDelegationActivityByIdQuery = (delegationActivityId: number) => ({
     nodes: [
       {
         id: delegationActivityId,
-        type: 'DELEGATE',
+        type: 'UNDELEGATE',
         amount: '0',
         valueUsd: '0.000000000000000000000000000000',
         operatorByOperatorId: {

@@ -41,7 +41,8 @@ const buildMessageData = ({
 }: {
   delegationActivityInfo: DelegationActivity;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
-  const { id, operatorAlias, operatorIdSs58, txHash, amount, valueUsd } = delegationActivityInfo;
+  const { id, type, operatorAlias, operatorIdSs58, txHash, amount, valueUsd } =
+    delegationActivityInfo;
 
   return platforms.map((platform) => ({
     name: 'messageRouter' as const,
@@ -50,7 +51,9 @@ const buildMessageData = ({
       message: renderToStaticMarkup(
         <>
           <Line>
-            ↘️ New delegation detected: <Bold platform={platform}>#{id}</Bold>
+            ↘️ {type === 'DELEGATE' ? 'New delegation is added:' : 'Delegation'}{' '}
+            <Bold platform={platform}>#{id}</Bold>
+            {type === 'UNDELEGATE' && ' is removed'}
           </Line>
           <Line>
             👷‍♂️ Operator:{' '}
