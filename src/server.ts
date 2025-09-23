@@ -1,5 +1,5 @@
 import { createBullBoard } from '@bull-board/api';
-import { BullMQAdapter } from '@bull-board/api/bullMQAdapter.js';
+import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { FastifyAdapter } from '@bull-board/fastify';
 import fastify from 'fastify';
 import { GraphQLClient } from 'graphql-request';
