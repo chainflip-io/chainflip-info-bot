@@ -1,18 +1,25 @@
 import { unreachable } from '@chainflip/utils/assertion';
 import { type ChainflipAsset, type ChainflipChain } from '@chainflip/utils/chainflip';
+import assert from 'assert';
 import type BigNumber from 'bignumber.js';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Platform } from '../config.js';
 import { EXPLORER_URL } from '../consts.js';
 import { humanFriendlyAsset } from '../consts.js';
 import { toFormattedAmount } from '../utils/chainflip.js';
 import { formatUsdValue } from '../utils/functions.js';
 
-export const Bold = ({
-  children,
-  platform,
-}: {
-  children: React.ReactNode;
-  platform: 'discord' | 'telegram' | 'twitter';
-}) => {
+let platform: Platform | undefined;
+
+export const renderForPlatform = (p: Platform, node: React.ReactNode) => {
+  assert(platform === undefined, 'Nested renderForPlatform calls are not supported');
+  platform = p;
+  const markup = renderToStaticMarkup(node);
+  platform = undefined;
+  return markup;
+};
+
+export const Bold = ({ children }: { children: React.ReactNode }) => {
   switch (platform) {
     case 'discord':
       return <>**{children}**</>;
@@ -20,6 +27,8 @@ export const Bold = ({
       return <strong>{children}</strong>;
     case 'twitter':
       return children;
+    case undefined:
+      throw new Error('Platform not set');
     default:
       return unreachable(platform, 'unknown platform');
   }
@@ -30,12 +39,10 @@ const removeEmoji = (string: string) => string.replace(/ *[\p{S}\p{C}]/gu, '');
 export const Link = ({
   children,
   href,
-  platform,
   prefer = 'text',
 }: {
   children: string | string[];
   href: string | URL;
-  platform: 'discord' | 'telegram' | 'twitter';
   prefer?: 'text' | 'link';
 }) => {
   switch (platform) {
@@ -55,6 +62,8 @@ export const Link = ({
       // or we show the url
       if (prefer === 'link') return href.toString();
       return unreachable(prefer, 'unknown preference');
+    case undefined:
+      throw new Error('Platform not set');
     default:
       return unreachable(platform, 'unknown platform');
   }
@@ -76,20 +85,18 @@ const explorerInfo: Record<
 export const ExplorerLink = ({
   children,
   path,
-  platform,
   prefer,
   chain,
 }: {
   children: string | string[];
   path: string;
-  platform: 'discord' | 'telegram' | 'twitter';
   prefer: 'text' | 'link';
   chain?: ChainflipChain;
 }) => {
   const { url, fmt } = explorerInfo[chain ?? 'Chainflip'];
 
   return (
-    <Link platform={platform} href={new URL(fmt(path), url).toString()} prefer={prefer}>
+    <Link href={new URL(fmt(path), url).toString()} prefer={prefer}>
       {children}
     </Link>
   );
@@ -102,8 +109,7 @@ export const Line = ({ children }: { children: React.ReactNode }) => (
   </>
 );
 
-export const Trailer = ({ platform }: { platform: 'discord' | 'telegram' | 'twitter' }) =>
-  platform === 'twitter' ? '#chainflip $flip' : null;
+export const Trailer = () => (platform === 'twitter' ? '#chainflip $flip' : null);
 
 export const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.Element | null => {
   if (!amount) return null;
@@ -111,8 +117,24 @@ export const UsdValue = ({ amount }: { amount: BigNumber | null }): React.JSX.El
   return <> ({formatUsdValue(amount)})</>;
 };
 
-export const TokenAmount = ({ amount, asset }: { amount: BigNumber; asset: ChainflipAsset }) => (
-  <>
-    {toFormattedAmount(amount)} {humanFriendlyAsset[asset]}
-  </>
-);
+export const TokenAmount = ({
+  amount,
+  asset,
+  hideChain,
+}: {
+  amount: BigNumber;
+  asset: ChainflipAsset;
+  hideChain?: boolean;
+}) => {
+  let readableAsset = humanFriendlyAsset[asset];
+
+  if (hideChain) {
+    readableAsset = readableAsset.replace(/ on .+$/, '');
+  }
+
+  return (
+    <>
+      {toFormattedAmount(amount)} {readableAsset}
+    </>
+  );
+};

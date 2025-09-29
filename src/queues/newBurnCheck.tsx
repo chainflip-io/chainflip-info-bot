@@ -1,8 +1,7 @@
 import type BigNumber from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
-import { ExplorerLink, Line, Trailer } from '../channels/formatting.js';
+import { ExplorerLink, Line, renderForPlatform, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import getLatestBurnId from '../queries/getLatestBurnId.js';
 import getNewBurn from '../queries/getNewBurn.js';
@@ -57,21 +56,18 @@ const buildMessages = ({
     name: 'messageRouter' as const,
     data: {
       platform,
-      message: renderToStaticMarkup(
+      message: renderForPlatform(
+        platform,
         <>
           <Line>
             🔥 Burned {totalAmount.toFixed(2)} FLIP{valueUsd && ` (${formatUsdValue(valueUsd)})`}!
           </Line>
           <Line>
-            <ExplorerLink
-              path={`/events/${blockHeight}-${indexInBlock}`}
-              platform={platform}
-              prefer="link"
-            >
+            <ExplorerLink path={`/events/${blockHeight}-${indexInBlock}`} prefer="link">
               View on explorer
             </ExplorerLink>
           </Line>
-          <Trailer platform={platform} />
+          <Trailer />
         </>,
       ).trimEnd(),
       filterData: { name: 'NEW_BURN' },

@@ -17,13 +17,13 @@ const filters = z.discriminatedUnion('name', [
   z.object({ name: z.literal('NEW_SWAP'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),
-  z.object({ name: z.literal('NEW_DELEGATION') }),
+  z.object({ name: z.literal('DELEGATION_EVENT') }),
 ]);
 
 export type Filter = z.infer<typeof filters>;
 
 export type FilterData =
-  | Exclude<Filter, { name: 'SWAP_COMPLETED' | 'NEW_SWAP' }>
+  | Exclude<Filter, { name: Extract<Filter, { minUsdValue: number }>['name'] }>
   | { name: 'SWAP_COMPLETED' | 'NEW_SWAP'; usdValue: number };
 
 const specializedMessages: Filter['name'][] = ['NEW_SWAP'];

@@ -1,6 +1,5 @@
 import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
-import { config as delegationActivityStatusCheck } from './delegationActivityStatusCheck.js';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
 import { config as newDelegationActivityConfig } from './newDelegationAcitivityCheck.js';
@@ -137,10 +136,6 @@ export const initialize = async () => {
   queues.newBurnCheck = await createQueue(dispatchJobs, newBurnCheckConfig);
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
   queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
-  queues.delegationActivityStatusCheck = await createQueue(
-    dispatchJobs,
-    delegationActivityStatusCheck,
-  );
   queues.newSwapAlert = await createQueue(dispatchJobs, newSwapAlertConfig);
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);

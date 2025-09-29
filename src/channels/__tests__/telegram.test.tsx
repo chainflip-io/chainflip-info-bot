@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import axios from 'axios';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { vi, describe, it, expect } from 'vitest';
+import { renderForPlatform } from '../formatting.js';
 import { sendMessage } from '../telegram.js';
 
 describe('sendMessage', () => {
@@ -12,7 +12,8 @@ describe('sendMessage', () => {
 
     await sendMessage(
       { token: '1234', channelId: '5678' },
-      renderToStaticMarkup(
+      renderForPlatform(
+        'telegram',
         <>
           hello <strong>bold</strong>
         </>,
@@ -39,7 +40,8 @@ describe('sendMessage', () => {
     await expect(
       sendMessage(
         { token: '1234', channelId: '5678' },
-        renderToStaticMarkup(
+        renderForPlatform(
+          'telegram',
           <>
             hello <strong>bold</strong>
           </>,

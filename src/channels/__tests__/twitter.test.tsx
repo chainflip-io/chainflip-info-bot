@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import axios, { AxiosError } from 'axios';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { vi, describe, it, expect } from 'vitest';
+import { renderForPlatform } from '../formatting.js';
 import { sendMessage } from '../twitter.js';
 
 describe('sendMessage', () => {
@@ -18,7 +18,8 @@ describe('sendMessage', () => {
     postMock.mockResolvedValue({
       data: {
         data: {
-          text: renderToStaticMarkup(
+          text: renderForPlatform(
+            'twitter',
             <>
               hello twitter<strong>bold</strong>
             </>,
@@ -31,7 +32,8 @@ describe('sendMessage', () => {
 
     await sendMessage(
       config,
-      renderToStaticMarkup(
+      renderForPlatform(
+        'twitter',
         <>
           hello twitter<strong>bold</strong>
         </>,
@@ -68,7 +70,8 @@ describe('sendMessage', () => {
     await expect(
       sendMessage(
         config,
-        renderToStaticMarkup(
+        renderForPlatform(
+          'twitter',
           <>
             hello twitter<strong>bold</strong>
           </>,

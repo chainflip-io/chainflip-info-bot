@@ -68,48 +68,27 @@ export const latestSwapRequestIdQuery = gql(/* GraphQL */ `
   }
 `);
 
-export const latestDelegationActivitIdQuery = gql(/* GraphQL */ `
-  query LatestDelegationActivityRequest {
-    delegationActivities: allDelegationActivities(first: 1, orderBy: ID_DESC) {
-      nodes {
-        id
-      }
-    }
-  }
-`);
-
-export const getNewDelegationActivityRequestsQuery = gql(/* GraphQL */ `
-  query GetNewDelegationActivityRequestQuery($id: Int!) {
-    delegationActivities: allDelegationActivities(filter: { id: { greaterThan: $id } }) {
-      nodes {
-        id
-      }
-    }
-  }
-`);
-
 export const getDelegationActivityByIdQuery = gql(/* GraphQL */ `
-  query GetDelegationActivity($id: Int) {
-    allDelegationActivities(filter: { id: { equalTo: $id } }) {
+  query GetDelegationActivity($lastId: Int, $limit: Int) {
+    activity: allDelegationActivities(
+      first: $limit
+      orderBy: ID_ASC
+      filter: { type: { in: [DELEGATE, UNDELEGATE, BID_CHANGE] }, id: { greaterThan: $lastId } }
+    ) {
       nodes {
         id
         type
         amount
         valueUsd
-        operatorByOperatorId {
-          id
-          accountByAccountId {
+        operator: operatorByOperatorId {
+          account: accountByAccountId {
             alias
             idSs58
           }
         }
         txHash
-        event: eventByEventId {
-          indexInBlock
-          blockId
-          block: blockByBlockId {
-            timestamp
-          }
+        delegator: accountByDelegatorAccountId {
+          idSs58
         }
       }
     }
