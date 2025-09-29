@@ -68,7 +68,7 @@ importers:
     devDependencies:
       '@chainflip/eslint-config':
         specifier: ^1.0.7
-        version: 1.0.7(@eslint/js@9.36.0)(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1))(globals@16.3.0)(typescript-eslint@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))
+        version: 1.0.7(@eslint/js@9.36.0)(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1))(globals@16.4.0)(typescript-eslint@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))
       '@eslint/js':
         specifier: ^9.36.0
         version: 9.36.0
@@ -97,8 +97,8 @@ importers:
         specifier: ^2.32.0
         version: 2.32.0(@typescript-eslint/parser@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1))
       globals:
-        specifier: ^16.3.0
-        version: 16.3.0
+        specifier: ^16.4.0
+        version: 16.4.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -2050,8 +2050,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@16.3.0:
-    resolution: {integrity: sha512-bqWEnJ1Nt3neqx2q5SFfGS8r/ahumIakg3HcwtNlrVlwXIeNumWn/c7Pn/wKzGhf6SaW6H6uWXLqC30STCMchQ==}
+  globals@16.4.0:
+    resolution: {integrity: sha512-ob/2LcVVaVGCYN+r14cnwnoDPUufjiYgSqRhiFD0Q1iI4Odora5RE8Iv1D24hAz5oMophRGkGz+yuvQmmUMnMw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -3672,12 +3672,12 @@ snapshots:
     dependencies:
       '@bull-board/api': 6.12.6(@bull-board/ui@6.12.6)
 
-  '@chainflip/eslint-config@1.0.7(@eslint/js@9.36.0)(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1))(globals@16.3.0)(typescript-eslint@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))':
+  '@chainflip/eslint-config@1.0.7(@eslint/js@9.36.0)(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1))(globals@16.4.0)(typescript-eslint@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))':
     dependencies:
       '@eslint/js': 9.36.0
       eslint: 9.35.0(jiti@2.5.1)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.5.1))
-      globals: 16.3.0
+      globals: 16.4.0
       typescript-eslint: 8.44.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
 
   '@chainflip/utils@0.8.19':
@@ -5814,7 +5814,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@16.3.0: {}
+  globals@16.4.0: {}
 
   globalthis@1.0.4:
     dependencies:
