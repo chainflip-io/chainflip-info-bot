@@ -1,0 +1,70 @@
+{
+  "activity": {
+    "nodes": [
+      {
+        "id": 1,
+        "type": "DELEGATE",
+        "amount": "1000000000000000000",
+        "valueUsd": "0.745308416300000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "",
+            "idSs58": "cFK9JepxsSEHLfT4eA8TNohzAXWmQAQjRgZg3PWLb8s2DBq4n"
+          }
+        },
+        "txHash": "0x20120047e442cc7358789f9bc38ebbc76e8e1400be6cba4db775edff3b8a56d1",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczsRDfL1j89TgH3XDFhoHxAB9xbsCDA7"
+        }
+      },
+      {
+        "id": 2,
+        "type": "UNDELEGATE",
+        "amount": "1000000000000000000",
+        "valueUsd": "0.746481920600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "",
+            "idSs58": "cFK9JepxsSEHLfT4eA8TNohzAXWmQAQjRgZg3PWLb8s2DBq4n"
+          }
+        },
+        "txHash": "0x409c6789a96d9f96a739796b6b29f1400c66c78e68af934f194563c8901682ec",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczsRDfL1j89TgH3XDFhoHxAB9xbsCDA7"
+        }
+      },
+      {
+        "id": 8,
+        "type": "BID_CHANGE",
+        "amount": "95000000000000000000",
+        "valueUsd": "70.915026275200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "0xGensler",
+            "idSs58": "cFNGtTHDY4pmcmDWu3mT2M3MyUv6ihLytxbynTxd14AVVdeu2"
+          }
+        },
+        "txHash": "0x45152f313f7d1bb7ada11c6f8c1ebb4ef8796aca6c54270bd6dfe6671eb77b06",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczzDuHWCENbDvDpSpahZA7jwMA32CApt"
+        }
+      },
+      {
+        "id": 10,
+        "type": "BID_CHANGE",
+        "amount": "-105000000000000000000",
+        "valueUsd": "-78.224919473900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "0xDavid",
+            "idSs58": "cFP6L3uSmPcxBWbyXziVGgFvYLytfxxLtAbF8Yk91mvcumnRq"
+          }
+        },
+        "txHash": "0xe3346e55d197b58a31c4086fd2a0bb2c3ed7d10c0503bb7b849fca978abe05d2",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1mjeneqEmJpBSRqhvNqiHZR3WazJY2C"
+        }
+      }
+    ]
+  }
+}

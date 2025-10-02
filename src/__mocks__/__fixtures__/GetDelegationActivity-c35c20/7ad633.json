@@ -1,0 +1,22 @@
+{
+  "activity": {
+    "nodes": [
+      {
+        "id": 1,
+        "type": "DELEGATE",
+        "amount": "1000000000000000000",
+        "valueUsd": "0.745308416300000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "",
+            "idSs58": "cFK9JepxsSEHLfT4eA8TNohzAXWmQAQjRgZg3PWLb8s2DBq4n"
+          }
+        },
+        "txHash": "0x20120047e442cc7358789f9bc38ebbc76e8e1400be6cba4db775edff3b8a56d1",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczsRDfL1j89TgH3XDFhoHxAB9xbsCDA7"
+        }
+      }
+    ]
+  }
+}

@@ -1,8 +1,7 @@
 import { abbreviate } from '@chainflip/utils/string';
 import { hoursToMilliseconds } from 'date-fns/hoursToMilliseconds';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink, Line, Trailer } from '../channels/formatting.js';
+import { Bold, ExplorerLink, Line, renderForPlatform, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import checkForFirstNewLpDeposits, {
@@ -50,20 +49,20 @@ const buildMessages = ({
   deposit: NewDeposit;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
   platforms.map((platform) => {
-    const message = renderToStaticMarkup(
+    const message = renderForPlatform(
+      platform,
       <>
         <Line>💸 New Liquidity Provider Detected!</Line>
         <Line>
-          <Bold platform={platform}>{abbreviate(deposit.lpIdSs58)}</Bold> deposited{' '}
-          {deposit.depositAmount} {humanFriendlyAsset[deposit.asset]} (
-          {formatUsdValue(deposit.depositValueUsd)}) 🍾
+          <Bold>{abbreviate(deposit.lpIdSs58)}</Bold> deposited {deposit.depositAmount}{' '}
+          {humanFriendlyAsset[deposit.asset]} ({formatUsdValue(deposit.depositValueUsd)}) 🍾
         </Line>
         <Line>
-          <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} platform={platform} prefer="link">
+          <ExplorerLink path={`/lps/${deposit.lpIdSs58}`} prefer="link">
             View on explorer
           </ExplorerLink>
         </Line>
-        <Trailer platform={platform} />
+        <Trailer />
       </>,
     ).trimEnd();
 

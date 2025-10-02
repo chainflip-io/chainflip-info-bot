@@ -1,12 +1,12 @@
 import { unreachable } from '@chainflip/utils/assertion';
 import { abbreviate } from '@chainflip/utils/string';
 import type BigNumber from 'bignumber.js';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import {
   Bold,
   ExplorerLink,
   Line,
+  renderForPlatform,
   TokenAmount,
   Trailer,
   UsdValue,
@@ -55,19 +55,20 @@ const buildMessageData = ({
   swapInfo: SwapInfo;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
   platforms.map((platform) => {
-    const message = renderToStaticMarkup(
+    const message = renderForPlatform(
+      platform,
       <>
         <Line>
           {emoji(swapInfo.inputValueUsd)} Swap{' '}
-          <Bold platform={platform}>
-            <ExplorerLink platform={platform} path={`/swaps/${swapInfo.requestId}`} prefer="link">
+          <Bold>
+            <ExplorerLink path={`/swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}
             </ExplorerLink>
           </Bold>
         </Line>
         <Line>
           📥{' '}
-          <Bold platform={platform}>
+          <Bold>
             <TokenAmount amount={swapInfo.inputAmount} asset={swapInfo.sourceAsset} />
           </Bold>
           <UsdValue amount={swapInfo.inputValueUsd} />
@@ -75,7 +76,7 @@ const buildMessageData = ({
         {swapInfo.outputAmount && (
           <Line>
             📤{' '}
-            <Bold platform={platform}>
+            <Bold>
               <TokenAmount amount={swapInfo.outputAmount} asset={swapInfo.destinationAsset} />
             </Bold>
             <UsdValue amount={swapInfo.outputValueUsd} />
@@ -84,7 +85,7 @@ const buildMessageData = ({
         {swapInfo.refundAmount && (
           <Line>
             ↩️{' '}
-            <Bold platform={platform}>
+            <Bold>
               <TokenAmount amount={swapInfo.refundAmount} asset={swapInfo.sourceAsset} />
             </Bold>
             <UsdValue amount={swapInfo.refundValueUsd} />
@@ -92,13 +93,13 @@ const buildMessageData = ({
         )}
         {swapInfo.duration && (
           <Line>
-            ⏱️ Took: <Bold platform={platform}>{swapInfo.duration}</Bold>
+            ⏱️ Took: <Bold>{swapInfo.duration}</Bold>
           </Line>
         )}
         {swapInfo.priceDelta !== null && swapInfo.priceDeltaPercentage && (
           <Line>
             {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
-            <Bold platform={platform}>
+            <Bold>
               {formatDeltaPrice(
                 formatUsdValue(swapInfo.priceDelta.abs()),
                 swapInfo.priceDelta.isNegative(),
@@ -109,24 +110,19 @@ const buildMessageData = ({
         )}
         {swapInfo.dcaChunks && (
           <Line>
-            📓 Chunks: <Bold platform={platform}>{swapInfo.dcaChunks}</Bold>
+            📓 Chunks: <Bold>{swapInfo.dcaChunks}</Bold>
           </Line>
         )}
         {swapInfo.boostFee.gt(0) && (
           <Line>
-            ⚡ <Bold platform={platform}>Boosted</Bold> for{' '}
-            <Bold platform={platform}>{formatUsdValue(swapInfo.boostFee)}</Bold>
+            ⚡ <Bold>Boosted</Bold> for <Bold>{formatUsdValue(swapInfo.boostFee)}</Bold>
           </Line>
         )}
         {swapInfo.brokerIdAndAlias && (
           <Line>
             🏦 via{' '}
-            <Bold platform={platform}>
-              <ExplorerLink
-                platform={platform}
-                path={`/brokers/${swapInfo.brokerIdAndAlias.brokerId}`}
-                prefer="text"
-              >
+            <Bold>
+              <ExplorerLink path={`/brokers/${swapInfo.brokerIdAndAlias.brokerId}`} prefer="text">
                 {swapInfo.brokerIdAndAlias.alias}
               </ExplorerLink>
             </Bold>
@@ -135,12 +131,8 @@ const buildMessageData = ({
         {swapInfo.onChainInfo?.lp && (
           <Line>
             🔗 by{' '}
-            <Bold platform={platform}>
-              <ExplorerLink
-                platform={platform}
-                path={`/lps/${swapInfo.onChainInfo?.lp.idSs58}`}
-                prefer="text"
-              >
+            <Bold>
+              <ExplorerLink path={`/lps/${swapInfo.onChainInfo?.lp.idSs58}`} prefer="text">
                 {swapInfo.onChainInfo?.lp.alias ?? abbreviate(swapInfo.onChainInfo?.lp.idSs58, 8)}
               </ExplorerLink>
             </Bold>
@@ -150,19 +142,15 @@ const buildMessageData = ({
           <Line>
             🏰 Affiliate:{' '}
             {swapInfo.affiliatesIdsAndAliases?.map((affiliate) => (
-              <Bold key={affiliate.brokerId} platform={platform}>
-                <ExplorerLink
-                  platform={platform}
-                  path={`/brokers/${affiliate.brokerId}`}
-                  prefer="text"
-                >
+              <Bold key={affiliate.brokerId}>
+                <ExplorerLink path={`/brokers/${affiliate.brokerId}`} prefer="text">
                   {affiliate.alias}
                 </ExplorerLink>{' '}
               </Bold>
             ))}
           </Line>
         ) : null}
-        <Trailer platform={platform} />
+        <Trailer />
       </>,
     ).trimEnd();
 

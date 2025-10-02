@@ -1,6 +1,12 @@
-import { renderToStaticMarkup } from 'react-dom/server';
 import { type JobConfig, type DispatchJobArgs, type JobProcessor } from './initialize.js';
-import { Bold, ExplorerLink, Line, TokenAmount, UsdValue } from '../channels/formatting.js';
+import {
+  Bold,
+  ExplorerLink,
+  Line,
+  renderForPlatform,
+  TokenAmount,
+  UsdValue,
+} from '../channels/formatting.js';
 import { platforms } from '../config.js';
 import { humanFriendlyAsset } from '../consts.js';
 import getSwapInfo from '../queries/getSwapInfo.js';
@@ -29,34 +35,35 @@ const buildMessageData = ({
   swapInfo: SwapInfo;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] =>
   platforms.map((platform) => {
-    const message = renderToStaticMarkup(
+    const message = renderForPlatform(
+      platform,
       <>
         <Line>
           New swap detected:{' '}
-          <Bold platform={platform}>
-            <ExplorerLink platform={platform} path={`/swaps/${swapInfo.requestId}`} prefer="link">
+          <Bold>
+            <ExplorerLink path={`/swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}
             </ExplorerLink>
           </Bold>
         </Line>
         <Line>
-          Swapping <Bold platform={platform}>{humanFriendlyAsset[swapInfo.sourceAsset]}</Bold> for{' '}
-          <Bold platform={platform}>{humanFriendlyAsset[swapInfo.destinationAsset]}</Bold>
+          Swapping <Bold>{humanFriendlyAsset[swapInfo.sourceAsset]}</Bold> for{' '}
+          <Bold>{humanFriendlyAsset[swapInfo.destinationAsset]}</Bold>
         </Line>
         <Line>
           📥{' '}
-          <Bold platform={platform}>
+          <Bold>
             <TokenAmount amount={swapInfo.inputAmount} asset={swapInfo.sourceAsset} />
           </Bold>
           <UsdValue amount={swapInfo.inputValueUsd} />
         </Line>
         {swapInfo.depositAddress && (
           <Line>
-            Deposit address: <Bold platform={platform}>{swapInfo.depositAddress}</Bold>
+            Deposit address: <Bold>{swapInfo.depositAddress}</Bold>
           </Line>
         )}
         <Line>
-          Destination address: <Bold platform={platform}>{swapInfo.destinationAddress}</Bold>
+          Destination address: <Bold>{swapInfo.destinationAddress}</Bold>
         </Line>
         {swapInfo.transactionRefs.length > 0 && (
           <>
@@ -64,7 +71,7 @@ const buildMessageData = ({
             {swapInfo.transactionRefs.map(({ ref, chain }) => (
               <Line key={ref}>
                 {ref}{' '}
-                <ExplorerLink key={ref} path={ref} chain={chain} platform={platform} prefer="text">
+                <ExplorerLink key={ref} path={ref} chain={chain} prefer="text">
                   [view]
                 </ExplorerLink>
               </Line>

@@ -152,6 +152,23 @@ describe('scheduler', () => {
                 "delay": 30000,
               },
             },
+            {
+              "data": [
+                {
+                  "data": {
+                    "delegationActivityId": 1,
+                  },
+                  "name": "newDelegationActivityCheck",
+                },
+              ],
+              "name": "scheduler",
+              "opts": {
+                "deduplication": {
+                  "id": "newDelegationActivityCheck",
+                },
+                "delay": 30000,
+              },
+            },
           ],
         ]
       `);

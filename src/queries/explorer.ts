@@ -68,6 +68,33 @@ export const latestSwapRequestIdQuery = gql(/* GraphQL */ `
   }
 `);
 
+export const getDelegationActivityByIdQuery = gql(/* GraphQL */ `
+  query GetDelegationActivity($lastId: Int, $limit: Int) {
+    activity: allDelegationActivities(
+      first: $limit
+      orderBy: ID_ASC
+      filter: { type: { in: [DELEGATE, UNDELEGATE, BID_CHANGE] }, id: { greaterThan: $lastId } }
+    ) {
+      nodes {
+        id
+        type
+        amount
+        valueUsd
+        operator: operatorByOperatorId {
+          account: accountByAccountId {
+            alias
+            idSs58
+          }
+        }
+        txHash
+        delegator: accountByDelegatorAccountId {
+          idSs58
+        }
+      }
+    }
+  }
+`);
+
 export const getNewBurnQuery = gql(/* GraphQL */ `
   query getNewBurn($id: Int!) {
     burns: allBurns(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC, first: 1) {

@@ -3,12 +3,12 @@ import { utc } from '@date-fns/utc';
 import assert from 'assert';
 import { UnrecoverableError } from 'bullmq';
 import { endOfToday, endOfWeek, hoursToMilliseconds, startOfDay, startOfWeek } from 'date-fns';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import {
   Bold,
   ExplorerLink,
   Line,
+  renderForPlatform,
   TokenAmount,
   Trailer,
   UsdValue,
@@ -74,36 +74,38 @@ const buildMessages = ({
 
     if ('swapVolume' in stats) {
       messageName = `${toUpperCase(period)}_SWAP_SUMMARY` as const;
-      message = renderToStaticMarkup(
+      message = renderForPlatform(
+        platform,
         <>
           <Line>
             🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
-            <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had:
+            <Bold>{date.toISOString().slice(0, 10)}</Bold>, we had:
           </Line>
           <Line>
-            📊 <Bold platform={platform}>{formatUsdValue(stats.swapVolume)}</Bold> in total volume
+            📊 <Bold>{formatUsdValue(stats.swapVolume)}</Bold> in total volume
           </Line>
           <Line>
-            🌐 <Bold platform={platform}>{formatUsdValue(stats.networkFees)}</Bold> of network fees
+            🌐 <Bold>{formatUsdValue(stats.networkFees)}</Bold> of network fees
           </Line>
           {stats.boostFees.gt(0) && (
             <Line>
-              ⚡️ <Bold platform={platform}>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
+              ⚡️ <Bold>{formatUsdValue(stats.boostFees)}</Bold> of boost fees
             </Line>
           )}
           {stats.totalFlipBurned && (
             <Line>
-              🔥 <Bold platform={platform}>{stats.totalFlipBurned.toFixed(2)}</Bold> FLIP burned
+              🔥 <Bold>{stats.totalFlipBurned.toFixed(2)}</Bold> FLIP burned
             </Line>
           )}
-          <Trailer platform={platform} />
+          <Trailer />
         </>,
       ).trimEnd();
     } else if (Array.isArray(stats)) {
       messageName = `${toUpperCase(period)}_LP_SUMMARY` as const;
       const youTried = '🏅';
       const medals = ['🥇', '🥈', '🥉'];
-      message = renderToStaticMarkup(
+      message = renderForPlatform(
+        platform,
         <>
           <Line>
             💼 Top LPs for {isDaily ? date.toISOString().slice(0, 10) : 'the week'} are in:
@@ -116,7 +118,7 @@ const buildMessages = ({
                 stat.type === 'TRADING_STRATEGY' ? (
                   (stat.alias ?? `${abbreviate(stat.idSs58)} (Stablecoin Strategy)`)
                 ) : (
-                  <ExplorerLink platform={platform} path={`/lps/${stat.idSs58}`} prefer="text">
+                  <ExplorerLink path={`/lps/${stat.idSs58}`} prefer="text">
                     {stat.alias ?? abbreviate(stat.idSs58)}
                   </ExplorerLink>
                 );
@@ -124,25 +126,26 @@ const buildMessages = ({
               return (
                 <Line key={stat.idSs58}>
                   {medals[index] ?? youTried} {formatUsdValue(stat.filledAmountValueUsd)}{' '}
-                  <Bold platform={platform}>{displayName}</Bold> ({stat.percentage}%)
+                  <Bold>{displayName}</Bold> ({stat.percentage}%)
                 </Line>
               );
             })}
-          <Trailer platform={platform} />
+          <Trailer />
         </>,
       ).trimEnd();
     } else if ('earnedBoostFee' in stats) {
       messageName = `${toUpperCase(period)}_BOOST_SUMMARY` as const;
-      message = renderToStaticMarkup(
+      message = renderForPlatform(
+        platform,
         <>
           <Line>
             🗓️ {isDaily ? 'On' : 'For the week ending'}{' '}
-            <Bold platform={platform}>{date.toISOString().slice(0, 10)}</Bold>, we had:
+            <Bold>{date.toISOString().slice(0, 10)}</Bold>, we had:
           </Line>
           {stats.boostedAmount.gt(0) && stats.boostedAmountUsd.gt(0) && (
             <Line>
               💸{' '}
-              <Bold platform={platform}>
+              <Bold>
                 <TokenAmount amount={stats.boostedAmount} asset={ASSET_FOR_BOOST_POOLS} />
                 <UsdValue amount={stats.boostedAmountUsd} />
               </Bold>{' '}
@@ -152,7 +155,7 @@ const buildMessages = ({
           {stats.earnedBoostFee.gt(0) && stats.earnedBoostFeeUsd.gt(0) && (
             <Line>
               ⚡️{' '}
-              <Bold platform={platform}>
+              <Bold>
                 <TokenAmount amount={stats.earnedBoostFee} asset={ASSET_FOR_BOOST_POOLS} />
                 <UsdValue amount={stats.earnedBoostFeeUsd} />
               </Bold>{' '}
@@ -165,18 +168,18 @@ const buildMessages = ({
               {stats.apys.length > 1 ? (
                 stats.apys.map((apy) => (
                   <Line>
-                    📊 Current APY is <Bold platform={platform}>{apy.currentApy}</Bold> for{' '}
-                    <Bold platform={platform}>{pipsToPercentString(apy.feeTiers)} pool</Bold>
+                    📊 Current APY is <Bold>{apy.currentApy}</Bold> for{' '}
+                    <Bold>{pipsToPercentString(apy.feeTiers)} pool</Bold>
                   </Line>
                 ))
               ) : (
                 <Line>
-                  📊 Current APY is <Bold platform={platform}>{stats.apys[0].currentApy}</Bold>
+                  📊 Current APY is <Bold>{stats.apys[0].currentApy}</Bold>
                 </Line>
               )}
             </>
           )}
-          <Trailer platform={platform} />
+          <Trailer />
         </>,
       ).trimEnd();
     }

@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`delegationActivityStatusCheck > check fresh deelgation activity status and send delegation info message 1`] = `
+[
+  [
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_DELEGATION",
+        },
+        "message": "↘️ Delegation <strong>#2</strong> is removed
+👷‍♂️ Operator: <a href="https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ">cFMj…HRQZ</a>
+📥 Delegated Amount: <strong>0 FLIP on Ethereum</strong> ($0.00)
+🧾 Transaction refs: <a href="https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u">0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u</a>",
+        "opts": {
+          "disablePreview": true,
+        },
+        "platform": "telegram",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_DELEGATION",
+        },
+        "message": "↘️ Delegation **#2** is removed
+👷‍♂️ Operator: [cFMj…HRQZ](https://scan.chainflip.io/operators/cFMjXCTxTHVkSqbKzeVwJ25TJxLqc1Vn9usPgUGmZhsyvHRQZ)
+📥 Delegated Amount: **0 FLIP on Ethereum** ($0.00)
+🧾 Transaction refs: [0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u](https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u)",
+        "opts": {
+          "disablePreview": true,
+        },
+        "platform": "discord",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "NEW_DELEGATION",
+        },
+        "message": "↘️ Delegation #2 is removed
+👷‍♂️ Operator: cFMj…HRQZ
+📥 Delegated Amount: 0 FLIP on Ethereum ($0.00)
+🧾 Transaction refs: https://etherscan.io/tx/0xf429db14dcdf52324366d70d7437f1582544807b80d29b35ca83a433216d456u",
+        "opts": {
+          "disablePreview": true,
+        },
+        "platform": "twitter",
+      },
+      "name": "messageRouter",
+    },
+  ],
+]
+`;

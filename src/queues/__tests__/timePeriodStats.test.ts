@@ -95,7 +95,6 @@ describe('time period stats', () => {
       vi.mocked(getSwapVolumeStats)
         .mockResolvedValueOnce({
           totalFlipBurned: new BigNumber('1000.00'),
-          lpFees: new BigNumber('2000.00'),
           networkFees: new BigNumber('3000.00'),
           swapVolume: new BigNumber('4000.00'),
           boostFees: new BigNumber('5000.00'),
@@ -237,7 +236,6 @@ describe('time period stats', () => {
       vi.mocked(getSwapVolumeStats)
         .mockResolvedValueOnce({
           totalFlipBurned: null,
-          lpFees: new BigNumber('2000.00'),
           networkFees: new BigNumber('3000.00'),
           swapVolume: new BigNumber('4000.00'),
           boostFees: new BigNumber(0),
@@ -270,14 +268,12 @@ describe('time period stats', () => {
       vi.mocked(getSwapVolumeStats)
         .mockResolvedValueOnce({
           totalFlipBurned: new BigNumber('1000.00'),
-          lpFees: new BigNumber('2000.00'),
           networkFees: new BigNumber('3000.00'),
           swapVolume: new BigNumber('4000.00'),
           boostFees: new BigNumber('5000.00'),
         })
         .mockResolvedValueOnce({
           totalFlipBurned: new BigNumber('1000.00').times(7),
-          lpFees: new BigNumber('2000.00').times(7),
           networkFees: new BigNumber('3000.00').times(7),
           swapVolume: new BigNumber('4000.00').times(7),
           boostFees: new BigNumber('5000.00'),
