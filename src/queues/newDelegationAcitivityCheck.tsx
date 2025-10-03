@@ -1,5 +1,6 @@
 import { accountIdToEthereumAddress } from '@chainflip/delegation';
 import { abbreviate } from '@chainflip/utils/string';
+import { differenceInMinutes } from 'date-fns';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import {
   Bold,
@@ -140,28 +141,31 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     lastId: job.data.delegationActivityId,
   });
 
-  const delegationMessages = newActivity.flatMap((node) => {
-    const {
-      type,
-      txHash,
-      amount,
-      valueUsd,
-      operator: {
-        account: { alias: operatorAlias, idSs58: operatorIdSs58 },
-      },
-      delegator: { idSs58: delegatorIdSs58 },
-    } = node;
+  const delegationMessages = newActivity
+    .filter((node) => differenceInMinutes(Date.now(), node.event.block.timestamp) < 10)
+    .toReversed()
+    .flatMap((node) => {
+      const {
+        type,
+        txHash,
+        amount,
+        valueUsd,
+        operator: {
+          account: { alias: operatorAlias, idSs58: operatorIdSs58 },
+        },
+        delegator: { idSs58: delegatorIdSs58 },
+      } = node;
 
-    return buildMessageData({
-      type,
-      txHash,
-      amount,
-      valueUsd,
-      operatorAlias,
-      operatorIdSs58,
-      delegatorEvmAddress: accountIdToEthereumAddress(delegatorIdSs58 as `cF${string}`),
+      return buildMessageData({
+        type,
+        txHash,
+        amount,
+        valueUsd,
+        operatorAlias,
+        operatorIdSs58,
+        delegatorEvmAddress: accountIdToEthereumAddress(delegatorIdSs58 as `cF${string}`),
+      });
     });
-  });
 
   const latestDelegationActivityId = newActivity.at(0)?.id ?? job.data.delegationActivityId;
 

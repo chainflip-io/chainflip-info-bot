@@ -72,7 +72,7 @@ export const getDelegationActivityByIdQuery = gql(/* GraphQL */ `
   query GetDelegationActivity($lastId: Int, $limit: Int) {
     activity: allDelegationActivities(
       first: $limit
-      orderBy: ID_ASC
+      orderBy: ID_DESC
       filter: { type: { in: [DELEGATE, UNDELEGATE, BID_CHANGE] }, id: { greaterThan: $lastId } }
     ) {
       nodes {
@@ -89,6 +89,11 @@ export const getDelegationActivityByIdQuery = gql(/* GraphQL */ `
         txHash
         delegator: accountByDelegatorAccountId {
           idSs58
+        }
+        event: eventByEventId {
+          block: blockByBlockId {
+            timestamp
+          }
         }
       }
     }
