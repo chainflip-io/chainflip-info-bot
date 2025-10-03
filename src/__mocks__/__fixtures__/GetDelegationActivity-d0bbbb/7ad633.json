@@ -1,0 +1,23 @@
+{
+  "activity": {
+    "nodes": [
+      {
+        "id": 72,
+        "type": "DELEGATE",
+        "amount": "29387464851646238434953",
+        "valueUsd": "19196.165334319900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xc8a949e7534fbe13afde8816b0947884fd795db7bc1968cd0929b0ebf3ced935",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1nWYwwigMNfUcSYbHEfSRL1axcQw7jJ"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T10:25:18+00:00" } }
+      }
+    ]
+  }
+}

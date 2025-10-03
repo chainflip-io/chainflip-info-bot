@@ -1,0 +1,1230 @@
+{
+  "activity": {
+    "nodes": [
+      {
+        "id": 72,
+        "type": "DELEGATE",
+        "amount": "29387464851646238434953",
+        "valueUsd": "19196.165334319900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xc8a949e7534fbe13afde8816b0947884fd795db7bc1968cd0929b0ebf3ced935",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1nWYwwigMNfUcSYbHEfSRL1axcQw7jJ"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T10:25:18+00:00" } }
+      },
+      {
+        "id": 71,
+        "type": "DELEGATE",
+        "amount": "3849835535103792924261",
+        "valueUsd": "2512.232899276800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x549c1b8f6ba80ff9474d9f617d4236deb5f44f9be8154423cd7196a6ef104457",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1kmStnqmw5YjgptZpiELErKJoUcegxm"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T07:34:54.001+00:00" } }
+      },
+      {
+        "id": 70,
+        "type": "DELEGATE",
+        "amount": "3000000000000000000000",
+        "valueUsd": "1955.189902876500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x6dc45926657a7868ab16b31be64ba8d49c60a7c24a8d43d6611528deed5bda23",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczhr79vZK4cGdYVu5nf4GZk2YGmNEwNA"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T06:54:18+00:00" } }
+      },
+      {
+        "id": 69,
+        "type": "DELEGATE",
+        "amount": "10389861734203000243461",
+        "valueUsd": "6756.568233211600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xff344407e12dcd5205c276847b7b17e5b273f0d20fc2ecfa0c6e489a32f9579f",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1RLwrhs3ea9DyHoALNmjeFN6Sw1kwKw"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T04:12:42+00:00" } }
+      },
+      {
+        "id": 68,
+        "type": "DELEGATE",
+        "amount": "10000000000000000000000",
+        "valueUsd": "6495.738529805700000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x266e7b794817d867e57c59e522d8248536fcc2f876e5e80d8017071b2e8076ab",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1VQsPH15E1JfiyV4yLmMugMJAR19zm7"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T03:35:30+00:00" } }
+      },
+      {
+        "id": 67,
+        "type": "DELEGATE",
+        "amount": "47822339339194155703",
+        "valueUsd": "30.920694869900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x1bc16e0689ffaaab656d66939a29b5fa05a26ff991a38e6ed7c96ebec0f50777",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1ERreDPBBGpLRUtGevvvu94gZebm7ZZ"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T01:55:42+00:00" } }
+      },
+      {
+        "id": 66,
+        "type": "DELEGATE",
+        "amount": "4542053256813856589122",
+        "valueUsd": "2933.517226049100000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x15aa0ee1e88831435b630033bbab6f4365b2bac0b3d3ee6e2b6fd62a4e262a37",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1bgKYmTU4mBLx8fw5f2qKj7BKFkP6Bz"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T00:48:36+00:00" } }
+      },
+      {
+        "id": 65,
+        "type": "DELEGATE",
+        "amount": "10000000000000000000000",
+        "valueUsd": "6454.542483707100000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x232e4945bd63ce22b3806550703bf3eb15b581271f985f33a5a918d65ee1a768",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1EFLE9ZWxEZkLoQJbhpYjA1bYmT1FLX"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T00:33:18+00:00" } }
+      },
+      {
+        "id": 64,
+        "type": "UNDELEGATE",
+        "amount": "4000000000000000000000",
+        "valueUsd": "2581.816993482800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x232e4945bd63ce22b3806550703bf3eb15b581271f985f33a5a918d65ee1a768",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1EFLE9ZWxEZkLoQJbhpYjA1bYmT1FLX"
+        },
+        "event": { "block": { "timestamp": "2025-10-03T00:33:18+00:00" } }
+      },
+      {
+        "id": 63,
+        "type": "DELEGATE",
+        "amount": "4060342332615029726960",
+        "valueUsd": "2625.393272160200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x30b8c61eb2e3dd9f07beee65804cfefb82ff64f136d293d65af4f3b1318acefa",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1MnRFvKZaaViXo6qXj7Rn1rAppyj6hV"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T23:24:42+00:00" } }
+      },
+      {
+        "id": 62,
+        "type": "DELEGATE",
+        "amount": "500000000000000000000",
+        "valueUsd": "321.272015913400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x0796e8f81df02a5131b9088bfb342a5ab32ddf095381d86a74457c32a63668f4",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1D3WkfBPQBABnEJfCrHnvzZ7qMekYN8"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T21:49:30+00:00" } }
+      },
+      {
+        "id": 61,
+        "type": "DELEGATE",
+        "amount": "52500000000000000000000",
+        "valueUsd": "33736.938667114800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "RockTheBlock",
+            "idSs58": "cFLVRwwqurF6eWaT2m4yEj9C7UoNcyF8STejy9Taq5rqWdrtz"
+          }
+        },
+        "txHash": "0x9b0a620c762045f447e08ae6cddb2893f9fccce14216741f8d15b47aa6398ffc",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1Hiu5qHbRjUGeCp5xL4yhfoN2aS2j3o"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T20:07:18+00:00" } }
+      },
+      {
+        "id": 60,
+        "type": "DELEGATE",
+        "amount": "100000000000000000000",
+        "valueUsd": "64.278780949400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xefb58c75eb7affa623dd726b0f5c653f861c00db66ae74b24aab945c3455d267",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczwMetMYtBuVw6iDkhAd7HfZemJQtQwM"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T19:49:06+00:00" } }
+      },
+      {
+        "id": 59,
+        "type": "DELEGATE",
+        "amount": "14948281848523019773029",
+        "valueUsd": "9617.913286104400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "RockTheBlock",
+            "idSs58": "cFLVRwwqurF6eWaT2m4yEj9C7UoNcyF8STejy9Taq5rqWdrtz"
+          }
+        },
+        "txHash": "0x7713ac8d93d860eff5ff5b6cf29381c78ad7bda863c2a3e7a0fcb8a643a5a223",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1Pdhui1efnQdyVDZfPD9wMjp7Cijic6"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T19:24:30.001+00:00" } }
+      },
+      {
+        "id": 58,
+        "type": "DELEGATE",
+        "amount": "14008154283379351959611",
+        "valueUsd": "9012.122395566600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x15351c023e74f8e9c501d7d0c46edbf9e629fd9796e975bce2320ba9aeddf856",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1mYQmNPzUd3evERM1y6pZ184jNj79cZ"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T19:21:54+00:00" } }
+      },
+      {
+        "id": 57,
+        "type": "DELEGATE",
+        "amount": "221850374860000000000000",
+        "valueUsd": "142725.876447066800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xf107a3bad9eee9a7661973c9f0c3ac6a60c0ddab475aa9a06169d98d46975cd7",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1gXJkeJqbAzXdb7suhLD42JUtwo7Mza"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T19:04:42.001+00:00" } }
+      },
+      {
+        "id": 56,
+        "type": "DELEGATE",
+        "amount": "300000000000000000000000",
+        "valueUsd": "193059.655705998900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "RockTheBlock",
+            "idSs58": "cFLVRwwqurF6eWaT2m4yEj9C7UoNcyF8STejy9Taq5rqWdrtz"
+          }
+        },
+        "txHash": "0x9ae895aa9e407407273b1082a83e004631974589530b961d7a7ae8aee29d462b",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd11uJ8bjj2RYbK96X1MFNPzkBA9DVMtR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:59:06+00:00" } }
+      },
+      {
+        "id": 55,
+        "type": "UNDELEGATE",
+        "amount": "300000000000000000000000",
+        "valueUsd": "193059.655705998900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x9ae895aa9e407407273b1082a83e004631974589530b961d7a7ae8aee29d462b",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd11uJ8bjj2RYbK96X1MFNPzkBA9DVMtR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:59:06+00:00" } }
+      },
+      {
+        "id": 54,
+        "type": "DELEGATE",
+        "amount": "300000000000000000000000",
+        "valueUsd": "193056.750036660400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xe4c5470c2546496f21e0c5d518298780ec2df1955c677874b8d89ed7959ad770",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd11uJ8bjj2RYbK96X1MFNPzkBA9DVMtR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:51:06+00:00" } }
+      },
+      {
+        "id": 53,
+        "type": "UNDELEGATE",
+        "amount": "150000000000000000000000",
+        "valueUsd": "96528.375018330200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "RockTheBlock",
+            "idSs58": "cFLVRwwqurF6eWaT2m4yEj9C7UoNcyF8STejy9Taq5rqWdrtz"
+          }
+        },
+        "txHash": "0xe4c5470c2546496f21e0c5d518298780ec2df1955c677874b8d89ed7959ad770",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd11uJ8bjj2RYbK96X1MFNPzkBA9DVMtR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:51:06+00:00" } }
+      },
+      {
+        "id": 52,
+        "type": "DELEGATE",
+        "amount": "150000000000000000000000",
+        "valueUsd": "96570.010928345700000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "RockTheBlock",
+            "idSs58": "cFLVRwwqurF6eWaT2m4yEj9C7UoNcyF8STejy9Taq5rqWdrtz"
+          }
+        },
+        "txHash": "0xf7f461dca7a953e84e05fb0c4796f04ea0eea2f8dd851b4a348dbf1eda874c20",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd11uJ8bjj2RYbK96X1MFNPzkBA9DVMtR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:47:18+00:00" } }
+      },
+      {
+        "id": 51,
+        "type": "BID_CHANGE",
+        "amount": "1000000000000000000000",
+        "valueUsd": "644.991798444000000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "LUK",
+            "idSs58": "cFNZ9zdPs5kS6H3CiM5GHNDAkmWfhgRFDwZuaD1wzCCDA6kwZ"
+          }
+        },
+        "txHash": "0x8d177f383766274b37e6d1892ebcff514f68f9f3235e43b2580f065b69079f14",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1bFRmrt1joE3VZ4tduzeDnrB7qPaW4Z"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:05:06.001+00:00" } }
+      },
+      {
+        "id": 50,
+        "type": "DELEGATE",
+        "amount": "1000000000000000000000",
+        "valueUsd": "643.185827557800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "LUK",
+            "idSs58": "cFNZ9zdPs5kS6H3CiM5GHNDAkmWfhgRFDwZuaD1wzCCDA6kwZ"
+          }
+        },
+        "txHash": "0x9a255a283075e915e3587504228a7921288072365220566c4295081b39296a75",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1bFRmrt1joE3VZ4tduzeDnrB7qPaW4Z"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T18:00:42.001+00:00" } }
+      },
+      {
+        "id": 49,
+        "type": "DELEGATE",
+        "amount": "5721753047820672760394",
+        "valueUsd": "3589.885578708600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x241e21f626b48dc3e03f8ecbc6fe7d36a0f7e2dc3dce20eda10222ba096a9551",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1Rbg7uDSXmPVXG48GhubZ793acwfrwq"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T15:31:18+00:00" } }
+      },
+      {
+        "id": 48,
+        "type": "DELEGATE",
+        "amount": "131148403362946576279190",
+        "valueUsd": "82508.397372033700000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xb2eee72b0ccba85020d19360cec560510c6e11274c35fc3cb3a74d1647b90ad9",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd19EHeuggHgo5ss3NrBAQPg8JmSS9i5Y"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T14:53:30+00:00" } }
+      },
+      {
+        "id": 47,
+        "type": "DELEGATE",
+        "amount": "1600000000000000000000",
+        "valueUsd": "1007.917722638900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x8464b534181d2cc69712658a5adb269cad37b753f102e3e8396e57aab8a440c6",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczwbXw9CqYto8Tqzk7CUGwcHm9tBhDCt"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T14:42:54+00:00" } }
+      },
+      {
+        "id": 46,
+        "type": "DELEGATE",
+        "amount": "11449849041633913515371",
+        "valueUsd": "7177.867540457600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xf32fd81f5547bd854354f2557a28681a32047f4e7b148d27e93c968c214ec406",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1LHWW2t4w44zhCdz38eafV3smvAAMcR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T14:24:54+00:00" } }
+      },
+      {
+        "id": 45,
+        "type": "DELEGATE",
+        "amount": "4010793546039130935664",
+        "valueUsd": "2518.796114014600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x50c5bbc3415e0eba466bb49413ced72df6cc4c5fda0093487f61363152609372",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczoXtMszDUL6ngYvW3j7AcXHBeBYdgZ1"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T13:48:48+00:00" } }
+      },
+      {
+        "id": 44,
+        "type": "DELEGATE",
+        "amount": "53410694789266475604969",
+        "valueUsd": "33360.414909222500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0xe2c7a0d2d5300aedd06f15fe243f5185b565bf4c7f8ef46790f07286e787edb4",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1N3DX3n59XR9MUDYABmCuKSWpNCpzjA"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T13:12:18+00:00" } }
+      },
+      {
+        "id": 43,
+        "type": "UNDELEGATE",
+        "amount": "25000000000000000000000",
+        "valueUsd": "15615.044440466000000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0xe2c7a0d2d5300aedd06f15fe243f5185b565bf4c7f8ef46790f07286e787edb4",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1N3DX3n59XR9MUDYABmCuKSWpNCpzjA"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T13:12:18+00:00" } }
+      },
+      {
+        "id": 42,
+        "type": "DELEGATE",
+        "amount": "25000000000000000000000",
+        "valueUsd": "15606.594926730900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x0a1292ced1a36bba946646f28c1fa7e7fc6b52ef1f831698d69c22b83b54a9e0",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1N3DX3n59XR9MUDYABmCuKSWpNCpzjA"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T13:06:18+00:00" } }
+      },
+      {
+        "id": 41,
+        "type": "DELEGATE",
+        "amount": "949421000000000000000",
+        "valueUsd": "599.534271740400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x010d526b0bdaf77ab9dff76544392d2a8dd76f4861fc83d4f1eb1ffdf0da462b",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1agcXg6Gp9XgpccsnU7BuxmzVXpk72d"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:20:42.001+00:00" } }
+      },
+      {
+        "id": 40,
+        "type": "DELEGATE",
+        "amount": "1528040000000000000000",
+        "valueUsd": "964.971656322600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xcc00dbe07cf85134dcca2a9d28c00be0d5759fb919e9add80699145f95690429",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1CXED8P7eodERgW5gDDAf1nHnAEHU3A"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:18:54+00:00" } }
+      },
+      {
+        "id": 39,
+        "type": "BID_CHANGE",
+        "amount": "20000000000000000000",
+        "valueUsd": "12.628464143300000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x7ddd83f113d7145e9232f9acae814436bd3fd237601c761a638687416dea0024",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1mjeneqEmJpBSRqhvNqiHZR3WazJY2C"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:17:42+00:00" } }
+      },
+      {
+        "id": 38,
+        "type": "DELEGATE",
+        "amount": "12897373000000000000000",
+        "valueUsd": "8143.700623690500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x5c3df90170bf712b5b252bab8b6e3b5ec9ad5d9229321e350066599870c558d9",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1XXX9XmMuXqMCrrAcCBqVjNhfAZHXEU"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:17:42+00:00" } }
+      },
+      {
+        "id": 37,
+        "type": "DELEGATE",
+        "amount": "12979836006464493615316",
+        "valueUsd": "8196.024970284200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x9441bae09b3677e07a2ab616feb98e29db341eb5667526f581080a8994cbf10d",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczryUdfhU7KFpveE7y55M3yEQSyi2cvj"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:16:18+00:00" } }
+      },
+      {
+        "id": 36,
+        "type": "DELEGATE",
+        "amount": "18097291000000000000000",
+        "valueUsd": "11427.421916379200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x02c04ae615cde5640097b7eecd3ea00bce21bd531d6d7d5f9f78bd81b1675f1f",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1qqEoJS3roLpxCb2Whf1qVeE63ypp5f"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:14:54+00:00" } }
+      },
+      {
+        "id": 35,
+        "type": "DELEGATE",
+        "amount": "20000000000000000000",
+        "valueUsd": "12.638328911800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x6d6a5f6692fc8323bdf355dc9cec2502c193f21ac5386f1b8f4ea5d2f8053e23",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1mjeneqEmJpBSRqhvNqiHZR3WazJY2C"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T12:08:18+00:00" } }
+      },
+      {
+        "id": 34,
+        "type": "DELEGATE",
+        "amount": "815057487861991306159",
+        "valueUsd": "514.157895966000000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0xfb02cb9ba026c5736ece535c1d196d50cde8e8cfba4129a318403f004eb4c0df",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1GKGifVD8WTTmjHVZqgpMPYW5jNoRiu"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T11:55:06+00:00" } }
+      },
+      {
+        "id": 33,
+        "type": "BID_CHANGE",
+        "amount": "5367894358275579070428",
+        "valueUsd": "3386.197077663200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x38f0b26f7925029e8caa426f274c34e21fd1446c59da1501d5ebe50d8285ba21",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1UMEYSVYqxjFmYC7XQwMzE5GGooXAHF"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T11:54:06+00:00" } }
+      },
+      {
+        "id": 32,
+        "type": "DELEGATE",
+        "amount": "5205900811805511029797",
+        "valueUsd": "3283.509610463600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0xcfd21f78e2d344ce659f4f250911a057d92690f22576decb74c2dcc84b0fced9",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczuvR39wwBZvLX6DAYNnn7dV7CVW3enA"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T11:51:18+00:00" } }
+      },
+      {
+        "id": 31,
+        "type": "DELEGATE",
+        "amount": "3000000000000000000000",
+        "valueUsd": "1890.565866176000000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x147ccddaf1f6a8383366a4604519b675f1ca3c43b1c81de87f76fa0de0e7e8e0",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1UMEYSVYqxjFmYC7XQwMzE5GGooXAHF"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T11:48:06.001+00:00" } }
+      },
+      {
+        "id": 30,
+        "type": "BID_CHANGE",
+        "amount": "31980000000000000000000",
+        "valueUsd": "20197.066841867500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xc73c144ce0376f1949f376012a897d8776f594e8191adbf548c6f4f738f25494",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1TANfvWbWXBTTJgnLpiNoBM69B5x6eW"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T11:28:06.003+00:00" } }
+      },
+      {
+        "id": 29,
+        "type": "DELEGATE",
+        "amount": "31126639465347257374523",
+        "valueUsd": "19646.406216691600000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x635d6c75a7ad09daf0d5e51ae9ab007d9defdf36376f6fe3bf0aac57093a7a54",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczwZ3e7VJHH7K6ovcNpKbMGj8RrzFcHR"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T11:24:06+00:00" } }
+      },
+      {
+        "id": 28,
+        "type": "DELEGATE",
+        "amount": "30000000000000000000000",
+        "valueUsd": "18778.754485042500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0xf7812b42eb895ad604e24ef0bee84f28b20f7ca47a4338176e686daac6c17b22",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1B1qAXyqw8AuJYkQyHx6NzAWcfspWDo"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T10:55:06+00:00" } }
+      },
+      {
+        "id": 27,
+        "type": "DELEGATE",
+        "amount": "37108902440785616629647",
+        "valueUsd": "22927.349631952900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x9708779c94eec957e0188968fff52cccc0ec42baefda4a0109fbd24d9ad5a99b",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd19LXwMxEojGewqaqjvPRMH66kpwD8NP"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T09:20:18+00:00" } }
+      },
+      {
+        "id": 26,
+        "type": "DELEGATE",
+        "amount": "32298323754811473671828",
+        "valueUsd": "19955.106052261300000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0xee3c5c0f2f779afc5b29326993aaf583c272106477de4915628e2d1ff83ae308",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd16u4BR72xaEtoxHxJMgfAL6W4Y8c39N"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T09:14:18.001+00:00" } }
+      },
+      {
+        "id": 25,
+        "type": "DELEGATE",
+        "amount": "43097907209071826590663",
+        "valueUsd": "26641.498694526900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Ninja 🥷 Staking",
+            "idSs58": "cFMKGuLCxBtM9qsTwg9j4JkYc5dw7whs89kGxcwY2hSxX3wPn"
+          }
+        },
+        "txHash": "0x0a171be016ba416e51cbb3293674eafdb51c70f3780b29020e6ec86a51ee38df",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1WuQheazmtcUkEAu8rXp8L18arwDqHo"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T08:28:06+00:00" } }
+      },
+      {
+        "id": 24,
+        "type": "DELEGATE",
+        "amount": "37331456964229124776541",
+        "valueUsd": "23081.741533873400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x632210c831cac138743f4e5a2da0e4e7c14a8aae536af2b6fe11332faa0350f3",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1s9Acis2cvptq57VYvpSCtKJXm85bbg"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T06:50:30+00:00" } }
+      },
+      {
+        "id": 23,
+        "type": "BID_CHANGE",
+        "amount": "25300000000000000000000",
+        "valueUsd": "15666.596823564400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x5b6daa19ae10e732c74fa91144bcdb411f5adf8fb139daef22accc3bf1c793a4",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1WTaYFuJbF5SuwjRAWq315dFXWEF6tW"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T06:42:42+00:00" } }
+      },
+      {
+        "id": 22,
+        "type": "DELEGATE",
+        "amount": "5881886835488873387989",
+        "valueUsd": "3629.023649732700000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Nox 🌙",
+            "idSs58": "cFKBmsMXwSBEiyhiiNRqLwyzY8bBM2GCgLRXNUyNo4dCP6vTX"
+          }
+        },
+        "txHash": "0x851b094e650ee5f6d744c021749503506730147e1a807e1deaad244ae5835557",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1U1y6YN1u9WbubzLyY9m1dyqPue85KD"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T05:31:54+00:00" } }
+      },
+      {
+        "id": 21,
+        "type": "DELEGATE",
+        "amount": "8000000000000000000000",
+        "valueUsd": "4921.481325929500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xeab4b6df5edc0828ce54de3656da81923b3329128d75ef3b1c52567c3469e3df",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1VfLCwjvRtWmdbiy26XBtWpF4EUjnNr"
+        },
+        "event": { "block": { "timestamp": "2025-10-02T00:40:18+00:00" } }
+      },
+      {
+        "id": 20,
+        "type": "DELEGATE",
+        "amount": "101500354053688869503885",
+        "valueUsd": "62424.295071950400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x0829b434ee9d9db6e4fe6b382e61310d950115954fab5b6d517ee06c0959f540",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd192c6YoAQUdDLQeqFhKZkKDEUxn3JPR"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T22:57:42+00:00" } }
+      },
+      {
+        "id": 19,
+        "type": "BID_CHANGE",
+        "amount": "2000000000000000000000",
+        "valueUsd": "1223.161270887900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x00f246dd02843fe450f67cab6872d31515e2ee2959931529a35ea29b7921acfb",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1EFLE9ZWxEZkLoQJbhpYjA1bYmT1FLX"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T22:13:54+00:00" } }
+      },
+      {
+        "id": 18,
+        "type": "BID_CHANGE",
+        "amount": "122250000000000000000000",
+        "valueUsd": "74868.124250025100000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xf3c43bfee002c09aada4af1a9d4a2e9457e81bcc6cd6d29f1fc28d5479b4bc69",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1TANfvWbWXBTTJgnLpiNoBM69B5x6eW"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T20:45:06+00:00" } }
+      },
+      {
+        "id": 17,
+        "type": "DELEGATE",
+        "amount": "100000000000000000000",
+        "valueUsd": "61.293385034900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x26206aa4c6989120eba6153a5dc68cc19172eaae58b4ea78d74a16091ac9e95f",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1TANfvWbWXBTTJgnLpiNoBM69B5x6eW"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T20:29:54+00:00" } }
+      },
+      {
+        "id": 16,
+        "type": "DELEGATE",
+        "amount": "230000000000000000000",
+        "valueUsd": "141.030679156100000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xcec0e6eddeea53cb816b993cc286eb5f0f828b832a5fff7150a412c78590079c",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczt8QhCrQVJ1v2nd84pobwAbBzv4z3WS"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T19:09:18+00:00" } }
+      },
+      {
+        "id": 15,
+        "type": "DELEGATE",
+        "amount": "25016768758257320284995",
+        "valueUsd": "15318.677905952900000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x839eda4f4ed9d056ddddc414e76bbeee3d47e5dc856a018d0f2b4a37c351094e",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1Sjpf1n4FsCUK9xfMAPhXNRPs7e5J3j"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T18:18:30+00:00" } }
+      },
+      {
+        "id": 14,
+        "type": "DELEGATE",
+        "amount": "2000000000000000000000",
+        "valueUsd": "1227.084914478700000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x9e8c5e4f1911d59ef0d0ba77330bc0b484380d887f6d8937494ea4581399ce88",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1EFLE9ZWxEZkLoQJbhpYjA1bYmT1FLX"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T17:44:42+00:00" } }
+      },
+      {
+        "id": 13,
+        "type": "BID_CHANGE",
+        "amount": "1000000000000000000000",
+        "valueUsd": "613.863584104400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xad8eb90b3c3dcb9e114f65b44b9ac5db579d64f3a013be3e9a2b9851ad95f5f3",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd197Bw8yE3yvbF97ZEwCBbJnzLgc5Kj3"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T17:37:06.001+00:00" } }
+      },
+      {
+        "id": 12,
+        "type": "DELEGATE",
+        "amount": "111000000000000000000",
+        "valueUsd": "68.138661524100000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x36f7a75857fca935e9436fdcd6a18f68e2be8445f935976ce9dfbc8913e08f38",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1qHCxK5S582TZU5gyzBttoUmizG4bny"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T17:22:54+00:00" } }
+      },
+      {
+        "id": 11,
+        "type": "BID_CHANGE",
+        "amount": "4000000000000000000000",
+        "valueUsd": "2453.642088956200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x0b2e435ffd49017659b7c8781ca8a90c19365261c084a57d5ba2627ed4063b82",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1UE2yVAdGdYDkDWjCNYo5ZdgP4qS8Gz"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T17:06:06+00:00" } }
+      },
+      {
+        "id": 10,
+        "type": "DELEGATE",
+        "amount": "1000000000000000000000",
+        "valueUsd": "611.474808240700000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xe13e18fed62e79da64337257ea108e9d12976b92d1f2a7b6aaca4e3fb3e966f5",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDczufqbUwfXGyzn2tjcTQmfF4GSkoESMA"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T16:17:54+00:00" } }
+      },
+      {
+        "id": 9,
+        "type": "DELEGATE",
+        "amount": "5000000000000000000000",
+        "valueUsd": "3057.375438143500000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x45d087ab65f4f49aa3ace78903f432c54af2ef11e7a9eb907343fb5dbd587b5a",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1UE2yVAdGdYDkDWjCNYo5ZdgP4qS8Gz"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T16:11:42+00:00" } }
+      },
+      {
+        "id": 8,
+        "type": "DELEGATE",
+        "amount": "12000000000000000000000",
+        "valueUsd": "7338.312060575000000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x640a3d47f9f656e15160646032e243d28f37f007d219e7107feff59ec1a362d8",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd197Bw8yE3yvbF97ZEwCBbJnzLgc5Kj3"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T15:54:54+00:00" } }
+      },
+      {
+        "id": 7,
+        "type": "DELEGATE",
+        "amount": "28675996909000535432968",
+        "valueUsd": "17533.713457996300000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x8f4e9ec077229ecc4fd21cb5d15c6a494da802a8ed92b92b49669cc190d561aa",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1V6vAYxfAB3NChEUYMsLwe1D3HPyASn"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T15:39:42+00:00" } }
+      },
+      {
+        "id": 6,
+        "type": "DELEGATE",
+        "amount": "85000000000000000000000",
+        "valueUsd": "51991.798112648400000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x2f97ad1933a6ce45e951e1c4156b9273fb816fd50a6df60cfde87c27cbd32a2b",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1o4LAc3JVyGg1XvayEN7rxC7oHyDgmu"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T15:15:30+00:00" } }
+      },
+      {
+        "id": 5,
+        "type": "BID_CHANGE",
+        "amount": "2000000000000000000000",
+        "valueUsd": "1222.617985367800000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0xece633ed0fddf42ed64699e360dada905b33c8b7642f9cc6d7002ab6a6a1702e",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1NMrwaxCe8Jq7ncj3QKnRYUiEFA3FSw"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T15:08:42.001+00:00" } }
+      },
+      {
+        "id": 4,
+        "type": "DELEGATE",
+        "amount": "1000000000000000000000",
+        "valueUsd": "611.283895611200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x5a62cc7a61ad1171a09d57f4cb0084ebfc73c59822f1e067d4853eb54bec5702",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1NMrwaxCe8Jq7ncj3QKnRYUiEFA3FSw"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T14:57:42+00:00" } }
+      },
+      {
+        "id": 3,
+        "type": "DELEGATE",
+        "amount": "500000000000000000000",
+        "valueUsd": "305.739131307300000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x00675999c4806b8d5225132f0582fb93c37277bcc031407cd0d9b28d74f2346e",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1WTaYFuJbF5SuwjRAWq315dFXWEF6tW"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T14:45:18+00:00" } }
+      },
+      {
+        "id": 2,
+        "type": "BID_CHANGE",
+        "amount": "100000000000000000000",
+        "valueUsd": "61.136348471200000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x47481dc6b56432640d41b5554a818fc4c14df95eab3faf02987430ee24002c91",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1Q9YMN8S8Az6w6pLBkiwfyi34Gsz4gC"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T14:28:30+00:00" } }
+      },
+      {
+        "id": 1,
+        "type": "DELEGATE",
+        "amount": "100000000000000000000",
+        "valueUsd": "61.112339106000000000000000000000",
+        "operator": {
+          "account": {
+            "alias": "Staking as a Service",
+            "idSs58": "cFKTvCPY4D2jdZULjtgphSDpRzyCHwPJcFhLaXLY9hPC463Xq"
+          }
+        },
+        "txHash": "0x3b0b02c7d1e5ed3191b2c134774454babdfaf56344adf79b835c4852b44d5c89",
+        "delegator": {
+          "idSs58": "cFHsUq1uK5opJudRDd1Q9YMN8S8Az6w6pLBkiwfyi34Gsz4gC"
+        },
+        "event": { "block": { "timestamp": "2025-10-01T14:22:42+00:00" } }
+      }
+    ]
+  }
+}

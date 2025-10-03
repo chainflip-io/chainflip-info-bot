@@ -59,8 +59,13 @@ export type Account = Node & {
   rangeOrderFillsByLiquidityProviderId: RangeOrderFillsConnection;
   /** Reads and enables pagination through a set of `TradingStrategy`. */
   tradingStrategiesByOwnerAccountId: TradingStrategiesConnection;
-  /** Reads and enables pagination through a set of `TradingStrategy`. */
+  /**
+   * Reads and enables pagination through a set of `TradingStrategy`.
+   * @deprecated Please use tradingStrategyByStrategyAccountId instead
+   */
   tradingStrategiesByStrategyAccountId: TradingStrategiesConnection;
+  /** Reads a single `TradingStrategy` that is related to this `Account`. */
+  tradingStrategyByStrategyAccountId?: Maybe<TradingStrategy>;
   type: AccountType;
 };
 
@@ -313,10 +318,10 @@ export type AccountFilter = {
   tradingStrategiesByOwnerAccountId?: InputMaybe<AccountToManyTradingStrategyFilter>;
   /** Some related `tradingStrategiesByOwnerAccountId` exist. */
   tradingStrategiesByOwnerAccountIdExist?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Filter by the object’s `tradingStrategiesByStrategyAccountId` relation. */
-  tradingStrategiesByStrategyAccountId?: InputMaybe<AccountToManyTradingStrategyFilter>;
-  /** Some related `tradingStrategiesByStrategyAccountId` exist. */
-  tradingStrategiesByStrategyAccountIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `tradingStrategyByStrategyAccountId` relation. */
+  tradingStrategyByStrategyAccountId?: InputMaybe<TradingStrategyFilter>;
+  /** A related `tradingStrategyByStrategyAccountId` exists. */
+  tradingStrategyByStrategyAccountIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `type` field. */
   type?: InputMaybe<AccountTypeFilter>;
 };
@@ -2975,170 +2980,6 @@ export type AccountsOrderBy =
   | 'TRADING_STRATEGIES_BY_OWNER_ACCOUNT_ID_VARIANCE_SAMPLE_STRATEGY_ACCOUNT_ID_DESC'
   | 'TRADING_STRATEGIES_BY_OWNER_ACCOUNT_ID_VARIANCE_SAMPLE_TYPE_ASC'
   | 'TRADING_STRATEGIES_BY_OWNER_ACCOUNT_ID_VARIANCE_SAMPLE_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_AVERAGE_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_COUNT_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_COUNT_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_DISTINCT_COUNT_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MAX_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_MIN_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_POPULATION_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_STDDEV_SAMPLE_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_SUM_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_POPULATION_TYPE_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_BASE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_BASE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_CLOSED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_CLOSED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_KEY_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_KEY_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_OWNER_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_OWNER_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_QUOTE_ASSET_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_QUOTE_ASSET_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_STRATEGY_ACCOUNT_ID_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_STRATEGY_ACCOUNT_ID_DESC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_TYPE_ASC'
-  | 'TRADING_STRATEGIES_BY_STRATEGY_ACCOUNT_ID_VARIANCE_SAMPLE_TYPE_DESC'
   | 'TYPE_ASC'
   | 'TYPE_DESC';
 
@@ -3631,6 +3472,8 @@ export type BoostGroupBy =
   | 'EXECUTED_AT_TIMESTAMP'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'FEE'
   | 'FEE_USD'
   | 'LIQUIDITY_PROVIDER_FEE_PORTION'
@@ -3639,6 +3482,8 @@ export type BoostGroupBy =
   | 'LOST_AT_TIMESTAMP'
   | 'LOST_AT_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'LOST_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'LOST_AT_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'LOST_AT_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'NETWORK_FEE_PORTION'
   | 'NETWORK_FEE_PORTION_USD'
   | 'NETWORK_FEE_SWAP_REQUEST_ID'
@@ -3647,6 +3492,8 @@ export type BoostGroupBy =
   | 'SETTLED_AT_TIMESTAMP'
   | 'SETTLED_AT_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'SETTLED_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'SETTLED_AT_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'SETTLED_AT_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'SWAP_ID'
   | 'SWAP_REQUEST_ID';
 
@@ -4430,17 +4277,20 @@ export type BoostMaxAggregateFilter = {
   depositAmountUsd?: InputMaybe<BigFloatFilter>;
   depositChannelId?: InputMaybe<IntFilter>;
   executedAtEventId?: InputMaybe<BigIntFilter>;
+  executedAtTimestamp?: InputMaybe<DatetimeFilter>;
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<IntFilter>;
   liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
   liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
   lostAtEventId?: InputMaybe<BigIntFilter>;
+  lostAtTimestamp?: InputMaybe<DatetimeFilter>;
   networkFeePortion?: InputMaybe<BigFloatFilter>;
   networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
   networkFeeSwapRequestId?: InputMaybe<BigIntFilter>;
   prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   settledAtEventId?: InputMaybe<BigIntFilter>;
+  settledAtTimestamp?: InputMaybe<DatetimeFilter>;
   swapId?: InputMaybe<BigIntFilter>;
   swapRequestId?: InputMaybe<BigIntFilter>;
 };
@@ -4455,6 +4305,8 @@ export type BoostMaxAggregates = {
   depositChannelId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of executedAtEventId across the matching connection */
   executedAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of executedAtTimestamp across the matching connection */
+  executedAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of fee across the matching connection */
   fee?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of feeUsd across the matching connection */
@@ -4467,6 +4319,8 @@ export type BoostMaxAggregates = {
   liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of lostAtEventId across the matching connection */
   lostAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of lostAtTimestamp across the matching connection */
+  lostAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of networkFeePortion across the matching connection */
   networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of networkFeePortionUsd across the matching connection */
@@ -4477,6 +4331,8 @@ export type BoostMaxAggregates = {
   prewitnessedDepositId?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of settledAtTimestamp across the matching connection */
+  settledAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of swapId across the matching connection */
   swapId?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of swapRequestId across the matching connection */
@@ -4488,17 +4344,20 @@ export type BoostMinAggregateFilter = {
   depositAmountUsd?: InputMaybe<BigFloatFilter>;
   depositChannelId?: InputMaybe<IntFilter>;
   executedAtEventId?: InputMaybe<BigIntFilter>;
+  executedAtTimestamp?: InputMaybe<DatetimeFilter>;
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<IntFilter>;
   liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
   liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
   lostAtEventId?: InputMaybe<BigIntFilter>;
+  lostAtTimestamp?: InputMaybe<DatetimeFilter>;
   networkFeePortion?: InputMaybe<BigFloatFilter>;
   networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
   networkFeeSwapRequestId?: InputMaybe<BigIntFilter>;
   prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   settledAtEventId?: InputMaybe<BigIntFilter>;
+  settledAtTimestamp?: InputMaybe<DatetimeFilter>;
   swapId?: InputMaybe<BigIntFilter>;
   swapRequestId?: InputMaybe<BigIntFilter>;
 };
@@ -4513,6 +4372,8 @@ export type BoostMinAggregates = {
   depositChannelId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of executedAtEventId across the matching connection */
   executedAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of executedAtTimestamp across the matching connection */
+  executedAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of fee across the matching connection */
   fee?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of feeUsd across the matching connection */
@@ -4525,6 +4386,8 @@ export type BoostMinAggregates = {
   liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of lostAtEventId across the matching connection */
   lostAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of lostAtTimestamp across the matching connection */
+  lostAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of networkFeePortion across the matching connection */
   networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of networkFeePortionUsd across the matching connection */
@@ -4535,6 +4398,8 @@ export type BoostMinAggregates = {
   prewitnessedDepositId?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of settledAtTimestamp across the matching connection */
+  settledAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of swapId across the matching connection */
   swapId?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of swapRequestId across the matching connection */
@@ -4923,7 +4788,9 @@ export type BoostPoolApyGroupBy =
   | 'PROJECTED_APY'
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
-  | 'TIMESTAMP_TRUNCATED_TO_HOUR';
+  | 'TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'TIMESTAMP_TRUNCATED_TO_WEEK';
 
 export type BoostPoolApyHavingAverageInput = {
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
@@ -5067,6 +4934,7 @@ export type BoostPoolApyMaxAggregateFilter = {
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  timestamp?: InputMaybe<DatetimeFilter>;
 };
 
 export type BoostPoolApyMaxAggregates = {
@@ -5089,6 +4957,8 @@ export type BoostPoolApyMaxAggregates = {
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type BoostPoolApyMinAggregateFilter = {
@@ -5101,6 +4971,7 @@ export type BoostPoolApyMinAggregateFilter = {
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  timestamp?: InputMaybe<DatetimeFilter>;
 };
 
 export type BoostPoolApyMinAggregates = {
@@ -5123,6 +4994,8 @@ export type BoostPoolApyMinAggregates = {
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type BoostPoolApyStddevPopulationAggregateFilter = {
@@ -5530,6 +5403,8 @@ export type BoostPoolBoostShareGroupBy =
   | 'EXECUTED_AT_TIMESTAMP'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'FEE'
   | 'FEE_USD'
   | 'LOST';
@@ -5653,6 +5528,7 @@ export type BoostPoolBoostShareMaxAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   boostId?: InputMaybe<IntFilter>;
   boostPoolId?: InputMaybe<IntFilter>;
+  executedAtTimestamp?: InputMaybe<DatetimeFilter>;
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
@@ -5668,6 +5544,8 @@ export type BoostPoolBoostShareMaxAggregates = {
   boostId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of boostPoolId across the matching connection */
   boostPoolId?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of executedAtTimestamp across the matching connection */
+  executedAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of fee across the matching connection */
   fee?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of feeUsd across the matching connection */
@@ -5681,6 +5559,7 @@ export type BoostPoolBoostShareMinAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   boostId?: InputMaybe<IntFilter>;
   boostPoolId?: InputMaybe<IntFilter>;
+  executedAtTimestamp?: InputMaybe<DatetimeFilter>;
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
@@ -5696,6 +5575,8 @@ export type BoostPoolBoostShareMinAggregates = {
   boostId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of boostPoolId across the matching connection */
   boostPoolId?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of executedAtTimestamp across the matching connection */
+  executedAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of fee across the matching connection */
   fee?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of feeUsd across the matching connection */
@@ -6292,6 +6173,8 @@ export type BoostPoolLiquidityGroupBy =
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
   | 'TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'TOTAL_AMOUNT'
   | 'TOTAL_AMOUNT_VALUE_USD'
   | 'UNAVAILABLE_AMOUNT'
@@ -6435,6 +6318,7 @@ export type BoostPoolLiquidityMaxAggregateFilter = {
   block?: InputMaybe<IntFilter>;
   boostPoolId?: InputMaybe<IntFilter>;
   id?: InputMaybe<BigIntFilter>;
+  timestamp?: InputMaybe<DatetimeFilter>;
   totalAmount?: InputMaybe<BigFloatFilter>;
   totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
   unavailableAmount?: InputMaybe<BigFloatFilter>;
@@ -6453,6 +6337,8 @@ export type BoostPoolLiquidityMaxAggregates = {
   boostPoolId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of totalAmount across the matching connection */
   totalAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of totalAmountValueUsd across the matching connection */
@@ -6469,6 +6355,7 @@ export type BoostPoolLiquidityMinAggregateFilter = {
   block?: InputMaybe<IntFilter>;
   boostPoolId?: InputMaybe<IntFilter>;
   id?: InputMaybe<BigIntFilter>;
+  timestamp?: InputMaybe<DatetimeFilter>;
   totalAmount?: InputMaybe<BigFloatFilter>;
   totalAmountValueUsd?: InputMaybe<BigFloatFilter>;
   unavailableAmount?: InputMaybe<BigFloatFilter>;
@@ -6487,6 +6374,8 @@ export type BoostPoolLiquidityMinAggregates = {
   boostPoolId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of totalAmount across the matching connection */
   totalAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of totalAmountValueUsd across the matching connection */
@@ -8015,6 +7904,8 @@ export type BoostShareGroupBy =
   | 'EXECUTED_AT_TIMESTAMP'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'FEE'
   | 'FEE_USD'
   | 'LIQUIDITY_PROVIDER_ID'
@@ -8148,6 +8039,7 @@ export type BoostShareMaxAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   boostId?: InputMaybe<IntFilter>;
   boostPoolId?: InputMaybe<IntFilter>;
+  executedAtTimestamp?: InputMaybe<DatetimeFilter>;
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<IntFilter>;
@@ -8164,6 +8056,8 @@ export type BoostShareMaxAggregates = {
   boostId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of boostPoolId across the matching connection */
   boostPoolId?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of executedAtTimestamp across the matching connection */
+  executedAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of fee across the matching connection */
   fee?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of feeUsd across the matching connection */
@@ -8179,6 +8073,7 @@ export type BoostShareMinAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   boostId?: InputMaybe<IntFilter>;
   boostPoolId?: InputMaybe<IntFilter>;
+  executedAtTimestamp?: InputMaybe<DatetimeFilter>;
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<IntFilter>;
@@ -8195,6 +8090,8 @@ export type BoostShareMinAggregates = {
   boostId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of boostPoolId across the matching connection */
   boostPoolId?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of executedAtTimestamp across the matching connection */
+  executedAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of fee across the matching connection */
   fee?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of feeUsd across the matching connection */
@@ -10644,9 +10541,16 @@ export type Event = Node & {
   indexInBlock: Scalars['Int']['output'];
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
+  /** Reads and enables pagination through a set of `OraclePriceTracking`. */
+  oraclePriceTrackingsByCreatedAtEventId: OraclePriceTrackingsConnection;
   /** Reads and enables pagination through a set of `PendingBoostLiquidityWithdrawal`. */
   pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId: PendingBoostLiquidityWithdrawalsConnection;
-  /** Reads and enables pagination through a set of `PoolOrder`. */
+  /** Reads a single `PoolOrder` that is related to this `Event`. */
+  poolOrderByOrderCreatedEventId?: Maybe<PoolOrder>;
+  /**
+   * Reads and enables pagination through a set of `PoolOrder`.
+   * @deprecated Please use poolOrderByOrderCreatedEventId instead
+   */
   poolOrdersByOrderCreatedEventId: PoolOrdersConnection;
   /** Reads and enables pagination through a set of `PoolOrder`. */
   poolOrdersByOrderLastUpdatedEventId: PoolOrdersConnection;
@@ -10729,6 +10633,18 @@ export type EventDepositChannelsByEventIdArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<DepositChannelsOrderBy>>;
+};
+
+
+export type EventOraclePriceTrackingsByCreatedAtEventIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<OraclePriceTrackingCondition>;
+  filter?: InputMaybe<OraclePriceTrackingFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<OraclePriceTrackingsOrderBy>>;
 };
 
 
@@ -10898,14 +10814,18 @@ export type EventFilter = {
   not?: InputMaybe<EventFilter>;
   /** Checks for any expressions in this list. */
   or?: InputMaybe<Array<EventFilter>>;
+  /** Filter by the object’s `oraclePriceTrackingsByCreatedAtEventId` relation. */
+  oraclePriceTrackingsByCreatedAtEventId?: InputMaybe<EventToManyOraclePriceTrackingFilter>;
+  /** Some related `oraclePriceTrackingsByCreatedAtEventId` exist. */
+  oraclePriceTrackingsByCreatedAtEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId` relation. */
   pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId?: InputMaybe<EventToManyPendingBoostLiquidityWithdrawalFilter>;
   /** Some related `pendingBoostLiquidityWithdrawalsByStoppedBoostingEventId` exist. */
   pendingBoostLiquidityWithdrawalsByStoppedBoostingEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Filter by the object’s `poolOrdersByOrderCreatedEventId` relation. */
-  poolOrdersByOrderCreatedEventId?: InputMaybe<EventToManyPoolOrderFilter>;
-  /** Some related `poolOrdersByOrderCreatedEventId` exist. */
-  poolOrdersByOrderCreatedEventIdExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `poolOrderByOrderCreatedEventId` relation. */
+  poolOrderByOrderCreatedEventId?: InputMaybe<PoolOrderFilter>;
+  /** A related `poolOrderByOrderCreatedEventId` exists. */
+  poolOrderByOrderCreatedEventIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `poolOrdersByOrderLastUpdatedEventId` relation. */
   poolOrdersByOrderLastUpdatedEventId?: InputMaybe<EventToManyPoolOrderFilter>;
   /** Some related `poolOrdersByOrderLastUpdatedEventId` exist. */
@@ -10932,7 +10852,9 @@ export type EventGroupBy =
   | 'INDEX_IN_BLOCK'
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
-  | 'TIMESTAMP_TRUNCATED_TO_HOUR';
+  | 'TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'TIMESTAMP_TRUNCATED_TO_WEEK';
 
 export type EventHavingAverageInput = {
   block?: InputMaybe<HavingIntFilter>;
@@ -11020,6 +10942,8 @@ export type EventMaxAggregates = {
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of indexInBlock across the matching connection */
   indexInBlock?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type EventMinAggregates = {
@@ -11030,6 +10954,8 @@ export type EventMinAggregates = {
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of indexInBlock across the matching connection */
   indexInBlock?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type EventStddevPopulationAggregates = {
@@ -11096,6 +11022,18 @@ export type EventToManyDepositChannelFilter = {
   none?: InputMaybe<DepositChannelFilter>;
   /** Some related `DepositChannel` matches the filter criteria. All fields are combined with a logical ‘and.’ */
   some?: InputMaybe<DepositChannelFilter>;
+};
+
+/** A filter to be used against many `OraclePriceTracking` object types. All fields are combined with a logical ‘and.’ */
+export type EventToManyOraclePriceTrackingFilter = {
+  /** Aggregates across related `OraclePriceTracking` match the filter criteria. */
+  aggregates?: InputMaybe<OraclePriceTrackingAggregatesFilter>;
+  /** Every related `OraclePriceTracking` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<OraclePriceTrackingFilter>;
+  /** No related `OraclePriceTracking` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<OraclePriceTrackingFilter>;
+  /** Some related `OraclePriceTracking` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<OraclePriceTrackingFilter>;
 };
 
 /** A filter to be used against many `PendingBoostLiquidityWithdrawal` object types. All fields are combined with a logical ‘and.’ */
@@ -12948,6 +12886,134 @@ export type EventsOrderBy =
   | 'INDEX_IN_BLOCK_ASC'
   | 'INDEX_IN_BLOCK_DESC'
   | 'NATURAL'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_AVERAGE_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_COUNT_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_COUNT_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MAX_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_MIN_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_SUM_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BASE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BASE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BLOCK_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BLOCK_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_ID_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_PRICE_X128_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_PRICE_X128_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_QUOTE_ASSET_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_QUOTE_ASSET_DESC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'ORACLE_PRICE_TRACKINGS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_UPDATED_AT_ORACLE_TIMESTAMP_DESC'
   | 'PENDING_BOOST_LIQUIDITY_WITHDRAWALS_BY_STOPPED_BOOSTING_EVENT_ID_AVERAGE_BOOST_ID_ASC'
   | 'PENDING_BOOST_LIQUIDITY_WITHDRAWALS_BY_STOPPED_BOOSTING_EVENT_ID_AVERAGE_BOOST_ID_DESC'
   | 'PENDING_BOOST_LIQUIDITY_WITHDRAWALS_BY_STOPPED_BOOSTING_EVENT_ID_AVERAGE_FINALIZED_ASC'
@@ -13058,422 +13124,6 @@ export type EventsOrderBy =
   | 'PENDING_BOOST_LIQUIDITY_WITHDRAWALS_BY_STOPPED_BOOSTING_EVENT_ID_VARIANCE_SAMPLE_LOST_DESC'
   | 'PENDING_BOOST_LIQUIDITY_WITHDRAWALS_BY_STOPPED_BOOSTING_EVENT_ID_VARIANCE_SAMPLE_STOPPED_BOOSTING_EVENT_ID_ASC'
   | 'PENDING_BOOST_LIQUIDITY_WITHDRAWALS_BY_STOPPED_BOOSTING_EVENT_ID_VARIANCE_SAMPLE_STOPPED_BOOSTING_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_AVERAGE_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_COUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_COUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_DISTINCT_COUNT_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MAX_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_MIN_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_POPULATION_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_STDDEV_SAMPLE_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_SUM_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_POPULATION_UPPER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_BASE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_FILLED_BASE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_FILLED_BASE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_FILLED_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_FILLED_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_LOWER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_LOWER_TICK_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_OPEN_POOL_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_OPEN_POOL_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_CREATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_CREATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_LAST_UPDATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_LAST_UPDATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_LAST_UPDATED_TIMESTAMP_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_LAST_UPDATED_TIMESTAMP_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_TYPE_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_ORDER_TYPE_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_PROCESSOR_ORDER_CREATED_EVENT_ID_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_PROCESSOR_ORDER_CREATED_EVENT_ID_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_AMOUNT_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_AMOUNT_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_ASSET_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_ASSET_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_COLLECTED_FEES_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_COLLECTED_FEES_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_COLLECTED_FEES_USD_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_QUOTE_COLLECTED_FEES_USD_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_STATUS_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_STATUS_DESC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_UPPER_TICK_ASC'
-  | 'POOL_ORDERS_BY_ORDER_CREATED_EVENT_ID_VARIANCE_SAMPLE_UPPER_TICK_DESC'
   | 'POOL_ORDERS_BY_ORDER_LAST_UPDATED_EVENT_ID_AVERAGE_BASE_AMOUNT_ASC'
   | 'POOL_ORDERS_BY_ORDER_LAST_UPDATED_EVENT_ID_AVERAGE_BASE_AMOUNT_DESC'
   | 'POOL_ORDERS_BY_ORDER_LAST_UPDATED_EVENT_ID_AVERAGE_BASE_ASSET_ASC'
@@ -14497,7 +14147,9 @@ export type LastBlockGroupBy =
   | 'HEIGHT'
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
-  | 'TIMESTAMP_TRUNCATED_TO_HOUR';
+  | 'TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'TIMESTAMP_TRUNCATED_TO_WEEK';
 
 export type LastBlockHavingAverageInput = {
   height?: InputMaybe<HavingIntFilter>;
@@ -14574,6 +14226,8 @@ export type LastBlockMaxAggregates = {
   height?: Maybe<Scalars['Int']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type LastBlockMinAggregates = {
@@ -14582,6 +14236,8 @@ export type LastBlockMinAggregates = {
   height?: Maybe<Scalars['Int']['output']>;
   /** Minimum of id across the matching connection */
   id?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type LastBlockStddevPopulationAggregates = {
@@ -14928,6 +14584,8 @@ export type LimitOrderFillGroupBy =
   | 'BLOCK_TIMESTAMP'
   | 'BLOCK_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'BLOCK_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'BLOCK_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'BLOCK_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'FEES_EARNED'
   | 'FEES_EARNED_VALUE_USD'
   | 'FILLED_AMOUNT'
@@ -15102,6 +14760,7 @@ export type LimitOrderFillHavingVarianceSampleInput = {
 
 export type LimitOrderFillMaxAggregateFilter = {
   block?: InputMaybe<IntFilter>;
+  blockTimestamp?: InputMaybe<DatetimeFilter>;
   feesEarned?: InputMaybe<BigFloatFilter>;
   feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
   filledAmount?: InputMaybe<BigFloatFilter>;
@@ -15119,6 +14778,8 @@ export type LimitOrderFillMaxAggregates = {
   __typename?: 'LimitOrderFillMaxAggregates';
   /** Maximum of block across the matching connection */
   block?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of blockTimestamp across the matching connection */
+  blockTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of feesEarned across the matching connection */
   feesEarned?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of feesEarnedValueUsd across the matching connection */
@@ -15145,6 +14806,7 @@ export type LimitOrderFillMaxAggregates = {
 
 export type LimitOrderFillMinAggregateFilter = {
   block?: InputMaybe<IntFilter>;
+  blockTimestamp?: InputMaybe<DatetimeFilter>;
   feesEarned?: InputMaybe<BigFloatFilter>;
   feesEarnedValueUsd?: InputMaybe<BigFloatFilter>;
   filledAmount?: InputMaybe<BigFloatFilter>;
@@ -15162,6 +14824,8 @@ export type LimitOrderFillMinAggregates = {
   __typename?: 'LimitOrderFillMinAggregates';
   /** Minimum of block across the matching connection */
   block?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of blockTimestamp across the matching connection */
+  blockTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of feesEarned across the matching connection */
   feesEarned?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of feesEarnedValueUsd across the matching connection */
@@ -16185,6 +15849,8 @@ export type LiquiditySnapshotGroupBy =
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
   | 'TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'TOTAL_LIQUIDITY_USD'
   | 'UNDEPLOYED_LIQUIDITY_USD';
 
@@ -16318,6 +15984,7 @@ export type LiquiditySnapshotMaxAggregateFilter = {
   id?: InputMaybe<BigIntFilter>;
   liquidityProviderId?: InputMaybe<IntFilter>;
   strategyLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  timestamp?: InputMaybe<DatetimeFilter>;
   totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
   undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
 };
@@ -16336,6 +16003,8 @@ export type LiquiditySnapshotMaxAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of strategyLiquidityUsd across the matching connection */
   strategyLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of totalLiquidityUsd across the matching connection */
   totalLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of undeployedLiquidityUsd across the matching connection */
@@ -16349,6 +16018,7 @@ export type LiquiditySnapshotMinAggregateFilter = {
   id?: InputMaybe<BigIntFilter>;
   liquidityProviderId?: InputMaybe<IntFilter>;
   strategyLiquidityUsd?: InputMaybe<BigFloatFilter>;
+  timestamp?: InputMaybe<DatetimeFilter>;
   totalLiquidityUsd?: InputMaybe<BigFloatFilter>;
   undeployedLiquidityUsd?: InputMaybe<BigFloatFilter>;
 };
@@ -16367,6 +16037,8 @@ export type LiquiditySnapshotMinAggregates = {
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of strategyLiquidityUsd across the matching connection */
   strategyLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of timestamp across the matching connection */
+  timestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of totalLiquidityUsd across the matching connection */
   totalLiquidityUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of undeployedLiquidityUsd across the matching connection */
@@ -16590,6 +16262,454 @@ export type Node = {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
 };
+
+export type OraclePriceTracking = Node & {
+  __typename?: 'OraclePriceTracking';
+  baseAsset: PriceAsset;
+  block: Scalars['Int']['output'];
+  createdAtEventId: Scalars['BigInt']['output'];
+  /** Reads a single `Event` that is related to this `OraclePriceTracking`. */
+  eventByCreatedAtEventId: Event;
+  id: Scalars['Int']['output'];
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID']['output'];
+  priceX128: Scalars['BigFloat']['output'];
+  quoteAsset: PriceAsset;
+  updatedAtOracleTimestamp: Scalars['Datetime']['output'];
+};
+
+export type OraclePriceTrackingAggregates = {
+  __typename?: 'OraclePriceTrackingAggregates';
+  /** Mean average aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  average?: Maybe<OraclePriceTrackingAverageAggregates>;
+  /** Distinct count aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  distinctCount?: Maybe<OraclePriceTrackingDistinctCountAggregates>;
+  keys?: Maybe<Array<Scalars['String']['output']>>;
+  /** Maximum aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  max?: Maybe<OraclePriceTrackingMaxAggregates>;
+  /** Minimum aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  min?: Maybe<OraclePriceTrackingMinAggregates>;
+  /** Population standard deviation aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  stddevPopulation?: Maybe<OraclePriceTrackingStddevPopulationAggregates>;
+  /** Sample standard deviation aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  stddevSample?: Maybe<OraclePriceTrackingStddevSampleAggregates>;
+  /** Sum aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  sum?: Maybe<OraclePriceTrackingSumAggregates>;
+  /** Population variance aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  variancePopulation?: Maybe<OraclePriceTrackingVariancePopulationAggregates>;
+  /** Sample variance aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  varianceSample?: Maybe<OraclePriceTrackingVarianceSampleAggregates>;
+};
+
+/** A filter to be used against aggregates of `OraclePriceTracking` object types. */
+export type OraclePriceTrackingAggregatesFilter = {
+  /** Mean average aggregate over matching `OraclePriceTracking` objects. */
+  average?: InputMaybe<OraclePriceTrackingAverageAggregateFilter>;
+  /** Distinct count aggregate over matching `OraclePriceTracking` objects. */
+  distinctCount?: InputMaybe<OraclePriceTrackingDistinctCountAggregateFilter>;
+  /** A filter that must pass for the relevant `OraclePriceTracking` object to be included within the aggregate. */
+  filter?: InputMaybe<OraclePriceTrackingFilter>;
+  /** Maximum aggregate over matching `OraclePriceTracking` objects. */
+  max?: InputMaybe<OraclePriceTrackingMaxAggregateFilter>;
+  /** Minimum aggregate over matching `OraclePriceTracking` objects. */
+  min?: InputMaybe<OraclePriceTrackingMinAggregateFilter>;
+  /** Population standard deviation aggregate over matching `OraclePriceTracking` objects. */
+  stddevPopulation?: InputMaybe<OraclePriceTrackingStddevPopulationAggregateFilter>;
+  /** Sample standard deviation aggregate over matching `OraclePriceTracking` objects. */
+  stddevSample?: InputMaybe<OraclePriceTrackingStddevSampleAggregateFilter>;
+  /** Sum aggregate over matching `OraclePriceTracking` objects. */
+  sum?: InputMaybe<OraclePriceTrackingSumAggregateFilter>;
+  /** Population variance aggregate over matching `OraclePriceTracking` objects. */
+  variancePopulation?: InputMaybe<OraclePriceTrackingVariancePopulationAggregateFilter>;
+  /** Sample variance aggregate over matching `OraclePriceTracking` objects. */
+  varianceSample?: InputMaybe<OraclePriceTrackingVarianceSampleAggregateFilter>;
+};
+
+export type OraclePriceTrackingAverageAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+};
+
+export type OraclePriceTrackingAverageAggregates = {
+  __typename?: 'OraclePriceTrackingAverageAggregates';
+  /** Mean average of block across the matching connection */
+  block?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of id across the matching connection */
+  id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+/**
+ * A condition to be used against `OraclePriceTracking` object types. All fields
+ * are tested for equality and combined with a logical ‘and.’
+ */
+export type OraclePriceTrackingCondition = {
+  /** Checks for equality with the object’s `baseAsset` field. */
+  baseAsset?: InputMaybe<PriceAsset>;
+  /** Checks for equality with the object’s `block` field. */
+  block?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `createdAtEventId` field. */
+  createdAtEventId?: InputMaybe<Scalars['BigInt']['input']>;
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `priceX128` field. */
+  priceX128?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `quoteAsset` field. */
+  quoteAsset?: InputMaybe<PriceAsset>;
+  /** Checks for equality with the object’s `updatedAtOracleTimestamp` field. */
+  updatedAtOracleTimestamp?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type OraclePriceTrackingDistinctCountAggregateFilter = {
+  baseAsset?: InputMaybe<BigIntFilter>;
+  block?: InputMaybe<BigIntFilter>;
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  priceX128?: InputMaybe<BigIntFilter>;
+  quoteAsset?: InputMaybe<BigIntFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<BigIntFilter>;
+};
+
+export type OraclePriceTrackingDistinctCountAggregates = {
+  __typename?: 'OraclePriceTrackingDistinctCountAggregates';
+  /** Distinct count of baseAsset across the matching connection */
+  baseAsset?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of block across the matching connection */
+  block?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of id across the matching connection */
+  id?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of quoteAsset across the matching connection */
+  quoteAsset?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of updatedAtOracleTimestamp across the matching connection */
+  updatedAtOracleTimestamp?: Maybe<Scalars['BigInt']['output']>;
+};
+
+/** A filter to be used against `OraclePriceTracking` object types. All fields are combined with a logical ‘and.’ */
+export type OraclePriceTrackingFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<OraclePriceTrackingFilter>>;
+  /** Filter by the object’s `baseAsset` field. */
+  baseAsset?: InputMaybe<PriceAssetFilter>;
+  /** Filter by the object’s `block` field. */
+  block?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `createdAtEventId` field. */
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  /** Filter by the object’s `eventByCreatedAtEventId` relation. */
+  eventByCreatedAtEventId?: InputMaybe<EventFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<IntFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<OraclePriceTrackingFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<OraclePriceTrackingFilter>>;
+  /** Filter by the object’s `priceX128` field. */
+  priceX128?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `quoteAsset` field. */
+  quoteAsset?: InputMaybe<PriceAssetFilter>;
+  /** Filter by the object’s `updatedAtOracleTimestamp` field. */
+  updatedAtOracleTimestamp?: InputMaybe<DatetimeFilter>;
+};
+
+/** Grouping methods for `OraclePriceTracking` for usage during aggregation. */
+export type OraclePriceTrackingGroupBy =
+  | 'BASE_ASSET'
+  | 'BLOCK'
+  | 'CREATED_AT_EVENT_ID'
+  | 'PRICE_X128'
+  | 'QUOTE_ASSET'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP_TRUNCATED_TO_DAY'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP_TRUNCATED_TO_WEEK';
+
+export type OraclePriceTrackingHavingAverageInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingDistinctCountInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+/** Conditions for `OraclePriceTracking` aggregates. */
+export type OraclePriceTrackingHavingInput = {
+  AND?: InputMaybe<Array<OraclePriceTrackingHavingInput>>;
+  OR?: InputMaybe<Array<OraclePriceTrackingHavingInput>>;
+  average?: InputMaybe<OraclePriceTrackingHavingAverageInput>;
+  distinctCount?: InputMaybe<OraclePriceTrackingHavingDistinctCountInput>;
+  max?: InputMaybe<OraclePriceTrackingHavingMaxInput>;
+  min?: InputMaybe<OraclePriceTrackingHavingMinInput>;
+  stddevPopulation?: InputMaybe<OraclePriceTrackingHavingStddevPopulationInput>;
+  stddevSample?: InputMaybe<OraclePriceTrackingHavingStddevSampleInput>;
+  sum?: InputMaybe<OraclePriceTrackingHavingSumInput>;
+  variancePopulation?: InputMaybe<OraclePriceTrackingHavingVariancePopulationInput>;
+  varianceSample?: InputMaybe<OraclePriceTrackingHavingVarianceSampleInput>;
+};
+
+export type OraclePriceTrackingHavingMaxInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingMinInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingStddevPopulationInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingStddevSampleInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingSumInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingVariancePopulationInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingHavingVarianceSampleInput = {
+  block?: InputMaybe<HavingIntFilter>;
+  createdAtEventId?: InputMaybe<HavingBigintFilter>;
+  id?: InputMaybe<HavingIntFilter>;
+  priceX128?: InputMaybe<HavingBigfloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<HavingDatetimeFilter>;
+};
+
+export type OraclePriceTrackingMaxAggregateFilter = {
+  block?: InputMaybe<IntFilter>;
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<DatetimeFilter>;
+};
+
+export type OraclePriceTrackingMaxAggregates = {
+  __typename?: 'OraclePriceTrackingMaxAggregates';
+  /** Maximum of block across the matching connection */
+  block?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of id across the matching connection */
+  id?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of updatedAtOracleTimestamp across the matching connection */
+  updatedAtOracleTimestamp?: Maybe<Scalars['Datetime']['output']>;
+};
+
+export type OraclePriceTrackingMinAggregateFilter = {
+  block?: InputMaybe<IntFilter>;
+  createdAtEventId?: InputMaybe<BigIntFilter>;
+  id?: InputMaybe<IntFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+  updatedAtOracleTimestamp?: InputMaybe<DatetimeFilter>;
+};
+
+export type OraclePriceTrackingMinAggregates = {
+  __typename?: 'OraclePriceTrackingMinAggregates';
+  /** Minimum of block across the matching connection */
+  block?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of id across the matching connection */
+  id?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of updatedAtOracleTimestamp across the matching connection */
+  updatedAtOracleTimestamp?: Maybe<Scalars['Datetime']['output']>;
+};
+
+export type OraclePriceTrackingStddevPopulationAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+};
+
+export type OraclePriceTrackingStddevPopulationAggregates = {
+  __typename?: 'OraclePriceTrackingStddevPopulationAggregates';
+  /** Population standard deviation of block across the matching connection */
+  block?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of id across the matching connection */
+  id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type OraclePriceTrackingStddevSampleAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+};
+
+export type OraclePriceTrackingStddevSampleAggregates = {
+  __typename?: 'OraclePriceTrackingStddevSampleAggregates';
+  /** Sample standard deviation of block across the matching connection */
+  block?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of id across the matching connection */
+  id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type OraclePriceTrackingSumAggregateFilter = {
+  block?: InputMaybe<BigIntFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+};
+
+export type OraclePriceTrackingSumAggregates = {
+  __typename?: 'OraclePriceTrackingSumAggregates';
+  /** Sum of block across the matching connection */
+  block: Scalars['BigInt']['output'];
+  /** Sum of createdAtEventId across the matching connection */
+  createdAtEventId: Scalars['BigFloat']['output'];
+  /** Sum of id across the matching connection */
+  id: Scalars['BigInt']['output'];
+  /** Sum of priceX128 across the matching connection */
+  priceX128: Scalars['BigFloat']['output'];
+};
+
+export type OraclePriceTrackingVariancePopulationAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+};
+
+export type OraclePriceTrackingVariancePopulationAggregates = {
+  __typename?: 'OraclePriceTrackingVariancePopulationAggregates';
+  /** Population variance of block across the matching connection */
+  block?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of id across the matching connection */
+  id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type OraclePriceTrackingVarianceSampleAggregateFilter = {
+  block?: InputMaybe<BigFloatFilter>;
+  createdAtEventId?: InputMaybe<BigFloatFilter>;
+  id?: InputMaybe<BigFloatFilter>;
+  priceX128?: InputMaybe<BigFloatFilter>;
+};
+
+export type OraclePriceTrackingVarianceSampleAggregates = {
+  __typename?: 'OraclePriceTrackingVarianceSampleAggregates';
+  /** Sample variance of block across the matching connection */
+  block?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of createdAtEventId across the matching connection */
+  createdAtEventId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of id across the matching connection */
+  id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of priceX128 across the matching connection */
+  priceX128?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+/** A connection to a list of `OraclePriceTracking` values. */
+export type OraclePriceTrackingsConnection = {
+  __typename?: 'OraclePriceTrackingsConnection';
+  /** Aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  aggregates?: Maybe<OraclePriceTrackingAggregates>;
+  /** A list of edges which contains the `OraclePriceTracking` and cursor to aid in pagination. */
+  edges: Array<OraclePriceTrackingsEdge>;
+  /** Grouped aggregates across the matching connection (ignoring before/after/first/last/offset) */
+  groupedAggregates?: Maybe<Array<OraclePriceTrackingAggregates>>;
+  /** A list of `OraclePriceTracking` objects. */
+  nodes: Array<OraclePriceTracking>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `OraclePriceTracking` you could get from the connection. */
+  totalCount: Scalars['Int']['output'];
+};
+
+
+/** A connection to a list of `OraclePriceTracking` values. */
+export type OraclePriceTrackingsConnectionGroupedAggregatesArgs = {
+  groupBy: Array<OraclePriceTrackingGroupBy>;
+  having?: InputMaybe<OraclePriceTrackingHavingInput>;
+};
+
+/** A `OraclePriceTracking` edge in the connection. */
+export type OraclePriceTrackingsEdge = {
+  __typename?: 'OraclePriceTrackingsEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>;
+  /** The `OraclePriceTracking` at the end of the edge. */
+  node: OraclePriceTracking;
+};
+
+/** Methods to use when ordering `OraclePriceTracking`. */
+export type OraclePriceTrackingsOrderBy =
+  | 'BASE_ASSET_ASC'
+  | 'BASE_ASSET_DESC'
+  | 'BLOCK_ASC'
+  | 'BLOCK_DESC'
+  | 'CREATED_AT_EVENT_ID_ASC'
+  | 'CREATED_AT_EVENT_ID_DESC'
+  | 'ID_ASC'
+  | 'ID_DESC'
+  | 'NATURAL'
+  | 'PRICE_X128_ASC'
+  | 'PRICE_X128_DESC'
+  | 'PRIMARY_KEY_ASC'
+  | 'PRIMARY_KEY_DESC'
+  | 'QUOTE_ASSET_ASC'
+  | 'QUOTE_ASSET_DESC'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP_ASC'
+  | 'UPDATED_AT_ORACLE_TIMESTAMP_DESC';
 
 /** Information about pagination in a connection. */
 export type PageInfo = {
@@ -17374,11 +17494,15 @@ export type PoolOrderGroupBy =
   | 'ORDER_CREATED_TIMESTAMP'
   | 'ORDER_CREATED_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'ORDER_CREATED_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'ORDER_CREATED_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'ORDER_CREATED_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'ORDER_ID'
   | 'ORDER_LAST_UPDATED_EVENT_ID'
   | 'ORDER_LAST_UPDATED_TIMESTAMP'
   | 'ORDER_LAST_UPDATED_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'ORDER_LAST_UPDATED_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'ORDER_LAST_UPDATED_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'ORDER_LAST_UPDATED_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'ORDER_TYPE'
   | 'QUOTE_AMOUNT'
   | 'QUOTE_ASSET'
@@ -17602,7 +17726,9 @@ export type PoolOrderMaxAggregateFilter = {
   lowerTick?: InputMaybe<BigFloatFilter>;
   openPoolOrderId?: InputMaybe<IntFilter>;
   orderCreatedEventId?: InputMaybe<BigIntFilter>;
+  orderCreatedTimestamp?: InputMaybe<DatetimeFilter>;
   orderLastUpdatedEventId?: InputMaybe<BigIntFilter>;
+  orderLastUpdatedTimestamp?: InputMaybe<DatetimeFilter>;
   processorOrderCreatedEventId?: InputMaybe<BigIntFilter>;
   quoteAmount?: InputMaybe<BigFloatFilter>;
   quoteCollectedFees?: InputMaybe<BigFloatFilter>;
@@ -17632,8 +17758,12 @@ export type PoolOrderMaxAggregates = {
   openPoolOrderId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of orderCreatedEventId across the matching connection */
   orderCreatedEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of orderCreatedTimestamp across the matching connection */
+  orderCreatedTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of orderLastUpdatedEventId across the matching connection */
   orderLastUpdatedEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of orderLastUpdatedTimestamp across the matching connection */
+  orderLastUpdatedTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of processorOrderCreatedEventId across the matching connection */
   processorOrderCreatedEventId?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of quoteAmount across the matching connection */
@@ -17657,7 +17787,9 @@ export type PoolOrderMinAggregateFilter = {
   lowerTick?: InputMaybe<BigFloatFilter>;
   openPoolOrderId?: InputMaybe<IntFilter>;
   orderCreatedEventId?: InputMaybe<BigIntFilter>;
+  orderCreatedTimestamp?: InputMaybe<DatetimeFilter>;
   orderLastUpdatedEventId?: InputMaybe<BigIntFilter>;
+  orderLastUpdatedTimestamp?: InputMaybe<DatetimeFilter>;
   processorOrderCreatedEventId?: InputMaybe<BigIntFilter>;
   quoteAmount?: InputMaybe<BigFloatFilter>;
   quoteCollectedFees?: InputMaybe<BigFloatFilter>;
@@ -17687,8 +17819,12 @@ export type PoolOrderMinAggregates = {
   openPoolOrderId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of orderCreatedEventId across the matching connection */
   orderCreatedEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of orderCreatedTimestamp across the matching connection */
+  orderCreatedTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of orderLastUpdatedEventId across the matching connection */
   orderLastUpdatedEventId?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of orderLastUpdatedTimestamp across the matching connection */
+  orderLastUpdatedTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of processorOrderCreatedEventId across the matching connection */
   processorOrderCreatedEventId?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of quoteAmount across the matching connection */
@@ -18121,6 +18257,41 @@ export type PoolOrdersOrderBy =
   | 'UPPER_TICK_ASC'
   | 'UPPER_TICK_DESC';
 
+export type PriceAsset =
+  | 'Btc'
+  | 'Eth'
+  | 'Fine'
+  | 'Sol'
+  | 'Usd'
+  | 'Usdc'
+  | 'Usdt';
+
+/** A filter to be used against PriceAsset fields. All fields are combined with a logical ‘and.’ */
+export type PriceAssetFilter = {
+  /** Not equal to the specified value, treating null like an ordinary value. */
+  distinctFrom?: InputMaybe<PriceAsset>;
+  /** Equal to the specified value. */
+  equalTo?: InputMaybe<PriceAsset>;
+  /** Greater than the specified value. */
+  greaterThan?: InputMaybe<PriceAsset>;
+  /** Greater than or equal to the specified value. */
+  greaterThanOrEqualTo?: InputMaybe<PriceAsset>;
+  /** Included in the specified list. */
+  in?: InputMaybe<Array<PriceAsset>>;
+  /** Is null (if `true` is specified) or is not null (if `false` is specified). */
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Less than the specified value. */
+  lessThan?: InputMaybe<PriceAsset>;
+  /** Less than or equal to the specified value. */
+  lessThanOrEqualTo?: InputMaybe<PriceAsset>;
+  /** Equal to the specified value, treating null like an ordinary value. */
+  notDistinctFrom?: InputMaybe<PriceAsset>;
+  /** Not equal to the specified value. */
+  notEqualTo?: InputMaybe<PriceAsset>;
+  /** Not included in the specified list. */
+  notIn?: InputMaybe<Array<PriceAsset>>;
+};
+
 /** The root query type which gives access points into the data universe. */
 export type Query = Node & {
   __typename?: 'Query';
@@ -18159,6 +18330,8 @@ export type Query = Node & {
   allLiquidityProviderBoostPoolSummaries?: Maybe<LiquidityProviderBoostPoolSummariesConnection>;
   /** Reads and enables pagination through a set of `LiquiditySnapshot`. */
   allLiquiditySnapshots?: Maybe<LiquiditySnapshotsConnection>;
+  /** Reads and enables pagination through a set of `OraclePriceTracking`. */
+  allOraclePriceTrackings?: Maybe<OraclePriceTrackingsConnection>;
   /** Reads and enables pagination through a set of `PendingBoostLiquidityWithdrawal`. */
   allPendingBoostLiquidityWithdrawals?: Maybe<PendingBoostLiquidityWithdrawalsConnection>;
   /** Reads and enables pagination through a set of `PoolOrder`. */
@@ -18222,12 +18395,17 @@ export type Query = Node & {
   node?: Maybe<Node>;
   /** The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`. */
   nodeId: Scalars['ID']['output'];
+  /** Reads a single `OraclePriceTracking` using its globally unique `ID`. */
+  oraclePriceTracking?: Maybe<OraclePriceTracking>;
+  oraclePriceTrackingByBaseAssetAndQuoteAssetAndCreatedAtEventId?: Maybe<OraclePriceTracking>;
+  oraclePriceTrackingById?: Maybe<OraclePriceTracking>;
   /** Reads a single `PendingBoostLiquidityWithdrawal` using its globally unique `ID`. */
   pendingBoostLiquidityWithdrawal?: Maybe<PendingBoostLiquidityWithdrawal>;
   pendingBoostLiquidityWithdrawalById?: Maybe<PendingBoostLiquidityWithdrawal>;
   /** Reads a single `PoolOrder` using its globally unique `ID`. */
   poolOrder?: Maybe<PoolOrder>;
   poolOrderById?: Maybe<PoolOrder>;
+  poolOrderByOrderCreatedEventId?: Maybe<PoolOrder>;
   /**
    * Exposes the root query type nested one level down. This is helpful for Relay 1
    * which can only query top level fields if they are in a particular form.
@@ -18242,7 +18420,9 @@ export type Query = Node & {
   /** Reads a single `TradingStrategyBalanceChangeEvent` using its globally unique `ID`. */
   tradingStrategyBalanceChangeEvent?: Maybe<TradingStrategyBalanceChangeEvent>;
   tradingStrategyBalanceChangeEventById?: Maybe<TradingStrategyBalanceChangeEvent>;
+  tradingStrategyBalanceChangeEventByTradingStrategyIdAndEventIdAndAsset?: Maybe<TradingStrategyBalanceChangeEvent>;
   tradingStrategyById?: Maybe<TradingStrategy>;
+  tradingStrategyByStrategyAccountId?: Maybe<TradingStrategy>;
 };
 
 
@@ -18455,6 +18635,19 @@ export type QueryAllLiquiditySnapshotsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<LiquiditySnapshotsOrderBy>>;
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryAllOraclePriceTrackingsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<OraclePriceTrackingCondition>;
+  filter?: InputMaybe<OraclePriceTrackingFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<OraclePriceTrackingsOrderBy>>;
 };
 
 
@@ -18769,6 +18962,26 @@ export type QueryNodeArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
+export type QueryOraclePriceTrackingArgs = {
+  nodeId: Scalars['ID']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryOraclePriceTrackingByBaseAssetAndQuoteAssetAndCreatedAtEventIdArgs = {
+  baseAsset: PriceAsset;
+  createdAtEventId: Scalars['BigInt']['input'];
+  quoteAsset: PriceAsset;
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryOraclePriceTrackingByIdArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
 export type QueryPendingBoostLiquidityWithdrawalArgs = {
   nodeId: Scalars['ID']['input'];
 };
@@ -18789,6 +19002,12 @@ export type QueryPoolOrderArgs = {
 /** The root query type which gives access points into the data universe. */
 export type QueryPoolOrderByIdArgs = {
   id: Scalars['BigInt']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryPoolOrderByOrderCreatedEventIdArgs = {
+  orderCreatedEventId: Scalars['BigInt']['input'];
 };
 
 
@@ -18832,8 +19051,22 @@ export type QueryTradingStrategyBalanceChangeEventByIdArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
+export type QueryTradingStrategyBalanceChangeEventByTradingStrategyIdAndEventIdAndAssetArgs = {
+  asset: ChainflipAsset;
+  eventId: Scalars['BigInt']['input'];
+  tradingStrategyId: Scalars['Int']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
 export type QueryTradingStrategyByIdArgs = {
   id: Scalars['Int']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryTradingStrategyByStrategyAccountIdArgs = {
+  strategyAccountId: Scalars['Int']['input'];
 };
 
 export type RangeOrderFill = Node & {
@@ -19159,6 +19392,8 @@ export type RangeOrderFillGroupBy =
   | 'BLOCK_TIMESTAMP'
   | 'BLOCK_TIMESTAMP_TRUNCATED_TO_DAY'
   | 'BLOCK_TIMESTAMP_TRUNCATED_TO_HOUR'
+  | 'BLOCK_TIMESTAMP_TRUNCATED_TO_MONTH'
+  | 'BLOCK_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'LIQUIDITY'
   | 'LIQUIDITY_PROVIDER_ID'
   | 'ORDER_ID'
@@ -19392,6 +19627,7 @@ export type RangeOrderFillMaxAggregateFilter = {
   baseReceivedAmount?: InputMaybe<BigFloatFilter>;
   baseReceivedAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<IntFilter>;
+  blockTimestamp?: InputMaybe<DatetimeFilter>;
   id?: InputMaybe<IntFilter>;
   liquidity?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<IntFilter>;
@@ -19421,6 +19657,8 @@ export type RangeOrderFillMaxAggregates = {
   baseReceivedAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of block across the matching connection */
   block?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of blockTimestamp across the matching connection */
+  blockTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['Int']['output']>;
   /** Maximum of liquidity across the matching connection */
@@ -19453,6 +19691,7 @@ export type RangeOrderFillMinAggregateFilter = {
   baseReceivedAmount?: InputMaybe<BigFloatFilter>;
   baseReceivedAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<IntFilter>;
+  blockTimestamp?: InputMaybe<DatetimeFilter>;
   id?: InputMaybe<IntFilter>;
   liquidity?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<IntFilter>;
@@ -19482,6 +19721,8 @@ export type RangeOrderFillMinAggregates = {
   baseReceivedAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of block across the matching connection */
   block?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of blockTimestamp across the matching connection */
+  blockTimestamp?: Maybe<Scalars['Datetime']['output']>;
   /** Minimum of id across the matching connection */
   id?: Maybe<Scalars['Int']['output']>;
   /** Minimum of liquidity across the matching connection */
@@ -21268,12 +21509,24 @@ export type _PrismaMigrationMaxAggregates = {
   __typename?: '_PrismaMigrationMaxAggregates';
   /** Maximum of appliedStepsCount across the matching connection */
   appliedStepsCount?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of finishedAt across the matching connection */
+  finishedAt?: Maybe<Scalars['Datetime']['output']>;
+  /** Maximum of rolledBackAt across the matching connection */
+  rolledBackAt?: Maybe<Scalars['Datetime']['output']>;
+  /** Maximum of startedAt across the matching connection */
+  startedAt?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type _PrismaMigrationMinAggregates = {
   __typename?: '_PrismaMigrationMinAggregates';
   /** Minimum of appliedStepsCount across the matching connection */
   appliedStepsCount?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of finishedAt across the matching connection */
+  finishedAt?: Maybe<Scalars['Datetime']['output']>;
+  /** Minimum of rolledBackAt across the matching connection */
+  rolledBackAt?: Maybe<Scalars['Datetime']['output']>;
+  /** Minimum of startedAt across the matching connection */
+  startedAt?: Maybe<Scalars['Datetime']['output']>;
 };
 
 export type _PrismaMigrationStddevPopulationAggregates = {
@@ -21346,14 +21599,20 @@ export type _PrismaMigrationsGroupBy =
   | 'FINISHED_AT'
   | 'FINISHED_AT_TRUNCATED_TO_DAY'
   | 'FINISHED_AT_TRUNCATED_TO_HOUR'
+  | 'FINISHED_AT_TRUNCATED_TO_MONTH'
+  | 'FINISHED_AT_TRUNCATED_TO_WEEK'
   | 'LOGS'
   | 'MIGRATION_NAME'
   | 'ROLLED_BACK_AT'
   | 'ROLLED_BACK_AT_TRUNCATED_TO_DAY'
   | 'ROLLED_BACK_AT_TRUNCATED_TO_HOUR'
+  | 'ROLLED_BACK_AT_TRUNCATED_TO_MONTH'
+  | 'ROLLED_BACK_AT_TRUNCATED_TO_WEEK'
   | 'STARTED_AT'
   | 'STARTED_AT_TRUNCATED_TO_DAY'
-  | 'STARTED_AT_TRUNCATED_TO_HOUR';
+  | 'STARTED_AT_TRUNCATED_TO_HOUR'
+  | 'STARTED_AT_TRUNCATED_TO_MONTH'
+  | 'STARTED_AT_TRUNCATED_TO_WEEK';
 
 export type _PrismaMigrationsHavingAverageInput = {
   appliedStepsCount?: InputMaybe<HavingIntFilter>;
