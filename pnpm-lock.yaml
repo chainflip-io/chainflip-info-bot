@@ -15,8 +15,8 @@ importers:
         specifier: ^6.13.0
         version: 6.13.0
       '@chainflip/delegation':
-        specifier: ^1.11.1
-        version: 1.11.1(typescript@5.9.2)(zod@4.1.11)
+        specifier: ^1.11.3
+        version: 1.11.3(typescript@5.9.2)(zod@4.1.11)
       '@chainflip/utils':
         specifier: ^0.8.19
         version: 0.8.19
@@ -247,8 +247,8 @@ packages:
   '@bull-board/ui@6.13.0':
     resolution: {integrity: sha512-63I6b3nZnKWI5ok6mw/Tk2rIObuzMTY/tLGyO51p0GW4rAImdXxrK6mT7j4SgEuP2B+tt/8L1jU7sLu8MMcCNw==}
 
-  '@chainflip/delegation@1.11.1':
-    resolution: {integrity: sha512-D6Q60ARdAZjbhH2Ji0TmPLWJHrl4q+20hfXKEZ9fKe2H/wKzHEJ5Bk0MKYQGBFbw/FRmTGZZkl7lsWre++7VgA==}
+  '@chainflip/delegation@1.11.3':
+    resolution: {integrity: sha512-HYGxwZf6pSqMFKlolYiIytgjIKUlREfLdfgpSRa46oQNxa4X5Vay7smbTAeRamVDVZNSDiopKB0SNlPj2Ag1SQ==}
 
   '@chainflip/eslint-config@1.0.7':
     resolution: {integrity: sha512-JoEeiqsnpN6lUC97c6sf88mbo9W+BzWIm/Wq0Mj9DjFkl5neLKh+xOSzT0E755+ZiWPy4v9LPOl8gpAtx6wGwQ==}
@@ -3389,8 +3389,8 @@ packages:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
-  viem@2.37.9:
-    resolution: {integrity: sha512-XXUOE5yJcjr9/M9kRoQcPMUfetwHprO9aTho6vNELjBKJIBx7rYq1fjvBw+xEnhsRjhh5lsORi6B0h8fYFB7NA==}
+  viem@2.37.13:
+    resolution: {integrity: sha512-05dh56iMmCyjRLcTIiu8bB4zZLnb9uLOVToDwmBLYDarmoOE8d8SLFkQLc2zLU57FlnYCQIO1VbUviGZYwFGgQ==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -3738,11 +3738,11 @@ snapshots:
     dependencies:
       '@bull-board/api': 6.13.0(@bull-board/ui@6.13.0)
 
-  '@chainflip/delegation@1.11.1(typescript@5.9.2)(zod@4.1.11)':
+  '@chainflip/delegation@1.11.3(typescript@5.9.2)(zod@4.1.11)':
     dependencies:
       '@chainflip/utils': 0.8.22
       scale-ts: 1.6.1
-      viem: 2.37.9(typescript@5.9.2)(zod@4.1.11)
+      viem: 2.37.13(typescript@5.9.2)(zod@4.1.11)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -7260,7 +7260,7 @@ snapshots:
 
   uuid@11.1.0: {}
 
-  viem@2.37.9(typescript@5.9.2)(zod@4.1.11):
+  viem@2.37.13(typescript@5.9.2)(zod@4.1.11):
     dependencies:
       '@noble/curves': 1.9.1
       '@noble/hashes': 1.8.0
