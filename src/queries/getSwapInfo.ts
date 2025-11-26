@@ -1,3 +1,4 @@
+import { ChainflipAsset } from '@chainflip/utils/chainflip';
 import { brokerAliasMap } from '@chainflip/utils/consts';
 import { isNotNullish } from '@chainflip/utils/guard';
 import { abbreviate } from '@chainflip/utils/string';
@@ -144,8 +145,8 @@ export default async function getSwapInfo(nativeId: `${number}`) {
     chunkIntervalBlocks,
     dcaChunks,
     minPrice,
-    sourceAsset,
-    destinationAsset,
+    sourceAsset: sourceAsset as Exclude<ChainflipAsset, 'Dot'>,
+    destinationAsset: destinationAsset as Exclude<ChainflipAsset, 'Dot'>,
     completedAt,
     boostFee,
     onChainInfo: swap.onChainInfo,

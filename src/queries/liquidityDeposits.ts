@@ -19,7 +19,7 @@ export const getLatestDepositId = async () => {
 };
 
 export type NewDeposit = {
-  asset: ChainflipAsset;
+  asset: Exclude<ChainflipAsset, 'Dot'>;
   depositAmount: string;
   depositValueUsd: `${number}`;
   lpIdSs58: string;
@@ -48,6 +48,7 @@ export default async function checkForFirstNewLpDeposits(id: number): Promise<Ne
         ? undefined
         : {
             ...uniqueDeposit,
+            asset: uniqueDeposit.asset as Exclude<ChainflipAsset, 'Dot'>,
             depositAmount: toFormattedAmount(uniqueDeposit.depositAmount, uniqueDeposit.asset),
             lpIdSs58: uniqueDeposit.lp.account.idSs58,
             timestamp: uniqueDeposit.event.block.timestamp,

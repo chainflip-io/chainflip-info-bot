@@ -4,7 +4,6 @@ export const humanFriendlyAsset: InternalAssetMap<string> = {
   ArbEth: 'ETH on Arbitrum',
   ArbUsdc: 'USDC on Arbitrum',
   Btc: 'BTC',
-  Dot: 'DOT',
   Eth: 'ETH on Ethereum',
   Flip: 'FLIP on Ethereum',
   Sol: 'SOL',

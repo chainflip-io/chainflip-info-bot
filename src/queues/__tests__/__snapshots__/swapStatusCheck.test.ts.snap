@@ -130,15 +130,14 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
       "data": {
         "filterData": {
           "name": "SWAP_COMPLETED",
-          "usdValue": 107.1607382721,
+          "usdValue": 1593.7622579566,
         },
-        "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/106495">#106495</a></strong>
-📥 <strong>20 DOT</strong> ($108.49)
-📤 <strong>107.196933 USDC on Arbitrum</strong> ($107.16)
-⏱️ Took: <strong>15 sec</strong>
-⚪️ Delta: <strong>-$1.33</strong> (-1.22%)
-🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFJZVRaybb2PBwxTiAiRLiQfHY4KPB3RpJK22Q7Fhqk979aCH">Broker as a Service</a></strong>
-🏰 Affiliate: <strong><a href="https://scan.chainflip.io/brokers/cFMYQgx3LhxLNDEiFC5nLXp5r1ZUrXocrQDqJB1Z3mqEegT6g">SubWallet</a> </strong>",
+        "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/106523">#106523</a></strong>
+📥 <strong>0.5 ETH on Ethereum</strong> ($1,618.99)
+📤 <strong>7.429231 SOL</strong> ($1,593.76)
+⏱️ Took: <strong>1 min</strong>
+⚪️ Delta: <strong>-$25.22</strong> (-1.56%)
+🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -147,15 +146,14 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
       "data": {
         "filterData": {
           "name": "SWAP_COMPLETED",
-          "usdValue": 107.1607382721,
+          "usdValue": 1593.7622579566,
         },
-        "message": "🦐 Swap **[#106495](https://scan.chainflip.io/swaps/106495)**
-📥 **20 DOT** ($108.49)
-📤 **107.196933 USDC on Arbitrum** ($107.16)
-⏱️ Took: **15 sec**
-⚪️ Delta: **-$1.33** (-1.22%)
-🏦 via **[Broker as a Service](https://scan.chainflip.io/brokers/cFJZVRaybb2PBwxTiAiRLiQfHY4KPB3RpJK22Q7Fhqk979aCH)**
-🏰 Affiliate: **[SubWallet](https://scan.chainflip.io/brokers/cFMYQgx3LhxLNDEiFC5nLXp5r1ZUrXocrQDqJB1Z3mqEegT6g) **",
+        "message": "🦐 Swap **[#106523](https://scan.chainflip.io/swaps/106523)**
+📥 **0.5 ETH on Ethereum** ($1,618.99)
+📤 **7.429231 SOL** ($1,593.76)
+⏱️ Took: **1 min**
+⚪️ Delta: **-$25.22** (-1.56%)
+🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -164,15 +162,14 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
       "data": {
         "filterData": {
           "name": "SWAP_COMPLETED",
-          "usdValue": 107.1607382721,
+          "usdValue": 1593.7622579566,
         },
-        "message": "🦐 Swap https://scan.chainflip.io/swaps/106495
-📥 20 DOT ($108.49)
-📤 107.196933 USDC on Arbitrum ($107.16)
-⏱️ Took: 15 sec
-⚪️ Delta: -$1.33 (-1.22%)
-🏦 via Broker as a Service
-🏰 Affiliate: SubWallet 
+        "message": "🦐 Swap https://scan.chainflip.io/swaps/106523
+📥 0.5 ETH on Ethereum ($1,618.99)
+📤 7.429231 SOL ($1,593.76)
+⏱️ Took: 1 min
+⚪️ Delta: -$25.22 (-1.56%)
+🏦 via Chainflip SDK
 #chainflip $flip",
         "platform": "twitter",
       },

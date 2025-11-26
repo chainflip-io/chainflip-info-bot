@@ -112,7 +112,7 @@ describe('swapStatusCheck', () => {
 
   it('contains affiliate broker info in swap message', async () => {
     vi.setSystemTime(new Date('2024-11-10T18:46:00.001+00:00'));
-    const nativeId = '106495';
+    const nativeId = '106523';
 
     const dispatchJobs = vi.fn();
     await config.processJob(dispatchJobs)({
