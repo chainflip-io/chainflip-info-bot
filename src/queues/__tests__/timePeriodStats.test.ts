@@ -447,5 +447,63 @@ describe('time period stats', () => {
       expect(dispatchJobs).not.toHaveBeenCalled();
       expect(getSwapVolumeStats).not.toHaveBeenCalled();
     });
+
+    it('does not skip stale jobs if allowStale is true', async () => {
+      vi.setSystemTime(new Date('2024-10-29T12:34:56Z'));
+      vi.mocked(getSwapVolumeStats)
+        .mockResolvedValueOnce({
+          totalFlipBurned: new BigNumber('1000.00'),
+          networkFees: new BigNumber('3000.00'),
+          swapVolume: new BigNumber('4000.00'),
+          boostFees: new BigNumber('5000.00'),
+        })
+        .mockResolvedValueOnce({
+          totalFlipBurned: new BigNumber('1000.00').times(7),
+          networkFees: new BigNumber('3000.00').times(7),
+          swapVolume: new BigNumber('4000.00').times(7),
+          boostFees: new BigNumber('5000.00'),
+        })
+        .mockRejectedValue(Error('unexpected call'));
+
+      vi.mocked(getLpFills).mockResolvedValue([
+        {
+          idSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
+          alias: 'ChainflipGod',
+          filledAmountValueUsd: new BigNumber('1000.00'),
+          percentage: '10.00',
+          type: 'LIQUIDITY_PROVIDER',
+        },
+      ]);
+
+      vi.mocked(getBoostSummary)
+        .mockResolvedValueOnce({
+          boostedAmount: new BigNumber('17.62890095'),
+          boostedAmountUsd: new BigNumber('1189844.1064157963'),
+          earnedBoostFee: new BigNumber('0.00880322'),
+          earnedBoostFeeUsd: new BigNumber('594.1637309781'),
+          apys: [{ feeTiers: 5, currentApy: '21.35%' }],
+        })
+        .mockResolvedValueOnce({
+          boostedAmount: new BigNumber('17.62890095').times(7),
+          boostedAmountUsd: new BigNumber('1189844.1064157963').times(7),
+          earnedBoostFee: new BigNumber('0.00880322').times(7),
+          earnedBoostFeeUsd: new BigNumber('594.1637309781').times(7),
+          apys: [{ feeTiers: 5, currentApy: '21.35%' }],
+        })
+        .mockRejectedValue(Error('unexpected call'));
+
+      const dispatchJobs = vi.fn();
+
+      const endOfPeriod = endOfDay(new Date('2024-10-25T12:34:56Z'), { in: utc });
+
+      await expect(
+        config.processJob(dispatchJobs)({
+          data: { endOfPeriod: endOfPeriod.valueOf(), sendWeeklySummary: false, allowStale: true },
+        } as Job<JobData['timePeriodStats'], any, any>),
+      ).resolves.not.toThrow();
+
+      expect(dispatchJobs).toHaveBeenCalledTimes(1);
+      expect(getSwapVolumeStats).toHaveBeenCalledTimes(1);
+    });
   });
 });
