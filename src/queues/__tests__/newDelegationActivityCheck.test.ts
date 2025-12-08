@@ -1,9 +1,20 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { config } from '../newDelegationAcitivityCheck.js';
 
 describe('newDelegationActivityCheck', () => {
   describe(config.processJob, () => {
+    beforeEach(() => {
+      // tell vitest we use mocked time
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      // restoring date after each test run
+      vi.useRealTimers();
+    });
+
     it('enqueues the next job with the same id', async () => {
+      vi.setSystemTime(new Date('2025-10-03T10:28:18+00:00'));
       const dispatchJobs = vi.fn();
 
       await config.processJob(dispatchJobs)({
@@ -38,6 +49,7 @@ describe('newDelegationActivityCheck', () => {
     });
 
     it('sends messages', async () => {
+      vi.setSystemTime(new Date('2025-10-03T10:28:18+00:00'));
       const dispatchJobs = vi.fn();
 
       await config.processJob(dispatchJobs)({

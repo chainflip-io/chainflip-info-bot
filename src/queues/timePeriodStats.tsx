@@ -26,6 +26,7 @@ const name = 'timePeriodStats';
 type Data = {
   endOfPeriod: number;
   sendWeeklySummary: boolean;
+  allowStale?: boolean;
 };
 
 declare global {
@@ -202,7 +203,8 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
 
   const timeElapsedSinceEndOfPeriod = Date.now() - endOfPeriod;
 
-  if (timeElapsedSinceEndOfPeriod > hoursToMilliseconds(12)) {
+  const isStale = timeElapsedSinceEndOfPeriod > hoursToMilliseconds(12);
+  if (!job.data.allowStale && isStale) {
     logger.warn('discarding stale job');
     throw new UnrecoverableError('job is stale');
   }
