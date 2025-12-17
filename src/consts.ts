@@ -1,6 +1,6 @@
 import { InternalAssetMap } from '@chainflip/utils/chainflip';
 
-export const humanFriendlyAsset: InternalAssetMap<string> = {
+export const humanFriendlyAsset: InternalAssetMap<string> & { Dot: string } = {
   ArbEth: 'ETH on Arbitrum',
   ArbUsdc: 'USDC on Arbitrum',
   Btc: 'BTC',
