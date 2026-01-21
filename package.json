@@ -42,7 +42,7 @@
   "dependencies": {
     "@bull-board/api": "^6.13.0",
     "@bull-board/fastify": "^6.13.0",
-    "@chainflip/delegation": "^1.11.1",
+    "@chainflip/delegation": "^1.11.3",
     "@chainflip/utils": "^0.11.3",
     "@date-fns/utc": "^2.1.1",
     "axios": "^1.12.2",
