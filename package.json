@@ -52,7 +52,7 @@
     "discord.js": "^14.22.1",
     "dotenv": "^17.2.3",
     "fastify": "^5.6.1",
-    "graphql": "^16.11.0",
+    "graphql": "^16.12.0",
     "graphql-request": "^7.2.0",
     "ioredis": "^5.9.2",
     "oauth-1.0a": "^2.2.6",
