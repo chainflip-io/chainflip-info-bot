@@ -48,8 +48,8 @@ importers:
         specifier: ^16.12.0
         version: 16.12.0
       graphql-request:
-        specifier: ^7.2.0
-        version: 7.2.0(graphql@16.12.0)
+        specifier: ^7.4.0
+        version: 7.4.0(graphql@16.12.0)
       ioredis:
         specifier: ^5.9.2
         version: 5.9.2
@@ -2128,8 +2128,8 @@ packages:
       cosmiconfig-toml-loader:
         optional: true
 
-  graphql-request@7.2.0:
-    resolution: {integrity: sha512-0GR7eQHBFYz372u9lxS16cOtEekFlZYB2qOyq8wDvzRmdRSJ0mgUVX1tzNcIzk3G+4NY+mGtSz411wZdeDF/+A==}
+  graphql-request@7.4.0:
+    resolution: {integrity: sha512-xfr+zFb/QYbs4l4ty0dltqiXIp07U6sl+tOKAb0t50/EnQek6CVVBLjETXi+FghElytvgaAWtIOt3EV7zLzIAQ==}
     peerDependencies:
       graphql: 14 - 16
 
@@ -5999,7 +5999,7 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  graphql-request@7.2.0(graphql@16.12.0):
+  graphql-request@7.4.0(graphql@16.12.0):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.12.0)
       graphql: 16.12.0
