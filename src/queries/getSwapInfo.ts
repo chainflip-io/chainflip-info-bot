@@ -7,6 +7,7 @@ import env from '../env.js';
 import { getSwapInfoByNativeIdQuery } from './explorer.js';
 import { explorerClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
+import { unrecoverableAssert } from '../utils/functions.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
 import { getSwapCompletionTime } from '../utils/swaps.js';
 
@@ -32,6 +33,10 @@ export default async function getSwapInfo(nativeId: `${number}`) {
   }
 
   const { sourceChain, sourceAsset, destinationAsset, completedEventId, fokMinPriceX128 } = swap;
+
+  unrecoverableAssert(sourceAsset !== 'Dot', 'Source asset should not be Dot');
+  unrecoverableAssert(destinationAsset !== 'Dot', 'Destination asset should not be Dot');
+
   const depositChannelCreationTimestamp = swap.swapChannel?.issuedBlockTimestamp;
   const depositTimestamp = swap.depositBlock?.stateChainTimestamp;
   const preDepositBlockTimestamp = swap.preDepositBlock?.stateChainTimestamp;

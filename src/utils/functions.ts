@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import { UnrecoverableError } from 'bullmq';
 import logger from './logger.js';
 
 const cleanupFns = new Set<() => void>();
@@ -43,4 +44,10 @@ export function formatUsdValue(
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(BigNumber.isBigNumber(value) ? value.toNumber() : value);
+}
+
+export function unrecoverableAssert(condition: unknown, message?: string): asserts condition {
+  if (!condition) {
+    throw new UnrecoverableError(message || 'Unrecoverable assertion failed');
+  }
 }

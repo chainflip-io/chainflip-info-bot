@@ -1,0 +1,57 @@
+{
+  "swap": {
+    "completedEventId": "14911686263",
+    "nativeId": "1318809",
+    "depositAmount": "100000000000000000",
+    "depositValueUsd": "198.905053204400000000000000000000",
+    "sourceChain": "Ethereum",
+    "fokMinPriceX128": "7803952447396202698778886537216",
+    "dcaNumberOfChunks": 1,
+    "dcaChunkIntervalBlocks": null,
+    "destinationAsset": "Sol",
+    "destinationAddress": "7JRjYvEeidYFtyFBxR13JL1JSikP9ckgNKiS6izi3a1D",
+    "sourceAsset": "Eth",
+    "effectiveBoostFeeBps": null,
+    "broker": {
+      "account": {
+        "alias": null,
+        "idSs58": "cFNwtr2mPhpUEB5AyJq38DqMKMkSdzaL9548hajN2DRTwh7Mq"
+      }
+    },
+    "beneficiaries": {
+      "nodes": [
+        {
+          "account": {
+            "idSs58": "cFPDEjR88FyRi7V5NDatoMAyMCczgiyoXwiJA4LZLrR7e6RW4",
+            "alias": null
+          }
+        }
+      ]
+    },
+    "egress": {
+      "amount": "2405154494",
+      "valueUsd": "197.298103317300000000000000000000",
+      "scheduledEvent": {
+        "block": { "timestamp": "2026-02-11T14:29:54+00:00" }
+      }
+    },
+    "refundEgress": null,
+    "swapChannel": {
+      "issuedBlockTimestamp": "2026-02-11T14:28:36+00:00",
+      "depositAddress": "0xb81bce531f3acb835e91e8d46a42522f9a236675"
+    },
+    "preDepositBlock": { "stateChainTimestamp": "2026-02-11T14:28:42+00:00" },
+    "depositBlock": { "stateChainTimestamp": "2026-02-11T14:28:54+00:00" },
+    "completedEvent": { "block": { "timestamp": "2026-02-11T14:29:54+00:00" } },
+    "executedSwaps": { "totalCount": 1 },
+    "boostFee": { "nodes": [] },
+    "transactionRefs": {
+      "nodes": [
+        {
+          "ref": "0x9ce1871a57d16e71aecb90d0c53a3d7e3be23bd39f9ee5c1d2fcd4bf4320335f"
+        }
+      ]
+    },
+    "onChainInfo": null
+  }
+}
