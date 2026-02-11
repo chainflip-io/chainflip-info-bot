@@ -26,39 +26,15 @@ describe('checkForFirstNewLpDeposits', () => {
       [
         {
           "asset": "Eth",
-          "chain": "Ethereum",
           "depositAmount": "1.2",
-          "event": {
-            "block": {
-              "timestamp": "2021-08-10T00:00:00Z",
-            },
-          },
-          "id": 9,
-          "lp": {
-            "account": {
-              "idSs58": "cf111111test",
-            },
-            "id": 1,
-          },
+          "depositValueUsd": undefined,
           "lpIdSs58": "cf111111test",
           "timestamp": "2021-08-10T00:00:00Z",
         },
         {
           "asset": "Btc",
-          "chain": "Bitcoin",
           "depositAmount": "1",
-          "event": {
-            "block": {
-              "timestamp": "2021-08-10T00:00:00Z",
-            },
-          },
-          "id": 12,
-          "lp": {
-            "account": {
-              "idSs58": "cf222222test",
-            },
-            "id": 2,
-          },
+          "depositValueUsd": undefined,
           "lpIdSs58": "cf222222test",
           "timestamp": "2021-08-10T00:00:00Z",
         },
