@@ -58,7 +58,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   await dispatchJobs([data, ...swapRequestJobs]);
 
-  logger.info({ newSwapRequests }, `Found ${newSwapRequests.length} new swap requests`);
+  logger.info(`Found ${newSwapRequests.length} new swap requests`, { newSwapRequests });
 };
 
 export const config: JobConfig<Name> = {

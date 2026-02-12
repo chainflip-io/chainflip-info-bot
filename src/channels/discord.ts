@@ -18,7 +18,7 @@ export const login = async (token: string) => {
     resolve();
   });
   client.once('debug', (obj) => {
-    logger.debug(obj, 'discord debug');
+    logger.debug('discord debug', { obj });
   });
   client.once('error', (error) => {
     throw new Error(`Discord: an error occurred on discord connection: ${error}`);

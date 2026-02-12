@@ -93,14 +93,14 @@ const buildMessageData = ({
   });
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  logger.info(job.data, 'Alerting about new swap request');
+  logger.info('Alerting about new swap request', job.data);
 
   const swapInfo = await getSwapInfo(job.data.swapRequestId);
 
   if (swapInfo.freshness !== 'stale') {
     await dispatchJobs(buildMessageData({ swapInfo }));
   } else {
-    logger.warn({ swapRequestId: job.data.swapRequestId }, 'skipping stale job');
+    logger.warn('skipping stale job', { swapRequestId: job.data.swapRequestId });
   }
 };
 
