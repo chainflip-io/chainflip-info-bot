@@ -26,7 +26,9 @@ handleExit(async () => {
   const handlers = cleanup.splice(0, cleanup.length).reverse();
 
   for (const handler of handlers) {
-    await handler().catch((error) => logger.error(error));
+    await handler().catch((error: unknown) =>
+      logger.error(error instanceof Error ? error.message : String(error), { error }),
+    );
   }
 });
 
@@ -67,11 +69,11 @@ const createQueue = async <N extends JobName>(
   const events = new QueueEvents(name, { connection: redis });
 
   events.on('deduplicated', (info) => {
-    logger.error(info, 'deduplicated');
+    logger.error('deduplicated', { info });
   });
 
   events.on('error', (error) => {
-    logger.error({ error, queue: name }, 'error in queue');
+    logger.error('error in queue', { error, queue: name });
   });
 
   const worker = new Worker<JobData[N], void, N>(
@@ -123,7 +125,7 @@ export const initialize = async () => {
         })),
       );
     } catch (error) {
-      logger.error(error);
+      logger.error(error instanceof Error ? error.message : String(error), { error });
       throw error;
     }
   };

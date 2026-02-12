@@ -198,7 +198,7 @@ const buildMessages = ({
   });
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
-  logger.info(job.data, 'Processing time period stats');
+  logger.info('Processing time period stats', job.data);
   const { endOfPeriod, sendWeeklySummary } = job.data;
 
   const timeElapsedSinceEndOfPeriod = Date.now() - endOfPeriod;
@@ -253,7 +253,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
 
   await dispatchJobs(jobs);
 
-  logger.info({ newJobs: jobs.length }, 'Processed time period stats');
+  logger.info('Processed time period stats', { newJobs: jobs.length });
 };
 
 export const config: JobConfig<typeof name> = {

@@ -11,7 +11,7 @@ export const explorerClient = new GraphQLClient(env.EXPLORER_GATEWAY_URL);
 export const lpClient = new GraphQLClient(env.LP_GATEWAY_URL);
 
 export const createServer = (queues: QueueMap) => {
-  const app = fastify({ loggerInstance: logger, disableRequestLogging: true });
+  const app = fastify({ logger: false });
 
   const serverAdapter = new FastifyAdapter();
 
