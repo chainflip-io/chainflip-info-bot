@@ -18,8 +18,8 @@ importers:
         specifier: ^1.11.3
         version: 1.11.3(typescript@5.9.3)(zod@4.3.6)
       '@chainflip/utils':
-        specifier: ^0.11.3
-        version: 0.11.3
+        specifier: ^2.1.0
+        version: 2.1.0
       '@date-fns/utc':
         specifier: ^2.1.1
         version: 2.1.1
@@ -260,11 +260,11 @@ packages:
       globals: ^15.11.0
       typescript-eslint: ^8.10.0
 
-  '@chainflip/utils@0.11.3':
-    resolution: {integrity: sha512-Jtt/RuKvVnFoysH/GRI+LscuLe5LZyVX2yF/dHEVg6eh376P4pyoLTrBIK5HyvX1eNrXoh5cHlX2ACAmGjEZ4g==}
-
   '@chainflip/utils@0.8.22':
     resolution: {integrity: sha512-VVerCmYtxW6rk3HCKnJzYAC60kf8Xv66Sp7ittMzpuJ9kzu+IeycY6lHv/I7GJnagy3zeuL6PNGWqdAMpuF+TQ==}
+
+  '@chainflip/utils@2.1.0':
+    resolution: {integrity: sha512-40bNhTaSzQHDAMv2m/QAckwEzsVXmXrdkhDcd+CRil9JFUSeWUlRxRKcwlbtp7FyrA3ql+0G7Guw8+LsX2Jlhw==}
 
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
@@ -1229,6 +1229,10 @@ packages:
   '@noble/hashes@1.8.0':
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
     engines: {node: ^14.21.3 || >=16}
+
+  '@noble/hashes@2.0.1':
+    resolution: {integrity: sha512-XlOlEbQcE9fmuXxrVTXCTlG2nlRXa9Rj3rr5Ue/+tX+nmkgbX720YHh0VR3hBF9xDvwnb8D2shVGOwNx+ulArw==}
+    engines: {node: '>= 20.19.0'}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -4040,15 +4044,16 @@ snapshots:
       globals: 17.3.0
       typescript-eslint: 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
 
-  '@chainflip/utils@0.11.3':
+  '@chainflip/utils@0.8.22':
     dependencies:
       '@date-fns/utc': 2.1.1
       bignumber.js: 9.3.1
       date-fns: 4.1.0
 
-  '@chainflip/utils@0.8.22':
+  '@chainflip/utils@2.1.0':
     dependencies:
       '@date-fns/utc': 2.1.1
+      '@noble/hashes': 2.0.1
       bignumber.js: 9.3.1
       date-fns: 4.1.0
 
@@ -5111,6 +5116,8 @@ snapshots:
       '@noble/hashes': 1.8.0
 
   '@noble/hashes@1.8.0': {}
+
+  '@noble/hashes@2.0.1': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
