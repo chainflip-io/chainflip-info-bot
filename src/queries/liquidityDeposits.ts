@@ -19,7 +19,7 @@ export const getLatestDepositId = async () => {
 };
 
 export type NewDeposit = {
-  asset: ChainflipAsset;
+  asset: Exclude<ChainflipAsset, 'Dot'>;
   depositAmount: string;
   depositValueUsd: `${number}`;
   lpIdSs58: string;
@@ -47,7 +47,8 @@ export default async function checkForFirstNewLpDeposits(id: number): Promise<Ne
       return deposits?.nodes && deposits.nodes.length > 0
         ? undefined
         : {
-            ...uniqueDeposit,
+            asset: uniqueDeposit.asset,
+            depositValueUsd: uniqueDeposit.depositValueUsd,
             depositAmount: toFormattedAmount(uniqueDeposit.depositAmount, uniqueDeposit.asset),
             lpIdSs58: uniqueDeposit.lp.account.idSs58,
             timestamp: uniqueDeposit.event.block.timestamp,
@@ -55,5 +56,5 @@ export default async function checkForFirstNewLpDeposits(id: number): Promise<Ne
     }),
   );
 
-  return checkedDeposits.filter(isNotNullish);
+  return checkedDeposits.filter(isNotNullish).filter((d): d is NewDeposit => d.asset !== 'Dot');
 }

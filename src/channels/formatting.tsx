@@ -123,7 +123,7 @@ export const TokenAmount = ({
   hideChain,
 }: {
   amount: BigNumber;
-  asset: ChainflipAsset;
+  asset: Exclude<ChainflipAsset, 'Dot'>;
   hideChain?: boolean;
 }) => {
   let readableAsset = humanFriendlyAsset[asset];
