@@ -1,4 +1,4 @@
-import { assetConstants, type ChainflipAsset } from '@chainflip/utils/chainflip';
+import { anyAssetConstants, type AnyChainflipAsset } from '@chainflip/utils/chainflip';
 import assert from 'assert';
 import BigNumber from 'bignumber.js';
 
@@ -9,24 +9,27 @@ export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumb
   return new BigNumber(amount);
 }
 
-export function toAssetAmount(amount: BigNumber.Value, chainflipAsset: ChainflipAsset): BigNumber;
+export function toAssetAmount(
+  amount: BigNumber.Value,
+  chainflipAsset: AnyChainflipAsset,
+): BigNumber;
 export function toAssetAmount(
   amount: BigNumber.Value | null | undefined,
-  chainflipAsset: ChainflipAsset,
+  chainflipAsset: AnyChainflipAsset,
 ): BigNumber | null;
 export function toAssetAmount(
   amount: BigNumber.Value | null | undefined,
-  chainflipAsset: ChainflipAsset,
+  chainflipAsset: AnyChainflipAsset,
 ): BigNumber | null {
   if (amount == null) return null;
-  return new BigNumber(amount).shiftedBy(-assetConstants[chainflipAsset].decimals);
+  return new BigNumber(amount).shiftedBy(-anyAssetConstants[chainflipAsset].decimals);
 }
 
 export function toFormattedAmount(amount: BigNumber): string;
-export function toFormattedAmount(amount: string, chainflipAsset: ChainflipAsset): string;
+export function toFormattedAmount(amount: string, chainflipAsset: AnyChainflipAsset): string;
 export function toFormattedAmount(
   amount: BigNumber | string,
-  chainflipAsset?: ChainflipAsset,
+  chainflipAsset?: AnyChainflipAsset,
 ): string {
   let bigNumber;
 
