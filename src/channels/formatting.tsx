@@ -1,5 +1,5 @@
 import { unreachable } from '@chainflip/utils/assertion';
-import { type ChainflipAsset, type ChainflipChain } from '@chainflip/utils/chainflip';
+import { AnyChainflipChain, type ChainflipAsset } from '@chainflip/utils/chainflip';
 import assert from 'assert';
 import type BigNumber from 'bignumber.js';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -70,7 +70,7 @@ export const Link = ({
 };
 
 const explorerInfo: Record<
-  ChainflipChain | 'Chainflip',
+  AnyChainflipChain | 'Chainflip',
   { url: string; fmt: (txId: string) => string }
 > = {
   Arbitrum: { url: 'https://arbiscan.io', fmt: (ref) => `/tx/${ref}` },
@@ -91,7 +91,7 @@ export const ExplorerLink = ({
   children: string | string[];
   path: string;
   prefer: 'text' | 'link';
-  chain?: ChainflipChain;
+  chain?: AnyChainflipChain;
 }) => {
   const { url, fmt } = explorerInfo[chain ?? 'Chainflip'];
 

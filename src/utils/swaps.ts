@@ -1,4 +1,4 @@
-import { chainConstants, type ChainflipChain } from '@chainflip/utils/chainflip';
+import { anyChainConstants, type AnyChainflipChain } from '@chainflip/utils/chainflip';
 import { differenceInTimeAgo, intervalToDurationWords } from '@chainflip/utils/date';
 import { subMilliseconds } from 'date-fns';
 
@@ -12,7 +12,7 @@ export const getSwapCompletionTime = ({
 }: {
   depositTimestamp: Date;
   egressTimestamp: Date;
-  sourceChain: ChainflipChain;
+  sourceChain: AnyChainflipChain;
   depositChannelCreationTimestamp?: Date;
   preDepositBlockTimestamp?: Date;
   exact?: boolean;
@@ -27,7 +27,7 @@ export const getSwapCompletionTime = ({
 
     millisecondsToSubtract = (depositTimestamp.getTime() - preDepositTimestamp.getTime()) / 2;
   } else {
-    millisecondsToSubtract = (chainConstants[sourceChain].blockTimeSeconds / 2) * 1000;
+    millisecondsToSubtract = (anyChainConstants[sourceChain].blockTimeSeconds / 2) * 1000;
   }
 
   return exact
