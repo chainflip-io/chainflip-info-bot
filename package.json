@@ -44,7 +44,7 @@
     "@chainflip/delegation": "2.1.0",
     "@chainflip/utils": "2.1.4",
     "@date-fns/utc": "^2.1.1",
-    "axios": "^1.13.5",
+    "axios": "^1.13.6",
     "bignumber.js": "^9.3.1",
     "bullmq": "^5.69.3",
     "date-fns": "^4.1.0",
