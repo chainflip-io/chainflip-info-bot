@@ -45,7 +45,7 @@
     "@chainflip/utils": "2.1.4",
     "@date-fns/utc": "^2.1.1",
     "axios": "^1.13.5",
-    "bignumber.js": "^9.3.1",
+    "bignumber.js": "^10.0.2",
     "bullmq": "^5.69.3",
     "date-fns": "^4.1.0",
     "discord.js": "^14.25.1",
