@@ -182,6 +182,59 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
 ]
 `;
 
+exports[`swapStatusCheck > shows liquidation in message 1`] = `
+[
+  [
+    {
+      "data": {
+        "filterData": {
+          "name": "SWAP_COMPLETED",
+          "usdValue": 11.8108702681,
+        },
+        "message": "🦐 Liquidation Swap <strong><a href="https://scan.chainflip.io/swaps/1344351">#1344351</a></strong>
+📥 <strong>11.81082 USDC on Ethereum</strong> ($11.81)
+📤 <strong>11.81082 USDC on Ethereum</strong> ($11.81)
+↩️ <strong>0 USDC on Ethereum</strong> ($0.00)
+🟢 Delta: <strong>$0.00</strong> (0.00%)",
+        "platform": "telegram",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "SWAP_COMPLETED",
+          "usdValue": 11.8108702681,
+        },
+        "message": "🦐 Liquidation Swap **[#1344351](https://scan.chainflip.io/swaps/1344351)**
+📥 **11.81082 USDC on Ethereum** ($11.81)
+📤 **11.81082 USDC on Ethereum** ($11.81)
+↩️ **0 USDC on Ethereum** ($0.00)
+🟢 Delta: **$0.00** (0.00%)",
+        "platform": "discord",
+      },
+      "name": "messageRouter",
+    },
+    {
+      "data": {
+        "filterData": {
+          "name": "SWAP_COMPLETED",
+          "usdValue": 11.8108702681,
+        },
+        "message": "🦐 Liquidation Swap https://scan.chainflip.io/swaps/1344351
+📥 11.81082 USDC on Ethereum ($11.81)
+📤 11.81082 USDC on Ethereum ($11.81)
+↩️ 0 USDC on Ethereum ($0.00)
+🟢 Delta: $0.00 (0.00%)
+#chainflip $flip",
+        "platform": "twitter",
+      },
+      "name": "messageRouter",
+    },
+  ],
+]
+`;
+
 exports[`swapStatusCheck > subtracts out the refund egress amount from the ingress amount 1`] = `
 [
   [

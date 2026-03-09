@@ -1,0 +1,37 @@
+{
+  "swap": {
+    "completedEventId": "15131084506",
+    "nativeId": "1344351",
+    "depositAmount": null,
+    "depositValueUsd": null,
+    "isLiquidation": true,
+    "liquidationSwapInfo": {
+      "inputAmount": "11810820",
+      "inputValueUsd": "11.810638501800000000000000000000",
+      "outputAmount": "11810820",
+      "outputValueUsd": "11.810870268100000000000000000000",
+      "refundAmount": "0",
+      "refundValueUsd": "0.000000000000000000000000000000"
+    },
+    "sourceChain": "Ethereum",
+    "fokMinPriceX128": "0",
+    "dcaNumberOfChunks": 1,
+    "dcaChunkIntervalBlocks": 1,
+    "destinationAsset": "Usdc",
+    "destinationAddress": null,
+    "sourceAsset": "Usdc",
+    "effectiveBoostFeeBps": null,
+    "broker": null,
+    "beneficiaries": { "nodes": [] },
+    "egress": null,
+    "refundEgress": null,
+    "swapChannel": null,
+    "preDepositBlock": null,
+    "depositBlock": null,
+    "completedEvent": { "block": { "timestamp": "2026-02-21T09:27:18+00:00" } },
+    "executedSwaps": { "totalCount": 1 },
+    "boostFee": { "nodes": [] },
+    "transactionRefs": { "nodes": [] },
+    "onChainInfo": null
+  }
+}

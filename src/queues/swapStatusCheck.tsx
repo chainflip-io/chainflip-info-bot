@@ -59,7 +59,8 @@ const buildMessageData = ({
       platform,
       <>
         <Line>
-          {emoji(swapInfo.inputValueUsd)} Swap{' '}
+          {emoji(swapInfo.inputValueUsd)}
+          {swapInfo.isLiquidation && ' Liquidation'} Swap{' '}
           <Bold>
             <ExplorerLink path={`/swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}

@@ -28,7 +28,10 @@ export default async function getSwapInfo(nativeId: `${number}`) {
 
   const { swap } = data;
 
-  if (!swap.depositAmount) {
+  const depositAmount = swap.liquidationSwapInfo?.inputAmount ?? swap.depositAmount;
+  const depositValueUsd = swap.liquidationSwapInfo?.inputValueUsd ?? swap.depositValueUsd;
+
+  if (!depositAmount) {
     throw new UnrecoverableError('Deposit amount is missing');
   }
 
@@ -82,25 +85,33 @@ export default async function getSwapInfo(nativeId: `${number}`) {
   const minPrice =
     fokMinPriceX128 && getPriceFromPriceX128(fokMinPriceX128, sourceAsset, destinationAsset);
 
-  let swapInputAmount = toAssetAmount(swap.depositAmount, sourceAsset);
+  let swapInputAmount = toAssetAmount(depositAmount, sourceAsset);
 
   const outputAmount = toAssetAmount(
-    swap.onChainInfo?.outputAmount ?? swap.egress?.amount,
+    swap.liquidationSwapInfo?.outputAmount ?? swap.onChainInfo?.outputAmount ?? swap.egress?.amount,
     destinationAsset,
   );
 
-  const outputValueUsd = toUsdAmount(swap.onChainInfo?.outputValueUsd ?? swap.egress?.valueUsd);
+  const outputValueUsd = toUsdAmount(
+    swap.liquidationSwapInfo?.outputValueUsd ??
+      swap.onChainInfo?.outputValueUsd ??
+      swap.egress?.valueUsd,
+  );
 
   const refundAmount = toAssetAmount(
-    swap.onChainInfo?.refundAmount ?? swap.refundEgress?.amount,
+    swap.liquidationSwapInfo?.refundAmount ??
+      swap.onChainInfo?.refundAmount ??
+      swap.refundEgress?.amount,
     sourceAsset,
   );
 
   const refundValueUsd = toUsdAmount(
-    swap.onChainInfo?.refundValueUsd ?? swap.refundEgress?.valueUsd,
+    swap.liquidationSwapInfo?.refundValueUsd ??
+      swap.onChainInfo?.refundValueUsd ??
+      swap.refundEgress?.valueUsd,
   );
 
-  let swapInputValueUsd = toUsdAmount(swap.depositValueUsd);
+  let swapInputValueUsd = toUsdAmount(depositValueUsd);
   if (refundAmount) {
     const newDepositAmount = swapInputAmount.minus(refundAmount);
 
@@ -135,8 +146,8 @@ export default async function getSwapInfo(nativeId: `${number}`) {
   return {
     completedEventId,
     requestId: swap.nativeId,
-    inputAmount: toAssetAmount(swap.depositAmount, sourceAsset),
-    inputValueUsd: toUsdAmount(swap.depositValueUsd),
+    inputAmount: toAssetAmount(depositAmount, sourceAsset),
+    inputValueUsd: toUsdAmount(depositValueUsd),
     outputAmount,
     outputValueUsd,
     refundAmount,
@@ -153,6 +164,7 @@ export default async function getSwapInfo(nativeId: `${number}`) {
     destinationAsset,
     completedAt,
     boostFee,
+    isLiquidation: swap.isLiquidation,
     onChainInfo: swap.onChainInfo,
     depositAddress: swap.swapChannel?.depositAddress,
     destinationAddress: swap.destinationAddress,

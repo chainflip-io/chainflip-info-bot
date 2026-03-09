@@ -138,6 +138,15 @@ export const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       nativeId
       depositAmount
       depositValueUsd
+      isLiquidation
+      liquidationSwapInfo: liquidationSwapInfoBySwapRequestId {
+        inputAmount
+        inputValueUsd
+        outputAmount
+        outputValueUsd
+        refundAmount
+        refundValueUsd
+      }
       sourceChain
       fokMinPriceX128
       dcaNumberOfChunks

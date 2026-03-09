@@ -39,7 +39,7 @@ const buildMessageData = ({
       platform,
       <>
         <Line>
-          New swap detected:{' '}
+          New {swapInfo.isLiquidation && 'liquidation '}swap detected:{' '}
           <Bold>
             <ExplorerLink path={`/swaps/${swapInfo.requestId}`} prefer="link">
               #{swapInfo.requestId}
