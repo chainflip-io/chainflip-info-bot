@@ -1,6 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import pendingSwapStats from './pendingSwapStats.json' with { type: 'json' };
-
 import { explorerClient } from '../../server.js';
 import { config } from '../swapStatusCheck.js';
 
@@ -163,5 +162,18 @@ describe('swapStatusCheck', () => {
     } as any);
 
     expect(dispatchJobs.mock.calls).toMatchSnapshot();
+  });
+
+  it('shows liquidation in message', async () => {
+    vi.setSystemTime(new Date('2026-02-21T09:27:18+00:00'));
+
+    const dispatchJobs = vi.fn();
+    await config.processJob(dispatchJobs)({
+      data: {
+        swapRequestId: '1344351',
+      } as JobData['swapStatusCheck'],
+    } as any);
+
+    expect(dispatchJobs.mock.lastCall).toMatchSnapshot();
   });
 });

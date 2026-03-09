@@ -24,6 +24,7 @@ describe(getSwapInfo, () => {
         "freshness": "stale",
         "inputAmount": "5000",
         "inputValueUsd": "5568.0715811145",
+        "isLiquidation": false,
         "minPrice": "1.088693",
         "onChainInfo": null,
         "outputAmount": "5616.094932",
@@ -70,6 +71,7 @@ describe(getSwapInfo, () => {
         "freshness": "stale",
         "inputAmount": "0.0063",
         "inputValueUsd": "433.5718044229",
+        "isLiquidation": false,
         "minPrice": "28.027233685216537779",
         "onChainInfo": null,
         "outputAmount": "0.177273354596517176",
@@ -115,6 +117,7 @@ describe(getSwapInfo, () => {
         "freshness": "stale",
         "inputAmount": "0.01",
         "inputValueUsd": "29.3475104486",
+        "isLiquidation": false,
         "minPrice": "0.03891783",
         "onChainInfo": null,
         "outputAmount": null,
@@ -158,6 +161,7 @@ describe(getSwapInfo, () => {
         "freshness": "stale",
         "inputAmount": "85629.505422",
         "inputValueUsd": "85608.665259676",
+        "isLiquidation": false,
         "minPrice": "0.00000000",
         "onChainInfo": {
           "lp": {
