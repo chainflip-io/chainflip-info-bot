@@ -68,3 +68,66 @@ export const getIdSs58Query = gql(/* GraphQL */ `
     }
   }
 `);
+
+export const getLatestLoanUpdateIdQuery = gql(/* GraphQL */ `
+  query GetLatestLoanUpdateId {
+    updates: allLoanUpdates(first: 1, orderBy: ID_DESC) {
+      nodes {
+        id
+      }
+    }
+  }
+`);
+
+export const getNewLoanUpdateQuery = gql(/* GraphQL */ `
+  query GetNewLoanUpdate($id: Int!) {
+    updates: allLoanUpdates(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC, first: 1) {
+      nodes {
+        id
+        type
+        amount
+        amountValueUsd
+        timestamp
+        loanByLoanId {
+          id
+          asset
+          accountByBorrowerId {
+            idSs58
+          }
+        }
+      }
+    }
+  }
+`);
+
+export const getLatestLendingLiquidityChangeIdQuery = gql(/* GraphQL */ `
+  query GetLatestLendingLiquidityChangeId {
+    liquidityChanges: allLendingLiquidityBalanceChanges(first: 1, orderBy: ID_DESC) {
+      nodes {
+        id
+      }
+    }
+  }
+`);
+
+export const getNewLendingLiquidityChangeQuery = gql(/* GraphQL */ `
+  query GetNewLendingLiquidityChange($id: Int!) {
+    liquidityChanges: allLendingLiquidityBalanceChanges(
+      filter: { id: { greaterThan: $id }, type: { in: [WITHDRAWAL, DEPOSIT] } }
+      orderBy: ID_DESC
+      first: 1
+    ) {
+      nodes {
+        id
+        type
+        asset
+        amount
+        amountUsd
+        timestamp
+        accountByLiquidityProviderId {
+          idSs58
+        }
+      }
+    }
+  }
+`);

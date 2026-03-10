@@ -3,6 +3,9 @@ import { Redis } from 'ioredis';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
 import { config as newDelegationActivityConfig } from './newDelegationAcitivityCheck.js';
+import { config as newLendingLiquidityChangeCheckConfig } from './newLendingLiquidityChangeCheck.js';
+import { config as newLoanUpdateCheckConfig } from './newLoanUpdateCheck.js';
+import { config as newLpDepositCheck } from './newLpDepositCheck.js';
 import { config as newSwapAlertConfig } from './newSwapAlert.js';
 import { config as newSwapCheckConfig } from './newSwapCheck.js';
 import { config as schedulerConfig } from './scheduler.js';
@@ -11,7 +14,6 @@ import { config as swapStatusCheckConfig } from './swapStatusCheck.js';
 
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
-import { config as newLpDepositCheck } from './newLpDepositCheck.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
@@ -139,6 +141,11 @@ export const initialize = async () => {
   queues.newLpDepositCheck = await createQueue(dispatchJobs, newLpDepositCheck);
   queues.swapStatusCheck = await createQueue(dispatchJobs, swapStatusCheckConfig);
   queues.newSwapAlert = await createQueue(dispatchJobs, newSwapAlertConfig);
+  queues.newLoanUpdateCheck = await createQueue(dispatchJobs, newLoanUpdateCheckConfig);
+  queues.newLendingLiquidityChangeCheck = await createQueue(
+    dispatchJobs,
+    newLendingLiquidityChangeCheckConfig,
+  );
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
 
