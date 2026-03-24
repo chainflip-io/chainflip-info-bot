@@ -5,6 +5,8 @@
     "depositAmount": "100000000000000000",
     "depositValueUsd": "198.905053204400000000000000000000",
     "isLiquidation": false,
+    "oraclePriceDeltaBps": "-93",
+    "oraclePriceDeltaExFeesBps": null,
     "liquidationSwapInfo": null,
     "sourceChain": "Ethereum",
     "fokMinPriceX128": "7803952447396202698778886537216",

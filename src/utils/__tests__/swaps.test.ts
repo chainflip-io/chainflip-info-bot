@@ -32,7 +32,6 @@ describe('getSwapCompletionTime', () => {
           depositTimestamp,
           egressTimestamp,
           sourceChain,
-          exact: false,
         });
 
         expect(completionTime).toMatchSnapshot();
@@ -112,7 +111,6 @@ describe('getSwapCompletionTime', () => {
           depositTimestamp,
           egressTimestamp,
           sourceChain,
-          exact: false,
         });
 
         expect(completionTime).toMatchSnapshot();
@@ -213,7 +211,6 @@ describe('getSwapCompletionTime', () => {
           depositTimestamp,
           egressTimestamp,
           sourceChain,
-          exact: false,
         });
 
         expect(completionTime).toMatchSnapshot();
@@ -314,7 +311,6 @@ describe('getSwapCompletionTime', () => {
           depositTimestamp,
           egressTimestamp,
           sourceChain,
-          exact: false,
         });
 
         expect(completionTime).toMatchSnapshot();

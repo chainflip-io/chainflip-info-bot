@@ -139,6 +139,8 @@ export const getSwapInfoByNativeIdQuery = gql(/* GraphQL */ `
       depositAmount
       depositValueUsd
       isLiquidation
+      oraclePriceDeltaBps
+      oraclePriceDeltaExFeesBps
       liquidationSwapInfo: liquidationSwapInfoBySwapRequestId {
         inputAmount
         inputValueUsd

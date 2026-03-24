@@ -5,6 +5,8 @@
     "depositAmount": null,
     "depositValueUsd": null,
     "isLiquidation": true,
+    "oraclePriceDeltaBps": "0",
+    "oraclePriceDeltaExFeesBps": null,
     "liquidationSwapInfo": {
       "inputAmount": "11810820",
       "inputValueUsd": "11.810638501800000000000000000000",
