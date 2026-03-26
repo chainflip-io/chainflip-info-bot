@@ -1,6 +1,8 @@
 import { anyChainConstants, type AnyChainflipChain } from '@chainflip/utils/chainflip';
-import { differenceInTimeAgo, intervalToDurationWords } from '@chainflip/utils/date';
+import { intervalToDurationWords } from '@chainflip/utils/date';
 import { subMilliseconds } from 'date-fns';
+
+const EGRESS_BROADCAST_SIGNING_DURATION_MS = 90 * 1000;
 
 export const getSwapCompletionTime = ({
   depositChannelCreationTimestamp,
@@ -8,14 +10,12 @@ export const getSwapCompletionTime = ({
   depositTimestamp,
   egressTimestamp,
   sourceChain,
-  exact = true,
 }: {
   depositTimestamp: Date;
   egressTimestamp: Date;
   sourceChain: AnyChainflipChain;
   depositChannelCreationTimestamp?: Date;
   preDepositBlockTimestamp?: Date;
-  exact?: boolean;
 }) => {
   let millisecondsToSubtract;
   if (preDepositBlockTimestamp) {
@@ -30,14 +30,8 @@ export const getSwapCompletionTime = ({
     millisecondsToSubtract = (anyChainConstants[sourceChain].blockTimeSeconds / 2) * 1000;
   }
 
-  return exact
-    ? intervalToDurationWords({
-        start: subMilliseconds(depositTimestamp, millisecondsToSubtract).getTime(),
-        end: egressTimestamp.getTime(),
-      })
-    : differenceInTimeAgo(
-        subMilliseconds(depositTimestamp, millisecondsToSubtract).toISOString(),
-        false,
-        egressTimestamp.toISOString(),
-      );
+  const startMs = subMilliseconds(depositTimestamp, millisecondsToSubtract).getTime();
+  const endMs = egressTimestamp.getTime() + EGRESS_BROADCAST_SIGNING_DURATION_MS;
+
+  return intervalToDurationWords({ start: startMs, end: endMs });
 };

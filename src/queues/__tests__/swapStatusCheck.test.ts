@@ -50,8 +50,8 @@ describe('swapStatusCheck', () => {
       📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
       📤 <strong>5,616.094932 USDT on Ethereum</strong> ($5,611.38)
       ↩️ <strong>0 FLIP on Ethereum</strong> ($5,611.38)
-      ⏱️ Took: <strong>1 min</strong>
-      🟢 Delta: <strong>$43.31</strong> (0.78%)",
+      ⏱️ Took: <strong>03min 24s</strong>
+      🟢 Swap Price delta: <strong>$43.31</strong> (0.78%)",
               "platform": "telegram",
             },
             "name": "messageRouter",
@@ -66,8 +66,8 @@ describe('swapStatusCheck', () => {
       📥 **5,000 FLIP on Ethereum** ($5,568.07)
       📤 **5,616.094932 USDT on Ethereum** ($5,611.38)
       ↩️ **0 FLIP on Ethereum** ($5,611.38)
-      ⏱️ Took: **1 min**
-      🟢 Delta: **$43.31** (0.78%)",
+      ⏱️ Took: **03min 24s**
+      🟢 Swap Price delta: **$43.31** (0.78%)",
               "platform": "discord",
             },
             "name": "messageRouter",
@@ -82,8 +82,8 @@ describe('swapStatusCheck', () => {
       📥 5,000 FLIP on Ethereum ($5,568.07)
       📤 5,616.094932 USDT on Ethereum ($5,611.38)
       ↩️ 0 FLIP on Ethereum ($5,611.38)
-      ⏱️ Took: 1 min
-      🟢 Delta: $43.31 (0.78%)
+      ⏱️ Took: 03min 24s
+      🟢 Swap Price delta: $43.31 (0.78%)
       #chainflip $flip",
               "platform": "twitter",
             },

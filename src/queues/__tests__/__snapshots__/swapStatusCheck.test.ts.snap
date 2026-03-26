@@ -13,8 +13,8 @@ exports[`swapStatusCheck > adds boost info 1`] = `
           "message": "🦈 Swap <strong><a href="https://scan.chainflip.io/swaps/103899">#103899</a></strong>
 📥 <strong>1.030556 BTC</strong> ($78,624.35)
 📤 <strong>78,565.74453 USDC on Ethereum</strong> ($78,725.55)
-⏱️ Took: <strong>10 min</strong>
-🟢 Delta: <strong>$101.20</strong> (0.13%)
+⏱️ Took: <strong>11min 33s</strong>
+🟢 Swap Price delta: <strong>$101.20</strong> (0.13%)
 📓 Chunks: <strong>26/26</strong>
 ⚡ <strong>Boosted</strong> for <strong>$39.31</strong>
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
@@ -31,8 +31,8 @@ exports[`swapStatusCheck > adds boost info 1`] = `
           "message": "🦈 Swap **[#103899](https://scan.chainflip.io/swaps/103899)**
 📥 **1.030556 BTC** ($78,624.35)
 📤 **78,565.74453 USDC on Ethereum** ($78,725.55)
-⏱️ Took: **10 min**
-🟢 Delta: **$101.20** (0.13%)
+⏱️ Took: **11min 33s**
+🟢 Swap Price delta: **$101.20** (0.13%)
 📓 Chunks: **26/26**
 ⚡ **Boosted** for **$39.31**
 🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
@@ -49,8 +49,8 @@ exports[`swapStatusCheck > adds boost info 1`] = `
           "message": "🦈 Swap https://scan.chainflip.io/swaps/103899
 📥 1.030556 BTC ($78,624.35)
 📤 78,565.74453 USDC on Ethereum ($78,725.55)
-⏱️ Took: 10 min
-🟢 Delta: $101.20 (0.13%)
+⏱️ Took: 11min 33s
+🟢 Swap Price delta: $101.20 (0.13%)
 📓 Chunks: 26/26
 ⚡ Boosted for $39.31
 🏦 via Chainflip SDK
@@ -76,8 +76,8 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
         "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/77697">#77697</a></strong>
 📥 <strong>5,000 FLIP on Ethereum</strong> ($5,568.07)
 📤 <strong>5,616.094932 USDT on Ethereum</strong> ($5,611.38)
-⏱️ Took: <strong>1 min</strong>
-🟢 Delta: <strong>$43.31</strong> (0.78%)
+⏱️ Took: <strong>03min 24s</strong>
+🟢 Swap Price delta: <strong>$43.31</strong> (0.78%)
 📓 Chunks: <strong>2/2</strong>
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
         "platform": "telegram",
@@ -93,8 +93,8 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
         "message": "🦐 Swap **[#77697](https://scan.chainflip.io/swaps/77697)**
 📥 **5,000 FLIP on Ethereum** ($5,568.07)
 📤 **5,616.094932 USDT on Ethereum** ($5,611.38)
-⏱️ Took: **1 min**
-🟢 Delta: **$43.31** (0.78%)
+⏱️ Took: **03min 24s**
+🟢 Swap Price delta: **$43.31** (0.78%)
 📓 Chunks: **2/2**
 🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
@@ -110,8 +110,8 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
         "message": "🦐 Swap https://scan.chainflip.io/swaps/77697
 📥 5,000 FLIP on Ethereum ($5,568.07)
 📤 5,616.094932 USDT on Ethereum ($5,611.38)
-⏱️ Took: 1 min
-🟢 Delta: $43.31 (0.78%)
+⏱️ Took: 03min 24s
+🟢 Swap Price delta: $43.31 (0.78%)
 📓 Chunks: 2/2
 🏦 via Chainflip SDK
 #chainflip $flip",
@@ -135,8 +135,9 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
         "message": "🦐 Swap <strong><a href="https://scan.chainflip.io/swaps/1318809">#1318809</a></strong>
 📥 <strong>0.1 ETH on Ethereum</strong> ($198.91)
 📤 <strong>2.405154 SOL</strong> ($197.30)
-⏱️ Took: <strong>1 min</strong>
-🟢 Delta: <strong>-$1.61</strong> (-0.81%)
+⏱️ Took: <strong>02min 36s</strong>
+🟢 Swap Price delta: <strong>-$1.61</strong> (-0.81%)
+🟢 Oracle Price delta: <strong>-0.93%</strong>
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFNwtr2mPhpUEB5AyJq38DqMKMkSdzaL9548hajN2DRTwh7Mq">SwapKit</a></strong>
 🏰 Affiliate: <strong><a href="https://scan.chainflip.io/brokers/cFPDEjR88FyRi7V5NDatoMAyMCczgiyoXwiJA4LZLrR7e6RW4">Bitget</a> </strong>",
         "platform": "telegram",
@@ -152,8 +153,9 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
         "message": "🦐 Swap **[#1318809](https://scan.chainflip.io/swaps/1318809)**
 📥 **0.1 ETH on Ethereum** ($198.91)
 📤 **2.405154 SOL** ($197.30)
-⏱️ Took: **1 min**
-🟢 Delta: **-$1.61** (-0.81%)
+⏱️ Took: **02min 36s**
+🟢 Swap Price delta: **-$1.61** (-0.81%)
+🟢 Oracle Price delta: **-0.93%**
 🏦 via **[SwapKit](https://scan.chainflip.io/brokers/cFNwtr2mPhpUEB5AyJq38DqMKMkSdzaL9548hajN2DRTwh7Mq)**
 🏰 Affiliate: **[Bitget](https://scan.chainflip.io/brokers/cFPDEjR88FyRi7V5NDatoMAyMCczgiyoXwiJA4LZLrR7e6RW4) **",
         "platform": "discord",
@@ -169,8 +171,9 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
         "message": "🦐 Swap https://scan.chainflip.io/swaps/1318809
 📥 0.1 ETH on Ethereum ($198.91)
 📤 2.405154 SOL ($197.30)
-⏱️ Took: 1 min
-🟢 Delta: -$1.61 (-0.81%)
+⏱️ Took: 02min 36s
+🟢 Swap Price delta: -$1.61 (-0.81%)
+🟢 Oracle Price delta: -0.93%
 🏦 via SwapKit
 🏰 Affiliate: Bitget 
 #chainflip $flip",
@@ -195,7 +198,8 @@ exports[`swapStatusCheck > shows liquidation in message 1`] = `
 📥 <strong>11.81082 USDC on Ethereum</strong> ($11.81)
 📤 <strong>11.81082 USDC on Ethereum</strong> ($11.81)
 ↩️ <strong>0 USDC on Ethereum</strong> ($0.00)
-🟢 Delta: <strong>$0.00</strong> (0.00%)",
+🟢 Swap Price delta: <strong>$0.00</strong> (0.00%)
+🟢 Oracle Price delta: <strong>0.00%</strong>",
         "platform": "telegram",
       },
       "name": "messageRouter",
@@ -210,7 +214,8 @@ exports[`swapStatusCheck > shows liquidation in message 1`] = `
 📥 **11.81082 USDC on Ethereum** ($11.81)
 📤 **11.81082 USDC on Ethereum** ($11.81)
 ↩️ **0 USDC on Ethereum** ($0.00)
-🟢 Delta: **$0.00** (0.00%)",
+🟢 Swap Price delta: **$0.00** (0.00%)
+🟢 Oracle Price delta: **0.00%**",
         "platform": "discord",
       },
       "name": "messageRouter",
@@ -225,7 +230,8 @@ exports[`swapStatusCheck > shows liquidation in message 1`] = `
 📥 11.81082 USDC on Ethereum ($11.81)
 📤 11.81082 USDC on Ethereum ($11.81)
 ↩️ 0 USDC on Ethereum ($0.00)
-🟢 Delta: $0.00 (0.00%)
+🟢 Swap Price delta: $0.00 (0.00%)
+🟢 Oracle Price delta: 0.00%
 #chainflip $flip",
         "platform": "twitter",
       },
@@ -248,8 +254,8 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 📥 <strong>37,803.801528 FLIP on Ethereum</strong> ($48,254.63)
 📤 <strong>5.939236 ETH on Ethereum</strong> ($17,206.14)
 ↩️ <strong>24,455.099318 FLIP on Ethereum</strong> ($31,269.46)
-⏱️ Took: <strong>18 min</strong>
-🟢 Delta: <strong>$167.19</strong> (0.98%)
+⏱️ Took: <strong>19min 42s</strong>
+🟢 Swap Price delta: <strong>$167.19</strong> (0.98%)
 📓 Chunks: <strong>6/17</strong>
 🏦 via <strong><a href="https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">Chainflip SDK</a></strong>",
         "platform": "telegram",
@@ -266,8 +272,8 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 📥 **37,803.801528 FLIP on Ethereum** ($48,254.63)
 📤 **5.939236 ETH on Ethereum** ($17,206.14)
 ↩️ **24,455.099318 FLIP on Ethereum** ($31,269.46)
-⏱️ Took: **18 min**
-🟢 Delta: **$167.19** (0.98%)
+⏱️ Took: **19min 42s**
+🟢 Swap Price delta: **$167.19** (0.98%)
 📓 Chunks: **6/17**
 🏦 via **[Chainflip SDK](https://scan.chainflip.io/brokers/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**",
         "platform": "discord",
@@ -284,8 +290,8 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
 📥 37,803.801528 FLIP on Ethereum ($48,254.63)
 📤 5.939236 ETH on Ethereum ($17,206.14)
 ↩️ 24,455.099318 FLIP on Ethereum ($31,269.46)
-⏱️ Took: 18 min
-🟢 Delta: $167.19 (0.98%)
+⏱️ Took: 19min 42s
+🟢 Swap Price delta: $167.19 (0.98%)
 📓 Chunks: 6/17
 🏦 via Chainflip SDK
 #chainflip $flip",

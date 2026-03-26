@@ -99,7 +99,7 @@ const buildMessageData = ({
         )}
         {swapInfo.priceDelta !== null && swapInfo.priceDeltaPercentage && (
           <Line>
-            {deltaSign(Number(swapInfo.priceDeltaPercentage))} Delta:{' '}
+            {deltaSign(Number(swapInfo.priceDeltaPercentage))} Swap Price delta:{' '}
             <Bold>
               {formatDeltaPrice(
                 formatUsdValue(swapInfo.priceDelta.abs()),
@@ -107,6 +107,12 @@ const buildMessageData = ({
               )}
             </Bold>{' '}
             ({swapInfo.priceDeltaPercentage}%)
+          </Line>
+        )}
+        {swapInfo.oraclePriceDeltaPercentage && (
+          <Line>
+            {deltaSign(Number(swapInfo.oraclePriceDeltaPercentage))} Oracle Price delta:{' '}
+            <Bold>{swapInfo.oraclePriceDeltaPercentage}%</Bold>
           </Line>
         )}
         {swapInfo.dcaChunks && (

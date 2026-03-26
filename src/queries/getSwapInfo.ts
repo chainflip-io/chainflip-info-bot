@@ -78,7 +78,6 @@ export default async function getSwapInfo(nativeId: `${number}`) {
         ? new Date(preDepositBlockTimestamp)
         : undefined,
       egressTimestamp: new Date(egressTimestamp),
-      exact: false,
     });
   }
 
@@ -125,6 +124,11 @@ export default async function getSwapInfo(nativeId: `${number}`) {
 
   const priceDelta = outputValueUsd && swapInputValueUsd && outputValueUsd.minus(swapInputValueUsd);
 
+  const oraclePriceDeltaBps = swap.oraclePriceDeltaExFeesBps ?? swap.oraclePriceDeltaBps;
+  const oraclePriceDeltaPercentage = isNotNullish(oraclePriceDeltaBps)
+    ? (Number(oraclePriceDeltaBps) / 100).toFixed(2)
+    : null;
+
   const priceDeltaPercentage =
     outputValueUsd && swapInputValueUsd
       ? outputValueUsd
@@ -155,6 +159,7 @@ export default async function getSwapInfo(nativeId: `${number}`) {
     duration,
     priceDelta,
     priceDeltaPercentage,
+    oraclePriceDeltaPercentage,
     brokerIdAndAlias,
     affiliatesIdsAndAliases,
     chunkIntervalBlocks,
