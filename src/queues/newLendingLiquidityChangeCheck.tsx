@@ -16,6 +16,7 @@ import { platforms } from '../config.js';
 import { LendingPoolBalanceChangeType } from '../graphql/generated/lp/graphql.js';
 import getLatestLendingLiquidityChangeId from '../queries/getLatestLendingLiquidityChangeId.js';
 import getNewLendingLiquidityChange from '../queries/getNewLendingLiquidityChange.js';
+import logger from '../utils/logger.js';
 
 const name = 'newLendingLiquidityChangeCheck';
 type Name = typeof name;
@@ -107,6 +108,7 @@ const buildMessages = ({
 };
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
+  logger.info('Checking for new lending liquidity change', job.data);
   const lendingLiquidityChange = await getNewLendingLiquidityChange(
     job.data.lastCheckedLendingLiquidityChangeId,
   );
@@ -118,7 +120,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   ];
 
   if (lendingLiquidityChange) {
-    const { type, amount, amountValueUsd, asset, accountByLiquidityProviderId, timestamp } =
+    const { id, type, amount, amountValueUsd, asset, accountByLiquidityProviderId, timestamp } =
       lendingLiquidityChange;
 
     // We just want to send the message if the lending liquidity change happened in the last 12 hours
@@ -132,7 +134,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
           accountIdSs58: accountByLiquidityProviderId?.idSs58,
         }),
       );
-    }
+      logger.info(`Send message about lending liquidity ${type}`);
+    } else logger.warn(`Lending liquidity change ${type} with id ${id} exceeded max age threshold`);
   }
 
   await dispatchJobs(jobs);

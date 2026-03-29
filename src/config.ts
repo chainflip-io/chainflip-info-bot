@@ -22,6 +22,8 @@ const filters = z.discriminatedUnion('name', [
   z.object({ name: z.literal('NEW_REPAYMENT') }),
   z.object({ name: z.literal('NEW_DEPOSIT') }),
   z.object({ name: z.literal('NEW_WITHDRAWAL') }),
+  z.object({ name: z.literal('LIQUIDATION_INITIATED') }),
+  z.object({ name: z.literal('LIQUIDATION_COMPLETED') }),
 ]);
 
 export type Filter = z.infer<typeof filters>;

@@ -1,9 +1,11 @@
 import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Worker } from 'bullmq';
 import { Redis } from 'ioredis';
+import { config as liquidationStatusCheckConfig } from './liquidationStatusCheck.js';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
 import { config as newDelegationActivityConfig } from './newDelegationAcitivityCheck.js';
 import { config as newLendingLiquidityChangeCheckConfig } from './newLendingLiquidityChangeCheck.js';
+import { config as newLiquidationCheckConfig } from './newLiquidationCheck.js';
 import { config as newLoanUpdateCheckConfig } from './newLoanUpdateCheck.js';
 import { config as newLpDepositCheck } from './newLpDepositCheck.js';
 import { config as newSwapAlertConfig } from './newSwapAlert.js';
@@ -146,6 +148,8 @@ export const initialize = async () => {
     dispatchJobs,
     newLendingLiquidityChangeCheckConfig,
   );
+  queues.newLiquidationCheck = await createQueue(dispatchJobs, newLiquidationCheckConfig);
+  queues.liquidationStatusCheck = await createQueue(dispatchJobs, liquidationStatusCheckConfig);
   // this queue should be shut down first
   queues.scheduler = await createQueue(dispatchJobs, schedulerConfig);
 

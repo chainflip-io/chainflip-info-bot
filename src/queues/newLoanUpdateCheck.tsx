@@ -16,6 +16,7 @@ import { platforms } from '../config.js';
 import { LoanUpdateType } from '../graphql/generated/lp/graphql.js';
 import getLatestLoanUpdateId from '../queries/getLatestLoanUpdateId.js';
 import getNewLoanUpdate from '../queries/getNewLoanUpdate.js';
+import logger from '../utils/logger.js';
 
 const name = 'newLoanUpdateCheck';
 type Name = typeof name;
@@ -111,6 +112,7 @@ const buildMessages = ({
 };
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
+  logger.info(`Checking for new loan update`, job.data);
   const loanUpdate = await getNewLoanUpdate(job.data.lastCheckedLoanUpdateId);
 
   const jobs: DispatchJobArgs[] = [
@@ -132,7 +134,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
           borrowerIdSs58: loanByLoanId.accountByBorrowerId.idSs58,
         }),
       );
-    }
+      logger.info(`Send message for loan ${loanByLoanId.id} about ${type} update`);
+    } else logger.warn(`Loan ${loanByLoanId.id} ${type} update exceeded max age threshold`);
   }
 
   await dispatchJobs(jobs);

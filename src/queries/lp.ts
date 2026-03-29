@@ -131,3 +131,50 @@ export const getNewLendingLiquidityChangeQuery = gql(/* GraphQL */ `
     }
   }
 `);
+
+export const getLatestLiquidationSwapRequestIdQuery = gql(/* GraphQL */ `
+  query GetLatestLiquidationSwapRequestId {
+    requests: allLiquidationSwapRequests(first: 1, orderBy: ID_DESC) {
+      nodes {
+        id
+      }
+    }
+  }
+`);
+
+export const getNewLiquidationSwapRequestsQuery = gql(/* GraphQL */ `
+  query GetNewLiquidationSwapRequests($id: Int!) {
+    requests: allLiquidationSwapRequests(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {
+      nodes {
+        id
+        swapRequestId
+        createdAtEventId
+        completedAtEventId
+        abortedAtEventId
+        loanByLoanId {
+          id
+          asset
+          lastUpdatedAtTimestamp
+          accountByBorrowerId {
+            idSs58
+          }
+        }
+      }
+    }
+  }
+`);
+
+export const getLiquidationStatusByLoanIdsQuery = gql(/* GraphQL */ `
+  query GetLiquidationStatusByLoanIds($loanIds: [BigInt!]!) {
+    requests: allLiquidationSwapRequests(filter: { loanId: { in: $loanIds } }) {
+      nodes {
+        swapRequestId
+        completedAtEventId
+        abortedAtEventId
+        loanByLoanId {
+          id
+        }
+      }
+    }
+  }
+`);

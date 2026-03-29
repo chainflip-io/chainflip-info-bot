@@ -217,6 +217,30 @@ describe('scheduler', () => {
                 "delay": 30000,
               },
             },
+            {
+              "data": [
+                {
+                  "data": {
+                    "lastCheckedLiquidationSwapRequestId": 68,
+                  },
+                  "name": "newLiquidationCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
+                },
+              ],
+              "name": "scheduler",
+              "opts": {
+                "deduplication": {
+                  "id": "newLiquidationCheck",
+                },
+                "delay": 30000,
+              },
+            },
           ],
         ]
       `);
