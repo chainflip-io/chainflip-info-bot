@@ -20,9 +20,9 @@ const mockGetNewLiquidationSwapRequestsResponse = (
     nodes: [
       {
         id: '2',
-        swapRequestId: 2,
-        createdAtEventId: 1,
-        completedAtEventId: isCompleted ? 10 : null,
+        swapRequestId: '2',
+        createdAtEventId: '1',
+        completedAtEventId: isCompleted ? '10' : null,
         loanByLoanId: {
           id: '1',
           asset: 'Eth',
@@ -36,9 +36,9 @@ const mockGetNewLiquidationSwapRequestsResponse = (
       },
       {
         id: '3',
-        swapRequestId: 3,
-        createdAtEventId: 1,
-        completedAtEventId: isCompleted ? 11 : null,
+        swapRequestId: '3',
+        createdAtEventId: '1',
+        completedAtEventId: isCompleted ? '11' : null,
         loanByLoanId: {
           id: '2',
           asset: 'Usdt',
@@ -50,9 +50,9 @@ const mockGetNewLiquidationSwapRequestsResponse = (
       },
       {
         id: '4',
-        swapRequestId: 4,
-        createdAtEventId: 1,
-        completedAtEventId: isCompleted ? 12 : null,
+        swapRequestId: '4',
+        createdAtEventId: '1',
+        completedAtEventId: isCompleted ? '12' : null,
         loanByLoanId: {
           id: '2',
           asset: 'Usdt',
@@ -66,8 +66,8 @@ const mockGetNewLiquidationSwapRequestsResponse = (
         ? [
             {
               id: '5',
-              swapRequestId: 5,
-              createdAtEventId: 2,
+              swapRequestId: '5',
+              createdAtEventId: '2',
               loanByLoanId: {
                 id: '1',
                 asset: 'Eth',
@@ -79,8 +79,8 @@ const mockGetNewLiquidationSwapRequestsResponse = (
             },
             {
               id: '6',
-              swapRequestId: 6,
-              createdAtEventId: 2,
+              swapRequestId: '6',
+              createdAtEventId: '2',
               loanByLoanId: {
                 id: '2',
                 asset: 'Usdt',
@@ -238,23 +238,29 @@ describe('newLiquidationCheck', () => {
                 "name": "messageRouter",
               },
               {
-                "data": {
-                  "borrowerIdSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
-                  "createdAt": 1774442550000,
-                  "loanIds": [
-                    "1",
-                    "2",
-                  ],
-                  "swapRequestIds": [
-                    2,
-                    3,
-                    4,
-                  ],
-                },
-                "name": "liquidationStatusCheck",
+                "data": [
+                  {
+                    "data": {
+                      "borrowerIdSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
+                      "createdAt": 1774442550000,
+                      "createdAtEventId": "1",
+                      "loanIds": [
+                        "1",
+                        "2",
+                      ],
+                      "swapRequestIds": [
+                        "2",
+                        "3",
+                        "4",
+                      ],
+                    },
+                    "name": "liquidationStatusCheck",
+                  },
+                ],
+                "name": "scheduler",
                 "opts": {
                   "deduplication": {
-                    "id": "liquidation-status-1-2",
+                    "id": "liquidation-status-1-1-2",
                   },
                   "delay": 30000,
                 },
@@ -265,7 +271,7 @@ describe('newLiquidationCheck', () => {
       `);
     });
 
-    it('enqueues the next job with the latest id, dispatches separate messages and status check for miltiple accounts', async () => {
+    it('enqueues the next job with the latest id, dispatches separate messages and status check for multiple accounts', async () => {
       vi.setSystemTime(new Date('2026-03-25T12:42:30+00:00'));
 
       vi.mocked(lpClient.request).mockResolvedValueOnce(
@@ -286,19 +292,35 @@ describe('newLiquidationCheck', () => {
       expect(jobs).toHaveLength(9);
 
       expect(jobs[4]).toMatchObject({
-        name: 'liquidationStatusCheck',
-        data: {
-          borrowerIdSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
-          loanIds: ['1'],
-        },
+        data: [
+          {
+            data: {
+              borrowerIdSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
+              createdAt: new Date('2026-03-25T12:42:30+00:00').getTime(),
+              createdAtEventId: '1',
+              loanIds: ['1'],
+              swapRequestIds: ['2'],
+            },
+            name: 'liquidationStatusCheck',
+          },
+        ],
+        name: 'scheduler',
       });
 
       expect(jobs[8]).toMatchObject({
-        name: 'liquidationStatusCheck',
-        data: {
-          borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
-          loanIds: ['2'],
-        },
+        data: [
+          {
+            data: {
+              borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
+              createdAt: new Date('2026-03-25T12:42:30+00:00').getTime(),
+              createdAtEventId: '1',
+              loanIds: ['2'],
+              swapRequestIds: ['3', '4'],
+            },
+            name: 'liquidationStatusCheck',
+          },
+        ],
+        name: 'scheduler',
       });
     });
 

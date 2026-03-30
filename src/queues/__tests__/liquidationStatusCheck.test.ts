@@ -1,4 +1,4 @@
-import { hoursToMilliseconds, subHours } from 'date-fns';
+import { hoursToMilliseconds, subDays, subHours } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { lpClient } from '../../server.js';
 import { DispatchJobArgs } from '../initialize.js';
@@ -9,14 +9,12 @@ const mockGetLiquidationStatusResponse = (isCompleted: boolean = false) => ({
     nodes: [
       {
         swapRequestId: '1',
-        createdAtEventId: 1,
         completedAtEventId: isCompleted ? '1' : null,
         abortedAtEventId: null,
         loanByLoanId: { id: '1' },
       },
       {
         swapRequestId: '2',
-        createdAtEventId: 1,
         completedAtEventId: isCompleted ? '2' : null,
         abortedAtEventId: null,
         loanByLoanId: { id: '2' },
@@ -49,6 +47,7 @@ describe('liquidationStatusCheck', () => {
         data: {
           loanIds: ['1', '2'],
           swapRequestIds: ['1', '2'],
+          createdAtEventId: '1',
           borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
           createdAt: subHours(now, 1).getTime(),
         },
@@ -64,6 +63,7 @@ describe('liquidationStatusCheck', () => {
                     "data": {
                       "borrowerIdSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
                       "createdAt": 1774438950000,
+                      "createdAtEventId": "1",
                       "loanIds": [
                         "1",
                         "2",
@@ -78,6 +78,9 @@ describe('liquidationStatusCheck', () => {
                 ],
                 "name": "scheduler",
                 "opts": {
+                  "deduplication": {
+                    "id": "liquidation-status-1-1-2",
+                  },
                   "delay": 30000,
                 },
               },
@@ -98,6 +101,8 @@ describe('liquidationStatusCheck', () => {
       await config.processJob(dispatchJobs)({
         data: {
           loanIds: ['1', '2'],
+          swapRequestIds: ['1', '2'],
+          createdAtEventId: '1',
           borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
           createdAt: subHours(now, 7).getTime(),
         },
@@ -109,6 +114,27 @@ describe('liquidationStatusCheck', () => {
           delay: hoursToMilliseconds(1),
         },
       });
+    });
+
+    it('skips job when liquidation exceeds max lifetime', async () => {
+      const now = new Date('2026-03-25T12:42:30+00:00').getTime();
+      vi.setSystemTime(now);
+
+      vi.mocked(lpClient.request).mockResolvedValueOnce(mockGetLiquidationStatusResponse());
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({
+        data: {
+          loanIds: ['1', '2'],
+          swapRequestIds: ['1', '2'],
+          createdAtEventId: '1',
+          borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
+          createdAt: subDays(now, 8).getTime(),
+        },
+      } as any);
+
+      expect(dispatchJobs).not.toHaveBeenCalled();
     });
 
     it('send messages when liquidation is completed', async () => {
@@ -123,6 +149,7 @@ describe('liquidationStatusCheck', () => {
         data: {
           loanIds: ['1', '2'],
           swapRequestIds: ['1', '2'],
+          createdAtEventId: '1',
           borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
           createdAt: new Date(),
         },

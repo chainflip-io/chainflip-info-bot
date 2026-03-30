@@ -164,9 +164,12 @@ export const getNewLiquidationSwapRequestsQuery = gql(/* GraphQL */ `
   }
 `);
 
-export const getLiquidationStatusByLoanIdsQuery = gql(/* GraphQL */ `
-  query GetLiquidationStatusByLoanIds($loanIds: [BigInt!]!) {
-    requests: allLiquidationSwapRequests(filter: { loanId: { in: $loanIds } }) {
+export const getLiquidationStatusBySwapRequestIdsQuery = gql(/* GraphQL */ `
+  query GetLiquidationStatusBySwapRequestIds($swapRequestIds: [BigInt!]!) {
+    requests: allLiquidationSwapRequests(
+      filter: { swapRequestId: { in: $swapRequestIds } }
+      orderBy: ID_DESC
+    ) {
       nodes {
         swapRequestId
         completedAtEventId

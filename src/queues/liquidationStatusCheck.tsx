@@ -9,6 +9,7 @@ import logger from '../utils/logger.js';
 const INTERVAL = 30_000;
 const LIQUIDATION_AGE_THRESHOLD = hoursToMilliseconds(6);
 const INTERVAL_AFTER_THRESHOLD = hoursToMilliseconds(1);
+const MAX_LIFETIME = 7 * 24 * hoursToMilliseconds(1);
 
 const name = 'liquidationStatusCheck';
 type Name = typeof name;
@@ -17,6 +18,7 @@ type Data = {
   loanIds: `${number}`[];
   swapRequestIds: `${number}`[];
   borrowerIdSs58: string;
+  createdAtEventId: string;
   createdAt: number;
 };
 
@@ -81,14 +83,20 @@ const buildMessages = ({
   }));
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { loanIds, swapRequestIds, borrowerIdSs58 } = job.data;
+  const { loanIds, swapRequestIds, borrowerIdSs58, createdAtEventId, createdAt } = job.data;
   logger.info(`Checking liquidation status for account ${borrowerIdSs58}`);
 
-  const statuses = await getLiquidationStatus(loanIds);
-  if (!statuses) return;
+  const statuses = await getLiquidationStatus(swapRequestIds);
   const isLiquidationCompleted = statuses.every((status) => status.isCompleted);
 
   if (!isLiquidationCompleted) {
+    if (Date.now() - createdAt >= MAX_LIFETIME) {
+      logger.warn(
+        `Liquidation status check for account ${borrowerIdSs58} exceeded max lifetime, skipping job`,
+      );
+      return;
+    }
+
     logger.info(
       `Liquidation for account ${borrowerIdSs58} is not completed, reschedule status check`,
     );
@@ -98,7 +106,13 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
         data: [
           {
             name,
-            data: { loanIds, swapRequestIds, borrowerIdSs58, createdAt: job.data.createdAt },
+            data: {
+              loanIds,
+              swapRequestIds,
+              borrowerIdSs58,
+              createdAtEventId,
+              createdAt: job.data.createdAt,
+            },
           },
         ],
         opts: {
@@ -106,6 +120,9 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
             Date.now() - job.data.createdAt >= LIQUIDATION_AGE_THRESHOLD
               ? INTERVAL_AFTER_THRESHOLD
               : INTERVAL,
+          deduplication: {
+            id: `liquidation-status-${createdAtEventId}-${loanIds.toSorted().join('-')}`,
+          },
         },
       } as const,
     ]);

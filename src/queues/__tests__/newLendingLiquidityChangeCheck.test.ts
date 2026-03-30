@@ -3,7 +3,11 @@ import { describe, expect, it, vi } from 'vitest';
 import { lpClient } from '../../server.js';
 import { config } from '../newLendingLiquidityChangeCheck.js';
 
-const mockGetNewLendingLiquidityChangeResponse = (id: number, timestamp?: string) => ({
+const mockGetNewLendingLiquidityChangeResponse = (
+  id: number,
+  timestamp?: string,
+  isAccountByLiquidityProviderId: boolean = true,
+) => ({
   liquidityChanges: {
     nodes: [
       {
@@ -13,9 +17,11 @@ const mockGetNewLendingLiquidityChangeResponse = (id: number, timestamp?: string
         amount: '040154262217635410',
         amountUsd: '128.2652526243',
         timestamp: timestamp ?? subHours(new Date(), 1).toISOString(),
-        accountByLiquidityProviderId: {
-          idSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
-        },
+        accountByLiquidityProviderId: isAccountByLiquidityProviderId
+          ? {
+              idSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
+            }
+          : null,
       },
     ],
   },
@@ -101,6 +107,88 @@ describe('newLendingLiquidityChangeCheck', () => {
                   },
                   "message": "🏦 Lending pool transaction
         👤 Account: https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7
+        💳 Type: Supply
+        📥 Amount: 0.040154 ETH on Ethereum ($128.27)
+        #chainflip $flip",
+                  "platform": "twitter",
+                },
+                "name": "messageRouter",
+              },
+            ],
+          ],
+        ]
+      `);
+    });
+
+    it('skips account line when accountByLiquidityProviderId is null', async () => {
+      vi.mocked(lpClient.request).mockResolvedValueOnce(
+        mockGetNewLendingLiquidityChangeResponse(11, undefined, false),
+      );
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({
+        data: { lastCheckedLendingLiquidityChangeId: 10 },
+      } as any);
+
+      expect(dispatchJobs.mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            [
+              {
+                "data": [
+                  {
+                    "data": {
+                      "lastCheckedLendingLiquidityChangeId": 11,
+                    },
+                    "name": "newLendingLiquidityChangeCheck",
+                    "opts": {
+                      "attempts": 720,
+                      "backoff": {
+                        "delay": 5000,
+                        "type": "fixed",
+                      },
+                    },
+                  },
+                ],
+                "name": "scheduler",
+                "opts": {
+                  "deduplication": {
+                    "id": "newLendingLiquidityChangeCheck",
+                  },
+                  "delay": 30000,
+                },
+              },
+              {
+                "data": {
+                  "filterData": {
+                    "name": "NEW_DEPOSIT",
+                  },
+                  "message": "🏦 Lending pool transaction
+        💳 Type: <strong>Supply</strong>
+        📥 Amount: <strong>0.040154 ETH on Ethereum</strong> ($128.27)",
+                  "platform": "telegram",
+                },
+                "name": "messageRouter",
+              },
+              {
+                "data": {
+                  "filterData": {
+                    "name": "NEW_DEPOSIT",
+                  },
+                  "message": "🏦 Lending pool transaction
+        💳 Type: **Supply**
+        📥 Amount: **0.040154 ETH on Ethereum** ($128.27)",
+                  "platform": "discord",
+                },
+                "name": "messageRouter",
+              },
+              {
+                "data": {
+                  "filterData": {
+                    "name": "NEW_DEPOSIT",
+                  },
+                  "message": "🏦 Lending pool transaction
         💳 Type: Supply
         📥 Amount: 0.040154 ETH on Ethereum ($128.27)
         #chainflip $flip",

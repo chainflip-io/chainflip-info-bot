@@ -120,12 +120,14 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     );
 
     for (const [key, swapRequests] of grouped) {
-      const [borrowerIdSs58] = key.split('-');
+      const [borrowerIdSs58, createdAtEventId] = key.split('-');
 
       const isLiquidationCompleted = swapRequests.every((swapRequest) => swapRequest.isCompleted);
       const isStaleLoanUpdates = swapRequests.every(({ loanByLoanId }) => {
         const timestamp = loanByLoanId.lastUpdatedAtTimestamp;
-        return timestamp && Date.now() - new Date(timestamp).getTime() > hoursToMilliseconds(12);
+        return timestamp
+          ? Date.now() - new Date(timestamp).getTime() > hoursToMilliseconds(12)
+          : true;
       });
       const loanIds = [...new Set(swapRequests.map((item) => item.loanByLoanId.id))];
       const swapRequestIds = swapRequests.map((item) => item.swapRequestId);
@@ -138,20 +140,23 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
       jobs.push(...buildMessages({ borrowerIdSs58, loanIds, swapRequestIds }));
 
       jobs.push({
-        name: 'liquidationStatusCheck' as const,
-        data: {
-          loanIds,
-          swapRequestIds,
-          borrowerIdSs58,
-          createdAt: Date.now(),
-        },
+        name: 'scheduler' as const,
+        data: [
+          {
+            name: 'liquidationStatusCheck' as const,
+            data: {
+              loanIds,
+              swapRequestIds,
+              borrowerIdSs58,
+              createdAtEventId,
+              createdAt: Date.now(),
+            },
+          },
+        ],
         opts: {
           delay: INTERVAL,
           deduplication: {
-            id: `liquidation-status-${loanIds
-              .map((loanId) => loanId)
-              .sort()
-              .join('-')}`,
+            id: `liquidation-status-${createdAtEventId}-${loanIds.toSorted().join('-')}`,
           },
         },
       });
