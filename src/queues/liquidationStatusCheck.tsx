@@ -18,8 +18,8 @@ type Data = {
   loanIds: `${number}`[];
   swapRequestIds: `${number}`[];
   borrowerIdSs58: string;
-  createdAtEventId: string;
-  createdAt: number;
+  jobCreatedAt: number;
+  deduplicationId: string;
 };
 
 declare global {
@@ -44,7 +44,7 @@ const buildMessages = ({
       message: renderForPlatform(
         platform,
         <>
-          <Line>Liquidation completed</Line>
+          <Line>👀 Liquidation completed</Line>
           <Line>
             👤 Account:{' '}
             <Bold>
@@ -55,25 +55,29 @@ const buildMessages = ({
           </Line>
           <Line>
             🏦 Loans:{' '}
-            {loanIds.map((loanId, i) => (
-              <Bold key={loanId}>
-                <ExplorerLink path={`/loans/${loanId}`} prefer="link">
-                  #{loanId}
-                </ExplorerLink>
-                {i !== loanIds.length - 1 && ', '}
-              </Bold>
-            ))}
+            <Bold>
+              {loanIds.map((loanId, i) => (
+                <>
+                  <ExplorerLink key={loanId} path={`/loans/${loanId}`} prefer="link">
+                    #{loanId}
+                  </ExplorerLink>
+                  {i !== loanIds.length - 1 && ', '}
+                </>
+              ))}
+            </Bold>
           </Line>
           <Line>
             🔄 Liquidation swaps:{' '}
-            {swapRequestIds.map((swapRequestId, i) => (
-              <Bold key={swapRequestId}>
-                <ExplorerLink path={`/swaps/${swapRequestId}`} prefer="link">
-                  #{swapRequestId}
-                </ExplorerLink>
-                {i !== swapRequestIds.length - 1 && ', '}
-              </Bold>
-            ))}
+            <Bold>
+              {swapRequestIds.map((swapRequestId, i) => (
+                <>
+                  <ExplorerLink key={swapRequestId} path={`/swaps/${swapRequestId}`} prefer="link">
+                    #{swapRequestId}
+                  </ExplorerLink>
+                  {i !== swapRequestIds.length - 1 && ', '}
+                </>
+              ))}
+            </Bold>
           </Line>
           <Trailer />
         </>,
@@ -83,20 +87,20 @@ const buildMessages = ({
   }));
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { loanIds, swapRequestIds, borrowerIdSs58, createdAtEventId, createdAt } = job.data;
+  const { loanIds, swapRequestIds, borrowerIdSs58, jobCreatedAt, deduplicationId } = job.data;
   logger.info(`Checking liquidation status for account ${borrowerIdSs58}`);
 
   const statuses = await getLiquidationStatus(swapRequestIds);
   const isLiquidationCompleted = statuses.every((status) => status.isCompleted);
 
-  if (!isLiquidationCompleted) {
-    if (Date.now() - createdAt >= MAX_LIFETIME) {
-      logger.warn(
-        `Liquidation status check for account ${borrowerIdSs58} exceeded max lifetime, skipping job`,
-      );
-      return;
-    }
+  if (Date.now() - jobCreatedAt >= MAX_LIFETIME) {
+    logger.warn(
+      `Liquidation status check for account ${borrowerIdSs58} exceeded max lifetime, skipping job`,
+    );
+    return;
+  }
 
+  if (!isLiquidationCompleted) {
     logger.info(
       `Liquidation for account ${borrowerIdSs58} is not completed, reschedule status check`,
     );
@@ -110,18 +114,18 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
               loanIds,
               swapRequestIds,
               borrowerIdSs58,
-              createdAtEventId,
-              createdAt: job.data.createdAt,
+              jobCreatedAt,
+              deduplicationId,
             },
           },
         ],
         opts: {
           delay:
-            Date.now() - job.data.createdAt >= LIQUIDATION_AGE_THRESHOLD
+            Date.now() - jobCreatedAt >= LIQUIDATION_AGE_THRESHOLD
               ? INTERVAL_AFTER_THRESHOLD
               : INTERVAL,
           deduplication: {
-            id: `liquidation-status-${createdAtEventId}-${loanIds.toSorted().join('-')}`,
+            id: deduplicationId,
           },
         },
       } as const,

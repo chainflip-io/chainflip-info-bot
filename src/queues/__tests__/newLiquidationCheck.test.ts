@@ -1,4 +1,3 @@
-import { subHours } from 'date-fns';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { lpClient } from '../../server.js';
 import { DispatchJobArgs } from '../initialize.js';
@@ -10,11 +9,19 @@ const mockGetNewLiquidationSwapRequestsEmptyResponse = () => ({
   },
 });
 
+const mockGetBoundaryLiquidationSwapRequestResponse = (swapRequestId: string) => ({
+  requests: {
+    nodes: [
+      {
+        swapRequestId,
+      },
+    ],
+  },
+});
+
 const mockGetNewLiquidationSwapRequestsResponse = (
-  lastUpdatedAtTimestamp: string,
   isSingleAccount = false,
   hasSeveralLiquidations = false,
-  isCompleted = false,
 ) => ({
   requests: {
     nodes: [
@@ -22,11 +29,9 @@ const mockGetNewLiquidationSwapRequestsResponse = (
         id: '2',
         swapRequestId: '2',
         createdAtEventId: '1',
-        completedAtEventId: isCompleted ? '10' : null,
         loanByLoanId: {
           id: '1',
           asset: 'Eth',
-          lastUpdatedAtTimestamp,
           accountByBorrowerId: {
             idSs58: isSingleAccount
               ? 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7'
@@ -38,11 +43,9 @@ const mockGetNewLiquidationSwapRequestsResponse = (
         id: '3',
         swapRequestId: '3',
         createdAtEventId: '1',
-        completedAtEventId: isCompleted ? '11' : null,
         loanByLoanId: {
           id: '2',
           asset: 'Usdt',
-          lastUpdatedAtTimestamp,
           accountByBorrowerId: {
             idSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
           },
@@ -52,11 +55,9 @@ const mockGetNewLiquidationSwapRequestsResponse = (
         id: '4',
         swapRequestId: '4',
         createdAtEventId: '1',
-        completedAtEventId: isCompleted ? '12' : null,
         loanByLoanId: {
           id: '2',
           asset: 'Usdt',
-          lastUpdatedAtTimestamp,
           accountByBorrowerId: {
             idSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
           },
@@ -71,7 +72,6 @@ const mockGetNewLiquidationSwapRequestsResponse = (
               loanByLoanId: {
                 id: '1',
                 asset: 'Eth',
-                lastUpdatedAtTimestamp,
                 accountByBorrowerId: {
                   idSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
                 },
@@ -84,7 +84,6 @@ const mockGetNewLiquidationSwapRequestsResponse = (
               loanByLoanId: {
                 id: '2',
                 asset: 'Usdt',
-                lastUpdatedAtTimestamp,
                 accountByBorrowerId: {
                   idSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
                 },
@@ -108,10 +107,11 @@ describe('newLiquidationCheck', () => {
       vi.useRealTimers();
     });
 
-    it('enqueues the next job with the same id', async () => {
+    it('enqueues the next job with the same id when there are no new liquidation swap requests', async () => {
       vi.mocked(lpClient.request).mockResolvedValueOnce(
         mockGetNewLiquidationSwapRequestsEmptyResponse(),
       );
+      vi.mocked(lpClient.request).mockResolvedValueOnce([]);
 
       const dispatchJobs = vi.fn();
 
@@ -153,14 +153,63 @@ describe('newLiquidationCheck', () => {
       `);
     });
 
+    it('enqueues the next job with the same id when there are no new liquidation swap requests and boundary id is behind', async () => {
+      vi.mocked(lpClient.request).mockResolvedValueOnce(
+        mockGetNewLiquidationSwapRequestsEmptyResponse(),
+      );
+      vi.mocked(lpClient.request).mockResolvedValueOnce(
+        mockGetBoundaryLiquidationSwapRequestResponse('5'),
+      );
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({
+        data: { lastCheckedLiquidationSwapRequestId: '10' },
+      } as any);
+
+      const jobs = dispatchJobs.mock.calls[0][0] as DispatchJobArgs[];
+      expect(jobs[0]).toMatchObject({
+        data: [
+          {
+            data: {
+              lastCheckedLiquidationSwapRequestId: '10',
+            },
+          },
+        ],
+      });
+    });
+
+    it('enqueues the next job with boundary id when there are no new liquidation swap requests and last checked id is stale', async () => {
+      vi.mocked(lpClient.request).mockResolvedValueOnce(
+        mockGetNewLiquidationSwapRequestsEmptyResponse(),
+      );
+      vi.mocked(lpClient.request).mockResolvedValueOnce(
+        mockGetBoundaryLiquidationSwapRequestResponse('10'),
+      );
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({
+        data: { lastCheckedLiquidationSwapRequestId: '1' },
+      } as any);
+
+      const jobs = dispatchJobs.mock.calls[0][0] as DispatchJobArgs[];
+      expect(jobs[0]).toMatchObject({
+        data: [
+          {
+            data: {
+              lastCheckedLiquidationSwapRequestId: '10',
+            },
+          },
+        ],
+      });
+    });
+
     it('enqueues the next job with the latest id, dispatches messages and status check for single account', async () => {
       vi.setSystemTime(new Date('2026-03-25T12:42:30+00:00'));
 
       vi.mocked(lpClient.request).mockResolvedValueOnce(
-        mockGetNewLiquidationSwapRequestsResponse(
-          subHours(new Date('2026-03-25T12:42:30+00:00'), 1).toISOString(),
-          true,
-        ),
+        mockGetNewLiquidationSwapRequestsResponse(true),
       );
 
       const dispatchJobs = vi.fn();
@@ -177,7 +226,7 @@ describe('newLiquidationCheck', () => {
                 "data": [
                   {
                     "data": {
-                      "lastCheckedLiquidationSwapRequestId": 4,
+                      "lastCheckedLiquidationSwapRequestId": "4",
                     },
                     "name": "newLiquidationCheck",
                     "opts": {
@@ -202,10 +251,10 @@ describe('newLiquidationCheck', () => {
                   "filterData": {
                     "name": "LIQUIDATION_INITIATED",
                   },
-                  "message": "Liquidation initiated
+                  "message": "👀 Liquidation initiated
         👤 Account: <strong><a href="https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">cFLRQDfE…D2ENbqj7</a></strong>
-        🏦 Loans: <strong><a href="https://scan.chainflip.io/loans/1">#1</a>, </strong><strong><a href="https://scan.chainflip.io/loans/2">#2</a></strong>
-        🔄 Liquidation swaps: <strong><a href="https://scan.chainflip.io/swaps/2">#2</a>, </strong><strong><a href="https://scan.chainflip.io/swaps/3">#3</a>, </strong><strong><a href="https://scan.chainflip.io/swaps/4">#4</a></strong>",
+        🏦 Loans: <strong><a href="https://scan.chainflip.io/loans/1">#1</a>, <a href="https://scan.chainflip.io/loans/2">#2</a></strong>
+        🔄 Liquidation swaps: <strong><a href="https://scan.chainflip.io/swaps/2">#2</a>, <a href="https://scan.chainflip.io/swaps/3">#3</a>, <a href="https://scan.chainflip.io/swaps/4">#4</a></strong>",
                   "platform": "telegram",
                 },
                 "name": "messageRouter",
@@ -215,10 +264,10 @@ describe('newLiquidationCheck', () => {
                   "filterData": {
                     "name": "LIQUIDATION_INITIATED",
                   },
-                  "message": "Liquidation initiated
+                  "message": "👀 Liquidation initiated
         👤 Account: **[cFLRQDfE…D2ENbqj7](https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
-        🏦 Loans: **[#1](https://scan.chainflip.io/loans/1), ****[#2](https://scan.chainflip.io/loans/2)**
-        🔄 Liquidation swaps: **[#2](https://scan.chainflip.io/swaps/2), ****[#3](https://scan.chainflip.io/swaps/3), ****[#4](https://scan.chainflip.io/swaps/4)**",
+        🏦 Loans: **[#1](https://scan.chainflip.io/loans/1), [#2](https://scan.chainflip.io/loans/2)**
+        🔄 Liquidation swaps: **[#2](https://scan.chainflip.io/swaps/2), [#3](https://scan.chainflip.io/swaps/3), [#4](https://scan.chainflip.io/swaps/4)**",
                   "platform": "discord",
                 },
                 "name": "messageRouter",
@@ -228,7 +277,7 @@ describe('newLiquidationCheck', () => {
                   "filterData": {
                     "name": "LIQUIDATION_INITIATED",
                   },
-                  "message": "Liquidation initiated
+                  "message": "👀 Liquidation initiated
         👤 Account: https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7
         🏦 Loans: https://scan.chainflip.io/loans/1, https://scan.chainflip.io/loans/2
         🔄 Liquidation swaps: https://scan.chainflip.io/swaps/2, https://scan.chainflip.io/swaps/3, https://scan.chainflip.io/swaps/4
@@ -242,8 +291,8 @@ describe('newLiquidationCheck', () => {
                   {
                     "data": {
                       "borrowerIdSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
-                      "createdAt": 1774442550000,
-                      "createdAtEventId": "1",
+                      "deduplicationId": "liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1",
+                      "jobCreatedAt": 1774442550000,
                       "loanIds": [
                         "1",
                         "2",
@@ -260,7 +309,7 @@ describe('newLiquidationCheck', () => {
                 "name": "scheduler",
                 "opts": {
                   "deduplication": {
-                    "id": "liquidation-status-1-1-2",
+                    "id": "liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1",
                   },
                   "delay": 30000,
                 },
@@ -275,9 +324,7 @@ describe('newLiquidationCheck', () => {
       vi.setSystemTime(new Date('2026-03-25T12:42:30+00:00'));
 
       vi.mocked(lpClient.request).mockResolvedValueOnce(
-        mockGetNewLiquidationSwapRequestsResponse(
-          subHours(new Date('2026-03-25T12:42:30+00:00'), 1).toISOString(),
-        ),
+        mockGetNewLiquidationSwapRequestsResponse(),
       );
 
       const dispatchJobs = vi.fn();
@@ -296,10 +343,11 @@ describe('newLiquidationCheck', () => {
           {
             data: {
               borrowerIdSs58: 'cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e',
-              createdAt: new Date('2026-03-25T12:42:30+00:00').getTime(),
-              createdAtEventId: '1',
+              jobCreatedAt: new Date('2026-03-25T12:42:30+00:00').getTime(),
               loanIds: ['1'],
               swapRequestIds: ['2'],
+              deduplicationId:
+                'liquidation-status-cFMboYsd4HvERKXX11LyvZXuTcQzV7KAe9ipP4La5vUs8fd4e-1',
             },
             name: 'liquidationStatusCheck',
           },
@@ -312,10 +360,11 @@ describe('newLiquidationCheck', () => {
           {
             data: {
               borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
-              createdAt: new Date('2026-03-25T12:42:30+00:00').getTime(),
-              createdAtEventId: '1',
+              jobCreatedAt: new Date('2026-03-25T12:42:30+00:00').getTime(),
               loanIds: ['2'],
               swapRequestIds: ['3', '4'],
+              deduplicationId:
+                'liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1',
             },
             name: 'liquidationStatusCheck',
           },
@@ -324,67 +373,11 @@ describe('newLiquidationCheck', () => {
       });
     });
 
-    it('skips messages and status check if liquidation completed and loan updates are older than 12h', async () => {
-      vi.setSystemTime(new Date('2026-03-25T12:42:30+00:00'));
-
-      vi.mocked(lpClient.request).mockResolvedValueOnce(
-        mockGetNewLiquidationSwapRequestsResponse(
-          subHours(new Date('2026-03-25T12:42:30+00:00'), 24).toISOString(),
-          false,
-          undefined,
-          true,
-        ),
-      );
-
-      const dispatchJobs = vi.fn();
-
-      await config.processJob(dispatchJobs)({
-        data: { lastCheckedLiquidationSwapRequestId: '1' },
-      } as any);
-
-      expect(dispatchJobs.mock.calls).toMatchInlineSnapshot(`
-        [
-          [
-            [
-              {
-                "data": [
-                  {
-                    "data": {
-                      "lastCheckedLiquidationSwapRequestId": 4,
-                    },
-                    "name": "newLiquidationCheck",
-                    "opts": {
-                      "attempts": 720,
-                      "backoff": {
-                        "delay": 5000,
-                        "type": "fixed",
-                      },
-                    },
-                  },
-                ],
-                "name": "scheduler",
-                "opts": {
-                  "deduplication": {
-                    "id": "newLiquidationCheck",
-                  },
-                  "delay": 30000,
-                },
-              },
-            ],
-          ],
-        ]
-      `);
-    });
-
     it('send separate messages if several liquidation processes were detected per account', async () => {
       vi.setSystemTime(new Date('2026-03-25T12:42:30+00:00'));
 
       vi.mocked(lpClient.request).mockResolvedValueOnce(
-        mockGetNewLiquidationSwapRequestsResponse(
-          subHours(new Date('2026-03-25T12:42:30+00:00'), 1).toISOString(),
-          true,
-          true,
-        ),
+        mockGetNewLiquidationSwapRequestsResponse(true, true),
       );
 
       const dispatchJobs = vi.fn();

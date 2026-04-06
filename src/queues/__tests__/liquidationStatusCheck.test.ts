@@ -47,9 +47,9 @@ describe('liquidationStatusCheck', () => {
         data: {
           loanIds: ['1', '2'],
           swapRequestIds: ['1', '2'],
-          createdAtEventId: '1',
           borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
-          createdAt: subHours(now, 1).getTime(),
+          jobCreatedAt: subHours(now, 1).getTime(),
+          deduplicationId: 'liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1',
         },
       } as any);
 
@@ -62,8 +62,8 @@ describe('liquidationStatusCheck', () => {
                   {
                     "data": {
                       "borrowerIdSs58": "cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7",
-                      "createdAt": 1774438950000,
-                      "createdAtEventId": "1",
+                      "deduplicationId": "liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1",
+                      "jobCreatedAt": 1774438950000,
                       "loanIds": [
                         "1",
                         "2",
@@ -79,7 +79,7 @@ describe('liquidationStatusCheck', () => {
                 "name": "scheduler",
                 "opts": {
                   "deduplication": {
-                    "id": "liquidation-status-1-1-2",
+                    "id": "liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1",
                   },
                   "delay": 30000,
                 },
@@ -102,9 +102,9 @@ describe('liquidationStatusCheck', () => {
         data: {
           loanIds: ['1', '2'],
           swapRequestIds: ['1', '2'],
-          createdAtEventId: '1',
           borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
-          createdAt: subHours(now, 7).getTime(),
+          jobCreatedAt: subHours(now, 7).getTime(),
+          deduplicationId: 'liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1',
         },
       } as any);
 
@@ -128,9 +128,9 @@ describe('liquidationStatusCheck', () => {
         data: {
           loanIds: ['1', '2'],
           swapRequestIds: ['1', '2'],
-          createdAtEventId: '1',
           borrowerIdSs58: 'cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7',
-          createdAt: subDays(now, 8).getTime(),
+          jobCreatedAt: subDays(now, 8).getTime(),
+          deduplicationId: 'liquidation-status-cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7-1',
         },
       } as any);
 
@@ -164,10 +164,10 @@ describe('liquidationStatusCheck', () => {
                   "filterData": {
                     "name": "LIQUIDATION_COMPLETED",
                   },
-                  "message": "Liquidation completed
+                  "message": "👀 Liquidation completed
         👤 Account: <strong><a href="https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">cFLRQDfE…D2ENbqj7</a></strong>
-        🏦 Loans: <strong><a href="https://scan.chainflip.io/loans/1">#1</a>, </strong><strong><a href="https://scan.chainflip.io/loans/2">#2</a></strong>
-        🔄 Liquidation swaps: <strong><a href="https://scan.chainflip.io/swaps/1">#1</a>, </strong><strong><a href="https://scan.chainflip.io/swaps/2">#2</a></strong>",
+        🏦 Loans: <strong><a href="https://scan.chainflip.io/loans/1">#1</a>, <a href="https://scan.chainflip.io/loans/2">#2</a></strong>
+        🔄 Liquidation swaps: <strong><a href="https://scan.chainflip.io/swaps/1">#1</a>, <a href="https://scan.chainflip.io/swaps/2">#2</a></strong>",
                   "platform": "telegram",
                 },
                 "name": "messageRouter",
@@ -177,10 +177,10 @@ describe('liquidationStatusCheck', () => {
                   "filterData": {
                     "name": "LIQUIDATION_COMPLETED",
                   },
-                  "message": "Liquidation completed
+                  "message": "👀 Liquidation completed
         👤 Account: **[cFLRQDfE…D2ENbqj7](https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
-        🏦 Loans: **[#1](https://scan.chainflip.io/loans/1), ****[#2](https://scan.chainflip.io/loans/2)**
-        🔄 Liquidation swaps: **[#1](https://scan.chainflip.io/swaps/1), ****[#2](https://scan.chainflip.io/swaps/2)**",
+        🏦 Loans: **[#1](https://scan.chainflip.io/loans/1), [#2](https://scan.chainflip.io/loans/2)**
+        🔄 Liquidation swaps: **[#1](https://scan.chainflip.io/swaps/1), [#2](https://scan.chainflip.io/swaps/2)**",
                   "platform": "discord",
                 },
                 "name": "messageRouter",
@@ -190,7 +190,7 @@ describe('liquidationStatusCheck', () => {
                   "filterData": {
                     "name": "LIQUIDATION_COMPLETED",
                   },
-                  "message": "Liquidation completed
+                  "message": "👀 Liquidation completed
         👤 Account: https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7
         🏦 Loans: https://scan.chainflip.io/loans/1, https://scan.chainflip.io/loans/2
         🔄 Liquidation swaps: https://scan.chainflip.io/swaps/1, https://scan.chainflip.io/swaps/2

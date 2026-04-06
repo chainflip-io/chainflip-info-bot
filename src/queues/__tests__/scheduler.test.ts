@@ -221,7 +221,7 @@ describe('scheduler', () => {
               "data": [
                 {
                   "data": {
-                    "lastCheckedLiquidationSwapRequestId": 68,
+                    "lastCheckedLiquidationSwapRequestId": "1416658",
                   },
                   "name": "newLiquidationCheck",
                   "opts": {

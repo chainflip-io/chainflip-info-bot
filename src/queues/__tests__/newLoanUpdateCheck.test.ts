@@ -9,7 +9,7 @@ const mockGetNewLoanUpdateResponse = (id: number, timestamp?: string) => ({
       {
         id,
         type: 'BORROWING',
-        amount: '040154262217635410',
+        amount: '40154262217635410',
         amountValueUsd: '128.2652526243',
         timestamp: timestamp ?? subHours(new Date(), 1).toISOString(),
         loanByLoanId: {

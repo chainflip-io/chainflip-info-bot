@@ -1,8 +1,9 @@
 import { abbreviate } from '@chainflip/utils/string';
-import { hoursToMilliseconds } from 'date-fns';
+import { subHours } from 'date-fns';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, renderForPlatform, Trailer } from '../channels/formatting.js';
 import { platforms } from '../config.js';
+import getBoundaryLiquidationSwapRequestId from '../queries/getBoundaryLiquidationSwapRequestId.js';
 import getLatestLiquidationSwapRequestId from '../queries/getLatestLiquidationSwapRequestId.js';
 import getNewLiquidationSwapRequests from '../queries/getNewLiquidationSwapRequests.js';
 import logger from '../utils/logger.js';
@@ -11,7 +12,7 @@ const name = 'newLiquidationCheck';
 type Name = typeof name;
 
 type Data = {
-  lastCheckedLiquidationSwapRequestId: number;
+  lastCheckedLiquidationSwapRequestId: `${number}`;
 };
 
 declare global {
@@ -23,7 +24,7 @@ declare global {
 const INTERVAL = 30_000;
 
 export const getNextJobData = async (
-  liquidationSwapRequestId: number | null,
+  liquidationSwapRequestId: `${number}` | null,
 ): Promise<Extract<DispatchJobArgs, { name: 'scheduler' }>> => {
   // prevents multiple jobs with the same key from being scheduled
   const customJobId = 'newLiquidationCheck';
@@ -60,7 +61,7 @@ const buildMessages = ({
       message: renderForPlatform(
         platform,
         <>
-          <Line>Liquidation initiated</Line>
+          <Line>👀 Liquidation initiated</Line>
           <Line>
             👤 Account:{' '}
             <Bold>
@@ -71,25 +72,29 @@ const buildMessages = ({
           </Line>
           <Line>
             🏦 Loans:{' '}
-            {loanIds.map((loanId, i) => (
-              <Bold key={loanId}>
-                <ExplorerLink path={`/loans/${loanId}`} prefer="link">
-                  #{loanId}
-                </ExplorerLink>
-                {i !== loanIds.length - 1 && ', '}
-              </Bold>
-            ))}
+            <Bold>
+              {loanIds.map((loanId, i) => (
+                <>
+                  <ExplorerLink key={loanId} path={`/loans/${loanId}`} prefer="link">
+                    #{loanId}
+                  </ExplorerLink>
+                  {i !== loanIds.length - 1 && ', '}
+                </>
+              ))}
+            </Bold>
           </Line>
           <Line>
             🔄 Liquidation swaps:{' '}
-            {swapRequestIds.map((swapRequestId, i) => (
-              <Bold key={swapRequestId}>
-                <ExplorerLink path={`/swaps/${swapRequestId}`} prefer="link">
-                  #{swapRequestId}
-                </ExplorerLink>
-                {i !== swapRequestIds.length - 1 && ', '}
-              </Bold>
-            ))}
+            <Bold>
+              {swapRequestIds.map((swapRequestId, i) => (
+                <>
+                  <ExplorerLink key={swapRequestId} path={`/swaps/${swapRequestId}`} prefer="link">
+                    #{swapRequestId}
+                  </ExplorerLink>
+                  {i !== swapRequestIds.length - 1 && ', '}
+                </>
+              ))}
+            </Bold>
           </Line>
           <Trailer />
         </>,
@@ -100,42 +105,33 @@ const buildMessages = ({
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   logger.info('Checking for new liquidation swap requests', job.data);
-  const requests = await getNewLiquidationSwapRequests(
-    job.data.lastCheckedLiquidationSwapRequestId,
-  );
+  const minTimestamp = subHours(new Date(), 12).toISOString();
+  const currentSwapRequestId = job.data.lastCheckedLiquidationSwapRequestId;
+  const swapRequests = await getNewLiquidationSwapRequests(currentSwapRequestId, minTimestamp);
 
-  const latestId = requests.length
-    ? Math.max(...requests.map((request) => request.id))
-    : job.data.lastCheckedLiquidationSwapRequestId;
+  const boundarySwapRequestId = await getBoundaryLiquidationSwapRequestId(minTimestamp);
+
+  const latestSwapRequestId = swapRequests.length
+    ? `${Math.max(...swapRequests.map((request) => Number(request.swapRequestId)))}`
+    : `${Math.max(Number(boundarySwapRequestId ?? currentSwapRequestId), Number(currentSwapRequestId))}`;
+
   logger.info(
-    `Latest liquidation swap request id: ${latestId}, found ${requests.length} new liquidation swap requests`,
+    `Latest liquidation swap request id: ${latestSwapRequestId}, found ${swapRequests.length} new liquidation swap requests for last 12h`,
   );
 
-  const jobs: DispatchJobArgs[] = [await getNextJobData(latestId)];
+  const jobs: DispatchJobArgs[] = [await getNextJobData(latestSwapRequestId as `${number}`)];
 
-  if (requests.length) {
+  if (swapRequests.length) {
     const grouped = Map.groupBy(
-      requests,
+      swapRequests,
       (request) => `${request.loanByLoanId.accountByBorrowerId.idSs58}-${request.createdAtEventId}`,
     );
 
-    for (const [key, swapRequests] of grouped) {
-      const [borrowerIdSs58, createdAtEventId] = key.split('-');
+    for (const [key, groupedSwapRequests] of grouped) {
+      const [borrowerIdSs58] = key.split('-');
 
-      const isLiquidationCompleted = swapRequests.every((swapRequest) => swapRequest.isCompleted);
-      const isStaleLoanUpdates = swapRequests.every(({ loanByLoanId }) => {
-        const timestamp = loanByLoanId.lastUpdatedAtTimestamp;
-        return timestamp
-          ? Date.now() - new Date(timestamp).getTime() > hoursToMilliseconds(12)
-          : true;
-      });
-      const loanIds = [...new Set(swapRequests.map((item) => item.loanByLoanId.id))];
-      const swapRequestIds = swapRequests.map((item) => item.swapRequestId);
-
-      if (isLiquidationCompleted && isStaleLoanUpdates) {
-        logger.info(`Liquidation process for account ${borrowerIdSs58} exceeded max age threshold`);
-        continue;
-      }
+      const loanIds = [...new Set(groupedSwapRequests.map((item) => item.loanByLoanId.id))];
+      const swapRequestIds = groupedSwapRequests.map((item) => item.swapRequestId);
 
       jobs.push(...buildMessages({ borrowerIdSs58, loanIds, swapRequestIds }));
 
@@ -148,15 +144,15 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
               loanIds,
               swapRequestIds,
               borrowerIdSs58,
-              createdAtEventId,
-              createdAt: Date.now(),
+              jobCreatedAt: Date.now(),
+              deduplicationId: `liquidation-status-${key}`,
             },
           },
         ],
         opts: {
           delay: INTERVAL,
           deduplication: {
-            id: `liquidation-status-${createdAtEventId}-${loanIds.toSorted().join('-')}`,
+            id: `liquidation-status-${key}`,
           },
         },
       });

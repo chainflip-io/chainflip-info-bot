@@ -81,7 +81,7 @@ export const getLatestLoanUpdateIdQuery = gql(/* GraphQL */ `
 
 export const getNewLoanUpdateQuery = gql(/* GraphQL */ `
   query GetNewLoanUpdate($id: Int!) {
-    updates: allLoanUpdates(filter: { id: { greaterThan: $id } }, orderBy: ID_DESC, first: 1) {
+    updates: allLoanUpdates(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC, first: 1) {
       nodes {
         id
         type
@@ -114,7 +114,7 @@ export const getNewLendingLiquidityChangeQuery = gql(/* GraphQL */ `
   query GetNewLendingLiquidityChange($id: Int!) {
     liquidityChanges: allLendingLiquidityBalanceChanges(
       filter: { id: { greaterThan: $id }, type: { in: [WITHDRAWAL, DEPOSIT] } }
-      orderBy: ID_DESC
+      orderBy: ID_ASC
       first: 1
     ) {
       nodes {
@@ -134,27 +134,44 @@ export const getNewLendingLiquidityChangeQuery = gql(/* GraphQL */ `
 
 export const getLatestLiquidationSwapRequestIdQuery = gql(/* GraphQL */ `
   query GetLatestLiquidationSwapRequestId {
-    requests: allLiquidationSwapRequests(first: 1, orderBy: ID_DESC) {
+    requests: allLiquidationSwapRequests(first: 1, orderBy: SWAP_REQUEST_ID_DESC) {
       nodes {
-        id
+        swapRequestId
+      }
+    }
+  }
+`);
+
+export const getBoundaryLiquidationSwapRequestIdQuery = gql(/* GraphQL */ `
+  query GetBoundaryLiquidationSwapRequestId($minTimestamp: Datetime!) {
+    requests: allLiquidationSwapRequests(
+      filter: { eventByCreatedAtEventId: { timestamp: { lessThanOrEqualTo: $minTimestamp } } }
+      orderBy: SWAP_REQUEST_ID_DESC
+      first: 1
+    ) {
+      nodes {
+        swapRequestId
       }
     }
   }
 `);
 
 export const getNewLiquidationSwapRequestsQuery = gql(/* GraphQL */ `
-  query GetNewLiquidationSwapRequests($id: Int!) {
-    requests: allLiquidationSwapRequests(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC) {
+  query GetNewLiquidationSwapRequests($swapRequestId: BigInt!, $minTimestamp: Datetime!) {
+    requests: allLiquidationSwapRequests(
+      filter: {
+        swapRequestId: { greaterThan: $swapRequestId }
+        eventByCreatedAtEventId: { timestamp: { greaterThan: $minTimestamp } }
+      }
+      orderBy: SWAP_REQUEST_ID_ASC
+    ) {
       nodes {
         id
         swapRequestId
         createdAtEventId
-        completedAtEventId
-        abortedAtEventId
         loanByLoanId {
           id
           asset
-          lastUpdatedAtTimestamp
           accountByBorrowerId {
             idSs58
           }
@@ -168,7 +185,7 @@ export const getLiquidationStatusBySwapRequestIdsQuery = gql(/* GraphQL */ `
   query GetLiquidationStatusBySwapRequestIds($swapRequestIds: [BigInt!]!) {
     requests: allLiquidationSwapRequests(
       filter: { swapRequestId: { in: $swapRequestIds } }
-      orderBy: ID_DESC
+      orderBy: SWAP_REQUEST_ID_ASC
     ) {
       nodes {
         swapRequestId

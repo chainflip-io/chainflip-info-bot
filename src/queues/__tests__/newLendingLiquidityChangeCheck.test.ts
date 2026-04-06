@@ -14,7 +14,7 @@ const mockGetNewLendingLiquidityChangeResponse = (
         id,
         type: 'DEPOSIT',
         asset: 'Eth',
-        amount: '040154262217635410',
+        amount: '40154262217635410',
         amountUsd: '128.2652526243',
         timestamp: timestamp ?? subHours(new Date(), 1).toISOString(),
         accountByLiquidityProviderId: isAccountByLiquidityProviderId
