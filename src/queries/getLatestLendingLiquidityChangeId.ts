@@ -4,5 +4,5 @@ import { getLatestLendingLiquidityChangeIdQuery } from './lp.js';
 export default async function getLatestLendingLiquidityChangeId() {
   const result = await lpClient.request(getLatestLendingLiquidityChangeIdQuery);
 
-  return result.liquidityChanges?.nodes[0].id ?? 0;
+  return result.liquidityChanges?.nodes?.at(0)?.id ?? 0;
 }
