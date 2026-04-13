@@ -68,3 +68,133 @@ export const getIdSs58Query = gql(/* GraphQL */ `
     }
   }
 `);
+
+export const getLatestLoanUpdateIdQuery = gql(/* GraphQL */ `
+  query GetLatestLoanUpdateId {
+    updates: allLoanUpdates(first: 1, orderBy: ID_DESC) {
+      nodes {
+        id
+      }
+    }
+  }
+`);
+
+export const getNewLoanUpdateQuery = gql(/* GraphQL */ `
+  query GetNewLoanUpdate($id: Int!) {
+    updates: allLoanUpdates(filter: { id: { greaterThan: $id } }, orderBy: ID_ASC, first: 1) {
+      nodes {
+        id
+        type
+        amount
+        amountValueUsd
+        timestamp
+        loanByLoanId {
+          id
+          asset
+          accountByBorrowerId {
+            idSs58
+          }
+        }
+      }
+    }
+  }
+`);
+
+export const getLatestLendingLiquidityChangeIdQuery = gql(/* GraphQL */ `
+  query GetLatestLendingLiquidityChangeId {
+    liquidityChanges: allLendingLiquidityBalanceChanges(first: 1, orderBy: ID_DESC) {
+      nodes {
+        id
+      }
+    }
+  }
+`);
+
+export const getNewLendingLiquidityChangeQuery = gql(/* GraphQL */ `
+  query GetNewLendingLiquidityChange($id: Int!) {
+    liquidityChanges: allLendingLiquidityBalanceChanges(
+      filter: { id: { greaterThan: $id }, type: { in: [WITHDRAWAL, DEPOSIT] } }
+      orderBy: ID_ASC
+      first: 1
+    ) {
+      nodes {
+        id
+        type
+        asset
+        amount
+        amountUsd
+        timestamp
+        accountByLiquidityProviderId {
+          idSs58
+        }
+      }
+    }
+  }
+`);
+
+export const getLatestLiquidationSwapRequestIdQuery = gql(/* GraphQL */ `
+  query GetLatestLiquidationSwapRequestId {
+    requests: allLiquidationSwapRequests(first: 1, orderBy: SWAP_REQUEST_ID_DESC) {
+      nodes {
+        swapRequestId
+      }
+    }
+  }
+`);
+
+export const getBoundaryLiquidationSwapRequestIdQuery = gql(/* GraphQL */ `
+  query GetBoundaryLiquidationSwapRequestId($minTimestamp: Datetime!) {
+    requests: allLiquidationSwapRequests(
+      filter: { eventByCreatedAtEventId: { timestamp: { lessThanOrEqualTo: $minTimestamp } } }
+      orderBy: SWAP_REQUEST_ID_DESC
+      first: 1
+    ) {
+      nodes {
+        swapRequestId
+      }
+    }
+  }
+`);
+
+export const getNewLiquidationSwapRequestsQuery = gql(/* GraphQL */ `
+  query GetNewLiquidationSwapRequests($swapRequestId: BigInt!, $minTimestamp: Datetime!) {
+    requests: allLiquidationSwapRequests(
+      filter: {
+        swapRequestId: { greaterThan: $swapRequestId }
+        eventByCreatedAtEventId: { timestamp: { greaterThan: $minTimestamp } }
+      }
+      orderBy: SWAP_REQUEST_ID_ASC
+    ) {
+      nodes {
+        id
+        swapRequestId
+        createdAtEventId
+        loanByLoanId {
+          id
+          asset
+          accountByBorrowerId {
+            idSs58
+          }
+        }
+      }
+    }
+  }
+`);
+
+export const getLiquidationStatusBySwapRequestIdsQuery = gql(/* GraphQL */ `
+  query GetLiquidationStatusBySwapRequestIds($swapRequestIds: [BigInt!]!) {
+    requests: allLiquidationSwapRequests(
+      filter: { swapRequestId: { in: $swapRequestIds } }
+      orderBy: SWAP_REQUEST_ID_ASC
+    ) {
+      nodes {
+        swapRequestId
+        completedAtEventId
+        abortedAtEventId
+        loanByLoanId {
+          id
+        }
+      }
+    }
+  }
+`);

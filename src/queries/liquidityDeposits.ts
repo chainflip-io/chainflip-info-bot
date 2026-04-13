@@ -11,7 +11,7 @@ import { toFormattedAmount } from '../utils/chainflip.js';
 
 export const getLatestDepositId = async () => {
   const result = await explorerClient.request(getLatestDepositIdQuery);
-  const depositId = result.deposits?.nodes[0].id;
+  const depositId = result.deposits?.nodes?.at(0)?.id;
 
   assert(depositId, 'No liquidity deposit found');
 

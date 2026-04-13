@@ -1,6 +1,9 @@
 import type { DispatchJobArgs, Initializer, JobConfig, JobProcessor } from './initialize.js';
 import { getNextJobData as getNextBurnJobData } from './newBurnCheck.js';
 import { getNextJobData as getNextDelegationJobData } from './newDelegationAcitivityCheck.js';
+import { getNextJobData as getNextLendingLiquidityChangeCheckJobData } from './newLendingLiquidityChangeCheck.js';
+import { getNextJobData as getNextLiquidationCheckJobData } from './newLiquidationCheck.js';
+import { getNextJobData as getNextLoanUpdateCheckJobData } from './newLoanUpdateCheck.js';
 import { getNextJobData as getNextLpCheckJobData } from './newLpDepositCheck.js';
 import { getNextJobData as getNextSwapCheckJobData } from './newSwapCheck.js';
 import { getNextJobData as getNextTimePeriodJobData } from './timePeriodStats.js';
@@ -26,6 +29,9 @@ const initialize: Initializer<Name> = async (queue) => {
     getNextLpCheckJobData(null),
     getNextBurnJobData(null),
     getNextDelegationJobData(null),
+    getNextLoanUpdateCheckJobData(null),
+    getNextLendingLiquidityChangeCheckJobData(null),
+    getNextLiquidationCheckJobData(null),
   ]);
 
   await queue.addBulk([timePeriodJob, ...jobs]);

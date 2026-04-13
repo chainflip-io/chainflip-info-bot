@@ -169,6 +169,78 @@ describe('scheduler', () => {
                 "delay": 30000,
               },
             },
+            {
+              "data": [
+                {
+                  "data": {
+                    "lastCheckedLoanUpdateId": 722,
+                  },
+                  "name": "newLoanUpdateCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
+                },
+              ],
+              "name": "scheduler",
+              "opts": {
+                "deduplication": {
+                  "id": "newLoanUpdateCheck",
+                },
+                "delay": 30000,
+              },
+            },
+            {
+              "data": [
+                {
+                  "data": {
+                    "lastCheckedLendingLiquidityChangeId": 13271,
+                  },
+                  "name": "newLendingLiquidityChangeCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
+                },
+              ],
+              "name": "scheduler",
+              "opts": {
+                "deduplication": {
+                  "id": "newLendingLiquidityChangeCheck",
+                },
+                "delay": 30000,
+              },
+            },
+            {
+              "data": [
+                {
+                  "data": {
+                    "lastCheckedLiquidationSwapRequestId": "1416658",
+                  },
+                  "name": "newLiquidationCheck",
+                  "opts": {
+                    "attempts": 720,
+                    "backoff": {
+                      "delay": 5000,
+                      "type": "fixed",
+                    },
+                  },
+                },
+              ],
+              "name": "scheduler",
+              "opts": {
+                "deduplication": {
+                  "id": "newLiquidationCheck",
+                },
+                "delay": 30000,
+              },
+            },
           ],
         ]
       `);

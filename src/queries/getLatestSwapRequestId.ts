@@ -5,7 +5,7 @@ import { latestSwapRequestIdQuery } from './explorer.js';
 export default async function getLatestSwapRequestId() {
   const result = await explorerClient.request(latestSwapRequestIdQuery);
 
-  const swapRequestId = result.swapRequests?.nodes[0].nativeId;
+  const swapRequestId = result.swapRequests?.nodes?.at(0)?.nativeId;
   assert(swapRequestId, 'No swap request found');
 
   return swapRequestId;
