@@ -198,6 +198,51 @@ describe('Config', () => {
         ),
       ).toBe(true);
     });
+
+    it('works with NEW_BORROW', () => {
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_BORROW', minUsdValue: 100 }] },
+          { name: 'NEW_BORROW', usdValue: 50 },
+        ),
+      ).toBe(false);
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_BORROW', minUsdValue: 100 }] },
+          { name: 'NEW_BORROW', usdValue: 150 },
+        ),
+      ).toBe(true);
+    });
+
+    it('works with NEW_REPAYMENT', () => {
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_REPAYMENT', minUsdValue: 100 }] },
+          { name: 'NEW_REPAYMENT', usdValue: 50 },
+        ),
+      ).toBe(false);
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_REPAYMENT', minUsdValue: 100 }] },
+          { name: 'NEW_REPAYMENT', usdValue: 150 },
+        ),
+      ).toBe(true);
+    });
+
+    it('works with NEW_DEPOSIT', () => {
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_DEPOSIT', minUsdValue: 100 }] },
+          { name: 'NEW_DEPOSIT', usdValue: 50 },
+        ),
+      ).toBe(false);
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters: [{ name: 'NEW_DEPOSIT', minUsdValue: 100 }] },
+          { name: 'NEW_DEPOSIT', usdValue: 150 },
+        ),
+      ).toBe(true);
+    });
   });
 
   describe('Config.load', () => {

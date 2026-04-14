@@ -102,7 +102,7 @@ const buildMessages = ({
           <Trailer />
         </>,
       ).trimEnd(),
-      filterData: { name: filterName },
+      filterData: { name: filterName, usdValue: amountValueUsd?.toNumber() || 0 },
     },
   }));
 };

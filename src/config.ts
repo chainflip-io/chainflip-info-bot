@@ -18,9 +18,9 @@ const filters = z.discriminatedUnion('name', [
   z.object({ name: z.literal('NEW_BURN') }),
   z.object({ name: z.literal('NEW_LP') }),
   z.object({ name: z.literal('DELEGATION_EVENT') }),
-  z.object({ name: z.literal('NEW_BORROW') }),
-  z.object({ name: z.literal('NEW_REPAYMENT') }),
-  z.object({ name: z.literal('NEW_DEPOSIT') }),
+  z.object({ name: z.literal('NEW_BORROW'), minUsdValue: z.number().optional().default(0) }),
+  z.object({ name: z.literal('NEW_REPAYMENT'), minUsdValue: z.number().optional().default(0) }),
+  z.object({ name: z.literal('NEW_DEPOSIT'), minUsdValue: z.number().optional().default(0) }),
   z.object({ name: z.literal('NEW_WITHDRAWAL') }),
   z.object({ name: z.literal('LIQUIDATION_INITIATED') }),
   z.object({ name: z.literal('LIQUIDATION_COMPLETED') }),
@@ -30,7 +30,10 @@ export type Filter = z.infer<typeof filters>;
 
 export type FilterData =
   | Exclude<Filter, { name: Extract<Filter, { minUsdValue: number }>['name'] }>
-  | { name: 'SWAP_COMPLETED' | 'NEW_SWAP'; usdValue: number };
+  | {
+      name: 'SWAP_COMPLETED' | 'NEW_SWAP' | 'NEW_BORROW' | 'NEW_REPAYMENT' | 'NEW_DEPOSIT';
+      usdValue: number;
+    };
 
 const specializedMessages: Filter['name'][] = ['NEW_SWAP'];
 
@@ -198,7 +201,13 @@ export default class Config {
   static canSend(channel: Channel, filterData: FilterData): boolean {
     if (channel.filters === undefined) return !specializedMessages.includes(filterData.name);
 
-    if (filterData.name === 'SWAP_COMPLETED' || filterData.name === 'NEW_SWAP') {
+    if (
+      filterData.name === 'SWAP_COMPLETED' ||
+      filterData.name === 'NEW_SWAP' ||
+      filterData.name === 'NEW_BORROW' ||
+      filterData.name === 'NEW_REPAYMENT' ||
+      filterData.name === 'NEW_DEPOSIT'
+    ) {
       const filter = channel.filters.find((rule) => rule.name === filterData.name) as
         | Extract<Filter, { name: (typeof filterData)['name'] }>
         | undefined;
