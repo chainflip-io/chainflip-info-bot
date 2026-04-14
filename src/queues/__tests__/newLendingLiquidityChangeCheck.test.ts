@@ -78,6 +78,7 @@ describe('newLendingLiquidityChangeCheck', () => {
                 "data": {
                   "filterData": {
                     "name": "NEW_DEPOSIT",
+                    "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Lending pool transaction
         👤 Account: <strong><a href="https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">cFLRQDfE…D2ENbqj7</a></strong>
@@ -91,6 +92,7 @@ describe('newLendingLiquidityChangeCheck', () => {
                 "data": {
                   "filterData": {
                     "name": "NEW_DEPOSIT",
+                    "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Lending pool transaction
         👤 Account: **[cFLRQDfE…D2ENbqj7](https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
@@ -104,6 +106,7 @@ describe('newLendingLiquidityChangeCheck', () => {
                 "data": {
                   "filterData": {
                     "name": "NEW_DEPOSIT",
+                    "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Lending pool transaction
         👤 Account: https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7
@@ -163,6 +166,7 @@ describe('newLendingLiquidityChangeCheck', () => {
                 "data": {
                   "filterData": {
                     "name": "NEW_DEPOSIT",
+                    "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Lending pool transaction
         💳 Type: <strong>Supply</strong>
@@ -175,6 +179,7 @@ describe('newLendingLiquidityChangeCheck', () => {
                 "data": {
                   "filterData": {
                     "name": "NEW_DEPOSIT",
+                    "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Lending pool transaction
         💳 Type: **Supply**
@@ -187,6 +192,7 @@ describe('newLendingLiquidityChangeCheck', () => {
                 "data": {
                   "filterData": {
                     "name": "NEW_DEPOSIT",
+                    "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Lending pool transaction
         💳 Type: Supply
