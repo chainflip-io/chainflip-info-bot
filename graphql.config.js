@@ -1,6 +1,10 @@
 const schemas = {
-  explorer: 'https://explorer-service-processor.chainflip.io/graphql',
-  lp: 'https://lp-service.chainflip.io/graphql',
+  //mainnet
+  // explorer: 'https://explorer-service-processor.chainflip.io/graphql',
+  // lp: 'https://lp-service.chainflip.io/graphql',
+  //backspin
+  explorer: 'https://processor-backspin.staging/graphql',
+  lp: 'https://chainflip-lp-service.backspin.staging/graphql',
 };
 
 /** @type {import ('@graphql-codegen/cli').CodegenConfig} */

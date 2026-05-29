@@ -131,7 +131,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
           amount,
           amountValueUsd,
           asset: loanByLoanId.asset as Exclude<ChainflipAsset, 'Dot'>,
-          borrowerIdSs58: loanByLoanId.accountByBorrowerId.idSs58,
+          borrowerIdSs58: loanByLoanId.accountByBorrowerId?.idSs58 ?? 'unknown',
         }),
       );
       logger.info(`Send message for loan ${loanByLoanId.id} about ${type} update`);

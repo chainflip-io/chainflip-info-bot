@@ -16,6 +16,8 @@ export const humanFriendlyAsset: InternalAssetMap<string> = {
   Usdc: 'USDC on Ethereum',
   Usdt: 'USDT on Ethereum',
   Wbtc: 'WBTC on Ethereum',
+  Trx: 'TRX on Tron',
+  TrxUsdt: 'USDT on Tron',
 };
 
 export const EXPLORER_URL = 'https://scan.chainflip.io';

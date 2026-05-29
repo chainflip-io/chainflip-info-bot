@@ -12,7 +12,7 @@ const mockGetNewLendingLiquidityChangeResponse = (
     nodes: [
       {
         id,
-        type: 'DEPOSIT',
+        type: 'MANUAL_DEPOSIT',
         asset: 'Eth',
         amount: '40154262217635410',
         amountUsd: '128.2652526243',

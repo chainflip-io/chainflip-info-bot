@@ -124,7 +124,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   if (swapRequests.length) {
     const grouped = Map.groupBy(
       swapRequests,
-      (request) => `${request.loanByLoanId.accountByBorrowerId.idSs58}-${request.createdAtEventId}`,
+      (request) =>
+        `${request.loanByLoanId.accountByBorrowerId?.idSs58 ?? 'unknown'}-${request.createdAtEventId}`,
     );
 
     for (const [key, groupedSwapRequests] of grouped) {

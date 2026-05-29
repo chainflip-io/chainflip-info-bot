@@ -68,8 +68,8 @@ const buildMessages = ({
   amountValueUsd: BigNumber | null;
   asset: Exclude<ChainflipAsset, 'Dot'>;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
-  const typeValue = type === 'DEPOSIT' ? 'Supply' : 'Withdrawal';
-  const filterName = type === 'DEPOSIT' ? 'NEW_DEPOSIT' : 'NEW_WITHDRAWAL';
+  const typeValue = type === 'MANUAL_DEPOSIT' ? 'Supply' : 'Withdrawal';
+  const filterName = type === 'MANUAL_DEPOSIT' ? 'NEW_DEPOSIT' : 'NEW_WITHDRAWAL';
 
   return platforms.map((platform) => ({
     name: 'messageRouter' as const,
