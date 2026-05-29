@@ -1537,6 +1537,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_LOAN_LOSS_ID_ASC'
@@ -1563,6 +1565,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_DISTINCT_COUNT_LOAN_LOSS_ID_ASC'
@@ -1587,6 +1591,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MAX_LOAN_LOSS_ID_ASC'
@@ -1611,6 +1617,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_MIN_LOAN_LOSS_ID_ASC'
@@ -1635,6 +1643,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_POPULATION_LOAN_LOSS_ID_ASC'
@@ -1659,6 +1669,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_STDDEV_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -1683,6 +1695,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_SUM_LOAN_LOSS_ID_ASC'
@@ -1707,6 +1721,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_POPULATION_LOAN_LOSS_ID_ASC'
@@ -1731,6 +1747,8 @@ export type AccountsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -2343,8 +2361,12 @@ export type AccountsOrderBy =
   | 'LIQUIDITY_SNAPSHOTS_BY_LIQUIDITY_PROVIDER_ID_VARIANCE_SAMPLE_UNDEPLOYED_LIQUIDITY_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_AVERAGE_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_AVERAGE_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_AVERAGE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_AVERAGE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_CREATED_AT_TIMESTAMP_ASC'
@@ -2361,14 +2383,20 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_AVERAGE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_AVERAGE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_COUNT_ASC'
   | 'LOANS_BY_BORROWER_ID_COUNT_DESC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_CREATED_AT_TIMESTAMP_ASC'
@@ -2385,12 +2413,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MAX_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_MAX_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_MAX_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_MAX_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MAX_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MAX_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_MAX_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_MAX_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_MAX_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MAX_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MAX_CREATED_AT_TIMESTAMP_ASC'
@@ -2407,12 +2441,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_MAX_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_MAX_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MAX_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_MAX_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_MAX_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MAX_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MAX_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MIN_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_MIN_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_MIN_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_MIN_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MIN_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MIN_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_MIN_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_MIN_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_MIN_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MIN_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MIN_CREATED_AT_TIMESTAMP_ASC'
@@ -2429,12 +2469,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_MIN_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_MIN_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MIN_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_MIN_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_MIN_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_MIN_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_MIN_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -2451,12 +2497,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -2473,12 +2525,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_SUM_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_SUM_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_SUM_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_SUM_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_SUM_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_SUM_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_SUM_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_SUM_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_SUM_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_SUM_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_SUM_CREATED_AT_TIMESTAMP_ASC'
@@ -2495,12 +2553,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_SUM_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_SUM_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_SUM_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_SUM_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_SUM_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_SUM_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_SUM_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -2517,12 +2581,18 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -2539,6 +2609,8 @@ export type AccountsOrderBy =
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_BORROWER_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LP_COLLATERAL_BALANCE_CHANGES_BY_LIQUIDITY_PROVIDER_ID_AVERAGE_AMOUNT_ASC'
@@ -4323,11 +4395,13 @@ export type Boost = Node & {
   fee: Scalars['BigFloat']['output'];
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   id: Scalars['Int']['output'];
-  liquidityProviderFeePortion: Scalars['BigFloat']['output'];
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
   liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Reads and enables pagination through a set of `Loan`. */
+  loansByBoostId: LoansConnection;
   lostAtEventId?: Maybe<Scalars['BigInt']['output']>;
   lostAtTimestamp?: Maybe<Scalars['Datetime']['output']>;
-  networkFeePortion: Scalars['BigFloat']['output'];
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
   networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
   networkFeeSwapRequestId?: Maybe<Scalars['BigInt']['output']>;
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
@@ -4375,6 +4449,18 @@ export type BoostBoostSharesByBoostIdArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<BoostSharesOrderBy>>;
+};
+
+
+export type BoostLoansByBoostIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<LoanCondition>;
+  filter?: InputMaybe<LoanFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<LoansOrderBy>>;
 };
 
 
@@ -4667,6 +4753,10 @@ export type BoostFilter = {
   liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `liquidityProviderFeePortionUsd` field. */
   liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `loansByBoostId` relation. */
+  loansByBoostId?: InputMaybe<BoostToManyLoanFilter>;
+  /** Some related `loansByBoostId` exist. */
+  loansByBoostIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `lostAtEventId` field. */
   lostAtEventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `lostAtTimestamp` field. */
@@ -5657,6 +5747,7 @@ export type BoostPool = Node & {
   boostSharesByBoostPoolId: BoostSharesConnection;
   feeTierPips: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
+  isActive: Scalars['Boolean']['output'];
   /** Reads and enables pagination through a set of `LiquidityProviderBoostPoolSummary`. */
   liquidityProviderBoostPoolSummariesByBoostPoolId: LiquidityProviderBoostPoolSummariesConnection;
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
@@ -5805,6 +5896,8 @@ export type BoostPoolApiesOrderBy =
   | 'ID_DESC'
   | 'INTERVAL_ASC'
   | 'INTERVAL_DESC'
+  | 'LOSSES_ASC'
+  | 'LOSSES_DESC'
   | 'MAX_LIQUIDITY_ASC'
   | 'MAX_LIQUIDITY_DESC'
   | 'MIN_LIQUIDITY_ASC'
@@ -5812,6 +5905,16 @@ export type BoostPoolApiesOrderBy =
   | 'NATURAL'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC'
+  | 'PROJECTED_APY6H_ASC'
+  | 'PROJECTED_APY6H_DESC'
+  | 'PROJECTED_APY24H_ASC'
+  | 'PROJECTED_APY24H_DESC'
+  | 'PROJECTED_APY72H_ASC'
+  | 'PROJECTED_APY72H_DESC'
+  | 'PROJECTED_APY168H_ASC'
+  | 'PROJECTED_APY168H_DESC'
+  | 'PROJECTED_APY720H_ASC'
+  | 'PROJECTED_APY720H_DESC'
   | 'PROJECTED_APY_ASC'
   | 'PROJECTED_APY_DESC'
   | 'TIMESTAMP_ASC'
@@ -5827,11 +5930,17 @@ export type BoostPoolApy = Node & {
   feesEarned: Scalars['BigFloat']['output'];
   id: Scalars['Int']['output'];
   interval: Scalars['Int']['output'];
+  losses: Scalars['BigFloat']['output'];
   maxLiquidity: Scalars['BigFloat']['output'];
   minLiquidity: Scalars['BigFloat']['output'];
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
   projectedApy: Scalars['BigFloat']['output'];
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
   timestamp: Scalars['Datetime']['output'];
 };
 
@@ -5889,9 +5998,15 @@ export type BoostPoolApyAverageAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interval?: InputMaybe<BigFloatFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyAverageAggregates = {
@@ -5908,12 +6023,24 @@ export type BoostPoolApyAverageAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of interval across the matching connection */
   interval?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 /**
@@ -5933,12 +6060,24 @@ export type BoostPoolApyCondition = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `interval` field. */
   interval?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `losses` field. */
+  losses?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `maxLiquidity` field. */
   maxLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `minLiquidity` field. */
   minLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `projectedApy` field. */
   projectedApy?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy6H` field. */
+  projectedApy6H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy24H` field. */
+  projectedApy24H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy72H` field. */
+  projectedApy72H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy168H` field. */
+  projectedApy168H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy720H` field. */
+  projectedApy720H?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `timestamp` field. */
   timestamp?: InputMaybe<Scalars['Datetime']['input']>;
 };
@@ -5950,9 +6089,15 @@ export type BoostPoolApyDistinctCountAggregateFilter = {
   feesEarned?: InputMaybe<BigIntFilter>;
   id?: InputMaybe<BigIntFilter>;
   interval?: InputMaybe<BigIntFilter>;
+  losses?: InputMaybe<BigIntFilter>;
   maxLiquidity?: InputMaybe<BigIntFilter>;
   minLiquidity?: InputMaybe<BigIntFilter>;
   projectedApy?: InputMaybe<BigIntFilter>;
+  projectedApy6H?: InputMaybe<BigIntFilter>;
+  projectedApy24H?: InputMaybe<BigIntFilter>;
+  projectedApy72H?: InputMaybe<BigIntFilter>;
+  projectedApy168H?: InputMaybe<BigIntFilter>;
+  projectedApy720H?: InputMaybe<BigIntFilter>;
   timestamp?: InputMaybe<BigIntFilter>;
 };
 
@@ -5970,12 +6115,24 @@ export type BoostPoolApyDistinctCountAggregates = {
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of interval across the matching connection */
   interval?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of losses across the matching connection */
+  losses?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of timestamp across the matching connection */
   timestamp?: Maybe<Scalars['BigInt']['output']>;
 };
@@ -5998,6 +6155,8 @@ export type BoostPoolApyFilter = {
   id?: InputMaybe<IntFilter>;
   /** Filter by the object’s `interval` field. */
   interval?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `losses` field. */
+  losses?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `maxLiquidity` field. */
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `minLiquidity` field. */
@@ -6008,6 +6167,16 @@ export type BoostPoolApyFilter = {
   or?: InputMaybe<Array<BoostPoolApyFilter>>;
   /** Filter by the object’s `projectedApy` field. */
   projectedApy?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy6H` field. */
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy24H` field. */
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy72H` field. */
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy168H` field. */
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy720H` field. */
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `timestamp` field. */
   timestamp?: InputMaybe<DatetimeFilter>;
 };
@@ -6019,9 +6188,15 @@ export type BoostPoolApyGroupBy =
   | 'BOOST_POOL_ID'
   | 'FEES_EARNED'
   | 'INTERVAL'
+  | 'LOSSES'
   | 'MAX_LIQUIDITY'
   | 'MIN_LIQUIDITY'
   | 'PROJECTED_APY'
+  | 'PROJECTED_APY6H'
+  | 'PROJECTED_APY24H'
+  | 'PROJECTED_APY72H'
+  | 'PROJECTED_APY168H'
+  | 'PROJECTED_APY720H'
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
   | 'TIMESTAMP_TRUNCATED_TO_HOUR'
@@ -6035,9 +6210,15 @@ export type BoostPoolApyHavingAverageInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6048,9 +6229,15 @@ export type BoostPoolApyHavingDistinctCountInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6076,9 +6263,15 @@ export type BoostPoolApyHavingMaxInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6089,9 +6282,15 @@ export type BoostPoolApyHavingMinInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6102,9 +6301,15 @@ export type BoostPoolApyHavingStddevPopulationInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6115,9 +6320,15 @@ export type BoostPoolApyHavingStddevSampleInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6128,9 +6339,15 @@ export type BoostPoolApyHavingSumInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6141,9 +6358,15 @@ export type BoostPoolApyHavingVariancePopulationInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6154,9 +6377,15 @@ export type BoostPoolApyHavingVarianceSampleInput = {
   feesEarned?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingIntFilter>;
   interval?: InputMaybe<HavingIntFilter>;
+  losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -6167,9 +6396,15 @@ export type BoostPoolApyMaxAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<IntFilter>;
   interval?: InputMaybe<IntFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
   timestamp?: InputMaybe<DatetimeFilter>;
 };
 
@@ -6187,12 +6422,24 @@ export type BoostPoolApyMaxAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Maximum of interval across the matching connection */
   interval?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of timestamp across the matching connection */
   timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
@@ -6204,9 +6451,15 @@ export type BoostPoolApyMinAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<IntFilter>;
   interval?: InputMaybe<IntFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
   timestamp?: InputMaybe<DatetimeFilter>;
 };
 
@@ -6224,12 +6477,24 @@ export type BoostPoolApyMinAggregates = {
   id?: Maybe<Scalars['Int']['output']>;
   /** Minimum of interval across the matching connection */
   interval?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of timestamp across the matching connection */
   timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
@@ -6241,9 +6506,15 @@ export type BoostPoolApyStddevPopulationAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interval?: InputMaybe<BigFloatFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyStddevPopulationAggregates = {
@@ -6260,12 +6531,24 @@ export type BoostPoolApyStddevPopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of interval across the matching connection */
   interval?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolApyStddevSampleAggregateFilter = {
@@ -6275,9 +6558,15 @@ export type BoostPoolApyStddevSampleAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interval?: InputMaybe<BigFloatFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyStddevSampleAggregates = {
@@ -6294,12 +6583,24 @@ export type BoostPoolApyStddevSampleAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of interval across the matching connection */
   interval?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolApySumAggregateFilter = {
@@ -6309,9 +6610,15 @@ export type BoostPoolApySumAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
   interval?: InputMaybe<BigIntFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApySumAggregates = {
@@ -6328,12 +6635,24 @@ export type BoostPoolApySumAggregates = {
   id: Scalars['BigInt']['output'];
   /** Sum of interval across the matching connection */
   interval: Scalars['BigInt']['output'];
+  /** Sum of losses across the matching connection */
+  losses: Scalars['BigFloat']['output'];
   /** Sum of maxLiquidity across the matching connection */
   maxLiquidity: Scalars['BigFloat']['output'];
   /** Sum of minLiquidity across the matching connection */
   minLiquidity: Scalars['BigFloat']['output'];
   /** Sum of projectedApy across the matching connection */
   projectedApy: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy6H across the matching connection */
+  projectedApy6H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy24H across the matching connection */
+  projectedApy24H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy72H across the matching connection */
+  projectedApy72H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy168H across the matching connection */
+  projectedApy168H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy720H across the matching connection */
+  projectedApy720H: Scalars['BigFloat']['output'];
 };
 
 export type BoostPoolApyVariancePopulationAggregateFilter = {
@@ -6343,9 +6662,15 @@ export type BoostPoolApyVariancePopulationAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interval?: InputMaybe<BigFloatFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyVariancePopulationAggregates = {
@@ -6362,12 +6687,24 @@ export type BoostPoolApyVariancePopulationAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of interval across the matching connection */
   interval?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolApyVarianceSampleAggregateFilter = {
@@ -6377,9 +6714,15 @@ export type BoostPoolApyVarianceSampleAggregateFilter = {
   feesEarned?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interval?: InputMaybe<BigFloatFilter>;
+  losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolApyVarianceSampleAggregates = {
@@ -6396,12 +6739,24 @@ export type BoostPoolApyVarianceSampleAggregates = {
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of interval across the matching connection */
   interval?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of losses across the matching connection */
+  losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolAverageAggregates = {
@@ -6459,7 +6814,11 @@ export type BoostPoolBoostShare = Node & {
   fee: Scalars['BigFloat']['output'];
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   id: Scalars['BigInt']['output'];
+  liquidityProviderFeePortion: Scalars['BigFloat']['output'];
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
   lost: Scalars['Boolean']['output'];
+  networkFeePortion: Scalars['BigFloat']['output'];
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
 };
@@ -6519,6 +6878,10 @@ export type BoostPoolBoostShareAverageAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareAverageAggregates = {
@@ -6537,6 +6900,14 @@ export type BoostPoolBoostShareAverageAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 /**
@@ -6560,8 +6931,16 @@ export type BoostPoolBoostShareCondition = {
   feeUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `id` field. */
   id?: InputMaybe<Scalars['BigInt']['input']>;
+  /** Checks for equality with the object’s `liquidityProviderFeePortion` field. */
+  liquidityProviderFeePortion?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `liquidityProviderFeePortionUsd` field. */
+  liquidityProviderFeePortionUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `lost` field. */
   lost?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Checks for equality with the object’s `networkFeePortion` field. */
+  networkFeePortion?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `networkFeePortionUsd` field. */
+  networkFeePortionUsd?: InputMaybe<Scalars['BigFloat']['input']>;
 };
 
 export type BoostPoolBoostShareDistinctCountAggregateFilter = {
@@ -6573,7 +6952,11 @@ export type BoostPoolBoostShareDistinctCountAggregateFilter = {
   fee?: InputMaybe<BigIntFilter>;
   feeUsd?: InputMaybe<BigIntFilter>;
   id?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigIntFilter>;
   lost?: InputMaybe<BigIntFilter>;
+  networkFeePortion?: InputMaybe<BigIntFilter>;
+  networkFeePortionUsd?: InputMaybe<BigIntFilter>;
 };
 
 export type BoostPoolBoostShareDistinctCountAggregates = {
@@ -6594,8 +6977,16 @@ export type BoostPoolBoostShareDistinctCountAggregates = {
   feeUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of lost across the matching connection */
   lost?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigInt']['output']>;
 };
 
 /** A filter to be used against `BoostPoolBoostShare` object types. All fields are combined with a logical ‘and.’ */
@@ -6622,8 +7013,16 @@ export type BoostPoolBoostShareFilter = {
   feeUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<BigIntFilter>;
+  /** Filter by the object’s `liquidityProviderFeePortion` field. */
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `liquidityProviderFeePortionUsd` field. */
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `lost` field. */
   lost?: InputMaybe<BooleanFilter>;
+  /** Filter by the object’s `networkFeePortion` field. */
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `networkFeePortionUsd` field. */
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
   /** Negates the expression. */
   not?: InputMaybe<BoostPoolBoostShareFilter>;
   /** Checks for any expressions in this list. */
@@ -6643,7 +7042,11 @@ export type BoostPoolBoostShareGroupBy =
   | 'EXECUTED_AT_TIMESTAMP_TRUNCATED_TO_WEEK'
   | 'FEE'
   | 'FEE_USD'
-  | 'LOST';
+  | 'LIQUIDITY_PROVIDER_FEE_PORTION'
+  | 'LIQUIDITY_PROVIDER_FEE_PORTION_USD'
+  | 'LOST'
+  | 'NETWORK_FEE_PORTION'
+  | 'NETWORK_FEE_PORTION_USD';
 
 export type BoostPoolBoostShareHavingAverageInput = {
   amount?: InputMaybe<HavingBigfloatFilter>;
@@ -6654,6 +7057,10 @@ export type BoostPoolBoostShareHavingAverageInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingDistinctCountInput = {
@@ -6665,6 +7072,10 @@ export type BoostPoolBoostShareHavingDistinctCountInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 /** Conditions for `BoostPoolBoostShare` aggregates. */
@@ -6691,6 +7102,10 @@ export type BoostPoolBoostShareHavingMaxInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingMinInput = {
@@ -6702,6 +7117,10 @@ export type BoostPoolBoostShareHavingMinInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingStddevPopulationInput = {
@@ -6713,6 +7132,10 @@ export type BoostPoolBoostShareHavingStddevPopulationInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingStddevSampleInput = {
@@ -6724,6 +7147,10 @@ export type BoostPoolBoostShareHavingStddevSampleInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingSumInput = {
@@ -6735,6 +7162,10 @@ export type BoostPoolBoostShareHavingSumInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingVariancePopulationInput = {
@@ -6746,6 +7177,10 @@ export type BoostPoolBoostShareHavingVariancePopulationInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareHavingVarianceSampleInput = {
@@ -6757,6 +7192,10 @@ export type BoostPoolBoostShareHavingVarianceSampleInput = {
   fee?: InputMaybe<HavingBigfloatFilter>;
   feeUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
+  liquidityProviderFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortion?: InputMaybe<HavingBigfloatFilter>;
+  networkFeePortionUsd?: InputMaybe<HavingBigfloatFilter>;
 };
 
 export type BoostPoolBoostShareMaxAggregateFilter = {
@@ -6768,6 +7207,10 @@ export type BoostPoolBoostShareMaxAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareMaxAggregates = {
@@ -6788,6 +7231,14 @@ export type BoostPoolBoostShareMaxAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+  /** Maximum of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolBoostShareMinAggregateFilter = {
@@ -6799,6 +7250,10 @@ export type BoostPoolBoostShareMinAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareMinAggregates = {
@@ -6819,6 +7274,14 @@ export type BoostPoolBoostShareMinAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+  /** Minimum of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolBoostShareStddevPopulationAggregateFilter = {
@@ -6829,6 +7292,10 @@ export type BoostPoolBoostShareStddevPopulationAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareStddevPopulationAggregates = {
@@ -6847,6 +7314,14 @@ export type BoostPoolBoostShareStddevPopulationAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolBoostShareStddevSampleAggregateFilter = {
@@ -6857,6 +7332,10 @@ export type BoostPoolBoostShareStddevSampleAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareStddevSampleAggregates = {
@@ -6875,6 +7354,14 @@ export type BoostPoolBoostShareStddevSampleAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolBoostShareSumAggregateFilter = {
@@ -6885,6 +7372,10 @@ export type BoostPoolBoostShareSumAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareSumAggregates = {
@@ -6903,6 +7394,14 @@ export type BoostPoolBoostShareSumAggregates = {
   feeUsd: Scalars['BigFloat']['output'];
   /** Sum of id across the matching connection */
   id: Scalars['BigFloat']['output'];
+  /** Sum of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion: Scalars['BigFloat']['output'];
+  /** Sum of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd: Scalars['BigFloat']['output'];
+  /** Sum of networkFeePortion across the matching connection */
+  networkFeePortion: Scalars['BigFloat']['output'];
+  /** Sum of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd: Scalars['BigFloat']['output'];
 };
 
 export type BoostPoolBoostShareVariancePopulationAggregateFilter = {
@@ -6913,6 +7412,10 @@ export type BoostPoolBoostShareVariancePopulationAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareVariancePopulationAggregates = {
@@ -6931,6 +7434,14 @@ export type BoostPoolBoostShareVariancePopulationAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type BoostPoolBoostShareVarianceSampleAggregateFilter = {
@@ -6941,6 +7452,10 @@ export type BoostPoolBoostShareVarianceSampleAggregateFilter = {
   fee?: InputMaybe<BigFloatFilter>;
   feeUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortion?: InputMaybe<BigFloatFilter>;
+  liquidityProviderFeePortionUsd?: InputMaybe<BigFloatFilter>;
+  networkFeePortion?: InputMaybe<BigFloatFilter>;
+  networkFeePortionUsd?: InputMaybe<BigFloatFilter>;
 };
 
 export type BoostPoolBoostShareVarianceSampleAggregates = {
@@ -6959,6 +7474,14 @@ export type BoostPoolBoostShareVarianceSampleAggregates = {
   feeUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of liquidityProviderFeePortion across the matching connection */
+  liquidityProviderFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of liquidityProviderFeePortionUsd across the matching connection */
+  liquidityProviderFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of networkFeePortion across the matching connection */
+  networkFeePortion?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of networkFeePortionUsd across the matching connection */
+  networkFeePortionUsd?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 /** A connection to a list of `BoostPoolBoostShare` values. */
@@ -7012,9 +7535,17 @@ export type BoostPoolBoostSharesOrderBy =
   | 'FEE_USD_DESC'
   | 'ID_ASC'
   | 'ID_DESC'
+  | 'LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'LOST_ASC'
   | 'LOST_DESC'
   | 'NATURAL'
+  | 'NETWORK_FEE_PORTION_ASC'
+  | 'NETWORK_FEE_PORTION_DESC'
+  | 'NETWORK_FEE_PORTION_USD_ASC'
+  | 'NETWORK_FEE_PORTION_USD_DESC'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC';
 
@@ -7029,6 +7560,8 @@ export type BoostPoolCondition = {
   feeTierPips?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `id` field. */
   id?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `isActive` field. */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type BoostPoolDistinctCountAggregates = {
@@ -7039,6 +7572,8 @@ export type BoostPoolDistinctCountAggregates = {
   feeTierPips?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of isActive across the matching connection */
+  isActive?: Maybe<Scalars['BigInt']['output']>;
 };
 
 /** A filter to be used against `BoostPool` object types. All fields are combined with a logical ‘and.’ */
@@ -7071,6 +7606,8 @@ export type BoostPoolFilter = {
   feeTierPips?: InputMaybe<IntFilter>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `isActive` field. */
+  isActive?: InputMaybe<BooleanFilter>;
   /** Filter by the object’s `liquidityProviderBoostPoolSummariesByBoostPoolId` relation. */
   liquidityProviderBoostPoolSummariesByBoostPoolId?: InputMaybe<BoostPoolToManyLiquidityProviderBoostPoolSummaryFilter>;
   /** Some related `liquidityProviderBoostPoolSummariesByBoostPoolId` exist. */
@@ -7084,7 +7621,8 @@ export type BoostPoolFilter = {
 /** Grouping methods for `BoostPool` for usage during aggregation. */
 export type BoostPoolGroupBy =
   | 'ASSET'
-  | 'FEE_TIER_PIPS';
+  | 'FEE_TIER_PIPS'
+  | 'IS_ACTIVE';
 
 export type BoostPoolHavingAverageInput = {
   feeTierPips?: InputMaybe<HavingIntFilter>;
@@ -8115,10 +8653,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_TIMESTAMP_ASC'
@@ -8137,10 +8687,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_TIMESTAMP_ASC'
@@ -8157,10 +8719,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_TIMESTAMP_ASC'
@@ -8177,10 +8751,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_TIMESTAMP_ASC'
@@ -8197,10 +8783,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_TIMESTAMP_ASC'
@@ -8217,10 +8815,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_TIMESTAMP_ASC'
@@ -8237,10 +8847,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_TIMESTAMP_ASC'
@@ -8257,10 +8879,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_TIMESTAMP_ASC'
@@ -8277,10 +8911,22 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_INTERVAL_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_INTERVAL_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOSSES_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOSSES_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_MAX_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_MAX_LIQUIDITY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_MIN_LIQUIDITY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_MIN_LIQUIDITY_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY6H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY6H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY24H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY24H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY72H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY72H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY168H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY168H_DESC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_ASC'
+  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_ASC'
@@ -8301,8 +8947,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_COUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_COUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -8321,8 +8975,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_AMOUNT_USD_ASC'
@@ -8339,8 +9001,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MAX_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_AMOUNT_USD_ASC'
@@ -8357,8 +9027,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_MIN_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -8375,8 +9053,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -8393,8 +9079,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_AMOUNT_USD_ASC'
@@ -8411,8 +9105,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_SUM_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -8429,8 +9131,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -8447,8 +9157,16 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_LIQUIDITIES_BY_BOOST_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_ASC'
   | 'BOOST_POOL_LIQUIDITIES_BY_BOOST_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_DESC'
   | 'BOOST_POOL_LIQUIDITIES_BY_BOOST_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_VALUE_USD_ASC'
@@ -8817,6 +9535,8 @@ export type BoostPoolsOrderBy =
   | 'FEE_TIER_PIPS_DESC'
   | 'ID_ASC'
   | 'ID_DESC'
+  | 'IS_ACTIVE_ASC'
+  | 'IS_ACTIVE_DESC'
   | 'LIQUIDITY_PROVIDER_BOOST_POOL_SUMMARIES_BY_BOOST_POOL_ID_AVERAGE_AMOUNT_ASC'
   | 'LIQUIDITY_PROVIDER_BOOST_POOL_SUMMARIES_BY_BOOST_POOL_ID_AVERAGE_AMOUNT_DESC'
   | 'LIQUIDITY_PROVIDER_BOOST_POOL_SUMMARIES_BY_BOOST_POOL_ID_AVERAGE_AMOUNT_USD_ASC'
@@ -9762,6 +10482,18 @@ export type BoostToManyBoostShareFilter = {
   some?: InputMaybe<BoostShareFilter>;
 };
 
+/** A filter to be used against many `Loan` object types. All fields are combined with a logical ‘and.’ */
+export type BoostToManyLoanFilter = {
+  /** Aggregates across related `Loan` match the filter criteria. */
+  aggregates?: InputMaybe<LoanAggregatesFilter>;
+  /** Every related `Loan` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<LoanFilter>;
+  /** No related `Loan` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<LoanFilter>;
+  /** Some related `Loan` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<LoanFilter>;
+};
+
 /** A filter to be used against many `PendingBoostLiquidityWithdrawal` object types. All fields are combined with a logical ‘and.’ */
 export type BoostToManyPendingBoostLiquidityWithdrawalFilter = {
   /** Aggregates across related `PendingBoostLiquidityWithdrawal` match the filter criteria. */
@@ -10089,8 +10821,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_AVERAGE_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_COUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_COUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_AMOUNT_ASC'
@@ -10109,8 +10849,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_DISTINCT_COUNT_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_AMOUNT_USD_ASC'
@@ -10127,8 +10875,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MAX_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_AMOUNT_USD_ASC'
@@ -10145,8 +10901,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_MIN_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
@@ -10163,8 +10927,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_POPULATION_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
@@ -10181,8 +10953,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_STDDEV_SAMPLE_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_AMOUNT_USD_ASC'
@@ -10199,8 +10979,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_SUM_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
@@ -10217,8 +11005,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_POPULATION_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
@@ -10235,8 +11031,16 @@ export type BoostsOrderBy =
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_FEE_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_ID_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_ASC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_DESC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_USD_ASC'
+  | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_ID_VARIANCE_SAMPLE_NETWORK_FEE_PORTION_USD_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_AMOUNT_ASC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_AMOUNT_DESC'
   | 'BOOST_SHARES_BY_BOOST_ID_AVERAGE_AMOUNT_USD_ASC'
@@ -10441,6 +11245,260 @@ export type BoostsOrderBy =
   | 'LIQUIDITY_PROVIDER_FEE_PORTION_DESC'
   | 'LIQUIDITY_PROVIDER_FEE_PORTION_USD_ASC'
   | 'LIQUIDITY_PROVIDER_FEE_PORTION_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_AVERAGE_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_COUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_COUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MAX_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MAX_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_MIN_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_MIN_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_SUM_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_SUM_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_ASSET_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_BOOST_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_BORROWER_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_BORROWER_TYPE_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_CREATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_IS_LIQUIDATED_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_IS_LIQUIDATED_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_LAST_UPDATED_AT_TIMESTAMP_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_LAST_UPDATED_AT_TIMESTAMP_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_AMOUNT_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_AMOUNT_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_AMOUNT_VALUE_USD_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
+  | 'LOANS_BY_BOOST_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOST_AT_EVENT_ID_ASC'
   | 'LOST_AT_EVENT_ID_DESC'
   | 'LOST_AT_TIMESTAMP_ASC'
@@ -10589,6 +11647,8 @@ export type ChainflipAsset =
   | 'Sol'
   | 'SolUsdc'
   | 'SolUsdt'
+  | 'Trx'
+  | 'TrxUsdt'
   | 'Usdc'
   | 'Usdt'
   | 'Wbtc';
@@ -10625,7 +11685,8 @@ export type ChainflipChain =
   | 'Bitcoin'
   | 'Ethereum'
   | 'Polkadot'
-  | 'Solana';
+  | 'Solana'
+  | 'Tron';
 
 /** A filter to be used against ChainflipChain fields. All fields are combined with a logical ‘and.’ */
 export type ChainflipChainFilter = {
@@ -14405,6 +15466,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_AVERAGE_LOAN_LOSS_ID_ASC'
@@ -14431,6 +15494,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_DISTINCT_COUNT_LOAN_LOSS_ID_ASC'
@@ -14455,6 +15520,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MAX_LOAN_LOSS_ID_ASC'
@@ -14479,6 +15546,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_MIN_LOAN_LOSS_ID_ASC'
@@ -14503,6 +15572,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_POPULATION_LOAN_LOSS_ID_ASC'
@@ -14527,6 +15598,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_STDDEV_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -14551,6 +15624,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_SUM_LOAN_LOSS_ID_ASC'
@@ -14575,6 +15650,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_POPULATION_LOAN_LOSS_ID_ASC'
@@ -14599,6 +15676,8 @@ export type EventsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_EVENT_ID_VARIANCE_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -14995,8 +16074,12 @@ export type EventsOrderBy =
   | 'LIQUIDATION_SWAP_REQUESTS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_SWAP_REQUEST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_CREATED_AT_TIMESTAMP_ASC'
@@ -15013,14 +16096,20 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_AVERAGE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_COUNT_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_COUNT_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_TIMESTAMP_ASC'
@@ -15037,12 +16126,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_CREATED_AT_TIMESTAMP_ASC'
@@ -15059,12 +16154,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MAX_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_CREATED_AT_TIMESTAMP_ASC'
@@ -15081,12 +16182,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_MIN_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -15103,12 +16210,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -15125,12 +16238,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_CREATED_AT_TIMESTAMP_ASC'
@@ -15147,12 +16266,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_SUM_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -15169,12 +16294,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -15191,12 +16322,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_CREATED_AT_EVENT_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_CREATED_AT_TIMESTAMP_ASC'
@@ -15213,14 +16350,20 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_AVERAGE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_COUNT_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_COUNT_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_CREATED_AT_TIMESTAMP_ASC'
@@ -15237,12 +16380,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_CREATED_AT_TIMESTAMP_ASC'
@@ -15259,12 +16408,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MAX_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_CREATED_AT_TIMESTAMP_ASC'
@@ -15281,12 +16436,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_MIN_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -15303,12 +16464,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -15325,12 +16492,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_CREATED_AT_TIMESTAMP_ASC'
@@ -15347,12 +16520,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_SUM_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -15369,12 +16548,18 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -15391,6 +16576,8 @@ export type EventsOrderBy =
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_SETTLED_AT_EVENT_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOAN_FEES_BY_EVENT_ID_AVERAGE_ASSET_ASC'
@@ -18027,6 +19214,9 @@ export type LendingLiquidityBalanceChange = Node & {
   isPositionOpening?: Maybe<Scalars['Boolean']['output']>;
   /** Reads a single `LendingPool` that is related to this `LendingLiquidityBalanceChange`. */
   lendingPoolByPoolId: LendingPool;
+  /** Reads a single `LiquidationSwapRequest` that is related to this `LendingLiquidityBalanceChange`. */
+  liquidationSwapRequestByLiquidationSwapRequestId?: Maybe<LiquidationSwapRequest>;
+  liquidationSwapRequestId?: Maybe<Scalars['Int']['output']>;
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
   /** Reads a single `Loan` that is related to this `LendingLiquidityBalanceChange`. */
   loanByLoanLossId?: Maybe<Loan>;
@@ -18090,6 +19280,7 @@ export type LendingLiquidityBalanceChangeAverageAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<BigFloatFilter>;
   loanLossId?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -18105,6 +19296,8 @@ export type LendingLiquidityBalanceChangeAverageAggregates = {
   eventId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of loanLossId across the matching connection */
@@ -18132,6 +19325,8 @@ export type LendingLiquidityBalanceChangeCondition = {
   isPositionClosing?: InputMaybe<Scalars['Boolean']['input']>;
   /** Checks for equality with the object’s `isPositionOpening` field. */
   isPositionOpening?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Checks for equality with the object’s `liquidationSwapRequestId` field. */
+  liquidationSwapRequestId?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `liquidityProviderId` field. */
   liquidityProviderId?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `loanLossId` field. */
@@ -18152,6 +19347,7 @@ export type LendingLiquidityBalanceChangeDistinctCountAggregateFilter = {
   id?: InputMaybe<BigIntFilter>;
   isPositionClosing?: InputMaybe<BigIntFilter>;
   isPositionOpening?: InputMaybe<BigIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigIntFilter>;
   liquidityProviderId?: InputMaybe<BigIntFilter>;
   loanLossId?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<BigIntFilter>;
@@ -18175,6 +19371,8 @@ export type LendingLiquidityBalanceChangeDistinctCountAggregates = {
   isPositionClosing?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of isPositionOpening across the matching connection */
   isPositionOpening?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of loanLossId across the matching connection */
@@ -18213,6 +19411,12 @@ export type LendingLiquidityBalanceChangeFilter = {
   isPositionOpening?: InputMaybe<BooleanFilter>;
   /** Filter by the object’s `lendingPoolByPoolId` relation. */
   lendingPoolByPoolId?: InputMaybe<LendingPoolFilter>;
+  /** Filter by the object’s `liquidationSwapRequestByLiquidationSwapRequestId` relation. */
+  liquidationSwapRequestByLiquidationSwapRequestId?: InputMaybe<LiquidationSwapRequestFilter>;
+  /** A related `liquidationSwapRequestByLiquidationSwapRequestId` exists. */
+  liquidationSwapRequestByLiquidationSwapRequestIdExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `liquidationSwapRequestId` field. */
+  liquidationSwapRequestId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `liquidityProviderId` field. */
   liquidityProviderId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `loanByLoanLossId` relation. */
@@ -18241,6 +19445,7 @@ export type LendingLiquidityBalanceChangeGroupBy =
   | 'EVENT_ID'
   | 'IS_POSITION_CLOSING'
   | 'IS_POSITION_OPENING'
+  | 'LIQUIDATION_SWAP_REQUEST_ID'
   | 'LIQUIDITY_PROVIDER_ID'
   | 'LOAN_LOSS_ID'
   | 'POOL_ID'
@@ -18256,6 +19461,7 @@ export type LendingLiquidityBalanceChangeHavingAverageInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18267,6 +19473,7 @@ export type LendingLiquidityBalanceChangeHavingDistinctCountInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18293,6 +19500,7 @@ export type LendingLiquidityBalanceChangeHavingMaxInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18304,6 +19512,7 @@ export type LendingLiquidityBalanceChangeHavingMinInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18315,6 +19524,7 @@ export type LendingLiquidityBalanceChangeHavingStddevPopulationInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18326,6 +19536,7 @@ export type LendingLiquidityBalanceChangeHavingStddevSampleInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18337,6 +19548,7 @@ export type LendingLiquidityBalanceChangeHavingSumInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18348,6 +19560,7 @@ export type LendingLiquidityBalanceChangeHavingVariancePopulationInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18359,6 +19572,7 @@ export type LendingLiquidityBalanceChangeHavingVarianceSampleInput = {
   amountUsd?: InputMaybe<HavingBigfloatFilter>;
   eventId?: InputMaybe<HavingBigintFilter>;
   id?: InputMaybe<HavingIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<HavingIntFilter>;
   liquidityProviderId?: InputMaybe<HavingIntFilter>;
   loanLossId?: InputMaybe<HavingBigintFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -18370,6 +19584,7 @@ export type LendingLiquidityBalanceChangeMaxAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigIntFilter>;
   id?: InputMaybe<IntFilter>;
+  liquidationSwapRequestId?: InputMaybe<IntFilter>;
   liquidityProviderId?: InputMaybe<IntFilter>;
   loanLossId?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<IntFilter>;
@@ -18386,6 +19601,8 @@ export type LendingLiquidityBalanceChangeMaxAggregates = {
   eventId?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of loanLossId across the matching connection */
@@ -18401,6 +19618,7 @@ export type LendingLiquidityBalanceChangeMinAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigIntFilter>;
   id?: InputMaybe<IntFilter>;
+  liquidationSwapRequestId?: InputMaybe<IntFilter>;
   liquidityProviderId?: InputMaybe<IntFilter>;
   loanLossId?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<IntFilter>;
@@ -18417,6 +19635,8 @@ export type LendingLiquidityBalanceChangeMinAggregates = {
   eventId?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of id across the matching connection */
   id?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of loanLossId across the matching connection */
@@ -18432,6 +19652,7 @@ export type LendingLiquidityBalanceChangeStddevPopulationAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<BigFloatFilter>;
   loanLossId?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -18447,6 +19668,8 @@ export type LendingLiquidityBalanceChangeStddevPopulationAggregates = {
   eventId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of loanLossId across the matching connection */
@@ -18460,6 +19683,7 @@ export type LendingLiquidityBalanceChangeStddevSampleAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<BigFloatFilter>;
   loanLossId?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -18475,6 +19699,8 @@ export type LendingLiquidityBalanceChangeStddevSampleAggregates = {
   eventId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of loanLossId across the matching connection */
@@ -18488,6 +19714,7 @@ export type LendingLiquidityBalanceChangeSumAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigIntFilter>;
   liquidityProviderId?: InputMaybe<BigIntFilter>;
   loanLossId?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigIntFilter>;
@@ -18503,6 +19730,8 @@ export type LendingLiquidityBalanceChangeSumAggregates = {
   eventId: Scalars['BigFloat']['output'];
   /** Sum of id across the matching connection */
   id: Scalars['BigInt']['output'];
+  /** Sum of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId: Scalars['BigInt']['output'];
   /** Sum of liquidityProviderId across the matching connection */
   liquidityProviderId: Scalars['BigInt']['output'];
   /** Sum of loanLossId across the matching connection */
@@ -18516,6 +19745,7 @@ export type LendingLiquidityBalanceChangeVariancePopulationAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<BigFloatFilter>;
   loanLossId?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -18531,6 +19761,8 @@ export type LendingLiquidityBalanceChangeVariancePopulationAggregates = {
   eventId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of loanLossId across the matching connection */
@@ -18544,6 +19776,7 @@ export type LendingLiquidityBalanceChangeVarianceSampleAggregateFilter = {
   amountUsd?: InputMaybe<BigFloatFilter>;
   eventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
+  liquidationSwapRequestId?: InputMaybe<BigFloatFilter>;
   liquidityProviderId?: InputMaybe<BigFloatFilter>;
   loanLossId?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -18559,6 +19792,8 @@ export type LendingLiquidityBalanceChangeVarianceSampleAggregates = {
   eventId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of liquidationSwapRequestId across the matching connection */
+  liquidationSwapRequestId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of liquidityProviderId across the matching connection */
   liquidityProviderId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of loanLossId across the matching connection */
@@ -18616,6 +19851,8 @@ export type LendingLiquidityBalanceChangesOrderBy =
   | 'IS_POSITION_CLOSING_DESC'
   | 'IS_POSITION_OPENING_ASC'
   | 'IS_POSITION_OPENING_DESC'
+  | 'LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LIQUIDITY_PROVIDER_ID_ASC'
   | 'LIQUIDITY_PROVIDER_ID_DESC'
   | 'LOAN_LOSS_ID_ASC'
@@ -18766,10 +20003,13 @@ export type LendingPoolAverageAggregates = {
 };
 
 export type LendingPoolBalanceChangeType =
-  | 'DEPOSIT'
   | 'FEES_ACCRUED'
   | 'LIQUIDATION_LOSS'
-  | 'WITHDRAWAL';
+  | 'MANUAL_DEPOSIT'
+  | 'MANUAL_WITHDRAWAL'
+  | 'SYSTEM_LIQUIDATION_EXCESS_AMOUNT_DEPOSIT'
+  | 'SYSTEM_LIQUIDATION_UNUSED_AMOUNT_DEPOSIT'
+  | 'SYSTEM_LIQUIDATION_WITHDRAWAL';
 
 /** A filter to be used against LendingPoolBalanceChangeType fields. All fields are combined with a logical ‘and.’ */
 export type LendingPoolBalanceChangeTypeFilter = {
@@ -20662,6 +21902,8 @@ export type LendingPoolStat = Node & {
   avgInterestRateBps: Scalars['Int']['output'];
   avgLiquidity: Scalars['BigFloat']['output'];
   avgLiquidityValueUsd: Scalars['BigFloat']['output'];
+  avgTvlValue: Scalars['BigFloat']['output'];
+  avgTvlValueUsd: Scalars['BigFloat']['output'];
   avgUnavailableAmount: Scalars['BigFloat']['output'];
   avgUnavailableAmountUsd: Scalars['BigFloat']['output'];
   avgUtilisationRateBps: Scalars['Int']['output'];
@@ -20690,6 +21932,11 @@ export type LendingPoolStat = Node & {
   nodeId: Scalars['ID']['output'];
   poolId: Scalars['Int']['output'];
   projectedApy: Scalars['BigFloat']['output'];
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
   timestamp: Scalars['Datetime']['output'];
 };
 
@@ -20746,6 +21993,8 @@ export type LendingPoolStatAverageAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<BigFloatFilter>;
@@ -20770,6 +22019,11 @@ export type LendingPoolStatAverageAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type LendingPoolStatAverageAggregates = {
@@ -20784,6 +22038,10 @@ export type LendingPoolStatAverageAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of avgUnavailableAmountUsd across the matching connection */
@@ -20832,6 +22090,16 @@ export type LendingPoolStatAverageAggregates = {
   poolId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 /**
@@ -20851,6 +22119,10 @@ export type LendingPoolStatCondition = {
   avgLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `avgLiquidityValueUsd` field. */
   avgLiquidityValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `avgTvlValue` field. */
+  avgTvlValue?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `avgTvlValueUsd` field. */
+  avgTvlValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `avgUnavailableAmount` field. */
   avgUnavailableAmount?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `avgUnavailableAmountUsd` field. */
@@ -20899,6 +22171,16 @@ export type LendingPoolStatCondition = {
   poolId?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `projectedApy` field. */
   projectedApy?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy6H` field. */
+  projectedApy6H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy24H` field. */
+  projectedApy24H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy72H` field. */
+  projectedApy72H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy168H` field. */
+  projectedApy168H?: InputMaybe<Scalars['BigFloat']['input']>;
+  /** Checks for equality with the object’s `projectedApy720H` field. */
+  projectedApy720H?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `timestamp` field. */
   timestamp?: InputMaybe<Scalars['Datetime']['input']>;
 };
@@ -20910,6 +22192,8 @@ export type LendingPoolStatDistinctCountAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigIntFilter>;
   avgLiquidity?: InputMaybe<BigIntFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigIntFilter>;
+  avgTvlValue?: InputMaybe<BigIntFilter>;
+  avgTvlValueUsd?: InputMaybe<BigIntFilter>;
   avgUnavailableAmount?: InputMaybe<BigIntFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigIntFilter>;
   avgUtilisationRateBps?: InputMaybe<BigIntFilter>;
@@ -20934,6 +22218,11 @@ export type LendingPoolStatDistinctCountAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<BigIntFilter>;
   projectedApy?: InputMaybe<BigIntFilter>;
+  projectedApy6H?: InputMaybe<BigIntFilter>;
+  projectedApy24H?: InputMaybe<BigIntFilter>;
+  projectedApy72H?: InputMaybe<BigIntFilter>;
+  projectedApy168H?: InputMaybe<BigIntFilter>;
+  projectedApy720H?: InputMaybe<BigIntFilter>;
   timestamp?: InputMaybe<BigIntFilter>;
 };
 
@@ -20951,6 +22240,10 @@ export type LendingPoolStatDistinctCountAggregates = {
   avgLiquidity?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of avgUnavailableAmountUsd across the matching connection */
@@ -20999,6 +22292,16 @@ export type LendingPoolStatDistinctCountAggregates = {
   poolId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of timestamp across the matching connection */
   timestamp?: Maybe<Scalars['BigInt']['output']>;
 };
@@ -21019,6 +22322,10 @@ export type LendingPoolStatFilter = {
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `avgLiquidityValueUsd` field. */
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `avgTvlValue` field. */
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `avgTvlValueUsd` field. */
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `avgUnavailableAmount` field. */
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `avgUnavailableAmountUsd` field. */
@@ -21073,6 +22380,16 @@ export type LendingPoolStatFilter = {
   poolId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `projectedApy` field. */
   projectedApy?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy6H` field. */
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy24H` field. */
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy72H` field. */
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy168H` field. */
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  /** Filter by the object’s `projectedApy720H` field. */
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `timestamp` field. */
   timestamp?: InputMaybe<DatetimeFilter>;
 };
@@ -21085,6 +22402,8 @@ export type LendingPoolStatGroupBy =
   | 'AVG_INTEREST_RATE_BPS'
   | 'AVG_LIQUIDITY'
   | 'AVG_LIQUIDITY_VALUE_USD'
+  | 'AVG_TVL_VALUE'
+  | 'AVG_TVL_VALUE_USD'
   | 'AVG_UNAVAILABLE_AMOUNT'
   | 'AVG_UNAVAILABLE_AMOUNT_USD'
   | 'AVG_UTILISATION_RATE_BPS'
@@ -21108,6 +22427,11 @@ export type LendingPoolStatGroupBy =
   | 'MIN_UNAVAILABLE_AMOUNT_USD'
   | 'POOL_ID'
   | 'PROJECTED_APY'
+  | 'PROJECTED_APY6H'
+  | 'PROJECTED_APY24H'
+  | 'PROJECTED_APY72H'
+  | 'PROJECTED_APY168H'
+  | 'PROJECTED_APY720H'
   | 'TIMESTAMP'
   | 'TIMESTAMP_TRUNCATED_TO_DAY'
   | 'TIMESTAMP_TRUNCATED_TO_HOUR'
@@ -21120,6 +22444,8 @@ export type LendingPoolStatHavingAverageInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21144,6 +22470,11 @@ export type LendingPoolStatHavingAverageInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21153,6 +22484,8 @@ export type LendingPoolStatHavingDistinctCountInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21177,6 +22510,11 @@ export type LendingPoolStatHavingDistinctCountInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21201,6 +22539,8 @@ export type LendingPoolStatHavingMaxInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21225,6 +22565,11 @@ export type LendingPoolStatHavingMaxInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21234,6 +22579,8 @@ export type LendingPoolStatHavingMinInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21258,6 +22605,11 @@ export type LendingPoolStatHavingMinInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21267,6 +22619,8 @@ export type LendingPoolStatHavingStddevPopulationInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21291,6 +22645,11 @@ export type LendingPoolStatHavingStddevPopulationInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21300,6 +22659,8 @@ export type LendingPoolStatHavingStddevSampleInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21324,6 +22685,11 @@ export type LendingPoolStatHavingStddevSampleInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21333,6 +22699,8 @@ export type LendingPoolStatHavingSumInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21357,6 +22725,11 @@ export type LendingPoolStatHavingSumInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21366,6 +22739,8 @@ export type LendingPoolStatHavingVariancePopulationInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21390,6 +22765,11 @@ export type LendingPoolStatHavingVariancePopulationInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21399,6 +22779,8 @@ export type LendingPoolStatHavingVarianceSampleInput = {
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValue?: InputMaybe<HavingBigfloatFilter>;
+  avgTvlValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   avgUtilisationRateBps?: InputMaybe<HavingIntFilter>;
@@ -21423,6 +22805,11 @@ export type LendingPoolStatHavingVarianceSampleInput = {
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
   projectedApy?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy168H?: InputMaybe<HavingBigfloatFilter>;
+  projectedApy720H?: InputMaybe<HavingBigfloatFilter>;
   timestamp?: InputMaybe<HavingDatetimeFilter>;
 };
 
@@ -21432,6 +22819,8 @@ export type LendingPoolStatMaxAggregateFilter = {
   avgInterestRateBps?: InputMaybe<IntFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<IntFilter>;
@@ -21456,6 +22845,11 @@ export type LendingPoolStatMaxAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<IntFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
   timestamp?: InputMaybe<DatetimeFilter>;
 };
 
@@ -21471,6 +22865,10 @@ export type LendingPoolStatMaxAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of avgUnavailableAmountUsd across the matching connection */
@@ -21519,6 +22917,16 @@ export type LendingPoolStatMaxAggregates = {
   poolId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Maximum of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of timestamp across the matching connection */
   timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
@@ -21529,6 +22937,8 @@ export type LendingPoolStatMinAggregateFilter = {
   avgInterestRateBps?: InputMaybe<IntFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<IntFilter>;
@@ -21553,6 +22963,11 @@ export type LendingPoolStatMinAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<IntFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
   timestamp?: InputMaybe<DatetimeFilter>;
 };
 
@@ -21568,6 +22983,10 @@ export type LendingPoolStatMinAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of avgUnavailableAmountUsd across the matching connection */
@@ -21616,6 +23035,16 @@ export type LendingPoolStatMinAggregates = {
   poolId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Minimum of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of timestamp across the matching connection */
   timestamp?: Maybe<Scalars['Datetime']['output']>;
 };
@@ -21626,6 +23055,8 @@ export type LendingPoolStatStddevPopulationAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<BigFloatFilter>;
@@ -21650,6 +23081,11 @@ export type LendingPoolStatStddevPopulationAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type LendingPoolStatStddevPopulationAggregates = {
@@ -21664,6 +23100,10 @@ export type LendingPoolStatStddevPopulationAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of avgUnavailableAmountUsd across the matching connection */
@@ -21712,6 +23152,16 @@ export type LendingPoolStatStddevPopulationAggregates = {
   poolId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type LendingPoolStatStddevSampleAggregateFilter = {
@@ -21720,6 +23170,8 @@ export type LendingPoolStatStddevSampleAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<BigFloatFilter>;
@@ -21744,6 +23196,11 @@ export type LendingPoolStatStddevSampleAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type LendingPoolStatStddevSampleAggregates = {
@@ -21758,6 +23215,10 @@ export type LendingPoolStatStddevSampleAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of avgUnavailableAmountUsd across the matching connection */
@@ -21806,6 +23267,16 @@ export type LendingPoolStatStddevSampleAggregates = {
   poolId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type LendingPoolStatSumAggregateFilter = {
@@ -21814,6 +23285,8 @@ export type LendingPoolStatSumAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigIntFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<BigIntFilter>;
@@ -21838,6 +23311,11 @@ export type LendingPoolStatSumAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigIntFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type LendingPoolStatSumAggregates = {
@@ -21852,6 +23330,10 @@ export type LendingPoolStatSumAggregates = {
   avgLiquidity: Scalars['BigFloat']['output'];
   /** Sum of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd: Scalars['BigFloat']['output'];
+  /** Sum of avgTvlValue across the matching connection */
+  avgTvlValue: Scalars['BigFloat']['output'];
+  /** Sum of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd: Scalars['BigFloat']['output'];
   /** Sum of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount: Scalars['BigFloat']['output'];
   /** Sum of avgUnavailableAmountUsd across the matching connection */
@@ -21900,6 +23382,16 @@ export type LendingPoolStatSumAggregates = {
   poolId: Scalars['BigInt']['output'];
   /** Sum of projectedApy across the matching connection */
   projectedApy: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy6H across the matching connection */
+  projectedApy6H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy24H across the matching connection */
+  projectedApy24H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy72H across the matching connection */
+  projectedApy72H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy168H across the matching connection */
+  projectedApy168H: Scalars['BigFloat']['output'];
+  /** Sum of projectedApy720H across the matching connection */
+  projectedApy720H: Scalars['BigFloat']['output'];
 };
 
 export type LendingPoolStatVariancePopulationAggregateFilter = {
@@ -21908,6 +23400,8 @@ export type LendingPoolStatVariancePopulationAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<BigFloatFilter>;
@@ -21932,6 +23426,11 @@ export type LendingPoolStatVariancePopulationAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type LendingPoolStatVariancePopulationAggregates = {
@@ -21946,6 +23445,10 @@ export type LendingPoolStatVariancePopulationAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of avgUnavailableAmountUsd across the matching connection */
@@ -21994,6 +23497,16 @@ export type LendingPoolStatVariancePopulationAggregates = {
   poolId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type LendingPoolStatVarianceSampleAggregateFilter = {
@@ -22002,6 +23515,8 @@ export type LendingPoolStatVarianceSampleAggregateFilter = {
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
+  avgTvlValue?: InputMaybe<BigFloatFilter>;
+  avgTvlValueUsd?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmount?: InputMaybe<BigFloatFilter>;
   avgUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   avgUtilisationRateBps?: InputMaybe<BigFloatFilter>;
@@ -22026,6 +23541,11 @@ export type LendingPoolStatVarianceSampleAggregateFilter = {
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
   projectedApy?: InputMaybe<BigFloatFilter>;
+  projectedApy6H?: InputMaybe<BigFloatFilter>;
+  projectedApy24H?: InputMaybe<BigFloatFilter>;
+  projectedApy72H?: InputMaybe<BigFloatFilter>;
+  projectedApy168H?: InputMaybe<BigFloatFilter>;
+  projectedApy720H?: InputMaybe<BigFloatFilter>;
 };
 
 export type LendingPoolStatVarianceSampleAggregates = {
@@ -22040,6 +23560,10 @@ export type LendingPoolStatVarianceSampleAggregates = {
   avgLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of avgLiquidityValueUsd across the matching connection */
   avgLiquidityValueUsd?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of avgTvlValue across the matching connection */
+  avgTvlValue?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of avgTvlValueUsd across the matching connection */
+  avgTvlValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of avgUnavailableAmount across the matching connection */
   avgUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of avgUnavailableAmountUsd across the matching connection */
@@ -22088,6 +23612,16 @@ export type LendingPoolStatVarianceSampleAggregates = {
   poolId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of projectedApy across the matching connection */
   projectedApy?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy6H across the matching connection */
+  projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy24H across the matching connection */
+  projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy72H across the matching connection */
+  projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy168H across the matching connection */
+  projectedApy168H?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of projectedApy720H across the matching connection */
+  projectedApy720H?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 /** A connection to a list of `LendingPoolStat` values. */
@@ -22137,6 +23671,10 @@ export type LendingPoolStatsOrderBy =
   | 'AVG_LIQUIDITY_DESC'
   | 'AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'AVG_TVL_VALUE_ASC'
+  | 'AVG_TVL_VALUE_DESC'
+  | 'AVG_TVL_VALUE_USD_ASC'
+  | 'AVG_TVL_VALUE_USD_DESC'
   | 'AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -22186,6 +23724,16 @@ export type LendingPoolStatsOrderBy =
   | 'POOL_ID_DESC'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC'
+  | 'PROJECTED_APY6H_ASC'
+  | 'PROJECTED_APY6H_DESC'
+  | 'PROJECTED_APY24H_ASC'
+  | 'PROJECTED_APY24H_DESC'
+  | 'PROJECTED_APY72H_ASC'
+  | 'PROJECTED_APY72H_DESC'
+  | 'PROJECTED_APY168H_ASC'
+  | 'PROJECTED_APY168H_DESC'
+  | 'PROJECTED_APY720H_ASC'
+  | 'PROJECTED_APY720H_DESC'
   | 'PROJECTED_APY_ASC'
   | 'PROJECTED_APY_DESC'
   | 'TIMESTAMP_ASC'
@@ -22349,6 +23897,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_AVERAGE_LOAN_LOSS_ID_ASC'
@@ -22375,6 +23925,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_DISTINCT_COUNT_LOAN_LOSS_ID_ASC'
@@ -22399,6 +23951,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MAX_LOAN_LOSS_ID_ASC'
@@ -22423,6 +23977,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_MIN_LOAN_LOSS_ID_ASC'
@@ -22447,6 +24003,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_POPULATION_LOAN_LOSS_ID_ASC'
@@ -22471,6 +24029,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_STDDEV_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -22495,6 +24055,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_SUM_LOAN_LOSS_ID_ASC'
@@ -22519,6 +24081,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_POPULATION_LOAN_LOSS_ID_ASC'
@@ -22543,6 +24107,8 @@ export type LendingPoolsOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_POOL_ID_VARIANCE_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -23001,6 +24567,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23047,6 +24617,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_TIMESTAMP_ASC'
@@ -23065,6 +24645,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23111,6 +24695,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_TIMESTAMP_ASC'
@@ -23127,6 +24721,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23173,6 +24771,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_TIMESTAMP_ASC'
@@ -23189,6 +24797,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23235,6 +24847,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_TIMESTAMP_ASC'
@@ -23251,6 +24873,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23297,6 +24923,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_TIMESTAMP_ASC'
@@ -23313,6 +24949,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23359,6 +24999,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_TIMESTAMP_ASC'
@@ -23375,6 +25025,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23421,6 +25075,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_TIMESTAMP_ASC'
@@ -23437,6 +25101,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23483,6 +25151,16 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_TIMESTAMP_ASC'
@@ -23499,6 +25177,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_LIQUIDITY_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_LIQUIDITY_VALUE_USD_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_TVL_VALUE_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_TVL_VALUE_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_TVL_VALUE_USD_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_TVL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_UNAVAILABLE_AMOUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_UNAVAILABLE_AMOUNT_USD_ASC'
@@ -23545,14 +25227,28 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_UNAVAILABLE_AMOUNT_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY6H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY6H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY24H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY24H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY72H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY72H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY168H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY168H_DESC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_ASC'
+  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_AVERAGE_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_AVERAGE_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_AVERAGE_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_AVERAGE_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_AVERAGE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_AVERAGE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_AVERAGE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_CREATED_AT_TIMESTAMP_ASC'
@@ -23569,14 +25265,20 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_AVERAGE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_AVERAGE_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_AVERAGE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_AVERAGE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_COUNT_ASC'
   | 'LOANS_BY_POOL_ID_COUNT_DESC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_CREATED_AT_TIMESTAMP_ASC'
@@ -23593,12 +25295,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_DISTINCT_COUNT_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_MAX_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_MAX_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_MAX_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_MAX_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_MAX_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_MAX_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_MAX_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_MAX_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_MAX_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_MAX_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_MAX_CREATED_AT_TIMESTAMP_ASC'
@@ -23615,12 +25323,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_MAX_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_MAX_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_MAX_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_MAX_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_MAX_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_MAX_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_MAX_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_MIN_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_MIN_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_MIN_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_MIN_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_MIN_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_MIN_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_MIN_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_MIN_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_MIN_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_MIN_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_MIN_CREATED_AT_TIMESTAMP_ASC'
@@ -23637,12 +25351,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_MIN_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_MIN_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_MIN_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_MIN_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_MIN_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_MIN_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_MIN_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -23659,12 +25379,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -23681,12 +25407,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_STDDEV_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_SUM_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_SUM_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_SUM_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_SUM_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_SUM_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_SUM_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_SUM_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_SUM_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_SUM_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_SUM_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_SUM_CREATED_AT_TIMESTAMP_ASC'
@@ -23703,12 +25435,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_SUM_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_SUM_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_SUM_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_SUM_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_SUM_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_SUM_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_SUM_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_CREATED_AT_TIMESTAMP_ASC'
@@ -23725,12 +25463,18 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_POPULATION_SETTLED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_ASSET_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_ASSET_DESC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_BOOST_ID_ASC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_BOOST_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_BORROWER_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_BORROWER_ID_DESC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_BORROWER_TYPE_ASC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_BORROWER_TYPE_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_CREATED_AT_EVENT_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_CREATED_AT_TIMESTAMP_ASC'
@@ -23747,6 +25491,8 @@ export type LendingPoolsOrderBy =
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_LOST_AMOUNT_VALUE_USD_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_PREWITNESSED_DEPOSIT_ID_DESC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_ASC'
   | 'LOANS_BY_POOL_ID_VARIANCE_SAMPLE_SETTLED_AT_EVENT_ID_DESC'
   | 'LOAN_FEES_BY_POOL_ID_AVERAGE_ASSET_ASC'
@@ -25114,13 +26860,27 @@ export type LiquidationSwapRequest = Node & {
   /** Reads a single `Event` that is related to this `LiquidationSwapRequest`. */
   eventByCreatedAtEventId: Event;
   id: Scalars['Int']['output'];
-  isHard: Scalars['Boolean']['output'];
+  isHard?: Maybe<Scalars['Boolean']['output']>;
+  /** Reads and enables pagination through a set of `LendingLiquidityBalanceChange`. */
+  lendingLiquidityBalanceChangesByLiquidationSwapRequestId: LendingLiquidityBalanceChangesConnection;
   /** Reads a single `Loan` that is related to this `LiquidationSwapRequest`. */
   loanByLoanId: Loan;
   loanId: Scalars['BigInt']['output'];
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
   swapRequestId: Scalars['BigInt']['output'];
+};
+
+
+export type LiquidationSwapRequestLendingLiquidityBalanceChangesByLiquidationSwapRequestIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<LendingLiquidityBalanceChangeCondition>;
+  filter?: InputMaybe<LendingLiquidityBalanceChangeFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<LendingLiquidityBalanceChangesOrderBy>>;
 };
 
 export type LiquidationSwapRequestAggregates = {
@@ -25268,6 +27028,10 @@ export type LiquidationSwapRequestFilter = {
   id?: InputMaybe<IntFilter>;
   /** Filter by the object’s `isHard` field. */
   isHard?: InputMaybe<BooleanFilter>;
+  /** Filter by the object’s `lendingLiquidityBalanceChangesByLiquidationSwapRequestId` relation. */
+  lendingLiquidityBalanceChangesByLiquidationSwapRequestId?: InputMaybe<LiquidationSwapRequestToManyLendingLiquidityBalanceChangeFilter>;
+  /** Some related `lendingLiquidityBalanceChangesByLiquidationSwapRequestId` exist. */
+  lendingLiquidityBalanceChangesByLiquidationSwapRequestIdExist?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `loanByLoanId` relation. */
   loanByLoanId?: InputMaybe<LoanFilter>;
   /** Filter by the object’s `loanId` field. */
@@ -25510,6 +27274,18 @@ export type LiquidationSwapRequestSumAggregates = {
   swapRequestId: Scalars['BigFloat']['output'];
 };
 
+/** A filter to be used against many `LendingLiquidityBalanceChange` object types. All fields are combined with a logical ‘and.’ */
+export type LiquidationSwapRequestToManyLendingLiquidityBalanceChangeFilter = {
+  /** Aggregates across related `LendingLiquidityBalanceChange` match the filter criteria. */
+  aggregates?: InputMaybe<LendingLiquidityBalanceChangeAggregatesFilter>;
+  /** Every related `LendingLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<LendingLiquidityBalanceChangeFilter>;
+  /** No related `LendingLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<LendingLiquidityBalanceChangeFilter>;
+  /** Some related `LendingLiquidityBalanceChange` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<LendingLiquidityBalanceChangeFilter>;
+};
+
 export type LiquidationSwapRequestVariancePopulationAggregateFilter = {
   abortedAtEventId?: InputMaybe<BigFloatFilter>;
   completedAtEventId?: InputMaybe<BigFloatFilter>;
@@ -25605,6 +27381,242 @@ export type LiquidationSwapRequestsOrderBy =
   | 'ID_DESC'
   | 'IS_HARD_ASC'
   | 'IS_HARD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_AVERAGE_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_COUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_COUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_DISTINCT_COUNT_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MAX_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_MIN_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_POPULATION_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_STDDEV_SAMPLE_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_SUM_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_POPULATION_TYPE_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_AMOUNT_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_AMOUNT_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_AMOUNT_USD_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_AMOUNT_USD_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_ASSET_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_ASSET_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_EVENT_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_EVENT_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_IS_POSITION_CLOSING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_IS_POSITION_CLOSING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_LOAN_LOSS_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_LOAN_LOSS_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_POOL_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_POOL_ID_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_TIMESTAMP_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_TIMESTAMP_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_TYPE_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LIQUIDATION_SWAP_REQUEST_ID_VARIANCE_SAMPLE_TYPE_DESC'
   | 'LOAN_ID_ASC'
   | 'LOAN_ID_DESC'
   | 'NATURAL'
@@ -26795,9 +28807,13 @@ export type LiquiditySnapshotsOrderBy =
 export type Loan = Node & {
   __typename?: 'Loan';
   /** Reads a single `Account` that is related to this `Loan`. */
-  accountByBorrowerId: Account;
+  accountByBorrowerId?: Maybe<Account>;
   asset: ChainflipAsset;
-  borrowerId: Scalars['Int']['output'];
+  /** Reads a single `Boost` that is related to this `Loan`. */
+  boostByBoostId?: Maybe<Boost>;
+  boostId?: Maybe<Scalars['Int']['output']>;
+  borrowerId?: Maybe<Scalars['Int']['output']>;
+  borrowerType: LoanBorrowerType;
   createdAtEventId: Scalars['BigInt']['output'];
   createdAtTimestamp: Scalars['Datetime']['output'];
   /** Reads a single `Event` that is related to this `Loan`. */
@@ -26822,6 +28838,7 @@ export type Loan = Node & {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
   poolId: Scalars['Int']['output'];
+  prewitnessedDepositId?: Maybe<Scalars['BigInt']['output']>;
   settledAtEventId?: Maybe<Scalars['BigInt']['output']>;
 };
 
@@ -26921,17 +28938,21 @@ export type LoanAggregatesFilter = {
 };
 
 export type LoanAverageAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
   borrowerId?: InputMaybe<BigFloatFilter>;
   createdAtEventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
   settledAtEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LoanAverageAggregates = {
   __typename?: 'LoanAverageAggregates';
+  /** Mean average of boostId across the matching connection */
+  boostId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of createdAtEventId across the matching connection */
@@ -26944,16 +28965,52 @@ export type LoanAverageAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Mean average of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigFloat']['output']>;
+};
+
+export type LoanBorrowerType =
+  | 'SYSTEM_BOOST'
+  | 'USER';
+
+/** A filter to be used against LoanBorrowerType fields. All fields are combined with a logical ‘and.’ */
+export type LoanBorrowerTypeFilter = {
+  /** Not equal to the specified value, treating null like an ordinary value. */
+  distinctFrom?: InputMaybe<LoanBorrowerType>;
+  /** Equal to the specified value. */
+  equalTo?: InputMaybe<LoanBorrowerType>;
+  /** Greater than the specified value. */
+  greaterThan?: InputMaybe<LoanBorrowerType>;
+  /** Greater than or equal to the specified value. */
+  greaterThanOrEqualTo?: InputMaybe<LoanBorrowerType>;
+  /** Included in the specified list. */
+  in?: InputMaybe<Array<LoanBorrowerType>>;
+  /** Is null (if `true` is specified) or is not null (if `false` is specified). */
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Less than the specified value. */
+  lessThan?: InputMaybe<LoanBorrowerType>;
+  /** Less than or equal to the specified value. */
+  lessThanOrEqualTo?: InputMaybe<LoanBorrowerType>;
+  /** Equal to the specified value, treating null like an ordinary value. */
+  notDistinctFrom?: InputMaybe<LoanBorrowerType>;
+  /** Not equal to the specified value. */
+  notEqualTo?: InputMaybe<LoanBorrowerType>;
+  /** Not included in the specified list. */
+  notIn?: InputMaybe<Array<LoanBorrowerType>>;
 };
 
 /** A condition to be used against `Loan` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type LoanCondition = {
   /** Checks for equality with the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAsset>;
+  /** Checks for equality with the object’s `boostId` field. */
+  boostId?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `borrowerId` field. */
   borrowerId?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `borrowerType` field. */
+  borrowerType?: InputMaybe<LoanBorrowerType>;
   /** Checks for equality with the object’s `createdAtEventId` field. */
   createdAtEventId?: InputMaybe<Scalars['BigInt']['input']>;
   /** Checks for equality with the object’s `createdAtTimestamp` field. */
@@ -26970,13 +29027,17 @@ export type LoanCondition = {
   lostAmountValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `poolId` field. */
   poolId?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `prewitnessedDepositId` field. */
+  prewitnessedDepositId?: InputMaybe<Scalars['BigInt']['input']>;
   /** Checks for equality with the object’s `settledAtEventId` field. */
   settledAtEventId?: InputMaybe<Scalars['BigInt']['input']>;
 };
 
 export type LoanDistinctCountAggregateFilter = {
   asset?: InputMaybe<BigIntFilter>;
+  boostId?: InputMaybe<BigIntFilter>;
   borrowerId?: InputMaybe<BigIntFilter>;
+  borrowerType?: InputMaybe<BigIntFilter>;
   createdAtEventId?: InputMaybe<BigIntFilter>;
   createdAtTimestamp?: InputMaybe<BigIntFilter>;
   id?: InputMaybe<BigIntFilter>;
@@ -26985,6 +29046,7 @@ export type LoanDistinctCountAggregateFilter = {
   lostAmount?: InputMaybe<BigIntFilter>;
   lostAmountValueUsd?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<BigIntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   settledAtEventId?: InputMaybe<BigIntFilter>;
 };
 
@@ -26992,8 +29054,12 @@ export type LoanDistinctCountAggregates = {
   __typename?: 'LoanDistinctCountAggregates';
   /** Distinct count of asset across the matching connection */
   asset?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of boostId across the matching connection */
+  boostId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of borrowerType across the matching connection */
+  borrowerType?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of createdAtEventId across the matching connection */
   createdAtEventId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of createdAtTimestamp across the matching connection */
@@ -27010,6 +29076,8 @@ export type LoanDistinctCountAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigInt']['output']>;
+  /** Distinct count of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigInt']['output']>;
 };
@@ -27903,12 +29971,22 @@ export type LoanFeesOrderBy =
 export type LoanFilter = {
   /** Filter by the object’s `accountByBorrowerId` relation. */
   accountByBorrowerId?: InputMaybe<AccountFilter>;
+  /** A related `accountByBorrowerId` exists. */
+  accountByBorrowerIdExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Checks for all expressions in this list. */
   and?: InputMaybe<Array<LoanFilter>>;
   /** Filter by the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAssetFilter>;
+  /** Filter by the object’s `boostByBoostId` relation. */
+  boostByBoostId?: InputMaybe<BoostFilter>;
+  /** A related `boostByBoostId` exists. */
+  boostByBoostIdExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `boostId` field. */
+  boostId?: InputMaybe<IntFilter>;
   /** Filter by the object’s `borrowerId` field. */
   borrowerId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `borrowerType` field. */
+  borrowerType?: InputMaybe<LoanBorrowerTypeFilter>;
   /** Filter by the object’s `createdAtEventId` field. */
   createdAtEventId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `createdAtTimestamp` field. */
@@ -27953,6 +30031,8 @@ export type LoanFilter = {
   or?: InputMaybe<Array<LoanFilter>>;
   /** Filter by the object’s `poolId` field. */
   poolId?: InputMaybe<IntFilter>;
+  /** Filter by the object’s `prewitnessedDepositId` field. */
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `settledAtEventId` field. */
   settledAtEventId?: InputMaybe<BigIntFilter>;
 };
@@ -27960,7 +30040,9 @@ export type LoanFilter = {
 /** Grouping methods for `Loan` for usage during aggregation. */
 export type LoanGroupBy =
   | 'ASSET'
+  | 'BOOST_ID'
   | 'BORROWER_ID'
+  | 'BORROWER_TYPE'
   | 'CREATED_AT_EVENT_ID'
   | 'CREATED_AT_TIMESTAMP'
   | 'CREATED_AT_TIMESTAMP_TRUNCATED_TO_DAY'
@@ -27976,9 +30058,11 @@ export type LoanGroupBy =
   | 'LOST_AMOUNT'
   | 'LOST_AMOUNT_VALUE_USD'
   | 'POOL_ID'
+  | 'PREWITNESSED_DEPOSIT_ID'
   | 'SETTLED_AT_EVENT_ID';
 
 export type LoanHavingAverageInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -27987,10 +30071,12 @@ export type LoanHavingAverageInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingDistinctCountInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -27999,6 +30085,7 @@ export type LoanHavingDistinctCountInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
@@ -28018,6 +30105,7 @@ export type LoanHavingInput = {
 };
 
 export type LoanHavingMaxInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28026,10 +30114,12 @@ export type LoanHavingMaxInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingMinInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28038,10 +30128,12 @@ export type LoanHavingMinInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingStddevPopulationInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28050,10 +30142,12 @@ export type LoanHavingStddevPopulationInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingStddevSampleInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28062,10 +30156,12 @@ export type LoanHavingStddevSampleInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingSumInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28074,10 +30170,12 @@ export type LoanHavingSumInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingVariancePopulationInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28086,10 +30184,12 @@ export type LoanHavingVariancePopulationInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanHavingVarianceSampleInput = {
+  boostId?: InputMaybe<HavingIntFilter>;
   borrowerId?: InputMaybe<HavingIntFilter>;
   createdAtEventId?: InputMaybe<HavingBigintFilter>;
   createdAtTimestamp?: InputMaybe<HavingDatetimeFilter>;
@@ -28098,10 +30198,12 @@ export type LoanHavingVarianceSampleInput = {
   lostAmount?: InputMaybe<HavingBigfloatFilter>;
   lostAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
+  prewitnessedDepositId?: InputMaybe<HavingBigintFilter>;
   settledAtEventId?: InputMaybe<HavingBigintFilter>;
 };
 
 export type LoanMaxAggregateFilter = {
+  boostId?: InputMaybe<IntFilter>;
   borrowerId?: InputMaybe<IntFilter>;
   createdAtEventId?: InputMaybe<BigIntFilter>;
   createdAtTimestamp?: InputMaybe<DatetimeFilter>;
@@ -28110,11 +30212,14 @@ export type LoanMaxAggregateFilter = {
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<IntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   settledAtEventId?: InputMaybe<BigIntFilter>;
 };
 
 export type LoanMaxAggregates = {
   __typename?: 'LoanMaxAggregates';
+  /** Maximum of boostId across the matching connection */
+  boostId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['Int']['output']>;
   /** Maximum of createdAtEventId across the matching connection */
@@ -28131,11 +30236,14 @@ export type LoanMaxAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of poolId across the matching connection */
   poolId?: Maybe<Scalars['Int']['output']>;
+  /** Maximum of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigInt']['output']>;
 };
 
 export type LoanMinAggregateFilter = {
+  boostId?: InputMaybe<IntFilter>;
   borrowerId?: InputMaybe<IntFilter>;
   createdAtEventId?: InputMaybe<BigIntFilter>;
   createdAtTimestamp?: InputMaybe<DatetimeFilter>;
@@ -28144,11 +30252,14 @@ export type LoanMinAggregateFilter = {
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<IntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigIntFilter>;
   settledAtEventId?: InputMaybe<BigIntFilter>;
 };
 
 export type LoanMinAggregates = {
   __typename?: 'LoanMinAggregates';
+  /** Minimum of boostId across the matching connection */
+  boostId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['Int']['output']>;
   /** Minimum of createdAtEventId across the matching connection */
@@ -28165,22 +30276,28 @@ export type LoanMinAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of poolId across the matching connection */
   poolId?: Maybe<Scalars['Int']['output']>;
+  /** Minimum of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigInt']['output']>;
 };
 
 export type LoanStddevPopulationAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
   borrowerId?: InputMaybe<BigFloatFilter>;
   createdAtEventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
   settledAtEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LoanStddevPopulationAggregates = {
   __typename?: 'LoanStddevPopulationAggregates';
+  /** Population standard deviation of boostId across the matching connection */
+  boostId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of createdAtEventId across the matching connection */
@@ -28193,22 +30310,28 @@ export type LoanStddevPopulationAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population standard deviation of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type LoanStddevSampleAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
   borrowerId?: InputMaybe<BigFloatFilter>;
   createdAtEventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
   settledAtEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LoanStddevSampleAggregates = {
   __typename?: 'LoanStddevSampleAggregates';
+  /** Sample standard deviation of boostId across the matching connection */
+  boostId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of createdAtEventId across the matching connection */
@@ -28221,22 +30344,28 @@ export type LoanStddevSampleAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample standard deviation of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type LoanSumAggregateFilter = {
+  boostId?: InputMaybe<BigIntFilter>;
   borrowerId?: InputMaybe<BigIntFilter>;
   createdAtEventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigIntFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
   settledAtEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LoanSumAggregates = {
   __typename?: 'LoanSumAggregates';
+  /** Sum of boostId across the matching connection */
+  boostId: Scalars['BigInt']['output'];
   /** Sum of borrowerId across the matching connection */
   borrowerId: Scalars['BigInt']['output'];
   /** Sum of createdAtEventId across the matching connection */
@@ -28249,6 +30378,8 @@ export type LoanSumAggregates = {
   lostAmountValueUsd: Scalars['BigFloat']['output'];
   /** Sum of poolId across the matching connection */
   poolId: Scalars['BigInt']['output'];
+  /** Sum of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId: Scalars['BigFloat']['output'];
   /** Sum of settledAtEventId across the matching connection */
   settledAtEventId: Scalars['BigFloat']['output'];
 };
@@ -28865,17 +30996,21 @@ export type LoanUpdatesOrderBy =
   | 'TYPE_DESC';
 
 export type LoanVariancePopulationAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
   borrowerId?: InputMaybe<BigFloatFilter>;
   createdAtEventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
   settledAtEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LoanVariancePopulationAggregates = {
   __typename?: 'LoanVariancePopulationAggregates';
+  /** Population variance of boostId across the matching connection */
+  boostId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of createdAtEventId across the matching connection */
@@ -28888,22 +31023,28 @@ export type LoanVariancePopulationAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Population variance of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigFloat']['output']>;
 };
 
 export type LoanVarianceSampleAggregateFilter = {
+  boostId?: InputMaybe<BigFloatFilter>;
   borrowerId?: InputMaybe<BigFloatFilter>;
   createdAtEventId?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   lostAmount?: InputMaybe<BigFloatFilter>;
   lostAmountValueUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
+  prewitnessedDepositId?: InputMaybe<BigFloatFilter>;
   settledAtEventId?: InputMaybe<BigFloatFilter>;
 };
 
 export type LoanVarianceSampleAggregates = {
   __typename?: 'LoanVarianceSampleAggregates';
+  /** Sample variance of boostId across the matching connection */
+  boostId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of borrowerId across the matching connection */
   borrowerId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of createdAtEventId across the matching connection */
@@ -28916,6 +31057,8 @@ export type LoanVarianceSampleAggregates = {
   lostAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
+  /** Sample variance of prewitnessedDepositId across the matching connection */
+  prewitnessedDepositId?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of settledAtEventId across the matching connection */
   settledAtEventId?: Maybe<Scalars['BigFloat']['output']>;
 };
@@ -28957,8 +31100,12 @@ export type LoansEdge = {
 export type LoansOrderBy =
   | 'ASSET_ASC'
   | 'ASSET_DESC'
+  | 'BOOST_ID_ASC'
+  | 'BOOST_ID_DESC'
   | 'BORROWER_ID_ASC'
   | 'BORROWER_ID_DESC'
+  | 'BORROWER_TYPE_ASC'
+  | 'BORROWER_TYPE_DESC'
   | 'CREATED_AT_EVENT_ID_ASC'
   | 'CREATED_AT_EVENT_ID_DESC'
   | 'CREATED_AT_TIMESTAMP_ASC'
@@ -28983,6 +31130,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_AVERAGE_LOAN_LOSS_ID_ASC'
@@ -29009,6 +31158,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_DISTINCT_COUNT_LOAN_LOSS_ID_ASC'
@@ -29033,6 +31184,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MAX_LOAN_LOSS_ID_ASC'
@@ -29057,6 +31210,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_MIN_LOAN_LOSS_ID_ASC'
@@ -29081,6 +31236,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_POPULATION_LOAN_LOSS_ID_ASC'
@@ -29105,6 +31262,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_STDDEV_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -29129,6 +31288,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_SUM_LOAN_LOSS_ID_ASC'
@@ -29153,6 +31314,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_POPULATION_LOAN_LOSS_ID_ASC'
@@ -29177,6 +31340,8 @@ export type LoansOrderBy =
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_IS_POSITION_CLOSING_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_IS_POSITION_OPENING_DESC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_ASC'
+  | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_LIQUIDATION_SWAP_REQUEST_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_ASC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_LIQUIDITY_PROVIDER_ID_DESC'
   | 'LENDING_LIQUIDITY_BALANCE_CHANGES_BY_LOAN_LOSS_ID_VARIANCE_SAMPLE_LOAN_LOSS_ID_ASC'
@@ -29758,6 +31923,8 @@ export type LoansOrderBy =
   | 'NATURAL'
   | 'POOL_ID_ASC'
   | 'POOL_ID_DESC'
+  | 'PREWITNESSED_DEPOSIT_ID_ASC'
+  | 'PREWITNESSED_DEPOSIT_ID_DESC'
   | 'PRIMARY_KEY_ASC'
   | 'PRIMARY_KEY_DESC'
   | 'SETTLED_AT_EVENT_ID_ASC'
@@ -34648,6 +36815,7 @@ export type Query = Node & {
   /** Reads a single `Loan` using its globally unique `ID`. */
   loan?: Maybe<Loan>;
   loanById?: Maybe<Loan>;
+  loanByPrewitnessedDepositIdAndAsset?: Maybe<Loan>;
   /** Reads a single `LoanFee` using its globally unique `ID`. */
   loanFee?: Maybe<LoanFee>;
   loanFeeById?: Maybe<LoanFee>;
@@ -34667,7 +36835,7 @@ export type Query = Node & {
   /** Reads a single `LpLendingPoolSnapshot` using its globally unique `ID`. */
   lpLendingPoolSnapshot?: Maybe<LpLendingPoolSnapshot>;
   lpLendingPoolSnapshotById?: Maybe<LpLendingPoolSnapshot>;
-  lpLendingPoolSnapshotByLiquidityProviderIdAndLendingPoolIdAndBlockHeightAndType?: Maybe<LpLendingPoolSnapshot>;
+  lpLendingPoolSnapshotByLiquidityProviderIdAndLendingPoolIdAndBlockHeightAndTypeAndTimestampHour?: Maybe<LpLendingPoolSnapshot>;
   /** Reads a single `LpPointDistributionEvent` using its globally unique `ID`. */
   lpPointDistributionEvent?: Maybe<LpPointDistributionEvent>;
   lpPointDistributionEventById?: Maybe<LpPointDistributionEvent>;
@@ -35563,6 +37731,13 @@ export type QueryLoanByIdArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
+export type QueryLoanByPrewitnessedDepositIdAndAssetArgs = {
+  asset: ChainflipAsset;
+  prewitnessedDepositId: Scalars['BigInt']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
 export type QueryLoanFeeArgs = {
   nodeId: Scalars['ID']['input'];
 };
@@ -35655,10 +37830,11 @@ export type QueryLpLendingPoolSnapshotByIdArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryLpLendingPoolSnapshotByLiquidityProviderIdAndLendingPoolIdAndBlockHeightAndTypeArgs = {
+export type QueryLpLendingPoolSnapshotByLiquidityProviderIdAndLendingPoolIdAndBlockHeightAndTypeAndTimestampHourArgs = {
   blockHeight: Scalars['Int']['input'];
   lendingPoolId: Scalars['Int']['input'];
   liquidityProviderId: Scalars['Int']['input'];
+  timestampHour: Scalars['Datetime']['input'];
   type: LpLendingPoolSnapshotType;
 };
 
@@ -36863,6 +39039,7 @@ export type RangeOrderFillsOrderBy =
 
 export type StrategyType =
   | 'INVENTORY_BASED'
+  | 'ORACLE_TRACKING'
   | 'SIMPLE_BUY_SELL'
   | 'TICK_ZERO_CENTERED';
 
@@ -38476,7 +40653,7 @@ export type GetNewLoanUpdateQueryVariables = Exact<{
 }>;
 
 
-export type GetNewLoanUpdateQuery = { __typename?: 'Query', updates?: { __typename?: 'LoanUpdatesConnection', nodes: Array<{ __typename?: 'LoanUpdate', id: number, type: LoanUpdateType, amount: `${number}`, amountValueUsd: `${number}`, timestamp: string, loanByLoanId: { __typename?: 'Loan', id: `${number}`, asset: ChainflipAsset, accountByBorrowerId: { __typename?: 'Account', idSs58: string } } }> } | null };
+export type GetNewLoanUpdateQuery = { __typename?: 'Query', updates?: { __typename?: 'LoanUpdatesConnection', nodes: Array<{ __typename?: 'LoanUpdate', id: number, type: LoanUpdateType, amount: `${number}`, amountValueUsd: `${number}`, timestamp: string, loanByLoanId: { __typename?: 'Loan', id: `${number}`, asset: ChainflipAsset, accountByBorrowerId?: { __typename?: 'Account', idSs58: string } | null } }> } | null };
 
 export type GetLatestLendingLiquidityChangeIdQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -38508,7 +40685,7 @@ export type GetNewLiquidationSwapRequestsQueryVariables = Exact<{
 }>;
 
 
-export type GetNewLiquidationSwapRequestsQuery = { __typename?: 'Query', requests?: { __typename?: 'LiquidationSwapRequestsConnection', nodes: Array<{ __typename?: 'LiquidationSwapRequest', id: number, swapRequestId: `${number}`, createdAtEventId: `${number}`, loanByLoanId: { __typename?: 'Loan', id: `${number}`, asset: ChainflipAsset, accountByBorrowerId: { __typename?: 'Account', idSs58: string } } }> } | null };
+export type GetNewLiquidationSwapRequestsQuery = { __typename?: 'Query', requests?: { __typename?: 'LiquidationSwapRequestsConnection', nodes: Array<{ __typename?: 'LiquidationSwapRequest', id: number, swapRequestId: `${number}`, createdAtEventId: `${number}`, loanByLoanId: { __typename?: 'Loan', id: `${number}`, asset: ChainflipAsset, accountByBorrowerId?: { __typename?: 'Account', idSs58: string } | null } }> } | null };
 
 export type GetLiquidationStatusBySwapRequestIdsQueryVariables = Exact<{
   swapRequestIds: Array<Scalars['BigInt']['input']> | Scalars['BigInt']['input'];
@@ -38524,7 +40701,7 @@ export const GetAccountDocument = {"kind":"Document","definitions":[{"kind":"Ope
 export const GetLatestLoanUpdateIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLatestLoanUpdateId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"updates"},"name":{"kind":"Name","value":"allLoanUpdates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetLatestLoanUpdateIdQuery, GetLatestLoanUpdateIdQueryVariables>;
 export const GetNewLoanUpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewLoanUpdate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"updates"},"name":{"kind":"Name","value":"allLoanUpdates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_ASC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"amountValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"loanByLoanId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"accountByBorrowerId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewLoanUpdateQuery, GetNewLoanUpdateQueryVariables>;
 export const GetLatestLendingLiquidityChangeIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLatestLendingLiquidityChangeId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"liquidityChanges"},"name":{"kind":"Name","value":"allLendingLiquidityBalanceChanges"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetLatestLendingLiquidityChangeIdQuery, GetLatestLendingLiquidityChangeIdQueryVariables>;
-export const GetNewLendingLiquidityChangeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewLendingLiquidityChange"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"liquidityChanges"},"name":{"kind":"Name","value":"allLendingLiquidityBalanceChanges"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"WITHDRAWAL"},{"kind":"EnumValue","value":"DEPOSIT"}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_ASC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"amountUsd"}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"accountByLiquidityProviderId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewLendingLiquidityChangeQuery, GetNewLendingLiquidityChangeQueryVariables>;
+export const GetNewLendingLiquidityChangeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewLendingLiquidityChange"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"liquidityChanges"},"name":{"kind":"Name","value":"allLendingLiquidityBalanceChanges"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"MANUAL_WITHDRAWAL"},{"kind":"EnumValue","value":"MANUAL_DEPOSIT"}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_ASC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"amountUsd"}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"accountByLiquidityProviderId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewLendingLiquidityChangeQuery, GetNewLendingLiquidityChangeQueryVariables>;
 export const GetLatestLiquidationSwapRequestIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLatestLiquidationSwapRequestId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"requests"},"name":{"kind":"Name","value":"allLiquidationSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"SWAP_REQUEST_ID_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"swapRequestId"}}]}}]}}]}}]} as unknown as DocumentNode<GetLatestLiquidationSwapRequestIdQuery, GetLatestLiquidationSwapRequestIdQueryVariables>;
 export const GetBoundaryLiquidationSwapRequestIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBoundaryLiquidationSwapRequestId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"minTimestamp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"requests"},"name":{"kind":"Name","value":"allLiquidationSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eventByCreatedAtEventId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"timestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"minTimestamp"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"SWAP_REQUEST_ID_DESC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"swapRequestId"}}]}}]}}]}}]} as unknown as DocumentNode<GetBoundaryLiquidationSwapRequestIdQuery, GetBoundaryLiquidationSwapRequestIdQueryVariables>;
 export const GetNewLiquidationSwapRequestsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNewLiquidationSwapRequests"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"swapRequestId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"minTimestamp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"requests"},"name":{"kind":"Name","value":"allLiquidationSwapRequests"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"swapRequestId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"swapRequestId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"eventByCreatedAtEventId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"timestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThan"},"value":{"kind":"Variable","name":{"kind":"Name","value":"minTimestamp"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"SWAP_REQUEST_ID_ASC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"swapRequestId"}},{"kind":"Field","name":{"kind":"Name","value":"createdAtEventId"}},{"kind":"Field","name":{"kind":"Name","value":"loanByLoanId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"accountByBorrowerId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewLiquidationSwapRequestsQuery, GetNewLiquidationSwapRequestsQueryVariables>;

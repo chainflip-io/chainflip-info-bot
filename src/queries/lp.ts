@@ -113,7 +113,7 @@ export const getLatestLendingLiquidityChangeIdQuery = gql(/* GraphQL */ `
 export const getNewLendingLiquidityChangeQuery = gql(/* GraphQL */ `
   query GetNewLendingLiquidityChange($id: Int!) {
     liquidityChanges: allLendingLiquidityBalanceChanges(
-      filter: { id: { greaterThan: $id }, type: { in: [WITHDRAWAL, DEPOSIT] } }
+      filter: { id: { greaterThan: $id }, type: { in: [MANUAL_WITHDRAWAL, MANUAL_DEPOSIT] } }
       orderBy: ID_ASC
       first: 1
     ) {
