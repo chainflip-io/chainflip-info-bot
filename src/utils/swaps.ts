@@ -4,7 +4,7 @@ import { subMilliseconds } from 'date-fns';
 
 const EGRESS_BROADCAST_SIGNING_DURATION_MS = 90 * 1000;
 
-export const getSwapCompletionTime = ({
+export const getSwapCompletionMs = ({
   depositChannelCreationTimestamp,
   preDepositBlockTimestamp,
   depositTimestamp,
@@ -33,5 +33,10 @@ export const getSwapCompletionTime = ({
   const startMs = subMilliseconds(depositTimestamp, millisecondsToSubtract).getTime();
   const endMs = egressTimestamp.getTime() + EGRESS_BROADCAST_SIGNING_DURATION_MS;
 
+  return { startMs, endMs };
+};
+
+export const getSwapCompletionTime = (params: Parameters<typeof getSwapCompletionMs>[0]) => {
+  const { startMs, endMs } = getSwapCompletionMs(params);
   return intervalToDurationWords({ start: startMs, end: endMs });
 };

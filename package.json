@@ -13,7 +13,8 @@
     "build": "pnpm clean && tsc",
     "prepare": "husky",
     "prettier:check": "prettier -c ./** --ignore-path=./.prettierignore",
-    "graphql:codegen": "graphql-codegen-esm --config graphql.config.js"
+    "graphql:codegen": "graphql-codegen-esm --config graphql.config.js",
+    "banner:preview": "tsx scripts/previewBanner.tsx"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +45,7 @@
     "@chainflip/delegation": "2.1.0",
     "@chainflip/utils": "2.1.4",
     "@date-fns/utc": "^2.1.1",
+    "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.13.5",
     "bignumber.js": "^9.3.1",
     "bullmq": "^5.69.3",
@@ -57,6 +59,7 @@
     "oauth-1.0a": "^2.2.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "satori": "^0.26.0",
     "winston": "^3.17.0",
     "zod": "^4.3.6"
   }

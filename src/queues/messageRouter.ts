@@ -1,4 +1,5 @@
 import { type JobConfig, type JobProcessor } from './initialize.js';
+import { type SwapBannerData } from '../banners/buildBanner.js';
 import Config, { type Platform, type FilterData } from '../config.js';
 import logger from '../utils/logger.js';
 
@@ -10,6 +11,7 @@ type Data = {
   message: string;
   filterData: FilterData;
   opts?: { disablePreview?: boolean };
+  banner?: SwapBannerData;
 };
 
 declare global {
@@ -19,13 +21,13 @@ declare global {
 }
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
-  const { message, filterData, platform, opts } = job.data;
+  const { message, filterData, platform, opts, banner } = job.data;
 
   const channels = await Config.getChannels(platform);
 
   const jobs = channels
     ?.filter((channel) => Config.canSend(channel, filterData))
-    .map(({ key }) => ({ name: 'sendMessage' as const, data: { key, message, opts } }));
+    .map(({ key }) => ({ name: 'sendMessage' as const, data: { key, message, opts, banner } }));
 
   if (jobs?.length) await dispatchJobs(jobs);
 

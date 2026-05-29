@@ -42,6 +42,7 @@ describe('swapStatusCheck', () => {
         [
           {
             "data": {
+              "banner": undefined,
               "filterData": {
                 "name": "SWAP_COMPLETED",
                 "usdValue": 5611.3799573378,
@@ -58,6 +59,7 @@ describe('swapStatusCheck', () => {
           },
           {
             "data": {
+              "banner": undefined,
               "filterData": {
                 "name": "SWAP_COMPLETED",
                 "usdValue": 5611.3799573378,
@@ -74,6 +76,7 @@ describe('swapStatusCheck', () => {
           },
           {
             "data": {
+              "banner": undefined,
               "filterData": {
                 "name": "SWAP_COMPLETED",
                 "usdValue": 5611.3799573378,
