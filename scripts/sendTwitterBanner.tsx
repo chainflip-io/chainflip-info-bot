@@ -2,7 +2,11 @@
 import 'dotenv/config';
 import { buildBanner, type SwapBannerData } from '../src/banners/buildBanner.js';
 import { formatDiscordMessage } from '../src/banners/discordMessage.js';
-import { sendMessage, type TwitterConfig } from '../src/channels/twitter.js';
+import { sendMessage, uploadMedia, type TwitterConfig } from '../src/channels/twitter.js';
+
+// `--upload-only` validates creds + OAuth + media-upload API access WITHOUT posting
+// anything public (the uploaded media_id simply expires unused). Use this first.
+const uploadOnly = process.argv.includes('--upload-only');
 
 const config: TwitterConfig = {
   consumerKey: process.env.TWITTER_CONSUMER_KEY!,
@@ -53,8 +57,13 @@ const message = formatDiscordMessage({
 console.log('Building banner...');
 const png = await buildBanner(banner);
 
-console.log(`Posting to X (${png.length} bytes, ${message.length} char caption)...`);
-console.log('---\n' + message + '\n---');
-await sendMessage(config, message, png);
-
-console.log('✓ Posted to X');
+if (uploadOnly) {
+  console.log(`Uploading media only (${png.length} bytes), no tweet will be posted...`);
+  const mediaId = await uploadMedia(config, png);
+  console.log(`✓ Media upload OK — media_id ${mediaId} (expires unused). Creds + API tier validated.`);
+} else {
+  console.log(`Posting to X (${png.length} bytes, ${message.length} char caption)...`);
+  console.log('---\n' + message + '\n---');
+  await sendMessage(config, message, png);
+  console.log('✓ Posted to X');
+}
