@@ -53,7 +53,7 @@ const deltaSign = (delta: number) => {
   return '🟢';
 };
 
-const BANNER_MIN_USD_VALUE = 100_000;
+const BANNER_MIN_USD_VALUE = 95_000;
 
 // Estimated minutes saved by boost per source chain — the deposit-confirmation
 // wait that boost skips. Boost is currently Bitcoin-only; other chains listed
