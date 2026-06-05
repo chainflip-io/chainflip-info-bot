@@ -9,8 +9,8 @@ import { SwapBannerTier1, type SwapBannerTier1Props } from './SwapBannerTier1.js
 
 const assetsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets');
 
-const TIER_1_THRESHOLD = 500_000;
-const TIER_2_THRESHOLD = 1_000_000;
+const TIER_1_THRESHOLD = 495_000;
+const TIER_2_THRESHOLD = 995_000;
 
 export type SwapBannerData = {
   usdValue: number;

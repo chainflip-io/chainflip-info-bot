@@ -155,7 +155,7 @@ export type DiscordMessageInput = {
 };
 
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
-  usdValue >= 1_000_000 ? 3 : usdValue >= 500_000 ? 2 : 1;
+  usdValue >= 995_000 ? 3 : usdValue >= 495_000 ? 2 : 1;
 
 const formatPair = (input: DiscordMessageInput): string =>
   `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${formatAmount(input.destAsset, input.destAmount)}`;
