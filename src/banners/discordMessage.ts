@@ -145,7 +145,7 @@ export type DiscordMessageInput = {
   durationMinutes?: number;
   isBoosted: boolean;
   originalDurationMinutes?: number;
-  marketPriceDeltaPct?: number;
+  oraclePriceDeltaPct?: number;
 };
 
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
@@ -159,8 +159,8 @@ const tier1Regular = (input: DiscordMessageInput, pair: string): string => {
   const viaClause = parties ? ` via ${parties.primary}` : '';
 
   const lines: string[] = [];
-  if (input.marketPriceDeltaPct !== undefined) {
-    lines.push(`${pair} at ${formatDeltaCopy(input.marketPriceDeltaPct)} vs market.`);
+  if (input.oraclePriceDeltaPct !== undefined) {
+    lines.push(`${pair} at ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market.`);
   } else {
     lines.push(`${pair}.`);
   }
@@ -218,8 +218,8 @@ const tier23 = (input: DiscordMessageInput, pair: string): string => {
       : `${usd} swap.`;
 
   const lines: string[] = [headline, '', `${pair}${route}.`];
-  if (input.marketPriceDeltaPct !== undefined) {
-    lines.push(`Settled ${formatDeltaCopy(input.marketPriceDeltaPct)} vs market.`);
+  if (input.oraclePriceDeltaPct !== undefined) {
+    lines.push(`Settled ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market.`);
   }
   lines.push('', `${SCAN_BASE}/${input.swapId}`);
   return lines.join('\n');
