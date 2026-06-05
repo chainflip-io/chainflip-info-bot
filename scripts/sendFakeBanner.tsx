@@ -36,7 +36,7 @@ const props: SwapBannerTier1Props = {
   durationMinutes: 9,
   originalDurationMinutes: 39,
   aggregator: 'thorswap',
-  marketPriceDeltaPct: -0.04,
+  oraclePriceDeltaPct: -0.04,
   backgroundUrl: background,
   smallSourceIconUrl: btcSmall,
   smallDestIconUrl: usdtSmall,
