@@ -1,11 +1,5 @@
 import { formatDuration, formatPercentDelta, formatTokenAmount, formatUsdShort } from './format.js';
-import {
-  type Asset,
-  BOOSTED_THEME,
-  Pill,
-  REGULAR_THEME,
-  TokenIcon,
-} from './parts.js';
+import { type Asset, BOOSTED_THEME, Pill, REGULAR_THEME, TokenIcon } from './parts.js';
 
 export type SwapBannerTier1Props = {
   usdValue: number;
@@ -122,12 +116,7 @@ export const SwapBannerTier1 = (props: SwapBannerTier1Props) => {
           <div style={{ display: 'flex', marginRight: 16 }}>
             <Pill fontSize={32} theme={theme}>
               {props.boltIconUrl && (
-                <img
-                  src={props.boltIconUrl}
-                  width={36}
-                  height={36}
-                  style={{ marginRight: 6 }}
-                />
+                <img src={props.boltIconUrl} width={36} height={36} style={{ marginRight: 6 }} />
               )}
               Boosted
             </Pill>
@@ -137,7 +126,7 @@ export const SwapBannerTier1 = (props: SwapBannerTier1Props) => {
           <div style={{ display: 'flex', marginRight: 16 }}>
             <Pill fontSize={32} theme={theme}>
               {formatDuration(props.durationMinutes)}
-              {props.originalDurationMinutes !== undefined && (
+              {props.isBoosted && props.originalDurationMinutes !== undefined && (
                 <span
                   style={{
                     display: 'flex',

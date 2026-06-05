@@ -1,11 +1,5 @@
 import { formatDuration, formatPercentDelta, formatTokenAmount, formatUsdShort } from './format.js';
-import {
-  type Asset,
-  BOOSTED_THEME,
-  Pill,
-  REGULAR_THEME,
-  TokenIcon,
-} from './parts.js';
+import { type Asset, BOOSTED_THEME, Pill, REGULAR_THEME, TokenIcon } from './parts.js';
 
 export type SwapBannerProps = {
   usdValue: number;
@@ -75,12 +69,7 @@ export const SwapBanner = (props: SwapBannerProps) => {
             {formatTokenAmount(props.sourceAsset.amount)} {props.sourceAsset.symbol}
           </span>
         </div>
-        <img
-          src={props.swapIconUrl}
-          width={40}
-          height={40}
-          style={{ marginRight: 28 }}
-        />
+        <img src={props.swapIconUrl} width={40} height={40} style={{ marginRight: 28 }} />
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div style={{ display: 'flex', marginRight: 16 }}>
             <TokenIcon asset={props.destAsset} size={TOKEN_SIZE} badgeSize={CHAIN_BADGE_SIZE} />
@@ -96,12 +85,7 @@ export const SwapBanner = (props: SwapBannerProps) => {
           <div style={{ display: 'flex', marginRight: 16 }}>
             <Pill fontSize={35} theme={theme}>
               {props.boltIconUrl && (
-                <img
-                  src={props.boltIconUrl}
-                  width={40}
-                  height={40}
-                  style={{ marginRight: 6 }}
-                />
+                <img src={props.boltIconUrl} width={40} height={40} style={{ marginRight: 6 }} />
               )}
               Boosted
             </Pill>
@@ -111,7 +95,7 @@ export const SwapBanner = (props: SwapBannerProps) => {
           <div style={{ display: 'flex', marginRight: 16 }}>
             <Pill fontSize={35} theme={theme}>
               {formatDuration(props.durationMinutes)}
-              {props.originalDurationMinutes !== undefined && (
+              {props.isBoosted && props.originalDurationMinutes !== undefined && (
                 <span
                   style={{
                     display: 'flex',

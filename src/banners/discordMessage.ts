@@ -1,5 +1,6 @@
 import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { ASSET_REGISTRY } from './assetRegistry.js';
+import { TIER_1_THRESHOLD, TIER_2_THRESHOLD } from './buildBanner.js';
 
 const BROKER_HANDLES: Record<string, string | null> = {
   'swap.chainflip.io': '@Chainflip',
@@ -77,9 +78,7 @@ const formatAmount = (asset: ChainflipAsset, amount: number): string => {
   }
 
   const num =
-    amount >= 100
-      ? stripTrailingZeros(amount.toFixed(1))
-      : stripTrailingZeros(amount.toFixed(2));
+    amount >= 100 ? stripTrailingZeros(amount.toFixed(1)) : stripTrailingZeros(amount.toFixed(2));
   return `${num} ${display}`;
 };
 
@@ -124,12 +123,7 @@ const resolveParties = (
 ): { primary: string; secondary: string | null } | null => {
   const integrator = resolveAlias(INTEGRATOR_HANDLES, affiliateAlias);
   const broker = resolveAlias(BROKER_HANDLES, brokerAlias);
-  if (
-    integrator &&
-    broker &&
-    integrator !== broker &&
-    !isChainflipDefaultBroker(brokerAlias)
-  ) {
+  if (integrator && broker && integrator !== broker && !isChainflipDefaultBroker(brokerAlias)) {
     return { primary: integrator, secondary: broker };
   }
   if (integrator) return { primary: integrator, secondary: null };
@@ -155,7 +149,7 @@ export type DiscordMessageInput = {
 };
 
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
-  usdValue >= 995_000 ? 3 : usdValue >= 495_000 ? 2 : 1;
+  usdValue >= TIER_2_THRESHOLD ? 3 : usdValue >= TIER_1_THRESHOLD ? 2 : 1;
 
 const formatPair = (input: DiscordMessageInput): string =>
   `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${formatAmount(input.destAsset, input.destAmount)}`;
@@ -186,7 +180,8 @@ const tier1Boosted = (input: DiscordMessageInput, pair: string): string => {
   const inDuration =
     input.durationMinutes !== undefined ? ` in ${formatDurationCopy(input.durationMinutes)}` : '';
   const nativeClause =
-    input.originalDurationMinutes !== undefined
+    input.originalDurationMinutes !== undefined &&
+    input.originalDurationMinutes !== input.durationMinutes
       ? ` (vs ${formatDurationShortCopy(input.originalDurationMinutes)} native)`
       : '';
 
@@ -210,7 +205,9 @@ const tier23 = (input: DiscordMessageInput, pair: string): string => {
   const inDuration =
     input.durationMinutes !== undefined ? ` in ${formatDurationCopy(input.durationMinutes)}` : '';
   const nativeClause =
-    input.isBoosted && input.originalDurationMinutes !== undefined
+    input.isBoosted &&
+    input.originalDurationMinutes !== undefined &&
+    input.originalDurationMinutes !== input.durationMinutes
       ? ` (vs ${formatDurationShortCopy(input.originalDurationMinutes)} native)`
       : '';
 

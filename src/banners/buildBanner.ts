@@ -1,16 +1,16 @@
+import { createElement } from 'react';
 import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createElement } from 'react';
-import { loadAsset } from './assetRegistry.js';
-import { fileToDataUrl, renderBanner } from './render.js';
+import { loadAsset, loadDataUrl } from './assetRegistry.js';
+import { renderBanner } from './render.js';
 import { SwapBanner, type SwapBannerProps } from './SwapBanner.js';
 import { SwapBannerTier1, type SwapBannerTier1Props } from './SwapBannerTier1.js';
 
 const assetsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets');
 
-const TIER_1_THRESHOLD = 495_000;
-const TIER_2_THRESHOLD = 995_000;
+export const TIER_1_THRESHOLD = 495_000;
+export const TIER_2_THRESHOLD = 995_000;
 
 export type SwapBannerData = {
   usdValue: number;
@@ -25,16 +25,6 @@ export type SwapBannerData = {
   marketPriceDeltaPct: number;
 };
 
-const dataUrlCache = new Map<string, Promise<string>>();
-const cachedDataUrl = (path: string) => {
-  let cached = dataUrlCache.get(path);
-  if (!cached) {
-    cached = fileToDataUrl(path);
-    dataUrlCache.set(path, cached);
-  }
-  return cached;
-};
-
 const tierFor = (usdValue: number) =>
   usdValue >= TIER_2_THRESHOLD ? 3 : usdValue >= TIER_1_THRESHOLD ? 2 : 1;
 
@@ -45,9 +35,9 @@ export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
   const [source, dest, swapIconUrl, boltIconUrl, backgroundUrl] = await Promise.all([
     loadAsset(data.sourceAsset),
     loadAsset(data.destAsset),
-    cachedDataUrl(join(assetsDir, 'swap-icon.png')),
-    cachedDataUrl(join(assetsDir, 'tokens/bolt.png')),
-    cachedDataUrl(join(assetsDir, `backgrounds/tier${tier}-${variant}.png`)),
+    loadDataUrl(join(assetsDir, 'swap-icon.png')),
+    loadDataUrl(join(assetsDir, 'tokens/bolt.png')),
+    loadDataUrl(join(assetsDir, `backgrounds/tier${tier}-${variant}.png`)),
   ]);
 
   if (tier === 1) {

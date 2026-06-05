@@ -1,5 +1,5 @@
 import { unreachable } from '@chainflip/utils/assertion';
-import { assetConstants } from '@chainflip/utils/chainflip';
+import { AnyChainflipChain, assetConstants } from '@chainflip/utils/chainflip';
 import { abbreviate } from '@chainflip/utils/string';
 import type BigNumber from 'bignumber.js';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
@@ -55,16 +55,13 @@ const deltaSign = (delta: number) => {
 
 const BANNER_MIN_USD_VALUE = 95_000;
 
-// Estimated minutes saved by boost per source chain — the deposit-confirmation
-// wait that boost skips. Boost is currently Bitcoin-only; other chains listed
-// for forward-compatibility.
-const BOOST_TIME_SAVED_MINUTES_BY_CHAIN: Partial<Record<string, number>> = {
-  Bitcoin: 30,
-  Ethereum: 1.5,
-  Arbitrum: 1.5,
-  Solana: 0.5,
-  Assethub: 0.5,
-  Polkadot: 0.5,
+const BOOST_TIME_SAVED_MINUTES_BY_CHAIN: Record<AnyChainflipChain, number> = {
+  Bitcoin: 20,
+  Ethereum: 0,
+  Arbitrum: 0,
+  Solana: 0,
+  Assethub: 0,
+  Polkadot: 0,
 };
 
 const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
@@ -83,7 +80,10 @@ const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
   const sourceChain = assetConstants[swapInfo.sourceAsset]?.chain;
   const savedMinutes = sourceChain && BOOST_TIME_SAVED_MINUTES_BY_CHAIN[sourceChain];
   const originalDurationMinutes =
-    isBoosted && swapInfo.durationMinutes !== undefined && savedMinutes !== undefined
+    isBoosted &&
+    swapInfo.durationMinutes !== undefined &&
+    savedMinutes !== undefined &&
+    savedMinutes > 0
       ? swapInfo.durationMinutes + savedMinutes
       : undefined;
   return {
@@ -95,8 +95,6 @@ const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
     destAmount,
     durationMinutes: swapInfo.durationMinutes,
     originalDurationMinutes,
-    // Prefer the integrator/affiliate (the wallet/app that initiated the swap);
-    // fall back to the broker if there's no affiliate (broker handled it directly).
     aggregator: formatAggregator(
       swapInfo.affiliatesIdsAndAliases[0]?.alias ?? swapInfo.brokerIdAndAlias?.alias,
     ),
@@ -219,43 +217,43 @@ const buildMessageData = ({
   swapInfo: SwapInfo;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
   const banner = buildBannerData(swapInfo);
-  // Internal (on-chain) swaps are LPs rebalancing balances already on the State
-  // Chain — noise for a public feed. Skip them on X to avoid unnecessary API cost;
-  // they still post to Discord/Telegram.
-  const isInternalSwap = swapInfo.onChainInfo != null;
+  const isInternalSwap = swapInfo.onChainInfo != null; // skip internal swaps
   return platforms
     .filter((platform) => !(isInternalSwap && platform === 'twitter'))
     .map((platform) => {
-    const message =
-      (platform === 'discord' || platform === 'twitter') && banner
-        ? formatDiscordMessage({
-            usdValue: banner.usdValue,
-            sourceAsset: banner.sourceAsset,
-            sourceAmount: banner.sourceAmount,
-            destAsset: banner.destAsset,
-            destAmount: banner.destAmount,
-            brokerAlias: swapInfo.brokerIdAndAlias?.alias,
-            affiliateAlias: swapInfo.affiliatesIdsAndAliases[0]?.alias,
-            swapId: swapInfo.requestId,
-            durationMinutes: swapInfo.durationMinutes,
-            isBoosted: banner.isBoosted,
-            originalDurationMinutes: banner.originalDurationMinutes,
-            marketPriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
-              ? Number(swapInfo.oraclePriceDeltaPercentage)
-              : undefined,
-          })
-        : renderDefaultMessage(platform, swapInfo);
+      const message =
+        (platform === 'discord' || platform === 'twitter') && banner
+          ? formatDiscordMessage({
+              usdValue: banner.usdValue,
+              sourceAsset: banner.sourceAsset,
+              sourceAmount: banner.sourceAmount,
+              destAsset: banner.destAsset,
+              destAmount: banner.destAmount,
+              brokerAlias: swapInfo.brokerIdAndAlias?.alias,
+              affiliateAlias: swapInfo.affiliatesIdsAndAliases[0]?.alias,
+              swapId: swapInfo.requestId,
+              durationMinutes: swapInfo.durationMinutes,
+              isBoosted: banner.isBoosted,
+              originalDurationMinutes: banner.originalDurationMinutes,
+              marketPriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
+                ? Number(swapInfo.oraclePriceDeltaPercentage)
+                : undefined,
+            })
+          : renderDefaultMessage(platform, swapInfo);
 
-    return {
-      name: 'messageRouter' as const,
-      data: {
-        platform,
-        message,
-        filterData: { name: 'SWAP_COMPLETED', usdValue: swapInfo.outputValueUsd?.toNumber() || 0 },
-        banner,
-      },
-    };
-  });
+      return {
+        name: 'messageRouter' as const,
+        data: {
+          platform,
+          message,
+          filterData: {
+            name: 'SWAP_COMPLETED',
+            usdValue: swapInfo.outputValueUsd?.toNumber() || 0,
+          },
+          banner,
+        },
+      };
+    });
 };
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
