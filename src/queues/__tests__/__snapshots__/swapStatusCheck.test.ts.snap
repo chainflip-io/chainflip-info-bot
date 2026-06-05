@@ -6,6 +6,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
     [
       {
         "data": {
+          "banner": undefined,
           "filterData": {
             "name": "SWAP_COMPLETED",
             "usdValue": 78725.5517676093,
@@ -24,6 +25,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
       },
       {
         "data": {
+          "banner": undefined,
           "filterData": {
             "name": "SWAP_COMPLETED",
             "usdValue": 78725.5517676093,
@@ -42,6 +44,7 @@ exports[`swapStatusCheck > adds boost info 1`] = `
       },
       {
         "data": {
+          "banner": undefined,
           "filterData": {
             "name": "SWAP_COMPLETED",
             "usdValue": 78725.5517676093,
@@ -69,6 +72,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
   [
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 5611.3799573378,
@@ -86,6 +90,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 5611.3799573378,
@@ -103,6 +108,7 @@ exports[`swapStatusCheck > check fresh swap status and send swap info message 1`
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 5611.3799573378,
@@ -128,6 +134,7 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
   [
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 197.2981033173,
@@ -146,6 +153,7 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 197.2981033173,
@@ -164,6 +172,7 @@ exports[`swapStatusCheck > contains affiliate broker info in swap message 1`] = 
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 197.2981033173,
@@ -190,6 +199,7 @@ exports[`swapStatusCheck > shows liquidation in message 1`] = `
   [
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 11.8108702681,
@@ -206,6 +216,7 @@ exports[`swapStatusCheck > shows liquidation in message 1`] = `
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 11.8108702681,
@@ -222,6 +233,7 @@ exports[`swapStatusCheck > shows liquidation in message 1`] = `
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 11.8108702681,
@@ -246,6 +258,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
   [
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 17206.1360813008,
@@ -264,6 +277,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 17206.1360813008,
@@ -282,6 +296,7 @@ exports[`swapStatusCheck > subtracts out the refund egress amount from the ingre
     },
     {
       "data": {
+        "banner": undefined,
         "filterData": {
           "name": "SWAP_COMPLETED",
           "usdValue": 17206.1360813008,
