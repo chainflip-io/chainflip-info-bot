@@ -219,7 +219,13 @@ const buildMessageData = ({
   swapInfo: SwapInfo;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
   const banner = buildBannerData(swapInfo);
-  return platforms.map((platform) => {
+  // Internal (on-chain) swaps are LPs rebalancing balances already on the State
+  // Chain — noise for a public feed. Skip them on X to avoid unnecessary API cost;
+  // they still post to Discord/Telegram.
+  const isInternalSwap = swapInfo.onChainInfo != null;
+  return platforms
+    .filter((platform) => !(isInternalSwap && platform === 'twitter'))
+    .map((platform) => {
     const message =
       (platform === 'discord' || platform === 'twitter') && banner
         ? formatDiscordMessage({
