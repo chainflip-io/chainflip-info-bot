@@ -1,13 +1,15 @@
+import type React from 'react';
 import { Resvg } from '@resvg/resvg-js';
 import { readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type React from 'react';
 import satori from 'satori';
 
 const fontsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets/fonts');
 
-let fontsPromise: Promise<{ name: string; data: Buffer; weight: 400 | 500 | 700; style: 'normal' }[]> | null = null;
+let fontsPromise: Promise<
+  { name: string; data: Buffer; weight: 400 | 500 | 700; style: 'normal' }[]
+> | null = null;
 
 const loadFonts = () => {
   if (!fontsPromise) {

@@ -20,11 +20,7 @@ interface TwitterResponse {
 // OAuth 1.0a signer bound to a set of Twitter credentials. The signature for
 // multipart media uploads covers only the method + URL (body params are
 // excluded for multipart/form-data), so we never pass body data to authorize().
-const buildAuthHeader = (
-  token: TwitterConfig,
-  url: string,
-  method: 'POST',
-): string => {
+const buildAuthHeader = (token: TwitterConfig, url: string, method: 'POST'): string => {
   const { consumerKey, consumerKeySecret, oauthKey, oauthKeySecret } = token;
 
   const oauth = new OAuth({
@@ -36,9 +32,8 @@ const buildAuthHeader = (
       crypto.createHmac('sha1', key).update(baseString).digest('base64'),
   });
 
-  return oauth.toHeader(
-    oauth.authorize({ url, method }, { key: oauthKey, secret: oauthKeySecret }),
-  ).Authorization;
+  return oauth.toHeader(oauth.authorize({ url, method }, { key: oauthKey, secret: oauthKeySecret }))
+    .Authorization;
 };
 
 const rethrowRateLimit = (error: unknown): never => {
