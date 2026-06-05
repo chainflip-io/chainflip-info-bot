@@ -35,7 +35,7 @@ const banner: SwapBannerData = {
   durationMinutes: 12,
   originalDurationMinutes: 42,
   aggregator: 'swap.chainflip.io',
-  marketPriceDeltaPct: -0.07,
+  oraclePriceDeltaPct: -0.07,
 };
 
 // Same caption the live pipeline builds for twitter (resolves @handles, tier-aware).
@@ -51,7 +51,7 @@ const message = formatDiscordMessage({
   isBoosted: banner.isBoosted,
   durationMinutes: banner.durationMinutes,
   originalDurationMinutes: banner.originalDurationMinutes,
-  marketPriceDeltaPct: banner.marketPriceDeltaPct,
+  oraclePriceDeltaPct: banner.oraclePriceDeltaPct,
 });
 
 console.log('Building banner...');
@@ -60,7 +60,9 @@ const png = await buildBanner(banner);
 if (uploadOnly) {
   console.log(`Uploading media only (${png.length} bytes), no tweet will be posted...`);
   const mediaId = await uploadMedia(config, png);
-  console.log(`✓ Media upload OK — media_id ${mediaId} (expires unused). Creds + API tier validated.`);
+  console.log(
+    `✓ Media upload OK — media_id ${mediaId} (expires unused). Creds + API tier validated.`,
+  );
 } else {
   console.log(`Posting to X (${png.length} bytes, ${message.length} char caption)...`);
   console.log('---\n' + message + '\n---');

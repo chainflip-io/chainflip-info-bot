@@ -32,7 +32,7 @@ const examples: Example[] = [
       destAmount: 2.35,
       durationMinutes: 5,
       aggregator: 'Rango',
-      marketPriceDeltaPct: -0.04,
+      oraclePriceDeltaPct: -0.04,
     },
     message: {
       brokerAlias: undefined,
@@ -52,7 +52,7 @@ const examples: Example[] = [
       durationMinutes: 9,
       originalDurationMinutes: 39,
       aggregator: 'THORSwap',
-      marketPriceDeltaPct: -0.04,
+      oraclePriceDeltaPct: -0.04,
     },
     message: {
       brokerAlias: 'swap.chainflip.io',
@@ -71,7 +71,7 @@ const examples: Example[] = [
       destAmount: 4250,
       durationMinutes: 3,
       aggregator: 'Jumper',
-      marketPriceDeltaPct: -0.02,
+      oraclePriceDeltaPct: -0.02,
     },
     message: {
       brokerAlias: 'SwapKit',
@@ -91,7 +91,7 @@ const examples: Example[] = [
       durationMinutes: 8,
       originalDurationMinutes: 38,
       aggregator: 'SwapKit',
-      marketPriceDeltaPct: 0.05,
+      oraclePriceDeltaPct: 0.05,
     },
     message: {
       brokerAlias: 'SwapKit',
@@ -110,7 +110,7 @@ const examples: Example[] = [
       destAmount: 12.05,
       durationMinutes: 2,
       aggregator: 'Trust Wallet',
-      marketPriceDeltaPct: 0.01,
+      oraclePriceDeltaPct: 0.01,
     },
     message: {
       brokerAlias: 'Chainflip SDK',
@@ -130,7 +130,7 @@ const examples: Example[] = [
       durationMinutes: 11,
       originalDurationMinutes: 41,
       aggregator: 'Rango',
-      marketPriceDeltaPct: -0.06,
+      oraclePriceDeltaPct: -0.06,
     },
     message: {
       brokerAlias: 'THORSwap',
@@ -164,7 +164,7 @@ for (const ex of examples) {
     isBoosted: ex.banner.isBoosted,
     durationMinutes: ex.banner.durationMinutes,
     originalDurationMinutes: ex.banner.originalDurationMinutes,
-    marketPriceDeltaPct: ex.banner.marketPriceDeltaPct,
+    oraclePriceDeltaPct: ex.banner.oraclePriceDeltaPct,
     ...ex.message,
   });
   const png = await buildBanner(ex.banner);

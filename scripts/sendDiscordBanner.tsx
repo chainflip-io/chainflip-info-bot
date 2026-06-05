@@ -20,7 +20,7 @@ const banner: SwapBannerData = {
   durationMinutes: 12,
   originalDurationMinutes: 42,
   aggregator: 'swap.chainflip.io',
-  marketPriceDeltaPct: -0.07,
+  oraclePriceDeltaPct: -0.07,
 };
 
 const message = formatDiscordMessage({
@@ -35,7 +35,7 @@ const message = formatDiscordMessage({
   isBoosted: banner.isBoosted,
   durationMinutes: banner.durationMinutes,
   originalDurationMinutes: banner.originalDurationMinutes,
-  marketPriceDeltaPct: banner.marketPriceDeltaPct,
+  oraclePriceDeltaPct: banner.oraclePriceDeltaPct,
 });
 
 console.log('Building banner...');
