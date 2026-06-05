@@ -22,7 +22,7 @@ export type SwapBannerData = {
   durationMinutes?: number;
   originalDurationMinutes?: number;
   aggregator?: string;
-  marketPriceDeltaPct: number;
+  oraclePriceDeltaPct: number;
 };
 
 const tierFor = (usdValue: number) =>
@@ -59,7 +59,7 @@ export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
       durationMinutes: data.durationMinutes,
       originalDurationMinutes: data.originalDurationMinutes,
       aggregator: data.aggregator,
-      marketPriceDeltaPct: data.marketPriceDeltaPct,
+      oraclePriceDeltaPct: data.oraclePriceDeltaPct,
       backgroundUrl,
       boltIconUrl,
       smallSourceIconUrl: source.smallIconUrl,
@@ -87,7 +87,7 @@ export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
     durationMinutes: data.durationMinutes,
     originalDurationMinutes: data.originalDurationMinutes,
     aggregator: data.aggregator,
-    marketPriceDeltaPct: data.marketPriceDeltaPct,
+    oraclePriceDeltaPct: data.oraclePriceDeltaPct,
     backgroundUrl,
     swapIconUrl,
     boltIconUrl,

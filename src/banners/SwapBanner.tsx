@@ -9,7 +9,7 @@ export type SwapBannerProps = {
   durationMinutes?: number;
   originalDurationMinutes?: number;
   aggregator?: string;
-  marketPriceDeltaPct: number;
+  oraclePriceDeltaPct: number;
   backgroundUrl: string;
   swapIconUrl: string;
   boltIconUrl?: string;
@@ -120,7 +120,7 @@ export const SwapBanner = (props: SwapBannerProps) => {
 
       <div style={{ display: 'flex', marginTop: 30 }}>
         <Pill fontSize={35} theme={theme}>
-          Market price delta: {formatPercentDelta(props.marketPriceDeltaPct)}
+          Oracle price delta: {formatPercentDelta(props.oraclePriceDeltaPct)}
         </Pill>
       </div>
     </div>

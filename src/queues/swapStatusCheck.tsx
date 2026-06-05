@@ -98,7 +98,7 @@ const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
     aggregator: formatAggregator(
       swapInfo.affiliatesIdsAndAliases[0]?.alias ?? swapInfo.brokerIdAndAlias?.alias,
     ),
-    marketPriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
+    oraclePriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
       ? Number(swapInfo.oraclePriceDeltaPercentage)
       : 0,
   };
@@ -235,7 +235,7 @@ const buildMessageData = ({
               durationMinutes: swapInfo.durationMinutes,
               isBoosted: banner.isBoosted,
               originalDurationMinutes: banner.originalDurationMinutes,
-              marketPriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
+              oraclePriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
                 ? Number(swapInfo.oraclePriceDeltaPercentage)
                 : undefined,
             })
