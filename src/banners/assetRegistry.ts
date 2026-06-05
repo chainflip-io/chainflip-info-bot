@@ -20,7 +20,7 @@ const solChain = join(assetsDir, 'chains/sol.png');
 
 const token = (name: string) => ({
   iconPath: join(assetsDir, `tokens/${name}.png`),
-  smallIconPath: join(assetsDir, `tokens/${name}.png`),
+  smallIconPath: join(assetsDir, `tokens/${name}-small.png`),
 });
 
 export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
@@ -48,7 +48,7 @@ export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
 
 const dataUrlCache = new Map<string, Promise<string>>();
 
-const loadDataUrl = (path: string): Promise<string> => {
+export const loadDataUrl = (path: string): Promise<string> => {
   let cached = dataUrlCache.get(path);
   if (!cached) {
     cached = readFile(path).then((buf) => `data:image/png;base64,${buf.toString('base64')}`);
@@ -64,9 +64,7 @@ export type BannerAsset = {
   chainBadgeUrl?: string;
 };
 
-export const loadAsset = async (
-  asset: keyof typeof ASSET_REGISTRY,
-): Promise<BannerAsset> => {
+export const loadAsset = async (asset: keyof typeof ASSET_REGISTRY): Promise<BannerAsset> => {
   const meta = ASSET_REGISTRY[asset];
   return {
     symbol: meta.symbol,
