@@ -1,4 +1,5 @@
 import { type JobConfig, type JobProcessor } from './initialize.js';
+import { buildBanner, type SwapBannerData } from '../banners/buildBanner.js';
 import { type DiscordConfig, sendMessage as sendDiscordMessage } from '../channels/discord.js';
 import { sendMessage as sendTelegramMessage } from '../channels/telegram.js';
 import { sendMessage as sendTwitterMessage } from '../channels/twitter.js';
@@ -11,6 +12,7 @@ type Data = {
   message: string;
   replyToId?: string;
   opts?: { disablePreview?: boolean };
+  banner?: SwapBannerData;
 };
 
 declare global {
@@ -35,9 +37,13 @@ const sendDiscordMultipartMessage = async (
   config: DiscordConfig,
   message: string,
   replyToId?: string,
+  banner?: SwapBannerData,
 ) => {
   const { current, rest } = breakDiscordMessage(message);
-  const msgId = await sendDiscordMessage(config, current, replyToId);
+  const attachments = banner
+    ? [{ buffer: await buildBanner(banner), filename: 'banner.png' }]
+    : undefined;
+  const msgId = await sendDiscordMessage(config, current, replyToId, attachments);
   if (rest) {
     return { message: rest, replyToId: msgId };
   }
@@ -45,17 +51,18 @@ const sendDiscordMultipartMessage = async (
 };
 
 const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
-  const { message, key, replyToId, opts } = job.data;
+  const { message, key, replyToId, opts, banner } = job.data;
 
   const config = await Config.get(key);
 
   if (config.type === 'telegram') {
     await sendTelegramMessage(config, message, opts?.disablePreview);
   } else if (config.type === 'discord') {
-    const rest = await sendDiscordMultipartMessage(config, message, replyToId);
+    const rest = await sendDiscordMultipartMessage(config, message, replyToId, banner);
     if (rest) await dispatchJobs([{ name: 'sendMessage' as const, data: { key, ...rest } }]);
   } else if (config.type === 'twitter') {
-    await sendTwitterMessage(config, message);
+    const image = banner ? await buildBanner(banner) : undefined;
+    await sendTwitterMessage(config, message, image);
   } else {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     throw new Error(`Invalid config type: ${(config as any).type}`);

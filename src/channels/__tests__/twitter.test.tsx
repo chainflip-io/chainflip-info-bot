@@ -60,6 +60,28 @@ describe('sendMessage', () => {
     ]);
   });
 
+  it('uploads media and attaches the media_id to the tweet', async () => {
+    const postMock = vi.mocked(axios.post);
+
+    postMock
+      .mockResolvedValueOnce({ data: { media_id_string: '987654321' } })
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'with banner' } } });
+
+    await sendMessage(config, 'with banner', Buffer.from('fake-png'));
+
+    expect(postMock).toHaveBeenCalledTimes(2);
+
+    // first call: v1.1 media upload
+    expect(postMock.mock.calls[0]?.[0]).toBe('https://upload.twitter.com/1.1/media/upload.json');
+
+    // second call: v2 tweet create with the minted media_id
+    expect(postMock.mock.calls[1]?.[0]).toBe('https://api.twitter.com/2/tweets');
+    expect(postMock.mock.calls[1]?.[1]).toMatchObject({
+      text: 'with banner',
+      media: { media_ids: ['987654321'] },
+    });
+  });
+
   it('throws an error if the response is not ok', async () => {
     const postMock = vi.mocked(axios.post);
 

@@ -9,7 +9,7 @@ import { explorerClient } from '../server.js';
 import { toAssetAmount, toUsdAmount } from '../utils/chainflip.js';
 import { unrecoverableAssert } from '../utils/functions.js';
 import { getPriceFromPriceX128 } from '../utils/math.js';
-import { getSwapCompletionTime } from '../utils/swaps.js';
+import { getSwapCompletionMs, getSwapCompletionTime } from '../utils/swaps.js';
 
 const getBrokerIdAndAlias = (broker?: { alias?: string | null; idSs58: string }) =>
   broker && broker.idSs58
@@ -67,8 +67,11 @@ export default async function getSwapInfo(nativeId: `${number}`) {
   );
 
   let duration;
-  if (depositTimestamp && egressTimestamp) {
-    duration = getSwapCompletionTime({
+  let durationMinutes: number | undefined;
+  // For broker swaps egressTimestamp is set; onchain swaps complete onchain so use completedAt.
+  const completionTimestamp = egressTimestamp ?? completedAt;
+  if (depositTimestamp && completionTimestamp) {
+    const completionParams = {
       sourceChain,
       depositChannelCreationTimestamp: depositChannelCreationTimestamp
         ? new Date(depositChannelCreationTimestamp)
@@ -77,8 +80,11 @@ export default async function getSwapInfo(nativeId: `${number}`) {
       preDepositBlockTimestamp: preDepositBlockTimestamp
         ? new Date(preDepositBlockTimestamp)
         : undefined,
-      egressTimestamp: new Date(egressTimestamp),
-    });
+      egressTimestamp: new Date(completionTimestamp),
+    };
+    duration = getSwapCompletionTime(completionParams);
+    const { startMs, endMs } = getSwapCompletionMs(completionParams);
+    durationMinutes = (endMs - startMs) / 60_000;
   }
 
   const minPrice =
@@ -157,6 +163,7 @@ export default async function getSwapInfo(nativeId: `${number}`) {
     refundAmount,
     refundValueUsd,
     duration,
+    durationMinutes,
     priceDelta,
     priceDeltaPercentage,
     oraclePriceDeltaPercentage,

@@ -19,6 +19,7 @@ describe('messageRouter', () => {
         [
           {
             "data": {
+              "banner": undefined,
               "key": "telegram:telegram_1",
               "message": "Hello, world!",
               "opts": undefined,
@@ -45,6 +46,7 @@ describe('messageRouter', () => {
         [
           {
             "data": {
+              "banner": undefined,
               "key": "discord:discord_3",
               "message": "Hello, world!",
               "opts": undefined,
@@ -72,6 +74,7 @@ describe('messageRouter', () => {
         [
           {
             "data": {
+              "banner": undefined,
               "key": "twitter:twitter_1",
               "message": "Hello, world!",
               "opts": undefined,

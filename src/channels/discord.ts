@@ -1,6 +1,8 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { AttachmentBuilder, Client, GatewayIntentBits } from 'discord.js';
 import { handleExit } from '../utils/functions.js';
 import logger from '../utils/logger.js';
+
+export type DiscordAttachment = { buffer: Buffer; filename: string };
 
 export const client = new Client({
   intents: [GatewayIntentBits.Guilds],
@@ -47,6 +49,7 @@ export const sendMessage = async (
   { token, channelId }: DiscordConfig,
   content: string,
   replyToId?: string,
+  attachments?: DiscordAttachment[],
 ) => {
   await login(token);
 
@@ -54,11 +57,18 @@ export const sendMessage = async (
   if (!channel || !channel.isSendable()) {
     throw new Error(`Channel not found: ${channelId}`);
   }
+  const payload = attachments?.length
+    ? {
+        content,
+        files: attachments.map((a) => new AttachmentBuilder(a.buffer, { name: a.filename })),
+      }
+    : content;
+
   if (replyToId) {
     const replyTo = await channel.messages.fetch(replyToId);
-    const msg = await replyTo.reply(content);
+    const msg = await replyTo.reply(payload);
     return msg.id;
   }
-  const msg = await channel.send(content);
+  const msg = await channel.send(payload);
   return msg.id;
 };

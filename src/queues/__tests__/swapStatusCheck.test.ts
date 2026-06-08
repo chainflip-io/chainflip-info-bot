@@ -42,6 +42,7 @@ describe('swapStatusCheck', () => {
         [
           {
             "data": {
+              "banner": undefined,
               "filterData": {
                 "name": "SWAP_COMPLETED",
                 "usdValue": 5611.3799573378,
@@ -58,6 +59,7 @@ describe('swapStatusCheck', () => {
           },
           {
             "data": {
+              "banner": undefined,
               "filterData": {
                 "name": "SWAP_COMPLETED",
                 "usdValue": 5611.3799573378,
@@ -74,6 +76,7 @@ describe('swapStatusCheck', () => {
           },
           {
             "data": {
+              "banner": undefined,
               "filterData": {
                 "name": "SWAP_COMPLETED",
                 "usdValue": 5611.3799573378,
@@ -162,6 +165,24 @@ describe('swapStatusCheck', () => {
     } as any);
 
     expect(dispatchJobs.mock.calls).toMatchSnapshot();
+  });
+
+  it('does not post internal (on-chain) swaps to twitter', async () => {
+    // swap 551571 is an on-chain/internal swap (onChainInfo populated)
+    vi.setSystemTime(new Date('2025-06-03T14:30:00+00:00'));
+
+    const dispatchJobs = vi.fn();
+    await config.processJob(dispatchJobs)({
+      data: {
+        swapRequestId: '551571',
+      } as JobData['swapStatusCheck'],
+    } as any);
+
+    const [jobs] = dispatchJobs.mock.lastCall as [{ name: string; data: { platform: string } }[]];
+    const platforms = jobs.filter((j) => j.name === 'messageRouter').map((j) => j.data.platform);
+
+    expect(platforms).not.toContain('twitter');
+    expect(platforms).toEqual(expect.arrayContaining(['telegram', 'discord']));
   });
 
   it('shows liquidation in message', async () => {
