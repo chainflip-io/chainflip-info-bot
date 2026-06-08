@@ -7,7 +7,7 @@ import { renderBanner } from './render.js';
 import { SwapBanner, type SwapBannerProps } from './SwapBanner.js';
 import { SwapBannerTier1, type SwapBannerTier1Props } from './SwapBannerTier1.js';
 
-const assetsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets');
+const assetsDir = join(dirname(fileURLToPath(import.meta.url)), '../assets');
 
 export const TIER_1_THRESHOLD = 495_000;
 export const TIER_2_THRESHOLD = 995_000;

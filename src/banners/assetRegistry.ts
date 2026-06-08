@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const assetsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets');
+const assetsDir = join(dirname(fileURLToPath(import.meta.url)), '../assets');
 
 type AssetMeta = {
   symbol: string;
@@ -31,7 +31,7 @@ export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
     symbol: 'BTC',
     displayName: 'BTC',
     ...token('btc'),
-    smallIconPath: join(assetsDir, 'tokens/bitcoin small.png'),
+    smallIconPath: join(assetsDir, 'tokens/bitcoin-small.png'),
   },
   Eth: { symbol: 'ETH', displayName: 'ETH', ...token('eth') },
   Flip: { symbol: 'FLIP', displayName: 'FLIP', ...token('flip') },

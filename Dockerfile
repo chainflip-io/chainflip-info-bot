@@ -23,7 +23,7 @@ RUN npm install -g pnpm@9
 COPY --from=builder /app/node_modules /app/node_modules
 COPY --from=builder /app/package.json /app/package.json
 COPY --from=builder /app/dist /app/dist
-
+COPY --from=builder /app/src/assets /app/dist/assets
 
 # using ENTRYPOINT causes signals (SIGINT) to be passed onto the node process
 ENTRYPOINT ["node", "--enable-source-maps", "./dist/main.js"]
