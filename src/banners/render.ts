@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import satori from 'satori';
 
-const fontsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets/fonts');
+const fontsDir = join(dirname(fileURLToPath(import.meta.url)), '../assets/fonts');
 
 let fontsPromise: Promise<
   { name: string; data: Buffer; weight: 400 | 500 | 700; style: 'normal' }[]
