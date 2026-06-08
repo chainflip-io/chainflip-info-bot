@@ -37,13 +37,9 @@ const sendDiscordMultipartMessage = async (
   config: DiscordConfig,
   message: string,
   replyToId?: string,
-  banner?: SwapBannerData,
 ) => {
   const { current, rest } = breakDiscordMessage(message);
-  const attachments = banner
-    ? [{ buffer: await buildBanner(banner), filename: 'banner.png' }]
-    : undefined;
-  const msgId = await sendDiscordMessage(config, current, replyToId, attachments);
+  const msgId = await sendDiscordMessage(config, current, replyToId);
   if (rest) {
     return { message: rest, replyToId: msgId };
   }
@@ -58,7 +54,7 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
   if (config.type === 'telegram') {
     await sendTelegramMessage(config, message, opts?.disablePreview);
   } else if (config.type === 'discord') {
-    const rest = await sendDiscordMultipartMessage(config, message, replyToId, banner);
+    const rest = await sendDiscordMultipartMessage(config, message, replyToId);
     if (rest) await dispatchJobs([{ name: 'sendMessage' as const, data: { key, ...rest } }]);
   } else if (config.type === 'twitter') {
     const image = banner ? await buildBanner(banner) : undefined;
