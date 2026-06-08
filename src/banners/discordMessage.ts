@@ -72,7 +72,7 @@ const formatAmount = (asset: ChainflipAsset, amount: number): string => {
       return `${stripTrailingZeros((amount / 1_000_000).toFixed(2))}M ${display}`;
     }
     if (amount >= 1_000) {
-      return `${Math.round(amount / 1_000)}K ${display}`;
+      return `${stripTrailingZeros((amount / 1_000).toFixed(2))}K ${display}`;
     }
     return `${Math.round(amount)} ${display}`;
   }
