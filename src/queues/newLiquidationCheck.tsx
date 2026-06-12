@@ -125,7 +125,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   // Boost loans should never have liquidation swaps
   assert(
-    swapRequests.every((request) => isNotNullish(request.loanByLoanId.accountByBorrowerId)),
+    swapRequests.every((request) => isNotNullish(request.loanByLoanId.accountByBorrowerId?.idSs58)),
     'All swap requests should have a borrower account',
   );
 
@@ -133,7 +133,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
     const grouped = Map.groupBy(
       swapRequests,
       (request) =>
-        `${request.loanByLoanId.accountByBorrowerId!.idSs58 ?? 'unreachable'}-${request.createdAtEventId}`,
+        `${request.loanByLoanId.accountByBorrowerId!.idSs58}-${request.createdAtEventId}`,
     );
 
     for (const [key, groupedSwapRequests] of grouped) {
