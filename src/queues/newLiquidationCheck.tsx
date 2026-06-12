@@ -1,4 +1,6 @@
+import { isNotNullish } from '@chainflip/utils/guard';
 import { abbreviate } from '@chainflip/utils/string';
+import assert from 'assert';
 import { subHours } from 'date-fns';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
 import { Bold, ExplorerLink, Line, renderForPlatform, Trailer } from '../channels/formatting.js';
@@ -121,11 +123,17 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const jobs: DispatchJobArgs[] = [await getNextJobData(latestSwapRequestId as `${number}`)];
 
+  // Boost loans should never have liquidation swaps
+  assert(
+    swapRequests.every((request) => isNotNullish(request.loanByLoanId.accountByBorrowerId)),
+    'All swap requests should have a borrower account',
+  );
+
   if (swapRequests.length) {
     const grouped = Map.groupBy(
       swapRequests,
       (request) =>
-        `${request.loanByLoanId.accountByBorrowerId?.idSs58 ?? 'unknown'}-${request.createdAtEventId}`,
+        `${request.loanByLoanId.accountByBorrowerId!.idSs58 ?? 'unreachable'}-${request.createdAtEventId}`,
     );
 
     for (const [key, groupedSwapRequests] of grouped) {

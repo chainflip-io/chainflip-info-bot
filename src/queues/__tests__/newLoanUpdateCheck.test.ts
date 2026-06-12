@@ -74,7 +74,7 @@ describe('newLoanUpdateCheck', () => {
                     "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Loan <strong><a href="https://scan.chainflip.io/loans/3">#3</a></strong>
-        👤 Account: <strong><a href="https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">cFLRQDfE…D2ENbqj7</a></strong>
+        👤 Borrower: <strong><a href="https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7">cFLRQDfE…D2ENbqj7</a></strong>
         💳 Type: <strong>Borrow</strong>
         📥 Amount: <strong>0.040154 ETH on Ethereum</strong> ($128.27)",
                   "platform": "telegram",
@@ -88,7 +88,7 @@ describe('newLoanUpdateCheck', () => {
                     "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Loan **[#3](https://scan.chainflip.io/loans/3)**
-        👤 Account: **[cFLRQDfE…D2ENbqj7](https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
+        👤 Borrower: **[cFLRQDfE…D2ENbqj7](https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7)**
         💳 Type: **Borrow**
         📥 Amount: **0.040154 ETH on Ethereum** ($128.27)",
                   "platform": "discord",
@@ -102,7 +102,7 @@ describe('newLoanUpdateCheck', () => {
                     "usdValue": 128.2652526243,
                   },
                   "message": "🏦 Loan https://scan.chainflip.io/loans/3
-        👤 Account: https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7
+        👤 Borrower: https://scan.chainflip.io/lps/cFLRQDfEdmnv6d2XfHJNRBQHi4fruPMReLSfvB8WWD2ENbqj7
         💳 Type: Borrow
         📥 Amount: 0.040154 ETH on Ethereum ($128.27)
         #chainflip $flip",
