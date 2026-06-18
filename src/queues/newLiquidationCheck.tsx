@@ -1,3 +1,4 @@
+import { isNotNullish } from '@chainflip/utils/guard';
 import { abbreviate } from '@chainflip/utils/string';
 import { subHours } from 'date-fns';
 import { DispatchJobArgs, JobConfig, JobProcessor } from './initialize.js';
@@ -121,10 +122,24 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
 
   const jobs: DispatchJobArgs[] = [await getNextJobData(latestSwapRequestId as `${number}`)];
 
-  if (swapRequests.length) {
+  // Boost loans should never have liquidation swaps, so every request is expected to have a
+  // borrower account. Skip any that don't rather than failing the job, so the checkpoint still
+  // advances and the pipeline keeps running.
+  const validRequests = swapRequests.filter((request) =>
+    isNotNullish(request.loanByLoanId.accountByBorrowerId?.idSs58),
+  );
+
+  if (validRequests.length !== swapRequests.length) {
+    logger.warn(
+      `Skipping ${swapRequests.length - validRequests.length} liquidation swap request(s) with no borrower account`,
+    );
+  }
+
+  if (validRequests.length) {
     const grouped = Map.groupBy(
-      swapRequests,
-      (request) => `${request.loanByLoanId.accountByBorrowerId.idSs58}-${request.createdAtEventId}`,
+      validRequests,
+      (request) =>
+        `${request.loanByLoanId.accountByBorrowerId!.idSs58}-${request.createdAtEventId}`,
     );
 
     for (const [key, groupedSwapRequests] of grouped) {

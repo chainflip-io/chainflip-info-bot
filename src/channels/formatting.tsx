@@ -79,6 +79,7 @@ const explorerInfo: Record<
   Polkadot: { url: 'https://polkadot.subscan.io', fmt: (ref) => `/extrinsic/${ref}` },
   Bitcoin: { url: 'https://blockstream.info', fmt: (ref) => `/tx/${ref}` },
   Assethub: { url: 'https://assethub-polkadot.subscan.io', fmt: (ref) => `/extrinsic/${ref}` },
+  Tron: { url: 'https://tronscan.org', fmt: (ref) => `/#/transaction/${ref}` },
   Chainflip: { url: EXPLORER_URL, fmt: (p) => p },
 };
 

@@ -65,7 +65,7 @@ const buildMessages = ({
   amount: BigNumber;
   amountValueUsd: BigNumber;
   asset: Exclude<ChainflipAsset, 'Dot'>;
-  borrowerIdSs58: string;
+  borrowerIdSs58?: string;
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
   const typeValue = type === 'BORROWING' ? 'Borrow' : 'Repayment';
   const filterName = type === 'BORROWING' ? 'NEW_BORROW' : 'NEW_REPAYMENT';
@@ -86,11 +86,15 @@ const buildMessages = ({
             </Bold>
           </Line>
           <Line>
-            👤 Account:{' '}
+            👤 Borrower:{' '}
             <Bold>
-              <ExplorerLink path={`/lps/${borrowerIdSs58}`} prefer="link">
-                {abbreviate(borrowerIdSs58, 8)}
-              </ExplorerLink>
+              {borrowerIdSs58 ? (
+                <ExplorerLink path={`/lps/${borrowerIdSs58}`} prefer="link">
+                  {abbreviate(borrowerIdSs58, 8)}
+                </ExplorerLink>
+              ) : (
+                'Boost'
+              )}
             </Bold>
           </Line>
           <Line>
@@ -131,7 +135,7 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
           amount,
           amountValueUsd,
           asset: loanByLoanId.asset as Exclude<ChainflipAsset, 'Dot'>,
-          borrowerIdSs58: loanByLoanId.accountByBorrowerId.idSs58,
+          borrowerIdSs58: loanByLoanId.accountByBorrowerId?.idSs58,
         }),
       );
       logger.info(`Send message for loan ${loanByLoanId.id} about ${type} update`);

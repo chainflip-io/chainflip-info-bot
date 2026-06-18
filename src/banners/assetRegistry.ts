@@ -17,6 +17,7 @@ const ethChain = join(assetsDir, 'chains/eth.png');
 const arbChain = join(assetsDir, 'chains/arb.png');
 const assChain = join(assetsDir, 'chains/ass.png');
 const solChain = join(assetsDir, 'chains/sol.png');
+const tronChain = join(assetsDir, 'chains/tron.png');
 
 const token = (name: string) => ({
   iconPath: join(assetsDir, `tokens/${name}.png`),
@@ -44,6 +45,8 @@ export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
   Usdc: { symbol: 'USDC', displayName: 'USDC.eth', ...token('usdc'), chainBadgePath: ethChain },
   Usdt: { symbol: 'USDT', displayName: 'USDT.eth', ...token('usdt'), chainBadgePath: ethChain },
   Wbtc: { symbol: 'WBTC', displayName: 'WBTC', ...token('wbtc') },
+  Trx: { symbol: 'TRX', displayName: 'TRX', ...token('trx') },
+  TrxUsdt: { symbol: 'USDT', displayName: 'USDT.trx', ...token('usdt'), chainBadgePath: tronChain },
 };
 
 const dataUrlCache = new Map<string, Promise<string>>();
