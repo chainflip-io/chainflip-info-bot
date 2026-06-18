@@ -42,8 +42,8 @@
   "dependencies": {
     "@bull-board/api": "^6.20.3",
     "@bull-board/fastify": "^6.20.3",
-    "@chainflip/delegation": "2.1.0",
-    "@chainflip/utils": "2.2.0-alpha.6",
+    "@chainflip/delegation": "2.2.0",
+    "@chainflip/utils": "2.2.0",
     "@date-fns/utc": "^2.1.1",
     "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.13.5",
