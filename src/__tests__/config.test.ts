@@ -203,13 +203,13 @@ describe('Config', () => {
       expect(
         Config.canSend(
           { key: 'discord:1234', filters: [{ name: 'NEW_BORROW', minUsdValue: 100 }] },
-          { name: 'NEW_BORROW', usdValue: 50 },
+          { name: 'NEW_BORROW', usdValue: 50, isBoost: false },
         ),
       ).toBe(false);
       expect(
         Config.canSend(
           { key: 'discord:1234', filters: [{ name: 'NEW_BORROW', minUsdValue: 100 }] },
-          { name: 'NEW_BORROW', usdValue: 150 },
+          { name: 'NEW_BORROW', usdValue: 150, isBoost: false },
         ),
       ).toBe(true);
     });
@@ -218,13 +218,58 @@ describe('Config', () => {
       expect(
         Config.canSend(
           { key: 'discord:1234', filters: [{ name: 'NEW_REPAYMENT', minUsdValue: 100 }] },
-          { name: 'NEW_REPAYMENT', usdValue: 50 },
+          { name: 'NEW_REPAYMENT', usdValue: 50, isBoost: false },
         ),
       ).toBe(false);
       expect(
         Config.canSend(
           { key: 'discord:1234', filters: [{ name: 'NEW_REPAYMENT', minUsdValue: 100 }] },
-          { name: 'NEW_REPAYMENT', usdValue: 150 },
+          { name: 'NEW_REPAYMENT', usdValue: 150, isBoost: false },
+        ),
+      ).toBe(true);
+    });
+
+    it('applies boostMinUsdValue only to boost borrows', () => {
+      const filters = [{ name: 'NEW_BORROW' as const, minUsdValue: 100, boostMinUsdValue: 10_000 }];
+
+      // boost borrow below boost threshold -> blocked
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters },
+          { name: 'NEW_BORROW', usdValue: 5_000, isBoost: true },
+        ),
+      ).toBe(false);
+      // boost borrow above boost threshold -> allowed
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters },
+          { name: 'NEW_BORROW', usdValue: 15_000, isBoost: true },
+        ),
+      ).toBe(true);
+      // user borrow unaffected by boostMinUsdValue, uses minUsdValue
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters },
+          { name: 'NEW_BORROW', usdValue: 150, isBoost: false },
+        ),
+      ).toBe(true);
+    });
+
+    it('excludes boost repayments when excludeBoost is set', () => {
+      const filters = [{ name: 'NEW_REPAYMENT' as const, minUsdValue: 0, excludeBoost: true }];
+
+      // boost repayment -> blocked regardless of value
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters },
+          { name: 'NEW_REPAYMENT', usdValue: 50_000, isBoost: true },
+        ),
+      ).toBe(false);
+      // user repayment -> still allowed
+      expect(
+        Config.canSend(
+          { key: 'discord:1234', filters },
+          { name: 'NEW_REPAYMENT', usdValue: 1, isBoost: false },
         ),
       ).toBe(true);
     });

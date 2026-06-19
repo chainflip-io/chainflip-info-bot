@@ -24,6 +24,25 @@ const mockGetNewLoanUpdateResponse = (id: number, timestamp?: string) => ({
   },
 });
 
+const mockGetNewBoostLoanUpdateResponse = (id: number) => ({
+  updates: {
+    nodes: [
+      {
+        id,
+        type: 'BORROWING',
+        amount: '40154262217635410',
+        amountValueUsd: '128.2652526243',
+        timestamp: subHours(new Date(), 1).toISOString(),
+        loanByLoanId: {
+          id: '3',
+          asset: 'Eth',
+          accountByBorrowerId: null,
+        },
+      },
+    ],
+  },
+});
+
 const mockGetNewLoanUpdateEmptyResponse = () => ({
   updates: {
     nodes: [],
@@ -70,6 +89,7 @@ describe('newLoanUpdateCheck', () => {
               {
                 "data": {
                   "filterData": {
+                    "isBoost": false,
                     "name": "NEW_BORROW",
                     "usdValue": 128.2652526243,
                   },
@@ -84,6 +104,7 @@ describe('newLoanUpdateCheck', () => {
               {
                 "data": {
                   "filterData": {
+                    "isBoost": false,
                     "name": "NEW_BORROW",
                     "usdValue": 128.2652526243,
                   },
@@ -98,6 +119,7 @@ describe('newLoanUpdateCheck', () => {
               {
                 "data": {
                   "filterData": {
+                    "isBoost": false,
                     "name": "NEW_BORROW",
                     "usdValue": 128.2652526243,
                   },
@@ -114,6 +136,25 @@ describe('newLoanUpdateCheck', () => {
           ],
         ]
       `);
+    });
+
+    it('marks boost loan updates with isBoost so channels can filter them', async () => {
+      vi.mocked(lpClient.request).mockResolvedValueOnce(mockGetNewBoostLoanUpdateResponse(11));
+
+      const dispatchJobs = vi.fn();
+
+      await config.processJob(dispatchJobs)({ data: { lastCheckedLoanUpdateId: 10 } } as any);
+
+      const dispatched = dispatchJobs.mock.calls[0][0] as {
+        name: string;
+        data: { filterData: unknown; message: string };
+      }[];
+      const messageJobs = dispatched.filter((j) => j.name === 'messageRouter');
+      expect(messageJobs).toHaveLength(3);
+      messageJobs.forEach((j) => {
+        expect(j.data.filterData).toMatchObject({ name: 'NEW_BORROW', isBoost: true });
+        expect(j.data.message).toContain('Boost');
+      });
     });
 
     it('enqueues the next job with the same id', async () => {

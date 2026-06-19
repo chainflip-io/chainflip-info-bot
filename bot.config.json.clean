@@ -24,6 +24,14 @@
           },
           {
             "name": "WEEKLY_SWAP_SUMMARY"
+          },
+          {
+            "name": "NEW_BORROW",
+            "boostMinUsdValue": 10000
+          },
+          {
+            "name": "NEW_REPAYMENT",
+            "excludeBoost": true
           }
         ]
       }
