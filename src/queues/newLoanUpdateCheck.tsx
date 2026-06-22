@@ -1,4 +1,5 @@
 import { ChainflipAsset } from '@chainflip/utils/chainflip';
+import { isNullish } from '@chainflip/utils/guard';
 import { abbreviate } from '@chainflip/utils/string';
 import BigNumber from 'bignumber.js';
 import { hoursToMilliseconds } from 'date-fns';
@@ -69,6 +70,7 @@ const buildMessages = ({
 }): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
   const typeValue = type === 'BORROWING' ? 'Borrow' : 'Repayment';
   const filterName = type === 'BORROWING' ? 'NEW_BORROW' : 'NEW_REPAYMENT';
+  const isBoost = isNullish(borrowerIdSs58);
 
   return platforms.map((platform) => ({
     name: 'messageRouter' as const,
@@ -110,7 +112,7 @@ const buildMessages = ({
           <Trailer />
         </>,
       ).trimEnd(),
-      filterData: { name: filterName, usdValue: amountValueUsd.toNumber() },
+      filterData: { name: filterName, usdValue: amountValueUsd.toNumber(), isBoost },
     },
   }));
 };

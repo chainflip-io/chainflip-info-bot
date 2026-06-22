@@ -23,7 +23,7 @@ export const getBoostSummaryQuery = gql(/* GraphQL */ `
         }
         apys: boostPoolApiesByBoostPoolId(orderBy: BLOCK_DESC, first: 1) {
           nodes {
-            projectedApy
+            projectedApy72H
           }
         }
       }

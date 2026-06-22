@@ -6295,8 +6295,6 @@ export type BoostPoolApiesOrderBy =
   | 'PROJECTED_APY168H_DESC'
   | 'PROJECTED_APY720H_ASC'
   | 'PROJECTED_APY720H_DESC'
-  | 'PROJECTED_APY_ASC'
-  | 'PROJECTED_APY_DESC'
   | 'TIMESTAMP_ASC'
   | 'TIMESTAMP_DESC';
 
@@ -6315,7 +6313,6 @@ export type BoostPoolApy = Node & {
   minLiquidity: Scalars['BigFloat']['output'];
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
-  projectedApy: Scalars['BigFloat']['output'];
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
   projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
@@ -6381,7 +6378,6 @@ export type BoostPoolApyAverageAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -6409,8 +6405,6 @@ export type BoostPoolApyAverageAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of projectedApy24H across the matching connection */
@@ -6446,8 +6440,6 @@ export type BoostPoolApyCondition = {
   maxLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `minLiquidity` field. */
   minLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `projectedApy` field. */
-  projectedApy?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `projectedApy6H` field. */
   projectedApy6H?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `projectedApy24H` field. */
@@ -6472,7 +6464,6 @@ export type BoostPoolApyDistinctCountAggregateFilter = {
   losses?: InputMaybe<BigIntFilter>;
   maxLiquidity?: InputMaybe<BigIntFilter>;
   minLiquidity?: InputMaybe<BigIntFilter>;
-  projectedApy?: InputMaybe<BigIntFilter>;
   projectedApy6H?: InputMaybe<BigIntFilter>;
   projectedApy24H?: InputMaybe<BigIntFilter>;
   projectedApy72H?: InputMaybe<BigIntFilter>;
@@ -6501,8 +6492,6 @@ export type BoostPoolApyDistinctCountAggregates = {
   maxLiquidity?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of projectedApy24H across the matching connection */
@@ -6545,8 +6534,6 @@ export type BoostPoolApyFilter = {
   not?: InputMaybe<BoostPoolApyFilter>;
   /** Checks for any expressions in this list. */
   or?: InputMaybe<Array<BoostPoolApyFilter>>;
-  /** Filter by the object’s `projectedApy` field. */
-  projectedApy?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `projectedApy6H` field. */
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `projectedApy24H` field. */
@@ -6571,7 +6558,6 @@ export type BoostPoolApyGroupBy =
   | 'LOSSES'
   | 'MAX_LIQUIDITY'
   | 'MIN_LIQUIDITY'
-  | 'PROJECTED_APY'
   | 'PROJECTED_APY6H'
   | 'PROJECTED_APY24H'
   | 'PROJECTED_APY72H'
@@ -6593,7 +6579,6 @@ export type BoostPoolApyHavingAverageInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6612,7 +6597,6 @@ export type BoostPoolApyHavingDistinctCountInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6646,7 +6630,6 @@ export type BoostPoolApyHavingMaxInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6665,7 +6648,6 @@ export type BoostPoolApyHavingMinInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6684,7 +6666,6 @@ export type BoostPoolApyHavingStddevPopulationInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6703,7 +6684,6 @@ export type BoostPoolApyHavingStddevSampleInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6722,7 +6702,6 @@ export type BoostPoolApyHavingSumInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6741,7 +6720,6 @@ export type BoostPoolApyHavingVariancePopulationInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6760,7 +6738,6 @@ export type BoostPoolApyHavingVarianceSampleInput = {
   losses?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -6779,7 +6756,6 @@ export type BoostPoolApyMaxAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -6808,8 +6784,6 @@ export type BoostPoolApyMaxAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy24H across the matching connection */
@@ -6834,7 +6808,6 @@ export type BoostPoolApyMinAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -6863,8 +6836,6 @@ export type BoostPoolApyMinAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of projectedApy24H across the matching connection */
@@ -6889,7 +6860,6 @@ export type BoostPoolApyStddevPopulationAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -6917,8 +6887,6 @@ export type BoostPoolApyStddevPopulationAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy24H across the matching connection */
@@ -6941,7 +6909,6 @@ export type BoostPoolApyStddevSampleAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -6969,8 +6936,6 @@ export type BoostPoolApyStddevSampleAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of projectedApy24H across the matching connection */
@@ -6993,7 +6958,6 @@ export type BoostPoolApySumAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -7021,8 +6985,6 @@ export type BoostPoolApySumAggregates = {
   maxLiquidity: Scalars['BigFloat']['output'];
   /** Sum of minLiquidity across the matching connection */
   minLiquidity: Scalars['BigFloat']['output'];
-  /** Sum of projectedApy across the matching connection */
-  projectedApy: Scalars['BigFloat']['output'];
   /** Sum of projectedApy6H across the matching connection */
   projectedApy6H: Scalars['BigFloat']['output'];
   /** Sum of projectedApy24H across the matching connection */
@@ -7045,7 +7007,6 @@ export type BoostPoolApyVariancePopulationAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -7073,8 +7034,6 @@ export type BoostPoolApyVariancePopulationAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy24H across the matching connection */
@@ -7097,7 +7056,6 @@ export type BoostPoolApyVarianceSampleAggregateFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -7125,8 +7083,6 @@ export type BoostPoolApyVarianceSampleAggregates = {
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of projectedApy24H across the matching connection */
@@ -9049,8 +9005,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_AVERAGE_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_COUNT_ASC'
@@ -9083,8 +9037,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_DISTINCT_COUNT_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_AVG_LIQUIDITY_ASC'
@@ -9115,8 +9067,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MAX_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_AVG_LIQUIDITY_ASC'
@@ -9147,8 +9097,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_MIN_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_AVG_LIQUIDITY_ASC'
@@ -9179,8 +9127,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_POPULATION_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_AVG_LIQUIDITY_ASC'
@@ -9211,8 +9157,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_STDDEV_SAMPLE_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_AVG_LIQUIDITY_ASC'
@@ -9243,8 +9187,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_SUM_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_AVG_LIQUIDITY_ASC'
@@ -9275,8 +9217,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_POPULATION_TIMESTAMP_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_AVG_LIQUIDITY_ASC'
@@ -9307,8 +9247,6 @@ export type BoostPoolsOrderBy =
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY168H_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_DESC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_ASC'
-  | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_DESC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_ASC'
   | 'BOOST_POOL_APIES_BY_BOOST_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_DESC'
   | 'BOOST_POOL_BOOST_SHARES_BY_BOOST_POOL_ID_AVERAGE_AMOUNT_ASC'
@@ -21609,8 +21547,6 @@ export type LendingPoolSnapshot = Node & {
   availableAmount: Scalars['BigFloat']['output'];
   availableAmountValueUsd: Scalars['BigFloat']['output'];
   block: Scalars['Int']['output'];
-  collateralValue: Scalars['BigFloat']['output'];
-  collateralValueUsd: Scalars['BigFloat']['output'];
   id: Scalars['BigInt']['output'];
   interestRateBps: Scalars['Int']['output'];
   /** Reads a single `LendingPool` that is related to this `LendingPoolSnapshot`. */
@@ -21677,8 +21613,6 @@ export type LendingPoolSnapshotAverageAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<BigFloatFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interestRateBps?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -21697,10 +21631,6 @@ export type LendingPoolSnapshotAverageAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of block across the matching connection */
   block?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of interestRateBps across the matching connection */
@@ -21732,10 +21662,6 @@ export type LendingPoolSnapshotCondition = {
   availableAmountValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `block` field. */
   block?: InputMaybe<Scalars['Int']['input']>;
-  /** Checks for equality with the object’s `collateralValue` field. */
-  collateralValue?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `collateralValueUsd` field. */
-  collateralValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `id` field. */
   id?: InputMaybe<Scalars['BigInt']['input']>;
   /** Checks for equality with the object’s `interestRateBps` field. */
@@ -21761,8 +21687,6 @@ export type LendingPoolSnapshotDistinctCountAggregateFilter = {
   availableAmount?: InputMaybe<BigIntFilter>;
   availableAmountValueUsd?: InputMaybe<BigIntFilter>;
   block?: InputMaybe<BigIntFilter>;
-  collateralValue?: InputMaybe<BigIntFilter>;
-  collateralValueUsd?: InputMaybe<BigIntFilter>;
   id?: InputMaybe<BigIntFilter>;
   interestRateBps?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<BigIntFilter>;
@@ -21784,10 +21708,6 @@ export type LendingPoolSnapshotDistinctCountAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of block across the matching connection */
   block?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of interestRateBps across the matching connection */
@@ -21820,10 +21740,6 @@ export type LendingPoolSnapshotFilter = {
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `block` field. */
   block?: InputMaybe<IntFilter>;
-  /** Filter by the object’s `collateralValue` field. */
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `collateralValueUsd` field. */
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `id` field. */
   id?: InputMaybe<BigIntFilter>;
   /** Filter by the object’s `interestRateBps` field. */
@@ -21856,8 +21772,6 @@ export type LendingPoolSnapshotGroupBy =
   | 'AVAILABLE_AMOUNT'
   | 'AVAILABLE_AMOUNT_VALUE_USD'
   | 'BLOCK'
-  | 'COLLATERAL_VALUE'
-  | 'COLLATERAL_VALUE_USD'
   | 'INTEREST_RATE_BPS'
   | 'POOL_ID'
   | 'TIMESTAMP'
@@ -21875,8 +21789,6 @@ export type LendingPoolSnapshotHavingAverageInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -21892,8 +21804,6 @@ export type LendingPoolSnapshotHavingDistinctCountInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -21924,8 +21834,6 @@ export type LendingPoolSnapshotHavingMaxInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -21941,8 +21849,6 @@ export type LendingPoolSnapshotHavingMinInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -21958,8 +21864,6 @@ export type LendingPoolSnapshotHavingStddevPopulationInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -21975,8 +21879,6 @@ export type LendingPoolSnapshotHavingStddevSampleInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -21992,8 +21894,6 @@ export type LendingPoolSnapshotHavingSumInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -22009,8 +21909,6 @@ export type LendingPoolSnapshotHavingVariancePopulationInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -22026,8 +21924,6 @@ export type LendingPoolSnapshotHavingVarianceSampleInput = {
   availableAmount?: InputMaybe<HavingBigfloatFilter>;
   availableAmountValueUsd?: InputMaybe<HavingBigfloatFilter>;
   block?: InputMaybe<HavingIntFilter>;
-  collateralValue?: InputMaybe<HavingBigfloatFilter>;
-  collateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   id?: InputMaybe<HavingBigintFilter>;
   interestRateBps?: InputMaybe<HavingIntFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
@@ -22043,8 +21939,6 @@ export type LendingPoolSnapshotMaxAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<IntFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
   interestRateBps?: InputMaybe<IntFilter>;
   poolId?: InputMaybe<IntFilter>;
@@ -22064,10 +21958,6 @@ export type LendingPoolSnapshotMaxAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of block across the matching connection */
   block?: Maybe<Scalars['Int']['output']>;
-  /** Maximum of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Maximum of interestRateBps across the matching connection */
@@ -22092,8 +21982,6 @@ export type LendingPoolSnapshotMinAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<IntFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigIntFilter>;
   interestRateBps?: InputMaybe<IntFilter>;
   poolId?: InputMaybe<IntFilter>;
@@ -22113,10 +22001,6 @@ export type LendingPoolSnapshotMinAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of block across the matching connection */
   block?: Maybe<Scalars['Int']['output']>;
-  /** Minimum of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of id across the matching connection */
   id?: Maybe<Scalars['BigInt']['output']>;
   /** Minimum of interestRateBps across the matching connection */
@@ -22141,8 +22025,6 @@ export type LendingPoolSnapshotStddevPopulationAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<BigFloatFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interestRateBps?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -22161,10 +22043,6 @@ export type LendingPoolSnapshotStddevPopulationAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of block across the matching connection */
   block?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of interestRateBps across the matching connection */
@@ -22187,8 +22065,6 @@ export type LendingPoolSnapshotStddevSampleAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<BigFloatFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interestRateBps?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -22207,10 +22083,6 @@ export type LendingPoolSnapshotStddevSampleAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of block across the matching connection */
   block?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of interestRateBps across the matching connection */
@@ -22233,8 +22105,6 @@ export type LendingPoolSnapshotSumAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<BigIntFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interestRateBps?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<BigIntFilter>;
@@ -22253,10 +22123,6 @@ export type LendingPoolSnapshotSumAggregates = {
   availableAmountValueUsd: Scalars['BigFloat']['output'];
   /** Sum of block across the matching connection */
   block: Scalars['BigInt']['output'];
-  /** Sum of collateralValue across the matching connection */
-  collateralValue: Scalars['BigFloat']['output'];
-  /** Sum of collateralValueUsd across the matching connection */
-  collateralValueUsd: Scalars['BigFloat']['output'];
   /** Sum of id across the matching connection */
   id: Scalars['BigFloat']['output'];
   /** Sum of interestRateBps across the matching connection */
@@ -22279,8 +22145,6 @@ export type LendingPoolSnapshotVariancePopulationAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<BigFloatFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interestRateBps?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -22299,10 +22163,6 @@ export type LendingPoolSnapshotVariancePopulationAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of block across the matching connection */
   block?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of interestRateBps across the matching connection */
@@ -22325,8 +22185,6 @@ export type LendingPoolSnapshotVarianceSampleAggregateFilter = {
   availableAmount?: InputMaybe<BigFloatFilter>;
   availableAmountValueUsd?: InputMaybe<BigFloatFilter>;
   block?: InputMaybe<BigFloatFilter>;
-  collateralValue?: InputMaybe<BigFloatFilter>;
-  collateralValueUsd?: InputMaybe<BigFloatFilter>;
   id?: InputMaybe<BigFloatFilter>;
   interestRateBps?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
@@ -22345,10 +22203,6 @@ export type LendingPoolSnapshotVarianceSampleAggregates = {
   availableAmountValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of block across the matching connection */
   block?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of collateralValue across the matching connection */
-  collateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of collateralValueUsd across the matching connection */
-  collateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of id across the matching connection */
   id?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of interestRateBps across the matching connection */
@@ -22410,10 +22264,6 @@ export type LendingPoolSnapshotsOrderBy =
   | 'AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'BLOCK_ASC'
   | 'BLOCK_DESC'
-  | 'COLLATERAL_VALUE_ASC'
-  | 'COLLATERAL_VALUE_DESC'
-  | 'COLLATERAL_VALUE_USD_ASC'
-  | 'COLLATERAL_VALUE_USD_DESC'
   | 'ID_ASC'
   | 'ID_DESC'
   | 'INTEREST_RATE_BPS_ASC'
@@ -22439,8 +22289,6 @@ export type LendingPoolSnapshotsOrderBy =
 export type LendingPoolStat = Node & {
   __typename?: 'LendingPoolStat';
   asset: ChainflipAsset;
-  avgCollateralValue: Scalars['BigFloat']['output'];
-  avgCollateralValueUsd: Scalars['BigFloat']['output'];
   avgInterestRateBps: Scalars['Int']['output'];
   avgLiquidity: Scalars['BigFloat']['output'];
   avgLiquidityValueUsd: Scalars['BigFloat']['output'];
@@ -22458,14 +22306,10 @@ export type LendingPoolStat = Node & {
   lendingPoolByPoolId: LendingPool;
   losses: Scalars['BigFloat']['output'];
   lossesValueUsd: Scalars['BigFloat']['output'];
-  maxCollateralValue: Scalars['BigFloat']['output'];
-  maxCollateralValueUsd: Scalars['BigFloat']['output'];
   maxLiquidity: Scalars['BigFloat']['output'];
   maxLiquidityValueUsd: Scalars['BigFloat']['output'];
   maxUnavailableAmount: Scalars['BigFloat']['output'];
   maxUnavailableAmountUsd: Scalars['BigFloat']['output'];
-  minCollateralValue: Scalars['BigFloat']['output'];
-  minCollateralValueUsd: Scalars['BigFloat']['output'];
   minLiquidity: Scalars['BigFloat']['output'];
   minLiquidityValueUsd: Scalars['BigFloat']['output'];
   minUnavailableAmount: Scalars['BigFloat']['output'];
@@ -22473,7 +22317,6 @@ export type LendingPoolStat = Node & {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output'];
   poolId: Scalars['Int']['output'];
-  projectedApy: Scalars['BigFloat']['output'];
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   projectedApy24H?: Maybe<Scalars['BigFloat']['output']>;
   projectedApy72H?: Maybe<Scalars['BigFloat']['output']>;
@@ -22530,8 +22373,6 @@ export type LendingPoolStatAggregatesFilter = {
 };
 
 export type LendingPoolStatAverageAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -22547,20 +22388,15 @@ export type LendingPoolStatAverageAggregateFilter = {
   interval?: InputMaybe<BigFloatFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -22570,10 +22406,6 @@ export type LendingPoolStatAverageAggregateFilter = {
 
 export type LendingPoolStatAverageAggregates = {
   __typename?: 'LendingPoolStatAverageAggregates';
-  /** Mean average of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of avgLiquidity across the matching connection */
@@ -22604,10 +22436,6 @@ export type LendingPoolStatAverageAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of maxLiquidityValueUsd across the matching connection */
@@ -22616,10 +22444,6 @@ export type LendingPoolStatAverageAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of minLiquidityValueUsd across the matching connection */
@@ -22630,8 +22454,6 @@ export type LendingPoolStatAverageAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
-  /** Mean average of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Mean average of projectedApy24H across the matching connection */
@@ -22651,10 +22473,6 @@ export type LendingPoolStatAverageAggregates = {
 export type LendingPoolStatCondition = {
   /** Checks for equality with the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAsset>;
-  /** Checks for equality with the object’s `avgCollateralValue` field. */
-  avgCollateralValue?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `avgCollateralValueUsd` field. */
-  avgCollateralValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `avgInterestRateBps` field. */
   avgInterestRateBps?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `avgLiquidity` field. */
@@ -22685,10 +22503,6 @@ export type LendingPoolStatCondition = {
   losses?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `lossesValueUsd` field. */
   lossesValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `maxCollateralValue` field. */
-  maxCollateralValue?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `maxCollateralValueUsd` field. */
-  maxCollateralValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `maxLiquidity` field. */
   maxLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `maxLiquidityValueUsd` field. */
@@ -22697,10 +22511,6 @@ export type LendingPoolStatCondition = {
   maxUnavailableAmount?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `maxUnavailableAmountUsd` field. */
   maxUnavailableAmountUsd?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `minCollateralValue` field. */
-  minCollateralValue?: InputMaybe<Scalars['BigFloat']['input']>;
-  /** Checks for equality with the object’s `minCollateralValueUsd` field. */
-  minCollateralValueUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `minLiquidity` field. */
   minLiquidity?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `minLiquidityValueUsd` field. */
@@ -22711,8 +22521,6 @@ export type LendingPoolStatCondition = {
   minUnavailableAmountUsd?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `poolId` field. */
   poolId?: InputMaybe<Scalars['Int']['input']>;
-  /** Checks for equality with the object’s `projectedApy` field. */
-  projectedApy?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `projectedApy6H` field. */
   projectedApy6H?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `projectedApy24H` field. */
@@ -22729,8 +22537,6 @@ export type LendingPoolStatCondition = {
 
 export type LendingPoolStatDistinctCountAggregateFilter = {
   asset?: InputMaybe<BigIntFilter>;
-  avgCollateralValue?: InputMaybe<BigIntFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigIntFilter>;
   avgInterestRateBps?: InputMaybe<BigIntFilter>;
   avgLiquidity?: InputMaybe<BigIntFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigIntFilter>;
@@ -22746,20 +22552,15 @@ export type LendingPoolStatDistinctCountAggregateFilter = {
   interval?: InputMaybe<BigIntFilter>;
   losses?: InputMaybe<BigIntFilter>;
   lossesValueUsd?: InputMaybe<BigIntFilter>;
-  maxCollateralValue?: InputMaybe<BigIntFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigIntFilter>;
   maxLiquidity?: InputMaybe<BigIntFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigIntFilter>;
   maxUnavailableAmount?: InputMaybe<BigIntFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigIntFilter>;
-  minCollateralValue?: InputMaybe<BigIntFilter>;
-  minCollateralValueUsd?: InputMaybe<BigIntFilter>;
   minLiquidity?: InputMaybe<BigIntFilter>;
   minLiquidityValueUsd?: InputMaybe<BigIntFilter>;
   minUnavailableAmount?: InputMaybe<BigIntFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigIntFilter>;
   poolId?: InputMaybe<BigIntFilter>;
-  projectedApy?: InputMaybe<BigIntFilter>;
   projectedApy6H?: InputMaybe<BigIntFilter>;
   projectedApy24H?: InputMaybe<BigIntFilter>;
   projectedApy72H?: InputMaybe<BigIntFilter>;
@@ -22772,10 +22573,6 @@ export type LendingPoolStatDistinctCountAggregates = {
   __typename?: 'LendingPoolStatDistinctCountAggregates';
   /** Distinct count of asset across the matching connection */
   asset?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of avgLiquidity across the matching connection */
@@ -22806,10 +22603,6 @@ export type LendingPoolStatDistinctCountAggregates = {
   losses?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of maxLiquidityValueUsd across the matching connection */
@@ -22818,10 +22611,6 @@ export type LendingPoolStatDistinctCountAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of minLiquidityValueUsd across the matching connection */
@@ -22832,8 +22621,6 @@ export type LendingPoolStatDistinctCountAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigInt']['output']>;
-  /** Distinct count of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigInt']['output']>;
   /** Distinct count of projectedApy24H across the matching connection */
@@ -22854,10 +22641,6 @@ export type LendingPoolStatFilter = {
   and?: InputMaybe<Array<LendingPoolStatFilter>>;
   /** Filter by the object’s `asset` field. */
   asset?: InputMaybe<ChainflipAssetFilter>;
-  /** Filter by the object’s `avgCollateralValue` field. */
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `avgCollateralValueUsd` field. */
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `avgInterestRateBps` field. */
   avgInterestRateBps?: InputMaybe<IntFilter>;
   /** Filter by the object’s `avgLiquidity` field. */
@@ -22890,10 +22673,6 @@ export type LendingPoolStatFilter = {
   losses?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `lossesValueUsd` field. */
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `maxCollateralValue` field. */
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `maxCollateralValueUsd` field. */
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `maxLiquidity` field. */
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `maxLiquidityValueUsd` field. */
@@ -22902,10 +22681,6 @@ export type LendingPoolStatFilter = {
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `maxUnavailableAmountUsd` field. */
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `minCollateralValue` field. */
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  /** Filter by the object’s `minCollateralValueUsd` field. */
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `minLiquidity` field. */
   minLiquidity?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `minLiquidityValueUsd` field. */
@@ -22920,8 +22695,6 @@ export type LendingPoolStatFilter = {
   or?: InputMaybe<Array<LendingPoolStatFilter>>;
   /** Filter by the object’s `poolId` field. */
   poolId?: InputMaybe<IntFilter>;
-  /** Filter by the object’s `projectedApy` field. */
-  projectedApy?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `projectedApy6H` field. */
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `projectedApy24H` field. */
@@ -22939,8 +22712,6 @@ export type LendingPoolStatFilter = {
 /** Grouping methods for `LendingPoolStat` for usage during aggregation. */
 export type LendingPoolStatGroupBy =
   | 'ASSET'
-  | 'AVG_COLLATERAL_VALUE'
-  | 'AVG_COLLATERAL_VALUE_USD'
   | 'AVG_INTEREST_RATE_BPS'
   | 'AVG_LIQUIDITY'
   | 'AVG_LIQUIDITY_VALUE_USD'
@@ -22955,20 +22726,15 @@ export type LendingPoolStatGroupBy =
   | 'INTERVAL'
   | 'LOSSES'
   | 'LOSSES_VALUE_USD'
-  | 'MAX_COLLATERAL_VALUE'
-  | 'MAX_COLLATERAL_VALUE_USD'
   | 'MAX_LIQUIDITY'
   | 'MAX_LIQUIDITY_VALUE_USD'
   | 'MAX_UNAVAILABLE_AMOUNT'
   | 'MAX_UNAVAILABLE_AMOUNT_USD'
-  | 'MIN_COLLATERAL_VALUE'
-  | 'MIN_COLLATERAL_VALUE_USD'
   | 'MIN_LIQUIDITY'
   | 'MIN_LIQUIDITY_VALUE_USD'
   | 'MIN_UNAVAILABLE_AMOUNT'
   | 'MIN_UNAVAILABLE_AMOUNT_USD'
   | 'POOL_ID'
-  | 'PROJECTED_APY'
   | 'PROJECTED_APY6H'
   | 'PROJECTED_APY24H'
   | 'PROJECTED_APY72H'
@@ -22981,8 +22747,6 @@ export type LendingPoolStatGroupBy =
   | 'TIMESTAMP_TRUNCATED_TO_WEEK';
 
 export type LendingPoolStatHavingAverageInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -22998,20 +22762,15 @@ export type LendingPoolStatHavingAverageInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23021,8 +22780,6 @@ export type LendingPoolStatHavingAverageInput = {
 };
 
 export type LendingPoolStatHavingDistinctCountInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23038,20 +22795,15 @@ export type LendingPoolStatHavingDistinctCountInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23076,8 +22828,6 @@ export type LendingPoolStatHavingInput = {
 };
 
 export type LendingPoolStatHavingMaxInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23093,20 +22843,15 @@ export type LendingPoolStatHavingMaxInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23116,8 +22861,6 @@ export type LendingPoolStatHavingMaxInput = {
 };
 
 export type LendingPoolStatHavingMinInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23133,20 +22876,15 @@ export type LendingPoolStatHavingMinInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23156,8 +22894,6 @@ export type LendingPoolStatHavingMinInput = {
 };
 
 export type LendingPoolStatHavingStddevPopulationInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23173,20 +22909,15 @@ export type LendingPoolStatHavingStddevPopulationInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23196,8 +22927,6 @@ export type LendingPoolStatHavingStddevPopulationInput = {
 };
 
 export type LendingPoolStatHavingStddevSampleInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23213,20 +22942,15 @@ export type LendingPoolStatHavingStddevSampleInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23236,8 +22960,6 @@ export type LendingPoolStatHavingStddevSampleInput = {
 };
 
 export type LendingPoolStatHavingSumInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23253,20 +22975,15 @@ export type LendingPoolStatHavingSumInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23276,8 +22993,6 @@ export type LendingPoolStatHavingSumInput = {
 };
 
 export type LendingPoolStatHavingVariancePopulationInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23293,20 +23008,15 @@ export type LendingPoolStatHavingVariancePopulationInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23316,8 +23026,6 @@ export type LendingPoolStatHavingVariancePopulationInput = {
 };
 
 export type LendingPoolStatHavingVarianceSampleInput = {
-  avgCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   avgInterestRateBps?: InputMaybe<HavingIntFilter>;
   avgLiquidity?: InputMaybe<HavingBigfloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
@@ -23333,20 +23041,15 @@ export type LendingPoolStatHavingVarianceSampleInput = {
   interval?: InputMaybe<HavingIntFilter>;
   losses?: InputMaybe<HavingBigfloatFilter>;
   lossesValueUsd?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidity?: InputMaybe<HavingBigfloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValue?: InputMaybe<HavingBigfloatFilter>;
-  minCollateralValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minLiquidity?: InputMaybe<HavingBigfloatFilter>;
   minLiquidityValueUsd?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmount?: InputMaybe<HavingBigfloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<HavingBigfloatFilter>;
   poolId?: InputMaybe<HavingIntFilter>;
-  projectedApy?: InputMaybe<HavingBigfloatFilter>;
   projectedApy6H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy24H?: InputMaybe<HavingBigfloatFilter>;
   projectedApy72H?: InputMaybe<HavingBigfloatFilter>;
@@ -23356,8 +23059,6 @@ export type LendingPoolStatHavingVarianceSampleInput = {
 };
 
 export type LendingPoolStatMaxAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<IntFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -23373,20 +23074,15 @@ export type LendingPoolStatMaxAggregateFilter = {
   interval?: InputMaybe<IntFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<IntFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -23397,10 +23093,6 @@ export type LendingPoolStatMaxAggregateFilter = {
 
 export type LendingPoolStatMaxAggregates = {
   __typename?: 'LendingPoolStatMaxAggregates';
-  /** Maximum of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['Int']['output']>;
   /** Maximum of avgLiquidity across the matching connection */
@@ -23431,10 +23123,6 @@ export type LendingPoolStatMaxAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of maxLiquidityValueUsd across the matching connection */
@@ -23443,10 +23131,6 @@ export type LendingPoolStatMaxAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Maximum of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of minLiquidityValueUsd across the matching connection */
@@ -23457,8 +23141,6 @@ export type LendingPoolStatMaxAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of poolId across the matching connection */
   poolId?: Maybe<Scalars['Int']['output']>;
-  /** Maximum of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Maximum of projectedApy24H across the matching connection */
@@ -23474,8 +23156,6 @@ export type LendingPoolStatMaxAggregates = {
 };
 
 export type LendingPoolStatMinAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<IntFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -23491,20 +23171,15 @@ export type LendingPoolStatMinAggregateFilter = {
   interval?: InputMaybe<IntFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<IntFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -23515,10 +23190,6 @@ export type LendingPoolStatMinAggregateFilter = {
 
 export type LendingPoolStatMinAggregates = {
   __typename?: 'LendingPoolStatMinAggregates';
-  /** Minimum of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['Int']['output']>;
   /** Minimum of avgLiquidity across the matching connection */
@@ -23549,10 +23220,6 @@ export type LendingPoolStatMinAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of maxLiquidityValueUsd across the matching connection */
@@ -23561,10 +23228,6 @@ export type LendingPoolStatMinAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Minimum of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of minLiquidityValueUsd across the matching connection */
@@ -23575,8 +23238,6 @@ export type LendingPoolStatMinAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of poolId across the matching connection */
   poolId?: Maybe<Scalars['Int']['output']>;
-  /** Minimum of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Minimum of projectedApy24H across the matching connection */
@@ -23592,8 +23253,6 @@ export type LendingPoolStatMinAggregates = {
 };
 
 export type LendingPoolStatStddevPopulationAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -23609,20 +23268,15 @@ export type LendingPoolStatStddevPopulationAggregateFilter = {
   interval?: InputMaybe<BigFloatFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -23632,10 +23286,6 @@ export type LendingPoolStatStddevPopulationAggregateFilter = {
 
 export type LendingPoolStatStddevPopulationAggregates = {
   __typename?: 'LendingPoolStatStddevPopulationAggregates';
-  /** Population standard deviation of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of avgLiquidity across the matching connection */
@@ -23666,10 +23316,6 @@ export type LendingPoolStatStddevPopulationAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of maxLiquidityValueUsd across the matching connection */
@@ -23678,10 +23324,6 @@ export type LendingPoolStatStddevPopulationAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of minLiquidityValueUsd across the matching connection */
@@ -23692,8 +23334,6 @@ export type LendingPoolStatStddevPopulationAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population standard deviation of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Population standard deviation of projectedApy24H across the matching connection */
@@ -23707,8 +23347,6 @@ export type LendingPoolStatStddevPopulationAggregates = {
 };
 
 export type LendingPoolStatStddevSampleAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -23724,20 +23362,15 @@ export type LendingPoolStatStddevSampleAggregateFilter = {
   interval?: InputMaybe<BigFloatFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -23747,10 +23380,6 @@ export type LendingPoolStatStddevSampleAggregateFilter = {
 
 export type LendingPoolStatStddevSampleAggregates = {
   __typename?: 'LendingPoolStatStddevSampleAggregates';
-  /** Sample standard deviation of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of avgLiquidity across the matching connection */
@@ -23781,10 +23410,6 @@ export type LendingPoolStatStddevSampleAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of maxLiquidityValueUsd across the matching connection */
@@ -23793,10 +23418,6 @@ export type LendingPoolStatStddevSampleAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of minLiquidityValueUsd across the matching connection */
@@ -23807,8 +23428,6 @@ export type LendingPoolStatStddevSampleAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample standard deviation of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample standard deviation of projectedApy24H across the matching connection */
@@ -23822,8 +23441,6 @@ export type LendingPoolStatStddevSampleAggregates = {
 };
 
 export type LendingPoolStatSumAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<BigIntFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -23839,20 +23456,15 @@ export type LendingPoolStatSumAggregateFilter = {
   interval?: InputMaybe<BigIntFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigIntFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -23862,10 +23474,6 @@ export type LendingPoolStatSumAggregateFilter = {
 
 export type LendingPoolStatSumAggregates = {
   __typename?: 'LendingPoolStatSumAggregates';
-  /** Sum of avgCollateralValue across the matching connection */
-  avgCollateralValue: Scalars['BigFloat']['output'];
-  /** Sum of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd: Scalars['BigFloat']['output'];
   /** Sum of avgInterestRateBps across the matching connection */
   avgInterestRateBps: Scalars['BigInt']['output'];
   /** Sum of avgLiquidity across the matching connection */
@@ -23896,10 +23504,6 @@ export type LendingPoolStatSumAggregates = {
   losses: Scalars['BigFloat']['output'];
   /** Sum of lossesValueUsd across the matching connection */
   lossesValueUsd: Scalars['BigFloat']['output'];
-  /** Sum of maxCollateralValue across the matching connection */
-  maxCollateralValue: Scalars['BigFloat']['output'];
-  /** Sum of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd: Scalars['BigFloat']['output'];
   /** Sum of maxLiquidity across the matching connection */
   maxLiquidity: Scalars['BigFloat']['output'];
   /** Sum of maxLiquidityValueUsd across the matching connection */
@@ -23908,10 +23512,6 @@ export type LendingPoolStatSumAggregates = {
   maxUnavailableAmount: Scalars['BigFloat']['output'];
   /** Sum of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd: Scalars['BigFloat']['output'];
-  /** Sum of minCollateralValue across the matching connection */
-  minCollateralValue: Scalars['BigFloat']['output'];
-  /** Sum of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd: Scalars['BigFloat']['output'];
   /** Sum of minLiquidity across the matching connection */
   minLiquidity: Scalars['BigFloat']['output'];
   /** Sum of minLiquidityValueUsd across the matching connection */
@@ -23922,8 +23522,6 @@ export type LendingPoolStatSumAggregates = {
   minUnavailableAmountUsd: Scalars['BigFloat']['output'];
   /** Sum of poolId across the matching connection */
   poolId: Scalars['BigInt']['output'];
-  /** Sum of projectedApy across the matching connection */
-  projectedApy: Scalars['BigFloat']['output'];
   /** Sum of projectedApy6H across the matching connection */
   projectedApy6H: Scalars['BigFloat']['output'];
   /** Sum of projectedApy24H across the matching connection */
@@ -23937,8 +23535,6 @@ export type LendingPoolStatSumAggregates = {
 };
 
 export type LendingPoolStatVariancePopulationAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -23954,20 +23550,15 @@ export type LendingPoolStatVariancePopulationAggregateFilter = {
   interval?: InputMaybe<BigFloatFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -23977,10 +23568,6 @@ export type LendingPoolStatVariancePopulationAggregateFilter = {
 
 export type LendingPoolStatVariancePopulationAggregates = {
   __typename?: 'LendingPoolStatVariancePopulationAggregates';
-  /** Population variance of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of avgLiquidity across the matching connection */
@@ -24011,10 +23598,6 @@ export type LendingPoolStatVariancePopulationAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of maxLiquidityValueUsd across the matching connection */
@@ -24023,10 +23606,6 @@ export type LendingPoolStatVariancePopulationAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of minLiquidityValueUsd across the matching connection */
@@ -24037,8 +23616,6 @@ export type LendingPoolStatVariancePopulationAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
-  /** Population variance of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Population variance of projectedApy24H across the matching connection */
@@ -24052,8 +23629,6 @@ export type LendingPoolStatVariancePopulationAggregates = {
 };
 
 export type LendingPoolStatVarianceSampleAggregateFilter = {
-  avgCollateralValue?: InputMaybe<BigFloatFilter>;
-  avgCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   avgInterestRateBps?: InputMaybe<BigFloatFilter>;
   avgLiquidity?: InputMaybe<BigFloatFilter>;
   avgLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
@@ -24069,20 +23644,15 @@ export type LendingPoolStatVarianceSampleAggregateFilter = {
   interval?: InputMaybe<BigFloatFilter>;
   losses?: InputMaybe<BigFloatFilter>;
   lossesValueUsd?: InputMaybe<BigFloatFilter>;
-  maxCollateralValue?: InputMaybe<BigFloatFilter>;
-  maxCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   maxLiquidity?: InputMaybe<BigFloatFilter>;
   maxLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmount?: InputMaybe<BigFloatFilter>;
   maxUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
-  minCollateralValue?: InputMaybe<BigFloatFilter>;
-  minCollateralValueUsd?: InputMaybe<BigFloatFilter>;
   minLiquidity?: InputMaybe<BigFloatFilter>;
   minLiquidityValueUsd?: InputMaybe<BigFloatFilter>;
   minUnavailableAmount?: InputMaybe<BigFloatFilter>;
   minUnavailableAmountUsd?: InputMaybe<BigFloatFilter>;
   poolId?: InputMaybe<BigFloatFilter>;
-  projectedApy?: InputMaybe<BigFloatFilter>;
   projectedApy6H?: InputMaybe<BigFloatFilter>;
   projectedApy24H?: InputMaybe<BigFloatFilter>;
   projectedApy72H?: InputMaybe<BigFloatFilter>;
@@ -24092,10 +23662,6 @@ export type LendingPoolStatVarianceSampleAggregateFilter = {
 
 export type LendingPoolStatVarianceSampleAggregates = {
   __typename?: 'LendingPoolStatVarianceSampleAggregates';
-  /** Sample variance of avgCollateralValue across the matching connection */
-  avgCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of avgCollateralValueUsd across the matching connection */
-  avgCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of avgInterestRateBps across the matching connection */
   avgInterestRateBps?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of avgLiquidity across the matching connection */
@@ -24126,10 +23692,6 @@ export type LendingPoolStatVarianceSampleAggregates = {
   losses?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of lossesValueUsd across the matching connection */
   lossesValueUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of maxCollateralValue across the matching connection */
-  maxCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of maxCollateralValueUsd across the matching connection */
-  maxCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of maxLiquidity across the matching connection */
   maxLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of maxLiquidityValueUsd across the matching connection */
@@ -24138,10 +23700,6 @@ export type LendingPoolStatVarianceSampleAggregates = {
   maxUnavailableAmount?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of maxUnavailableAmountUsd across the matching connection */
   maxUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of minCollateralValue across the matching connection */
-  minCollateralValue?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of minCollateralValueUsd across the matching connection */
-  minCollateralValueUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of minLiquidity across the matching connection */
   minLiquidity?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of minLiquidityValueUsd across the matching connection */
@@ -24152,8 +23710,6 @@ export type LendingPoolStatVarianceSampleAggregates = {
   minUnavailableAmountUsd?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of poolId across the matching connection */
   poolId?: Maybe<Scalars['BigFloat']['output']>;
-  /** Sample variance of projectedApy across the matching connection */
-  projectedApy?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of projectedApy6H across the matching connection */
   projectedApy6H?: Maybe<Scalars['BigFloat']['output']>;
   /** Sample variance of projectedApy24H across the matching connection */
@@ -24203,10 +23759,6 @@ export type LendingPoolStatsEdge = {
 export type LendingPoolStatsOrderBy =
   | 'ASSET_ASC'
   | 'ASSET_DESC'
-  | 'AVG_COLLATERAL_VALUE_ASC'
-  | 'AVG_COLLATERAL_VALUE_DESC'
-  | 'AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'AVG_COLLATERAL_VALUE_USD_DESC'
   | 'AVG_INTEREST_RATE_BPS_ASC'
   | 'AVG_INTEREST_RATE_BPS_DESC'
   | 'AVG_LIQUIDITY_ASC'
@@ -24237,10 +23789,6 @@ export type LendingPoolStatsOrderBy =
   | 'LOSSES_DESC'
   | 'LOSSES_VALUE_USD_ASC'
   | 'LOSSES_VALUE_USD_DESC'
-  | 'MAX_COLLATERAL_VALUE_ASC'
-  | 'MAX_COLLATERAL_VALUE_DESC'
-  | 'MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'MAX_COLLATERAL_VALUE_USD_DESC'
   | 'MAX_LIQUIDITY_ASC'
   | 'MAX_LIQUIDITY_DESC'
   | 'MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -24249,10 +23797,6 @@ export type LendingPoolStatsOrderBy =
   | 'MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'MIN_COLLATERAL_VALUE_ASC'
-  | 'MIN_COLLATERAL_VALUE_DESC'
-  | 'MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'MIN_COLLATERAL_VALUE_USD_DESC'
   | 'MIN_LIQUIDITY_ASC'
   | 'MIN_LIQUIDITY_DESC'
   | 'MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -24276,8 +23820,6 @@ export type LendingPoolStatsOrderBy =
   | 'PROJECTED_APY168H_DESC'
   | 'PROJECTED_APY720H_ASC'
   | 'PROJECTED_APY720H_DESC'
-  | 'PROJECTED_APY_ASC'
-  | 'PROJECTED_APY_DESC'
   | 'TIMESTAMP_ASC'
   | 'TIMESTAMP_DESC';
 
@@ -24833,10 +24375,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_AVERAGE_INTEREST_RATE_BPS_ASC'
@@ -24865,10 +24403,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_DISTINCT_COUNT_INTEREST_RATE_BPS_ASC'
@@ -24895,10 +24429,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MAX_INTEREST_RATE_BPS_ASC'
@@ -24925,10 +24455,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_MIN_INTEREST_RATE_BPS_ASC'
@@ -24955,10 +24481,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_POPULATION_INTEREST_RATE_BPS_ASC'
@@ -24985,10 +24507,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_STDDEV_SAMPLE_INTEREST_RATE_BPS_ASC'
@@ -25015,10 +24533,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_SUM_INTEREST_RATE_BPS_ASC'
@@ -25045,10 +24559,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_POPULATION_INTEREST_RATE_BPS_ASC'
@@ -25075,10 +24585,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_AVAILABLE_AMOUNT_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_BLOCK_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_BLOCK_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_ID_ASC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_ID_DESC'
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_INTEREST_RATE_BPS_ASC'
@@ -25099,10 +24605,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_SNAPSHOTS_BY_POOL_ID_VARIANCE_SAMPLE_UTILISATION_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_AVG_LIQUIDITY_ASC'
@@ -25133,10 +24635,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25145,10 +24643,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25169,18 +24663,12 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_AVERAGE_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_COUNT_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_COUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_AVG_LIQUIDITY_ASC'
@@ -25211,10 +24699,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25223,10 +24707,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25247,16 +24727,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_DISTINCT_COUNT_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_AVG_LIQUIDITY_ASC'
@@ -25287,10 +24761,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25299,10 +24769,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25323,16 +24789,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MAX_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_AVG_LIQUIDITY_ASC'
@@ -25363,10 +24823,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25375,10 +24831,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25399,16 +24851,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_MIN_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_AVG_LIQUIDITY_ASC'
@@ -25439,10 +24885,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25451,10 +24893,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25475,16 +24913,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_POPULATION_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_AVG_LIQUIDITY_ASC'
@@ -25515,10 +24947,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25527,10 +24955,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25551,16 +24975,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_STDDEV_SAMPLE_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_AVG_LIQUIDITY_ASC'
@@ -25591,10 +25009,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25603,10 +25017,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25627,16 +25037,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_SUM_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_AVG_LIQUIDITY_ASC'
@@ -25667,10 +25071,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25679,10 +25079,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25703,16 +25099,10 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_POPULATION_TIMESTAMP_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_ASSET_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_ASSET_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_INTEREST_RATE_BPS_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_INTEREST_RATE_BPS_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_AVG_LIQUIDITY_ASC'
@@ -25743,10 +25133,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_LOSSES_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_LOSSES_VALUE_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_LOSSES_VALUE_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_LIQUIDITY_VALUE_USD_ASC'
@@ -25755,10 +25141,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_UNAVAILABLE_AMOUNT_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_UNAVAILABLE_AMOUNT_USD_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MAX_UNAVAILABLE_AMOUNT_USD_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_COLLATERAL_VALUE_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_COLLATERAL_VALUE_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_COLLATERAL_VALUE_USD_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_COLLATERAL_VALUE_USD_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_LIQUIDITY_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_LIQUIDITY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_MIN_LIQUIDITY_VALUE_USD_ASC'
@@ -25779,8 +25161,6 @@ export type LendingPoolsOrderBy =
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY168H_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY720H_DESC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_ASC'
-  | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_PROJECTED_APY_DESC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_ASC'
   | 'LENDING_POOL_STATS_BY_POOL_ID_VARIANCE_SAMPLE_TIMESTAMP_DESC'
   | 'LOANS_BY_POOL_ID_AVERAGE_ASSET_ASC'
@@ -41327,7 +40707,7 @@ export type GetBoostSummaryQueryVariables = Exact<{
 }>;
 
 
-export type GetBoostSummaryQuery = { __typename?: 'Query', boostPools?: { __typename?: 'BoostPoolsConnection', nodes: Array<{ __typename?: 'BoostPool', asset: ChainflipAsset, feeTierPips: number, boostShares: { __typename?: 'BoostSharesConnection', aggregates?: { __typename?: 'BoostShareAggregates', sum?: { __typename?: 'BoostShareSumAggregates', fee: `${number}`, feeUsd: `${number}`, amount: `${number}`, amountUsd: `${number}` } | null } | null }, apys: { __typename?: 'BoostPoolApiesConnection', nodes: Array<{ __typename?: 'BoostPoolApy', projectedApy: `${number}` }> } }> } | null };
+export type GetBoostSummaryQuery = { __typename?: 'Query', boostPools?: { __typename?: 'BoostPoolsConnection', nodes: Array<{ __typename?: 'BoostPool', asset: ChainflipAsset, feeTierPips: number, boostShares: { __typename?: 'BoostSharesConnection', aggregates?: { __typename?: 'BoostShareAggregates', sum?: { __typename?: 'BoostShareSumAggregates', fee: `${number}`, feeUsd: `${number}`, amount: `${number}`, amountUsd: `${number}` } | null } | null }, apys: { __typename?: 'BoostPoolApiesConnection', nodes: Array<{ __typename?: 'BoostPoolApy', projectedApy72H?: `${number}` | null }> } }> } | null };
 
 export type GetLpFillsQueryVariables = Exact<{
   start: Scalars['Datetime']['input'];
@@ -41396,7 +40776,7 @@ export type GetLiquidationStatusBySwapRequestIdsQueryVariables = Exact<{
 export type GetLiquidationStatusBySwapRequestIdsQuery = { __typename?: 'Query', requests?: { __typename?: 'LiquidationSwapRequestsConnection', nodes: Array<{ __typename?: 'LiquidationSwapRequest', swapRequestId: `${number}`, completedAtEventId?: `${number}` | null, abortedAtEventId?: `${number}` | null, loanByLoanId: { __typename?: 'Loan', id: `${number}` } }> } | null };
 
 
-export const GetBoostSummaryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBoostSummary"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"start"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"end"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ChainflipAsset"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"boostPools"},"name":{"kind":"Name","value":"allBoostPools"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"asset"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"equalTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asset"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"feeTierPips"}},{"kind":"Field","alias":{"kind":"Name","value":"boostShares"},"name":{"kind":"Name","value":"boostSharesByBoostPoolId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"executedAtTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"lost"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"equalTo"},"value":{"kind":"BooleanValue","value":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fee"}},{"kind":"Field","name":{"kind":"Name","value":"feeUsd"}},{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"amountUsd"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"apys"},"name":{"kind":"Name","value":"boostPoolApiesByBoostPoolId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"BLOCK_DESC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectedApy"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetBoostSummaryQuery, GetBoostSummaryQueryVariables>;
+export const GetBoostSummaryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBoostSummary"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"start"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"end"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ChainflipAsset"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"boostPools"},"name":{"kind":"Name","value":"allBoostPools"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"asset"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"equalTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asset"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"}},{"kind":"Field","name":{"kind":"Name","value":"feeTierPips"}},{"kind":"Field","alias":{"kind":"Name","value":"boostShares"},"name":{"kind":"Name","value":"boostSharesByBoostPoolId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"executedAtTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"lost"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"equalTo"},"value":{"kind":"BooleanValue","value":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fee"}},{"kind":"Field","name":{"kind":"Name","value":"feeUsd"}},{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"amountUsd"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"apys"},"name":{"kind":"Name","value":"boostPoolApiesByBoostPoolId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"BLOCK_DESC"}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectedApy72H"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetBoostSummaryQuery, GetBoostSummaryQueryVariables>;
 export const GetLpFillsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLpFills"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"start"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"end"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"limitOrders"},"name":{"kind":"Name","value":"allLimitOrderFills"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"blockTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"groupedAggregates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"groupBy"},"value":{"kind":"EnumValue","value":"LIQUIDITY_PROVIDER_ID"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"keys"}},{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"filledAmountValueUsd"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"rangeOrders"},"name":{"kind":"Name","value":"allRangeOrderFills"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"blockTimestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"greaterThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lessThanOrEqualTo"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"groupedAggregates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"groupBy"},"value":{"kind":"EnumValue","value":"LIQUIDITY_PROVIDER_ID"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"keys"}},{"kind":"Field","name":{"kind":"Name","value":"sum"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"baseFilledAmountValueUsd"}},{"kind":"Field","name":{"kind":"Name","value":"quoteFilledAmountValueUsd"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetLpFillsQuery, GetLpFillsQueryVariables>;
 export const GetAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ids"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"accounts"},"name":{"kind":"Name","value":"allAccounts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ids"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"idSs58"}}]}}]}}]}}]} as unknown as DocumentNode<GetAccountQuery, GetAccountQueryVariables>;
 export const GetLatestLoanUpdateIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLatestLoanUpdateId"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"updates"},"name":{"kind":"Name","value":"allLoanUpdates"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"ID_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetLatestLoanUpdateIdQuery, GetLatestLoanUpdateIdQueryVariables>;
