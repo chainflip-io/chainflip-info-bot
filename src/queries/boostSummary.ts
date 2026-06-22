@@ -42,10 +42,10 @@ export default async function getBoostSummary(start: Date, end: Date, asset: Cha
 
   const apys = boostSummary.boostPools?.nodes.flatMap((pool) =>
     pool.apys.nodes
-      .filter((apy) => Number(apy.projectedApy) > 0)
+      .filter((apy) => Number(apy.projectedApy72H) > 0)
       .map((apy) => ({
         feeTiers: pool.feeTierPips,
-        currentApy: apyToText(Number(apy.projectedApy)),
+        currentApy: apyToText(Number(apy.projectedApy72H)),
       })),
   );
   return {
