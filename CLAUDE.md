@@ -46,7 +46,7 @@ Messages are rendered as **React JSX** (`.tsx` files) that output platform-speci
 
 ### Configuration
 
-- **`bot.config.json`** — Multi-platform channel config with filters (event types + optional `minUsdValue`). Parsed/validated in `src/config.ts`.
+- **`bot.config.json`** — Multi-platform channel config with filters (event types + optional `minUsdValue`). Parsed/validated in `src/config.ts`. Each channel has a `filterMode` (default `"whitelist"`): in `whitelist` mode only the listed event types are sent; in `"filter"` mode the listed types are constrained by their rules (e.g. `minUsdValue`) while unlisted types pass through. `NEW_SWAP` (a "specialized" type) stays opt-in in both modes — it is only sent when explicitly listed.
 - **`src/env.ts`** — Environment variables validated with Zod. Key vars: `REDIS_URL`, `EXPLORER_GATEWAY_URL`, `LP_GATEWAY_URL`.
 
 ### GraphQL

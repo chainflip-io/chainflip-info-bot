@@ -56,8 +56,13 @@ export const platforms = ['telegram', 'discord', 'twitter'] as const;
 
 export type Platform = (typeof platforms)[number];
 
+export type FilterMode = 'whitelist' | 'filter';
+
 const channelBase = z.object({
   enabled: z.boolean().optional().default(true),
+  // `whitelist`: only the listed message types are sent.
+  // `filter`: the listed types are constrained by their rules
+  filterMode: z.enum(['whitelist', 'filter']).optional().default('whitelist'),
   filters: z.array(filters).min(1).optional(),
   name: z.string(),
 });
@@ -97,7 +102,7 @@ type ConfigValue =
   | (DiscordConfig & { type: 'discord' })
   | (TwitterConfig & { type: 'twitter' });
 
-type Channel = { key: ConfigKey; filters?: Filter[] };
+type Channel = { key: ConfigKey; filters?: Filter[]; filterMode?: FilterMode };
 
 const replaceSpaces = (name: string) => name.replace(/\s+/g, '_');
 
@@ -121,7 +126,7 @@ const configSchema = z
       .forEach((channel) => {
         const name = replaceSpaces(channel.name);
         const key = `telegram:${name}` as const;
-        telegramChannels.push({ key, filters: channel.filters });
+        telegramChannels.push({ key, filters: channel.filters, filterMode: channel.filterMode });
         configHashMap.set(key, {
           channelId: channel.channelId,
           token: telegram.botToken,
@@ -139,6 +144,7 @@ const configSchema = z
         discordChannels.push({
           key,
           filters: channel.filters,
+          filterMode: channel.filterMode,
         });
         configHashMap.set(key, {
           token: discord.botToken,
@@ -157,6 +163,7 @@ const configSchema = z
         twitterChannels.push({
           key,
           filters: channel.filters,
+          filterMode: channel.filterMode,
         });
         configHashMap.set(key, {
           consumerKey: channel.consumerKey,
@@ -216,16 +223,22 @@ export default class Config {
   static canSend(channel: Channel, filterData: FilterData): boolean {
     if (channel.filters === undefined) return !specializedMessages.includes(filterData.name);
 
+    const filter = channel.filters.find((rule) => rule.name === filterData.name);
+
+    // No explicit rule exists for this type.
+    // In `whitelist` mode it's blocked;
+    // In `filter` mode it's allowed;
+    if (filter === undefined) {
+      return channel.filterMode === 'filter' && !specializedMessages.includes(filterData.name);
+    }
+
     if (filterData.name === 'NEW_BORROW' || filterData.name === 'NEW_REPAYMENT') {
-      const filter = channel.filters.find((rule) => rule.name === filterData.name) as
-        | Extract<Filter, { name: (typeof filterData)['name'] }>
-        | undefined;
-      if (filter === undefined) return false;
+      const rule = filter as Extract<Filter, { name: (typeof filterData)['name'] }>;
       if (filterData.isBoost) {
-        if (filter.excludeBoost) return false;
-        return filterData.usdValue >= (filter.boostMinUsdValue ?? filter.minUsdValue);
+        if (rule.excludeBoost) return false;
+        return filterData.usdValue >= (rule.boostMinUsdValue ?? rule.minUsdValue);
       }
-      return filterData.usdValue >= filter.minUsdValue;
+      return filterData.usdValue >= rule.minUsdValue;
     }
 
     if (
@@ -233,12 +246,10 @@ export default class Config {
       filterData.name === 'NEW_SWAP' ||
       filterData.name === 'NEW_DEPOSIT'
     ) {
-      const filter = channel.filters.find((rule) => rule.name === filterData.name) as
-        | Extract<Filter, { name: (typeof filterData)['name'] }>
-        | undefined;
-      return filter !== undefined && filterData.usdValue >= filter.minUsdValue;
+      const rule = filter as Extract<Filter, { name: (typeof filterData)['name'] }>;
+      return filterData.usdValue >= rule.minUsdValue;
     }
 
-    return channel.filters.some((rule) => rule.name === filterData.name);
+    return true;
   }
 }
