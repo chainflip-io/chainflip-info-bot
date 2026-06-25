@@ -77,10 +77,12 @@ describe('Config', () => {
       expect(await Config.getChannels('telegram')).toMatchInlineSnapshot(`
         [
           {
+            "filterMode": "whitelist",
             "filters": undefined,
             "key": "telegram:telegram_1",
           },
           {
+            "filterMode": "whitelist",
             "filters": [
               {
                 "minUsdValue": 1,
@@ -94,6 +96,7 @@ describe('Config', () => {
       expect(await Config.getChannels('discord')).toMatchInlineSnapshot(`
         [
           {
+            "filterMode": "whitelist",
             "filters": [
               {
                 "minUsdValue": 1,
@@ -103,6 +106,7 @@ describe('Config', () => {
             "key": "discord:discord_1",
           },
           {
+            "filterMode": "whitelist",
             "filters": undefined,
             "key": "discord:discord_3",
           },
@@ -112,6 +116,7 @@ describe('Config', () => {
       expect(await Config.getChannels('twitter')).toMatchInlineSnapshot(`
         [
           {
+            "filterMode": "whitelist",
             "filters": undefined,
             "key": "twitter:twitter_1",
           },
@@ -287,6 +292,66 @@ describe('Config', () => {
           { name: 'NEW_DEPOSIT', usdValue: 150 },
         ),
       ).toBe(true);
+    });
+
+    describe("filterMode 'filter'", () => {
+      it('sends unlisted non-specialized types by default', () => {
+        expect(
+          Config.canSend(
+            {
+              key: 'discord:1234',
+              filterMode: 'filter',
+              filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1000 }],
+            },
+            { name: 'NEW_BURN' },
+          ),
+        ).toBe(true);
+      });
+
+      it('still applies the rule to listed types', () => {
+        const channel = {
+          key: 'discord:1234' as const,
+          filterMode: 'filter' as const,
+          filters: [{ name: 'SWAP_COMPLETED' as const, minUsdValue: 1000 }],
+        };
+        expect(Config.canSend(channel, { name: 'SWAP_COMPLETED', usdValue: 500 })).toBe(false);
+        expect(Config.canSend(channel, { name: 'SWAP_COMPLETED', usdValue: 2000 })).toBe(true);
+      });
+
+      it('keeps NEW_SWAP opt-in even in filter mode', () => {
+        // unlisted -> suppressed despite filter mode
+        expect(
+          Config.canSend(
+            {
+              key: 'discord:1234',
+              filterMode: 'filter',
+              filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1000 }],
+            },
+            { name: 'NEW_SWAP', usdValue: 5000 },
+          ),
+        ).toBe(false);
+        // listed -> respects its threshold
+        const channel = {
+          key: 'discord:1234' as const,
+          filterMode: 'filter' as const,
+          filters: [{ name: 'NEW_SWAP' as const, minUsdValue: 100 }],
+        };
+        expect(Config.canSend(channel, { name: 'NEW_SWAP', usdValue: 50 })).toBe(false);
+        expect(Config.canSend(channel, { name: 'NEW_SWAP', usdValue: 150 })).toBe(true);
+      });
+    });
+
+    it("blocks unlisted types in explicit 'whitelist' mode", () => {
+      expect(
+        Config.canSend(
+          {
+            key: 'discord:1234',
+            filterMode: 'whitelist',
+            filters: [{ name: 'SWAP_COMPLETED', minUsdValue: 1000 }],
+          },
+          { name: 'NEW_BURN' },
+        ),
+      ).toBe(false);
     });
   });
 

@@ -18,6 +18,7 @@
       {
         "name": "channel 2",
         "channelId": "564851137",
+        "filterMode": "filter",
         "filters": [
           {
             "name": "DAILY_SWAP_SUMMARY"
