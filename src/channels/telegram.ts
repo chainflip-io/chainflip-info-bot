@@ -8,7 +8,7 @@ export type TelegramConfig = {
 export const sendMessage = async (
   { token, channelId }: TelegramConfig,
   text: string,
-  disablePreview?: boolean,
+  disablePreview = true,
 ) => {
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
 

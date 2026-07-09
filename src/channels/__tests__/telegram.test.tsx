@@ -25,6 +25,9 @@ describe('sendMessage', () => {
         "https://api.telegram.org/bot1234/sendMessage",
         {
           "chat_id": "5678",
+          "link_preview_options": {
+            "is_disabled": true,
+          },
           "parse_mode": "HTML",
           "text": "hello <strong>bold</strong>",
         },
