@@ -1,8 +1,8 @@
 import { assetConstants } from '@chainflip/utils/chainflip';
 import assert from 'assert';
-import BigNumber from 'bignumber.js';
 import { explorerClient } from '../server.js';
 import { getNewBurnQuery } from './explorer.js';
+import { toBigNumberOrNull } from '../utils/chainflip.js';
 
 export default async function getNewBurn(latestBurnId: number) {
   const result = await explorerClient.request(getNewBurnQuery, { id: latestBurnId });
@@ -13,8 +13,12 @@ export default async function getNewBurn(latestBurnId: number) {
   }
 
   const node = result.burns.nodes[0];
-  return {
-    ...node,
-    totalAmount: new BigNumber(node.totalAmount).shiftedBy(-assetConstants.Flip.decimals),
-  };
+  const totalAmount = toBigNumberOrNull(node.totalAmount);
+
+  return totalAmount
+    ? {
+        ...node,
+        totalAmount: totalAmount.shiftedBy(-assetConstants.Flip.decimals),
+      }
+    : null;
 }

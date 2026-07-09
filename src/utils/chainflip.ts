@@ -2,6 +2,21 @@ import { anyAssetConstants, type AnyChainflipAsset } from '@chainflip/utils/chai
 import assert from 'assert';
 import BigNumber from 'bignumber.js';
 
+/**
+ * Constructs a BigNumber, returning null for null/undefined or malformed input.
+ * bignumber.js v10+ throws during construction on invalid input (rather than
+ * returning NaN as v9 did), so the try/catch must wrap the constructor itself.
+ */
+export function toBigNumberOrNull(value: BigNumber.Value | null | undefined): BigNumber | null {
+  if (value == null) return null;
+  try {
+    const bn = new BigNumber(value);
+    return bn.isFinite() ? bn : null;
+  } catch {
+    return null;
+  }
+}
+
 export function toUsdAmount(amount: BigNumber.Value): BigNumber;
 export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumber | null;
 export function toUsdAmount(amount: BigNumber.Value | null | undefined): BigNumber | null {
