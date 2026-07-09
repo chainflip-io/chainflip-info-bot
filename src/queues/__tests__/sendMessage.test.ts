@@ -20,6 +20,9 @@ describe('sendMessage', () => {
         "https://api.telegram.org/botbot token/sendMessage",
         {
           "chat_id": "123",
+          "link_preview_options": {
+            "is_disabled": true,
+          },
           "parse_mode": "HTML",
           "text": "Hello, world!",
         },
