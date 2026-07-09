@@ -38,10 +38,6 @@ handleExit(async () => {
 
 type JobName = keyof JobData;
 
-// bullmq's `Queue` now derives its Data/Result/Name from the first type
-// argument via a conditional (`ExtractDataType`) that stays unresolved over a
-// generic `JobData[N]`. Pin all six type parameters explicitly so the data,
-// result, and name types are concrete.
 type TypedQueue<N extends JobName> = Queue<JobData[N], void, N, JobData[N], void, N>;
 
 export type DispatchJobArgs = {
