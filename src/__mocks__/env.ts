@@ -1,4 +1,3 @@
-import type { ConfigFile } from '../config.js';
 import type { RawEnv } from '../env.js';
 
 export default {
@@ -60,6 +59,6 @@ export default {
         },
       ],
     },
-  } as ConfigFile),
+  }),
   HEALTH_CHECK_GRACE_PERIOD_MS: 10_000,
 } as RawEnv;
