@@ -1,4 +1,5 @@
 import { anyAssetConstants, type AnyChainflipAsset } from '@chainflip/utils/chainflip';
+import { isNullish } from '@chainflip/utils/guard';
 import assert from 'assert';
 import BigNumber from 'bignumber.js';
 
@@ -8,7 +9,7 @@ import BigNumber from 'bignumber.js';
  * returning NaN as v9 did), so the try/catch must wrap the constructor itself.
  */
 export function toBigNumberOrNull(value: BigNumber.Value | null | undefined): BigNumber | null {
-  if (value == null) return null;
+  if (isNullish(value)) return null;
   try {
     const bn = new BigNumber(value);
     return bn.isFinite() ? bn : null;
