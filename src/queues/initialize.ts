@@ -38,6 +38,12 @@ handleExit(async () => {
 
 type JobName = keyof JobData;
 
+// bullmq's `Queue` now derives its Data/Result/Name from the first type
+// argument via a conditional (`ExtractDataType`) that stays unresolved over a
+// generic `JobData[N]`. Pin all six type parameters explicitly so the data,
+// result, and name types are concrete.
+type TypedQueue<N extends JobName> = Queue<JobData[N], void, N, JobData[N], void, N>;
+
 export type DispatchJobArgs = {
   [N in JobName]: { name: N; data: JobData[N]; opts?: JobsOptions };
 }[JobName];
@@ -48,7 +54,7 @@ export type JobProcessor<N extends JobName> = (
   dispatchJobs: DispatchJobs,
 ) => Processor<JobData[N], void, N>;
 
-export type Initializer<N extends JobName> = (queue: Queue<JobData[N], void, N>) => Promise<void>;
+export type Initializer<N extends JobName> = (queue: TypedQueue<N>) => Promise<void>;
 
 export type JobConfig<N extends JobName> = {
   name: N;
@@ -60,7 +66,7 @@ const createQueue = async <N extends JobName>(
   dispatchJobs: DispatchJobs,
   { name, initialize, processJob }: JobConfig<N>,
 ) => {
-  const queue = new Queue<JobData[N], void, N>(name, {
+  const queue = new Queue<JobData[N], void, N, JobData[N], void, N>(name, {
     connection: redis,
     defaultJobOptions: {
       attempts: 5,
@@ -100,7 +106,7 @@ const createQueue = async <N extends JobName>(
 };
 
 export type QueueMap = {
-  [K in keyof JobData]: Queue<JobData[K], void, K>;
+  [K in keyof JobData]: TypedQueue<K>;
 };
 
 export const initialize = async () => {
