@@ -2,6 +2,7 @@ import { assetConstants } from '@chainflip/utils/chainflip';
 import BigNumber from 'bignumber.js';
 import { explorerClient } from '../server.js';
 import { getSwapVolumeStatsQuery } from './explorer.js';
+import { toBigNumberOrNull } from '../utils/chainflip.js';
 
 export type SwapStats = {
   swapVolume: BigNumber;
@@ -32,10 +33,11 @@ export default async function getSwapVolumeStats(start: Date, end: Date): Promis
     networkFees = networkFees.plus(req.networkFeeSplit?.valueUsd ?? 0);
   }
 
-  const totalFlipBurned = BigNumber.sum(
-    0,
-    ...(swapInfo.burns?.nodes ?? []).map((burn) => burn.totalAmount),
-  ).shiftedBy(-assetConstants.Flip.decimals);
+  const burnAmounts = (swapInfo.burns?.nodes ?? [])
+    .map((burn) => toBigNumberOrNull(burn.totalAmount))
+    .filter((amount): amount is BigNumber => amount !== null);
+
+  const totalFlipBurned = BigNumber.sum(0, ...burnAmounts).shiftedBy(-assetConstants.Flip.decimals);
 
   return {
     swapVolume,

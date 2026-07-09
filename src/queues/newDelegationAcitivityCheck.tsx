@@ -1,5 +1,6 @@
 import { accountIdToEthereumAddress } from '@chainflip/delegation';
 import { abbreviate } from '@chainflip/utils/string';
+import type BigNumber from 'bignumber.js';
 import { differenceInMinutes } from 'date-fns';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
 import {

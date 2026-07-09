@@ -1,5 +1,6 @@
+import BigNumber from 'bignumber.js';
 import { describe, expect, it } from 'vitest';
-import { toFormattedAmount } from '../chainflip.js';
+import { toBigNumberOrNull, toFormattedAmount } from '../chainflip.js';
 
 describe('gets the correct token amount from base units', () => {
   it.each([
@@ -17,5 +18,28 @@ describe('gets the correct token amount from base units', () => {
     ['Dot', '10000000000', '1'],
   ])('converts base units to token amount ([%s] %s => %s)', (asset, amount, expected) =>
     expect(toFormattedAmount(amount, asset)).toBe(expected),
+  );
+});
+
+describe('toBigNumberOrNull', () => {
+  it('parses a valid numeric string', () => {
+    const result = toBigNumberOrNull('1234.5678');
+    expect(result).toBeInstanceOf(BigNumber);
+    expect(result?.toString()).toBe('1234.5678');
+  });
+
+  it('parses a number', () => {
+    expect(toBigNumberOrNull(42)?.toString()).toBe('42');
+  });
+
+  it.each([null, undefined])('returns null for %s', (value) => {
+    expect(toBigNumberOrNull(value)).toBeNull();
+  });
+
+  it.each(['garbage', '', 'NaN', '1.2.3', Infinity, NaN])(
+    'returns null for malformed/non-finite input (%s)',
+    (value) => {
+      expect(toBigNumberOrNull(value)).toBeNull();
+    },
   );
 });
