@@ -22,11 +22,6 @@ const customLevels = {
 
 winston.addColors(customLevels.colors);
 
-interface CustomLogger extends winston.Logger {
-  crit: winston.LeveledLogMethod;
-  alert: winston.LeveledLogMethod;
-}
-
 const logger = winston.createLogger({
   levels: customLevels.levels,
   level: 'debug',
@@ -43,6 +38,6 @@ const logger = winston.createLogger({
           }),
         ),
   transports: [new winston.transports.Console()],
-}) as CustomLogger;
+});
 
 export default logger;
