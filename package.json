@@ -43,7 +43,7 @@
     "@bull-board/api": "^8.1.2",
     "@bull-board/fastify": "^8.1.2",
     "@chainflip/delegation": "2.2.0",
-    "@chainflip/utils": "2.2.1",
+    "@chainflip/utils": "2.2.2",
     "@date-fns/utc": "^2.1.1",
     "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.18.1",
