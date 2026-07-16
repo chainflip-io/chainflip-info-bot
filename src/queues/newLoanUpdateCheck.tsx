@@ -72,49 +72,51 @@ const buildMessages = ({
   const filterName = type === 'BORROWING' ? 'NEW_BORROW' : 'NEW_REPAYMENT';
   const isBoost = isNullish(borrowerIdSs58);
 
-  return platforms.map((platform) => ({
-    name: 'messageRouter' as const,
-    data: {
-      platform,
-      message: renderForPlatform(
+  return platforms
+    .filter((platform) => !(isBoost && platform === 'twitter'))
+    .map((platform) => ({
+      name: 'messageRouter' as const,
+      data: {
         platform,
-        <>
-          <Line>
-            🏦 Loan{' '}
-            <Bold>
-              <ExplorerLink path={`/loans/${loanId}`} prefer="link">
-                #{loanId.toString()}
-              </ExplorerLink>
-            </Bold>
-          </Line>
-          <Line>
-            👤 Borrower:{' '}
-            <Bold>
-              {borrowerIdSs58 ? (
-                <ExplorerLink path={`/lps/${borrowerIdSs58}`} prefer="link">
-                  {abbreviate(borrowerIdSs58, 8)}
+        message: renderForPlatform(
+          platform,
+          <>
+            <Line>
+              🏦 Loan{' '}
+              <Bold>
+                <ExplorerLink path={`/loans/${loanId}`} prefer="link">
+                  #{loanId.toString()}
                 </ExplorerLink>
-              ) : (
-                'Boost'
-              )}
-            </Bold>
-          </Line>
-          <Line>
-            💳 Type: <Bold>{typeValue}</Bold>
-          </Line>
-          <Line>
-            📥 Amount:{' '}
-            <Bold>
-              <TokenAmount amount={amount} asset={asset} />
-            </Bold>
-            <UsdValue amount={amountValueUsd} />
-          </Line>
-          <Trailer />
-        </>,
-      ).trimEnd(),
-      filterData: { name: filterName, usdValue: amountValueUsd.toNumber(), isBoost },
-    },
-  }));
+              </Bold>
+            </Line>
+            <Line>
+              👤 Borrower:{' '}
+              <Bold>
+                {borrowerIdSs58 ? (
+                  <ExplorerLink path={`/lps/${borrowerIdSs58}`} prefer="link">
+                    {abbreviate(borrowerIdSs58, 8)}
+                  </ExplorerLink>
+                ) : (
+                  'Boost'
+                )}
+              </Bold>
+            </Line>
+            <Line>
+              💳 Type: <Bold>{typeValue}</Bold>
+            </Line>
+            <Line>
+              📥 Amount:{' '}
+              <Bold>
+                <TokenAmount amount={amount} asset={asset} />
+              </Bold>
+              <UsdValue amount={amountValueUsd} />
+            </Line>
+            <Trailer />
+          </>,
+        ).trimEnd(),
+        filterData: { name: filterName, usdValue: amountValueUsd.toNumber(), isBoost },
+      },
+    }));
 };
 
 const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
