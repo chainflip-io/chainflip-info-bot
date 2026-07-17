@@ -3,7 +3,7 @@ import { AnyChainflipChain, assetConstants } from '@chainflip/utils/chainflip';
 import { abbreviate } from '@chainflip/utils/string';
 import type BigNumber from 'bignumber.js';
 import { type DispatchJobArgs, type JobConfig, type JobProcessor } from './initialize.js';
-import { type SwapBannerData, TIER_2_THRESHOLD } from '../banners/buildBanner.js';
+import { type SwapBannerData, TIER_3_THRESHOLD } from '../banners/buildBanner.js';
 import { formatDiscordMessage } from '../banners/discordMessage.js';
 import { formatAggregator } from '../banners/format.js';
 import {
@@ -66,7 +66,7 @@ const BOOST_TIME_SAVED_MINUTES_BY_CHAIN: Record<AnyChainflipChain, number> = {
   Tron: 0,
 };
 
-const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
+const buildBannerData = async (swapInfo: SwapInfo): Promise<SwapBannerData | undefined> => {
   const usdValue = swapInfo.outputValueUsd?.toNumber() ?? swapInfo.inputValueUsd?.toNumber();
   const sourceAmount = swapInfo.inputAmount?.toNumber();
   const destAmount = swapInfo.outputAmount?.toNumber();
@@ -88,6 +88,10 @@ const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
     savedMinutes > 0
       ? swapInfo.durationMinutes + savedMinutes
       : undefined;
+  // A swap can only be an all-time record if it clears the top tier; gate the
+  // extra query on that so it runs only for the rare large swaps.
+  const isRecord =
+    usdValue >= TIER_3_THRESHOLD && usdValue > (await getLargestSwapValue(swapInfo.requestId));
   return {
     usdValue,
     isBoosted,
@@ -103,6 +107,7 @@ const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {
     oraclePriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
       ? Number(swapInfo.oraclePriceDeltaPercentage)
       : 0,
+    isRecord,
   };
 };
 
@@ -213,15 +218,12 @@ const renderDefaultMessage = (platform: Platform, swapInfo: SwapInfo) =>
     </>,
   ).trimEnd();
 
-const buildMessageData = ({
+const buildMessageData = async ({
   swapInfo,
-  isRecord,
 }: {
   swapInfo: SwapInfo;
-  isRecord: boolean;
-}): Extract<DispatchJobArgs, { name: 'messageRouter' }>[] => {
-  const banner = buildBannerData(swapInfo);
-  if (banner) banner.isRecord = isRecord;
+}): Promise<Extract<DispatchJobArgs, { name: 'messageRouter' }>[]> => {
+  const banner = await buildBannerData(swapInfo);
   const isInternalSwap = swapInfo.onChainInfo != null; // skip internal swaps
   return platforms
     .filter((platform) => !(isInternalSwap && platform === 'twitter'))
@@ -243,6 +245,8 @@ const buildMessageData = ({
               oraclePriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
                 ? Number(swapInfo.oraclePriceDeltaPercentage)
                 : undefined,
+              // Record wording is X-only; Discord keeps the standard caption.
+              isRecord: platform === 'twitter' && banner.isRecord,
             })
           : renderDefaultMessage(platform, swapInfo);
 
@@ -278,16 +282,8 @@ const processJob: JobProcessor<Name> = (dispatchJobs) => async (job) => {
   const status = swapInfo.freshness;
 
   if (status === 'fresh') {
-    // A swap can only be an all-time record if it clears the top tier; gate the
-    // extra query on that so it runs only for the rare large swaps.
-    const outputUsd = swapInfo.outputValueUsd?.toNumber() ?? 0;
-    const isRecord =
-      outputUsd >= TIER_2_THRESHOLD && outputUsd > (await getLargestSwapValue(swapInfo.requestId));
-
-    jobs.push(...buildMessageData({ swapInfo, isRecord }));
-    logger.info(
-      `Swap #${swapInfo.requestId} is fresh, job was added in a queue${isRecord ? ' (NEW RECORD)' : ''}`,
-    );
+    jobs.push(...(await buildMessageData({ swapInfo })));
+    logger.info(`Swap #${swapInfo.requestId} is fresh, job was added in a queue`);
   } else if (status === 'stale') {
     logger.warn(`Swap #${swapInfo.requestId} is stale`);
   } else if (status === 'pending') {

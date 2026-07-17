@@ -146,6 +146,7 @@ export type DiscordMessageInput = {
   isBoosted: boolean;
   originalDurationMinutes?: number;
   oraclePriceDeltaPct?: number;
+  isRecord?: boolean;
 };
 
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
@@ -225,8 +226,34 @@ const tier23 = (input: DiscordMessageInput, pair: string): string => {
   return lines.join('\n');
 };
 
+const recordMessage = (input: DiscordMessageInput, pair: string): string => {
+  const usd = formatUsdCopy(input.usdValue);
+
+  let detail = pair;
+  if (input.durationMinutes !== undefined) {
+    detail += ` in ${formatDurationShortCopy(input.durationMinutes)}`;
+  }
+  if (input.oraclePriceDeltaPct !== undefined) {
+    detail +=
+      input.durationMinutes !== undefined
+        ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
+        : ` at ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`;
+  }
+
+  return [
+    `New record: ${usd} cross-chain on Chainflip.`,
+    '',
+    `${detail}.`,
+    '',
+    `${SCAN_BASE}/${input.swapId}`,
+  ].join('\n');
+};
+
 export const formatDiscordMessage = (input: DiscordMessageInput): string => {
   const pair = formatPair(input);
+  if (input.isRecord) {
+    return recordMessage(input, pair);
+  }
   const tier = tierOf(input.usdValue);
   if (tier === 1) {
     return input.isBoosted ? tier1Boosted(input, pair) : tier1Regular(input, pair);

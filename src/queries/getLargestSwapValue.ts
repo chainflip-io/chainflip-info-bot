@@ -8,7 +8,7 @@ const query = /* GraphQL */ `
     swaps: allSwapRequests(
       orderBy: DEPOSIT_VALUE_USD_DESC
       first: 25
-      filter: { depositValueUsd: { isNull: false } }
+      filter: { depositValueUsd: { isNull: false }, completedEventId: { isNull: false } }
     ) {
       nodes {
         nativeId
