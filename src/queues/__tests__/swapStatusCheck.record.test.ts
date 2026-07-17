@@ -55,6 +55,15 @@ describe('swapStatusCheck record banner', () => {
     const banners = bannersFrom(dispatchJobs);
     expect(banners.length).toBeGreaterThan(0);
     banners.forEach((b) => expect(b.isRecord).toBe(true));
+
+    // Record wording is X-only: twitter caption says "New record", discord does not.
+    const [jobs] = dispatchJobs.mock.lastCall as [
+      { data: { platform: string; message: string } }[],
+    ];
+    const msg = (platform: string) =>
+      jobs.find((j) => j.data.platform === platform)?.data.message ?? '';
+    expect(msg('twitter')).toContain('New record');
+    expect(msg('discord')).not.toContain('New record');
   });
 
   it('does not flag a record when a larger swap already exists', async () => {
