@@ -11,6 +11,7 @@ const assetsDir = join(dirname(fileURLToPath(import.meta.url)), '../assets');
 
 export const TIER_1_THRESHOLD = 495_000;
 export const TIER_2_THRESHOLD = 995_000;
+export const TIER_3_THRESHOLD = 1_980_000;
 
 export type SwapBannerData = {
   usdValue: number;
@@ -26,18 +27,25 @@ export type SwapBannerData = {
 };
 
 const tierFor = (usdValue: number) =>
-  usdValue >= TIER_2_THRESHOLD ? 3 : usdValue >= TIER_1_THRESHOLD ? 2 : 1;
+  usdValue >= TIER_3_THRESHOLD
+    ? 4
+    : usdValue >= TIER_2_THRESHOLD
+      ? 3
+      : usdValue >= TIER_1_THRESHOLD
+        ? 2
+        : 1;
 
 export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
   const tier = tierFor(data.usdValue);
   const variant = data.isBoosted ? 'boosted' : 'regular';
+  const backgroundFile = tier === 4 ? 'tier4' : `tier${tier}-${variant}`;
 
   const [source, dest, swapIconUrl, boltIconUrl, backgroundUrl] = await Promise.all([
     loadAsset(data.sourceAsset),
     loadAsset(data.destAsset),
     loadDataUrl(join(assetsDir, 'swap-icon.png')),
     loadDataUrl(join(assetsDir, 'tokens/bolt.png')),
-    loadDataUrl(join(assetsDir, `backgrounds/tier${tier}-${variant}.png`)),
+    loadDataUrl(join(assetsDir, `backgrounds/${backgroundFile}.png`)),
   ]);
 
   if (tier === 1) {
