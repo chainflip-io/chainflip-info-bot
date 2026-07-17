@@ -22,8 +22,10 @@ export const login = async (token: string) => {
   client.once('debug', (obj) => {
     logger.debug('discord debug', { obj });
   });
-  client.once('error', (error) => {
-    throw new Error(`Discord: an error occurred on discord connection: ${error}`);
+  client.on('error', (error) => {
+    logger.error('Discord: an error occurred on discord connection', {
+      err: error instanceof Error ? { message: error.message, stack: error.stack } : error,
+    });
   });
   client.once('shardReconnecting', () => {
     logger.warn(`Discord: shardReconnecting raised`);
