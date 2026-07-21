@@ -14,6 +14,7 @@ const BROKER_HANDLES: Record<string, string | null> = {
   THORWallet: '@Thorwallet',
   THORSwap: '@THORSwap',
   SwapSpace: '@swapspaceco',
+  Portal: '@portalbridge_',
 };
 
 const INTEGRATOR_HANDLES: Record<string, string | null> = {
@@ -41,6 +42,7 @@ const INTEGRATOR_HANDLES: Record<string, string | null> = {
   BCDC: null,
   'Rango Direct': '@rangoexchange',
   'THORSwap UI': '@THORSwap',
+  MakePay: '@MakePayio',
 };
 
 // Resolves an alias to a display string. Returns null only for empty / 'unknown'.
