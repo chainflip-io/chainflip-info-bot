@@ -19,12 +19,18 @@ import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
-const redis = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
+// BullMQ Workers issue *blocking* Redis commands (BZPOPMIN/BRPOPLPUSH). Sharing
+// a single connection across many workers serializes those blocking calls and
+// starves delayed-job promotion, which stalls the scheduler. Each worker gets
+// its own dedicated connection; queues/events/flow share a separate one.
+const createConnection = () => new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
+
+const sharedConnection = createConnection();
 
 // we want to ensure that the bullmq queues, workers, and flows are closed in
 // the reverse order that they are created to ensure that any in progress jobs
 // can complete and perform any necessary scheduling before exiting
-const cleanup: (() => Promise<any>)[] = [() => redis.quit()];
+const cleanup: (() => Promise<any>)[] = [() => sharedConnection.quit()];
 
 handleExit(async () => {
   const handlers = cleanup.splice(0, cleanup.length).reverse();
@@ -63,7 +69,7 @@ const createQueue = async <N extends JobName>(
   { name, initialize, processJob }: JobConfig<N>,
 ) => {
   const queue = new Queue<JobData[N], void, N, JobData[N], void, N>(name, {
-    connection: redis,
+    connection: sharedConnection,
     defaultJobOptions: {
       attempts: 5,
       backoff: { delay: 1000, type: 'exponential' },
@@ -72,7 +78,8 @@ const createQueue = async <N extends JobName>(
 
   await initialize?.(queue);
 
-  const events = new QueueEvents(name, { connection: redis });
+  const eventsConnection = createConnection();
+  const events = new QueueEvents(name, { connection: eventsConnection });
 
   events.on('deduplicated', (info) => {
     logger.error('deduplicated', { info });
@@ -82,11 +89,13 @@ const createQueue = async <N extends JobName>(
     logger.error('error in queue', { error, queue: name });
   });
 
+  // each worker needs its own connection for its blocking commands
+  const workerConnection = createConnection();
   const worker = new Worker<JobData[N], void, N>(
     name,
     logRejections(name, processJob(dispatchJobs)),
     {
-      connection: redis,
+      connection: workerConnection,
       removeOnComplete: { count: 100 },
       removeOnFail: { count: 100 },
     },
@@ -96,6 +105,7 @@ const createQueue = async <N extends JobName>(
     await queue.close();
     await events.close();
     await worker.close();
+    await Promise.all([eventsConnection.quit(), workerConnection.quit()]);
   });
 
   return queue;
@@ -108,9 +118,13 @@ export type QueueMap = {
 export const initialize = async () => {
   const queues = {} as QueueMap;
 
-  const flow = new FlowProducer({ connection: redis });
+  const flowConnection = createConnection();
+  const flow = new FlowProducer({ connection: flowConnection });
 
-  cleanup.push(() => flow.close().catch(() => null));
+  cleanup.push(async () => {
+    await flow.close().catch(() => null);
+    await flowConnection.quit().catch(() => null);
+  });
 
   const retryOpts: JobsOptions = {
     attempts: 5,
