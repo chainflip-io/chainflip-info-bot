@@ -6,7 +6,7 @@ describe('sendMessage', () => {
   it('sends a message to the channel', async () => {
     const loginSpy = vi.spyOn(Client.prototype, 'login');
     loginSpy.mockImplementation(() => {
-      client.emit('ready' as never);
+      client.emit('clientReady' as never);
       return Promise.resolve('');
     });
     const sendMock = vi.fn().mockResolvedValueOnce(true);
@@ -32,7 +32,7 @@ describe('sendMessage', () => {
   it('throws an error if the response is not ok', async () => {
     const loginSpy = vi.spyOn(Client.prototype, 'login');
     loginSpy.mockImplementation(() => {
-      client.emit('ready' as never);
+      client.emit('clientReady' as never);
       return Promise.resolve('');
     });
     const sendMock = vi.fn().mockRejectedValue('an error occurred');
@@ -62,7 +62,7 @@ describe('sendMessage', () => {
       const loginSpy = vi.spyOn(Client.prototype, 'login');
       const isReadySpy = vi.spyOn(Client.prototype, 'isReady');
       loginSpy.mockImplementation(() => {
-        client.emit('ready' as never);
+        client.emit('clientReady' as never);
         return Promise.resolve('');
       });
 

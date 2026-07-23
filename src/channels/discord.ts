@@ -15,7 +15,7 @@ export const login = async (token: string) => {
     resolve();
     return promise;
   }
-  client.once('ready', () => {
+  client.once('clientReady', () => {
     logger.info('Discord: client ready');
     resolve();
   });
