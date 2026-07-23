@@ -33,7 +33,7 @@ describe('sendMessage', () => {
   it('sends messages to discord channels', async () => {
     const loginSpy = vi.spyOn(Client.prototype, 'login');
     loginSpy.mockImplementation(() => {
-      client.emit('ready' as never);
+      client.emit('clientReady' as never);
       return Promise.resolve('');
     });
     const sendMock = vi.fn().mockResolvedValueOnce(true);
@@ -60,7 +60,7 @@ describe('sendMessage', () => {
   it('fails to send message to incorrect discord channel', async () => {
     const loginSpy = vi.spyOn(Client.prototype, 'login');
     loginSpy.mockImplementation(() => {
-      client.emit('ready' as never);
+      client.emit('clientReady' as never);
       return Promise.resolve('');
     });
     const sendMock = vi.fn();
@@ -88,7 +88,7 @@ describe('sendMessage', () => {
   it('sends long message to discord channels with replies', async () => {
     const loginSpy = vi.spyOn(Client.prototype, 'login');
     loginSpy.mockImplementation(() => {
-      client.emit('ready' as never);
+      client.emit('clientReady' as never);
       return Promise.resolve('');
     });
     const sendMock = vi.fn().mockResolvedValueOnce(true);
