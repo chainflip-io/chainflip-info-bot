@@ -33,8 +33,8 @@ importers:
         specifier: ^11.1.5
         version: 11.1.5
       bullmq:
-        specifier: ^5.80.5
-        version: 5.80.5
+        specifier: ^5.80.11
+        version: 5.80.11
       date-fns:
         specifier: ^4.4.0
         version: 4.4.0
@@ -1696,8 +1696,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
-  bullmq@5.80.5:
-    resolution: {integrity: sha512-3cVpkFXvmi7U7clGQGqlIzWLNJgX77Q0U0xCfbsiu6CFdiAcrKem1rK+xHIq0jIzMA6swq9ss6uvMqzCeTbAgg==}
+  bullmq@5.80.11:
+    resolution: {integrity: sha512-c0yBKdlIZMeR+ErM0OxBG4kTBa5vtllnf4duSBFvfHaQTPtthubhrI5zQb16f1XxoRKwQa/p038YmNTI3m12oA==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       redis: '>=5.0.0'
@@ -5394,7 +5394,7 @@ snapshots:
       node-releases: 2.0.27
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
-  bullmq@5.80.5:
+  bullmq@5.80.11:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.11.1
