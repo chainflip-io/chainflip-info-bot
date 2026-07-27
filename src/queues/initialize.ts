@@ -19,12 +19,7 @@ import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger from '../utils/logger.js';
 
-// BullMQ Workers issue *blocking* Redis commands (BZPOPMIN/BRPOPLPUSH). Sharing
-// a single connection across many workers serializes those blocking calls and
-// starves delayed-job promotion, which stalls the scheduler. Each worker gets
-// its own dedicated connection; queues/events/flow share a separate one.
 const createConnection = () => new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
-
 const sharedConnection = createConnection();
 
 // we want to ensure that the bullmq queues, workers, and flows are closed in
@@ -89,7 +84,6 @@ const createQueue = async <N extends JobName>(
     logger.error('error in queue', { error, queue: name });
   });
 
-  // each worker needs its own connection for its blocking commands
   const workerConnection = createConnection();
   const worker = new Worker<JobData[N], void, N>(
     name,

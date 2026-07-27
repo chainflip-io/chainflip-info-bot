@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 import { UnrecoverableError } from 'bullmq';
-import logger from './logger.js';
+import logger, { inspectError } from './logger.js';
 
 const cleanupFns = new Set<() => void>();
 
@@ -20,19 +20,17 @@ const cleanup = () => {
 process.once('SIGINT', cleanup);
 process.once('SIGTERM', cleanup);
 
-process.on('unhandledRejection', (reason) => {
+process.on('unhandledRejection', (error) => {
   logger.error('unhandledRejection', {
-    err: reason instanceof Error ? { message: reason.message, stack: reason.stack } : reason,
+    err: inspectError(error),
   });
 });
 
 process.once('uncaughtException', (error) => {
   logger.crit('uncaughtException', {
-    err: error instanceof Error ? { message: error.message, stack: error.stack } : error,
+    err: inspectError(error),
   });
   cleanup();
-  // Exit non-zero so the orchestrator restarts cleanly rather than leaving the
-  // process in an undefined state.
   process.exitCode = 1;
 });
 
