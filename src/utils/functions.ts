@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 import { UnrecoverableError } from 'bullmq';
-import logger from './logger.js';
+import logger, { inspectError } from './logger.js';
 
 const cleanupFns = new Set<() => void>();
 
@@ -19,6 +19,20 @@ const cleanup = () => {
 
 process.once('SIGINT', cleanup);
 process.once('SIGTERM', cleanup);
+
+process.on('unhandledRejection', (error) => {
+  logger.error('unhandledRejection', {
+    err: inspectError(error),
+  });
+});
+
+process.once('uncaughtException', (error) => {
+  logger.crit('uncaughtException', {
+    err: inspectError(error),
+  });
+  cleanup();
+  process.exitCode = 1;
+});
 
 export const logRejections =
   <T, F extends (...args: any[]) => Promise<T>>(name: string, fn: F) =>

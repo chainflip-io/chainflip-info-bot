@@ -1,4 +1,6 @@
+import stringify from 'safe-stable-stringify';
 import winston from 'winston';
+import { ZodError } from 'zod';
 import env from '../env.js';
 
 const customLevels = {
@@ -39,5 +41,20 @@ const logger = winston.createLogger({
         ),
   transports: [new winston.transports.Console()],
 });
+
+const safeSerialize = (value: unknown): unknown => {
+  const s = stringify(value);
+  return s !== undefined ? JSON.parse(s) : null;
+};
+
+export const inspectError = (err: unknown) => {
+  if (err instanceof ZodError) {
+    return { name: err.name, message: err.message, issues: safeSerialize(err.issues) };
+  }
+  if (err instanceof Error) {
+    return { name: err.name, message: err.message, stack: err.stack };
+  }
+  return safeSerialize(err);
+};
 
 export default logger;
