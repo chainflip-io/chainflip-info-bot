@@ -63,6 +63,7 @@ const BOOST_TIME_SAVED_MINUTES_BY_CHAIN: Record<AnyChainflipChain, number> = {
   Assethub: 0,
   Polkadot: 0,
   Tron: 0,
+  Bsc: 0,
 };
 
 const buildBannerData = (swapInfo: SwapInfo): SwapBannerData | undefined => {

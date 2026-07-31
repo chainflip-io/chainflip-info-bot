@@ -18,6 +18,7 @@ const arbChain = join(assetsDir, 'chains/arb.png');
 const assChain = join(assetsDir, 'chains/ass.png');
 const solChain = join(assetsDir, 'chains/sol.png');
 const tronChain = join(assetsDir, 'chains/tron.png');
+const bscChain = join(assetsDir, 'chains/bsc.png');
 
 const token = (name: string) => ({
   iconPath: join(assetsDir, `tokens/${name}.png`),
@@ -81,6 +82,14 @@ export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
     displayName: 'USDT (TRON)',
     ...token('usdt'),
     chainBadgePath: tronChain,
+  },
+  Cbbtc: { symbol: 'cbBTC', displayName: 'cbBTC', ...token('cbbtc') },
+  Bnb: { symbol: 'BNB', displayName: 'BNB', ...token('bnb') },
+  BscUsdt: {
+    symbol: 'USDT',
+    displayName: 'USDT (BSC)',
+    ...token('usdt'),
+    chainBadgePath: bscChain,
   },
 };
 
