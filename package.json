@@ -42,8 +42,13 @@
   "dependencies": {
     "@bull-board/api": "^8.1.2",
     "@bull-board/fastify": "^8.1.2",
+<<<<<<< HEAD
     "@chainflip/delegation": "2.2.0",
     "@chainflip/utils": "2.2.8",
+=======
+    "@chainflip/delegation": "2.3.0-dev.1",
+    "@chainflip/utils": "2.3.0-dev.4",
+>>>>>>> 0bba52a (feat: add BSC chain and cbBTC asset support)
     "@date-fns/utc": "^2.1.1",
     "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.19.0",
