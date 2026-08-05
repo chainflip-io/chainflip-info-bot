@@ -18,7 +18,7 @@ export const humanFriendlyAsset: InternalAssetMap<string> = {
   Wbtc: 'WBTC on Ethereum',
   Trx: 'TRX on Tron',
   TrxUsdt: 'USDT on Tron',
-  Cbbtc: 'cbBTC on Ethereum',
+  Cbbtc: 'CBBTC on Ethereum',
   Bnb: 'BNB on BSC',
   BscUsdt: 'USDT on BSC',
 };
