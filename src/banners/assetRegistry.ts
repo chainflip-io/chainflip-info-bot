@@ -83,11 +83,11 @@ export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
     ...token('usdt'),
     chainBadgePath: tronChain,
   },
-  Cbbtc: { symbol: 'cbBTC', displayName: 'cbBTC', ...token('cbbtc') },
+  Cbbtc: { symbol: 'CBBTC', displayName: 'CBBTC', ...token('cbbtc') },
   Bnb: { symbol: 'BNB', displayName: 'BNB', ...token('bnb') },
   BscUsdt: {
     symbol: 'USDT',
-    displayName: 'USDT (BSC)',
+    displayName: 'Binance Bridged USDT',
     ...token('usdt'),
     chainBadgePath: bscChain,
   },
