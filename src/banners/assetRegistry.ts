@@ -18,7 +18,7 @@ const arbChain = join(assetsDir, 'chains/arb.png');
 const assChain = join(assetsDir, 'chains/ass.png');
 const solChain = join(assetsDir, 'chains/sol.png');
 const tronChain = join(assetsDir, 'chains/tron.png');
-const bscChain = join(assetsDir, 'chains/bsc.png'); // TODO(COM-349): BSC chain logo assets to be provided in the repo in a follow-up
+const bscChain = join(assetsDir, 'chains/bsc.png');
 
 const token = (name: string) => ({
   iconPath: join(assetsDir, `tokens/${name}.png`),
