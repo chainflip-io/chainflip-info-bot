@@ -246,7 +246,6 @@ const buildMessageData = async ({
               oraclePriceDeltaPct: swapInfo.oraclePriceDeltaPercentage
                 ? Number(swapInfo.oraclePriceDeltaPercentage)
                 : undefined,
-              // Record wording is X-only; Discord keeps the standard caption.
               isRecord: platform === 'twitter' && banner.isRecord,
             })
           : renderDefaultMessage(platform, swapInfo);

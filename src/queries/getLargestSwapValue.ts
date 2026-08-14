@@ -1,8 +1,5 @@
 import { explorerClient } from '../server.js';
 
-// Deposit value is the only cleanly-orderable value on swap requests; ordering by
-// it (desc) surfaces the biggest swaps, and we read each one's egress (output)
-// value to compare against — the same output value the banner displays.
 const query = /* GraphQL */ `
   query GetLargestSwaps {
     swaps: allSwapRequests(
