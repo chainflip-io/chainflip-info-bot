@@ -18,8 +18,8 @@ importers:
         specifier: 2.3.0-dev.1
         version: 2.3.0-dev.1(typescript@6.0.3)(zod@4.4.3)
       '@chainflip/utils':
-        specifier: 2.3.0-dev.5
-        version: 2.3.0-dev.5
+        specifier: 2.3.1
+        version: 2.3.1
       '@date-fns/utc':
         specifier: ^2.1.1
         version: 2.1.1
@@ -258,8 +258,8 @@ packages:
   '@chainflip/utils@2.3.0-dev.4':
     resolution: {integrity: sha512-CFm4D9VXqBPDTkGKijC3ksIKtE5HubK7QM0ZYSdzyqENn5ITNcnDpZu0NnL2D73e+8UeqMNZEZae59EXn8qEng==}
 
-  '@chainflip/utils@2.3.0-dev.5':
-    resolution: {integrity: sha512-QqYcVregcdaguMZluOSImBftLzdcnGiaDskKEJ0Dm9k5tWDZ/mFvksf/WtRi2le/rzZll1J9dpVupt+jYQ2Uaw==}
+  '@chainflip/utils@2.3.1':
+    resolution: {integrity: sha512-H24hNsO/V6/kPNg9HhC85cL+/mJSWLhd3nDRs+EmF0kjV8YsGRMYcuMsdy7QlQyLLud0g6iUzh2U8g+QzTOe7g==}
 
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
@@ -3964,7 +3964,7 @@ snapshots:
       bignumber.js: 11.1.5
       date-fns: 4.4.0
 
-  '@chainflip/utils@2.3.0-dev.5':
+  '@chainflip/utils@2.3.1':
     dependencies:
       '@date-fns/utc': 2.1.1
       '@noble/hashes': 2.3.0
