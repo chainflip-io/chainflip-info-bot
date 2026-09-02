@@ -40,8 +40,8 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@bull-board/api": "^8.1.2",
-    "@bull-board/fastify": "^8.1.2",
+    "@bull-board/api": "^9.6.0",
+    "@bull-board/fastify": "^9.6.0",
     "@chainflip/delegation": "2.3.0-dev.1",
     "@chainflip/utils": "2.3.1",
     "@date-fns/utc": "^2.1.1",
