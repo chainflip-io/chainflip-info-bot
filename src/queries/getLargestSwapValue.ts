@@ -23,8 +23,7 @@ type Result = {
   };
 };
 
-// Largest swap output value (USD) across all swaps, excluding the given one.
-// Returns 0 if nothing comparable is found (callers treat that as "no record known").
+// Largest swap output value (USD) excluding the given one; 0 if none found.
 export default async function getLargestSwapValue(excludeNativeId: string): Promise<number> {
   const result = await explorerClient.request<Result>(query);
   const values = result.swaps.nodes

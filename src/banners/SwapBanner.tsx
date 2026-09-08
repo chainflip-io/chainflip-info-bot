@@ -13,10 +13,19 @@ export type SwapBannerProps = {
   backgroundUrl: string;
   swapIconUrl: string;
   boltIconUrl?: string;
+  isRecord?: boolean;
 };
 
 const TOKEN_SIZE = 60;
 const CHAIN_BADGE_SIZE = 52;
+
+const RecordCaption = () => (
+  <div
+    style={{ display: 'flex', color: '#FFC93C', fontSize: 36, fontWeight: 600, letterSpacing: 6 }}
+  >
+    NEW RECORD
+  </div>
+);
 
 export const SwapBanner = (props: SwapBannerProps) => {
   const theme = props.isBoosted ? BOOSTED_THEME : REGULAR_THEME;
@@ -36,13 +45,17 @@ export const SwapBanner = (props: SwapBannerProps) => {
         color: 'white',
       }}
     >
-      {/* Top pill is now baked into the background images for tier 2 and tier 3.
-          The marginTop here is the previous (top-pill marginTop 110 + pill height ~131 + gap 60)
-          so the big number stays in EXACTLY the same Y-position as before. */}
+      {/* The tier 2/3/4 top pill is baked into the background; the record caption sits under it,
+          so the number's marginTop shrinks to keep it in the same Y-position. */}
+      {props.isRecord && (
+        <div style={{ display: 'flex', marginTop: 250 }}>
+          <RecordCaption />
+        </div>
+      )}
       <div
         style={{
           display: 'flex',
-          marginTop: 320,
+          marginTop: props.isRecord ? 30 : 320,
           fontSize: 180,
           fontWeight: 500,
           letterSpacing: 0,

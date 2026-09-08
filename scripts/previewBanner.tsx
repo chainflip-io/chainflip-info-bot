@@ -30,7 +30,7 @@ const [
   bnbSmall,
   cbbtcSmall,
   bscChain,
-  recordBg,
+  tier4Golden,
   boltIcon,
 ] = await Promise.all([
   fileToDataUrl(join(root, 'src/assets/backgrounds/tier1-regular.png')),
@@ -53,7 +53,7 @@ const [
   fileToDataUrl(join(root, 'src/assets/tokens/bnb-small.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/cbbtc-small.png')),
   fileToDataUrl(join(root, 'src/assets/chains/bsc.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/record.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/tier4.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/bolt.png')),
 ]);
 
@@ -178,7 +178,7 @@ const tier23Variants: { name: string; props: SwapBannerProps }[] = [
     },
   },
   {
-    name: 'record-cbbtc',
+    name: 'record',
     props: {
       usdValue: 4_284_450,
       sourceAsset: { iconUrl: cbbtcSmall, symbol: 'cbBTC', amount: 41.6 },
@@ -187,44 +187,10 @@ const tier23Variants: { name: string; props: SwapBannerProps }[] = [
       oraclePriceDeltaPct: -0.05,
       isBoosted: false,
       durationMinutes: 9,
-      backgroundUrl: recordBg,
+      backgroundUrl: tier4Golden,
       swapIconUrl: swapIcon,
       boltIconUrl: boltIcon,
-    },
-  },
-  {
-    name: 'record-bnb',
-    props: {
-      usdValue: 4_284_450,
-      sourceAsset: { iconUrl: bnbSmall, symbol: 'BNB', amount: 6180 },
-      destAsset: { iconUrl: usdtSmall, symbol: 'USDT', amount: 4_284_450, chainBadgeUrl: ethChain },
-      aggregator: 'swap.chainflip.io',
-      oraclePriceDeltaPct: -0.05,
-      isBoosted: false,
-      durationMinutes: 9,
-      backgroundUrl: recordBg,
-      swapIconUrl: swapIcon,
-      boltIconUrl: boltIcon,
-    },
-  },
-  {
-    name: 'record-usdt-bsc',
-    props: {
-      usdValue: 4_284_450,
-      sourceAsset: {
-        iconUrl: usdtSmall,
-        symbol: 'USDT',
-        amount: 4_284_450,
-        chainBadgeUrl: bscChain,
-      },
-      destAsset: { iconUrl: btcSmall, symbol: 'BTC', amount: 66.2 },
-      aggregator: 'swap.chainflip.io',
-      oraclePriceDeltaPct: -0.05,
-      isBoosted: false,
-      durationMinutes: 9,
-      backgroundUrl: recordBg,
-      swapIconUrl: swapIcon,
-      boltIconUrl: boltIcon,
+      isRecord: true,
     },
   },
 ];

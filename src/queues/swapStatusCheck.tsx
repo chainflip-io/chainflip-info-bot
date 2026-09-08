@@ -89,8 +89,7 @@ const buildBannerData = async (swapInfo: SwapInfo): Promise<SwapBannerData | und
     savedMinutes > 0
       ? swapInfo.durationMinutes + savedMinutes
       : undefined;
-  // A swap can only be an all-time record if it clears the top tier; gate the
-  // extra query on that so it runs only for the rare large swaps.
+  // Only top-tier swaps can be records; gate the extra query on that.
   const isRecord =
     usdValue >= TIER_3_THRESHOLD && usdValue > (await getLargestSwapValue(swapInfo.requestId));
   return {
