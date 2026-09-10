@@ -24,6 +24,7 @@ export type SwapBannerData = {
   originalDurationMinutes?: number;
   aggregator?: string;
   oraclePriceDeltaPct: number;
+  isRecord?: boolean;
 };
 
 const tierFor = (usdValue: number) =>
@@ -38,7 +39,8 @@ const tierFor = (usdValue: number) =>
 export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
   const tier = tierFor(data.usdValue);
   const variant = data.isBoosted ? 'boosted' : 'regular';
-  const backgroundFile = tier === 4 ? 'tier4' : `tier${tier}-${variant}`;
+  // Records are always giga swaps, so they share the tier-4 background.
+  const backgroundFile = data.isRecord || tier === 4 ? 'tier4' : `tier${tier}-${variant}`;
 
   const [source, dest, swapIconUrl, boltIconUrl, backgroundUrl] = await Promise.all([
     loadAsset(data.sourceAsset),
@@ -48,7 +50,7 @@ export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
     loadDataUrl(join(assetsDir, `backgrounds/${backgroundFile}.png`)),
   ]);
 
-  if (tier === 1) {
+  if (tier === 1 && !data.isRecord) {
     const props: SwapBannerTier1Props = {
       usdValue: data.usdValue,
       isBoosted: data.isBoosted,
@@ -80,6 +82,7 @@ export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
   const props: SwapBannerProps = {
     usdValue: data.usdValue,
     isBoosted: data.isBoosted,
+    isRecord: data.isRecord,
     sourceAsset: {
       iconUrl: source.smallIconUrl,
       symbol: source.symbol,
