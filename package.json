@@ -61,7 +61,7 @@
     "react-dom": "^19.2.8",
     "satori": "^0.29.0",
     "winston": "^3.17.0",
-    "zod": "^4.4.3",
+    "zod": "^4.5.4",
     "safe-stable-stringify": "^2.4.3"
   }
 }
