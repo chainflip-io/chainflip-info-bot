@@ -65,10 +65,10 @@ const STABLES = new Set(['USDC', 'USDT']);
 const stripTrailingZeros = (s: string): string =>
   s.includes('.') ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
 
-const withThousands = (n: number, maxDecimals: number): string =>
+export const withThousands = (n: number, maxDecimals: number): string =>
   new Intl.NumberFormat('en-US', { maximumFractionDigits: maxDecimals }).format(n);
 
-const formatAmount = (asset: ChainflipAsset, amount: number): string => {
+export const formatAmount = (asset: ChainflipAsset, amount: number): string => {
   const meta = ASSET_REGISTRY[asset];
   const display = meta.displayName;
 
@@ -85,7 +85,7 @@ const formatAmount = (asset: ChainflipAsset, amount: number): string => {
   return `${withThousands(amount, amount >= 100 ? 1 : 2)} ${display}`;
 };
 
-const formatUsdCopy = (value: number): string => {
+export const formatUsdCopy = (value: number): string => {
   if (value >= 1_000_000) {
     return `$${stripTrailingZeros((value / 1_000_000).toFixed(2))}M`;
   }
