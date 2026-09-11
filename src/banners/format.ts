@@ -25,7 +25,20 @@ const AGGREGATOR_DISPLAY_OVERRIDES: Record<string, string> = {
   'THORSwap UI': 'THORSwap',
 };
 
+// Matches emoji, their skin-tone modifiers, regional-indicator flag halves,
+// variation selectors and zero-width joiners.
+const EMOJI_RE =
+  /[\p{Extended_Pictographic}\p{Emoji_Modifier}\p{Regional_Indicator}\p{Variation_Selector}\p{Join_Control}]/gu;
+
+// Strips emoji, collapses whitespace, and trims. Aliases come from user-set
+// broker/integrator names and sometimes carry emoji, which break handle lookups
+// and can't be rendered on the banner.
+export const normalizeAlias = (alias: string): string =>
+  alias.replace(EMOJI_RE, '').replace(/\s+/g, ' ').trim();
+
 export const formatAggregator = (alias: string | undefined): string | undefined => {
   if (!alias) return undefined;
-  return AGGREGATOR_DISPLAY_OVERRIDES[alias] ?? alias;
+  const normalized = normalizeAlias(alias);
+  if (!normalized) return undefined;
+  return AGGREGATOR_DISPLAY_OVERRIDES[normalized] ?? normalized;
 };
