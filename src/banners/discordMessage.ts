@@ -1,6 +1,7 @@
 import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { ASSET_REGISTRY } from './assetRegistry.js';
 import { TIER_1_THRESHOLD, TIER_2_THRESHOLD } from './buildBanner.js';
+import { normalizeAlias } from './format.js';
 
 const BROKER_HANDLES: Record<string, string | null> = {
   'swap.chainflip.io': '@Chainflip',
@@ -43,6 +44,7 @@ const INTEGRATOR_HANDLES: Record<string, string | null> = {
   'Rango Direct': '@rangoexchange',
   'THORSwap UI': '@THORSwap',
   MakePay: '@MakePayio',
+  HoudiniSwap: '@HoudiniSwap',
 };
 
 // Resolves an alias to a display string. Returns null only for empty / 'unknown'.
@@ -51,8 +53,10 @@ const INTEGRATOR_HANDLES: Record<string, string | null> = {
 // Unknown alias → raw alias as plain text (defensive fallback).
 const resolveAlias = (
   map: Record<string, string | null>,
-  alias: string | undefined,
+  rawAlias: string | undefined,
 ): string | null => {
+  if (!rawAlias) return null;
+  const alias = normalizeAlias(rawAlias);
   if (!alias || alias.toLowerCase() === 'unknown') return null;
   if (alias in map) return map[alias] ?? alias;
   const key = Object.keys(map).find((k) => k.toLowerCase() === alias.toLowerCase());

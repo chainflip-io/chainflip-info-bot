@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { formatAmount, formatUsdCopy, withThousands } from '../discordMessage.js';
+import {
+  formatAmount,
+  formatDiscordMessage,
+  formatUsdCopy,
+  withThousands,
+  type DiscordMessageInput,
+} from '../discordMessage.js';
 
 describe('withThousands', () => {
   it('adds thousands separators to integers', () => {
@@ -57,5 +63,37 @@ describe('formatUsdCopy', () => {
   it('abbreviates thousands, rounded to whole K', () => {
     expect(formatUsdCopy(156_130)).toBe('$156K');
     expect(formatUsdCopy(999_400)).toBe('$999K');
+  });
+});
+
+const baseInput: DiscordMessageInput = {
+  usdValue: 156_130,
+  sourceAsset: 'Btc',
+  sourceAmount: 2,
+  destAsset: 'Usdc',
+  destAmount: 156_130,
+  swapId: '1802419',
+  durationMinutes: 6,
+  isBoosted: true,
+  originalDurationMinutes: 26,
+};
+
+describe('formatDiscordMessage — aggregator handle resolution', () => {
+  it('tags HoudiniSwap even when the alias carries an emoji (affiliate)', () => {
+    const message = formatDiscordMessage({ ...baseInput, affiliateAlias: 'HoudiniSwap 🧙‍♂️' });
+    expect(message).toContain('via @HoudiniSwap');
+    expect(message).not.toContain('🧙');
+  });
+
+  it('tags HoudiniSwap when it is the broker alias', () => {
+    const message = formatDiscordMessage({ ...baseInput, brokerAlias: 'HoudiniSwap 🧙‍♂️' });
+    expect(message).toContain('via @HoudiniSwap');
+    expect(message).not.toContain('🧙');
+  });
+
+  it('falls back to the cleaned name for an unknown alias', () => {
+    const message = formatDiscordMessage({ ...baseInput, affiliateAlias: 'SomeNewDex 🚀' });
+    expect(message).toContain('via SomeNewDex');
+    expect(message).not.toContain('🚀');
   });
 });
