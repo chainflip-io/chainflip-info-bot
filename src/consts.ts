@@ -19,8 +19,8 @@ export const humanFriendlyAsset: InternalAssetMap<string> = {
   Trx: 'TRX on Tron',
   TrxUsdt: 'USDT on Tron',
   Cbbtc: 'CBBTC on Ethereum',
-  Bnb: 'BNB on BSC',
-  BscUsdt: 'USDT on BSC',
+  Bnb: 'BNB',
+  BscUsdt: 'USDT on BNB Chain',
 };
 
 export const EXPLORER_URL = 'https://scan.chainflip.io';
