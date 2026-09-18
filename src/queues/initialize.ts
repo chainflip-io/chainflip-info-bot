@@ -19,9 +19,6 @@ import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger, { inspectError } from '../utils/logger.js';
 
-// bullmq requires `maxRetriesPerRequest: null`, which means a broken connection
-// never surfaces as a command error -- commands queue up silently instead. the
-// socket events below are the only signal that redis went away, so log them.
 const createConnection = (label: string) => {
   const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
 
@@ -115,7 +112,6 @@ const createQueue = async <N extends JobName>(
     },
   );
 
-  // without these the worker can stop consuming jobs without logging anything
   worker.on('error', (error) => {
     logger.error('error in worker', { queue: name, err: inspectError(error) });
   });
