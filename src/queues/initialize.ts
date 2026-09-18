@@ -20,8 +20,7 @@ import { handleExit, logRejections } from '../utils/functions.js';
 import logger, { inspectError } from '../utils/logger.js';
 
 // only safe on connections that never issue a blocking command: it destroys
-// the socket when no data arrives while a command is in flight, and bzpopmin /
-// xread are silent for seconds at a time by design
+// the socket when no data arrives while a command is in flight
 const NON_BLOCKING_SOCKET_TIMEOUT_MS = 10_000;
 
 const createConnection = (label: string, options?: RedisOptions) => {
@@ -46,8 +45,6 @@ const createConnection = (label: string, options?: RedisOptions) => {
   return connection;
 };
 
-// the queues only issue non-blocking commands over this connection, and bullmq
-// does not duplicate it
 const sharedConnection = createConnection('shared', {
   socketTimeout: NON_BLOCKING_SOCKET_TIMEOUT_MS,
 });
@@ -150,8 +147,6 @@ export type QueueMap = {
 export const initialize = async () => {
   const queues = {} as QueueMap;
 
-  // FlowProducer is non-blocking and is not duplicated, so a hung addBulk here
-  // surfaces as a rejection instead of stalling the scheduler worker forever
   const flowConnection = createConnection('flow', {
     socketTimeout: NON_BLOCKING_SOCKET_TIMEOUT_MS,
   });
