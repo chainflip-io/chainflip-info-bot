@@ -1,5 +1,5 @@
 import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Worker } from 'bullmq';
-import { Redis } from 'ioredis';
+import { Redis, type RedisOptions } from 'ioredis';
 import { config as liquidationStatusCheckConfig } from './liquidationStatusCheck.js';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
@@ -19,8 +19,16 @@ import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger, { inspectError } from '../utils/logger.js';
 
-const createConnection = (label: string) => {
-  const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
+// only safe on connections that never issue a blocking command: it destroys
+// the socket when no data arrives while a command is in flight
+const NON_BLOCKING_SOCKET_TIMEOUT_MS = 10_000;
+
+const createConnection = (label: string, options?: RedisOptions) => {
+  const connection = new Redis(env.REDIS_URL, {
+    maxRetriesPerRequest: null,
+    keepAlive: 30_000,
+    ...options,
+  });
 
   connection.on('error', (err: unknown) => {
     logger.error('redis connection error', { connection: label, err: inspectError(err) });
@@ -37,7 +45,9 @@ const createConnection = (label: string) => {
   return connection;
 };
 
-const sharedConnection = createConnection('shared');
+const sharedConnection = createConnection('shared', {
+  socketTimeout: NON_BLOCKING_SOCKET_TIMEOUT_MS,
+});
 
 // we want to ensure that the bullmq queues, workers, and flows are closed in
 // the reverse order that they are created to ensure that any in progress jobs
@@ -137,7 +147,9 @@ export type QueueMap = {
 export const initialize = async () => {
   const queues = {} as QueueMap;
 
-  const flowConnection = createConnection('flow');
+  const flowConnection = createConnection('flow', {
+    socketTimeout: NON_BLOCKING_SOCKET_TIMEOUT_MS,
+  });
   const flow = new FlowProducer({ connection: flowConnection });
 
   cleanup.push(async () => {
