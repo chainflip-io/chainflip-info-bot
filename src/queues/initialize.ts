@@ -1,5 +1,5 @@
 import { FlowProducer, type JobsOptions, type Processor, Queue, QueueEvents, Worker } from 'bullmq';
-import { Redis, type RedisOptions } from 'ioredis';
+import { Redis } from 'ioredis';
 import { config as liquidationStatusCheckConfig } from './liquidationStatusCheck.js';
 import { config as messageRouterConfig } from './messageRouter.js';
 import { config as newBurnCheckConfig } from './newBurnCheck.js';
@@ -19,15 +19,15 @@ import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger, { inspectError } from '../utils/logger.js';
 
-// only safe on connections that never issue a blocking command: it destroys
-// the socket when no data arrives while a command is in flight
-const NON_BLOCKING_SOCKET_TIMEOUT_MS = 10_000;
+// destroys the socket when a command is in flight and no data comes back, so a
+// half-open connection surfaces as an error instead of hanging forever.
+const SOCKET_TIMEOUT_MS = 30_000;
 
-const createConnection = (label: string, options?: RedisOptions) => {
+const createConnection = (label: string) => {
   const connection = new Redis(env.REDIS_URL, {
     maxRetriesPerRequest: null,
     keepAlive: 30_000,
-    ...options,
+    socketTimeout: SOCKET_TIMEOUT_MS,
   });
 
   connection.on('error', (err: unknown) => {
@@ -45,9 +45,7 @@ const createConnection = (label: string, options?: RedisOptions) => {
   return connection;
 };
 
-const sharedConnection = createConnection('shared', {
-  socketTimeout: NON_BLOCKING_SOCKET_TIMEOUT_MS,
-});
+const sharedConnection = createConnection('shared');
 
 // we want to ensure that the bullmq queues, workers, and flows are closed in
 // the reverse order that they are created to ensure that any in progress jobs
@@ -147,9 +145,7 @@ export type QueueMap = {
 export const initialize = async () => {
   const queues = {} as QueueMap;
 
-  const flowConnection = createConnection('flow', {
-    socketTimeout: NON_BLOCKING_SOCKET_TIMEOUT_MS,
-  });
+  const flowConnection = createConnection('flow');
   const flow = new FlowProducer({ connection: flowConnection });
 
   cleanup.push(async () => {
