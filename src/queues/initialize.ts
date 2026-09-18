@@ -20,7 +20,10 @@ import { handleExit, logRejections } from '../utils/functions.js';
 import logger, { inspectError } from '../utils/logger.js';
 
 const createConnection = (label: string) => {
-  const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
+  const connection = new Redis(env.REDIS_URL, {
+    maxRetriesPerRequest: null,
+    keepAlive: 30_000,
+  });
 
   connection.on('error', (err: unknown) => {
     logger.error('redis connection error', { connection: label, err: inspectError(err) });
