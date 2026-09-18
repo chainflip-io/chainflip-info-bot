@@ -87,7 +87,7 @@ export const ASSET_REGISTRY: InternalAssetMap<AssetMeta> = {
   Bnb: { symbol: 'BNB', displayName: 'BNB', ...token('bnb') },
   BscUsdt: {
     symbol: 'USDT',
-    displayName: 'USDT (BSC)',
+    displayName: 'USDT (BNB)',
     ...token('usdt'),
     chainBadgePath: bscChain,
   },
