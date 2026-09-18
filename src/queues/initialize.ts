@@ -17,10 +17,30 @@ import { config as swapStatusCheckConfig } from './swapStatusCheck.js';
 import { config as timePeriodStatsConfig } from './timePeriodStats.js';
 import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
-import logger from '../utils/logger.js';
+import logger, { inspectError } from '../utils/logger.js';
 
-const createConnection = () => new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
-const sharedConnection = createConnection();
+// bullmq requires `maxRetriesPerRequest: null`, which means a broken connection
+// never surfaces as a command error -- commands queue up silently instead. the
+// socket events below are the only signal that redis went away, so log them.
+const createConnection = (label: string) => {
+  const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
+
+  connection.on('error', (err: unknown) => {
+    logger.error('redis connection error', { connection: label, err: inspectError(err) });
+  });
+
+  connection.on('reconnecting', (delay: number) => {
+    logger.warn('redis connection reconnecting', { connection: label, delay });
+  });
+
+  connection.on('end', () => {
+    logger.warn('redis connection ended', { connection: label });
+  });
+
+  return connection;
+};
+
+const sharedConnection = createConnection('shared');
 
 // we want to ensure that the bullmq queues, workers, and flows are closed in
 // the reverse order that they are created to ensure that any in progress jobs
@@ -73,7 +93,7 @@ const createQueue = async <N extends JobName>(
 
   await initialize?.(queue);
 
-  const eventsConnection = createConnection();
+  const eventsConnection = createConnection(`${name}:events`);
   const events = new QueueEvents(name, { connection: eventsConnection });
 
   events.on('deduplicated', (info) => {
@@ -84,7 +104,7 @@ const createQueue = async <N extends JobName>(
     logger.error('error in queue', { error, queue: name });
   });
 
-  const workerConnection = createConnection();
+  const workerConnection = createConnection(`${name}:worker`);
   const worker = new Worker<JobData[N], void, N>(
     name,
     logRejections(name, processJob(dispatchJobs)),
@@ -94,6 +114,15 @@ const createQueue = async <N extends JobName>(
       removeOnFail: { count: 100 },
     },
   );
+
+  // without these the worker can stop consuming jobs without logging anything
+  worker.on('error', (error) => {
+    logger.error('error in worker', { queue: name, err: inspectError(error) });
+  });
+
+  worker.on('stalled', (jobId) => {
+    logger.warn('job stalled in worker', { queue: name, jobId });
+  });
 
   cleanup.push(async () => {
     await queue.close();
@@ -112,7 +141,7 @@ export type QueueMap = {
 export const initialize = async () => {
   const queues = {} as QueueMap;
 
-  const flowConnection = createConnection();
+  const flowConnection = createConnection('flow');
   const flow = new FlowProducer({ connection: flowConnection });
 
   cleanup.push(async () => {
