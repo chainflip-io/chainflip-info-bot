@@ -45,8 +45,8 @@ export const SwapBanner = (props: SwapBannerProps) => {
         color: 'white',
       }}
     >
-      {/* The tier 2/3/4 top pill is baked into the background; the record caption sits under it,
-          so the number's marginTop shrinks to keep it in the same Y-position. */}
+      {/* The top pill is baked into the background; records add a code-drawn "NEW RECORD"
+          caption below it, so the USD value's marginTop shrinks to hold the same Y-position. */}
       {props.isRecord && (
         <div style={{ display: 'flex', marginTop: 250 }}>
           <RecordCaption />
