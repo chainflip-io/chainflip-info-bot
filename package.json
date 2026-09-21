@@ -40,15 +40,15 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@bull-board/api": "^8.1.2",
-    "@bull-board/fastify": "^8.1.2",
+    "@bull-board/api": "^9.10.1",
+    "@bull-board/fastify": "^9.10.1",
     "@chainflip/delegation": "2.3.0-dev.1",
     "@chainflip/utils": "2.3.1",
     "@date-fns/utc": "^2.1.1",
     "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.19.0",
-    "bullmq": "^5.80.11",
     "bignumber.js": "^11.1.5",
+    "bullmq": "^6.3.8",
     "date-fns": "^4.4.0",
     "discord.js": "^14.27.0",
     "dotenv": "^17.4.2",
@@ -59,9 +59,9 @@
     "oauth-1.0a": "^2.2.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "safe-stable-stringify": "^2.4.3",
     "satori": "^0.33.4",
     "winston": "^3.17.0",
-    "zod": "^4.5.4",
-    "safe-stable-stringify": "^2.4.3"
+    "zod": "^4.5.4"
   }
 }
