@@ -25,7 +25,7 @@ const [btcLarge, btcSmall, usdtLarge, usdtSmall, tronChain, swapIcon, boltIcon, 
     asset('chains/tron.png'),
     asset('swap-icon.png'),
     asset('tokens/bolt.png'),
-    asset('backgrounds/tier1-boosted.png'),
+    asset('backgrounds/regular-swap-boosted.png'),
   ]);
 
 const props: SwapBannerTier1Props = {

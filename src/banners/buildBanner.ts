@@ -27,7 +27,9 @@ export type SwapBannerData = {
   isRecord?: boolean;
 };
 
-const tierFor = (usdValue: number) =>
+export type Tier = 1 | 2 | 3 | 4;
+
+export const tierFor = (usdValue: number): Tier =>
   usdValue >= TIER_3_THRESHOLD
     ? 4
     : usdValue >= TIER_2_THRESHOLD
@@ -36,11 +38,25 @@ const tierFor = (usdValue: number) =>
         ? 2
         : 1;
 
+// Maps a tier to its background file basename (no extension).
+// Tiers 1–3 are the "regular / large / mega swap" classes with regular/boosted variants;
+// tier 4 and records share the single gold "giga swap" background (records add a code-drawn
+// "NEW RECORD" caption on top — see SwapBanner).
+const TIER_TO_BASE_FILENAME: Record<Tier, string> = {
+  1: 'regular-swap',
+  2: 'large-swap',
+  3: 'mega-swap',
+  4: 'giga-swap',
+};
+
+export const backgroundFileFor = (tier: Tier, isBoosted: boolean, isRecord = false): string => {
+  if (isRecord || tier === 4) return 'giga-swap';
+  return `${TIER_TO_BASE_FILENAME[tier]}-${isBoosted ? 'boosted' : 'regular'}`;
+};
+
 export const buildBanner = async (data: SwapBannerData): Promise<Buffer> => {
   const tier = tierFor(data.usdValue);
-  const variant = data.isBoosted ? 'boosted' : 'regular';
-  // Records are always giga swaps, so they share the tier-4 background.
-  const backgroundFile = data.isRecord || tier === 4 ? 'tier4' : `tier${tier}-${variant}`;
+  const backgroundFile = backgroundFileFor(tier, data.isBoosted, data.isRecord);
 
   const [source, dest, swapIconUrl, boltIconUrl, backgroundUrl] = await Promise.all([
     loadAsset(data.sourceAsset),
