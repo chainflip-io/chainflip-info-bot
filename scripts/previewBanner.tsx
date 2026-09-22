@@ -33,12 +33,12 @@ const [
   tier4Golden,
   boltIcon,
 ] = await Promise.all([
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Regular swap_Regular.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Regular swap_Boosted.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Large swap_Regular.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Large swap_Boosted.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Mega swap_Regular.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Mega swap_Boosted.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/regular-swap-regular.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/regular-swap-boosted.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/large-swap-regular.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/large-swap-boosted.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/mega-swap-regular.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/mega-swap-boosted.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/bitcoin-small.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/eth-small.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/usdt-small.png')),
@@ -53,7 +53,7 @@ const [
   fileToDataUrl(join(root, 'src/assets/tokens/bnb-small.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/cbbtc-small.png')),
   fileToDataUrl(join(root, 'src/assets/chains/bsc.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/Giga swap_Regular & Boosted.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/giga-swap-regular-boosted.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/bolt.png')),
 ]);
 

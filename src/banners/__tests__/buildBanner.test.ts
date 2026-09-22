@@ -24,20 +24,20 @@ describe('tierFor', () => {
 
 describe('backgroundFileFor', () => {
   it('picks the swap-class background per tier and variant', () => {
-    expect(backgroundFileFor(1, false)).toBe('Regular swap_Regular');
-    expect(backgroundFileFor(1, true)).toBe('Regular swap_Boosted');
-    expect(backgroundFileFor(2, false)).toBe('Large swap_Regular');
-    expect(backgroundFileFor(2, true)).toBe('Large swap_Boosted');
-    expect(backgroundFileFor(3, false)).toBe('Mega swap_Regular');
-    expect(backgroundFileFor(3, true)).toBe('Mega swap_Boosted');
+    expect(backgroundFileFor(1, false)).toBe('regular-swap-regular');
+    expect(backgroundFileFor(1, true)).toBe('regular-swap-boosted');
+    expect(backgroundFileFor(2, false)).toBe('large-swap-regular');
+    expect(backgroundFileFor(2, true)).toBe('large-swap-boosted');
+    expect(backgroundFileFor(3, false)).toBe('mega-swap-regular');
+    expect(backgroundFileFor(3, true)).toBe('mega-swap-boosted');
   });
 
-  it('uses the shared gold Giga background for tier 4 and for records', () => {
-    expect(backgroundFileFor(4, false)).toBe('Giga swap_Regular & Boosted');
-    expect(backgroundFileFor(4, true)).toBe('Giga swap_Regular & Boosted');
+  it('uses the shared gold giga background for tier 4 and for records', () => {
+    expect(backgroundFileFor(4, false)).toBe('giga-swap-regular-boosted');
+    expect(backgroundFileFor(4, true)).toBe('giga-swap-regular-boosted');
     // Records (any tier) share the same gold background.
-    expect(backgroundFileFor(2, false, true)).toBe('Giga swap_Regular & Boosted');
-    expect(backgroundFileFor(4, false, true)).toBe('Giga swap_Regular & Boosted');
+    expect(backgroundFileFor(2, false, true)).toBe('giga-swap-regular-boosted');
+    expect(backgroundFileFor(4, false, true)).toBe('giga-swap-regular-boosted');
   });
 
   it('resolves to a background file that exists on disk for every case', () => {
