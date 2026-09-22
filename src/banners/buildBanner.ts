@@ -37,13 +37,13 @@ const tierFor = (usdValue: number) =>
         : 1;
 
 // Maps a tier + variant to its background file (basename, no extension).
-// Tiers 1–3 are the "Regular / Large / Largest swap" classes with Regular/Boosted variants;
+// Tiers 1–3 are the "Regular / Large / Mega swap" classes with Regular/Boosted variants;
 // tier 4 and records share the single gold "Giga swap" background (records add a code-drawn
 // "NEW RECORD" caption on top — see SwapBanner).
 const TIER_CLASS: Record<1 | 2 | 3, string> = {
   1: 'Regular swap',
   2: 'Large swap',
-  3: 'Largest swap',
+  3: 'Mega swap',
 };
 
 const backgroundFileFor = (tier: number, isBoosted: boolean, isRecord = false): string => {
