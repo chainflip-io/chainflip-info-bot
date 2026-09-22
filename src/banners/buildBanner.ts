@@ -27,7 +27,7 @@ export type SwapBannerData = {
   isRecord?: boolean;
 };
 
-const tierFor = (usdValue: number) =>
+export const tierFor = (usdValue: number) =>
   usdValue >= TIER_3_THRESHOLD
     ? 4
     : usdValue >= TIER_2_THRESHOLD
@@ -46,7 +46,7 @@ const TIER_CLASS: Record<1 | 2 | 3, string> = {
   3: 'Mega swap',
 };
 
-const backgroundFileFor = (tier: number, isBoosted: boolean, isRecord = false): string => {
+export const backgroundFileFor = (tier: number, isBoosted: boolean, isRecord = false): string => {
   if (isRecord || tier === 4) return 'Giga swap_Regular & Boosted';
   return `${TIER_CLASS[tier as 1 | 2 | 3]}_${isBoosted ? 'Boosted' : 'Regular'}`;
 };
