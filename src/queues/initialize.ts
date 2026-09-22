@@ -19,15 +19,10 @@ import env from '../env.js';
 import { handleExit, logRejections } from '../utils/functions.js';
 import logger, { inspectError } from '../utils/logger.js';
 
-// destroys the socket when a command is in flight and no data comes back, so a
-// half-open connection surfaces as an error instead of hanging forever.
-const SOCKET_TIMEOUT_MS = 30_000;
-
 const createConnection = (label: string) => {
   const connection = new Redis(env.REDIS_URL, {
     maxRetriesPerRequest: null,
     keepAlive: 30_000,
-    socketTimeout: SOCKET_TIMEOUT_MS,
   });
 
   connection.on('error', (err: unknown) => {
