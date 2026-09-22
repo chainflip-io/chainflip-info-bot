@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
   backgroundFileFor,
+  type Tier,
   TIER_1_THRESHOLD,
   TIER_2_THRESHOLD,
   TIER_3_THRESHOLD,
@@ -33,15 +34,15 @@ describe('backgroundFileFor', () => {
   });
 
   it('uses the shared gold giga background for tier 4 and for records', () => {
-    expect(backgroundFileFor(4, false)).toBe('giga-swap-regular-boosted');
-    expect(backgroundFileFor(4, true)).toBe('giga-swap-regular-boosted');
+    expect(backgroundFileFor(4, false)).toBe('giga-swap');
+    expect(backgroundFileFor(4, true)).toBe('giga-swap');
     // Records (any tier) share the same gold background.
-    expect(backgroundFileFor(2, false, true)).toBe('giga-swap-regular-boosted');
-    expect(backgroundFileFor(4, false, true)).toBe('giga-swap-regular-boosted');
+    expect(backgroundFileFor(2, false, true)).toBe('giga-swap');
+    expect(backgroundFileFor(4, false, true)).toBe('giga-swap');
   });
 
   it('resolves to a background file that exists on disk for every case', () => {
-    const cases: [number, boolean, boolean][] = [
+    const cases: [Tier, boolean, boolean][] = [
       [1, false, false],
       [1, true, false],
       [2, false, false],

@@ -53,7 +53,7 @@ const [
   fileToDataUrl(join(root, 'src/assets/tokens/bnb-small.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/cbbtc-small.png')),
   fileToDataUrl(join(root, 'src/assets/chains/bsc.png')),
-  fileToDataUrl(join(root, 'src/assets/backgrounds/giga-swap-regular-boosted.png')),
+  fileToDataUrl(join(root, 'src/assets/backgrounds/giga-swap.png')),
   fileToDataUrl(join(root, 'src/assets/tokens/bolt.png')),
 ]);
 
