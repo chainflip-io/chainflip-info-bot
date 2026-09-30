@@ -2,6 +2,7 @@ import axios, { isAxiosError } from 'axios';
 import { UnrecoverableError } from 'bullmq';
 import crypto from 'crypto';
 import OAuth from 'oauth-1.0a';
+import logger from '../utils/logger.js';
 
 export type TwitterConfig = {
   consumerKey: string;
@@ -36,9 +37,15 @@ const buildAuthHeader = (token: TwitterConfig, url: string, method: 'POST'): str
     .Authorization;
 };
 
-const rethrowRateLimit = (error: unknown): never => {
-  if (isAxiosError(error) && error.response?.status === 429) {
-    throw new UnrecoverableError('twitter rate limit hit');
+const handleTwitterError = (error: unknown, context: string): never => {
+  if (isAxiosError(error)) {
+    logger.error(`twitter ${context} failed`, {
+      status: error.response?.status,
+      data: error.response?.data as unknown,
+    });
+    if (error.response?.status === 429) {
+      throw new UnrecoverableError('twitter rate limit hit');
+    }
   }
   throw error;
 };
@@ -63,7 +70,7 @@ export const uploadMedia = async (token: TwitterConfig, image: Buffer): Promise<
       },
     });
   } catch (error) {
-    rethrowRateLimit(error);
+    handleTwitterError(error, 'media upload');
   }
 
   const mediaId = response?.data.media_id_string;
@@ -91,7 +98,7 @@ export const sendMessage = async (token: TwitterConfig, text: string, image?: Bu
       },
     });
   } catch (error) {
-    rethrowRateLimit(error);
+    handleTwitterError(error, 'tweet create');
   }
 
   const formattedResponse = response?.data.data as { id: string; text: string };
