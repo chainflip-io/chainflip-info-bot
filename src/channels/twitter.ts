@@ -37,8 +37,6 @@ const buildAuthHeader = (token: TwitterConfig, url: string, method: 'POST'): str
     .Authorization;
 };
 
-// Logs the Twitter API's response body (which carries the real reason, e.g. the
-// detail behind a 403) since axios only surfaces "Request failed with status code N".
 const handleTwitterError = (error: unknown, context: string): never => {
   if (isAxiosError(error)) {
     logger.error(`twitter ${context} failed`, {
