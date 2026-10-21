@@ -30,11 +30,11 @@ const createConnection = (label: string) => {
   });
 
   connection.on('reconnecting', (delay: number) => {
-    logger.warn('redis connection reconnecting', { connection: label, delay });
+    logger.debug('redis connection reconnecting', { connection: label, delay });
   });
 
   connection.on('end', () => {
-    logger.warn('redis connection ended', { connection: label });
+    logger.debug('redis connection ended', { connection: label });
   });
 
   return connection;
