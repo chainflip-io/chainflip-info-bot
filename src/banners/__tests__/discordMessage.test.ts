@@ -128,8 +128,145 @@ describe('formatDiscordMessage — X-only copy', () => {
     ).not.toContain('vs market');
   });
 
+  it('leads tier 2+ headlines with a verb on X', () => {
+    const big = { ...bnbInput, usdValue: 1_310_000, sourceAsset: 'Eth' as const };
+    expect(formatDiscordMessage({ ...big, platform: 'twitter' })).toMatch(
+      /^\$1\.31M swapped cross-chain in 3 minutes\./,
+    );
+    expect(formatDiscordMessage(big)).toMatch(/^\$1\.31M cross-chain in 3 minutes\./);
+  });
+
   it('leaves Discord copy unchanged', () => {
     const discord = formatDiscordMessage(bnbInput);
     expect(discord).toContain('-0.04% vs market');
+  });
+
+  it('formats small swaps: USD headline, cashtag on the bought asset', () => {
+    expect(
+      formatDiscordMessage({
+        ...bnbInput,
+        oraclePriceDeltaPct: 0.08,
+        affiliateAlias: 'Trezor',
+        platform: 'twitter',
+      }),
+    ).toMatchInlineSnapshot(`
+      "$182K swapped cross-chain in 3 minutes via @Trezor.
+
+      285.4 BNB → 1.92 BTC, +0.08% vs market.
+
+      https://scan.chainflip.io/swaps/1"
+    `);
+  });
+
+  it('formats boosted swaps with the unboosted time', () => {
+    expect(
+      formatDiscordMessage({
+        usdValue: 241_000,
+        sourceAsset: 'Btc',
+        sourceAmount: 2.54,
+        destAsset: 'BscUsdt',
+        destAmount: 241_000,
+        swapId: '2',
+        durationMinutes: 4,
+        originalDurationMinutes: 24,
+        isBoosted: true,
+        oraclePriceDeltaPct: 0.03,
+        affiliateAlias: 'Trust Wallet',
+        platform: 'twitter',
+      }),
+    ).toMatchInlineSnapshot(`
+      "$241K swapped cross-chain in 4 minutes via @TrustWallet.
+
+      2.54 BTC → 241K USDT (BNB), +0.03% vs market.
+      Boost: Settled in 4 min vs 24 standard.
+
+      https://scan.chainflip.io/swaps/2"
+    `);
+  });
+
+  it('formats big swaps with integrator and broker', () => {
+    expect(
+      formatDiscordMessage({
+        usdValue: 2_420_000,
+        sourceAsset: 'BscUsdt',
+        sourceAmount: 2_420_000,
+        destAsset: 'Cbbtc',
+        destAmount: 25.5,
+        swapId: '3',
+        durationMinutes: 6,
+        isBoosted: false,
+        oraclePriceDeltaPct: 0.05,
+        affiliateAlias: 'Trezor',
+        brokerAlias: 'SwapKit',
+        platform: 'twitter',
+      }),
+    ).toMatchInlineSnapshot(`
+      "$2.42M swapped cross-chain in 6 minutes via @Trezor, routed through @SwapKitPowered.
+
+      2.42M USDT (BNB) → 25.5 cbBTC, +0.05% vs market.
+
+      https://scan.chainflip.io/swaps/3"
+    `);
+  });
+
+  it('tags the integrator on record posts', () => {
+    expect(
+      formatDiscordMessage({
+        usdValue: 5_100_000,
+        sourceAsset: 'Btc',
+        sourceAmount: 53.7,
+        destAsset: 'Eth',
+        destAmount: 1_640,
+        swapId: '4',
+        durationMinutes: 9,
+        isBoosted: false,
+        oraclePriceDeltaPct: 0.01,
+        isRecord: true,
+        affiliateAlias: 'Trezor',
+        platform: 'twitter',
+      }),
+    ).toMatchInlineSnapshot(`
+      "New record: $5.1M cross-chain swap on @Trezor via Chainflip.
+
+      53.7 BTC → 1,640 ETH in 9 minutes, +0.01% vs market.
+
+      https://scan.chainflip.io/swaps/4"
+    `);
+  });
+
+  describe('Boost line', () => {
+    const boosted: DiscordMessageInput = {
+      usdValue: 241_000,
+      sourceAsset: 'Btc',
+      sourceAmount: 2.54,
+      destAsset: 'BscUsdt',
+      destAmount: 241_000,
+      swapId: '2',
+      durationMinutes: 4,
+      isBoosted: true,
+      originalDurationMinutes: 24,
+      platform: 'twitter',
+    };
+    const boostLine = (input: Partial<DiscordMessageInput>) =>
+      formatDiscordMessage({ ...boosted, ...input }).split('\n')[3];
+
+    it('alternates between time saved and multiplier by swap id', () => {
+      expect(boostLine({ swapId: '2' })).toBe('Boost: Settled in 4 min vs 24 standard.');
+      expect(boostLine({ swapId: '3' })).toBe('Boosted: 6x faster than a normal BTC deposit.');
+    });
+
+    it('falls back to time saved when the speedup is under 2x', () => {
+      expect(boostLine({ swapId: '3', durationMinutes: 15 })).toBe(
+        'Boost: Settled in 15 min vs 24 standard.',
+      );
+    });
+
+    it('says just "Boosted." without an unboosted time', () => {
+      expect(boostLine({ originalDurationMinutes: undefined })).toBe('Boosted.');
+    });
+
+    it('handles sub-minute boosted swaps', () => {
+      expect(boostLine({ durationMinutes: 0.5 })).toBe('Boost: Settled in 30s vs 24 min standard.');
+    });
   });
 });
