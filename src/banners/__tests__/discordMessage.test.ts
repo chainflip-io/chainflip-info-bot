@@ -118,11 +118,11 @@ describe('formatDiscordMessage — X-only copy', () => {
     oraclePriceDeltaPct: -0.04,
   };
 
-  it('leaves price vs market to the banner on X', () => {
+  it('hides negative oracle delta on X but keeps positive ones', () => {
     expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).not.toContain('vs market');
     expect(
       formatDiscordMessage({ ...bnbInput, oraclePriceDeltaPct: 0.08, platform: 'twitter' }),
-    ).not.toContain('vs market');
+    ).toContain('+0.08% vs market');
     expect(
       formatDiscordMessage({ ...bnbInput, usdValue: 1_310_000, platform: 'twitter' }),
     ).not.toContain('vs market');
@@ -150,7 +150,9 @@ describe('formatDiscordMessage — X-only copy', () => {
         platform: 'twitter',
       }),
     ).toMatchInlineSnapshot(`
-      "$182K BNB → BTC in 3 minutes via @Trezor.
+      "$182K swapped cross-chain in 3 minutes via @Trezor.
+
+      285.4 BNB → 1.92 BTC, +0.08% vs market.
 
       https://scan.chainflip.io/swaps/1"
     `);
@@ -173,7 +175,9 @@ describe('formatDiscordMessage — X-only copy', () => {
         platform: 'twitter',
       }),
     ).toMatchInlineSnapshot(`
-      "$241K BTC → USDT in 4 minutes via @TrustWallet, with Boost (normally ~24 min).
+      "$241K swapped cross-chain in 4 minutes via @TrustWallet, with Boost (normally ~24 min).
+
+      2.54 BTC → 241K USDT (BNB), +0.03% vs market.
 
       https://scan.chainflip.io/swaps/2"
     `);
@@ -197,6 +201,8 @@ describe('formatDiscordMessage — X-only copy', () => {
       }),
     ).toMatchInlineSnapshot(`
       "$2.42M swapped cross-chain in 6 minutes via @Trezor, routed through @SwapKitPowered.
+
+      2.42M USDT (BNB) → 25.5 cbBTC, +0.05% vs market.
 
       https://scan.chainflip.io/swaps/3"
     `);

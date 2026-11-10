@@ -301,12 +301,14 @@ const formatForPlatform = (input: DiscordMessageInput): string => {
   return tier23(input, pair);
 };
 
-// X copy: the banner already shows amounts, price and time, so the caption is just
-// the headline (USD, who, Boost) and the explorer link. Records also get the pair line.
+// X copy, one shape for every size:
+//   <headline: USD, time, who, Boost>
+//
+//   <pair, price vs market>
+//
+//   <explorer link>
 const formatXMessage = (input: DiscordMessageInput): string => {
   const usd = formatUsdCopy(input.usdValue);
-  const src = ASSET_REGISTRY[input.sourceAsset];
-  const dest = ASSET_REGISTRY[input.destAsset];
 
   const parties = resolveParties(input.brokerAlias, input.affiliateAlias);
   const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
@@ -318,32 +320,27 @@ const formatXMessage = (input: DiscordMessageInput): string => {
       ? `, with Boost (normally ~${formatDurationShortCopy(input.originalDurationMinutes)})`
       : ', with Boost'
     : '';
+  // Negative deltas are already stripped by the caller.
+  const delta =
+    input.oraclePriceDeltaPct !== undefined
+      ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
+      : '';
+  const pair = `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${formatAmount(input.destAsset, input.destAmount)}`;
 
   let headline: string;
+  let detail: string;
   if (input.isRecord) {
     // The swap happens on the integrator's app, with Chainflip as the rails.
     const where = parties ? ` on ${parties.primary} via Chainflip${routed}` : ' on Chainflip';
     headline = `New record: ${usd} swapped cross-chain${where}.`;
+    detail = `${pair}${inDuration}${delta}.`;
   } else {
     const via = parties ? ` via ${parties.primary}${routed}` : '';
-    const what =
-      tierOf(input.usdValue) === 1 ? `${src.symbol} → ${dest.symbol}` : 'swapped cross-chain';
-    headline = `${usd} ${what}${inDuration}${via}${boost}.`;
+    headline = `${usd} swapped cross-chain${inDuration}${via}${boost}.`;
+    detail = `${pair}${delta}.`;
   }
 
-  if (input.isRecord) {
-    // Records get the full pair line: it's the post people screenshot.
-    const delta =
-      input.oraclePriceDeltaPct !== undefined
-        ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
-        : '';
-    const pair = `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${formatAmount(input.destAsset, input.destAmount)}`;
-    return [headline, '', `${pair}${inDuration}${delta}.`, '', `${SCAN_BASE}/${input.swapId}`].join(
-      '\n',
-    );
-  }
-
-  return [headline, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
+  return [headline, '', detail, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
 };
 
 export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
