@@ -221,6 +221,8 @@ describe('formatDiscordMessage — X-only copy', () => {
     ).toMatchInlineSnapshot(`
       "New record: $5.1M swapped cross-chain on @Trezor via Chainflip.
 
+      53.7 BTC → 1,640 ETH in 9 minutes, +0.01% vs market.
+
       https://scan.chainflip.io/swaps/4"
     `);
   });

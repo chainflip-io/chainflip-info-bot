@@ -302,7 +302,7 @@ const formatForPlatform = (input: DiscordMessageInput): string => {
 };
 
 // X copy: the banner already shows amounts, price and time, so the caption is just
-// the headline (USD, who, Boost) and the explorer link.
+// the headline (USD, who, Boost) and the explorer link. Records also get the pair line.
 const formatXMessage = (input: DiscordMessageInput): string => {
   const usd = formatUsdCopy(input.usdValue);
   const src = ASSET_REGISTRY[input.sourceAsset];
@@ -329,6 +329,18 @@ const formatXMessage = (input: DiscordMessageInput): string => {
     const what =
       tierOf(input.usdValue) === 1 ? `${src.symbol} → ${dest.symbol}` : 'swapped cross-chain';
     headline = `${usd} ${what}${inDuration}${via}${boost}.`;
+  }
+
+  if (input.isRecord) {
+    // Records get the full pair line: it's the post people screenshot.
+    const delta =
+      input.oraclePriceDeltaPct !== undefined
+        ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
+        : '';
+    const pair = `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${formatAmount(input.destAsset, input.destAmount)}`;
+    return [headline, '', `${pair}${inDuration}${delta}.`, '', `${SCAN_BASE}/${input.swapId}`].join(
+      '\n',
+    );
   }
 
   return [headline, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
