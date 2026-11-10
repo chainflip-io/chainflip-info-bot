@@ -167,15 +167,15 @@ describe('lookupUserIds', () => {
       data: {
         data: [
           { id: '1', username: 'BNBCHAIN' },
-          { id: '2', username: 'Tether_to' },
+          { id: '2', username: 'tether' },
         ],
       },
     });
 
-    expect(await lookupUserIds(config, ['Tether_to', 'BNBCHAIN', 'gone'])).toEqual(['2', '1']);
+    expect(await lookupUserIds(config, ['tether', 'BNBCHAIN', 'gone'])).toEqual(['2', '1']);
     expect(getMock).toHaveBeenCalledTimes(1);
     expect(getMock.mock.calls[0]?.[0]).toBe(
-      'https://api.twitter.com/2/users/by?usernames=tether_to,bnbchain,gone',
+      'https://api.twitter.com/2/users/by?usernames=tether,bnbchain,gone',
     );
 
     expect(await lookupUserIds(config, ['bnbchain', 'gone'])).toEqual(['1']);

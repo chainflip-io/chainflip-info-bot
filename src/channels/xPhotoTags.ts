@@ -7,7 +7,7 @@ import {
 // Accounts tagged in the banner photo on X (not in the caption, so no characters used).
 // null = no official account worth tagging.
 const CHAIN_HANDLES: Record<AnyChainflipChain, string | null> = {
-  Bitcoin: null, // no official account; @Bitcoin is community-run
+  Bitcoin: 'Bitcoin',
   Ethereum: 'ethereum',
   Arbitrum: 'arbitrum',
   Solana: 'solana',
@@ -19,16 +19,16 @@ const CHAIN_HANDLES: Record<AnyChainflipChain, string | null> = {
 
 // Issuer accounts for non-native assets. Native coins (ETH, SOL, BNB...) use the chain.
 const ASSET_ISSUER_HANDLES: Partial<Record<ChainflipAsset, string>> = {
-  Usdt: 'Tether_to',
-  ArbUsdt: 'Tether_to',
-  SolUsdt: 'Tether_to',
-  HubUsdt: 'Tether_to',
-  TrxUsdt: 'Tether_to',
-  BscUsdt: 'Tether_to',
-  Usdc: 'circle',
-  ArbUsdc: 'circle',
-  SolUsdc: 'circle',
-  HubUsdc: 'circle',
+  Usdt: 'tether',
+  ArbUsdt: 'tether',
+  SolUsdt: 'tether',
+  HubUsdt: 'tether',
+  TrxUsdt: 'tether',
+  BscUsdt: 'tether',
+  Usdc: 'USDC',
+  ArbUsdc: 'USDC',
+  SolUsdc: 'USDC',
+  HubUsdc: 'USDC',
   Cbbtc: 'coinbase',
   Wbtc: 'WrappedBTC',
 };

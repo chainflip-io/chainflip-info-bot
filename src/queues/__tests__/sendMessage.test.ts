@@ -195,7 +195,7 @@ describe('sendMessage', () => {
     vi.mocked(axios.get).mockResolvedValueOnce({
       data: {
         data: [
-          { id: '10', username: 'Tether_to' },
+          { id: '10', username: 'tether' },
           { id: '20', username: 'BNBCHAIN' },
           { id: '30', username: 'coinbase' },
           { id: '40', username: 'ethereum' },

@@ -4,19 +4,19 @@ import { photoTagHandlesFor } from '../xPhotoTags.js';
 describe('photoTagHandlesFor', () => {
   it('tags source asset, source chain, then destination asset and chain', () => {
     expect(photoTagHandlesFor('BscUsdt', 'Cbbtc')).toEqual([
-      'Tether_to',
+      'tether',
       'BNBCHAIN',
       'coinbase',
       'ethereum',
     ]);
   });
 
-  it('uses the chain for native coins and skips Bitcoin', () => {
-    expect(photoTagHandlesFor('Btc', 'Bnb')).toEqual(['BNBCHAIN']);
+  it('uses the chain for native coins', () => {
+    expect(photoTagHandlesFor('Btc', 'Bnb')).toEqual(['Bitcoin', 'BNBCHAIN']);
     expect(photoTagHandlesFor('Eth', 'Sol')).toEqual(['ethereum', 'solana']);
   });
 
   it('dedupes repeated accounts', () => {
-    expect(photoTagHandlesFor('Usdt', 'Usdc')).toEqual(['Tether_to', 'ethereum', 'circle']);
+    expect(photoTagHandlesFor('Usdt', 'Usdc')).toEqual(['tether', 'ethereum', 'USDC']);
   });
 });
