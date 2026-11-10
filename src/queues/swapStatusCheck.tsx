@@ -246,6 +246,7 @@ const buildMessageData = async ({
                 ? Number(swapInfo.oraclePriceDeltaPercentage)
                 : undefined,
               isRecord: platform === 'twitter' && banner.isRecord,
+              platform,
             })
           : renderDefaultMessage(platform, swapInfo);
 

@@ -91,9 +91,67 @@ describe('formatDiscordMessage — aggregator handle resolution', () => {
     expect(message).not.toContain('🧙');
   });
 
+  it('tags @Trezor as affiliate or broker', () => {
+    expect(formatDiscordMessage({ ...baseInput, affiliateAlias: 'Trezor' })).toContain(
+      'via @Trezor',
+    );
+    expect(formatDiscordMessage({ ...baseInput, brokerAlias: 'Trezor' })).toContain('via @Trezor');
+  });
+
   it('falls back to the cleaned name for an unknown alias', () => {
     const message = formatDiscordMessage({ ...baseInput, affiliateAlias: 'SomeNewDex 🚀' });
     expect(message).toContain('via SomeNewDex');
     expect(message).not.toContain('🚀');
+  });
+});
+
+describe('formatDiscordMessage — X-only copy', () => {
+  const bnbInput: DiscordMessageInput = {
+    usdValue: 182_400,
+    sourceAsset: 'Bnb',
+    sourceAmount: 285.4,
+    destAsset: 'Btc',
+    destAmount: 1.92,
+    swapId: '1',
+    durationMinutes: 3,
+    isBoosted: false,
+    oraclePriceDeltaPct: -0.04,
+  };
+
+  it('tags @BNBCHAIN on X when a swap touches BNB Chain', () => {
+    expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).toMatchInlineSnapshot(`
+      "285.4 BNB → 1.92 BTC.
+      Settled in 3 minutes.
+      Native swap on @BNBCHAIN.
+
+      https://scan.chainflip.io/swaps/1"
+    `);
+    expect(
+      formatDiscordMessage({
+        ...bnbInput,
+        sourceAsset: 'Eth',
+        destAsset: 'BscUsdt',
+        platform: 'twitter',
+      }),
+    ).toContain('@BNBCHAIN');
+    expect(
+      formatDiscordMessage({ ...bnbInput, sourceAsset: 'Eth', platform: 'twitter' }),
+    ).not.toContain('@BNBCHAIN');
+  });
+
+  it('hides negative oracle delta on X but keeps positive ones', () => {
+    expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).not.toContain('vs market');
+    expect(
+      formatDiscordMessage({ ...bnbInput, oraclePriceDeltaPct: 0.08, platform: 'twitter' }),
+    ).toContain('+0.08% vs market');
+    expect(
+      formatDiscordMessage({ ...bnbInput, usdValue: 1_310_000, platform: 'twitter' }),
+    ).not.toContain('vs market');
+  });
+
+  it('leaves Discord copy unchanged', () => {
+    const discord = formatDiscordMessage(bnbInput);
+    expect(discord).toContain('-0.04% vs market');
+    expect(discord).not.toContain('@BNBCHAIN');
   });
 });

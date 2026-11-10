@@ -131,11 +131,13 @@ export const SwapBanner = (props: SwapBannerProps) => {
         )}
       </div>
 
-      <div style={{ display: 'flex', marginTop: 30 }}>
-        <Pill fontSize={35} theme={theme}>
-          Oracle price delta: {formatPercentDelta(props.oraclePriceDeltaPct)}
-        </Pill>
-      </div>
+      {props.oraclePriceDeltaPct >= 0 && (
+        <div style={{ display: 'flex', marginTop: 30 }}>
+          <Pill fontSize={35} theme={theme}>
+            Oracle price delta: {formatPercentDelta(props.oraclePriceDeltaPct)}
+          </Pill>
+        </div>
+      )}
     </div>
   );
 };

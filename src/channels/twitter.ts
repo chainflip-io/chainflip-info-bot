@@ -43,8 +43,14 @@ const handleTwitterError = (error: unknown, context: string): never => {
       status: error.response?.status,
       data: error.response?.data as unknown,
     });
-    if (error.response?.status === 429) {
+    const status = error.response?.status;
+    if (status === 429) {
       throw new UnrecoverableError('twitter rate limit hit');
+    }
+    // 4xx (bad request, auth, duplicate content, forbidden) will fail identically on
+    // every retry. Each X API call is billed, so don't burn 4 more attempts on them.
+    if (status !== undefined && status >= 400 && status < 500) {
+      throw new UnrecoverableError(`twitter ${context} rejected with status ${status}`);
     }
   }
   throw error;
@@ -80,10 +86,13 @@ export const uploadMedia = async (token: TwitterConfig, image: Buffer): Promise<
   return mediaId;
 };
 
-export const sendMessage = async (token: TwitterConfig, text: string, image?: Buffer) => {
+// `media` is either a PNG to upload or a media_id from a previous upload. Passing
+// the id lets callers reuse an upload across retries instead of paying for it again.
+export const sendMessage = async (token: TwitterConfig, text: string, media?: Buffer | string) => {
   const url = `https://api.twitter.com/2/tweets`;
 
-  const mediaId = image ? await uploadMedia(token, image) : undefined;
+  const mediaId =
+    typeof media === 'string' ? media : media ? await uploadMedia(token, media) : undefined;
 
   const payload = mediaId ? { text, media: { media_ids: [mediaId] } } : { text };
 

@@ -1,4 +1,4 @@
-import { type ChainflipAsset } from '@chainflip/utils/chainflip';
+import { assetConstants, type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { ASSET_REGISTRY } from './assetRegistry.js';
 import { TIER_1_THRESHOLD, TIER_2_THRESHOLD } from './buildBanner.js';
 import { normalizeAlias } from './format.js';
@@ -45,6 +45,36 @@ const INTEGRATOR_HANDLES: Record<string, string | null> = {
   'THORSwap UI': '@THORSwap',
   MakePay: '@MakePayio',
   HoudiniSwap: '@HoudiniSwap',
+  'MakePay.io - OM': '@MakePayio',
+  Trezor: '@Trezor',
+  // Ecosystem page integrators (chainflip.io/ecosystem, confirmed 2026-11-10).
+  '7.Exchange': '@7exchangedefi',
+  Bitget: '@BitgetWallet',
+  'Bitget Wallet': '@BitgetWallet',
+  Clypto: '@ClyptoApp',
+  DZap: '@dzap_io',
+  InstaSwap: '@instaswap_io',
+  Junction: '@junctionfi',
+  Multiswap: '@Multiswap_bot',
+  Ravn: '@ravnexchange',
+  Rhea: '@rhea_finance',
+  'Rhea Finance': '@rhea_finance',
+  Rift: '@rifthq',
+  Swappy: '@SwappyCrypto',
+  Vultisig: '@vultisig',
+  WAGMI: '@wagmidotglobal',
+  Xgram: '@xgram_io',
+  Howl: '@howldotfi',
+  Moca: '@mocadotapp',
+  'Shieldz Swap': '@shieldzcash',
+  Shieldz: '@shieldzcash',
+  'BCV Finance': '@bcvfinance',
+  BCV: '@bcvfinance',
+  // No X account: shown by name.
+  CrossEarn: null,
+  Portage: null,
+  'El Dorado': null,
+  Allblu: null,
 };
 
 // Resolves an alias to a display string. Returns null only for empty / 'unknown'.
@@ -129,7 +159,8 @@ const resolveParties = (
   affiliateAlias: string | undefined,
 ): { primary: string; secondary: string | null } | null => {
   const integrator = resolveAlias(INTEGRATOR_HANDLES, affiliateAlias);
-  const broker = resolveAlias(BROKER_HANDLES, brokerAlias);
+  // Many integrators run their own broker account, so fall back to integrator handles.
+  const broker = resolveAlias({ ...INTEGRATOR_HANDLES, ...BROKER_HANDLES }, brokerAlias);
   if (integrator && broker && integrator !== broker && !isChainflipDefaultBroker(brokerAlias)) {
     return { primary: integrator, secondary: broker };
   }
@@ -154,6 +185,19 @@ export type DiscordMessageInput = {
   originalDurationMinutes?: number;
   oraclePriceDeltaPct?: number;
   isRecord?: boolean;
+  // X gets its own copy tweaks; anything else keeps the Discord copy.
+  platform?: 'discord' | 'twitter';
+};
+
+// X only: chains whose official account we tag when a swap touches them.
+const CHAIN_X_HANDLES: Partial<Record<string, string>> = {
+  Bsc: '@BNBCHAIN',
+};
+
+const chainTagLine = (input: DiscordMessageInput): string | null => {
+  const chains = new Set([input.sourceAsset, input.destAsset].map((a) => assetConstants[a].chain));
+  const handles = [...chains].map((c) => CHAIN_X_HANDLES[c]).filter(Boolean);
+  return handles.length ? `Native swap on ${handles.join(' and ')}.` : null;
 };
 
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
@@ -256,7 +300,7 @@ const recordMessage = (input: DiscordMessageInput, pair: string): string => {
   ].join('\n');
 };
 
-export const formatDiscordMessage = (input: DiscordMessageInput): string => {
+const formatForPlatform = (input: DiscordMessageInput): string => {
   const pair = formatPair(input);
   if (input.isRecord) {
     return recordMessage(input, pair);
@@ -266,4 +310,21 @@ export const formatDiscordMessage = (input: DiscordMessageInput): string => {
     return input.isBoosted ? tier1Boosted(input, pair) : tier1Regular(input, pair);
   }
   return tier23(input, pair);
+};
+
+export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
+  if (rawInput.platform !== 'twitter') return formatForPlatform(rawInput);
+
+  // X only: don't advertise fills worse than the oracle price.
+  const input =
+    rawInput.oraclePriceDeltaPct !== undefined && rawInput.oraclePriceDeltaPct < 0
+      ? { ...rawInput, oraclePriceDeltaPct: undefined }
+      : rawInput;
+  const message = formatForPlatform(input);
+
+  const tag = chainTagLine(input);
+  if (!tag) return message;
+  // Insert the tag line just above the explorer link (always the last paragraph).
+  const linkAt = message.lastIndexOf('\n\n');
+  return `${message.slice(0, linkAt)}\n${tag}${message.slice(linkAt)}`;
 };

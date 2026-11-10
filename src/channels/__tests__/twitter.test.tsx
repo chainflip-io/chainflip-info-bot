@@ -116,4 +116,26 @@ describe('sendMessage', () => {
       `[UnrecoverableError: twitter rate limit hit]`,
     );
   });
+
+  it('does not retry other 4xx errors (e.g. duplicate content)', async () => {
+    const error = new AxiosError();
+    // @ts-expect-error -- mock
+    error.response = { status: 403 };
+    vi.mocked(axios.post).mockRejectedValueOnce(error);
+
+    await expect(sendMessage(config, 'hello world')).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[UnrecoverableError: twitter tweet create rejected with status 403]`,
+    );
+  });
+
+  it('accepts a pre-uploaded media_id without re-uploading', async () => {
+    const postMock = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await sendMessage(config, 'x', '42');
+
+    expect(postMock).toHaveBeenCalledTimes(1);
+    expect(postMock.mock.calls[0]?.[1]).toMatchObject({ media: { media_ids: ['42'] } });
+  });
 });
