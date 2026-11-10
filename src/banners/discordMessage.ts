@@ -252,12 +252,10 @@ const tier23 = (input: DiscordMessageInput, pair: string): string => {
       ? ` (vs ${formatDurationShortCopy(input.originalDurationMinutes)} native)`
       : '';
 
-  // X leads with a verb so the headline reads as a sentence in the feed.
-  const crossChain = input.platform === 'twitter' ? 'swapped cross-chain' : 'cross-chain';
   const headline = input.isBoosted
-    ? `${usd} ${crossChain}${inDuration} via Boost${nativeClause}.`
+    ? `${usd} cross-chain${inDuration} via Boost${nativeClause}.`
     : inDuration
-      ? `${usd} ${crossChain}${inDuration}.`
+      ? `${usd} cross-chain${inDuration}.`
       : `${usd} swap.`;
 
   const lines: string[] = [headline, '', `${pair}${route}.`];
@@ -283,7 +281,7 @@ const recordMessage = (input: DiscordMessageInput, pair: string): string => {
   }
 
   return [
-    `New record: ${usd} ${input.platform === 'twitter' ? 'swapped cross-chain' : 'cross-chain'} on Chainflip.`,
+    `New record: ${usd} cross-chain on Chainflip.`,
     '',
     `${detail}.`,
     '',
@@ -303,6 +301,58 @@ const formatForPlatform = (input: DiscordMessageInput): string => {
   return tier23(input, pair);
 };
 
+// X copy: one shape for every size.
+//   <headline: USD, time, who>
+//
+//   <pair (bought asset as a cashtag), price vs market>
+//
+//   <explorer link>
+const formatXMessage = (input: DiscordMessageInput): string => {
+  const usd = formatUsdCopy(input.usdValue);
+  const src = ASSET_REGISTRY[input.sourceAsset];
+  const dest = ASSET_REGISTRY[input.destAsset];
+
+  const parties = resolveParties(input.brokerAlias, input.affiliateAlias);
+  const via = parties
+    ? ` via ${parties.primary}${parties.secondary ? `, routed through ${parties.secondary}` : ''}`
+    : '';
+  const inDuration =
+    input.durationMinutes !== undefined ? ` in ${formatDurationCopy(input.durationMinutes)}` : '';
+  const boost = input.isBoosted
+    ? input.originalDurationMinutes !== undefined &&
+      input.originalDurationMinutes !== input.durationMinutes
+      ? `, with Boost (normally ~${formatDurationShortCopy(input.originalDurationMinutes)})`
+      : ', with Boost'
+    : '';
+  // Negative deltas are already stripped by the caller.
+  const delta =
+    input.oraclePriceDeltaPct !== undefined
+      ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
+      : '';
+
+  // One cashtag only: the asset that was bought.
+  const bought = formatAmount(input.destAsset, input.destAmount).replace(
+    dest.displayName,
+    () => `$${dest.displayName}`,
+  );
+  const pair = `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${bought}`;
+
+  let headline: string;
+  let detail: string;
+  if (input.isRecord) {
+    headline = `New record: ${usd} swapped cross-chain on Chainflip${via}.`;
+    detail = `${pair}${inDuration}${delta}.`;
+  } else if (tierOf(input.usdValue) === 1) {
+    headline = `${usd} ${src.symbol} → ${dest.symbol}${inDuration}${via}${boost}.`;
+    detail = `${pair}${delta}.`;
+  } else {
+    headline = `${usd} swapped cross-chain${inDuration}${via}${boost}.`;
+    detail = `${pair}${delta}.`;
+  }
+
+  return [headline, '', detail, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
+};
+
 export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
   if (rawInput.platform !== 'twitter') return formatForPlatform(rawInput);
 
@@ -311,5 +361,5 @@ export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
     rawInput.oraclePriceDeltaPct !== undefined && rawInput.oraclePriceDeltaPct < 0
       ? { ...rawInput, oraclePriceDeltaPct: undefined }
       : rawInput;
-  return formatForPlatform(input);
+  return formatXMessage(input);
 };
