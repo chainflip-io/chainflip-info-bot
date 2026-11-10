@@ -301,10 +301,30 @@ const formatForPlatform = (input: DiscordMessageInput): string => {
   return tier23(input, pair);
 };
 
+// X Boost line. Alternates between two phrasings by swap id, so a retried post
+// renders the same text.
+const formatXBoostLine = (input: DiscordMessageInput): string => {
+  const boosted = input.durationMinutes;
+  const normal = input.originalDurationMinutes;
+  if (boosted === undefined || normal === undefined || normal <= boosted) return 'Boosted.';
+
+  const speedup = boosted > 0 ? normal / boosted : 0;
+  const multiplier = Math.round(speedup);
+  const useMultiplier = Number(input.swapId) % 2 === 1 && speedup >= 2;
+  if (useMultiplier) {
+    const src = ASSET_REGISTRY[input.sourceAsset];
+    return `Boosted: ${multiplier}x faster than a normal ${src.symbol} deposit.`;
+  }
+
+  const standard = boosted >= 1 ? `${Math.round(normal)}` : formatDurationShortCopy(normal);
+  return `Boost: Settled in ${formatDurationShortCopy(boosted)} vs ${standard} standard.`;
+};
+
 // X copy, one shape for every size:
-//   <headline: USD, time, who, Boost>
+//   <headline: USD, time, who>
 //
 //   <pair, price vs market>
+//   [Boost line]
 //
 //   <explorer link>
 const formatXMessage = (input: DiscordMessageInput): string => {
@@ -314,12 +334,6 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
   const inDuration =
     input.durationMinutes !== undefined ? ` in ${formatDurationCopy(input.durationMinutes)}` : '';
-  const boost = input.isBoosted
-    ? input.originalDurationMinutes !== undefined &&
-      input.originalDurationMinutes !== input.durationMinutes
-      ? `, with Boost (normally ~${formatDurationShortCopy(input.originalDurationMinutes)})`
-      : ', with Boost'
-    : '';
   // Negative deltas are already stripped by the caller.
   const delta =
     input.oraclePriceDeltaPct !== undefined
@@ -332,13 +346,14 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   if (input.isRecord) {
     // The swap happens on the integrator's app, with Chainflip as the rails.
     const where = parties ? ` on ${parties.primary} via Chainflip${routed}` : ' on Chainflip';
-    headline = `New record: ${usd} swapped cross-chain${where}.`;
+    headline = `New record: ${usd} cross-chain swap${where}.`;
     detail = `${pair}${inDuration}${delta}.`;
   } else {
     const via = parties ? ` via ${parties.primary}${routed}` : '';
-    headline = `${usd} swapped cross-chain${inDuration}${via}${boost}.`;
+    headline = `${usd} swapped cross-chain${inDuration}${via}.`;
     detail = `${pair}${delta}.`;
   }
+  if (input.isBoosted) detail += `\n${formatXBoostLine(input)}`;
 
   return [headline, '', detail, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
 };

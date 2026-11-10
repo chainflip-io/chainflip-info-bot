@@ -175,9 +175,10 @@ describe('formatDiscordMessage — X-only copy', () => {
         platform: 'twitter',
       }),
     ).toMatchInlineSnapshot(`
-      "$241K swapped cross-chain in 4 minutes via @TrustWallet, with Boost (normally ~24 min).
+      "$241K swapped cross-chain in 4 minutes via @TrustWallet.
 
       2.54 BTC → 241K USDT (BNB), +0.03% vs market.
+      Boost: Settled in 4 min vs 24 standard.
 
       https://scan.chainflip.io/swaps/2"
     `);
@@ -225,11 +226,47 @@ describe('formatDiscordMessage — X-only copy', () => {
         platform: 'twitter',
       }),
     ).toMatchInlineSnapshot(`
-      "New record: $5.1M swapped cross-chain on @Trezor via Chainflip.
+      "New record: $5.1M cross-chain swap on @Trezor via Chainflip.
 
       53.7 BTC → 1,640 ETH in 9 minutes, +0.01% vs market.
 
       https://scan.chainflip.io/swaps/4"
     `);
+  });
+
+  describe('Boost line', () => {
+    const boosted: DiscordMessageInput = {
+      usdValue: 241_000,
+      sourceAsset: 'Btc',
+      sourceAmount: 2.54,
+      destAsset: 'BscUsdt',
+      destAmount: 241_000,
+      swapId: '2',
+      durationMinutes: 4,
+      isBoosted: true,
+      originalDurationMinutes: 24,
+      platform: 'twitter',
+    };
+    const boostLine = (input: Partial<DiscordMessageInput>) =>
+      formatDiscordMessage({ ...boosted, ...input }).split('\n')[3];
+
+    it('alternates between time saved and multiplier by swap id', () => {
+      expect(boostLine({ swapId: '2' })).toBe('Boost: Settled in 4 min vs 24 standard.');
+      expect(boostLine({ swapId: '3' })).toBe('Boosted: 6x faster than a normal BTC deposit.');
+    });
+
+    it('falls back to time saved when the speedup is under 2x', () => {
+      expect(boostLine({ swapId: '3', durationMinutes: 15 })).toBe(
+        'Boost: Settled in 15 min vs 24 standard.',
+      );
+    });
+
+    it('says just "Boosted." without an unboosted time', () => {
+      expect(boostLine({ originalDurationMinutes: undefined })).toBe('Boosted.');
+    });
+
+    it('handles sub-minute boosted swaps', () => {
+      expect(boostLine({ durationMinutes: 0.5 })).toBe('Boost: Settled in 30s vs 24 min standard.');
+    });
   });
 });
