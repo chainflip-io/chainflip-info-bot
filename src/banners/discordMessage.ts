@@ -301,21 +301,15 @@ const formatForPlatform = (input: DiscordMessageInput): string => {
   return tier23(input, pair);
 };
 
-// X copy: one shape for every size.
-//   <headline: USD, time, who>
-//
-//   <pair (bought asset as a cashtag), price vs market>
-//
-//   <explorer link>
+// X copy: the banner already shows amounts, price and time, so the caption is just
+// the headline (USD, who, Boost) and the explorer link.
 const formatXMessage = (input: DiscordMessageInput): string => {
   const usd = formatUsdCopy(input.usdValue);
   const src = ASSET_REGISTRY[input.sourceAsset];
   const dest = ASSET_REGISTRY[input.destAsset];
 
   const parties = resolveParties(input.brokerAlias, input.affiliateAlias);
-  const via = parties
-    ? ` via ${parties.primary}${parties.secondary ? `, routed through ${parties.secondary}` : ''}`
-    : '';
+  const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
   const inDuration =
     input.durationMinutes !== undefined ? ` in ${formatDurationCopy(input.durationMinutes)}` : '';
   const boost = input.isBoosted
@@ -324,33 +318,20 @@ const formatXMessage = (input: DiscordMessageInput): string => {
       ? `, with Boost (normally ~${formatDurationShortCopy(input.originalDurationMinutes)})`
       : ', with Boost'
     : '';
-  // Negative deltas are already stripped by the caller.
-  const delta =
-    input.oraclePriceDeltaPct !== undefined
-      ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
-      : '';
-
-  // One cashtag only: the asset that was bought.
-  const bought = formatAmount(input.destAsset, input.destAmount).replace(
-    dest.displayName,
-    () => `$${dest.displayName}`,
-  );
-  const pair = `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${bought}`;
 
   let headline: string;
-  let detail: string;
   if (input.isRecord) {
-    headline = `New record: ${usd} swapped cross-chain on Chainflip${via}.`;
-    detail = `${pair}${inDuration}${delta}.`;
-  } else if (tierOf(input.usdValue) === 1) {
-    headline = `${usd} ${src.symbol} → ${dest.symbol}${inDuration}${via}${boost}.`;
-    detail = `${pair}${delta}.`;
+    // The swap happens on the integrator's app, with Chainflip as the rails.
+    const where = parties ? ` on ${parties.primary} via Chainflip${routed}` : ' on Chainflip';
+    headline = `New record: ${usd} swapped cross-chain${where}.`;
   } else {
-    headline = `${usd} swapped cross-chain${inDuration}${via}${boost}.`;
-    detail = `${pair}${delta}.`;
+    const via = parties ? ` via ${parties.primary}${routed}` : '';
+    const what =
+      tierOf(input.usdValue) === 1 ? `${src.symbol} → ${dest.symbol}` : 'swapped cross-chain';
+    headline = `${usd} ${what}${inDuration}${via}${boost}.`;
   }
 
-  return [headline, '', detail, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
+  return [headline, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
 };
 
 export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
