@@ -118,27 +118,6 @@ describe('formatDiscordMessage — X-only copy', () => {
     oraclePriceDeltaPct: -0.04,
   };
 
-  it('tags @BNBCHAIN on X when a swap touches BNB Chain', () => {
-    expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).toMatchInlineSnapshot(`
-      "285.4 BNB → 1.92 BTC.
-      Settled in 3 minutes.
-      Native swap on @BNBCHAIN.
-
-      https://scan.chainflip.io/swaps/1"
-    `);
-    expect(
-      formatDiscordMessage({
-        ...bnbInput,
-        sourceAsset: 'Eth',
-        destAsset: 'BscUsdt',
-        platform: 'twitter',
-      }),
-    ).toContain('@BNBCHAIN');
-    expect(
-      formatDiscordMessage({ ...bnbInput, sourceAsset: 'Eth', platform: 'twitter' }),
-    ).not.toContain('@BNBCHAIN');
-  });
-
   it('hides negative oracle delta on X but keeps positive ones', () => {
     expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).not.toContain('vs market');
     expect(
@@ -152,6 +131,5 @@ describe('formatDiscordMessage — X-only copy', () => {
   it('leaves Discord copy unchanged', () => {
     const discord = formatDiscordMessage(bnbInput);
     expect(discord).toContain('-0.04% vs market');
-    expect(discord).not.toContain('@BNBCHAIN');
   });
 });

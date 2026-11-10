@@ -1,4 +1,4 @@
-import { assetConstants, type ChainflipAsset } from '@chainflip/utils/chainflip';
+import { type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { ASSET_REGISTRY } from './assetRegistry.js';
 import { TIER_1_THRESHOLD, TIER_2_THRESHOLD } from './buildBanner.js';
 import { normalizeAlias } from './format.js';
@@ -189,17 +189,6 @@ export type DiscordMessageInput = {
   platform?: 'discord' | 'twitter';
 };
 
-// X only: chains whose official account we tag when a swap touches them.
-const CHAIN_X_HANDLES: Partial<Record<string, string>> = {
-  Bsc: '@BNBCHAIN',
-};
-
-const chainTagLine = (input: DiscordMessageInput): string | null => {
-  const chains = new Set([input.sourceAsset, input.destAsset].map((a) => assetConstants[a].chain));
-  const handles = [...chains].map((c) => CHAIN_X_HANDLES[c]).filter(Boolean);
-  return handles.length ? `Native swap on ${handles.join(' and ')}.` : null;
-};
-
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
   usdValue >= TIER_2_THRESHOLD ? 3 : usdValue >= TIER_1_THRESHOLD ? 2 : 1;
 
@@ -320,11 +309,5 @@ export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
     rawInput.oraclePriceDeltaPct !== undefined && rawInput.oraclePriceDeltaPct < 0
       ? { ...rawInput, oraclePriceDeltaPct: undefined }
       : rawInput;
-  const message = formatForPlatform(input);
-
-  const tag = chainTagLine(input);
-  if (!tag) return message;
-  // Insert the tag line just above the explorer link (always the last paragraph).
-  const linkAt = message.lastIndexOf('\n\n');
-  return `${message.slice(0, linkAt)}\n${tag}${message.slice(linkAt)}`;
+  return formatForPlatform(input);
 };

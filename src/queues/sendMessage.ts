@@ -2,7 +2,12 @@ import { type JobConfig, type JobProcessor } from './initialize.js';
 import { buildBanner, type SwapBannerData } from '../banners/buildBanner.js';
 import { type DiscordConfig, sendMessage as sendDiscordMessage } from '../channels/discord.js';
 import { sendMessage as sendTelegramMessage } from '../channels/telegram.js';
-import { sendMessage as sendTwitterMessage, uploadMedia } from '../channels/twitter.js';
+import {
+  lookupUserIds,
+  sendMessage as sendTwitterMessage,
+  uploadMedia,
+} from '../channels/twitter.js';
+import { photoTagHandlesFor } from '../channels/xPhotoTags.js';
 import Config, { type ConfigKey } from '../config.js';
 
 const name = 'sendMessage';
@@ -66,7 +71,10 @@ const processJob: JobProcessor<typeof name> = (dispatchJobs) => async (job) => {
       // re-rendering and re-uploading (both a billed X API call and CPU).
       await job.updateData?.({ ...job.data, twitterMediaId: mediaId });
     }
-    await sendTwitterMessage(config, message, mediaId);
+    const taggedUserIds = banner
+      ? await lookupUserIds(config, photoTagHandlesFor(banner.sourceAsset, banner.destAsset))
+      : [];
+    await sendTwitterMessage(config, message, mediaId, taggedUserIds);
   } else {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     throw new Error(`Invalid config type: ${(config as any).type}`);

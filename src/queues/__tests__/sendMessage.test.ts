@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Client, type TextChannel } from 'discord.js';
 import { describe, expect, it, vi } from 'vitest';
 import { client } from '../../channels/discord.js';
+import { clearUserIdCache } from '../../channels/twitter.js';
 import { config } from '../sendMessage.js';
 
 describe('sendMessage', () => {
@@ -187,5 +188,44 @@ describe('sendMessage', () => {
     const urls = postSpy.mock.calls.map((c) => c[0]);
     expect(urls.filter((u) => u.includes('media/upload'))).toHaveLength(1);
     expect(postSpy.mock.lastCall?.[1]).toMatchObject({ media: { media_ids: ['555'] } });
+  });
+
+  it('photo-tags the source and destination asset/chain accounts on X', async () => {
+    clearUserIdCache();
+    vi.mocked(axios.get).mockResolvedValueOnce({
+      data: {
+        data: [
+          { id: '10', username: 'Tether_to' },
+          { id: '20', username: 'BNBCHAIN' },
+          { id: '30', username: 'coinbase' },
+          { id: '40', username: 'ethereum' },
+        ],
+      },
+    });
+    const postSpy = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await config.processJob(vi.fn())({
+      data: {
+        key: 'twitter:twitter_1',
+        message: 'x',
+        twitterMediaId: '99',
+        banner: {
+          usdValue: 2_420_000,
+          isBoosted: false,
+          sourceAsset: 'BscUsdt',
+          sourceAmount: 2_420_000,
+          destAsset: 'Cbbtc',
+          destAmount: 25.5,
+          oraclePriceDeltaPct: 0.05,
+        },
+      } as JobData['sendMessage'],
+    } as any);
+
+    expect(postSpy.mock.lastCall?.[1]).toEqual({
+      text: 'x',
+      media: { media_ids: ['99'], tagged_user_ids: ['10', '20', '30', '40'] },
+    });
   });
 });

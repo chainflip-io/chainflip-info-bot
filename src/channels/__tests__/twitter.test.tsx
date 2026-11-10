@@ -2,7 +2,7 @@
 import axios, { AxiosError } from 'axios';
 import { vi, describe, it, expect } from 'vitest';
 import { renderForPlatform } from '../formatting.js';
-import { sendMessage } from '../twitter.js';
+import { clearUserIdCache, lookupUserIds, sendMessage } from '../twitter.js';
 
 describe('sendMessage', () => {
   const config = {
@@ -137,5 +137,54 @@ describe('sendMessage', () => {
 
     expect(postMock).toHaveBeenCalledTimes(1);
     expect(postMock.mock.calls[0]?.[1]).toMatchObject({ media: { media_ids: ['42'] } });
+  });
+
+  it('attaches photo tags to the media', async () => {
+    const postMock = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await sendMessage(config, 'x', '42', ['111', '222']);
+
+    expect(postMock.mock.calls[0]?.[1]).toEqual({
+      text: 'x',
+      media: { media_ids: ['42'], tagged_user_ids: ['111', '222'] },
+    });
+  });
+});
+
+describe('lookupUserIds', () => {
+  const config = {
+    consumerKey: 'a',
+    consumerKeySecret: 'b',
+    oauthKey: 'c',
+    oauthKeySecret: 'd',
+  };
+
+  it('batches lookups, caches results and skips unknown handles', async () => {
+    clearUserIdCache();
+    const getMock = vi.mocked(axios.get).mockResolvedValueOnce({
+      data: {
+        data: [
+          { id: '1', username: 'BNBCHAIN' },
+          { id: '2', username: 'Tether_to' },
+        ],
+      },
+    });
+
+    expect(await lookupUserIds(config, ['Tether_to', 'BNBCHAIN', 'gone'])).toEqual(['2', '1']);
+    expect(getMock).toHaveBeenCalledTimes(1);
+    expect(getMock.mock.calls[0]?.[0]).toBe(
+      'https://api.twitter.com/2/users/by?usernames=tether_to,bnbchain,gone',
+    );
+
+    expect(await lookupUserIds(config, ['bnbchain', 'gone'])).toEqual(['1']);
+    expect(getMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns no tags when the lookup fails', async () => {
+    clearUserIdCache();
+    vi.mocked(axios.get).mockRejectedValueOnce(new Error('boom'));
+    expect(await lookupUserIds(config, ['solana'])).toEqual([]);
   });
 });
