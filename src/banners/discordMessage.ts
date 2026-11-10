@@ -252,10 +252,12 @@ const tier23 = (input: DiscordMessageInput, pair: string): string => {
       ? ` (vs ${formatDurationShortCopy(input.originalDurationMinutes)} native)`
       : '';
 
+  // X leads with a verb so the headline reads as a sentence in the feed.
+  const crossChain = input.platform === 'twitter' ? 'swapped cross-chain' : 'cross-chain';
   const headline = input.isBoosted
-    ? `${usd} cross-chain${inDuration} via Boost${nativeClause}.`
+    ? `${usd} ${crossChain}${inDuration} via Boost${nativeClause}.`
     : inDuration
-      ? `${usd} cross-chain${inDuration}.`
+      ? `${usd} ${crossChain}${inDuration}.`
       : `${usd} swap.`;
 
   const lines: string[] = [headline, '', `${pair}${route}.`];
@@ -281,7 +283,7 @@ const recordMessage = (input: DiscordMessageInput, pair: string): string => {
   }
 
   return [
-    `New record: ${usd} cross-chain on Chainflip.`,
+    `New record: ${usd} ${input.platform === 'twitter' ? 'swapped cross-chain' : 'cross-chain'} on Chainflip.`,
     '',
     `${detail}.`,
     '',

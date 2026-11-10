@@ -128,6 +128,14 @@ describe('formatDiscordMessage — X-only copy', () => {
     ).not.toContain('vs market');
   });
 
+  it('leads tier 2+ headlines with a verb on X', () => {
+    const big = { ...bnbInput, usdValue: 1_310_000, sourceAsset: 'Eth' as const };
+    expect(formatDiscordMessage({ ...big, platform: 'twitter' })).toMatch(
+      /^\$1\.31M swapped cross-chain in 3 minutes\./,
+    );
+    expect(formatDiscordMessage(big)).toMatch(/^\$1\.31M cross-chain in 3 minutes\./);
+  });
+
   it('leaves Discord copy unchanged', () => {
     const discord = formatDiscordMessage(bnbInput);
     expect(discord).toContain('-0.04% vs market');
