@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Client, type TextChannel } from 'discord.js';
 import { describe, expect, it, vi } from 'vitest';
 import { client } from '../../channels/discord.js';
+import { clearUserIdCache } from '../../channels/twitter.js';
 import { config } from '../sendMessage.js';
 
 describe('sendMessage', () => {
@@ -150,5 +151,81 @@ describe('sendMessage', () => {
         },
       },
     ]);
+  });
+
+  it('reuses an uploaded banner media_id when a twitter job retries', async () => {
+    const postSpy = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { media_id_string: '555' } })
+      .mockRejectedValueOnce(new Error('network blip'))
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'banner' } } });
+
+    const job = {
+      data: {
+        key: 'twitter:twitter_1',
+        message: 'banner',
+        banner: {
+          usdValue: 150_000,
+          isBoosted: false,
+          sourceAsset: 'Bnb',
+          sourceAmount: 200,
+          destAsset: 'Cbbtc',
+          destAmount: 1.5,
+          oraclePriceDeltaPct: 0.1,
+        },
+      } as JobData['sendMessage'],
+      updateData: vi.fn((data: JobData['sendMessage']) => {
+        job.data = data;
+        return Promise.resolve();
+      }),
+    };
+
+    await expect(config.processJob(vi.fn())(job as any)).rejects.toThrow('network blip');
+    expect(job.data.twitterMediaId).toBe('555');
+
+    await config.processJob(vi.fn())(job as any);
+
+    const urls = postSpy.mock.calls.map((c) => c[0]);
+    expect(urls.filter((u) => u.includes('media/upload'))).toHaveLength(1);
+    expect(postSpy.mock.lastCall?.[1]).toMatchObject({ media: { media_ids: ['555'] } });
+  });
+
+  it('photo-tags the source and destination asset/chain accounts on X', async () => {
+    clearUserIdCache();
+    vi.mocked(axios.get).mockResolvedValueOnce({
+      data: {
+        data: [
+          { id: '10', username: 'tether' },
+          { id: '20', username: 'BNBCHAIN' },
+          { id: '30', username: 'coinbase' },
+          { id: '40', username: 'ethereum' },
+        ],
+      },
+    });
+    const postSpy = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await config.processJob(vi.fn())({
+      data: {
+        key: 'twitter:twitter_1',
+        message: 'x',
+        twitterMediaId: '99',
+        banner: {
+          usdValue: 2_420_000,
+          isBoosted: false,
+          sourceAsset: 'BscUsdt',
+          sourceAmount: 2_420_000,
+          destAsset: 'Cbbtc',
+          destAmount: 25.5,
+          oraclePriceDeltaPct: 0.05,
+        },
+      } as JobData['sendMessage'],
+    } as any);
+
+    expect(postSpy.mock.lastCall?.[1]).toEqual({
+      text: 'x',
+      media: { media_ids: ['99'], tagged_user_ids: ['10', '20', '30', '40'] },
+    });
   });
 });

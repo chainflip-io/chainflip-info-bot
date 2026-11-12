@@ -2,7 +2,7 @@
 import axios, { AxiosError } from 'axios';
 import { vi, describe, it, expect } from 'vitest';
 import { renderForPlatform } from '../formatting.js';
-import { sendMessage } from '../twitter.js';
+import { clearUserIdCache, lookupUserIds, sendMessage } from '../twitter.js';
 
 describe('sendMessage', () => {
   const config = {
@@ -115,5 +115,116 @@ describe('sendMessage', () => {
     await expect(sendMessage(config, 'hello world')).rejects.toThrowErrorMatchingInlineSnapshot(
       `[UnrecoverableError: twitter rate limit hit]`,
     );
+  });
+
+  it('does not retry other 4xx errors (e.g. duplicate content)', async () => {
+    const error = new AxiosError();
+    // @ts-expect-error -- mock
+    error.response = { status: 403 };
+    vi.mocked(axios.post).mockRejectedValueOnce(error);
+
+    await expect(sendMessage(config, 'hello world')).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[UnrecoverableError: twitter tweet create rejected with status 403]`,
+    );
+  });
+
+  it('accepts a pre-uploaded media_id without re-uploading', async () => {
+    const postMock = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await sendMessage(config, 'x', '42');
+
+    expect(postMock).toHaveBeenCalledTimes(1);
+    expect(postMock.mock.calls[0]?.[1]).toMatchObject({ media: { media_ids: ['42'] } });
+  });
+
+  it('attaches photo tags to the media', async () => {
+    const postMock = vi
+      .mocked(axios.post)
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await sendMessage(config, 'x', '42', ['111', '222']);
+
+    expect(postMock.mock.calls[0]?.[1]).toEqual({
+      text: 'x',
+      media: { media_ids: ['42'], tagged_user_ids: ['111', '222'] },
+    });
+  });
+});
+
+describe('sendMessage photo tag fallback', () => {
+  const config = { consumerKey: 'a', consumerKeySecret: 'b', oauthKey: 'c', oauthKeySecret: 'd' };
+  const rejection = (status: number) => {
+    const error = new AxiosError();
+    // @ts-expect-error -- mock
+    error.response = { status, data: { detail: 'nope' } };
+    return error;
+  };
+
+  it('re-posts without tags when X rejects a tagged tweet', async () => {
+    const postMock = vi
+      .mocked(axios.post)
+      .mockRejectedValueOnce(rejection(400))
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await sendMessage(config, 'x', '42', ['111']);
+
+    expect(postMock).toHaveBeenCalledTimes(2);
+    expect(postMock.mock.calls[0]?.[1]).toEqual({
+      text: 'x',
+      media: { media_ids: ['42'], tagged_user_ids: ['111'] },
+    });
+    expect(postMock.mock.calls[1]?.[1]).toEqual({ text: 'x', media: { media_ids: ['42'] } });
+  });
+
+  it('does not re-post on a rate limit', async () => {
+    const postMock = vi.mocked(axios.post).mockRejectedValueOnce(rejection(429));
+
+    await expect(sendMessage(config, 'x', '42', ['111'])).rejects.toThrow('rate limit');
+    expect(postMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not re-post an untagged tweet', async () => {
+    const postMock = vi.mocked(axios.post).mockRejectedValueOnce(rejection(403));
+
+    await expect(sendMessage(config, 'x', '42')).rejects.toThrow('403');
+    expect(postMock).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('lookupUserIds', () => {
+  const config = {
+    consumerKey: 'a',
+    consumerKeySecret: 'b',
+    oauthKey: 'c',
+    oauthKeySecret: 'd',
+  };
+
+  it('batches lookups, caches results and skips unknown handles', async () => {
+    clearUserIdCache();
+    const getMock = vi.mocked(axios.get).mockResolvedValueOnce({
+      data: {
+        data: [
+          { id: '1', username: 'BNBCHAIN' },
+          { id: '2', username: 'tether' },
+        ],
+      },
+    });
+
+    expect(await lookupUserIds(config, ['tether', 'BNBCHAIN', 'gone'])).toEqual(['2', '1']);
+    expect(getMock).toHaveBeenCalledTimes(1);
+    expect(getMock.mock.calls[0]?.[0]).toBe(
+      'https://api.twitter.com/2/users/by?usernames=tether,bnbchain,gone',
+    );
+
+    expect(await lookupUserIds(config, ['bnbchain', 'gone'])).toEqual(['1']);
+    expect(getMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns no tags when the lookup fails', async () => {
+    clearUserIdCache();
+    vi.mocked(axios.get).mockRejectedValueOnce(new Error('boom'));
+    expect(await lookupUserIds(config, ['solana'])).toEqual([]);
   });
 });
