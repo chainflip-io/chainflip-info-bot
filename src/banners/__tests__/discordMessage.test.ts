@@ -226,7 +226,7 @@ describe('formatDiscordMessage — X-only copy', () => {
         platform: 'twitter',
       }),
     ).toMatchInlineSnapshot(`
-      "New record: $5.1M cross-chain swap on @Trezor via Chainflip.
+      "New record: $5.1M cross-chain swap on @Trezor via @Chainflip.
 
       53.7 BTC → 1,640 ETH in 9 minutes, +0.01% vs market.
 
@@ -250,7 +250,7 @@ describe('formatDiscordMessage — X-only copy', () => {
         platform: 'twitter',
       }),
     ).toMatchInlineSnapshot(`
-      "New record: $5.17M cross-chain swap on Chainflip.
+      "New record: $5.17M cross-chain swap on @Chainflip.
 
       70.37 BTC → 2,499 ETH in 2h 41m.
 

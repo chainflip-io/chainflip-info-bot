@@ -354,11 +354,11 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   let detail: string;
   if (input.isRecord) {
     // The swap happens on the integrator's app, with Chainflip as the rails.
-    // Swaps through our own app just say "on Chainflip".
+    // Swaps through our own app just say "on @Chainflip".
     const where =
       parties && parties.primary !== '@Chainflip'
-        ? ` on ${parties.primary} via Chainflip${routed}`
-        : ' on Chainflip';
+        ? ` on ${parties.primary} via @Chainflip${routed}`
+        : ' on @Chainflip';
     headline = `New record: ${usd} cross-chain swap${where}.`;
     detail = `${pair}${inDuration}${delta}.`;
   } else {
