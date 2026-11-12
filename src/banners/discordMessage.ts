@@ -45,6 +45,36 @@ const INTEGRATOR_HANDLES: Record<string, string | null> = {
   'THORSwap UI': '@THORSwap',
   MakePay: '@MakePayio',
   HoudiniSwap: '@HoudiniSwap',
+  'MakePay.io - OM': '@MakePayio',
+  Trezor: '@Trezor',
+  // Ecosystem page integrators (chainflip.io/ecosystem, confirmed 2026-11-10).
+  '7.Exchange': '@7exchangedefi',
+  Bitget: '@BitgetWallet',
+  'Bitget Wallet': '@BitgetWallet',
+  Clypto: '@ClyptoApp',
+  DZap: '@dzap_io',
+  InstaSwap: '@instaswap_io',
+  Junction: '@junctionfi',
+  Multiswap: '@Multiswap_bot',
+  Ravn: '@ravnexchange',
+  Rhea: '@rhea_finance',
+  'Rhea Finance': '@rhea_finance',
+  Rift: '@rifthq',
+  Swappy: '@SwappyCrypto',
+  Vultisig: '@vultisig',
+  WAGMI: '@wagmidotglobal',
+  Xgram: '@xgram_io',
+  Howl: '@howldotfi',
+  Moca: '@mocadotapp',
+  'Shieldz Swap': '@shieldzcash',
+  Shieldz: '@shieldzcash',
+  'BCV Finance': '@bcvfinance',
+  BCV: '@bcvfinance',
+  // No X account: shown by name.
+  CrossEarn: null,
+  Portage: null,
+  'El Dorado': null,
+  Allblu: null,
 };
 
 // Resolves an alias to a display string. Returns null only for empty / 'unknown'.
@@ -105,6 +135,15 @@ const formatDurationCopy = (minutes: number): string => {
   return `${m} minute${m === 1 ? '' : 's'}`;
 };
 
+// X only: past an hour, "2h 41m" reads faster than "161 minutes".
+const formatXDurationCopy = (minutes: number): string => {
+  const total = Math.round(minutes);
+  if (total < 60) return formatDurationCopy(minutes);
+  const h = Math.floor(total / 60);
+  const m = total % 60;
+  return m ? `${h}h ${m}m` : `${h}h`;
+};
+
 const formatDurationShortCopy = (minutes: number): string => {
   if (minutes < 1) {
     const secs = Math.max(1, Math.round(minutes * 60));
@@ -129,7 +168,8 @@ const resolveParties = (
   affiliateAlias: string | undefined,
 ): { primary: string; secondary: string | null } | null => {
   const integrator = resolveAlias(INTEGRATOR_HANDLES, affiliateAlias);
-  const broker = resolveAlias(BROKER_HANDLES, brokerAlias);
+  // Many integrators run their own broker account, so fall back to integrator handles.
+  const broker = resolveAlias({ ...INTEGRATOR_HANDLES, ...BROKER_HANDLES }, brokerAlias);
   if (integrator && broker && integrator !== broker && !isChainflipDefaultBroker(brokerAlias)) {
     return { primary: integrator, secondary: broker };
   }
@@ -154,6 +194,8 @@ export type DiscordMessageInput = {
   originalDurationMinutes?: number;
   oraclePriceDeltaPct?: number;
   isRecord?: boolean;
+  // X gets its own copy tweaks; anything else keeps the Discord copy.
+  platform?: 'discord' | 'twitter';
 };
 
 const tierOf = (usdValue: number): 1 | 2 | 3 =>
@@ -256,7 +298,7 @@ const recordMessage = (input: DiscordMessageInput, pair: string): string => {
   ].join('\n');
 };
 
-export const formatDiscordMessage = (input: DiscordMessageInput): string => {
+const formatForPlatform = (input: DiscordMessageInput): string => {
   const pair = formatPair(input);
   if (input.isRecord) {
     return recordMessage(input, pair);
@@ -266,4 +308,72 @@ export const formatDiscordMessage = (input: DiscordMessageInput): string => {
     return input.isBoosted ? tier1Boosted(input, pair) : tier1Regular(input, pair);
   }
   return tier23(input, pair);
+};
+
+// X Boost line. Alternates between two phrasings by swap id, so a retried post
+// renders the same text.
+const formatXBoostLine = (input: DiscordMessageInput): string => {
+  const boosted = input.durationMinutes;
+  const normal = input.originalDurationMinutes;
+  if (boosted === undefined || normal === undefined || normal <= boosted) return 'Boosted.';
+
+  const speedup = boosted > 0 ? normal / boosted : 0;
+  const multiplier = Math.round(speedup);
+  const useMultiplier = Number(input.swapId) % 2 === 1 && speedup >= 2;
+  if (useMultiplier) {
+    const src = ASSET_REGISTRY[input.sourceAsset];
+    return `Boosted: ${multiplier}x faster than a normal ${src.symbol} deposit.`;
+  }
+
+  const standard = boosted >= 1 ? `${Math.round(normal)}` : formatDurationShortCopy(normal);
+  return `Boost: Settled in ${formatDurationShortCopy(boosted)} vs ${standard} standard.`;
+};
+
+// X copy, one shape for every size:
+//   <headline: USD, time, who>
+//
+//   <pair, price vs market>
+//   [Boost line]
+//
+//   <explorer link>
+const formatXMessage = (input: DiscordMessageInput): string => {
+  const usd = formatUsdCopy(input.usdValue);
+
+  const parties = resolveParties(input.brokerAlias, input.affiliateAlias);
+  const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
+  const inDuration =
+    input.durationMinutes !== undefined ? ` in ${formatXDurationCopy(input.durationMinutes)}` : '';
+  const delta =
+    input.oraclePriceDeltaPct !== undefined
+      ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
+      : '';
+  const pair = `${formatAmount(input.sourceAsset, input.sourceAmount)} → ${formatAmount(input.destAsset, input.destAmount)}`;
+
+  let headline: string;
+  let detail: string;
+  if (input.isRecord) {
+    // The swap happens on the integrator's app, with Chainflip as the rails.
+    // Swaps through our own app just say "on @Chainflip".
+    const where =
+      parties && parties.primary !== '@Chainflip'
+        ? ` on ${parties.primary} via @Chainflip${routed}`
+        : ' on @Chainflip';
+    headline = `New record: ${usd} cross-chain swap${where}.`;
+    detail = `${pair}${inDuration}${delta}.`;
+  } else {
+    const via = parties ? ` via ${parties.primary}${routed}` : '';
+    headline = `${usd} swapped cross-chain${inDuration}${via}.`;
+    detail = `${pair}${delta}.`;
+  }
+  if (input.isBoosted) detail += `\n${formatXBoostLine(input)}`;
+
+  return [headline, '', detail, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
+};
+
+export const formatDiscordMessage = (input: DiscordMessageInput): string => {
+  if (input.platform !== 'twitter') return formatForPlatform(input);
+
+  // X caption leaves out fills worse than the oracle price; the banner pill still shows them.
+  const negative = input.oraclePriceDeltaPct !== undefined && input.oraclePriceDeltaPct < 0;
+  return formatXMessage(negative ? { ...input, oraclePriceDeltaPct: undefined } : input);
 };
