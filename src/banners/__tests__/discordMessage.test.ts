@@ -234,6 +234,39 @@ describe('formatDiscordMessage — X-only copy', () => {
     `);
   });
 
+  it('does not double up Chainflip on record posts through our own app', () => {
+    expect(
+      formatDiscordMessage({
+        usdValue: 5_172_414,
+        sourceAsset: 'Btc',
+        sourceAmount: 70.37,
+        destAsset: 'Eth',
+        destAmount: 2_499,
+        swapId: '2062633',
+        durationMinutes: 161,
+        isBoosted: false,
+        isRecord: true,
+        brokerAlias: 'swap.chainflip.io',
+        platform: 'twitter',
+      }),
+    ).toMatchInlineSnapshot(`
+      "New record: $5.17M cross-chain swap on Chainflip.
+
+      70.37 BTC → 2,499 ETH in 2h 41m.
+
+      https://scan.chainflip.io/swaps/2062633"
+    `);
+  });
+
+  it('writes durations past an hour as hours and minutes on X', () => {
+    const at = (durationMinutes: number) =>
+      formatDiscordMessage({ ...bnbInput, durationMinutes, platform: 'twitter' }).split('\n')[0];
+    expect(at(59)).toContain('in 59 minutes');
+    expect(at(60)).toContain('in 1h.');
+    expect(at(161)).toContain('in 2h 41m.');
+    expect(formatDiscordMessage({ ...bnbInput, durationMinutes: 161 })).toContain('161 minutes');
+  });
+
   describe('Boost line', () => {
     const boosted: DiscordMessageInput = {
       usdValue: 241_000,

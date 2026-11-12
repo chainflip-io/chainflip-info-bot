@@ -135,6 +135,15 @@ const formatDurationCopy = (minutes: number): string => {
   return `${m} minute${m === 1 ? '' : 's'}`;
 };
 
+// X only: past an hour, "2h 41m" reads faster than "161 minutes".
+const formatXDurationCopy = (minutes: number): string => {
+  const total = Math.round(minutes);
+  if (total < 60) return formatDurationCopy(minutes);
+  const h = Math.floor(total / 60);
+  const m = total % 60;
+  return m ? `${h}h ${m}m` : `${h}h`;
+};
+
 const formatDurationShortCopy = (minutes: number): string => {
   if (minutes < 1) {
     const secs = Math.max(1, Math.round(minutes * 60));
@@ -333,7 +342,7 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   const parties = resolveParties(input.brokerAlias, input.affiliateAlias);
   const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
   const inDuration =
-    input.durationMinutes !== undefined ? ` in ${formatDurationCopy(input.durationMinutes)}` : '';
+    input.durationMinutes !== undefined ? ` in ${formatXDurationCopy(input.durationMinutes)}` : '';
   // Negative deltas are already stripped by the caller.
   const delta =
     input.oraclePriceDeltaPct !== undefined
@@ -345,7 +354,11 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   let detail: string;
   if (input.isRecord) {
     // The swap happens on the integrator's app, with Chainflip as the rails.
-    const where = parties ? ` on ${parties.primary} via Chainflip${routed}` : ' on Chainflip';
+    // Swaps through our own app just say "on Chainflip".
+    const where =
+      parties && parties.primary !== '@Chainflip'
+        ? ` on ${parties.primary} via Chainflip${routed}`
+        : ' on Chainflip';
     headline = `New record: ${usd} cross-chain swap${where}.`;
     detail = `${pair}${inDuration}${delta}.`;
   } else {
