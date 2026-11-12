@@ -153,6 +153,46 @@ describe('sendMessage', () => {
   });
 });
 
+describe('sendMessage photo tag fallback', () => {
+  const config = { consumerKey: 'a', consumerKeySecret: 'b', oauthKey: 'c', oauthKeySecret: 'd' };
+  const rejection = (status: number) => {
+    const error = new AxiosError();
+    // @ts-expect-error -- mock
+    error.response = { status, data: { detail: 'nope' } };
+    return error;
+  };
+
+  it('re-posts without tags when X rejects a tagged tweet', async () => {
+    const postMock = vi
+      .mocked(axios.post)
+      .mockRejectedValueOnce(rejection(400))
+      .mockResolvedValueOnce({ data: { data: { id: '1', text: 'x' } } });
+
+    await sendMessage(config, 'x', '42', ['111']);
+
+    expect(postMock).toHaveBeenCalledTimes(2);
+    expect(postMock.mock.calls[0]?.[1]).toEqual({
+      text: 'x',
+      media: { media_ids: ['42'], tagged_user_ids: ['111'] },
+    });
+    expect(postMock.mock.calls[1]?.[1]).toEqual({ text: 'x', media: { media_ids: ['42'] } });
+  });
+
+  it('does not re-post on a rate limit', async () => {
+    const postMock = vi.mocked(axios.post).mockRejectedValueOnce(rejection(429));
+
+    await expect(sendMessage(config, 'x', '42', ['111'])).rejects.toThrow('rate limit');
+    expect(postMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not re-post an untagged tweet', async () => {
+    const postMock = vi.mocked(axios.post).mockRejectedValueOnce(rejection(403));
+
+    await expect(sendMessage(config, 'x', '42')).rejects.toThrow('403');
+    expect(postMock).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('lookupUserIds', () => {
   const config = {
     consumerKey: 'a',

@@ -110,9 +110,8 @@ export const sendMessage = async (
       }
     : { text };
 
-  let response;
-  try {
-    response = await axios.post<TwitterResponse>(url, payload, {
+  const post = (body: typeof payload) =>
+    axios.post<TwitterResponse>(url, body, {
       headers: {
         Authorization: buildAuthHeader(token, url, 'POST'),
         'User-Agent': 'v2CreateTweetJS',
@@ -120,8 +119,33 @@ export const sendMessage = async (
         Accept: 'application/json',
       },
     });
+
+  let response;
+  try {
+    response = await post(payload);
   } catch (error) {
-    handleTwitterError(error, 'tweet create');
+    // Photo tags are a nice-to-have. If X rejects the tweet (4xx other than rate limit)
+    // while tags are attached, post once more without them rather than lose the post.
+    const status = isAxiosError(error) ? error.response?.status : undefined;
+    const retryUntagged =
+      taggedUserIds.length > 0 &&
+      status !== undefined &&
+      status >= 400 &&
+      status < 500 &&
+      status !== 429;
+    if (!retryUntagged || !mediaId) {
+      handleTwitterError(error, 'tweet create');
+    } else {
+      logger.warn('twitter rejected tweet with photo tags, retrying without tags', {
+        status,
+        data: isAxiosError(error) ? (error.response?.data as unknown) : undefined,
+      });
+      try {
+        response = await post({ text, media: { media_ids: [mediaId] } });
+      } catch (retryError) {
+        handleTwitterError(retryError, 'tweet create');
+      }
+    }
   }
 
   const formattedResponse = response?.data.data as { id: string; text: string };
@@ -148,6 +172,8 @@ export const lookupUserIds = async (token: TwitterConfig, handles: string[]): Pr
     const url = `https://api.twitter.com/2/users/by?usernames=${missing.join(',')}`;
     try {
       const response = await axios.get<{ data?: { id: string; username: string }[] }>(url, {
+        // Tags are optional: never let a slow lookup hold up the post.
+        timeout: 5_000,
         headers: {
           Authorization: buildAuthHeader(token, url, 'GET'),
           'User-Agent': 'v2CreateTweetJS',
