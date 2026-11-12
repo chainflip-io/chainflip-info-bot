@@ -1,4 +1,4 @@
-import { type ChainflipAsset } from '@chainflip/utils/chainflip';
+import { assetConstants, type ChainflipAsset } from '@chainflip/utils/chainflip';
 import { ASSET_REGISTRY } from './assetRegistry.js';
 import { TIER_1_THRESHOLD, TIER_2_THRESHOLD } from './buildBanner.js';
 import { normalizeAlias } from './format.js';
@@ -338,6 +338,9 @@ const formatXBoostLine = (input: DiscordMessageInput): string => {
 //   <explorer link>
 const formatXMessage = (input: DiscordMessageInput): string => {
   const usd = formatUsdCopy(input.usdValue);
+  // ETH → USDC on Ethereum is a swap, not a cross-chain swap.
+  const crossChain =
+    assetConstants[input.sourceAsset].chain !== assetConstants[input.destAsset].chain;
 
   const parties = resolveParties(input.brokerAlias, input.affiliateAlias);
   const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
@@ -358,11 +361,11 @@ const formatXMessage = (input: DiscordMessageInput): string => {
       parties && parties.primary !== '@Chainflip'
         ? ` on ${parties.primary} via @Chainflip${routed}`
         : ' on @Chainflip';
-    headline = `New record: ${usd} cross-chain swap${where}.`;
+    headline = `New record: ${usd} ${crossChain ? 'cross-chain swap' : 'swap'}${where}.`;
     detail = `${pair}${inDuration}${delta}.`;
   } else {
     const via = parties ? ` via ${parties.primary}${routed}` : '';
-    headline = `${usd} swapped cross-chain${inDuration}${via}.`;
+    headline = `${usd} ${crossChain ? 'swapped cross-chain' : 'swapped'}${inDuration}${via}.`;
     detail = `${pair}${delta}.`;
   }
   if (input.isBoosted) detail += `\n${formatXBoostLine(input)}`;
