@@ -267,6 +267,22 @@ describe('formatDiscordMessage — X-only copy', () => {
     expect(formatDiscordMessage({ ...bnbInput, durationMinutes: 161 })).toContain('161 minutes');
   });
 
+  it('calls same-chain swaps just swaps', () => {
+    const sameChain = {
+      ...bnbInput,
+      sourceAsset: 'Eth',
+      destAsset: 'Usdc',
+      platform: 'twitter',
+    } as const;
+    expect(formatDiscordMessage(sameChain).split('\n')[0]).toBe('$182K swapped in 3 minutes.');
+    expect(formatDiscordMessage({ ...sameChain, isRecord: true }).split('\n')[0]).toBe(
+      'New record: $182K swap on @Chainflip.',
+    );
+    expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).toContain(
+      'swapped cross-chain',
+    );
+  });
+
   describe('Boost line', () => {
     const boosted: DiscordMessageInput = {
       usdValue: 241_000,
