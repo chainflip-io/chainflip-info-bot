@@ -118,7 +118,7 @@ describe('formatDiscordMessage — X-only copy', () => {
     oraclePriceDeltaPct: -0.04,
   };
 
-  it('hides negative oracle delta on X but keeps positive ones', () => {
+  it('hides negative oracle delta in the X caption but keeps positive ones', () => {
     expect(formatDiscordMessage({ ...bnbInput, platform: 'twitter' })).not.toContain('vs market');
     expect(
       formatDiscordMessage({ ...bnbInput, oraclePriceDeltaPct: 0.08, platform: 'twitter' }),

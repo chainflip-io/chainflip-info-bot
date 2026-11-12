@@ -343,7 +343,6 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   const routed = parties?.secondary ? `, routed through ${parties.secondary}` : '';
   const inDuration =
     input.durationMinutes !== undefined ? ` in ${formatXDurationCopy(input.durationMinutes)}` : '';
-  // Negative deltas are already stripped by the caller.
   const delta =
     input.oraclePriceDeltaPct !== undefined
       ? `, ${formatDeltaCopy(input.oraclePriceDeltaPct)} vs market`
@@ -371,13 +370,10 @@ const formatXMessage = (input: DiscordMessageInput): string => {
   return [headline, '', detail, '', `${SCAN_BASE}/${input.swapId}`].join('\n');
 };
 
-export const formatDiscordMessage = (rawInput: DiscordMessageInput): string => {
-  if (rawInput.platform !== 'twitter') return formatForPlatform(rawInput);
+export const formatDiscordMessage = (input: DiscordMessageInput): string => {
+  if (input.platform !== 'twitter') return formatForPlatform(input);
 
-  // X only: don't advertise fills worse than the oracle price.
-  const input =
-    rawInput.oraclePriceDeltaPct !== undefined && rawInput.oraclePriceDeltaPct < 0
-      ? { ...rawInput, oraclePriceDeltaPct: undefined }
-      : rawInput;
-  return formatXMessage(input);
+  // X caption leaves out fills worse than the oracle price; the banner pill still shows them.
+  const negative = input.oraclePriceDeltaPct !== undefined && input.oraclePriceDeltaPct < 0;
+  return formatXMessage(negative ? { ...input, oraclePriceDeltaPct: undefined } : input);
 };
