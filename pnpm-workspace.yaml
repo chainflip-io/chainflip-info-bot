@@ -1,0 +1,8 @@
+# minimum release age must be 14 days unless @chainflip packages
+minimumReleaseAge: 20160 # in minutes
+minimumReleaseAgeExclude:
+  - '@chainflip/*'
+
+allowBuilds:
+  esbuild: false
+  msgpackr-extract: false
